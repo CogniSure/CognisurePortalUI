@@ -1,0 +1,16 @@
+export interface UserProfile{
+    UserID: number,
+    FirstName: string,
+    MiddleName: string,
+    LastName: string,
+    Password: string,
+    PhoneNumber: string,
+    Email: string,
+    ClientID: number,
+    ClientName: string,
+    UserTypeName: string,
+    UserTypeID: number,
+    ClientCode: string,
+    IsAdmin:boolean,
+    UserImage : string,
+}
