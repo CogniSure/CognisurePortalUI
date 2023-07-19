@@ -238,7 +238,7 @@ export class AccountService {
     return this.http
     .post<any>(
       //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
-      apiUrl+"login",
+      apiUrl,
       "",
       {params : body}
     ) .pipe(retry(1), catchError(this.errorHandl))

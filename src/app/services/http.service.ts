@@ -15,9 +15,10 @@ export class HttpService {
     };
   constructor(private http:HttpClient) { }
 
-  getLoginUrl()
+  getConfiguredUrl(userId:number, pageName:string, widgetCode : string, action:string)
   {
-   return this.http.get<any>(this.env.baseUrl).pipe(
+   return this.http.get<any>(this.env.baseUrl+"api/url?"+"userId="+userId+"&pageName="+
+pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
     map((result)=>{
       return result
     }),
