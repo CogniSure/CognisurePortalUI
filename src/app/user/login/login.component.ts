@@ -7,6 +7,7 @@ import { DataComponent } from 'src/app/model/data';
 import { UserProfile } from 'src/app/model/profile/userprofile';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { GlobalService } from 'src/app/services/global.service';
+import { UrlService } from 'src/app/services/url.service';
 import { AccountService } from 'src/app/services/user/accounts.service';
 import { environment } from 'src/environments/environment';
 
@@ -22,6 +23,7 @@ export class LoginComponent {
   showSpinner1 = false;
   constructor(
     private auth: AuthService,
+    private urlService : UrlService,
     private router: Router,
     private globalService: GlobalService,
     private accService: AccountService,
@@ -81,66 +83,84 @@ export class LoginComponent {
     if (this.validationErrors.length == 0) {
       event.preventDefault();
       this.email = this.loginForm.value.email!;
-      this.accService.login(this.apiUrl,this.loginForm.value).subscribe((res:any) => {
-        if (res.success) {
-          this.auth.setToken(res);
-          this.accService.getUserProfile(this.apiUrl,this.email).subscribe((user:any) => {
-            this.accService.getAcountDetails(this.apiUrl, user.UserID).subscribe((acc:any) => {
-              if (acc == null || acc.length == 0) {
-                this.isvalidform = false;
-                this.validationErrors.push({
-                  Key: 'all',
-                  Error: 'Invalid Business Email/Password',
-                });
-                this.showSpinner=false;
-                return;
-              }
-              
-              // this.accService.Check2FAStatus(this.email).subscribe((fa:any) => {
-              //   if (!fa.success) {
-              //     this.accService.Send2FAEmail(this.email).subscribe((fae:any) => {
-              //       if (fae.success) {
-              //         this.showSpinner=false;
-              //         this.router.navigate(['/pendingauth'], {
-              //           queryParamsHandling: 'preserve',
-              //         });
-              //       }
-              //     });
-              //   } else {
-              //     if (res.value.accessToken === null) {
-              //       this.validationErrors.push({
-              //         Key: 'all',
-              //         Error: 'Invalid Business Email/Password',
-              //       });
-              //       this.isvalidform = false;
-              //     } else {
-              //       let tempUser: TempUser = {
-              //         AuthVal: res,
-              //         UserInput: this.loginForm.value,
-              //       };
-              //       this.globalService.tempUser$.next(tempUser);
-              //       // this.auth.setSession(res);
-              //       // this.getUser(this.loginForm.value);
-              //       this.showSpinner=false;
-              //       this.router.navigate(['/multifactorauthentication'], {
-              //         queryParamsHandling: 'preserve',
-              //       });
-              //       this.isvalidform = true;
-              //     }
-              //   }
-              // });
+
+      this.urlService.getUrl(0,"Login","loginsubmit","load").subscribe((res:any)=>{
+        console.log("LoginUrl");
+        console.log(res.value.widgetURL)
+        const loginUrl = res.value.widgetURL;
+        this.accService.login(loginUrl,this.loginForm.value).subscribe((res:any) => {
+             if (res.success) {
+               this.auth.setToken(res);
+               this.router.navigate(['/dashboard/home'], {
+                                  queryParamsHandling: 'preserve',
+                                });
+             }
             });
-          });
-        } else {
-          this.isvalidform = false;
-          this.validationErrors.push({
-            Key: 'all',
-            Error: 'Invalid Business Email/Password',
-          });
-          this.showSpinner=false;
-        }
-        this.showErrors();
-      });
+      //         this.accService.getUserProfile(this.apiUrl,this.email).subscribe((user:any) => {
+
+      //   })
+      // })
+    })
+      // this.accService.login(this.apiUrl,this.loginForm.value).subscribe((res:any) => {
+      //   if (res.success) {
+      //     this.auth.setToken(res);
+      //     this.accService.getUserProfile(this.apiUrl,this.email).subscribe((user:any) => {
+      //       this.accService.getAcountDetails(this.apiUrl, user.UserID).subscribe((acc:any) => {
+      //         if (acc == null || acc.length == 0) {
+      //           this.isvalidform = false;
+      //           this.validationErrors.push({
+      //             Key: 'all',
+      //             Error: 'Invalid Business Email/Password',
+      //           });
+      //           this.showSpinner=false;
+      //           return;
+      //         }
+              
+      //         // this.accService.Check2FAStatus(this.email).subscribe((fa:any) => {
+      //         //   if (!fa.success) {
+      //         //     this.accService.Send2FAEmail(this.email).subscribe((fae:any) => {
+      //         //       if (fae.success) {
+      //         //         this.showSpinner=false;
+      //         //         this.router.navigate(['/pendingauth'], {
+      //         //           queryParamsHandling: 'preserve',
+      //         //         });
+      //         //       }
+      //         //     });
+      //         //   } else {
+      //         //     if (res.value.accessToken === null) {
+      //         //       this.validationErrors.push({
+      //         //         Key: 'all',
+      //         //         Error: 'Invalid Business Email/Password',
+      //         //       });
+      //         //       this.isvalidform = false;
+      //         //     } else {
+      //         //       let tempUser: TempUser = {
+      //         //         AuthVal: res,
+      //         //         UserInput: this.loginForm.value,
+      //         //       };
+      //         //       this.globalService.tempUser$.next(tempUser);
+      //         //       // this.auth.setSession(res);
+      //         //       // this.getUser(this.loginForm.value);
+      //         //       this.showSpinner=false;
+      //         //       this.router.navigate(['/multifactorauthentication'], {
+      //         //         queryParamsHandling: 'preserve',
+      //         //       });
+      //         //       this.isvalidform = true;
+      //         //     }
+      //         //   }
+      //         // });
+      //       });
+      //     });
+      //   } else {
+      //     this.isvalidform = false;
+      //     this.validationErrors.push({
+      //       Key: 'all',
+      //       Error: 'Invalid Business Email/Password',
+      //     });
+      //     this.showSpinner=false;
+      //   }
+      //   this.showErrors();
+      // });
     }
   }
 
