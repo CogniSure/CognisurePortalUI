@@ -11,6 +11,7 @@ import { environment } from "src/environments/environment";
 // import { ForgotPassword } from "src/app/model/common/forgotpassword";
 import { FAResult } from "src/app/model/common/2faresult";
 import { Accounts } from "src/app/model/profile/accounts";
+import { HttpService } from "../http.service";
 // import { News } from "src/app/model/common/news";
 // import { NewsData } from "src/app/model/common/newsData";
 
@@ -31,49 +32,49 @@ export class AccountService {
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
     };
-  constructor(private http: HttpClient, private globalService:GlobalService) {}
+  constructor(private http: HttpService, private globalService:GlobalService) {}
   
-  getAcountDetails(apiUrl:string , userId:number){
-    return this.http.get<any>(apiUrl+"accounts/"+userId).pipe(
-      map((result)=>{
-        const accounts:Accounts[] = [];
+  // getAcountDetails(apiUrl:string , userId:number){
+  //   return this.http.getData(apiUrl+"accounts",userId).pipe(
+  //     map((result)=>{
+  //       const accounts:Accounts[] = [];
         
-        result.value.forEach( (acc:any) => {
-          const account:Accounts = {
-            AccountID : acc.accountID,
-            AccountName : acc.accountName,
-            BenPortalLinks : acc.benePortalLinks.split(',')
-          }
-          accounts.push(account);
-        });
-        //this.globalService.setAccounts(accounts);
-        return accounts
-      }))
-  }
-  getAccountAdminProfile(apiUrl:string , email:string){
-    return this.http.get<any>(apiUrl+"usersaccountmanagerdetails/"+email).pipe(
-        map((result)=>{
-            const profile : UserProfile = {
-                UserID :result.value.userID,
-                FirstName: result.value.firstName==null?"":result.value.firstName,
-                MiddleName: result.value.middleName==null?"":result.value.middleName,
-                LastName: result.value.lastName==null?"":result.value.lastName,
-                Password: result.value.password,
-                PhoneNumber: result.value.phoneNumber,
-                Email: result.value.email,
-                ClientID: result.value.clientID,
-                ClientName: result.value.clientName,
-                UserTypeName: result.value.userTypeName== null? "":result.value.userTypeName,
-                UserTypeID: result.value.userTypeID,
-                ClientCode: result.value.clientCode,
-                IsAdmin : (result.value.userTypeID == 3 || result.value.userTypeID == 4)? true : false,
-                UserImage : result.value.userImage
-            }
+  //       result.value.forEach( (acc:any) => {
+  //         const account:Accounts = {
+  //           AccountID : acc.accountID,
+  //           AccountName : acc.accountName,
+  //           BenPortalLinks : acc.benePortalLinks.split(',')
+  //         }
+  //         accounts.push(account);
+  //       });
+  //       //this.globalService.setAccounts(accounts);
+  //       return accounts
+  //     }))
+  // }
+  // getAccountAdminProfile(apiUrl:string , email:string){
+  //   return this.http.get<any>(apiUrl+"usersaccountmanagerdetails/"+email).pipe(
+  //       map((result)=>{
+  //           const profile : UserProfile = {
+  //               UserID :result.value.userID,
+  //               FirstName: result.value.firstName==null?"":result.value.firstName,
+  //               MiddleName: result.value.middleName==null?"":result.value.middleName,
+  //               LastName: result.value.lastName==null?"":result.value.lastName,
+  //               Password: result.value.password,
+  //               PhoneNumber: result.value.phoneNumber,
+  //               Email: result.value.email,
+  //               ClientID: result.value.clientID,
+  //               ClientName: result.value.clientName,
+  //               UserTypeName: result.value.userTypeName== null? "":result.value.userTypeName,
+  //               UserTypeID: result.value.userTypeID,
+  //               ClientCode: result.value.clientCode,
+  //               IsAdmin : (result.value.userTypeID == 3 || result.value.userTypeID == 4)? true : false,
+  //               UserImage : result.value.userImage
+  //           }
 
-            return profile
-        })
-    )
-  }
+  //           return profile
+  //       })
+  //   )
+  // }
   /*
   getNews(userId : number) {
     return this.http.get<any>(this.env.apiUrl+"getallnewsfeed/"+userId).pipe(
@@ -232,22 +233,22 @@ export class AccountService {
   login(apiUrl:string , { email, password }: any): Observable<any> {
     
     var result;
-    let body = new HttpParams();
-    body = body.set('username', email);
-    body = body.set('password', password);
+    let hParams = new HttpParams();
+    hParams = hParams.set('username', email);
+    hParams = hParams.set('password', password);
     return this.http
-    .post<any>(
+    .postData(
       //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
       apiUrl,
       "",
-      {params : body}
-    ) .pipe(retry(1), catchError(this.errorHandl))
+      hParams
+    )
     
   }
   
   getUserProfile(apiUrl:string , email:string){
-    return this.http.get<any>(apiUrl+"userdetails/"+email).pipe(
-        map((result)=>{
+    return this.http.getData(apiUrl+"userdetails/",email).pipe(
+        map((result:any)=>{
             const profile : UserProfile = {
                 UserID :result.value.userID,
                 FirstName: result.value.firstName,

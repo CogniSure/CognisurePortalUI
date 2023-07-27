@@ -24,7 +24,7 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
     }),
     retry(1), catchError(this.errorHandl));
   }
-  getData(apiUrl:string,urlParams : any){
+  getData(apiUrl:string,urlParams : any):any{
     return this.http.get<any>(apiUrl,
       {
         'params' : urlParams
@@ -35,14 +35,17 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
         }),
         retry(1), catchError(this.errorHandl))
   }
-  postData(apiUrl:string,dataParams:any,urlParams : string)
+  postData(apiUrl:string,urlParams : string,dataParams:any):any
   {
-    return this.http.post<any>(apiUrl+urlParams,dataParams,this.httpOptions
+    const res =  this.http.post<any>(apiUrl,urlParams,{params:dataParams}
       ).pipe(
         map((result)=>{
           return result
         }),
         retry(1), catchError(this.errorHandl))
+
+      console.log("Result : " + JSON.stringify(res));
+      return res;
   }
   deleteData(apiUrl:string,urlParams : string){
     return this.http.delete<any>(apiUrl+urlParams).pipe(
