@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpService } from './services/http.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BaseModule } from './base/base.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     BrowserAnimationsModule,
     DashboardModule,
-    NgbModule
+    NgbModule,
+    BaseModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
