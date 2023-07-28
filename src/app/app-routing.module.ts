@@ -29,12 +29,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
-  // {
-  //   path: 'mybenefits',
-  //   canActivate: [AuthGuard],
-  //   loadChildren: () =>
-  //     import('./mybenefits/mybenefits.module').then((m) => m.MybenefitsModule),
-  // },
+  {
+    path: 'inbox',
+    //canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./inbox/inbox.module').then((m) => m.InboxModule),
+  },
   // {
   //   path: 'financialreport',
   //   canActivate: [AuthGuard],

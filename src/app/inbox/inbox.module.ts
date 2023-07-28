@@ -10,6 +10,8 @@ import { AccountAssesmentComponent } from './account-assesment/account-assesment
 import { ExposerAnalysisComponent } from './exposer-analysis/exposer-analysis.component';
 import { LossAnalysisComponent } from './loss-analysis/loss-analysis.component';
 import { DocumentVaultComponent } from './document-vault/document-vault.component';
+import { KendoModule } from '../kendo/kendo.module';
+import { InboxRoutingModule } from './inbox-routing.module';
 
 
 
@@ -27,7 +29,9 @@ import { DocumentVaultComponent } from './document-vault/document-vault.componen
   ],
   imports: [
     CommonModule,
-    CoreModule
+    CoreModule,
+    KendoModule,
+    InboxRoutingModule
   ]
 })
 export class InboxModule { }
