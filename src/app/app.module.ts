@@ -15,7 +15,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpService } from './services/http.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BaseModule } from './base/base.module';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 
 
@@ -29,10 +28,8 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DashboardModule,
     NgbModule,
-    BaseModule,
-    ButtonsModule
+    BaseModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
