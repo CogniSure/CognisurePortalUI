@@ -1,0 +1,37 @@
+
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">
+          <div style="width: fit-content;" *ngIf="!collapsed">
+              <mat-icon style="color: #f5f5f5;">skip_next</mat-icon>
+          </div>
+          <div style="width: fit-content;" *ngIf="collapsed">
+              <mat-icon style="color: #f5f5f5;">skip_previous</mat-icon>
+          </div>
+        </button>
+    </div>
+    <ul class="sidenav-nav" >
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                [routerLinkActiveOptions]="{exact: false}"
+                queryParamsHandling= 'preserve'
+            >
+                <i class="sidenav-link-icon" *ngIf="!collapsed" matTooltip={{data.label}}
+                matTooltipPosition="right"
+                [class]="data.icon"></i>
+                <i class="sidenav-link-icon" *ngIf="collapsed"
+                [class]="data.icon"></i>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                    {{data.label}}
+                </span>
+            </a>
+        </li>
+    </ul>
+  
+  
+  
+    <div> </div>
+  </div>
+  

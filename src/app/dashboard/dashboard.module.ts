@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoPanelComponent } from './info-panel/info-panel.component';
 import { NewsComponent } from './news/news.component';
 import { RemindersComponent } from './reminders/reminders.component';
+import { KendoModule } from '../kendo/kendo.module';
 
 
 
@@ -22,7 +23,8 @@ import { RemindersComponent } from './reminders/reminders.component';
     HomeComponent,
     InfoPanelComponent,
     NewsComponent,
-    RemindersComponent
+    RemindersComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { RemindersComponent } from './reminders/reminders.component';
     WidgetsModule,
     FormsModule,
     ReactiveFormsModule,
+    KendoModule
   ]
 })
 export class DashboardModule { }

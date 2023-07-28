@@ -15,6 +15,7 @@ import { IconsModule, SVGIconModule } from '@progress/kendo-angular-icons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { ContextMenuModule, MenuModule } from '@progress/kendo-angular-menu';
 
 const routes:Routes = [
 ];
@@ -38,7 +39,9 @@ const KendoComponents = [];
     PDFExportModule ,
     ExcelExportModule,
     PDFModule,
-    ExcelModule
+    ExcelModule,
+    MenuModule,
+    ContextMenuModule,
   ],
   exports:[
     GridModule,
@@ -54,7 +57,9 @@ const KendoComponents = [];
     PDFExportModule ,
     ExcelExportModule,
     PDFModule,
-    ExcelModule
+    ExcelModule,
+    MenuModule,
+    ContextMenuModule
   ]
 })
 export class KendoModule { }
