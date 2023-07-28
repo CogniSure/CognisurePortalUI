@@ -5,29 +5,13 @@ export const navbarData = [
         label: 'Home'
     },
     {
-        routeLink: '/mybenefits',
+        routeLink: '/inbox',
         icon: 'far fa-file-text',
-        label: 'My Benefit Plan'
+        label: 'Inbox'
     },
     {
-        routeLink: '/financialreport',
+        routeLink: '/volumetrics',
         icon: 'fal fa-chart-line',
-        label: 'Financial Report'
-    },
-    {
-        routeLink: '/documentvault',
-        icon: 'fal fa-folders',
-        label: 'Documents Vault'
+        label: 'Volumetrics'
     }
-    // ,
-    // {
-    //     routeLink: '/providersearch',
-    //     icon: 'fal fa-search-dollar',
-    //     label: 'Provider & Rate Search'
-    // },
-    // {
-    //     routeLink: '/projectedcost',
-    //     icon: 'fal fa-calculator',
-    //     label: 'Projected Cost'
-    // }
 ];
