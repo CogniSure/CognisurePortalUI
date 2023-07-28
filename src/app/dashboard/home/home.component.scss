@@ -11,3 +11,10 @@
     padding: 0 !important;
     background: blue !important;
 }
+.home-menu{
+    padding: 0 !important;
+    .k-card-body{
+        padding-block: 0 !important;
+        padding-inline: 0 !important;
+    }
+}
