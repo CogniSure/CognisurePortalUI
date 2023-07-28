@@ -4,6 +4,12 @@ import { MainComponent } from './main/main.component';
 import { ManagewidgetsComponent } from './managewidgets/managewidgets.component';
 import { HomeComponent } from './home/home.component';
 import { CoreModule } from '../core/core.module';
+import { SummaryComponent } from './summary/summary.component';
+import { ApplicationComponent } from './application/application.component';
+import { AccountAssesmentComponent } from './account-assesment/account-assesment.component';
+import { ExposerAnalysisComponent } from './exposer-analysis/exposer-analysis.component';
+import { LossAnalysisComponent } from './loss-analysis/loss-analysis.component';
+import { DocumentVaultComponent } from './document-vault/document-vault.component';
 
 
 
@@ -11,7 +17,13 @@ import { CoreModule } from '../core/core.module';
   declarations: [
     MainComponent,
     ManagewidgetsComponent,
-    HomeComponent
+    HomeComponent,
+    SummaryComponent,
+    ApplicationComponent,
+    AccountAssesmentComponent,
+    ExposerAnalysisComponent,
+    LossAnalysisComponent,
+    DocumentVaultComponent
   ],
   imports: [
     CommonModule,

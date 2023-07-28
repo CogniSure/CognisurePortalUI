@@ -12,7 +12,7 @@ const routes:Routes = [
     children:[
       {path: 'home', component: HomeComponent},
       // {path: 'managewidgets', component: ManagewidgetsComponent},
-      { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
+      { path: '', redirectTo: '/inbox/home', pathMatch: 'full' },
       // {path: 'dashboardwidgets', component: DashboardwidgetsComponent}
       // {path: 'accountnames', component: AccountnamesComponent},
       // {path: 'accountnameslist', component: AccountnameslistComponent},

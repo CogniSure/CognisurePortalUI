@@ -8,6 +8,9 @@ import { CoreModule } from '../core/core.module';
 import { MaterialModule } from '../material/material.module';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfoPanelComponent } from './info-panel/info-panel.component';
+import { NewsComponent } from './news/news.component';
+import { RemindersComponent } from './reminders/reminders.component';
 
 
 
@@ -16,7 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     MainComponent,
     DashboardwidgetsComponent,
-    HomeComponent
+    HomeComponent,
+    InfoPanelComponent,
+    NewsComponent,
+    RemindersComponent
   ],
   imports: [
     CommonModule,
