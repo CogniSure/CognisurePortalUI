@@ -10,7 +10,7 @@ import { images } from './images';
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss']
   })
-export class AppComponent implements OnInit {
+export class TableComponent implements OnInit {
     @ViewChild(DataBindingDirective) dataBinding: DataBindingDirective | undefined;
     public gridData: any[] = employees;
     public gridView!: any[];

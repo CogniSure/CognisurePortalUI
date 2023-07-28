@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { ManagewidgetsComponent } from './managewidgets/managewidgets.component';
 import { HomeComponent } from './home/home.component';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -13,7 +14,8 @@ import { HomeComponent } from './home/home.component';
     HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CoreModule
   ]
 })
 export class InboxModule { }
