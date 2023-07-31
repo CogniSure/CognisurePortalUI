@@ -6,7 +6,7 @@ export const navbarData = [
     },
     {
         routeLink: '/inbox',
-        icon: 'far fa-file-text',
+        icon: 'fal fa-envelope',
         label: 'Inbox'
     },
     {
