@@ -4,6 +4,13 @@ import { MainComponent } from './main/main.component';
 import { ManagewidgetsComponent } from './managewidgets/managewidgets.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { InboxDetailComponent } from './inbox-detail/inbox-detail.component';
+import { SummaryComponent } from './summary/summary.component';
+import { ApplicationComponent } from './application/application.component';
+import { AccountAssesmentComponent } from './account-assesment/account-assesment.component';
+import { ExposerAnalysisComponent } from './exposer-analysis/exposer-analysis.component';
+import { LossAnalysisComponent } from './loss-analysis/loss-analysis.component';
+import { DocumentVaultComponent } from './document-vault/document-vault.component';
 
 const routes:Routes = [
   {
@@ -11,8 +18,35 @@ const routes:Routes = [
     component: MainComponent,
     children:[
       {path: 'home', component: HomeComponent},
-      // {path: 'managewidgets', component: ManagewidgetsComponent},
       { path: '', redirectTo: '/inbox/home', pathMatch: 'full' },
+      { path: 'detail', component:InboxDetailComponent, 
+        children:[
+          {
+            path: 'summary',  
+            component: SummaryComponent,
+          },
+          {
+            path: 'application',  
+            component: ApplicationComponent,
+          },
+          {
+            path: 'accountassesment',  
+            component: AccountAssesmentComponent,
+          },
+          {
+            path: 'exposeranalysis',  
+            component: ExposerAnalysisComponent,
+          },
+          {
+            path: 'lossanalysis',  
+            component: LossAnalysisComponent,
+          },
+          {
+            path: 'documentvault',  
+            component: DocumentVaultComponent,
+          },
+        ]
+    },
       // {path: 'dashboardwidgets', component: DashboardwidgetsComponent}
       // {path: 'accountnames', component: AccountnamesComponent},
       // {path: 'accountnameslist', component: AccountnameslistComponent},

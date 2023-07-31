@@ -1,0 +1,148 @@
+.sidenav {
+    transition: all 0.5s ease;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    width: 4.3vw;
+    height: 98%;
+    //   height: 645px;
+    box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      padding: 0.938rem 0 0 0.2rem;
+      width: 100%;
+  
+      .logo {
+        background: transparent;
+        text-align: center;
+        width: 1rem;
+        min-width: 1rem;
+        border-radius: 0.313rem;
+        padding-left: 0.1rem;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+      }
+      .logo-back {
+        background: transparent;
+        text-align: center;
+        //width: 1rem;
+        min-width: 1rem;
+        border-radius: 0.313rem;
+        padding-left: 0.1rem;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+      }
+  
+      .logo-text {
+        margin-left: 1.5rem;
+        font-size: 18px;
+        color: #fff;
+      }
+  
+      .btn-close {
+        margin-left: auto;
+        cursor: pointer;
+        width: 3rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: transparent;
+        border: none;
+  
+        .fa-times {
+          color: #fff;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+  
+  .sidenav-collapsed {
+    width: 11.5rem;
+  }
+  
+  .sidenav-nav {
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 3.65rem);
+    cursor: pointer;
+  
+    .sidenav-nav-item {
+      width: 100%;
+      margin-bottom: 1.5rem;
+  
+      .sidenav-nav-link {
+        display: flex;
+        align-items: center;
+        height: 1.5rem;
+        color: #F5F5F5;
+        text-decoration: none;
+        border-radius: 0.625rem;
+        transition: all 0.3s ease;
+        padding: 8% 8% 8% 2%;
+        .sidenav-link-icon {
+          font-size: 14px;
+          width: 2rem;
+          //min-width: 2rem;
+          //margin: 0 0.5rem;
+          text-align: center;
+          // color: #f5f5f5;
+        }
+  
+        .sidenav-link-text {
+          font-size: 11px;
+          margin-left: 0rem;
+          // color: #f5f5f5;
+        }
+        
+      }
+    }
+  
+    .sidenav-nav-item:hover {
+      .sidenav-nav-link {
+        background-color: #d9d8d6;
+        color: black!important;
+      }
+    }
+  }
+  
+  .active {
+    background-color: #d9d8d6;
+  
+    .sidenav-link-icon,
+    .sidenav-link-text {
+      color: black;
+    }
+  }
+  
+  .mat-card {
+    height: 3.5rem;
+    margin-right: -0.7rem !important;
+    margin-left: 0rem !important;
+  }
+  
+  
+  ::ng-deep mat-tooltip-component{
+    & .mat-tooltip{
+      background-color: #f5f5f5 !important;
+      color: #0c2340 !important;
+      font-size: 12px!important;
+      margin-left: 20px;
+    }
+  
+  }
+  
+  .sidenav-nav .sidenav-nav-item .sidenav-nav-link {
+  color:#F5F5F5!important;
+  }
+  .sidenav-nav .sidenav-nav-item{
+    color:#F5F5F5!important;
+  }

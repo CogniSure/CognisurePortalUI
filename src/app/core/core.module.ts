@@ -10,6 +10,7 @@ import { InboxTopbarComponent } from './inbox-topbar/inbox-topbar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { RecentlyViewedComponent } from './recently-viewed/recently-viewed.component';
 import { RouterModule, Routes } from '@angular/router';
+import { InboxMenuComponent } from './inbox-menu/inbox-menu.component';
 
 const routes:Routes = [
 ];
@@ -21,7 +22,8 @@ const routes:Routes = [
     SidemenubarComponent,
     InboxTopbarComponent,
     TopbarComponent,
-    RecentlyViewedComponent
+    RecentlyViewedComponent,
+    InboxMenuComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ const routes:Routes = [
     SidemenubarComponent,
     InboxTopbarComponent,
     TopbarComponent,
-    RecentlyViewedComponent
+    RecentlyViewedComponent,
+    InboxMenuComponent
   ]
 })
 export class CoreModule { }

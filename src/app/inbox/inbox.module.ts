@@ -12,6 +12,7 @@ import { LossAnalysisComponent } from './loss-analysis/loss-analysis.component';
 import { DocumentVaultComponent } from './document-vault/document-vault.component';
 import { KendoModule } from '../kendo/kendo.module';
 import { InboxRoutingModule } from './inbox-routing.module';
+import { InboxDetailComponent } from './inbox-detail/inbox-detail.component';
 
 
 
@@ -25,7 +26,8 @@ import { InboxRoutingModule } from './inbox-routing.module';
     AccountAssesmentComponent,
     ExposerAnalysisComponent,
     LossAnalysisComponent,
-    DocumentVaultComponent
+    DocumentVaultComponent,
+    InboxDetailComponent
   ],
   imports: [
     CommonModule,
