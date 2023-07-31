@@ -1,0 +1,167 @@
+.header_img img {
+  width: 40%;
+}
+.top_bar {
+  padding: 1%;
+}
+
+// .search_bar input{
+// border-radius: 20px;
+// border: 1px solid gray;
+//     padding: 4%;
+//     padding-left: 18%;
+// }
+
+//   .input-with-icon {
+//     background-image: url('../../../assets/images/search.png');
+//     background-repeat: no-repeat;
+//     background-position: 10px center;
+//     background-size: 14px 14px;
+//   }
+.copied_icon img {
+  width: 8%;
+  height: 8%;
+  border: 1px solid gray;
+  border-radius: 21px;
+  padding: 0.6%;
+  // margin-left: 13%;
+}
+
+.notification_icon img {
+  width: 45%;
+  height: 8%;
+  border: 1px solid gray;
+  border-radius: 21px;
+  padding: 0.6%;
+}
+
+.copied_icon {
+  display: inline;
+}
+.copied span {
+  padding-left: 2%;
+  font-weight: 600;
+}
+.profile_icon {
+    img {
+       width: 45%;
+      //height: 8%;
+      border: 1px solid gray;
+      border-radius: 21px;
+      padding: 0.6%;
+      // margin-left: 13%;
+    }
+}
+.rounded-circle {
+  border-radius: 50%;
+}
+//   .profile_content {
+//   display: flex;
+//   align-items: center;
+// }
+
+.name {
+  margin-right: 5px;
+}
+
+.role {
+  font-size: 12px;
+  color: gray;
+}
+
+.dropdown button {
+  background: none;
+  border: none;
+}
+
+.dropdown_icon {
+  width: 80rem;
+}
+
+.dropup_icon {
+  width: 80rem;
+}
+
+.search_bar {
+  display: inline-flex;
+}
+
+.settings_option img {
+  // position: fixed;
+  // right: 0;
+  // top: 0;
+  float: right;
+  margin-top: -12.2%;
+}
+
+.settings_option .dropdown {
+  float: right;
+  position: fixed;
+  margin-left: 22.8%;
+  font-weight: 400;
+  font-size: 13px;
+  margin-right: 1%;
+}
+
+
+.copied_icon1 {
+  margin-left: 42%;
+}
+
+.profile_content .position {
+  font-size: 11px;
+  color: gray;
+}
+
+::ng-deep .mat-mdc-card {
+  width: 112%;
+}
+
+.dropdown ul {
+  list-style-type: none;
+  padding: 0%;
+}
+
+.badge {
+  background-color: red;
+  color: white;
+  /* padding: 4px 8px; */
+  border-radius: 50%;
+  font-size: 12px;
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
+
+.dropdown ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+// ::ng-deep .mat-mdc-card-content:first-child {
+//     padding: 8% 0% 8% 0%;
+//     padding-right: 16px;
+//     padding-bottom: 8px!important;
+// }
+
+.dropdown ul li {
+  padding: 5%;
+}
+
+.dropdown ul li:hover {
+  background-color: lightgrey;
+  color: black;
+}
+::ng-deep .mat-mdc-card-content {
+  padding: 0 !important;
+}
+
+::ng-deep .top-bar-header {
+  padding: 0 !important;
+}
+.k-tilelayout {
+  background-color: transparent !important;
+  .k-card {
+    border-width: 0px !important;
+  }
+}

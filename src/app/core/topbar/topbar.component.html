@@ -1,1 +1,96 @@
-<p>topbar works!</p>
+<div>
+  <kendo-tilelayout
+    [columns]="12"
+    [rowHeight]="'100%'"
+    [resizable]="false"
+    [reorderable]="false"
+    class="top-bar-header"
+  >
+    <kendo-tilelayout-item [col]="1" [colSpan]="3" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item-body>
+        <ng-container
+          *ngIf="genericService.idToDisplay === 1; else noHeaderImage"
+        >
+          <div class="header_img">
+            <img [src]="genericService.headerImageURL" class="imgHeight" />
+          </div>
+        </ng-container>
+
+        <ng-template #noHeaderImage> </ng-template>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item [col]="8" [colSpan]="1" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item-body style="padding: 6% 0 6% 6%; text-align: end;">
+            <div style="float: left;">
+                <span class="profile_icon">
+                    <img
+                    [src]="genericService.topbarIconURL"
+                    class="imgHeight copied_icon1"
+                  />
+                </span>
+              </div>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item [col]="9" [colSpan]="1" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item-body style="padding: 6% 0 6% 6%; text-align: end;">
+            <div style="float: left; text-align: center;">
+                <span class="notification_icon">
+                    <img
+                      [src]="genericService.notificationIconURL"
+                      class="imgHeight"
+                    />
+                    <span class="badge">{{
+                      genericService.notificationCount
+                    }}</span>
+                  </span>
+              </div>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item [col]="10" [colSpan]="1" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item-body style="padding: 0; text-align: end;">
+            <div style="float: left;">
+                <span class="profile_icon">
+                  <img
+                    [src]="genericService.profileImageURL"
+                    class="imgHeight rounded-circle"
+                  />
+                </span>
+              </div>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item [col]="11" [colSpan]="1" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item-body style="padding: 8% 8% 8% 0;">
+        <div>
+          <span class="profile_content"
+            >Evelyn Salt</span>
+        <br>
+          <span class="position">Underwriter</span>
+        </div>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+      <kendo-tilelayout-item [col]="12" [colSpan]="1" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item-body>
+            <button mat-raise-button color="primary" style="border: transparent !important; background: transparent"
+            [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="openMyMenu(menuTrigger)">
+            <!-- <img *ngIf="!defaultProfile" [src]="imageSource" [width]="size" [height]="size"
+              class="hy-profile-image" />
+
+            <img *ngIf="defaultProfile" src="assets/images/defaultprofilepic.png" [width]="size" [height]="size"
+              class="hy-profile-image" /> -->
+              <mat-icon>arrow_drop_down_circle</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" class="profiledropdown" style="color:#F5F5F5!important">
+            <span (mouseleave)="closeMyMenu(menuTrigger)">
+              <button mat-menu-item routerLink="/changepassword" queryParamsHandling="preserve">
+                Change Password
+              </button>
+              <button mat-menu-item routerLink="/contactus/2" queryParamsHandling="preserve">
+                Contact Us
+              </button>
+              <button mat-menu-item (click)="Logout()">Logout</button>
+            </span>
+          </mat-menu>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+  </kendo-tilelayout>
+</div>

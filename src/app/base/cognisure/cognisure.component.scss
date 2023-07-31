@@ -405,6 +405,7 @@ color: #005daa;
   ::ng-deep .home-header
   {
       padding: 0 !important;
+      border-width: 0px !important;
   }
   ::ng-deep .home-body
   {
@@ -414,7 +415,13 @@ color: #005daa;
   ::ng-deep .home-separator{
       padding: 0 !important;
       border: none !important;
-      background: #009CC1 !important;
+      background: linear-gradient(180deg, #0084A4, #009CC1)
+      //background: #009CC1 !important;
+  }
+  ::ng-deep .home-separator-body{
+    padding: 0 !important;
+    border: none !important;
+    background: #0084A4 !important;
   }
   ::ng-deep .home-menu{
       padding: 0 !important;
