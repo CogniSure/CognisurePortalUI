@@ -1,4 +1,5 @@
-$primary-color: #005daa;
+//$primary-color: #005daa;
+$primary-color: #009CC1;
 $secondary-color: #758591;
 $primary-black-color: black;
 
@@ -412,7 +413,8 @@ color: #005daa;
   }
   ::ng-deep .home-separator{
       padding: 0 !important;
-      background: blue !important;
+      border: none !important;
+      background: #009CC1 !important;
   }
   ::ng-deep .home-menu{
       padding: 0 !important;
