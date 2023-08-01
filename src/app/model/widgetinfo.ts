@@ -5,6 +5,10 @@ import { ExposureComponent } from "src/app/widgets/exposure/exposure.component";
 import { LossesComponent } from "src/app/widgets/losses/losses.component";
 import { RiskClearanceComponent } from "src/app/widgets/risk-clearance/risk-clearance.component";
 import { TotalLossesComponent } from "src/app/widgets/total-losses/total-losses.component";
+import { XBarComponent } from "../widgets/xbar/xbar.component";
+import { YBarComponent } from "../widgets/ybar/ybar.component";
+import { PieComponent } from "../widgets/pie/pie.component";
+import { SimpleDataComponent } from "../widgets/simple-data/simple-data.component";
 
 
 export interface Widgetinfo {
@@ -27,5 +31,9 @@ export const ComponentDetails:Map<string,any> = new Map([
    
     ["Losses",[LossesComponent]], 
     ["Riskclearance",[RiskClearanceComponent]],
-    ["Totallosses",[TotalLossesComponent]]  
+    ["Totallosses",[TotalLossesComponent]]  ,
+    ["Xbar",[XBarComponent]]  ,
+    ["Ybar",[YBarComponent]]  ,
+    ["Pie",[PieComponent]]  ,
+    ["SimpleData",[SimpleDataComponent]]  
 ]);

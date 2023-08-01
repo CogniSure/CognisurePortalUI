@@ -1,0 +1,34 @@
+
+<kendo-chart #chart
+  [seriesColors]="seriesColors"
+  [pannable]="{ lock: 'y' }"
+  [zoomable]="{ mousewheel: { lock: 'y' } }"
+>
+  <kendo-chart-legend
+    position="bottom"
+    orientation="horizontal"
+    
+  ></kendo-chart-legend>
+  <kendo-chart-category-axis reverse = true >
+    <kendo-chart-category-axis-item [categories]="categories">
+    </kendo-chart-category-axis-item>
+  </kendo-chart-category-axis>
+  <!-- <kendo-chart-series>
+      <kendo-chart-series-item
+        type="column"
+        [gap]="2"
+        [spacing]="0.25"
+        [data]="[100, 123, 234, 343]"
+      >
+      </kendo-chart-series-item>
+    </kendo-chart-series> -->
+  <kendo-chart-series > 
+    <kendo-chart-series-item
+      *ngFor="let item of series"
+      type="column"
+      [data]="item.data"
+      [name]="item.name"
+    >
+    </kendo-chart-series-item>
+  </kendo-chart-series>
+</kendo-chart>

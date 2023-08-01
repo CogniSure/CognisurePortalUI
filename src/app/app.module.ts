@@ -17,6 +17,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BaseModule } from './base/base.module';
 import { MenuModule } from '@progress/kendo-angular-menu';
 import { ListViewModule } from '@progress/kendo-angular-listview';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
+
+
 
 
 
@@ -35,7 +39,8 @@ import { ListViewModule } from '@progress/kendo-angular-listview';
     NgbModule,
     BaseModule,
     MenuModule,
-    ListViewModule
+    ListViewModule,
+    ChartsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

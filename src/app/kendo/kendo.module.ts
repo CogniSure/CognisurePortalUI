@@ -43,7 +43,7 @@ const KendoComponents = [];
     ExcelModule,
     MenuModule,
     ContextMenuModule,
-    ListViewModule 
+    ListViewModule
   ],
   exports:[
     GridModule,
@@ -62,7 +62,8 @@ const KendoComponents = [];
     ExcelModule,
     MenuModule,
     ContextMenuModule,
-    ListViewModule 
+    ListViewModule ,
+    
   ]
 })
 export class KendoModule { }

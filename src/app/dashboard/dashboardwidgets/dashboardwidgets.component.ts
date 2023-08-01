@@ -58,8 +58,8 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
         BoxClass: entry.BoxType,
         Fullscreen : entry.Fullscreen,
         ColumnId :  entry.ColumnId,
-        ColumnSpan :  entry.ColumnId,
-        RowSpan :  entry.ColumnId
+        ColumnSpan :  entry.ColumnSpan,
+        RowSpan :  entry.RowSpan
       });
       i++;
     });

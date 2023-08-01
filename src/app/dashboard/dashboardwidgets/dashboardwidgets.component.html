@@ -4,16 +4,18 @@
     [resizable]="false"
     [reorderable]="false"
     class="home-body"
+    RowsCount="1"
+    [rowHeight]="'10em'"
     [style]="'padding: 0 !important;'"
   >
-    <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="1">
+    <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="item.ColumnSpan" [rowSpan]="item.RowSpan">
 
       <kendo-tilelayout-item-header>
         <h5 class="header-text">
           <div style="text-align: center; max-height: 5vh; border: 2">
             <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
               <div style="width: 90%; text-align:left; margin-top:0.5%" >
-              <b class="textprimary-base bold">{{ item.WidgetName }}</b>
+              <b class="textprimary-base bold">{{ item.Header }}</b>
             </div>
             <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
               <button *ngIf="item.Fullscreen"
