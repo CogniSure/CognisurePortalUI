@@ -46,7 +46,10 @@ export class SummaryComponent {
         WidgetType : entry.WidgetType,
         Header: entry.Header,
         BoxClass: entry.BoxType,
-        Fullscreen : entry.Fullscreen
+        Fullscreen : entry.Fullscreen,
+        ColumnId :  entry.ColumnId,
+        ColumnSpan :  entry.ColumnId,
+        RowSpan :  entry.ColumnId
       });
       i++;
     });

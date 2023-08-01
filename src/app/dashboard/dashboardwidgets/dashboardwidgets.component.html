@@ -1,48 +1,49 @@
 <div class="dashboardwidget-container">
-    <div class="row customRow">
-      <div *ngFor="let item of custComponents" class="{{ item.ColWidth }}">
-        <div class="custom-placeholder customwidth">
-          <mat-card class="mat-elevation-z8"
-            [ngClass]="getBodyClassBox(item.BoxClass)"
-            maximize
-            #maximize="maximize"
-            style="padding-top:0"
-          >
-            <div style="text-align: center; max-height: 5vh; border: 2">
-              <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
-                <div style="width: 90%; text-align:left; margin-top:0.5%" >
-                <!-- <b class="textprimary-base bold">{{ item.Header }}</b> -->
-              </div>
-              <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
-                <button *ngIf="item.Fullscreen"
-                mat-icon-button
-                class="max-button"
-                (click)="
-                  toggleFullScreen(); maximize.toggleFullScreen(isFullScreen)
-                "
-              >
-                <mat-icon class="max-icon" *ngIf="!isFullScreen"
-                  >fullscreen</mat-icon
-                >
-                <mat-icon class="max-icon" *ngIf="isFullScreen"
-                  >fullscreen_exit</mat-icon
-                >
-              </button>
-              </div>
-              </div>
+  <kendo-tilelayout
+    [columns]="3"
+    [resizable]="false"
+    [reorderable]="false"
+    class="home-body"
+    [style]="'padding: 0 !important;'"
+  >
+    <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="1">
+
+      <kendo-tilelayout-item-header>
+        <h5 class="header-text">
+          <div style="text-align: center; max-height: 5vh; border: 2">
+            <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
+              <div style="width: 90%; text-align:left; margin-top:0.5%" >
+              <b class="textprimary-base bold">{{ item.WidgetName }}</b>
             </div>
-            <!-- <mat-divider></mat-divider> -->
-            <div style="margin-top: 1%;">
-            <ng-template 
-              *ngComponentOutlet="
-                item.Widget;
-                injector: createInjector(item.WidgetName)
+            <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
+              <button *ngIf="item.Fullscreen"
+              mat-icon-button
+              class="max-button"
+              (click)="
+                toggleFullScreen();
               "
-            ></ng-template>
+            >
+              <mat-icon class="max-icon" *ngIf="!isFullScreen"
+                >fullscreen</mat-icon
+              >
+              <mat-icon class="max-icon" *ngIf="isFullScreen"
+                >fullscreen_exit</mat-icon
+              >
+            </button>
+            </div>
+            </div>
           </div>
-            <!-- <ng-container *ngComponentOutlet="item.widget;" ></ng-container> -->
-          </mat-card>
-        </div>
-      </div>
-    </div>
-  </div>
+        </h5>
+      </kendo-tilelayout-item-header>
+      <kendo-tilelayout-item-body style="padding: 0">
+        <ng-template 
+        *ngComponentOutlet="
+          item.Widget;
+          injector: createInjector(item.WidgetName)
+        "
+      ></ng-template>
+
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+  </kendo-tilelayout>
+</div>

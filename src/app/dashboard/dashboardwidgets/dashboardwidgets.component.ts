@@ -45,7 +45,7 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
    // this.globalService.setDashboardReload(true);
-    this.componentOrder = DataComponent.Datahub;
+    this.componentOrder = DataComponent.Dashboardhub;
     this.custComponents = [];
     var i = 1;
     this.componentOrder.forEach((entry: any) => {
@@ -56,7 +56,10 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
         WidgetType : entry.WidgetType,
         Header: entry.Header,
         BoxClass: entry.BoxType,
-        Fullscreen : entry.Fullscreen
+        Fullscreen : entry.Fullscreen,
+        ColumnId :  entry.ColumnId,
+        ColumnSpan :  entry.ColumnId,
+        RowSpan :  entry.ColumnId
       });
       i++;
     });

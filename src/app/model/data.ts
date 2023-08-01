@@ -104,7 +104,70 @@ export class DataComponent {
     // },
   ];
 
-
+  public static Dashboardhub = [
+    {
+      id: 1,
+      BoxType: 'SmallBox',
+      WidgetName: 'Agency',
+      WidgetType: 'Agency',
+      Header: 'Agency',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1
+    },
+    {
+      id: 2,
+      BoxType: 'SmallBox',
+      WidgetName: 'Riskclearance',
+      WidgetType: 'Riskclearance',
+      Header: 'Risk Clearance',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1
+    },
+    {
+      id: 3,
+      BoxType: 'SmallBox',
+      WidgetName: 'Totallosses',
+      WidgetType: 'Totallosses',
+      Header: 'Total Losses',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1
+    },
+    
+    {
+      id: 5,
+      BoxType: 'SmallBox',
+      WidgetName: 'Exposure',
+      WidgetType: 'Exposure',
+      Header: 'Exposure',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  2
+    },
+    {
+      id: 6,
+      BoxType: 'SmallBox',
+      WidgetName: 'Coverages',
+      WidgetType: 'Coverages',
+      Header: 'Coverages',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  2
+    },
+    {
+      id: 7,
+      BoxType: 'SmallBox',
+      WidgetName: 'Losses',
+      WidgetType: 'Losses',
+      Header: 'Losses',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  2
+    },
+   
+  ];
   public static Tooltip = `<div class="size"><b>Password must consists of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>`;
 
 }

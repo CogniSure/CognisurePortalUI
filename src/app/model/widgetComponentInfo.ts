@@ -6,4 +6,7 @@ export interface WidgetComponentInfo {
     Header:string,
     BoxClass:string,
     Fullscreen:boolean
+    ColumnId : number,
+    ColumnSpan : number,
+    RowSpan : number
 }
