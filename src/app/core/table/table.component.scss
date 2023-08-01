@@ -376,7 +376,7 @@ color: #005daa;
 }
 
 ::ng-deep ::-webkit-scrollbar-thumb {
-  background: $primary-color !important;
+  //background: $primary-color !important;
   border-radius: 100px;
 }
 ::ng-deep .noContentHeader {
