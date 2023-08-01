@@ -13,6 +13,7 @@ import { DocumentVaultComponent } from './document-vault/document-vault.componen
 import { KendoModule } from '../kendo/kendo.module';
 import { InboxRoutingModule } from './inbox-routing.module';
 import { InboxDetailComponent } from './inbox-detail/inbox-detail.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -33,6 +34,7 @@ import { InboxDetailComponent } from './inbox-detail/inbox-detail.component';
     CommonModule,
     CoreModule,
     KendoModule,
+    MaterialModule,
     InboxRoutingModule
   ]
 })
