@@ -16,6 +16,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { ContextMenuModule, MenuModule } from '@progress/kendo-angular-menu';
+import { ListViewModule } from "@progress/kendo-angular-listview";
 
 const routes:Routes = [
 ];
@@ -42,6 +43,7 @@ const KendoComponents = [];
     ExcelModule,
     MenuModule,
     ContextMenuModule,
+    ListViewModule 
   ],
   exports:[
     GridModule,
@@ -59,7 +61,8 @@ const KendoComponents = [];
     PDFModule,
     ExcelModule,
     MenuModule,
-    ContextMenuModule
+    ContextMenuModule,
+    ListViewModule 
   ]
 })
 export class KendoModule { }

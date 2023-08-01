@@ -1,1 +1,35 @@
-<p>reminders works!</p>
+<kendo-listview
+[data]="contacts"
+containerClass="k-d-flex k-flex-col k-flex-nowrap"
+>
+<ng-template kendoListViewHeaderTemplate>
+  <div class="header">Reminders</div>
+</ng-template>
+<ng-template
+  kendoListViewItemTemplate
+  let-dataItem="dataItem"
+  let-isFirst="isFirst"
+>
+<div class="contact" [class.border-top]="borderTop">
+    <!-- <kendo-avatar
+      [imageSrc]="getImageUrl(contact.id)"
+      shape="circle"
+      width="40"
+      height="40"
+    >
+    </kendo-avatar>
+    <div class="contact-details">
+      <div class="contact-name">{{ contact.name }}</div>
+      <div class="contact-email">{{ contact.email }}</div>
+    </div> -->
+    <!-- <button
+      class="k-button k-button-solid-primary k-button-solid-base messages-label"
+    >
+      {{ getMessagesText(contact.messagesCount) }}
+    </button> -->
+  </div>
+</ng-template>
+<ng-template kendoListViewFooterTemplate>
+  <div class="footer">25 unread messages in total</div>
+</ng-template>
+</kendo-listview>

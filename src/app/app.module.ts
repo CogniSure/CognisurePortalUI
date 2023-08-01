@@ -16,6 +16,8 @@ import { HttpService } from './services/http.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BaseModule } from './base/base.module';
 import { MenuModule } from '@progress/kendo-angular-menu';
+import { ListViewModule } from '@progress/kendo-angular-listview';
+
 
 
 
@@ -32,7 +34,8 @@ import { MenuModule } from '@progress/kendo-angular-menu';
     BrowserAnimationsModule,
     NgbModule,
     BaseModule,
-    MenuModule
+    MenuModule,
+    ListViewModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
