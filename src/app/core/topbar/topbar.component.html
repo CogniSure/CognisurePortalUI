@@ -1,13 +1,13 @@
 <div>
   <kendo-tilelayout
-    [columns]="12"
+    [columns]="24"
     [rowHeight]="'100%'"
     [resizable]="false"
     [reorderable]="false"
     class="top-bar-header"
     [gap]="05"
   >
-    <kendo-tilelayout-item [col]="1" [colSpan]="3" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item [col]="1" [colSpan]="6" [row]="1" [rowSpan]="1">
       <kendo-tilelayout-item-body>
         <ng-container
           *ngIf="genericService.idToDisplay === 1; else noHeaderImage"
@@ -20,10 +20,10 @@
         <ng-template #noHeaderImage> </ng-template>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="8" [colSpan]="1" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item [col]="17" [colSpan]="1" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="padding: 6% 0 6% 6%; text-align: end;">
             <div style="float: left;">
-                <span class="profile_icon">
+                <span class="copied_icon">
                     <img
                     [src]="genericService.topbarIconURL"
                     class="imgHeight copied_icon1"
@@ -32,7 +32,7 @@
               </div>
         </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="9" [colSpan]="1" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item [col]="18" [colSpan]="2" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="padding: 6% 0 6% 6%; text-align: end;">
             <div style="float: left; text-align: center;">
                 <span class="notification_icon">
@@ -47,9 +47,9 @@
               </div>
         </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="10" [colSpan]="1" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item [col]="20" [colSpan]="1" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="padding: 0; text-align: end;">
-            <div style="float: left;">
+            <div style="float: left; padding-top :5%">
                 <span class="profile_icon">
                   <img
                     [src]="genericService.profileImageURL"
@@ -59,7 +59,7 @@
               </div>
         </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="11" [colSpan]="1" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item [col]="21" [colSpan]="2" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="padding: 8% 8% 8% 0;">
         <div>
           <span class="profile_content"
@@ -69,7 +69,7 @@
         </div>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item [col]="12" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item [col]="23" [colSpan]="2" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body>
             <button mat-raise-button color="primary" style="border: transparent !important; background: transparent"
             [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="openMyMenu(menuTrigger)">
