@@ -6,8 +6,8 @@ import { LoginData } from 'src/app/model/common/logindata';
 import { DataComponent } from 'src/app/model/samples/data';
 import { UserProfile } from 'src/app/model/profile/userprofile';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { GlobalService } from 'src/app/services/global.service';
-import { UrlService } from 'src/app/services/url.service';
+import { GlobalService } from 'src/app/services/common/global.service';
+import { UrlService } from 'src/app/services/common/url.service';
 import { AccountService } from 'src/app/services/user/accounts.service';
 import { environment } from 'src/environments/environment';
 

@@ -4,14 +4,14 @@ import { Injectable } from "@angular/core";
 import { catchError, map, Observable, retry, throwError } from "rxjs";
 import { UserProfile } from 'src/app/model/profile/userprofile';
 // import { Accounts } from 'src/app/model/profile/accounts';
-import { GlobalService } from '../global.service';
+import { GlobalService } from '../common/global.service';
 // import { ContactUs } from 'src/app/model/common/contactus';
 import { LoginData } from 'src/app/model/common/logindata';
 import { environment } from "src/environments/environment";
 // import { ForgotPassword } from "src/app/model/common/forgotpassword";
 import { FAResult } from "src/app/model/common/2faresult";
 import { Accounts } from "src/app/model/profile/accounts";
-import { HttpService } from "../http.service";
+import { HttpService } from "../common/http.service";
 // import { News } from "src/app/model/common/news";
 // import { NewsData } from "src/app/model/common/newsData";
 

@@ -12,7 +12,7 @@ import { SessionInterruptService } from './services/auth/session-interrupt.servi
 import { AppSessionInterruptService } from './services/auth/app-session-interrupt.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { HttpService } from './services/http.service';
+import { HttpService } from './services/common/http.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BaseModule } from './base/base.module';
 import { MenuModule } from '@progress/kendo-angular-menu';

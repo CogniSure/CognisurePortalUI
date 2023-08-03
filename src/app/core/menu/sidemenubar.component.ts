@@ -12,7 +12,7 @@ import {
   OnInit,
   HostListener,
 } from '@angular/core';
-import { GlobalService } from 'src/app/services/global.service';
+import { GlobalService } from 'src/app/services/common/global.service';
 import { navbarData } from '../../model/sidenav/nav-data';
 
 

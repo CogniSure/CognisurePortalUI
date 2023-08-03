@@ -5,7 +5,7 @@ import { DataComponent } from 'src/app/model/samples/data';
 import { WidgetComponentInfo } from 'src/app/model/widgets/widgetComponentInfo';
 import { BoxDetails, ComponentDetails } from 'src/app/model/constants/widgetinfo';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
-import { GlobalService } from 'src/app/services/global.service';
+import { GlobalService } from 'src/app/services/common/global.service';
 
 @Component({
   selector: 'app-summary',

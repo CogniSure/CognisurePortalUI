@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
-import { GenericService } from 'src/app/services/generic.service';
+import { GenericService } from 'src/app/services/common/generic.service';
 
 @Component({
   selector: 'app-topbar',

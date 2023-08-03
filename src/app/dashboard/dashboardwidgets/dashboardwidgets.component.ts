@@ -12,7 +12,7 @@ import { WidgetComponentInfo } from '../../model/widgets/widgetComponentInfo';
 import { BoxDetails, ComponentDetails } from '../../model/constants/widgetinfo';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
-import { GlobalService } from 'src/app/services/global.service';
+import { GlobalService } from 'src/app/services/common/global.service';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 
 

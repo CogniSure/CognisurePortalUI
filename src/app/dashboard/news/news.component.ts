@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GenericService,NewsItem } from 'src/app/services/generic.service';
+import { GenericService,NewsItem } from 'src/app/services/common/generic.service';
 // import { News } from '../../model/newsinfo';
 
 

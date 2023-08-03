@@ -8,8 +8,8 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoaderService } from '..//../services/loader.service';
 import { catchError, finalize, map, tap } from 'rxjs/operators';
+import { LoaderService } from 'src/app/services/common/loader.service';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {

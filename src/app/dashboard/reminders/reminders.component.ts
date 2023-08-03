@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Reminder } from 'src/app/model/common/reminder';
-import { GenericService } from 'src/app/services/generic.service';
+import { GenericService } from 'src/app/services/common/generic.service';
 
 @Component({
   selector: 'app-reminders',

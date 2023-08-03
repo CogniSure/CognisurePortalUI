@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, retry, Subscriber, throwError } from 'rxjs';
 //import { UserNotification } from 'src/app/model/Notification';
-import { GlobalService } from '../global.service';
+import { GlobalService } from '../common/global.service';
 import { environment } from 'src/environments/environment';
 import { DataComponent } from 'src/app/model/samples/data';
 @Injectable({

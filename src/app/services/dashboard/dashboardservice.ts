@@ -15,7 +15,7 @@ import { Dashboard } from 'src/app/model/dashboard/dashboard';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { DataComponent } from 'src/app/model/samples/data';
 import { environment } from 'src/environments/environment';
-import { GlobalService } from '../global.service';
+import { GlobalService } from '../common/global.service';
 import { DashboardData } from 'src/app/model/dashboard/dashboardData';
 @Injectable({
   providedIn: 'root',

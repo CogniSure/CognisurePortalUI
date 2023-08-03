@@ -8,7 +8,7 @@ import { UserProfile } from 'src/app/model/profile/userprofile';
 import { environment } from 'src/environments/environment';
 import { FAResult } from 'src/app/model/common/2faresult';
 
-import { GlobalService } from '../global.service';
+import { GlobalService } from '../common/global.service';
 
 @Injectable({
   providedIn: 'root',
