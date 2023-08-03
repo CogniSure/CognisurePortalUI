@@ -108,7 +108,7 @@ export class DataComponent {
     {
       id: 5,
       BoxType: 'SmallBox',
-      WidgetName: 'SimpleData',
+      WidgetName: 'Submissions',
       WidgetType: 'SimpleData',
       Header: 'Submissions',
       ColumnId :  1,
@@ -118,7 +118,7 @@ export class DataComponent {
     {
       id: 6,
       BoxType: 'SmallBox',
-      WidgetName: 'Coverages',
+      WidgetName: 'QuoteRatio',
       WidgetType: 'SimpleData',
       Header: 'Quote Ratio',
       ColumnId :  2,
@@ -128,7 +128,7 @@ export class DataComponent {
     {
       id: 6,
       BoxType: 'SmallBox',
-      WidgetName: 'Coverages',
+      WidgetName: 'StraightThroughRate',
       WidgetType: 'SimpleData',
       Header: 'Straight through rate',
       ColumnId :  3,
@@ -138,9 +138,9 @@ export class DataComponent {
     {
       id: 1,
       BoxType: 'SmallBox',
-      WidgetName: 'Agency',
+      WidgetName: 'SubmissionTurnaroundTime',
       WidgetType: 'Xbar',
-      Header: 'Agency',
+      Header: 'Submission Turnaround Time',
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  3
@@ -148,9 +148,9 @@ export class DataComponent {
     {
       id: 2,
       BoxType: 'SmallBox',
-      WidgetName: 'Riskclearance',
+      WidgetName: 'TopBrokers',
       WidgetType: 'Ybar',
-      Header: 'Risk Clearance',
+      Header: 'Top Brokers',
       ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  3
@@ -158,9 +158,9 @@ export class DataComponent {
     {
       id: 3,
       BoxType: 'SmallBox',
-      WidgetName: 'Totallosses',
+      WidgetName: 'CoverageDistribution',
       WidgetType: 'Pie',
-      Header: 'Total Losses',
+      Header: 'Coverage Distribution',
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3
@@ -168,34 +168,13 @@ export class DataComponent {
     {
       id: 1,
       BoxType: 'SmallBox',
-      WidgetName: 'Agency',
-      WidgetType: 'Xbar',
-      Header: 'Agency',
+      WidgetName: 'TopIndustries',
+      WidgetType: 'Ybar',
+      Header: 'Top Industries',
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  3
-    },
-    {
-      id: 2,
-      BoxType: 'SmallBox',
-      WidgetName: 'Riskclearance',
-      WidgetType: 'Ybar',
-      Header: 'Risk Clearance',
-      ColumnId :  2,
-      ColumnSpan :  1,
-      RowSpan :  3
-    },
-    {
-      id: 3,
-      BoxType: 'SmallBox',
-      WidgetName: 'Totallosses',
-      WidgetType: 'Pie',
-      Header: 'Total Losses',
-      ColumnId :  3,
-      ColumnSpan :  1,
-      RowSpan :  3
-    },
-    
+    }
   ];
   public static Tooltip = `<div class="size"><b>Password must consists of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>`;
 

@@ -12,25 +12,30 @@
   [gap]="0"
   [style]="'padding: 0 !important;'"
 >
-  <kendo-tilelayout-item [col]="1" [colSpan]="1" style="border-radius: 0 !important;">
-    <kendo-tilelayout-item-body> 
-        <div class="iconDiv">
-            <mat-icon style="font-size: 18px; color: black"
-            >save_alt</mat-icon>
-        </div>
-        <div class="data">
-            50000
-        </div>
+  <kendo-tilelayout-item
+    [col]="1"
+    [colSpan]="1"
+    style="border-radius: 0 !important"
+  >
+    <kendo-tilelayout-item-body>
+      <div style="display: flex; justify-content: center;">
+        <img [src]="simpleData.ItemIcon_1" style="width: 25%; height: 100%" />
+
+        <h2 style="margin: 5%">{{simpleData.ItemData_1}}</h2>
+      </div>
     </kendo-tilelayout-item-body>
   </kendo-tilelayout-item>
-  <kendo-tilelayout-item [col]="2" [colSpan]="1" style="border-radius: 0 !important;">
-    <kendo-tilelayout-item-body> 
-        <div class="iconDiv">
-            <i class="fa-sharp fa-solid fa-people-group"></i>
-        </div>
-        <div class="data">
-            512
-        </div>
+  <kendo-tilelayout-item
+    [col]="2"
+    [colSpan]="1"
+    style="border-radius: 0 !important"
+  >
+    <kendo-tilelayout-item-body>
+      <div style="display: flex; justify-content: center;">
+        <img [src]="simpleData.ItemIcon_2" style="width: 25%; height: 100%" />
+
+        <h2 style="margin: 5%">{{simpleData.ItemData_2}}</h2>
+      </div>
     </kendo-tilelayout-item-body>
   </kendo-tilelayout-item>
 </kendo-tilelayout>
