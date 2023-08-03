@@ -18,6 +18,7 @@ import { AccountInformationComponent } from './account-information/account-infor
 import { AccountInformationDataComponent } from './account-information-data/account-information-data.component';
 import { CoverageRequestedComponent } from './coverage-requested/coverage-requested.component';
 import { PriorCarrierInformationComponent } from './prior-carrier-information/prior-carrier-information.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -41,6 +42,7 @@ import { PriorCarrierInformationComponent } from './prior-carrier-information/pr
   imports: [
     CommonModule,
     CoreModule,
+    FormsModule,
     KendoModule,
     MaterialModule,
     InboxRoutingModule

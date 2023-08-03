@@ -1,4 +1,23 @@
-.account-card{
-    width: 100% !important;
+.account-card {
+  width: 100% !important;
+}
 
+.k-tilelayout .k-card {
+  box-shadow: none;
+
+  border-width: 1px;
+
+  border: none !important;
+}
+
+.name_input {
+  padding: 2%;
+}
+
+.account_deatils {
+  width: 45%;
+}
+
+.name_input input {
+  width: 50%;
 }

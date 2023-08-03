@@ -1,123 +1,323 @@
 <kendo-card class="account-card">
+
     <kendo-card-header>
+  
         <h4>Account Information</h4>
+  
     </kendo-card-header>
+  
     <kendo-card-body>
+  
         <kendo-tilelayout
+  
     [columns]="3"
+  
     [resizable]="false"
+  
     [reorderable]="false"
+  
     class="home-menu"
+  
     [gap]="0"
+  
   >
+  
     <kendo-tilelayout-item
+  
       [col]="1"
+  
       [colSpan]="1"
+  
       [row] = "1"
+  
       [rowSpan]="1"
+  
       class="home-menu"
+  
     >
-      <kendo-tilelayout-item-body>
-        <div style="display: flex;">
-            <h3>Account Name *</h3>
+  
+      <kendo-tilelayout-item-body >
+  
+        <div class="name_input" style="display: flex;">
+  
+            <h3 class="account_deatils">Account Name *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="accountName"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div >
-        <div style="display: flex;">
-            <h3>Business Address *</h3>
+  
+        <div  class="name_input" style="display: flex;">
+  
+            <h3 class="account_deatils">Business Address *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="businessAddress"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>Description of Business *</h3>
+  
+        <div  class="name_input" style="display: flex;">
+  
+            <h3 class="account_deatils">Description of Business *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="descriptionBusiness"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>Business Type *</h3>
+  
+        <div  class="name_input" style="display: flex;">
+  
+            <h3 class="account_deatils">Business Type *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="businessType"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>Proposed Effective Date *</h3>
+  
+        <div  class="name_input" style="display: flex;">
+  
+            <h3 class="account_deatils">Proposed Effective Date *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="proposedEffectiveDate"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
+  
       </kendo-tilelayout-item-body>
+  
     </kendo-tilelayout-item>
+  
     <kendo-tilelayout-item
+  
       [col]="2"
+  
       [colSpan]="1"
+  
       [row] = "1"
+  
       [rowSpan]="1"
+  
       class="home-menu"
+  
     >
-      <kendo-tilelayout-item-body>
-        <div style="display: flex;">
-            <h3>Organization Type *</h3>
+  
+      <kendo-tilelayout-item-body class="name_input">
+  
+        <div class="name_input" style="display: flex;">
+  
+            <h3 class="account_deatils">Organization Type *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="organizationType"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>Year Started *</h3>
+  
+        <div style="display: flex;" class="name_input">
+  
+            <h3 class="account_deatils">Year Started *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="yearStarted"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>Number of Employees *</h3>
+  
+        <div style="display: flex;" class="name_input">
+  
+            <h3 class="account_deatils">Number of Employees *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="numberofEmployees"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>SIC Code *</h3>
+  
+        <div style="display: flex;" class="name_input">
+  
+            <h3 class="account_deatils">SIC Code *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="sicCode"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>FEIN *</h3>
+  
+        <div style="display: flex;" class="name_input">
+  
+            <h3 class="account_deatils">FEIN *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="fein"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
+  
       </kendo-tilelayout-item-body>
+  
     </kendo-tilelayout-item>
+  
     <kendo-tilelayout-item
+  
       [col]="3"
+  
       [colSpan]="1"
+  
       [row] = "1"
+  
       [rowSpan]="1"
+  
       class="home-menu"
+  
     >
+  
       <kendo-tilelayout-item-body>
-        <div style="display: flex;">
-            <h3 >Contact Name *</h3>
+  
+        <div style="display: flex;" class="name_input">
+  
+            <h3 class="account_deatils">Contact Name *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="contactName"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>Phone *</h3>
+  
+        <div style="display: flex;" class="name_input">
+  
+            <h3 class="account_deatils">Phone *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="phone"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
-        <div style="display: flex;">
-            <h3>Email *</h3>
+  
+        <div style="display: flex;" class="name_input">
+  
+            <h3 class="account_deatils">Email *</h3>
+  
             <input
+  
             matInput
+  
+            [ngModel]="email"
+  
+            [attr.disabled]="true"
+  
+            disabled
+  
           />
+  
         </div>
+  
       </kendo-tilelayout-item-body>
+  
     </kendo-tilelayout-item>
-</kendo-tilelayout>
+  
+  </kendo-tilelayout>
+  
     </kendo-card-body>
-</kendo-card>
+  
+  </kendo-card>

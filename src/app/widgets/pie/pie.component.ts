@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ChartComponent } from "@progress/kendo-angular-charts";
 import { saveAs } from "@progress/kendo-file-saver";
+import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { WidgetService } from 'src/app/services/widget/widget.service';
@@ -23,13 +24,7 @@ export class PieComponent implements OnInit, OnDestroy {
   }
   @ViewChild("chart")
   private chart: ChartComponent;
-  seriesColors: string[] = [
-  "#5bc0de",
-  "#5cb85c",
-  "#f0ad4e",
-  "#e67d4a",
-  "#d9534f",
-  ]
+  seriesColors: string[] = SeriesColorConst
 categories = [1,2,3,4,5,6,7,8,9,10]
   series = [
     {

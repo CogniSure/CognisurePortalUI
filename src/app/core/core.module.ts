@@ -11,6 +11,7 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { RecentlyViewedComponent } from './recently-viewed/recently-viewed.component';
 import { RouterModule, Routes } from '@angular/router';
 import { InboxMenuComponent } from './inbox-menu/inbox-menu.component';
+import { FormsModule } from '@angular/forms';
 
 const routes:Routes = [
 ];
@@ -29,6 +30,7 @@ const routes:Routes = [
     CommonModule,
     MaterialModule,
     KendoModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
   exports:[
