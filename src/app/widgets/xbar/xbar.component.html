@@ -10,7 +10,7 @@
     
   ></kendo-chart-legend>
   <kendo-chart-category-axis reverse = true >
-    <kendo-chart-category-axis-item [categories]="categories">
+    <kendo-chart-category-axis-item [categories]="this.chartData.Categories">
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
   <!-- <kendo-chart-series>
@@ -24,10 +24,10 @@
     </kendo-chart-series> -->
   <kendo-chart-series > 
     <kendo-chart-series-item
-      *ngFor="let item of series"
+      *ngFor="let item of this.chartData.Data"
       type="column"
-      [data]="item.data"
-      [name]="item.name"
+      [data]="item.Data"
+      [name]="item.Name"
     >
     </kendo-chart-series-item>
   </kendo-chart-series>

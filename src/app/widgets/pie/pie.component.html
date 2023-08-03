@@ -9,7 +9,7 @@
     orientation="horizontal"
   ></kendo-chart-legend>
   <kendo-chart-category-axis>
-    <kendo-chart-category-axis-item [categories]="categories">
+    <kendo-chart-category-axis-item [categories]="chartData.Categories">
       <kendo-chart-category-axis-item-labels [position]="'start'">
       </kendo-chart-category-axis-item-labels>
     </kendo-chart-category-axis-item>
@@ -22,10 +22,10 @@
   </kendo-chart-value-axis>
   <kendo-chart-series>
     <kendo-chart-series-item
-      *ngFor="let item of series"
+      *ngFor="let item of chartData.Data"
       type="pie"
-      [data]="item.data"
-      [name]="item.name"
+      [data]="item.Data"
+      [name]="item.Name"
     >
     </kendo-chart-series-item>
   </kendo-chart-series>
