@@ -1,12 +1,26 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ChartComponent } from "@progress/kendo-angular-charts";
 import { saveAs } from "@progress/kendo-file-saver";
+import { InjectToken } from 'src/app/model/dashboard/injecttoken';
+import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
+import { WidgetService } from 'src/app/services/widget/widget.service';
 @Component({
   selector: 'app-xbar',
   templateUrl: './xbar.component.html',
   styleUrls: ['./xbar.component.scss']
 })
-export class XBarComponent {
+export class XBarComponent implements OnInit, OnDestroy {
+  constructor(
+    private dbService: WidgetService,
+    private changeDetector: ChangeDetectorRef,
+    @Inject(InjectToken) private input: WidgetInput
+  ) {}
+  ngOnDestroy(): void {
+   
+  }
+  ngOnInit(): void {
+    
+  }
   @ViewChild("chart")
   private chart: ChartComponent;
   seriesColors: string[] = [
