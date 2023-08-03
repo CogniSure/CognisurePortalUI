@@ -1,0 +1,122 @@
+<kendo-card class="account-card">
+    <kendo-card-header>
+        <h4>Account Information</h4>
+    </kendo-card-header>
+    <kendo-card-body>
+        <kendo-tilelayout
+    [columns]="3"
+    [resizable]="false"
+    [reorderable]="false"
+    class="home-menu"
+  >
+    <kendo-tilelayout-item
+      [col]="1"
+      [colSpan]="1"
+      [row] = "1"
+      [rowSpan]="1"
+      class="home-menu"
+    >
+      <kendo-tilelayout-item-body>
+        <div style="display: flex;">
+            <h3>Account Name *</h3>
+            <input
+            matInput
+          />
+        </div >
+        <div style="display: flex;">
+            <h3>Business Address *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>Description of Business *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>Business Type *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>Proposed Effective Date *</h3>
+            <input
+            matInput
+          />
+        </div>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item
+      [col]="2"
+      [colSpan]="1"
+      [row] = "1"
+      [rowSpan]="1"
+      class="home-menu"
+    >
+      <kendo-tilelayout-item-body>
+        <div style="display: flex;">
+            <h3>Organization Type *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>Year Started *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>Number of Employees *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>SIC Code *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>FEIN *</h3>
+            <input
+            matInput
+          />
+        </div>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item
+      [col]="3"
+      [colSpan]="1"
+      [row] = "1"
+      [rowSpan]="1"
+      class="home-menu"
+    >
+      <kendo-tilelayout-item-body>
+        <div style="display: flex;">
+            <h3 >Contact Name *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>Phone *</h3>
+            <input
+            matInput
+          />
+        </div>
+        <div style="display: flex;">
+            <h3>Email *</h3>
+            <input
+            matInput
+          />
+        </div>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+</kendo-tilelayout>
+    </kendo-card-body>
+</kendo-card>

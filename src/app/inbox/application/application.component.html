@@ -1,1 +1,32 @@
-<p>application works!</p>
+<div class="wrapper">
+    <kendo-tabstrip (tabSelect)="onTabSelect($event)">
+      <kendo-tabstrip-tab title="Account Information" [selected]="true">
+        <ng-template kendoTabContent>
+          <div class="content">
+            <app-account-information></app-account-information>
+          </div>
+        </ng-template>
+      </kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="Broker Details">
+        <ng-template kendoTabContent>
+          <div class="content">
+           <app-account-information></app-account-information>
+          </div>
+        </ng-template>
+      </kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="Exposer Property">
+        <ng-template kendoTabContent>
+          <div class="content">
+            <generic-table></generic-table>
+          </div>
+        </ng-template>
+      </kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="Claim Details">
+        <ng-template kendoTabContent>
+          <div class="content">
+            <generic-table></generic-table>
+          </div>
+        </ng-template>
+      </kendo-tabstrip-tab>
+    </kendo-tabstrip>
+  </div>

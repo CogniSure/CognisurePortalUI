@@ -1,0 +1,66 @@
+<div class="wrapper">
+    <kendo-tilelayout
+    [columns]="1"
+    
+    [resizable]="false"
+    [reorderable]="false"
+    class="home-menu"
+  >
+    <kendo-tilelayout-item
+      [col]="1"
+      [colSpan]="1"
+      [row] = "1"
+      [rowSpan]="1"
+      class="home-menu"
+    >
+      <kendo-tilelayout-item-body>
+        <app-account-information-data></app-account-information-data>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item
+      [col]="1"
+      [colSpan]="1"
+      [row] = "2"
+      [rowSpan]="1"
+      class="home-menu"
+    >
+      <kendo-tilelayout-item-body>
+        <app-coverage-requested></app-coverage-requested>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item
+      [col]="1"
+      [colSpan]="1"
+      [row] = "3"
+      [rowSpan]="1"
+      class="home-menu"
+    >
+      <kendo-tilelayout-item-body>
+        <app-prior-carrier-information></app-prior-carrier-information>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+  </kendo-tilelayout>
+    <!-- <kendo-expansionpanel title="Default Animation" expandIcon="mouth-closed" collapseIcon="mouth-open">
+        <ng-template kendoExpansionPanelTitleDirective>
+            <h1>Account Information</h1>
+            <div> <mat-icon>edit</mat-icon></div>
+        </ng-template>
+        <ng-template kendoExpansionPanelTitleDirective>
+            <h1>Account Information 1</h1>
+            <div> <mat-icon>save</mat-icon></div>
+        </ng-template>
+        <div id="panel-body">
+           
+        </div>
+    </kendo-expansionpanel>
+
+    <kendo-expansionpanel title="Custom Duration" [animation]="duration">
+     
+    </kendo-expansionpanel>
+
+    <kendo-expansionpanel title="No Animation" [animation]="false">
+      The origin of the name of Ecuador is from Spain. When the Spaniards
+      colonized the land they called it “el ecuador” which translated means
+      “the equator”.
+    </kendo-expansionpanel> -->
+  </div>
