@@ -272,7 +272,9 @@ color: #005daa;
 }
 ::ng-deep ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
   border-radius: 100px;
+  overflow-x: scroll;
   overflow-y: scroll;
   background: #d9d8d6;
   box-shadow: inset 0 0 4px #d9d8d6;
@@ -281,6 +283,7 @@ color: #005daa;
 ::ng-deep ::-webkit-scrollbar-thumb {
   background: $primary-color !important;
   border-radius: 100px;
+  width: 6px !important;
 }
 ::ng-deep .noContentHeader {
   .wrapperDiv1 {

@@ -55,6 +55,10 @@ export class GenericService {
       { title: 'Submission #1234 / Adams & Co.', time: new Date(), status: 'pending' },
       { title: 'Submission #1234 / Adams & Co.', time: new Date(), status: 'quoted' },
       { title: 'Submission #1234 / Adams & Co.', time: new Date(), status: 'waiting' },
+      
+      { title: 'Submission #1234 / Adams & Co.', time: new Date(), status: 'pending' },
+      { title: 'Submission #1234 / Adams & Co.', time: new Date(), status: 'quoted' },
+      { title: 'Submission #1234 / Adams & Co.', time: new Date(), status: 'waiting' },
     ];
   }
 }
