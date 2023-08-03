@@ -3,6 +3,7 @@ import { ChartComponent } from "@progress/kendo-angular-charts";
 import { saveAs } from "@progress/kendo-file-saver";
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
+import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { WidgetService } from 'src/app/services/widget/widget.service';
@@ -23,21 +24,16 @@ export class XBarComponent implements OnInit, OnDestroy {
   downloadMode = true;
   private chart: ChartComponent;
   seriesColors: string[] = SeriesColorConst;
+  filter: DashboardFilter;
   ngOnDestroy(): void {
    
   }
   ngOnInit(): void {
-    this.chartData = {
-      Categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-      Data: [
-        {
-          Name: 'India',
-          Data: [
-            "3.907", "7.943", "7.848", "9.284", "9.263", "9.801", "3.89", "8.238", "9.552", "6.855"
-          ],
-        },
-      ],
-    };
+    this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
+      console.log('Submissions');
+      console.log(res);
+      this.chartData = res
+    });
   }
   
   public exportChart(): void {
