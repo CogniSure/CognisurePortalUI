@@ -14,10 +14,10 @@ import { KendoModule } from '../kendo/kendo.module';
 import { InboxRoutingModule } from './inbox-routing.module';
 import { InboxDetailComponent } from './inbox-detail/inbox-detail.component';
 import { MaterialModule } from '../material/material.module';
-import { AccountInformationComponent } from './account-information/account-information.component';
-import { AccountInformationDataComponent } from './account-information-data/account-information-data.component';
-import { CoverageRequestedComponent } from './coverage-requested/coverage-requested.component';
-import { PriorCarrierInformationComponent } from './prior-carrier-information/prior-carrier-information.component';
+import { AccountInformationComponent } from './helper/account-information/account-information.component';
+import { AccountInformationDataComponent } from './helper/account-information-data/account-information-data.component';
+import { CoverageRequestedComponent } from './helper/coverage-requested/coverage-requested.component';
+import { PriorCarrierInformationComponent } from './helper/prior-carrier-information/prior-carrier-information.component';
 import { FormsModule } from '@angular/forms';
 
 
