@@ -430,3 +430,8 @@ color: #005daa;
           padding-inline: 0 !important;
       }
   }
+
+  ::ng-deep .k-card {
+    border: none !important;
+    border-radius: 0 !important;
+  }
