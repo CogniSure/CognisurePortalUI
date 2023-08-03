@@ -1,0 +1,51 @@
+<div class="news-section">
+    <kendo-card style="margin: 0;">
+        <div class="news_header">
+            <h3>News</h3>
+            <span class="news_icons">
+                <mat-icon><span class="material-icons-outlined">
+                        settings
+                    </span></mat-icon>
+                <mat-icon><span class="material-icons-outlined">
+                        filter_alt
+                    </span></mat-icon>
+            </span>
+        </div>
+        <mat-divider></mat-divider>
+        <!-- <kendo-card-header>
+          
+        </kendo-card-header> -->
+        <div class="news-container" *ngFor="let newsItem of newsItems">
+            <kendo-card-body>
+                <div class="news-content">
+                    <div class="news-image">
+                        <div class="container">
+                            <div class="row">
+                        <div class="col-md-3">
+                            <div class="newsimg_section">
+                        <img class="news_img" [src]="newsItem.imageUrl" alt="{{ newsItem.title }}" />
+                        </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="newscontent_section">
+                        <span class="news_content">{{ newsItem.content }}</span>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- <div class="news-text">
+              <p>{{ newsItem.content }}</p>
+            </div> -->
+                </div>
+                <kendo-card-actions>
+                    <span class="read_more"><a [href]="newsItem.readMoreLink">Read More</a></span>
+                </kendo-card-actions>
+                <!-- <hr> -->
+            </kendo-card-body>
+
+        </div>
+
+    </kendo-card>
+
+</div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { GenericService,NewsItem } from 'src/app/services/generic.service';
+// import { News } from '../../model/newsinfo';
+
 
 @Component({
   selector: 'app-news',
@@ -6,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent {
-  
+
+  newsItems: NewsItem[] = [];
+
+  constructor(private newsService: GenericService) { }
+
+  ngOnInit(): void {
+    this.newsItems = this.newsService.newsItems;
+  }
 }

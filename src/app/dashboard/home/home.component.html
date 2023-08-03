@@ -94,13 +94,14 @@
               [resizable]="false"
               [reorderable]="false"
               [rowHeight]="'50%'"
+              [style]="'padding:0'"
             >
-              <kendo-tilelayout-item [col]="1" [colSpan]="1" >
+              <kendo-tilelayout-item [col]="1" [colSpan]="1" [row] ="1" >
                 <kendo-tilelayout-item-body style="padding: 0">
                   <app-reminders></app-reminders>
                 </kendo-tilelayout-item-body>
               </kendo-tilelayout-item>
-              <kendo-tilelayout-item [col]="1" [colSpan]="1"  >
+              <kendo-tilelayout-item [col]="1" [colSpan]="1"  [row] ="2">
                 <kendo-tilelayout-item-body style="padding: 0">
                   <app-news></app-news>
                 </kendo-tilelayout-item-body>

@@ -1,48 +1,88 @@
-.k-listview {
-    font-family: sans-serif;
-    width: 400px;
-    margin: auto;
+.reminder h3{
+    margin:0;
+}
+
+.mat-typography h3{
+margin: 0!important;
+}
+
+/* Custom typography classes */
+.green-typography {
+    color: green;
   }
-  .header,
-  .footer {
-    color: #a0a0a0;
-    font-size: 16px;
-    padding: 6px 10px;
+  
+  .red-typography {
+    color: red;
   }
-  .footer {
-    font-size: 14px;
+  
+  .yellow-typography {
+    color: yellow;
   }
-  .contact {
-    width: 100%;
+  
+  /* Custom color classes */
+  .green {
+    color: green;
+  }
+  
+  .red {
+    color: red;
+  }
+  
+  .yellow {
+    color: yellow;
+  }
+  .pipe_line{
+    position: fixed;
+    /* left: 31px; */
+    margin-left: -18px;
+    font-size: 30px;
+    margin-top: 4px;
   }
 
-  .contact {
-    display: flex;
-    height: 55px;
-    padding: 10px;
-    align-items: center;
+  .reminders ul{
+    margin-bottom: 0!important;
+    padding-left: 2%;
   }
-  .contact.border-top {
-    border-top: solid;
-    border-color: #ecebeb;
-    border-width: thin;
+
+  .reminders ul li span{
+color:#000;
   }
-  .contact-details {
-    flex: 1;
-    margin-left: 10px;
-  }
-  .contact-name {
-    color: #656565;
-    font-weight: bolder;
-  }
-  .contact-email {
-    font-size: 0.7rem;
-    color: #bebebe;
-  }
-  .messages-label {
-    height: 20px;
-    width: 95px;
+  .editedtime{
+    color:gray;
     font-size: 11px;
-    line-height: 11px;
-    text-transform: none;
   }
+  .statussize{
+    font-size: 11px;
+  }
+
+  .my_remainders{
+    margin: 0;
+    padding: 2% 0% 2% 3%;
+
+  }
+
+  .k-card-body {
+    padding-block: 5px;
+  }
+
+
+
+
+
+
+/*news*/
+
+
+//   .news-container {
+//     padding: 20px;
+//   }
+  
+//   .news-content {
+//     padding: 10px;
+//   }
+  
+  kendo-card {
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
