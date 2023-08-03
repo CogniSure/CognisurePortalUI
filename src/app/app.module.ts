@@ -19,6 +19,8 @@ import { MenuModule } from '@progress/kendo-angular-menu';
 import { ListViewModule } from '@progress/kendo-angular-listview';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
+import { LabelModule } from '@progress/kendo-angular-label';
+
 
 
 
@@ -40,7 +42,8 @@ import 'hammerjs';
     BaseModule,
     MenuModule,
     ListViewModule,
-    ChartsModule
+    ChartsModule,
+    LabelModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

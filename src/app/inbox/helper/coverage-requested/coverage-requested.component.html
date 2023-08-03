@@ -1,1 +1,23 @@
-<p>coverage-requested works!</p>
+<div class="tilelayout-wrapper">
+  <kendo-tilelayout [columns]="4" style="background: transparent;">
+    <kendo-tilelayout-item *ngFor="let item of destinations" [col]="item.Col">
+      <kendo-tilelayout-item-body>
+        <div class="card-container">
+          <input
+            type="checkbox"
+            class="custom-size"
+            size="none"
+            [rounded]="'large'"
+            #terms
+            kendoCheckBox
+          />
+          <kendo-label
+            class="k-radio-label"
+            [for]="terms"
+            [text]="item.Name"
+          ></kendo-label>
+        </div>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+  </kendo-tilelayout>
+</div>
