@@ -58,17 +58,12 @@ export class WidgetService {
       ItemIcon_2 : "PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgMTlMMTAuOTY5NyA5LjAzMDMzQzExLjI2MjYgOC43Mzc0NCAxMS43Mzc0IDguNzM3NDQgMTIuMDMwMyA5LjAzMDMzTDE2Ljk2OTcgMTMuOTY5N0MxNy4yNjI2IDE0LjI2MjYgMTcuNzM3NCAxNC4yNjI2IDE4LjAzMDMgMTMuOTY5N0wyOS41IDIuNU0yMiAxSDMwLjI1QzMwLjY2NDIgMSAzMSAxLjMzNTc5IDMxIDEuNzVWMTAiIHN0cm9rZT0iIzJEMkQyRCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K"
     });
   }
-  getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
+  getStraightThroughRate(filter: DashboardFilter): Observable<any> {
     return of({
-      Categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-      Data: [
-        {
-          Name: 'India',
-          Data: [
-            "3.907", "7.943", "7.848", "9.284", "9.263", "9.801", "3.89", "8.238", "9.552", "6.855"
-          ],
-        },
-      ],
+      ItemData_1 : 20000,
+      ItemIcon_1 : "PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjciIHZpZXdCb3g9IjAgMCAyNyAyNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE4Ljg1NzEgOS45Mjg1N0wxMi4zNDU2IDE2LjQ0MDFDMTEuOTk3IDE2Ljc4ODggMTEuNDMxNiAxNi43ODg4IDExLjA4MjkgMTYuNDQwMUw4LjE0Mjg2IDEzLjVNMjYgMTMuNUMyNiAyMC40MDM2IDIwLjQwMzYgMjYgMTMuNSAyNkM2LjU5NjQ0IDI2IDEgMjAuNDAzNiAxIDEzLjVDMSA2LjU5NjQ0IDYuNTk2NDQgMSAxMy41IDFDMjAuNDAzNiAxIDI2IDYuNTk2NDQgMjYgMTMuNVoiIHN0cm9rZT0iIzJEMkQyRCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+      ItemData_2 : 60000,
+      ItemIcon_2 : "PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjciIHZpZXdCb3g9IjAgMCAyNyAyNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjA3MTQgMTcuMDcxTDkuOTI4NjMgOS45MjgyMk05LjkyODU3IDE3LjA3MThMMTcuMDcxNCA5LjkyOTA0TTI2IDEzLjVDMjYgMjAuNDAzNiAyMC40MDM2IDI2IDEzLjUgMjZDNi41OTY0NCAyNiAxIDIwLjQwMzYgMSAxMy41QzEgNi41OTY0NCA2LjU5NjQ0IDEgMTMuNSAxQzIwLjQwMzYgMSAyNiA2LjU5NjQ0IDI2IDEzLjVaIiBzdHJva2U9IiMyRDJEMkQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg=="
     });
   }
   getTopBrokers(filter: DashboardFilter): Observable<any> {
@@ -110,7 +105,7 @@ export class WidgetService {
       ],
     });
   }
-  getStraightThroughRate(filter: DashboardFilter): Observable<any> {
+  getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
     return of({
       Categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
       Data: [
