@@ -1,4 +1,4 @@
-import { Dashboard } from './dashboard/dashboard';
+import { Dashboard } from '../dashboard/dashboard';
 
 
 export class DataComponent {

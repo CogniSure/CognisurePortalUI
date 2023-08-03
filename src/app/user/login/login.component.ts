@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Errors } from 'src/app/model/common/errors';
 import { LoginData } from 'src/app/model/common/logindata';
-import { DataComponent } from 'src/app/model/data';
+import { DataComponent } from 'src/app/model/samples/data';
 import { UserProfile } from 'src/app/model/profile/userprofile';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { GlobalService } from 'src/app/services/global.service';

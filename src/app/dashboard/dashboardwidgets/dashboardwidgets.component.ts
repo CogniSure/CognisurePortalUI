@@ -7,9 +7,9 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { DataComponent } from '../../model/data';
-import { WidgetComponentInfo } from '../../model/widgetComponentInfo';
-import { BoxDetails, ComponentDetails } from '../../model/widgetinfo';
+import { DataComponent } from '../../model/samples/data';
+import { WidgetComponentInfo } from '../../model/widgets/widgetComponentInfo';
+import { BoxDetails, ComponentDetails } from '../../model/constants/widgetinfo';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/global.service';

@@ -13,7 +13,7 @@ import {
 } from 'rxjs';
 import { Dashboard } from 'src/app/model/dashboard/dashboard';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
-import { DataComponent } from 'src/app/model/data';
+import { DataComponent } from 'src/app/model/samples/data';
 import { environment } from 'src/environments/environment';
 import { GlobalService } from '../global.service';
 import { DashboardData } from 'src/app/model/dashboard/dashboardData';

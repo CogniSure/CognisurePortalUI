@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Reminder } from 'src/app/model/samples/reminder';
+import { Reminder } from 'src/app/model/common/reminder';
 import { GenericService } from 'src/app/services/generic.service';
 
 @Component({

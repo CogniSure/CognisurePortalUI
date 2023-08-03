@@ -4,7 +4,7 @@ import { catchError, map, Observable, retry, Subscriber, throwError } from 'rxjs
 //import { UserNotification } from 'src/app/model/Notification';
 import { GlobalService } from '../global.service';
 import { environment } from 'src/environments/environment';
-import { DataComponent } from 'src/app/model/data';
+import { DataComponent } from 'src/app/model/samples/data';
 @Injectable({
   providedIn: 'root',
 })

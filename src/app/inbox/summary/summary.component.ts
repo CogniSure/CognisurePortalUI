@@ -1,9 +1,9 @@
 import { Component, Injector, Input } from '@angular/core';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
-import { DataComponent } from 'src/app/model/data';
-import { WidgetComponentInfo } from 'src/app/model/widgetComponentInfo';
-import { BoxDetails, ComponentDetails } from 'src/app/model/widgetinfo';
+import { DataComponent } from 'src/app/model/samples/data';
+import { WidgetComponentInfo } from 'src/app/model/widgets/widgetComponentInfo';
+import { BoxDetails, ComponentDetails } from 'src/app/model/constants/widgetinfo';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { GlobalService } from 'src/app/services/global.service';
 

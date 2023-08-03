@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Reminder } from '../model/samples/reminder';
+import { Reminder } from '../model/common/reminder';
 
 export interface NewsItem {
   title: string;
