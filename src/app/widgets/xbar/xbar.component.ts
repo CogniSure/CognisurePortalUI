@@ -25,8 +25,6 @@ export class XBarComponent implements OnInit, OnDestroy {
   private chart: ChartComponent;
   seriesColors: string[] = SeriesColorConst;
   filter: DashboardFilter;
-  seriesData =
-  [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.89, 8.238, 9.552, 6.855]
   ngOnDestroy(): void {
    
   }

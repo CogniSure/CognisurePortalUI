@@ -68,12 +68,12 @@ export class WidgetService {
   }
   getTopBrokers(filter: DashboardFilter): Observable<any> {
     return of({
-      Categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      Categories: ['Assured Partners', 'Lockton', 'AJG', 'Brown & Brown', 'Marsh'],
       Data: [
         {
-          Name: 'India',
+          Name: '',
           Data: [
-            "3.907", "7.943", "7.848", "9.284", "9.263", "9.801", "3.89", "8.238", "9.552", "6.855"
+            .27, .22, .14, .12, .05
           ],
         },
       ],
@@ -81,12 +81,12 @@ export class WidgetService {
   }
   getCoverageDistribution(filter: DashboardFilter): Observable<any> {
     return of({
-      Categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      Categories: ['Property', 'Automobile', 'Umbrella', 'General Liability', 'Workers Compensation', 'Others'],
       Data: [
         {
-          Name: 'India',
+          Name: '',
           Data: [
-            "3.907", "7.943", "7.848", "9.284", "9.263", "9.801", "3.89", "8.238", "9.552", "6.855"
+            .24, .22, .15, .17, .18, .04
           ],
         },
       ],
@@ -94,12 +94,12 @@ export class WidgetService {
   }
   getTopIndustries(filter: DashboardFilter): Observable<any> {
     return of({
-      Categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      Categories: ['Manufacturing', 'Construction', 'Warehouses', 'Trucking', 'Aviation'],
       Data: [
         {
-          Name: 'India',
+          Name: '',
           Data: [
-            "3.907", "7.943", "7.848", "9.284", "9.263", "9.801", "3.89", "8.238", "9.552", "6.855"
+            .35, .32, .12, .05, .03
           ],
         },
       ],
@@ -107,12 +107,12 @@ export class WidgetService {
   }
   getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
     return of({
-      Categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      Categories: ['0.5', '1', '2', '3', '3+'],
       Data: [
         {
-          Name: 'India',
+          Name: '',
           Data: [
-            "3.907", "7.943", "7.848", "9.284", "9.263", "9.801", "3.89", "8.238", "9.552", "6.855"
+            .68,.24,.06,.02,0
           ],
         },
       ],
