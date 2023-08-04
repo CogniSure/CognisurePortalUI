@@ -4,6 +4,7 @@
   [seriesColors]="seriesColors"
   [pannable]="{ lock: 'y' }"
   [zoomable]="{ mousewheel: { lock: 'y' } }"
+  [style]="'height: 100%;'"
 >
   <kendo-chart-legend
     position="bottom"
@@ -15,12 +16,12 @@
       </kendo-chart-category-axis-item-labels>
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
-  <kendo-chart-value-axis>
+  <!-- <kendo-chart-value-axis>
     <kendo-chart-value-axis-item>
       <kendo-chart-value-axis-item-labels [position]="'start'">
       </kendo-chart-value-axis-item-labels>
     </kendo-chart-value-axis-item>
-  </kendo-chart-value-axis>
+  </kendo-chart-value-axis> -->
   <kendo-chart-series-defaults type="bar">
     <kendo-chart-series-defaults-labels format="p">
     </kendo-chart-series-defaults-labels>

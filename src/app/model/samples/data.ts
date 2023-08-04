@@ -146,21 +146,21 @@ export class DataComponent {
       RowSpan :  3
     },
     {
-      id: 2,
-      BoxType: 'SmallBox',
-      WidgetName: 'TopBrokers',
-      WidgetType: 'Ybar',
-      Header: 'Top Brokers',
-      ColumnId :  2,
-      ColumnSpan :  1,
-      RowSpan :  3
-    },
-    {
       id: 3,
       BoxType: 'SmallBox',
       WidgetName: 'CoverageDistribution',
       WidgetType: 'Pie',
       Header: 'Coverage Distribution',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  3
+    },
+    {
+      id: 2,
+      BoxType: 'SmallBox',
+      WidgetName: 'TopBrokers',
+      WidgetType: 'Ybar',
+      Header: 'Top Brokers',
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3
@@ -172,6 +172,17 @@ export class DataComponent {
       WidgetType: 'Ybar',
       Header: 'Top Industries',
       ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  3
+    }
+    ,
+    {
+      id: 1,
+      BoxType: 'SmallBox',
+      WidgetName: 'TopLocations',
+      WidgetType: 'Ybar',
+      Header: 'Top Locations',
+      ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  3
     }
