@@ -31,15 +31,6 @@
     [columnMenu]="false"
     [showSelectAll]="true"
   ></kendo-grid-checkbox-column>
-  <kendo-grid-column field="full_name" title="Name" [width]="220">
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <div
-        class="customer-photo"
-        [ngStyle]="{ 'background-image': photoURL(dataItem) }"
-      ></div>
-      <div class="customer-name">{{ dataItem.full_name }}</div>
-    </ng-template>
-  </kendo-grid-column>
   <kendo-grid-column field="job_title" title="SubmissionId" [width]="220">
     <ng-template kendoGridCellTemplate let-dataItem>
       <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">{{
@@ -70,6 +61,8 @@
       <kendo-rating [value]="dataItem.rating" [max]="5"></kendo-rating>
     </ng-template>
   </kendo-grid-column>
+  <kendo-grid-column field="type" title="Type" [width]="230" [resizable]="false" filter="numeric">                 
+</kendo-grid-column>
   <kendo-grid-column
     field="target"
     title="Agency Name"
@@ -94,6 +87,15 @@
   >
   </kendo-grid-column>
   <kendo-grid-column field="phone" title="Priority" [width]="130">
+  </kendo-grid-column>
+  <kendo-grid-column field="full_name" title="Name" [width]="220">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div
+        class="customer-photo"
+        [ngStyle]="{ 'background-image': photoURL(dataItem) }"
+      ></div>
+      <div class="customer-name">{{ dataItem.full_name }}</div>
+    </ng-template>
   </kendo-grid-column>
   <!-- <kendo-grid-column field="address" title="Risk Schore %" [width]="200"> </kendo-grid-column> -->
 
