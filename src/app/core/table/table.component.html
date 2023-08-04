@@ -38,7 +38,7 @@
                 </kendo-grid-column>
                 <kendo-grid-column field="job_title" title="SubmissionId" [width]="220">
                     <ng-template kendoGridCellTemplate let-dataItem>
-                        <a href="#" [ngStyle]="{ 'color': 'blue' }">{{
+                        <a routerLink="/inbox/detail/summary" [ngStyle]="{ 'color': 'blue' }">{{
                             dataItem.job_title
                         }}</a>
                     </ng-template>
