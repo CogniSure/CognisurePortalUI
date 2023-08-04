@@ -83,17 +83,25 @@ export class WidgetService {
     });
   }
   getCoverageDistribution(filter: DashboardFilter): Observable<any> {
-    return of({
-      Categories: ['Property', 'Automobile', 'Umbrella', 'General Liability', 'Workers Compensation', 'Others'],
-      Data: [
-        {
-          Name: '',
-          Data: [
-            .24, .22, .15, .17, .18, .04
-          ],
-        },
-      ],
-    });
+    // return of({
+    //   Categories: ['Property', 'Automobile', 'Umbrella', 'General Liability', 'Workers Compensation', 'Others'],
+    //   Data: [
+    //     {
+    //       Name: '',
+    //       Data: [
+    //         .24, .22, .15, .17, .18, .04
+    //       ],
+    //     },
+    //   ],
+    // });
+    return of([
+      {category: 'Property', value: 0.24},
+      {category: 'Automobile', value: 0.22},
+      {category: 'Umbrella', value: 0.15},
+      {category: 'General Liability', value: 0.17},
+      {category: 'Workers Compensation', value: 0.18},
+      {category: 'Others', value: 0.04}
+    ])
   }
   getTopIndustries(filter: DashboardFilter): Observable<any> {
     return of({

@@ -8,32 +8,22 @@
   <kendo-chart-legend
     position="bottom"
     orientation="horizontal"
+    [visible]="true"
   ></kendo-chart-legend>
   
-  <kendo-chart-category-axis>
-    <kendo-chart-category-axis-item [categories]="chartData.Categories">
-      <kendo-chart-category-axis-item-labels [position]="'start'">
-      </kendo-chart-category-axis-item-labels>
-    </kendo-chart-category-axis-item>
-  </kendo-chart-category-axis>
-  <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item>
-      <kendo-chart-value-axis-item-labels [position]="'start'">
-      </kendo-chart-value-axis-item-labels>
-    </kendo-chart-value-axis-item>
-  </kendo-chart-value-axis>
   
-  <kendo-chart-series-defaults type="bar">
+  <kendo-chart-series-defaults type="bar" >
     <kendo-chart-series-defaults-labels format="p">
     </kendo-chart-series-defaults-labels>
   </kendo-chart-series-defaults>
 
   <kendo-chart-series>
     <kendo-chart-series-item
-      *ngFor="let item of chartData.Data"
-      type="pie"
-      [data]="item.Data"
-      [name]="item.Name"
+    [autoFit]="true"
+    type="pie"
+    [data]="chartData"
+    field="value"
+    categoryField="category"
     >
     </kendo-chart-series-item>
   </kendo-chart-series>

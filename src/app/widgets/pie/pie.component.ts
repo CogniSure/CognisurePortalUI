@@ -28,7 +28,7 @@ export class PieComponent implements OnInit, OnDestroy {
   @ViewChild('chart')
   private chart: ChartComponent;
   seriesColors: string[] = SeriesColorConst;
-  chartData: ChartData;
+  chartData: any;
   filter: DashboardFilter;
   ngOnDestroy(): void {}
   ngOnInit(): void {
