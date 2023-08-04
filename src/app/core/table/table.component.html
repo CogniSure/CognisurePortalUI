@@ -30,13 +30,19 @@
                 [showSelectAll]="true"
             ></kendo-grid-checkbox-column>
             <kendo-grid-column-group  [columnMenu]="false">
-                <kendo-grid-column field="full_name" title="Alerts" [width]="220">
+                <kendo-grid-column field="full_name" title="Name" [width]="220">
                     <ng-template kendoGridCellTemplate let-dataItem>                        
                     <div class="customer-photo" [ngStyle]="{ 'background-image': photoURL(dataItem) }"></div>
                     <div class="customer-name">{{ dataItem.full_name }}</div>
                     </ng-template>
                 </kendo-grid-column>
-                <kendo-grid-column field="job_title" title="SubmissionId" [width]="220"> </kendo-grid-column>
+                <kendo-grid-column field="job_title" title="SubmissionId" [width]="220">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <a href="#" [ngStyle]="{ 'color': 'blue' }">{{
+                            dataItem.job_title
+                        }}</a>
+                    </ng-template>
+                </kendo-grid-column>
                 <kendo-grid-column
                     field="country"
                     title="Account Name"
@@ -57,7 +63,7 @@
                 </kendo-grid-column>
             </kendo-grid-column-group>
             <kendo-grid-column-group [columnMenu]="false">
-                <kendo-grid-column title="Type" [width]="110" [resizable]="false" filter="numeric">
+                <kendo-grid-column title="Rating" [width]="110" [resizable]="false">
                     <ng-template kendoGridCellTemplate let-dataItem>
                         <kendo-rating [value]="dataItem.rating" [max]="5"></kendo-rating>
                     </ng-template>
@@ -65,17 +71,27 @@
                 <kendo-grid-column field="target" title="Agency Name" [width]="230" [resizable]="false" filter="numeric">
                  
                 </kendo-grid-column>
-                <kendo-grid-column field="budget" title="LoB" [width]="100" filter="numeric">
+                <!-- <kendo-grid-column field="budget" title="LoB" [width]="100">
                     <ng-template kendoGridCellTemplate let-dataItem>
                         <span [ngClass]="{ 'red text-bold': dataItem.budget < 0 }">{{
                             dataItem.budget | currency
                         }}</span>
                     </ng-template>
+                </kendo-grid-column> -->
+                <kendo-grid-column
+                    field="budget"
+                    title="LoB"
+                    [width]="150"
+                    [class]="{ 'text-center': true }"
+                    [resizable]="false"
+                 
+                >
+              
                 </kendo-grid-column>
             </kendo-grid-column-group>
             <kendo-grid-column-group [columnMenu]="false">
                 <kendo-grid-column field="phone" title="Priority" [width]="130"> </kendo-grid-column>
-                <kendo-grid-column field="address" title="Risk Schore %" [width]="200"> </kendo-grid-column>
+                <!-- <kendo-grid-column field="address" title="Risk Schore %" [width]="200"> </kendo-grid-column> -->
             </kendo-grid-column-group>
 
             <kendo-grid-pdf fileName="Employees.pdf" [repeatHeaders]="true"></kendo-grid-pdf>

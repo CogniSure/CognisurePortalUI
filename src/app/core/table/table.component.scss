@@ -10,9 +10,9 @@
   box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0, 0, 0, 0.2);
   margin-left: 5px;
 }
-::ng-deep .k-grid-excel{
-  background-color: #00B6AD;
-  color: white;  
+::ng-deep .k-grid-excel {
+  background-color: #009CC1;
+  color: white;
 }
 ::ng-deep .k-cell-inner{
   border-top-right-radius: 0px;
@@ -28,9 +28,9 @@ color: green;
 .badge-failure{
   color: green;
   }
-::ng-deep .k-grid-pdf{
-  background-color: #00B6AD;
-  color: white;  
+::ng-deep .k-grid-pdf {
+  background-color: #009CC1;
+  color: white;
 }
 ::ng-deep .k-grid-pdf:hover{
   background-color: #00B6AD;
