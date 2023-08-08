@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { DataBindingDirective } from '@progress/kendo-angular-grid';
 import { SVGIcon, filePdfIcon, fileExcelIcon } from '@progress/kendo-svg-icons';
 import { process } from '@progress/kendo-data-query';
@@ -11,18 +11,23 @@ import { images } from './images';
     styleUrls: ['./table.component.scss']
   })
 export class TableComponent implements OnInit {
+    @Input() data: any[];
+
+    constructor() {
+    }
+
     @ViewChild(DataBindingDirective) dataBinding: DataBindingDirective | undefined;
-    public gridData: any[] = employees;
-    public gridView!: any[];
+    public gridData: any[];
+    public gridView!: any[]; 
 
     public mySelection: string[] = [];
     public pdfSVG: SVGIcon = filePdfIcon;
     public excelSVG: SVGIcon = fileExcelIcon;
 
     public ngOnInit(): void {
-      
-        this.gridView = this.gridData;
-        console.log('Employee Data ' + this.gridView);
+        console.log(JSON.stringify(this.data)); 
+        this.gridData = this.data;
+        this.gridView = this.data;        
     }
 
     public onFilter(value: Event): void {
