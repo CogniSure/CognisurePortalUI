@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ChartComponent } from '@progress/kendo-angular-charts';
+import { ChartComponent, SeriesType } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
@@ -20,11 +20,19 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
   styleUrls: ['./pie.component.scss'],
 })
 export class PieComponent implements OnInit, OnDestroy {
+  ChartType:SeriesType = "donut";
+  public data: any[];
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
     @Inject(InjectToken) private input: WidgetInput
-  ) {}
+  ) {
+    this.ChartType = input.WidgetType as SeriesType
+    
+    dbService.getDashboard(this.input,this.filter).subscribe(res=>{
+      this.data = res; 
+    });
+  }
   @ViewChild('chart')
   private chart: ChartComponent;
   seriesColors: string[] = SeriesColorConst;
@@ -46,4 +54,8 @@ export class PieComponent implements OnInit, OnDestroy {
         saveAs(dataURI, 'chart-large.png');
       });
   }
+  public pieLabelContent(e: any): string {
+    return e.value + '%';
+  }
+
 }
