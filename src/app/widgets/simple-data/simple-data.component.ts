@@ -35,8 +35,6 @@ export class SimpleDataComponent implements OnInit, AfterViewInit {
     // }
 
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-      console.log('Submissions');
-      console.log(res);
       this.simpleData = {
         ItemData_1: res.ItemData_1,
         ItemIcon_1: this.getBase64Image(res.ItemIcon_1),
