@@ -135,7 +135,7 @@ export class DataComponent {
       BoxType: 'SmallBox',
       WidgetName: 'StraightThroughRate',
       WidgetType: 'SimpleData',
-      Header: 'Straight through rate',
+      Header: 'Straight Through Rate',
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  1,
