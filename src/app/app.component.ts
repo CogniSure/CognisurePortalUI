@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppConfigService } from './app-config-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Submission-Portal';
+  constructor(private config : AppConfigService){
+    console.log(config.settings)
+  }
 }

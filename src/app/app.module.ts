@@ -1,11 +1,21 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  CUSTOM_ELEMENTS_SCHEMA,
+  Inject,
+  NgModule,
+  inject,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthService } from './services/auth/auth.service';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
 import { SessionInterruptService } from './services/auth/session-interrupt.service';
@@ -20,21 +30,17 @@ import { ListViewModule } from '@progress/kendo-angular-listview';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
 import { LabelModule } from '@progress/kendo-angular-label';
-
-
-
-
-
-
-
+import { AppConfigService } from './app-config-service';
+import { environment } from 'src/environments/environment';
+import { catchError, of, tap } from 'rxjs';
+export function initializeApp(appConfig: AppConfigService) {
+  return () => appConfig.load();
+}
 
 @NgModule({
-  declarations: [
-    AppComponent,
-
-  ],
+  declarations: [AppComponent],
   imports: [
-    HttpClientModule ,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -43,26 +49,70 @@ import { LabelModule } from '@progress/kendo-angular-label';
     MenuModule,
     ListViewModule,
     ChartsModule,
-    LabelModule
+    LabelModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    HttpService,
-    AuthService,
+   
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,
     //   multi: true,
     // },
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: LoaderInterceptor,
-  //     multi: true,
-  //  },
-   {
-    provide: SessionInterruptService,
-    useClass: AppSessionInterruptService,
-  }],
-  bootstrap: [AppComponent]
+    //   {
+    //     provide: HTTP_INTERCEPTORS,
+    //     useClass: LoaderInterceptor
+    //     multi: true,
+    //  },
+    AppConfigService,
+      { provide: APP_INITIALIZER,
+        useFactory: initializeApp,
+        deps: [AppConfigService], multi: true
+       }
+   ,
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: () => {
+    //     const configService = Inject(AppConfigService);
+    //     const http = Inject(HttpClient);
+    //     const env = environment;
+    //     return () =>
+    //       new Promise((resolve) => {
+    //         if (env.production) {
+    //           http
+    //             .get('../assets/config.json')
+    //             .pipe(
+    //               tap((data: any) => {
+    //                 configService.baseUrl = data.baseurl;
+    //                 resolve(true);
+    //               }),
+    //               catchError((error) => {
+    //                 resolve(true);
+    //                 return of(null);
+    //               })
+    //             )
+    //             .subscribe();
+    //         } else {
+    //           new Promise((resolve) => {
+    //             console.log("Error")
+    //             resolve(true);
+    //             const settings = require('../assets/config.json');
+    //             configService.baseUrl = settings.baseUrl;
+    //             console.log("App Module:" + settings.baseUrl)
+    //             resolve(true);
+    //           });
+    //         }
+    //       });
+    //   },
+    //   multi: true,
+    // },
+    HttpService,
+    AuthService,
+    {
+      provide: SessionInterruptService,
+      useClass: AppSessionInterruptService,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
