@@ -1,154 +1,9 @@
-.v1038_2152 {
-  width: 500px;
-  height: 61px;
-  background: rgba(0,182,173,1);
-  opacity: 1;
-  position: absolute;
-  top: 193px;
-  left: 337px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
-  overflow: hidden;
-}
-.v515_1201 {
-  width: 76px;
-  color: rgba(255,255,255,1);
-  position: absolute;
-  top: 209px;
-  left: 367px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-}
 .name {
   color: #fff;
 }
-.v515_1203 {
-  width: 101px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 281px;
-  left: 367px;
-  font-family: Poppins;
-  font-weight: SemiBold;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v515_1221 {
-  width: 65px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 363px;
-  left: 367px;
-  font-family: Poppins;
-  font-weight: SemiBold;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v515_1219 {
-  width: 99px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 322px;
-  left: 367px;
-  font-family: Poppins;
-  font-weight: SemiBold;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v515_1222 {
-  width: 94px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 486px;
-  left: 367px;
-  font-family: Poppins;
-  font-weight: SemiBold;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v515_1204 {
-  width: 101px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 281px;
-  left: 586px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v515_1223 {
-  width: 70px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 363px;
-  left: 586px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v996_2153 {
-  width: 180px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 404px;
-  left: 586px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v996_2154 {
-  width: 97px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 445px;
-  left: 586px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v515_1220 {
-  width: 63px;
-  color: rgba(44,44,44,1);
-  position: absolute;
-  top: 322px;
-  left: 586px;
-  font-family: Poppins;
-  font-weight: Regular;
-  font-size: 14px;
-  opacity: 1;
-  text-align: left;
-}
-.v515_1224 {
-width: 74px;
-color: rgba(44,44,44,1);
-position: absolute;
-top: 486px;
-left: 586px;
-font-family: Poppins;
-font-weight: Regular;
-font-size: 14px;
-opacity: 1;
-text-align: left;
-}
 
 .Agency_header{
-padding: 4% 2%;
+padding: 4% 5%;
   color: rgba(255,255,255,1);
   // position: absolute;
   // top: 209px;
@@ -162,7 +17,7 @@ padding: 4% 2%;
 .Agency{
 // width: 500px;
 height: 61px;
-background: rgba(0,182,173,1);
+background: #00B6AD;
 opacity: 1;
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;
@@ -176,8 +31,9 @@ overflow: hidden;
 //     column-width: 60%;
 // }
 .agency_details1{
- padding: 2% 1% 1% 2%;
+ padding: 2% 1% 1% 5%;
+ font-size: 14px!important;
 }
 .agency_details{
-  padding: 1% 1% 1% 2%;
+  padding: 1% 1% 1% 5%;
 }

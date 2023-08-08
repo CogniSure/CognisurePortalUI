@@ -34,6 +34,7 @@ export const ComponentDetails:Map<string,any> = new Map([
     ["Totallosses",[TotalLossesComponent]]  ,
     ["Xbar",[XBarComponent]]  ,
     ["Ybar",[YBarComponent]]  ,
-    ["Pie",[PieComponent]]  ,
+    ["pie",[PieComponent]]  ,
+    ["donut",[PieComponent]]  ,
     ["SimpleData",[SimpleDataComponent]]  
 ]);

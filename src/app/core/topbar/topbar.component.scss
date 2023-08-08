@@ -27,6 +27,18 @@
   // margin-left: 13%;
 }
 
+// .copied_icontop{
+//   padding: 20%;
+// }
+
+.copied_icontop img {
+  width: 45px;
+  height: 45px;
+border: 1px solid gray;
+border-radius: 25px;
+padding: 9.6%;
+}
+
 .notification_icon img {
   width: 38%;
   height: 8%;
@@ -128,7 +140,7 @@
   font-size: 12px;
   position: absolute;
   top: 5%;
-  right: 10%;
+  right: 18%;
 }
 
 .dropdown ul li a {

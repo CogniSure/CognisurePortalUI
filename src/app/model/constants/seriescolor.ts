@@ -1,7 +1,8 @@
 export const SeriesColorConst: string[] = [
-  '#5bc0de',
-  '#5cb85c',
-  '#f0ad4e',
-  '#e67d4a',
-  '#d9534f',
+  '#009CC1',
+  '#00B4DF',
+  '#0CD0FF',
+  '#11CFC6',
+  '#27EAEA',
+  '#75D2A6'
 ];

@@ -8,5 +8,7 @@ export interface WidgetComponentInfo {
     Fullscreen:boolean
     ColumnId : number,
     ColumnSpan : number,
-    RowSpan : number
+    RowSpan : number,
+    HeaderColor: any,
+    FontColor: any
 }

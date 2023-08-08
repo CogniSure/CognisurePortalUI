@@ -9,6 +9,7 @@ export class DataComponent {
       WidgetName: 'Agency',
       WidgetType: 'Agency',
       Header: 'Agency',
+      
     //   ApiURL: 'api/data',
     //   Fullscreen: false,
     },
@@ -113,7 +114,9 @@ export class DataComponent {
       Header: 'Submissions',
       ColumnId :  1,
       ColumnSpan :  1,
-      RowSpan :  1
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
     {
       id: 6,
@@ -123,7 +126,9 @@ export class DataComponent {
       Header: 'Quote Ratio',
       ColumnId :  2,
       ColumnSpan :  1,
-      RowSpan :  1
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
     {
       id: 6,
@@ -133,7 +138,9 @@ export class DataComponent {
       Header: 'Straight through rate',
       ColumnId :  3,
       ColumnSpan :  1,
-      RowSpan :  1
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
     {
       id: 1,
@@ -149,7 +156,7 @@ export class DataComponent {
       id: 3,
       BoxType: 'SmallBox',
       WidgetName: 'CoverageDistribution',
-      WidgetType: 'Pie',
+      WidgetType: 'pie',
       Header: 'Coverage Distribution',
       ColumnId :  2,
       ColumnSpan :  1,

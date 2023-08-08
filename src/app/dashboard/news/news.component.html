@@ -5,7 +5,7 @@
     [height]="height + 'px'"
     (stateChange)="onPanelChange($event)"
   >
-    <kendo-panelbar-item title="News" [expanded]="true">
+    <kendo-panelbar-item title="News" [expanded]="true" class="news_data">
       <kendo-panelbar-item *ngFor="let newsItem of newsItems" title="{{ newsItem.content }}" [expanded]="true" style="font-size: 12px;">
       
         <!-- <ng-template kendoPanelBarContent>
@@ -15,7 +15,7 @@
             </ng-template> -->
     </kendo-panelbar-item>
   
-    <kendo-panelbar-item *ngFor="let newsItem of newsItems" title="{{ newsItem.content }}" [expanded]="true" style="font-size: 12px;">
+    <kendo-panelbar-item *ngFor="let newsItem of newsItems" title="{{ newsItem.content }}" [expanded]="true" style="font-size: 11px;">
         <!-- <ng-template kendoPanelBarContent>
         <img
         class="news_img"

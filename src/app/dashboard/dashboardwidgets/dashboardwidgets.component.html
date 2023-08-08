@@ -10,14 +10,16 @@
   >
     <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="item.ColumnSpan" [rowSpan]="item.RowSpan" style="border: 2px !important; border-radius:10 !important;">
 
-      <kendo-tilelayout-item-header style="background: rgb(0, 182, 173); height: 3em;">
-        <h5 class="header-text" >
+      <kendo-tilelayout-item-header style="height: 3em;" [style.background-color]="item.HeaderColor">
+        <h5 class="header-text" style="font-size: 16px" >
           <div style="text-align: center;border: 2">
             <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
-              <div style="width: 90%; text-align:left; margin-top:0.5%; color: white !important;" >
+              
+              <div style="width: 90%; text-align:left; margin-top:0.5%; color: #005DAA !important;font-weight: 500;" [style.color]="item.FontColor">
               <!-- <b class="textprimary-base bold">{{ item.Header }}</b> -->
               {{ item.Header }}
             </div>
+            
             <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
               <button *ngIf="item.Fullscreen"
               mat-icon-button
@@ -42,7 +44,8 @@
         <ng-template 
         *ngComponentOutlet="
           item.Widget;
-          injector: createInjector(item.WidgetName)
+          injector: createInjector(item.WidgetName, item.WidgetType)
+          
         "
       ></ng-template>
 

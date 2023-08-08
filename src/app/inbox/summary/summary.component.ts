@@ -49,7 +49,9 @@ export class SummaryComponent {
         Fullscreen : entry.Fullscreen,
         ColumnId :  entry.ColumnId,
         ColumnSpan :  entry.ColumnId,
-        RowSpan :  entry.ColumnId
+        RowSpan :  entry.ColumnId,
+        HeaderColor : entry.HeaderColor,
+        FontColor : entry.FontColor
       });
       i++;
     });
@@ -67,7 +69,8 @@ export class SummaryComponent {
     {
       WidgetName : header,
       Api : "",
-      ReloadRequired:this.reloadReq
+      ReloadRequired:this.reloadReq,
+      WidgetType: ""
     }
     myInjector = Injector.create(
       {
