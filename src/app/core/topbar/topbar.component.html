@@ -20,21 +20,22 @@
         <ng-template #noHeaderImage> </ng-template>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="17" [colSpan]="1" [row]="1" [rowSpan]="1">
-        <kendo-tilelayout-item-body style="padding: 6% 0 6% 6%; text-align: end;">
-            <div style="float: right;padding-top: 15%;">
+    <kendo-tilelayout-item [col]="17" [colSpan]="9" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item-body style="float:right;padding: 2%;">
+          <div class="header-icons">
+            <span class="kendoimg">
                 <span class="copied_icontop">
                     <img
                     [src]="genericService.topbarIconURL"
                     class="imgHeight copied_icon1"
                   />
                 </span>
-              </div>
-        </kendo-tilelayout-item-body>
-    </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="18" [colSpan]="2" [row]="1" [rowSpan]="1">
-        <kendo-tilelayout-item-body style="padding: 10% 0px 6% 6%;">
-            <div style="text-align: center;">
+              </span>
+        <!-- </kendo-tilelayout-item-body> -->
+    <!-- </kendo-tilelayout-item> -->
+    <!-- <kendo-tilelayout-item [col]="18" [colSpan]="2" [row]="1" [rowSpan]="1"> -->
+        <!-- <kendo-tilelayout-item-body style="padding: 10% 0px 6% 6%;"> -->
+            <span class="notificationimg">
                 <span class="notification_icon">
                     <img
                       [src]="genericService.notificationIconURL"
@@ -44,54 +45,62 @@
                       genericService.notificationCount
                     }}</span>
                   </span>
-              </div>
-        </kendo-tilelayout-item-body>
-    </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="20" [colSpan]="1" [row]="1" [rowSpan]="1">
-        <kendo-tilelayout-item-body style="padding: 0;">
-            <div style="float: left; padding-top :20%">
+                </span>
+        <!-- </kendo-tilelayout-item-body> -->
+    <!-- </kendo-tilelayout-item> -->
+    <!-- <kendo-tilelayout-item [col]="20" [colSpan]="1" [row]="1" [rowSpan]="1"> -->
+        <!-- <kendo-tilelayout-item-body style="padding: 0;"> -->
+            <span class="profileimg">
                 <span class="profile_icon">
                   <img
                     [src]="genericService.profileImageURL"
                     class="imgHeight rounded-circle"
                   />
                 </span>
-              </div>
-        </kendo-tilelayout-item-body>
-    </kendo-tilelayout-item>
-    <kendo-tilelayout-item [col]="21" [colSpan]="2" [row]="1" [rowSpan]="1">
-        <kendo-tilelayout-item-body>
-        <div>
+              </span>
+        <!-- </kendo-tilelayout-item-body> -->
+    <!-- </kendo-tilelayout-item> -->
+    <!-- <kendo-tilelayout-item [col]="21" [colSpan]="2" [row]="1" [rowSpan]="1"> -->
+        <!-- <kendo-tilelayout-item-body> -->
+        <span class="imgcontent">
           <span class="profile_content"
             >Evelyn Salt</span>
-        <br>
+        <!-- <br> -->
           <span class="position">Underwriter</span>
-        </div>
-        </kendo-tilelayout-item-body>
-      </kendo-tilelayout-item>
-      <kendo-tilelayout-item [col]="23" [colSpan]="3" [row]="1" [rowSpan]="1">
-        <kendo-tilelayout-item-body style="padding: 0;padding-top: 18%;">
-            <button mat-raise-button color="primary" style="border: transparent !important; background: transparent"
-            [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="openMyMenu(menuTrigger)">
-            <!-- <img *ngIf="!defaultProfile" [src]="imageSource" [width]="size" [height]="size"
-              class="hy-profile-image" />
+        </span>
+        <!-- </kendo-tilelayout-item-body> -->
+      <!-- </kendo-tilelayout-item> -->
+      <!-- <kendo-tilelayout-item [col]="23" [colSpan]="3" [row]="1" [rowSpan]="1"> -->
+        <!-- <kendo-tilelayout-item-body style="padding: 0;padding-top: 18%;"> -->
+          <span>
+          <span  style="border: transparent !important; background: transparent"
+          [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="openMyMenu(menuTrigger)">
+          <!-- <img *ngIf="!defaultProfile" [src]="imageSource" [width]="size" [height]="size"
+            class="hy-profile-image" />
 
-            <img *ngIf="defaultProfile" src="assets/images/defaultprofilepic.png" [width]="size" [height]="size"
-              class="hy-profile-image" /> -->
-              <mat-icon style="background-color: #fff;color:#000">arrow_drop_down_circle</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" class="profiledropdown" style="color:#F5F5F5!important">
-            <span (mouseleave)="closeMyMenu(menuTrigger)">
-              <button mat-menu-item routerLink="/changepassword" queryParamsHandling="preserve">
-                Change Password
-              </button>
-              <button mat-menu-item routerLink="/contactus/2" queryParamsHandling="preserve">
-                Contact Us
-              </button>
-              <button mat-menu-item (click)="Logout()">Logout</button>
+          <img *ngIf="defaultProfile" src="assets/images/defaultprofilepic.png" [width]="size" [height]="size"
+            class="hy-profile-image" /> -->
+            <span class="dropdown_icon">
+            <mat-icon><span class="material-icons-outlined">
+              arrow_drop_down
+
+              </span></mat-icon>
+              </span>
             </span>
-          </mat-menu>
+        <mat-menu #menu="matMenu" class="profiledropdown" style="color:#F5F5F5!important">
+          <span (mouseleave)="closeMyMenu(menuTrigger)">
+            <button mat-menu-item routerLink="/changepassword" queryParamsHandling="preserve">
+              Change Password
+            </button>
+            <button mat-menu-item routerLink="/contactus/2" queryParamsHandling="preserve">
+              Contact Us
+            </button>
+            <button mat-menu-item (click)="Logout()">Logout</button>
+          </span>
+        </mat-menu>
+          </span> 
+          </div>
         </kendo-tilelayout-item-body>
-    </kendo-tilelayout-item>
+     </kendo-tilelayout-item> 
   </kendo-tilelayout>
 </div>

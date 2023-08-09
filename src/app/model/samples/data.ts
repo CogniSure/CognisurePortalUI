@@ -156,7 +156,7 @@ export class DataComponent {
       id: 3,
       BoxType: 'SmallBox',
       WidgetName: 'CoverageDistribution',
-      WidgetType: 'pie',
+      WidgetType: 'donut',
       Header: 'Coverage Distribution',
       ColumnId :  2,
       ColumnSpan :  1,

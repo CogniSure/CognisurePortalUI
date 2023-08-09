@@ -32,18 +32,18 @@
 // }
 
 .copied_icontop img {
-  width: 45px;
-  height: 45px;
-border: 1px solid gray;
-border-radius: 25px;
-padding: 9.6%;
+  width: 50px;
+  height: 50px;
+  border: 1px solid gray;
+  border-radius: 25px;
+  padding: 0.6%;
 }
 
 .notification_icon img {
-  width: 38%;
-  height: 8%;
+  width: 10%;
+  height: auto;
   border: 1px solid gray;
-  border-radius: 21px;
+  border-radius: 30px;
   padding: 0.6%;
 }
 
@@ -57,7 +57,7 @@ padding: 9.6%;
 
 .profile_icon {
     img {
-       width: 80%;
+      width: 10%;
       //height: 8%;
       border: 1px solid gray;
       border-radius: 21px;
@@ -140,7 +140,7 @@ padding: 9.6%;
   font-size: 12px;
   position: absolute;
   top: 5%;
-  right: 18%;
+  right: 46%;
 }
 
 .dropdown ul li a {
@@ -174,4 +174,46 @@ padding: 9.6%;
   .k-card {
     border-width: 0px !important;
   }
+}
+
+.header-icons{
+  text-align: right;
+}
+
+.kendoimg{
+  padding-right: 3%;
+}
+
+.notificationimg{
+  padding-right: 3%;
+}
+
+.profileimg{
+  padding-right: 3%;
+}
+
+.imgcontent{
+  padding-right: 8%; 
+  font-size: 14px;
+}
+
+.imgcontent .position{
+  position: absolute;
+  bottom: 40%;
+  right: 17%;
+  top: 60%;
+}
+
+.dropdown_icon{
+  padding: 3% 2% 0% 2%;
+  border-radius: 50%;
+}
+
+.dropdown_icon span{
+font-size: 47px;
+border: 1px solid gray;
+border-radius: 50%;
+position: fixed;
+right: 1%;
+top: 1.5%;
 }
