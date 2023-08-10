@@ -9,6 +9,7 @@ import { XBarComponent } from "../../widgets/xbar/xbar.component";
 import { YBarComponent } from "../../widgets/ybar/ybar.component";
 import { PieComponent } from "../../widgets/pie/pie.component";
 import { SimpleDataComponent } from "../../widgets/simple-data/simple-data.component";
+import { FunnelComponent } from "src/app/widgets/funnel/funnel.component";
 
 
 export interface Widgetinfo {
@@ -28,12 +29,13 @@ export const ComponentDetails:Map<string,any> = new Map([
     ["Agency",[AgencyComponent]],
     ["Coverages",[ CoveragesComponent]],
     ["Exposure",[ ExposureComponent]],
-   
     ["Losses",[LossesComponent]], 
     ["Riskclearance",[RiskClearanceComponent]],
     ["Totallosses",[TotalLossesComponent]]  ,
     ["Xbar",[XBarComponent]]  ,
     ["Ybar",[YBarComponent]]  ,
-    ["Pie",[PieComponent]]  ,
+    ["pie",[PieComponent]]  ,
+    ["donut",[PieComponent]]  ,
+    ["funnel",[FunnelComponent]]  ,
     ["SimpleData",[SimpleDataComponent]]  
 ]);

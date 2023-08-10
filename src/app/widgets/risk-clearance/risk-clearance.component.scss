@@ -1,5 +1,5 @@
 .Agency_header{
-    padding: 4% 2%;
+    padding: 4% 5%;
     color: rgba(255,255,255,1);
     // position: absolute;
     // top: 209px;
@@ -13,7 +13,7 @@
 .Agency{
 // width: 500px;
 height: 61px;
-background: rgba(0,182,173,1);
+background: #00B6AD;
 opacity: 1;
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;
@@ -26,9 +26,9 @@ overflow: hidden;
 // .agency_name{
 //     column-width: 60%;
 // }
-.agency_details1{
-   padding: 2% 1% 1% 2%;
-}
-.agency_details{
-    padding: 1% 1% 1% 2%;
-}
+   .agency_details1{
+    padding: 2% 1% 1% 5%;
+   }
+   .agency_details{
+     padding: 1% 1% 1% 5%;
+   }

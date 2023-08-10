@@ -32,8 +32,7 @@ margin: 0!important;
     color: yellow;
   }
   .pipe_line{
-    position: fixed;
-    /* left: 31px; */
+    position: absolute;
     margin-left: -18px;
     font-size: 30px;
     margin-top: 4px;
@@ -46,19 +45,22 @@ margin: 0!important;
 
   .reminders ul li span{
 color:#000;
+font-size: 12px;
   }
   .editedtime{
     color:gray;
     font-size: 11px;
   }
   .statussize{
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .my_remainders{
     margin: 0;
-    padding: 2% 0% 2% 3%;
-
+    padding: 2% 0% 2% 10%;
+    font-size: 14px;
+    background-color: #009CC1 !important;
+    color: #fff;
   }
 
   .k-card-body {

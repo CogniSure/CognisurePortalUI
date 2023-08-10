@@ -59,7 +59,9 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
         Fullscreen : entry.Fullscreen,
         ColumnId :  entry.ColumnId,
         ColumnSpan :  entry.ColumnSpan,
-        RowSpan :  entry.RowSpan
+        RowSpan :  entry.RowSpan,
+        HeaderColor : entry.HeaderColor,
+        FontColor : entry.FontColor
       });
       i++;
     });
@@ -71,13 +73,14 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
     this.isFullScreen = !this.isFullScreen;
     this.globalService.setDashboardReload(false);
   }
-  createInjector(header:string):any {
+  createInjector(header:string,widgetType:string):any {
     var myInjector: Injector;
     let widgetInput:WidgetInput =
     {
       WidgetName : header,
       Api : "",
-      ReloadRequired:this.reloadReq
+      ReloadRequired:this.reloadReq,
+      WidgetType: widgetType
     }
     myInjector = Injector.create(
       {

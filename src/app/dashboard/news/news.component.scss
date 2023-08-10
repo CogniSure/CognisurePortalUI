@@ -81,4 +81,14 @@
   .k-tilelayout-item-body{
     height:0px!important;
   }
- 
+ ::ng-deep .k-panelbar > .k-panelbar-header > .k-link{
+  background-color: #009CC1!important;
+  color: #fff;
+ }
+ ::ng-deep .k-panelbar .k-panelbar-group > .k-panelbar-item > .k-link.k-selected {
+  color: white;
+  background-color: #009CC1!important;
+}
+.news_data{
+  font-size: 14px!important;
+}

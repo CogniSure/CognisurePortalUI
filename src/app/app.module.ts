@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthService } from './services/auth/auth.service';
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 import {
   HTTP_INTERCEPTORS,
   HttpClient,
@@ -111,7 +112,7 @@ export function initializeApp(appConfig: AppConfigService) {
     {
       provide: SessionInterruptService,
       useClass: AppSessionInterruptService,
-    },
+    }
   ],
   bootstrap: [AppComponent],
 })
