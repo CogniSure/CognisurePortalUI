@@ -519,7 +519,7 @@ color: #005daa;
 .add_icon1{
   // padding: 0% 0.7% 0.5% 0.5%;
   color: #ffffff;
-  padding: 0% 0% 3% 0%;
+  padding: 0% 0% 4% 0%;
 }
 
 .add_icon1 .mat-icon{
@@ -533,7 +533,7 @@ margin-top: -1%;
 
 .add_icon span{
   position: absolute;
-  margin-top: 0.5%;
+  margin-top: 0.6%;
   margin-left: -1.2%;
 }
 
@@ -544,12 +544,12 @@ padding-bottom: 0.5%;
 
 .profile_icon{
 background-color: #ffffff;
-padding:0% 0.5% 0% 0.5%;
+padding: 0% 0.5% 0% 0.5%;
 border-radius: 8px;
 }
 
 .profile_icon .mat-icon{
-  margin-top: 8%;
+  margin-top: 13%;
 }
 
 .notification_icon{
@@ -573,6 +573,7 @@ padding:0% 0.5% 0% 0.5%;
 .setting_icon{
   background-color: #ffffff;
   padding:0% 0.5% 0% 0.5%;
+  border-radius: 8px;
 }
 
 .setting_icon .mat-icon{
@@ -606,7 +607,7 @@ padding:0% 0.5% 0% 0.5%;
 /*icons bar*/
 .table_subheader1{
   padding-right: 1%;
-  width: 15%;
+  width: 17%;
   text-align: center;
 }
 
@@ -631,13 +632,13 @@ padding:0% 0.5% 0% 0.5%;
 
 .table_subheader5{
   padding-right: 1%;
-  width: 5%;
+  width: 6%;
   text-align: center;
 }
 
 .table_subheader6{
   padding-right: 1%;
-  width: 5%;
+  width: 6%;
   text-align: center;
 }
 
@@ -649,13 +650,13 @@ padding:0% 0.5% 0% 0.5%;
 
 .table_subheader8{
   padding-right: 1%;
-  width: 12%;
+  width: 13%;
   text-align: center;
 }
 
 .table_subheader9{
   padding-right: 1%;
-  width: 9.5%;
+  width: 10.5%;
   text-align: center;
 }
 
@@ -665,16 +666,16 @@ background-color: #fff;
     border-radius: 8px;
 }
 
-.copied_icon{
-background-color: #ffffff;
-padding: 4% 0% 3% 3%;
-border-radius: 8px;
-}
+// .copied_icon{
+// background-color: #ffffff;
+// padding: 5% 0% 2.4% 3%;
+// border-radius: 8px;
+// }
 
 .copied_icon .mat-icon span{
 position: absolute;
 margin-top: 4%;
-margin-left: -2%;
+margin-left: -1%;
 }
 
 .dropdown ul{
@@ -683,4 +684,17 @@ position: absolute;
 
 .side_icons{
 width: 105%;
+}
+
+// .copied_icon span{
+// background-color: #ffff;
+// position: absolute;
+// margin-top: -3%;
+// }
+
+.copied_icon .action_btn{
+position: absolute;
+background-color: #ffffff;
+margin-top: -4px;
+padding: 1% 0% 3% 4%;
 }

@@ -1,6 +1,6 @@
 <div class="bluetopbar" style=" background-color:#EEF2F7;">
   <kendo-tilelayout
-    [columns]="25"
+    [columns]="26"
     [rowHeight]="'100%'"
     [resizable]="false"
     [reorderable]="false"
@@ -103,13 +103,13 @@
     
 
 
- <kendo-tilelayout-item class="divider" [col]="23" [colSpan]="3" [row]="1" [rowSpan]="1" style="background: #EEF2F7;">
+ <kendo-tilelayout-item class="divider" [col]="23" [colSpan]="4" [row]="1" [rowSpan]="1" style="background: #EEF2F7;">
       <kendo-tilelayout-item-body style="text-align: left;padding: 0;">
           <div class="side_icons">
       <span class="copied_icon">
           <span *ngIf="!isToggleOn" (click)="toggleDropdown()" class="imgHeight input-with-icon action_btn">
 
-                  <span>View as : {{ navItems[9].title }}</span>
+                  <span class="view">View as : {{ navItems[9].title }}</span>
                   <mat-icon>
                     <span class="material-icons-outlined">
                     {{navItems[9].icon}}
@@ -119,7 +119,7 @@
       
           <span *ngIf="isToggleOn" (click)="toggleDropdown()" class="imgHeight input-with-icon action_btn" >
 
-              <span>View as : {{ navItems[9].title }}</span>
+              <span class="view">View as : {{ navItems[9].title }}</span>
                   <mat-icon>
                     <span class="material-icons-outlined">
                     {{navItems[9].icon}}
