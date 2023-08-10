@@ -12,6 +12,7 @@ import { images } from './images';
   })
 export class TableComponent implements OnInit {
     @Input() data: any[];
+    @Input() columns: any;
 
     constructor() {
     }
@@ -25,7 +26,7 @@ export class TableComponent implements OnInit {
     public excelSVG: SVGIcon = fileExcelIcon;
 
     public ngOnInit(): void {
-        console.log(JSON.stringify(this.data)); 
+        console.log(JSON.stringify(this.columns)); 
         this.gridData = this.data;
         this.gridView = this.data;        
     }
