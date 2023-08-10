@@ -98,12 +98,12 @@ export class WidgetService {
     //   ],
     // });
     return of([
-      {category: 'Property', value: 0.24},
-      {category: 'Automobile', value: 0.22},
-      {category: 'Umbrella', value: 0.15},
-      {category: 'General Liability', value: 0.17},
-      {category: 'Workers Compensation', value: 0.18},
-      {category: 'Others', value: 0.04}
+      {category: 'Property', value: 24},
+      {category: 'Automobile', value: 22},
+      {category: 'Umbrella', value: 15},
+      {category: 'General Liability', value: 17},
+      {category: 'Workers Compensation', value: 18},
+      {category: 'Others', value: 4}
     ])
   }
   getTopIndustries(filter: DashboardFilter): Observable<any> {
@@ -150,17 +150,17 @@ export class WidgetService {
         {
           stat: 'Total Submissions',
           count: 4870,
-          color: '#0e5a7e',
+          color: '#009CC1',
         },
         {
           stat: 'Quoted',
           count: 3380,
-          color: '#166f99',
+          color: '#00B4DF',
         },
         {
           stat: 'Bound',
           count: 1021,
-          color: '#2185b4',
+          color: '#0CD0FF',
         }
       ]);
   }
