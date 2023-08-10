@@ -107,7 +107,7 @@ export class DataComponent {
 
   public static Dashboardhub = [
     {
-      id: 5,
+      id: 1,
       BoxType: 'SmallBox',
       WidgetName: 'Submissions',
       WidgetType: 'SimpleData',
@@ -119,7 +119,7 @@ export class DataComponent {
       FontColor : '#fff'
     },
     {
-      id: 6,
+      id: 2,
       BoxType: 'SmallBox',
       WidgetName: 'QuoteRatio',
       WidgetType: 'SimpleData',
@@ -131,7 +131,7 @@ export class DataComponent {
       FontColor : '#fff'
     },
     {
-      id: 6,
+      id: 3,
       BoxType: 'SmallBox',
       WidgetName: 'StraightThroughRate',
       WidgetType: 'SimpleData',
@@ -145,10 +145,20 @@ export class DataComponent {
     {
       id: 1,
       BoxType: 'SmallBox',
+      WidgetName: 'SubmissionConversion',
+      WidgetType: 'funnel',
+      Header: 'Submission Conversion',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  3
+    },
+    {
+      id: 1,
+      BoxType: 'SmallBox',
       WidgetName: 'SubmissionTurnaroundTime',
       WidgetType: 'Xbar',
       Header: 'Submission Turnaround Time',
-      ColumnId :  1,
+      ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  3
     },
@@ -158,7 +168,7 @@ export class DataComponent {
       WidgetName: 'CoverageDistribution',
       WidgetType: 'donut',
       Header: 'Coverage Distribution',
-      ColumnId :  2,
+      ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3
     },
@@ -168,7 +178,7 @@ export class DataComponent {
       WidgetName: 'TopBrokers',
       WidgetType: 'Ybar',
       Header: 'Top Brokers',
-      ColumnId :  3,
+      ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  3
     },
@@ -178,7 +188,7 @@ export class DataComponent {
       WidgetName: 'TopIndustries',
       WidgetType: 'Ybar',
       Header: 'Top Industries',
-      ColumnId :  1,
+      ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  3
     }
@@ -189,7 +199,7 @@ export class DataComponent {
       WidgetName: 'TopLocations',
       WidgetType: 'Ybar',
       Header: 'Top Locations',
-      ColumnId :  2,
+      ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3
     }

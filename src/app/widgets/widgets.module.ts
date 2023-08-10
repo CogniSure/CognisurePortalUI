@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PieComponent } from './pie/pie.component';
 import { SimpleDataComponent } from './simple-data/simple-data.component';
 import { MaterialModule } from '../material/material.module';
+import { FunnelComponent } from './funnel/funnel.component';
 
 
 
@@ -28,7 +29,8 @@ import { MaterialModule } from '../material/material.module';
     XBarComponent,
     YBarComponent,
     PieComponent,
-    SimpleDataComponent
+    SimpleDataComponent,
+    FunnelComponent
   ],
   imports: [
     CommonModule,
