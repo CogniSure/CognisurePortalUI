@@ -98,12 +98,12 @@ export class WidgetService {
     //   ],
     // });
     return of([
-      {category: 'Property', value: 0.24},
-      {category: 'Automobile', value: 0.22},
-      {category: 'Umbrella', value: 0.15},
-      {category: 'General Liability', value: 0.17},
-      {category: 'Workers Compensation', value: 0.18},
-      {category: 'Others', value: 0.04}
+      {category: 'Property', value: 24},
+      {category: 'Automobile', value: 22},
+      {category: 'Umbrella', value: 15},
+      {category: 'General Liability', value: 17},
+      {category: 'Workers Compensation', value: 18},
+      {category: 'Others', value: 4}
     ])
   }
   getTopIndustries(filter: DashboardFilter): Observable<any> {
@@ -148,30 +148,20 @@ export class WidgetService {
   getSubmissionConversions(filter: DashboardFilter): Observable<any> {
     return of([
         {
-          stat: 'Impressions ',
-          count: 434823,
-          color: '#0e5a7e',
+          stat: 'Total Submissions',
+          count: 4870,
+          color: '#009CC1',
         },
         {
-          stat: 'Clicks',
-          count: 356854,
-          color: '#166f99',
+          stat: 'Quoted',
+          count: 3380,
+          color: '#00B4DF',
         },
         {
-          stat: 'Unique Visitors',
-          count: 280022,
-          color: '#2185b4',
-        },
-        {
-          stat: 'Downloads',
-          count: 190374,
-          color: '#319fd2',
-        },
-        {
-          stat: 'Purchases',
-          count: 120392,
-          color: '#3eaee2',
-        },
+          stat: 'Bound',
+          count: 1021,
+          color: '#0CD0FF',
+        }
       ]);
   }
 }

@@ -1,3 +1,159 @@
+<div class="bluetopbar" style=" background-color:#EEF2F7;">
+  <kendo-tilelayout
+    [columns]="26"
+    [rowHeight]="'100%'"
+    [resizable]="false"
+    [reorderable]="false"
+    class="top-bar-header"
+    [gap]="05"
+   style="background-color:#EEF2F7!important;"
+  >
+    <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="22" [row]="1" [rowSpan]="1" style="background: #EEF2F7;">
+      <kendo-tilelayout-item-body style="padding: 0;">
+       <div class="subheader_text">
+
+        <div class="table_subheader1">
+        <div class="sub-header">
+        <div class="add_icon1">
+     <mat-icon class="add_icon">
+      <span class="material-icons-outlined">{{ navItems[0].icon }}</span>
+    </mat-icon> 
+    <span class="add_title">{{ navItems[0].title }}</span>
+        <!-- <ng-template #noHeaderImage> </ng-template> -->
+  </div>
+  </div>
+  </div>
+
+  <div class="table_subheader2">
+          <div class="profile_icon">
+            <mat-icon>
+                <span class="material-icons-outlined">
+                {{navItems[1].icon}}
+                </span> 
+            </mat-icon>
+         <span>{{ navItems[1].title }}</span>     
+          </div>
+          </div> 
+
+
+          <!-- <div class="table_subheader3">
+          <div class="notification_icon">
+            <mat-icon><span class="material-icons-outlined">
+                {{navItems[2].icon}}
+                </span></mat-icon>
+              </div>
+              </div> -->
+
+
+              <!-- <div class="table_subheader4">
+      <div class="filter_icon">
+      <mat-icon>
+       <span class="material-icons-outlined">
+        {{navItems[3].icon}}
+        </span> 
+    </mat-icon>
+  </div> 
+</div> -->
+
+
+<div class="table_subheader5">
+  <!-- <div class="subheader_text"> -->
+  <div class="setting_icon">
+    <mat-icon>
+       <span class="material-icons-outlined">
+        {{navItems[4].icon}}
+        </span> 
+    </mat-icon>
+    <span>{{ navItems[4].title }}</span>
+  </div>
+  </div>
+  
+  <div class="table_subheader6">
+  <div class="all_text">
+<button class="risk2">{{ navItems[5].title }}</button>
+  </div>
+  </div>
+
+  <div class="table_subheader7">
+  <div class="new_text">
+    <button class="risk2">{{ navItems[6].title }}</button>
+  </div>
+   </div>
+
+   <div class="table_subheader8">
+  <div class="pending_text">
+  <button class="risk2">{{ navItems[7].title }}</button>
+  </div>
+  </div>
+
+  <div class="table_subheader9">
+  <div class="rush_text">
+    <button class="risk2">{{ navItems[8].title }}</button>
+  </div>
+  </div>
+
+
+ 
+
+
+</div>
+   </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+ 
+    
+
+
+ <kendo-tilelayout-item class="divider" [col]="23" [colSpan]="4" [row]="1" [rowSpan]="1" style="background: #EEF2F7;">
+      <kendo-tilelayout-item-body style="text-align: left;padding: 0;">
+          <div class="side_icons">
+      <span class="copied_icon">
+          <span *ngIf="!isToggleOn" (click)="toggleDropdown()" class="imgHeight input-with-icon action_btn">
+
+                  <span class="view">View as : {{ navItems[9].title }}</span>
+                  <mat-icon>
+                    <span class="material-icons-outlined">
+                    {{navItems[9].icon}}
+                    </span> 
+                </mat-icon>
+              </span>
+      
+          <span *ngIf="isToggleOn" (click)="toggleDropdown()" class="imgHeight input-with-icon action_btn" >
+
+              <span class="view">View as : {{ navItems[9].title }}</span>
+                  <mat-icon>
+                    <span class="material-icons-outlined">
+                    {{navItems[9].icon}}
+                    </span> 
+                </mat-icon>
+              </span>
+              
+          </span>
+
+      <div class="dropdown" *ngIf="isToggleOn">
+
+                <ul>
+                  <li *ngFor="let option of dropdownOptions">
+                    <a [routerLink]="option.link">{{ option.label }}</a>
+                  </li>
+                </ul>
+ 
+            </div>
+
+            </div>
+
+      </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item> 
+  </kendo-tilelayout>
+</div>
+
+
+
+
+
+
+
+
+
 <kendo-grid
   [kendoGridBinding]="gridView"
   kendoGridSelectBy="id"
@@ -5,9 +161,10 @@
   [pageSize]="20"
   [pageable]="true"
   [sortable]="true"
-  [groupable]="true"
+  [groupable]="false"
   [reorderable]="true"
-  [resizable]="true"  
+  [resizable]="true"
+  [height]="550"
   [columnMenu]="{ filter: true }"
   [style]="'height:100%'"
 >

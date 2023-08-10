@@ -1,0 +1,113 @@
+$base-font: 'Poppins';
+
+::ng-deep .container1{
+  font-family: $base-font !important ;
+}
+::ng-deep .mat-dialog-title {
+  font-family: $base-font !important ;
+  font: $base-font !important;
+}
+::ng-deep .widgetHeader{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-typography h1
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-typography h2
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-typography h3
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-typography h4
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-typography h5
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-typography h6
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-form-field-label {
+  font-family: $base-font !important;
+}
+::ng-deep body{
+  font-family: $base-font !important;
+}
+::ng-deep html{
+  font-family: $base-font !important;
+}
+
+::ng-deep .mat-checkbox 
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-button-base
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-typography
+{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-card{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-form-field{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-select {
+  font-family: $base-font !important;
+}
+::ng-deep .mat-table {
+  font-family: $base-font !important;
+}
+::ng-deep .mat-paginator {
+  font-family: $base-font !important;
+}
+::ng-deep .mat-select-trigger{
+  font-family: $base-font !important;
+}
+.mat-select-arrow {
+  color: #758591!important;
+}
+::ng-deep .mat-option{
+  font-family: $base-font !important;
+}
+::ng-deep .mat-option-text {
+  color: #000000!important;
+  // background-color: #D9D8D6!important;
+}
+::ng-deep .mat-option-text .mat-active{
+  color: #005DAA!important; 
+}
+::ng-deep .mat-select-value .mat-focused{    
+  color: #005DAA!important;  
+}
+::ng-deep .mat-option.mat-active {
+  background: #D9D8D6!important;
+  color:#ffffff!important;
+}
+::ng-deep mat-list-option[aria-selected="true"]{
+  color:#ffffff!important;
+}
+::ng-deep .mat-pseudo-checkbox {
+  color: #758591!important;
+}
+::ng-deep .mat-divider {
+  border-top-color: #D9D8D6!important;
+}
+// .mat-option.mat-active {
+//   background: #E91E63;
+// }
+@media screen and (max-width: 912px){
+  footer{
+  visibility: hidden;
+  }
+}
