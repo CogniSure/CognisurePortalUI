@@ -148,30 +148,20 @@ export class WidgetService {
   getSubmissionConversions(filter: DashboardFilter): Observable<any> {
     return of([
         {
-          stat: 'Impressions ',
-          count: 434823,
+          stat: 'Total Submissions',
+          count: 4870,
           color: '#0e5a7e',
         },
         {
-          stat: 'Clicks',
-          count: 356854,
+          stat: 'Quoted',
+          count: 3380,
           color: '#166f99',
         },
         {
-          stat: 'Unique Visitors',
-          count: 280022,
+          stat: 'Bound',
+          count: 1021,
           color: '#2185b4',
-        },
-        {
-          stat: 'Downloads',
-          count: 190374,
-          color: '#319fd2',
-        },
-        {
-          stat: 'Purchases',
-          count: 120392,
-          color: '#3eaee2',
-        },
+        }
       ]);
   }
 }

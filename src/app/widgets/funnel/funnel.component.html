@@ -1,4 +1,6 @@
-<kendo-chart>
+<kendo-chart
+[style]="'height: 100%;width:80%;font-size:11px'"
+>
     <kendo-chart-series>
       <kendo-chart-series-item
         type="funnel"
@@ -6,7 +8,7 @@
         field="count"
         categoryField="stat"
         colorField="color"
-        [dynamicHeight]="true"
+        [dynamicHeight]="false"
         [dynamicSlope]="false"
       >
         <kendo-chart-series-item-labels
@@ -17,5 +19,5 @@
         </kendo-chart-series-item-labels>
       </kendo-chart-series-item>
     </kendo-chart-series>
-    <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+    <kendo-chart-legend [visible]="true" position="bottom"></kendo-chart-legend>
   </kendo-chart>
