@@ -439,3 +439,11 @@ color: #005daa;
     border: none !important;
     border-radius: 0 !important;
   }
+
+  ::ng-deep .k-tilelayout {
+    background-color:#EEF2F7!important;
+  }
+
+  // ::ng-deep .k-tilelayout-item{
+  //   background-color:#EEF2F7!important; 
+  // }

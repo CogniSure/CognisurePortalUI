@@ -1,4 +1,4 @@
-<div class="dashboardwidget-container">
+<div class="dashboardwidget-container" style="background-color: #EEF2F7;">
     <div class="row customRow">
       <div *ngFor="let item of custComponents" class="{{ item.ColWidth }}">
         <div class="custom-placeholder customwidth">
@@ -8,12 +8,9 @@
             #maximize="maximize"
             style="padding-top:0"
           >
-            <div style="text-align: center; max-height: 5vh; border: 2">
+            <div style="text-align: center; max-height: 5vh;  border: 2">
               <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
-                <div style="width: 90%; text-align:left; margin-top:0.5%" >
-                <!-- <b class="textprimary-base bold">{{ item.Header }}</b> -->
-              </div>
-              <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
+              <div style="width: 10%; text-align:right; margin-top:0%; margin-right: 2%;">
                 <button *ngIf="item.Fullscreen"
                 mat-icon-button
                 class="max-button"
@@ -32,7 +29,7 @@
               </div>
             </div>
             <!-- <mat-divider></mat-divider> -->
-            <div style="margin-top: 1%;">
+            <div>
             <ng-template 
               *ngComponentOutlet="
                 item.Widget;
