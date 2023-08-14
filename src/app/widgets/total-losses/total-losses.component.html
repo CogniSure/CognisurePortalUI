@@ -13,8 +13,7 @@
     4389</span> -->
 
 
-    <div class="agency_container">
-        <!-- <div class="container-fluid"> -->
+     <!-- <div class="agency_container">
                 <div class="Agency">
                     <div class="Agency_header">
                         Total Losses
@@ -23,7 +22,6 @@
                 <div class="agency_details1">
                     <div class="row">  
                         <div class="totalloss">
-                        <!-- <div class="col-md-12"> -->
                             <div class="col-md-12">
                                 <div class="total_losses1"> {{totalincurred}} </div>
                                 </div>
@@ -49,11 +47,40 @@
     </tr>
   </table>
              </div>
-
-             
-
+    </div> -->
 
 
-
-                    <!-- </div> -->
-    </div>
+<!-- total-losses.component.html -->
+<div class="agency_container">
+    <kendo-card style="width:100%">
+        <kendo-card-header class="Agency">
+            <h3 class="k-card-title Agency_header">Total Losses</h3>
+        </kendo-card-header>
+        <kendo-card-body>
+            <div class="totalloss">
+                <div class="col-md-12">
+                    <div class="total_losses1">{{ totalincurred }}</div>
+                </div>
+                <div class="col-md-12">
+                    <div class="total_losses2">{{ totalincurredvalue }}</div>
+                </div>
+            </div>
+            <table class="k-table" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th># of Claims</th>
+                        <th># of Open Claims</th>
+                        <th>Highest Claim</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>37</td>
+                        <td>4</td>
+                        <td>$10,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </kendo-card-body>
+    </kendo-card>
+</div>

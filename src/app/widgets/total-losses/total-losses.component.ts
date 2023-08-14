@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TotalLossesData } from '../../model/summary/totallossesdata';
+import { TotalLossesService } from '../../services/inbox/summary.service';
 
 @Component({
   selector: 'app-total-losses',
