@@ -1,34 +1,86 @@
-.Agency_header{
-    padding: 4% 5%;
+.losses_header {
+    padding: 1%;
     color: rgba(255,255,255,1);
-    // position: absolute;
-    // top: 209px;
-    // left: 367px;
     font-family: Poppins;
     font-weight: Regular;
     font-size: 20px;
     opacity: 1;
     text-align: left;
 }
-.Agency{
-// width: 500px;
-height: 61px;
-background: #00B6AD;
-opacity: 1;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
-overflow: hidden;
+
+.losses {
+    height: 61px;
+    background: #00B6AD;
+    opacity: 1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
+    overflow: hidden;
 }
-// .agency_name{
-//   width:100%;  
-// }
-// .agency_name{
-//     column-width: 60%;
-// }
-.agency_details1{
-   padding: 2% 1% 1% 5%;
+
+.totalloss {
+    justify-content: center;
+    text-align: center;
 }
-.agency_details{
-    padding: 1% 1% 1% 5%;
+
+.total_losses1 {
+    text-align: center;
+    padding: 2% 1% 2% 1%;
+}
+
+.total_losses2 {
+    text-align: center;
+    font-size: 32px;
+
+}
+
+th,
+td {
+    border: 2px solid #EEEEEE;
+    text-align: center;
+}
+
+th {
+    padding: 3%;
+}
+
+td {
+    padding: 8.8%;
+}
+
+.lossesdetails {
+    padding-top: 2.8%;
+}
+
+
+.maintable {
+    border-left: 0px solid white !important;
+    border-right: 0px solid white !important;
+}
+
+.loss_years {
+    display: flex;
+    justify-content: center;
+}
+
+.totallosses_year {
+    padding-left: 2%;
+}
+
+.totallosses_year select {
+    word-wrap: normal;
+    border-radius: 17px sild black;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 2%;
+    padding: 3% 6% 6% 6%;
+}
+
+select {
+    border: 1px solid #009cc1;
+}
+
+.total-values{
+    font-size: 18px;
+    color:#009CC1;
 }

@@ -27,7 +27,7 @@ overflow: hidden;
 }
 .total_losses1{
     text-align: center;
-    padding: 2% 1% 5% 1%;
+    padding: 2% 1% 2% 1%;
 }
 .total_losses2{
     text-align: center;
@@ -37,16 +37,40 @@ overflow: hidden;
 }
 
 th, td{
-    border:1px solid black;
+    border: 2px solid #EEEEEE;
     text-align: center;
 }
 th{
     padding: 3%;
 }
 td{
-    padding: 8%;
+    padding: 7.2%;
 }
 
 .lossesdetails{
-    padding-top: 5%;
+    padding-top: 2.2%;
 }
+
+.loss_years{
+    display: flex;
+    justify-content: center;
+}
+
+.totallosses_year{
+    padding-left: 2%;
+}
+
+::ng-deep .totallosses_year select{
+    font-size: 11px!important;
+    background-color: #009CC1 !important;
+    color:#fff;
+    border:1px solid #009CC1;
+    border-radius: 4px;
+    padding: 3% 6% 6% 6%;
+}
+
+.total-values{
+    font-size: 18px;
+    color:#009CC1;
+}
+

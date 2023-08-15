@@ -1,104 +1,52 @@
-<!-- <div class="v515_1200"></div> -->
-<!-- <div class="v1038_2241"></div> -->
-<!-- <div class="v1038_2152"></div>
-
-
-<span class="v515_1201">Agency</span>
-
-<div class="name"></div><span class="v515_1203">Agency Name</span><span class="v515_1221">Producer</span>
-<span class="v515_1219">Agency Code</span><span class="v515_1222">Activity Rank</span><span class="v515_1204">ACE
-    Insurance</span><span class="v515_1223">John Kelly</span><span class="v996_2153">jkelly@aceinsurance.com</span>
-    <span class="v996_2154">312-987-3456</span><span
-    class="v515_1220">A548889</span><span class="v515_1224">234 /
-    4389</span> -->
-
-
     <div class="agency_container">
-        <!-- <div class="container-fluid"> -->
-                <div class="Agency">
-                    <div class="Agency_header">
-                        Agency
+        <kendo-card style="width:100%">
+            <kendo-card-header class="losses">
+            <div class="losses_header">
+                Losses
+        </div>
+        </kendo-card-header>
+        <kendo-card-body style="padding: 0;">
+        <div class="agency_details1">
+            <div class="row">
+                <div class="totalloss">
+                    <div class="col-md-12">
+                        <div class="total_losses1" id="totalincurred"><b> {{totalincurred}} </b></div>
+                        <div class="loss_years">
+                            <div class="total-values light-green-color" id="totallosses">
+                              <b> {{totallosses}} </b>
+                            </div>
+                            <div class="totallosses_year">
+                                <select name="years" id="years" class="white-color dropdownselector">
+                                    <option value="1" id="oneyear">1yrs</option>
+                                    <option value="2" id="twoyear">2yrs</option>
+                                    <option value="3" id="threeyear">3yrs</option>
+                                    <option value="4" id="fouryear">4yrs</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="total_losses2 light-green-color" id="totalincurredvalue"> {{totalincurredvalue}} </div>
                     </div>
                 </div>
-                <div class="agency_details1">
-                    <div class="row">  
-                        <!-- <div class="col-md-12"> -->
-                        <div class="col-md-6">
-                        <div class="agency_name">Agency Name</div>
-                        </div>
-                    <div class="col-md-6">
-                        <div class="agency_name">ACE Insurance</div>
-                    </div>
-                    </div>                 
-                    </div>
-                    <div class="agency_details">
-                        <div class="row">  
-                            <!-- <div class="col-md-12"> -->
-                            <div class="col-md-6">
-                            <div class="agency_name">Agency Code</div>
-                            </div>
-                        <div class="col-md-6">
-                            <div class="agency_name">A548889</div>
-                        </div>
-                        </div>                 
-                        </div>
-                        <div class="agency_details">
-                            <div class="row">  
-                                <!-- <div class="col-md-12"> -->
-                                <div class="col-md-6">
-                                <div class="agency_name">Producer</div>
-                                </div>
-                            <div class="col-md-6">
-                                <div class="agency_name">John Kelly</div>
-                            </div>
-                            </div>                 
-                            </div>
-                            <div class="agency_details">
-                                <div class="row">  
-                                    <!-- <div class="col-md-12"> -->
-                                    <div class="col-md-6">
-                                    <div class="agency_name"></div>
-                                    </div>
-                                <div class="col-md-6">
-                                    <div class="agency_name">jkelly@aceinsurance.com</div>
-                                </div>
-                                </div>                 
-                                </div>
-                                <div class="agency_details">
-                                    <div class="row">  
-                                        <!-- <div class="col-md-12"> -->
-                                        <div class="col-md-6">
-                                        <div class="agency_name"></div>
-                                        </div>
-                                    <div class="col-md-6">
-                                        <div class="agency_name">312-987-3456</div>
-                                    </div>
-                                    </div>                 
-                                    </div>
-
-                                    <div class="agency_details">
-                                        <div class="row">  
-                                            <!-- <div class="col-md-12"> -->
-                                            <div class="col-md-6">
-                                            <div class="agency_name"></div>
-                                            </div>
-                                        <div class="col-md-6">
-                                            <div class="agency_name">312-987-3456</div>
-                                        </div>
-                                        </div>                 
-                                        </div>
-                                        <div class="agency_details">
-                                            <div class="row">  
-                                                <!-- <div class="col-md-12"> -->
-                                                <div class="col-md-6">
-                                                <div class="agency_name">Activity Rank</div>
-                                                </div>
-                                            <div class="col-md-6">
-                                                <div class="agency_name">234 / 4389</div>
-                                            </div>
-                                            </div>                 
-                                            </div>
-
-
-                    <!-- </div> -->
+            </div>
+        </div>
+        <div class="lossesdetails">
+            <table style="width:100%">
+                <tr>
+                    <th id="numberofclaims"># of Claims</th>
+                    <th id="numberofopenclaims"># of Open Claims</th>
+                    <th id="highestclaim">Highest Claim</th>
+                </tr>
+                <tr *ngFor="let item of lossesdata">
+                    <td id="numberofclaimsvalue">{{ item.numberofclaims }}</td>
+                    <td id="numberofopenclaimsvalue">{{ item.numberofopenclaims }}</td>
+                    <td id="highestclaimvalue">{{ item.highestclaim }}</td>
+                </tr>
+            </table>
+        </div>
+        </kendo-card-body>
+        </kendo-card>
     </div>

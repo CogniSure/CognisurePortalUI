@@ -99,21 +99,21 @@
     <div class="Agency">
         <h3 class="k-card-title Agency_header" >Agency</h3>
     </div>
-    <kendo-card-body>
+    <kendo-card-body class="agency_section">
         <div class="agency-details">
             <div class="row">
-                <div class="agency_value agency_value_1">Agency Name</div>
-                <div class="agency_value agency_value_2">{{ agencynamevalue }}</div>
-                <div class="agency_value agency_value_3">Agency Code</div>
-                <div class="agency_value agency_value_4">{{ agencycodevalue }}</div>
-                <div class="agency_value agency_value_5">Producer</div>
-                <div class="agency_value agency_value_6">{{ producer }}</div>
+                <div class="agency_value agency_value_1"><b>Agency Name</b></div>
+                <div class="agency_value agency_value_2">{{ agencyData.agencyName }}</div>
+                <div class="agency_value agency_value_3"><b>Agency Code</b></div>
+                <div class="agency_value agency_value_4">{{ agencyData.agencyCode }}</div>
+                <div class="agency_value agency_value_5"><b>Producer</b></div>
+                <div class="agency_value agency_value_6">{{ agencyData.producer }}</div>
                 <div class="agency_value agency_value_7"></div>
-                <div class="agency_value agency_value_8">{{ produceremail }}</div>
+                <div class="agency_value agency_value_8">{{ agencyData.producerEmail }}</div>
                 <div class="agency_value agency_value_9"></div>
-                <div class="agency_value agency_value_10">{{ phone }}</div>
-                <div class="agency_value agency_value_11">Agency Code</div>
-                <div class="agency_value agency_value_12">{{ activityrank }}</div>
+                <div class="agency_value agency_value_10">{{ agencyData.phone }}</div>
+                <div class="agency_value agency_value_11"><b>Agency Code</b></div>
+                <div class="agency_value agency_value_12">{{ agencyData.activityRank }}</div>
             </div>
             <!-- Add other detail rows here -->
         </div>

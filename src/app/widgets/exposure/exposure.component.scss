@@ -1,5 +1,5 @@
-.Agency_header{
-    padding: 4% 5%;
+.exposure_header{
+    padding: 1%;
     color: rgba(255,255,255,1);
     font-family: Poppins;
     font-weight: Regular;
@@ -7,7 +7,7 @@
     opacity: 1;
     text-align: left;
 }
-.Agency{
+.exposure{
 height: 61px;
 background: #00B6AD;
 opacity: 1;
@@ -16,9 +16,26 @@ border-top-right-radius: 10px;
 box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
 overflow: hidden;
 }
-.agency_details1{
-   padding: 2% 1% 1% 5%;
+th, td{
+    border: 2px solid #EEEEEE;
+    text-align: center;
 }
-.agency_details{
-    padding: 1% 1% 1% 5%;
+th{
+    padding: 3%;
 }
+td{
+    padding: 8%;
+}
+
+.total_losses1{
+    text-align: center;
+    padding: 4% 0% 2% 0%;
+    }
+
+    .total-values{
+        text-align: center;
+        padding-bottom: 4%; 
+        font-size: 18px;
+        color:#009CC1;
+    }
+
