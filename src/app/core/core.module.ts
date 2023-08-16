@@ -12,6 +12,7 @@ import { RecentlyViewedComponent } from './recently-viewed/recently-viewed.compo
 import { RouterModule, Routes } from '@angular/router';
 import { InboxMenuComponent } from './inbox-menu/inbox-menu.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 
 const routes:Routes = [
 ];
@@ -24,7 +25,8 @@ const routes:Routes = [
     InboxTopbarComponent,
     TopbarComponent,
     RecentlyViewedComponent,
-    InboxMenuComponent
+    InboxMenuComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ const routes:Routes = [
     InboxTopbarComponent,
     TopbarComponent,
     RecentlyViewedComponent,
-    InboxMenuComponent
+    InboxMenuComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }
