@@ -12,6 +12,7 @@ export class HomeComponent {
     title: "",
     width:40,
     type: "checkbox",
+    columnmenu:false,
     filterable : false,
     sortable:false
   },
@@ -19,6 +20,7 @@ export class HomeComponent {
     field: 'alerts',
     title: 'Alerts',
     type: 'alerts',
+    columnmenu:false,
     sortable: false,
     groupable: true,
   },
@@ -27,61 +29,70 @@ export class HomeComponent {
     format: "{0:c}",
     title: "SubmissionID",
     type: "link",
-    sortable:true
+    sortable:true,
+    columnmenu:true,
   },
   {
       field: "AccountName",
       title: "Account Name",
       type: "text",
-      sortable:false
+      sortable:false,
+      columnmenu:true,
     },
     {
       field: "EffectiveDate",
       format: "{0:c}",
       title: "Effective Date",
       type: "text",
-      sortable:true
+      sortable:true,
+      columnmenu:true,
     },
     {
       field: "Type",
       format: "{0:c}",
       title: "Type",
       type: "text",
-      sortable:true
+      sortable:true,
+      columnmenu:true,
     },
   {
       field: "AgencyName",
       title: "Agency Name",
       type: "text",
-      sortable:false
+      sortable:false,
+      columnmenu:true,
     },
     {
       field: "LOB",
       format: "{0:c}",
       title: "LOB",
       type: "text",
-      sortable:true
+      sortable:true,
+      columnmenu:true,
     },
     {
       field: "Priority",
       format: "{0:c}",
       title: "Priority",
       type: "text",
-      sortable:true
+      sortable:true,
+      columnmenu:true,
     },
     {
       field: "Status",
       format: "{0:c}",
       title: "Status",
       type: "text",
-      sortable:true
+      sortable:true,
+      columnmenu:true,
     },
     {
       field: "AssignedBy",
       format: "{0:c}",
       title: "Assigned By",
       type: "text",
-      sortable:true
+      sortable:true,
+      columnmenu:true,
     }
 ];;
  public tableData: any[]= 

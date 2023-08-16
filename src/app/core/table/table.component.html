@@ -165,8 +165,6 @@
     <button kendoGridPDFCommand [svgIcon]="pdfSVG">Export to PDF</button>
   </ng-template>
   <ng-template ngFor [ngForOf]="columns" let-column>
-
-   
     <kendo-grid-column
       *ngIf="column.type == 'text'"
       field="{{ column.field }}"
@@ -176,6 +174,7 @@
       [sortable]="column.sortable"
       [filter]="column.type"
       [width]="column.width"
+      [columnMenu]="column.columnmenu"
     >
       <ng-template
         kendoGridCellTemplate
@@ -195,6 +194,7 @@
       [sortable]="column.sortable"
       [filter]="column.type"
       [width]="column.width"
+      [columnMenu]="column.columnmenu"
     >
       <ng-template
         kendoGridCellTemplate
@@ -216,7 +216,15 @@
       [sortable]="column.sortable"
       [filter]="column.type"
       [width]="column.width"
+      [columnMenu]="column.columnmenu"
     >
+    <ng-template
+          kendoGridHeaderTemplate
+          let-column
+          let-columnIndex="columnIndex"
+        >
+        <input type="checkbox" kendoCheckBox />
+        </ng-template>
       <ng-template
         kendoGridCellTemplate
         let-dataItem
@@ -235,6 +243,7 @@
       [sortable]="column.sortable"
       [filter]="column.type"
       [width]="column.width"
+      [columnMenu]="column.columnmenu"
     >
       <ng-template
         kendoGridCellTemplate
@@ -247,28 +256,45 @@
     </kendo-grid-column>
 
     <kendo-grid-column
-    *ngIf="column.type == 'alerts'"
-    field="{{ column.field }}"
-    title="{{ column.title }}"
-    format="{{ column.format }}"
-    [filterable]="column.filterable"
-    [sortable]="column.sortable"
-    [filter]="column.type"
-    [width]="column.width"
-  >
-    <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
+      *ngIf="column.type == 'alerts'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+      [columnMenu]="column.columnmenu"
     >
-    <div style="display: flex;">
-    <span class="k-icon k-i-circle" style="color: gray;"></span>
-    <span class="k-icon k-i-circle" style="color: gray;"></span>
-    <span class="k-icon k-i-circle" style="color: gray;"></span>
-  </div>
-    </ng-template>
-  </kendo-grid-column>
+    <ng-template
+          kendoGridHeaderTemplate
+          let-column
+          let-columnIndex="columnIndex"
+        >
+        <div>
+        <div style="text-align: center;">
+          {{ column.title }}
+        </div>
+        <div style="display: flex; text-align: center;">
+          <span class="k-icon k-i-circle" style="color: gray; font-size: 25px; margin: 0;"></span>
+          <span class="k-icon k-i-circle" style="color: gray; font-size: 25px;margin: 0;"></span>
+          <span class="k-icon k-i-circle" style="color: gray; font-size: 25px; margin: 0"></span>
+        </div>
+      </div>
+        </ng-template>
+      <ng-template
+        kendoGridCellTemplate
+        let-dataItem
+        let-rowIndex="rowIndex"
+        let-value="value"
+      >
+        <div style="display: flex">
+          <span class="k-icon k-i-circle" style="color: gray"></span>
+          <span class="k-icon k-i-circle" style="color: gray"></span>
+          <span class="k-icon k-i-circle" style="color: gray"></span>
+        </div>
+      </ng-template>
+    </kendo-grid-column>
   </ng-template>
 
   <kendo-grid-pdf

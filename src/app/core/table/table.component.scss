@@ -22,6 +22,13 @@
   background-color: #00B6AD;
   color: white;  
 }
+::ng-deep .k-grid-md .k-table-th .k-cell-inner .k-link {
+  padding-block: 0;
+  justify-content: center;
+}
+::ng-deep .k-grid .k-grid-header .k-table-th {
+  vertical-align: inherit;
+}
 .badge-success{
 color: green;
 }
