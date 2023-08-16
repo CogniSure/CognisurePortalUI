@@ -93,39 +93,39 @@
         <div class="side_icons">
           <span class="copied_icon">
             <span class="subdropdown">
-            <span
-              *ngIf="!isToggleOn"
-              (click)="toggleDropdown()"
-              class="imgHeight input-with-icon action_btn"
-            >
-            <span class="subheaderdropdown">
-              <span class="view">View as : {{ navItems[9].title }}</span>
-              <mat-icon>
-                <span class="material-icons-outlined">
-                  {{ navItems[9].icon }}
+              <span
+                *ngIf="!isToggleOn"
+                (click)="toggleDropdown()"
+                class="imgHeight input-with-icon action_btn"
+              >
+                <span class="subheaderdropdown">
+                  <span class="view">View as : {{ navItems[9].title }}</span>
+                  <mat-icon>
+                    <span class="material-icons-outlined">
+                      {{ navItems[9].icon }}
+                    </span>
+                  </mat-icon>
                 </span>
-              </mat-icon>
-              </span>
               </span>
             </span>
 
             <span class="subdropdown">
-            <span
-              *ngIf="isToggleOn"
-              (click)="toggleDropdown()"
-              class="imgHeight input-with-icon action_btn"
-            >
-            <span class="subheaderdropdown">
-              <span class="view">View as : {{ navItems[9].title }}</span>
-              <mat-icon>
-                <span class="material-icons-outlined">
-                  {{ navItems[9].icon }}
+              <span
+                *ngIf="isToggleOn"
+                (click)="toggleDropdown()"
+                class="imgHeight input-with-icon action_btn"
+              >
+                <span class="subheaderdropdown">
+                  <span class="view">View as : {{ navItems[9].title }}</span>
+                  <mat-icon>
+                    <span class="material-icons-outlined">
+                      {{ navItems[9].icon }}
+                    </span>
+                  </mat-icon>
                 </span>
-              </mat-icon>
               </span>
             </span>
           </span>
-        </span>
           <div class="dropdown" *ngIf="isToggleOn">
             <ul>
               <li *ngFor="let option of dropdownOptions">
@@ -164,7 +164,9 @@
     </button>
     <button kendoGridPDFCommand [svgIcon]="pdfSVG">Export to PDF</button>
   </ng-template>
-  <ng-template ngFor [ngForOf]="customColumns" let-column>
+  <ng-template ngFor [ngForOf]="columns" let-column>
+
+   
     <kendo-grid-column
       *ngIf="column.type == 'text'"
       field="{{ column.field }}"
@@ -185,28 +187,67 @@
       </ng-template>
     </kendo-grid-column>
     <kendo-grid-column
-    *ngIf="column.type == 'link'"
-    field="{{ column.field }}"
-    title="{{ column.title }}"
-    format="{{ column.format }}"
-    [filterable]="column.filterable"
-    [sortable]="column.sortable"
-    [filter]="column.type"
-    [width]="column.width"
-  >
-    <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
+      *ngIf="column.type == 'link'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
     >
-      <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">
-        {{ dataItem[column.field] }}</a
+      <ng-template
+        kendoGridCellTemplate
+        let-dataItem
+        let-rowIndex="rowIndex"
+        let-value="value"
       >
-    </ng-template>
-  </kendo-grid-column>
-  <kendo-grid-column
-    *ngIf="column.type == 'checkbox'"
+        <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">
+          {{ dataItem[column.field] }}</a
+        >
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column
+      *ngIf="column.type == 'checkbox'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+    >
+      <ng-template
+        kendoGridCellTemplate
+        let-dataItem
+        let-rowIndex="rowIndex"
+        let-value="value"
+      >
+        <input type="checkbox" kendoCheckBox />
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column
+      *ngIf="column.type == 'icon'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+    >
+      <ng-template
+        kendoGridCellTemplate
+        let-dataItem
+        let-rowIndex="rowIndex"
+        let-value="value"
+      >
+        <span class="k-icon k-i-import"></span>
+      </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column
+    *ngIf="column.type == 'alerts'"
     field="{{ column.field }}"
     title="{{ column.title }}"
     format="{{ column.format }}"
@@ -221,26 +262,11 @@
       let-rowIndex="rowIndex"
       let-value="value"
     >
-      <input type="checkbox" kendoCheckBox />
-    </ng-template>
-  </kendo-grid-column>
-  <kendo-grid-column
-    *ngIf="column.type == 'icon'"
-    field="{{ column.field }}"
-    title="{{ column.title }}"
-    format="{{ column.format }}"
-    [filterable]="column.filterable"
-    [sortable]="column.sortable"
-    [filter]="column.type"
-    [width]="column.width"
-  >
-    <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
-    >
-      <span class="k-icon k-i-import"></span>
+    <div style="display: flex;">
+    <span class="k-icon k-i-circle" style="color: gray;"></span>
+    <span class="k-icon k-i-circle" style="color: gray;"></span>
+    <span class="k-icon k-i-circle" style="color: gray;"></span>
+  </div>
     </ng-template>
   </kendo-grid-column>
   </ng-template>
