@@ -13,8 +13,7 @@
     4389</span> -->
 
 
-    <div class="agency_container">
-        <div class="container-fluid">
+    <!-- <div class="agency_container" style="padding: 0;">
                 <div class="Agency">
                     <div class="Agency_header">
                         Agency
@@ -22,7 +21,6 @@
                 </div>
                 <div class="agency_details1">
                     <div class="row">  
-                        <!-- <div class="col-md-12"> -->
                         <div class="col-md-6">
                         <div class="agency_name">Agency Name</div>
                         </div>
@@ -33,7 +31,6 @@
                     </div>
                     <div class="agency_details">
                         <div class="row">  
-                            <!-- <div class="col-md-12"> -->
                             <div class="col-md-6">
                             <div class="agency_name">Agency Code</div>
                             </div>
@@ -44,7 +41,6 @@
                         </div>
                         <div class="agency_details">
                             <div class="row">  
-                                <!-- <div class="col-md-12"> -->
                                 <div class="col-md-6">
                                 <div class="agency_name">Producer</div>
                                 </div>
@@ -55,7 +51,6 @@
                             </div>
                             <div class="agency_details">
                                 <div class="row">  
-                                    <!-- <div class="col-md-12"> -->
                                     <div class="col-md-6">
                                     <div class="agency_name"></div>
                                     </div>
@@ -66,7 +61,6 @@
                                 </div>
                                 <div class="agency_details">
                                     <div class="row">  
-                                        <!-- <div class="col-md-12"> -->
                                         <div class="col-md-6">
                                         <div class="agency_name"></div>
                                         </div>
@@ -78,7 +72,6 @@
 
                                     <div class="agency_details">
                                         <div class="row">  
-                                            <!-- <div class="col-md-12"> -->
                                             <div class="col-md-6">
                                             <div class="agency_name"></div>
                                             </div>
@@ -89,7 +82,6 @@
                                         </div>
                                         <div class="agency_details">
                                             <div class="row">  
-                                                <!-- <div class="col-md-12"> -->
                                                 <div class="col-md-6">
                                                 <div class="agency_name">Activity Rank</div>
                                                 </div>
@@ -98,7 +90,33 @@
                                             </div>
                                             </div>                 
                                             </div>
+    </div> -->
 
 
-                    </div>
+    <!-- agency-card.component.html -->
+    <div class="agency_container">
+<kendo-card style="width: 100%;">
+    <div class="Agency">
+        <h3 class="k-card-title Agency_header" >Agency</h3>
     </div>
+    <kendo-card-body class="agency_section">
+        <div class="agency-details">
+            <div class="row">
+                <div class="agency_value agency_value_1"><b>Agency Name</b></div>
+                <div class="agency_value agency_value_2">{{ agencyData.agencyName }}</div>
+                <div class="agency_value agency_value_3"><b>Agency Code</b></div>
+                <div class="agency_value agency_value_4">{{ agencyData.agencyCode }}</div>
+                <div class="agency_value agency_value_5"><b>Producer</b></div>
+                <div class="agency_value agency_value_6">{{ agencyData.producer }}</div>
+                <div class="agency_value agency_value_7"></div>
+                <div class="agency_value agency_value_8">{{ agencyData.producerEmail }}</div>
+                <div class="agency_value agency_value_9"></div>
+                <div class="agency_value agency_value_10">{{ agencyData.phone }}</div>
+                <div class="agency_value agency_value_11"><b>Agency Code</b></div>
+                <div class="agency_value agency_value_12">{{ agencyData.activityRank }}</div>
+            </div>
+            <!-- Add other detail rows here -->
+        </div>
+    </kendo-card-body>
+</kendo-card>
+</div>

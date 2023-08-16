@@ -1,125 +1,23 @@
-<!-- <div class="v515_1200"></div> -->
-<!-- <div class="v1038_2241"></div> -->
-<!-- <div class="v1038_2152"></div>
+<div class="agency_container">
+    <kendo-card style="width:100%">
+        <kendo-card-header class="coverages">
+        <h3 class="coverages_header">
+            Coverages
+        </h3>
+    </kendo-card-header>
+    <kendo-card-body style="padding: 0;">
+    <div class="lossesdetails">
 
-
-<span class="v515_1201">Agency</span>
-
-<div class="name"></div><span class="v515_1203">Agency Name</span><span class="v515_1221">Producer</span>
-<span class="v515_1219">Agency Code</span><span class="v515_1222">Activity Rank</span><span class="v515_1204">ACE
-    Insurance</span><span class="v515_1223">John Kelly</span><span class="v996_2153">jkelly@aceinsurance.com</span>
-    <span class="v996_2154">312-987-3456</span><span
-    class="v515_1220">A548889</span><span class="v515_1224">234 /
-    4389</span> -->
-
-
-    <div class="agency_container">
-        <div class="container-fluid">
-                <div class="Agency">
-                    <div class="Agency_header">
-                        Risk Clearance
-                    </div>
-                </div>
-                <div class="agency_details1">
-                    <div class="row">  
-                        <!-- <div class="col-md-12"> -->
-                        <div class="col-md-5">
-                        <div class="agency_name">OFAC Check</div>
-                        </div>
-                    <div class="col-md-5">
-                        <div class="agency_name">No</div>
-                    </div>
-                    <div class="col-md-2">
-                        
-                    </div>
-                    </div>                 
-                    </div>
-                    <div class="agency_details">
-                        <div class="row">  
-                            <!-- <div class="col-md-12"> -->
-                                <div class="col-md-5">
-                                    <div class="agency_name">SIC</div>
-                                    </div>
-                                <div class="col-md-5">
-                                    <div class="agency_name">7234</div>
-                                </div>
-                                <div class="col-md-2">
-                                    
-                                </div>
-                        </div>                 
-                        </div>
-                        <div class="agency_details">
-                            <div class="row">  
-                                <!-- <div class="col-md-12"> -->
-                                    <div class="col-md-5">
-                                        <div class="agency_name">States</div>
-                                        </div>
-                                    <div class="col-md-5">
-                                        <div class="agency_name">NJ</div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        
-                                    </div>
-                            </div>                 
-                            </div>
-                            <div class="agency_details">
-                                <div class="row">  
-                                    <!-- <div class="col-md-12"> -->
-                                        <div class="col-md-5">
-                                            <div class="agency_name"></div>
-                                            </div>
-                                        <div class="col-md-5">
-                                            <div class="agency_name">PA</div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            
-                                        </div>
-                                </div>                 
-                                </div>
-                                <div class="agency_details">
-                                    <div class="row">  
-                                        <!-- <div class="col-md-12"> -->
-                                            <div class="col-md-5">
-                                                <div class="agency_name"></div>
-                                                </div>
-                                            <div class="col-md-5">
-                                                <div class="agency_name">WA</div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                
-                                            </div>
-                                    </div>                 
-                                    </div>
-
-                                    <div class="agency_details">
-                                        <div class="row">  
-                                            <!-- <div class="col-md-12"> -->
-                                                <div class="col-md-5">
-                                                    <div class="agency_name">TIV</div>
-                                                    </div>
-                                                <div class="col-md-5">
-                                                    <div class="agency_name">< $30 M</div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    
-                                                </div>
-                                        </div>                 
-                                        </div>
-                                        <div class="agency_details">
-                                            <div class="row">  
-                                                <!-- <div class="col-md-12"> -->
-                                                    <div class="col-md-5">
-                                                        <div class="agency_name">Large Loss</div>
-                                                        </div>
-                                                    <div class="col-md-5">
-                                                        <div class="agency_name"></div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        
-                                                    </div>
-                                            </div>                 
-                                            </div>
-
-
-                    </div>
+        <table style="width:100%">
+            <tr *ngFor="let item of coveragesdata">
+                <td id="coveragename"><b>{{ item.coveragename }}</b></td>
+                <td id="coveragevalue">{{ item.coveragevalue }}</td>
+                <td id="businessincome">{{ item.businessincome }}</td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+        </table>
     </div>
+    </kendo-card-body>
+    </kendo-card>
+</div>

@@ -432,6 +432,7 @@ color: #005daa;
       .k-card-body{
           padding-block: 0 !important;
           padding-inline: 0 !important;
+          background-color: #EEF2F7;
       }
   }
 
@@ -439,3 +440,11 @@ color: #005daa;
     border: none !important;
     border-radius: 0 !important;
   }
+
+  ::ng-deep .k-tilelayout {
+    background-color:#EEF2F7!important;
+  }
+
+  // ::ng-deep .k-tilelayout-item{
+  //   background-color:#EEF2F7!important; 
+  // }

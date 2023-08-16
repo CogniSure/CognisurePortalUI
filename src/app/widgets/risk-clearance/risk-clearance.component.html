@@ -1,125 +1,67 @@
-<!-- <div class="v515_1200"></div> -->
-<!-- <div class="v1038_2241"></div> -->
-<!-- <div class="v1038_2152"></div>
-
-
-<span class="v515_1201">Agency</span>
-
-<div class="name"></div><span class="v515_1203">Agency Name</span><span class="v515_1221">Producer</span>
-<span class="v515_1219">Agency Code</span><span class="v515_1222">Activity Rank</span><span class="v515_1204">ACE
-    Insurance</span><span class="v515_1223">John Kelly</span><span class="v996_2153">jkelly@aceinsurance.com</span>
-    <span class="v996_2154">312-987-3456</span><span
-    class="v515_1220">A548889</span><span class="v515_1224">234 /
-    4389</span> -->
-
-
-    <div class="agency_container">
-        <div class="container-fluid">
-                <div class="Agency">
-                    <div class="Agency_header">
-                        Risk Clearance
+ <div class="risk_details">
+<kendo-card style="width:100%;">
+    <kendo-card-header class="risk">
+        <h3 class="k-card-title risk_header">Risk Clearance</h3>
+    </kendo-card-header>
+    <kendo-card-body class="risk_section">
+        <div class="risk-details">
+            <div class="row">
+                <div class="riskclearance_1">
+                <div class="risk_value risk_value_1"><b>OFAC Check</b></div>
+                <div class="risk_value risk_value_2">{{ riskData.ofaccheckvalue }}</div>
+                <mat-icon class="checkbox1"><span class="material-icons-outlined">
+                    check_box
+                    </span></mat-icon>
                     </div>
+                    <div class="riskclearance_1">
+                <div class="risk_value risk_value_3"><b>SIC</b></div>
+                <div class="risk_value risk_value_4">{{ riskData.sicvalue }}</div>
+                <mat-icon class="checkbox2"><span class="material-icons-outlined">
+                    check_box
+                    </span></mat-icon>
+                    </div>
+
+                    <div class="riskclearance_1">
+                <div class="risk_value risk_value_5"><b>States</b></div>
+                <div class="risk_value risk_value_6">{{ riskData.statesvalue }}</div>
+                <mat-icon class="checkbox3"><span class="material-icons-outlined">
+                    check_box
+                    </span></mat-icon>
+                    </div>
+
+                    <div class="riskclearance_1">
+                <div class="risk_value risk_value_7"></div>
+                <div class="risk_value risk_value_8">{{ riskData.statesvalue1 }}</div>
+                <mat-icon class="checkbox4"><span class="material-icons-outlined">
+                    check_box
+                    </span></mat-icon>
                 </div>
-                <div class="agency_details1">
-                    <div class="row">  
-                        <!-- <div class="col-md-12"> -->
-                        <div class="col-md-5">
-                        <div class="agency_name">OFAC Check</div>
-                        </div>
-                    <div class="col-md-5">
-                        <div class="agency_name">No</div>
-                    </div>
-                    <div class="col-md-2">
-                        
-                    </div>
-                    </div>                 
-                    </div>
-                    <div class="agency_details">
-                        <div class="row">  
-                            <!-- <div class="col-md-12"> -->
-                                <div class="col-md-5">
-                                    <div class="agency_name">SIC</div>
-                                    </div>
-                                <div class="col-md-5">
-                                    <div class="agency_name">7234</div>
-                                </div>
-                                <div class="col-md-2">
-                                    
-                                </div>
-                        </div>                 
-                        </div>
-                        <div class="agency_details">
-                            <div class="row">  
-                                <!-- <div class="col-md-12"> -->
-                                    <div class="col-md-5">
-                                        <div class="agency_name">States</div>
-                                        </div>
-                                    <div class="col-md-5">
-                                        <div class="agency_name">NJ</div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        
-                                    </div>
-                            </div>                 
-                            </div>
-                            <div class="agency_details">
-                                <div class="row">  
-                                    <!-- <div class="col-md-12"> -->
-                                        <div class="col-md-5">
-                                            <div class="agency_name"></div>
-                                            </div>
-                                        <div class="col-md-5">
-                                            <div class="agency_name">PA</div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            
-                                        </div>
-                                </div>                 
-                                </div>
-                                <div class="agency_details">
-                                    <div class="row">  
-                                        <!-- <div class="col-md-12"> -->
-                                            <div class="col-md-5">
-                                                <div class="agency_name"></div>
-                                                </div>
-                                            <div class="col-md-5">
-                                                <div class="agency_name">WA</div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                
-                                            </div>
-                                    </div>                 
-                                    </div>
 
-                                    <div class="agency_details">
-                                        <div class="row">  
-                                            <!-- <div class="col-md-12"> -->
-                                                <div class="col-md-5">
-                                                    <div class="agency_name">TIV</div>
-                                                    </div>
-                                                <div class="col-md-5">
-                                                    <div class="agency_name">< $30 M</div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    
-                                                </div>
-                                        </div>                 
-                                        </div>
-                                        <div class="agency_details">
-                                            <div class="row">  
-                                                <!-- <div class="col-md-12"> -->
-                                                    <div class="col-md-5">
-                                                        <div class="agency_name">Large Loss</div>
-                                                        </div>
-                                                    <div class="col-md-5">
-                                                        <div class="agency_name"></div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        
-                                                    </div>
-                                            </div>                 
-                                            </div>
+                <div class="riskclearance_1">
+                <div class="risk_value risk_value_9"></div>
+                <div class="risk_value risk_value_10">{{ riskData.statesvalue2 }}</div>
+                <mat-icon class="checkbox5"><span class="material-icons-outlined">
+                    check_box
+                    </span></mat-icon>
+                </div>
 
+                <div class="riskclearance_1">
+                <div class="risk_value risk_value_11"><b>TIV</b></div>
+                <div class="risk_value risk_value_12">{{ riskData.tivvalue }}</div>
+                <mat-icon class="checkbox6"><span class="material-icons-outlined">
+                    check_box
+                    </span></mat-icon>
+                </div>
 
-                    </div>
-    </div>
+                <div class="riskclearance_1">
+                <div class="risk_value risk_value_13"><b>Large Loss</b></div>
+                <div class="risk_value risk_value_14">{{riskData.largeloss}}</div>
+                <mat-icon class="checkbox7"><span class="material-icons-outlined">
+                    check_box
+                    </span></mat-icon>
+                </div>
+            </div>
+        </div>
+    </kendo-card-body>
+</kendo-card>
+</div>

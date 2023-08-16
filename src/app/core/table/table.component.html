@@ -92,33 +92,40 @@
       <kendo-tilelayout-item-body style="text-align: left; padding: 0">
         <div class="side_icons">
           <span class="copied_icon">
+            <span class="subdropdown">
             <span
               *ngIf="!isToggleOn"
               (click)="toggleDropdown()"
               class="imgHeight input-with-icon action_btn"
             >
+            <span class="subheaderdropdown">
               <span class="view">View as : {{ navItems[9].title }}</span>
               <mat-icon>
                 <span class="material-icons-outlined">
                   {{ navItems[9].icon }}
                 </span>
               </mat-icon>
+              </span>
+              </span>
             </span>
 
+            <span class="subdropdown">
             <span
               *ngIf="isToggleOn"
               (click)="toggleDropdown()"
               class="imgHeight input-with-icon action_btn"
             >
+            <span class="subheaderdropdown">
               <span class="view">View as : {{ navItems[9].title }}</span>
               <mat-icon>
                 <span class="material-icons-outlined">
                   {{ navItems[9].icon }}
                 </span>
               </mat-icon>
+              </span>
             </span>
           </span>
-
+        </span>
           <div class="dropdown" *ngIf="isToggleOn">
             <ul>
               <li *ngFor="let option of dropdownOptions">

@@ -9,6 +9,7 @@ import { RiskClearanceComponent } from './widgets/risk-clearance/risk-clearance.
 import { TotalLossesComponent } from './widgets/total-losses/total-losses.component';
 import { DashboardwidgetsComponent } from './dashboard/dashboardwidgets/dashboardwidgets.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { SummaryComponent } from './inbox/summary/summary.component';
 
 
 // const routes:Routes = [
