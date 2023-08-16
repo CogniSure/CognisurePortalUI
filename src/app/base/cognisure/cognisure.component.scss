@@ -389,6 +389,21 @@ color: #005daa;
   }
 }
 
+::ng-deep .fade-effect{
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+      height: 0%;
+    }
+    100% {
+      opacity: 1;
+      height: 100%;
+    }
+  }
+}
 @media screen and (max-width: 912px) {
   //   .footer_text .Powered_text .label_text{
   //     position: absolute!important;

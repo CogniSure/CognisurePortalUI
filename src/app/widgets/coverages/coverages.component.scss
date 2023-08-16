@@ -1,39 +1,40 @@
-.coverages_header {
+.agency_container {
+  .coverages_header {
     padding: 1%;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     font-family: Poppins;
     font-weight: Regular;
     font-size: 20px;
     opacity: 1;
     text-align: left;
-}
-
-.coverages {
+  }
+  
+  .coverages {
     height: 61px;
-    background: #00B6AD;
+    background: #00b6ad;
     opacity: 1;
     // border-top-left-radius: 10px;
     // border-top-right-radius: 10px;
     // box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
     // overflow: hidden;
-}
+  }
 
-.totalloss {
+  .totalloss {
     justify-content: center;
     text-align: center;
-}
+  }
 
-th,
-td {
-    border: 2px solid #EEEEEE;
+  th,
+  td {
+    border: 2px solid #eeeeee;
     text-align: center;
-}
+  }
 
-th {
+  th {
     padding: 3%;
-}
+  }
 
-td {
+  td {
     padding: 6% 5% 6% 4.5%;
+  }
 }
-
