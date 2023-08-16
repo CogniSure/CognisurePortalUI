@@ -1,0 +1,21 @@
+.exposure_table{
+background-color: #fff;
+border: 1px solid #eee;
+}
+
+::ng-ddep .k-grid {
+    background-color: #fff!important;
+  }
+
+  ::ng-ddep .k-grid-header {
+    background-color: #3399ff;
+    color: white;
+  }
+  
+  ::ng-ddep .k-alt {
+    background-color: #e6e6e6;
+  }
+
+  ::ng-ddep .k-grid td[aria-colindex="4"] {
+    background-color: #ffd700; 
+  }
