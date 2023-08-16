@@ -22,7 +22,7 @@ export class SummaryComponent {
   constructor( private injector: Injector,private globalService:GlobalService,private dbService : DashboardService) {
     //this.globalService.setDashboardReload(true);
   }
-
+  animationClass = "slide-effect-x"
   ngAfterViewInit() {
     // this.globalService.dashboardFilter$.subscribe(x=>{
     //   if(x.ReloadRequired){
@@ -30,11 +30,14 @@ export class SummaryComponent {
     //     this.globalService.setDashboardReload(false);
     //   }
     // })
-    //this.globalService.setDashboardReload(false);
+    this.globalService.animationClass$.next("");
+    console.log("ng after view init -summary")
+    
   }
 
   ngOnInit(): void {
-   // this.globalService.setDashboardReload(true);
+    console.log("ngOn Init -summary")
+    this.globalService.animationClass$.next("slide-effect-x");
     this.componentOrder = DataComponent.Datahub;
     this.custComponents = [];
     var i = 1;
@@ -64,6 +67,7 @@ export class SummaryComponent {
     this.globalService.setDashboardReload(false);
   }
   createInjector(header:string,widgetType:string):any {
+    console.log("Create Injector -summary : " + this.reloadReq)
     var myInjector: Injector;
     let widgetInput:WidgetInput =
     {
@@ -79,7 +83,7 @@ export class SummaryComponent {
         name : header
         }
       );
-
+      //this.reloadReq = false;
     return myInjector;
       }
 }

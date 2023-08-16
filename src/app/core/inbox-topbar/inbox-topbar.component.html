@@ -142,7 +142,9 @@
                   class="imgHeight rounded-circle"
                 />           
         </span>&nbsp;&nbsp;&nbsp; -->
-        <span class="copied_icon">
+        <span class="copied_icon" [matMenuTriggerFor]="menu"
+        #menuTrigger="matMenuTrigger"
+        (mouseover)="openMyMenu(menuTrigger)">
             <span *ngIf="!isToggleOn" (click)="toggleDropdown()" class="imgHeight input-with-icon action_btn">
                 <!-- <mat-icon class="drop_up"><span class="material-icons-outlined"> -->
 
@@ -150,23 +152,54 @@
                     <!-- </span></mat-icon> -->
                 </span>
         
-            <span *ngIf="isToggleOn" (click)="toggleDropdown()" class="imgHeight input-with-icon action_btn" >
+            <!-- <span *ngIf="isToggleOn" (click)="toggleDropdown()" class="imgHeight input-with-icon action_btn" > -->
             <!-- <mat-icon class="drop_down"><span class="material-icons-outlined"> -->
-                {{ navItems[6].title }}
+                <!-- {{ navItems[6].title }} -->
                     <!-- </span></mat-icon> -->
-                </span>
+                <!-- </span> -->
+                <mat-menu
+              #menu="matMenu"
+              class="profiledropdown"
+              style="color: #f5f5f5 !important"
+            >
+              <span (mouseleave)="closeMyMenu(menuTrigger)">
+                <button
+                  mat-menu-item
+                  routerLink="/my-profile"
+                  queryParamsHandling="preserve"
+                >
+                My Profile
+                </button>
+                <button
+                  mat-menu-item
+                  routerLink="/change-password"
+                  queryParamsHandling="preserve"
+                >
+                Change Password
+                </button>
+                <button
+                  mat-menu-item
+                  routerLink="/notifications-settings"
+                  queryParamsHandling="preserve"
+                >
+                Notifications Settings
+                </button>
+                <button mat-menu-item (click)="Logout()">Sign Out</button>
+              </span>
+            </mat-menu>
             </span>
-
         <div class="dropdown" *ngIf="isToggleOn">
             <!-- <mat-card *ngIf="isToggleOn">
+
                 <mat-card-content> -->
-                  <ul>
+                  <!-- <ul>
                     <li *ngFor="let option of dropdownOptions">
                       <a [routerLink]="option.link">{{ option.label }}</a>
                     </li>
-                  </ul>
+                  </ul> -->
                 <!-- </mat-card-content>
               </mat-card> -->
+              
               </div>
 
               </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 interface NavItem {
@@ -50,13 +51,13 @@ export class InboxTopbarComponent {
     this.isToggleOn = !this.isToggleOn;
   }
 
-  // Logout() {
-  //   this.router.navigate(['/login'], { queryParamsHandling: 'preserve' });
-  // }
-  // openMyMenu(menuTrigger: MatMenuTrigger) {
-  //   menuTrigger.openMenu();
-  // }
-  // closeMyMenu(menuTrigger: MatMenuTrigger) {
-  //   menuTrigger.closeMenu();
-  // }
+  Logout() {
+    this.router.navigate(['/login'], { queryParamsHandling: 'preserve' });
+  }
+  openMyMenu(menuTrigger: MatMenuTrigger) {
+    menuTrigger.openMenu();
+  }
+  closeMyMenu(menuTrigger: MatMenuTrigger) {
+    menuTrigger.closeMenu();
+  }
 }

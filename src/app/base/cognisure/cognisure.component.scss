@@ -389,18 +389,37 @@ color: #005daa;
   }
 }
 
-::ng-deep .fade-effect{
-  animation: fadeInAnimation ease 3s;
+::ng-deep .slide-effect-y1{
+  animation: slideInAnimationY ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: both;
-  @keyframes fadeInAnimation {
+  @keyframes slideInAnimationY {
     0% {
-      opacity: 0;
-      height: 0%;
+      // opacity: 0;
+      // height: 0%;
+      transform: translateY(-100%);
     }
     100% {
-      opacity: 1;
-      height: 100%;
+      // opacity: 1;
+      // height: 100%;
+      transform: translateY(0%);
+    }
+  }
+}
+::ng-deep .slide-effect-x1{
+  animation: slideInAnimationX ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  @keyframes slideInAnimationX {
+    0% {
+      // opacity: 0;
+      // height: 0%;
+      transform: translateX(-100%);
+    }
+    100% {
+      // opacity: 1;
+      // height: 100%;
+      transform: translateX(0%);
     }
   }
 }
