@@ -1,6 +1,23 @@
-.Agency_header{
-    padding: 4% 5%;
-    color: rgba(255,255,255,1);
+.risk_clearance {
+  .risk_value {
+    width: 50%;
+    padding: 1%;
+  }
+
+  .risk {
+    height: 61px;
+    background: #00b6ad;
+    opacity: 1;
+    // border-top-left-radius: 10px;
+    // border-top-right-radius: 10px;
+    // box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
+    // overflow: hidden;
+    color: #fff;
+  }
+
+  .risk_header {
+    padding: 1% 2%;
+    color: rgba(255, 255, 255, 1);
     // position: absolute;
     // top: 209px;
     // left: 367px;
@@ -9,70 +26,20 @@
     font-size: 20px;
     opacity: 1;
     text-align: left;
-}
-.Agency{
-// width: 500px;
-height: 61px;
-background: #00B6AD;
-opacity: 1;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
-overflow: hidden;
-}
-// .agency_name{
-//   width:100%;  
-// }
-// .agency_name{
-//     column-width: 60%;
-// }
-   .agency_details1{
-    padding: 2% 1% 1% 5%;
-   }
-   .agency_details{
-     padding: 1% 1% 1% 5%;
-   }
+  }
 
-   .risk_value{
-    width:50%;
-    padding:1%;
-   }
-
-   .risk{
-    height: 61px;
-    background: #00B6AD;
-    opacity: 1;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
-    overflow: hidden;
-    color:#fff;
-   }
-
-   .risk_header{
-    padding: 1% 2%;
-      color: rgba(255,255,255,1);
-      // position: absolute;
-      // top: 209px;
-      // left: 367px;
-      font-family: Poppins;
-      font-weight: Regular;
-      font-size: 20px;
-      opacity: 1;
-      text-align: left;
-    }
-
-    .risk_section{
+  .risk_section {
     padding-top: 1%;
     padding-bottom: 1%;
-    }
+  }
 
-   .riskclearance_1{
+  .riskclearance_1 {
     display: flex;
-   }
+  }
 
-   .riskclearance_1 mat-icon{
+  .riskclearance_1 mat-icon {
     font-size: 14px;
     color: #009cc1;
     padding-top: 2%;
-   }
+  }
+}

@@ -1,6 +1,7 @@
-.Agency_header{
+.total_losses_container {
+  .total_losses_header {
     padding: 1% 2%;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     // position: absolute;
     // top: 209px;
     // left: 367px;
@@ -9,68 +10,68 @@
     font-size: 20px;
     opacity: 1;
     text-align: left;
-}
-.Agency{
-// width: 500px;
-height: 61px;
-background: #00B6AD;
-opacity: 1;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
-overflow: hidden;
-}
+  }
+  .total_losses {
+    // width: 500px;
+    height: 61px;
+    background: #00b6ad;
+    opacity: 1;
+    // border-top-left-radius: 10px;
+    // border-top-right-radius: 10px;
+    // box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
+    // overflow: hidden;
+  }
 
-.totalloss{
+  .totalloss {
     justify-content: center;
     text-align: center;
-}
-.total_losses1{
+  }
+  .total_losses1 {
     text-align: center;
     padding: 2% 1% 2% 1%;
-}
-.total_losses2{
+  }
+  .total_losses2 {
     text-align: center;
-    color:rgba(0,182,173,1);
+    color: rgba(0, 182, 173, 1);
     font-size: 32px;
-    
-}
+  }
 
-th, td{
-    border: 2px solid #EEEEEE;
+  th,
+  td {
+    border: 2px solid #eeeeee;
     text-align: center;
-}
-th{
+  }
+  th {
     padding: 3%;
-}
-td{
+  }
+  td {
     padding: 7.2%;
-}
+  }
 
-.lossesdetails{
+  .lossesdetails {
     padding-top: 2.2%;
-}
+  }
 
-.loss_years{
+  .loss_years {
     display: flex;
     justify-content: center;
-}
+  }
 
-.totallosses_year{
+  .totallosses_year {
     padding-left: 2%;
-}
+  }
 
-::ng-deep .totallosses_year select{
-    font-size: 11px!important;
-    background-color: #009CC1 !important;
-    color:#fff;
-    border:1px solid #009CC1;
+  ::ng-deep .totallosses_year select {
+    font-size: 11px !important;
+    background-color: #009cc1 !important;
+    color: #fff;
+    border: 1px solid #009cc1;
     border-radius: 4px;
     padding: 3% 6% 6% 6%;
-}
+  }
 
-.total-values{
+  .total-values {
     font-size: 18px;
-    color:#009CC1;
+    color: #009cc1;
+  }
 }
-

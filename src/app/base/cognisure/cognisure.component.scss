@@ -438,7 +438,8 @@ color: #005daa;
 
   ::ng-deep .k-card {
     border: none !important;
-    border-radius: 0 !important;
+    border-radius: 84 !important;
+    box-shadow: 0;
   }
 
   ::ng-deep .k-tilelayout {

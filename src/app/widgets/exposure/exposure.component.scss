@@ -1,41 +1,43 @@
-.exposure_header{
+.exposer_container {
+  .exposure_header {
     padding: 1%;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     font-family: Poppins;
     font-weight: Regular;
     font-size: 20px;
     opacity: 1;
     text-align: left;
-}
-.exposure{
-height: 61px;
-background: #00B6AD;
-opacity: 1;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
-overflow: hidden;
-}
-th, td{
-    border: 2px solid #EEEEEE;
+  }
+  .exposure {
+    height: 61px;
+    background: #00b6ad;
+    opacity: 1;
+    // border-top-left-radius: 10px;
+    // border-top-right-radius: 10px;
+    // box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.05000000074505806);
+    // overflow: hidden;
+  }
+  th,
+  td {
+    border: 2px solid #eeeeee;
     text-align: center;
-}
-th{
+  }
+  th {
     padding: 3%;
-}
-td{
+  }
+  td {
     padding: 8%;
-}
+  }
 
-.total_losses1{
+  .total_losses1 {
     text-align: center;
     padding: 4% 0% 2% 0%;
-    }
+  }
 
-    .total-values{
-        text-align: center;
-        padding-bottom: 4%; 
-        font-size: 18px;
-        color:#009CC1;
-    }
-
+  .total-values {
+    text-align: center;
+    padding-bottom: 4%;
+    font-size: 18px;
+    color: #009cc1;
+  }
+}
