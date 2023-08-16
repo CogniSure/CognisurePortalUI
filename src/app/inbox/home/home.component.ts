@@ -16,6 +16,13 @@ export class HomeComponent {
     sortable:false
   },
   {
+    field: 'alerts',
+    title: 'Alerts',
+    type: 'alerts',
+    sortable: false,
+    groupable: true,
+  },
+  {
     field: "SubmissionID",
     format: "{0:c}",
     title: "SubmissionID",
