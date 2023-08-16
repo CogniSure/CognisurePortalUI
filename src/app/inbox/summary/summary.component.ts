@@ -48,8 +48,8 @@ export class SummaryComponent {
         BoxClass: entry.BoxType,
         Fullscreen : entry.Fullscreen,
         ColumnId :  entry.ColumnId,
-        ColumnSpan :  entry.ColumnId,
-        RowSpan :  entry.ColumnId,
+        ColumnSpan :  entry.ColumnSpan,
+        RowSpan :  entry.RowSpan,
         HeaderColor : entry.HeaderColor,
         FontColor : entry.FontColor
       });
@@ -63,14 +63,14 @@ export class SummaryComponent {
     this.isFullScreen = !this.isFullScreen;
     this.globalService.setDashboardReload(false);
   }
-  createInjector(header:string):any {
+  createInjector(header:string,widgetType:string):any {
     var myInjector: Injector;
     let widgetInput:WidgetInput =
     {
       WidgetName : header,
       Api : "",
       ReloadRequired:this.reloadReq,
-      WidgetType: ""
+      WidgetType: widgetType
     }
     myInjector = Injector.create(
       {

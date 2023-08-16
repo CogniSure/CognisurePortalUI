@@ -9,9 +9,11 @@ export class DataComponent {
       WidgetName: 'Agency',
       WidgetType: 'Agency',
       Header: 'Agency',
-      
-    //   ApiURL: 'api/data',
-    //   Fullscreen: false,
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
     {
       id: 2,
@@ -19,8 +21,11 @@ export class DataComponent {
       WidgetName: 'Riskclearance',
       WidgetType: 'Riskclearance',
       Header: 'Risk Clearance',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: false,
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
     {
       id: 3,
@@ -28,26 +33,23 @@ export class DataComponent {
       WidgetName: 'Totallosses',
       WidgetType: 'Totallosses',
       Header: 'Total Losses',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: false,
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
-    // {
-    //   id: 4,
-    //   BoxType: 'LargeBox',
-    //   WidgetName: 'Ytdbudgetvsactualcost',
-    //   WidgetType: 'Mixed',
-    //   Header: 'YTD Budget vs. Actual Cost Comparison',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
-    // },
     {
       id: 5,
       BoxType: 'MediumBox',
       WidgetName: 'Exposure',
       WidgetType: 'Exposure',
       Header: 'Exposure',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
     {
       id: 6,
@@ -55,8 +57,11 @@ export class DataComponent {
       WidgetName: 'Coverages',
       WidgetType: 'Coverages',
       Header: 'Coverages',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
     },
     {
       id: 7,
@@ -64,45 +69,12 @@ export class DataComponent {
       WidgetName: 'Losses',
       WidgetType: 'Losses',
       Header: 'Losses',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
-    },
-    // {
-    //   id: 8,
-    //   BoxType: 'MediumBox',
-    //   WidgetName: 'Genericvsbrandutilizationpie',
-    //   WidgetType: 'Pie',
-    //   Header: 'Generic vs. Brand Utilization',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
-    // },
-    // {
-    //   id: 9,
-    //   BoxType: 'MediumBox',
-    //   WidgetName: 'Specialityutilizationpie',
-    //   WidgetType: 'Pie',
-    //   Header: 'Specialty vs. Non-Specialty Utilization',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
-    // },
-    // {
-    //   id: 10,
-    //   BoxType: 'MediumBox',
-    //   WidgetName: 'Genericvsbrandutilization',
-    //   WidgetType: 'XBar',
-    //   Header: 'Generic vs. Brand Utilization',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
-    // },
-    // {
-    //   id: 11,
-    //   BoxType: 'MediumBox',
-    //   WidgetName: 'Specialityutilization',
-    //   WidgetType: 'XBar',
-    //   Header: 'Specialty vs. Non-Specialty Utilization',
-    //   ApiURL: 'api/data',
-    //   Fullscreen: true,
-    // },
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    }
   ];
 
   public static Dashboardhub = [
