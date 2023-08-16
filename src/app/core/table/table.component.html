@@ -218,13 +218,13 @@
       [width]="column.width"
       [columnMenu]="column.columnmenu"
     >
-    <ng-template
-          kendoGridHeaderTemplate
-          let-column
-          let-columnIndex="columnIndex"
-        >
+      <ng-template
+        kendoGridHeaderTemplate
+        let-column
+        let-columnIndex="columnIndex"
+      >
         <input type="checkbox" kendoCheckBox />
-        </ng-template>
+      </ng-template>
       <ng-template
         kendoGridCellTemplate
         let-dataItem
@@ -266,25 +266,31 @@
       [width]="column.width"
       [columnMenu]="column.columnmenu"
     >
-    <ng-template
-          kendoGridHeaderTemplate
-          let-column
-          let-columnIndex="columnIndex"
-        >
+      <ng-template
+        kendoGridHeaderTemplate
+        let-column
+        let-columnIndex="columnIndex"
+      >
         <div>
-        <div style="text-align: center;">
-          {{ column.title }}
+          <div style="text-align: center">
+            {{ column.title }}
+          </div>
+          <div style="display: flex; text-align: center">
+            <img
+              src="../../../assets/images/Extraction.svg"
+              style="padding-right: 0.5rem"
+            />
+            <img
+              src="../../../assets/images/Completeness Check.svg"
+              style="padding-right: 0.5rem"
+            />
+            <img
+              src="../../../assets/images/Risk Clearance.svg"
+              style="padding-right: 0.5rem"
+            />
+          </div>
         </div>
-        <div style="display: flex; text-align: center;">
-          <img src="../../../assets/images/Extraction.svg" style="padding-right: 0.5rem;"/>
-          <img src="../../../assets/images/Completeness Check.svg" style="padding-right: 0.5rem;"/>
-          <img src="../../../assets/images/Risk Clearance.svg" style="padding-right: 0.5rem;"/>
-          <!-- <span class="k-icon k-i-circle" style="color: gray; font-size: 25px; margin: 0;"></span>
-          <span class="k-icon k-i-circle" style="color: gray; font-size: 25px;margin: 0;"></span>
-          <span class="k-icon k-i-circle" style="color: gray; font-size: 25px; margin: 0"></span> -->
-        </div>
-      </div>
-        </ng-template>
+      </ng-template>
       <ng-template
         kendoGridCellTemplate
         let-dataItem
