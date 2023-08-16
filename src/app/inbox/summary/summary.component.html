@@ -7,7 +7,7 @@
   [rowHeight]="285"
   [style]="'padding: 0 0.5% 0 0.5% !important; height: 100%; overflow:auto;'"
 >
-  <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="item.ColumnSpan" [rowSpan]="item.RowSpan" style="border: 2px !important; border-radius:10 !important;">
+  <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="item.ColumnSpan" [rowSpan]="item.RowSpan" style="border: 2px !important; border-radius:10 !important; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" >
 
     <!-- <kendo-tilelayout-item-header style="height: 3em;" [style.background-color]="item.HeaderColor">
       <h5 class="header-text" style="font-size: 16px" >
