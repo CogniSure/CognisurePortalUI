@@ -6,6 +6,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  dropdownValues: string[] = [];
+  isToggleOn: boolean = false;
+  dropdownOptions: { label: string; link: string }[] = [];
+  isDataAvailble = false;
+  navItems = [
+    { title: 'Create Submisson', content: '', icon: 'add_box' },
+    { title: '', content: '', icon: 'refresh' },
+    { title: '', routeLink: '', icon: 'description' },
+    { title: '', routeLink: '/contact', icon: 'filter_alt' },
+    { title: '', routeLink: '', icon: 'settings' },
+    { title: 'All 24', routeLink: '/contact', icon: '' },
+    { title: 'New 4', routeLink: '/contact', icon: '' },
+    { title: 'Pending Review 5', routeLink: '', icon: '', icon1: '' },
+    { title: 'Rush 1', routeLink: '', icon: '', icon1: '' },
+    { title: 'Evelyn Salt', routeLink: '', icon: 'arrow_drop_down', icon1: '' },
+  ];
+  fetchDropdownOptions(): void {
+    this.dropdownOptions =  [
+      { label: 'My Profile', link: '/my-profile' },
+      { label: 'Change Password', link: '/change-password' },
+      { label: 'Notifications Settings', link: '/notifications-settings' },
+      { label: 'Sign Out', link: '/sign-out' }
+    ];;
+  }
+
+  onSelectOption(option: string): void {}
+
+  toggleDropdown(): void {
+    this.isToggleOn = !this.isToggleOn;
+  }
  public columns: any =[
   {
     field: "Id",
@@ -27,7 +57,8 @@ export class HomeComponent {
   {
     field: "SubmissionID",
     format: "{0:c}",
-    title: "SubmissionID",
+    title: "Submission ID",
+    width:180,
     type: "link",
     sortable:true,
     columnmenu:true,
@@ -94,7 +125,7 @@ export class HomeComponent {
       sortable:true,
       columnmenu:true,
     }
-];;
+];
  public tableData: any[]= 
  [
   {
