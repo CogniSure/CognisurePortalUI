@@ -157,9 +157,28 @@
     </button>
     <button kendoGridPDFCommand [svgIcon]="pdfSVG">Export to PDF</button>
   </ng-template>
-
-  <kendo-grid-column
-    *ngFor="let column of columns"
+  <ng-template ngFor [ngForOf]="customColumns" let-column>
+    <kendo-grid-column
+      *ngIf="column.type == 'text'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+    >
+      <ng-template
+        kendoGridCellTemplate
+        let-dataItem
+        let-rowIndex="rowIndex"
+        let-value="value"
+      >
+        {{ dataItem[column.field] }}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column
+    *ngIf="column.type == 'link'"
     field="{{ column.field }}"
     title="{{ column.title }}"
     format="{{ column.format }}"
@@ -173,57 +192,51 @@
       let-dataItem
       let-rowIndex="rowIndex"
       let-value="value"
-      *ngIf="column.type == 'text'"
     >
-      {{ dataItem[column.field] }}</ng-template
-    >
-    <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
-      *ngIf="column.type == 'link'"
-    >
-    <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">{{
-      dataItem[column.field]
-    }}</a>
-    </ng-template>
-
-    <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
-      *ngIf="column.type == 'checkbox'"
-    >
-      <input type="checkbox" kendoCheckBox
-    /></ng-template>
-  </kendo-grid-column>
-
-  <!-- <kendo-grid-checkbox-column
-    [width]="45"
-    [headerClass]="{ 'text-center': true }"
-    [class]="{ 'text-center': true }"
-    [resizable]="false"
-    [columnMenu]="false"
-    [showSelectAll]="true"
-  ></kendo-grid-checkbox-column>
-
-  <kendo-grid-column field="job_title" title="SubmissionId" [width]="220">
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">{{
-        dataItem.job_title
-      }}</a>
+      <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">
+        {{ dataItem[column.field] }}</a
+      >
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column
-    field="country"
-    title="Account Name"
-    [width]="150"
-    [class]="{ 'text-center': true }"
-    [resizable]="false"
+    *ngIf="column.type == 'checkbox'"
+    field="{{ column.field }}"
+    title="{{ column.title }}"
+    format="{{ column.format }}"
+    [filterable]="column.filterable"
+    [sortable]="column.sortable"
+    [filter]="column.type"
+    [width]="column.width"
   >
-  </kendo-grid-column> -->
+    <ng-template
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+      let-value="value"
+    >
+      <input type="checkbox" kendoCheckBox />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column
+    *ngIf="column.type == 'icon'"
+    field="{{ column.field }}"
+    title="{{ column.title }}"
+    format="{{ column.format }}"
+    [filterable]="column.filterable"
+    [sortable]="column.sortable"
+    [filter]="column.type"
+    [width]="column.width"
+  >
+    <ng-template
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+      let-value="value"
+    >
+      <span class="k-icon k-i-import"></span>
+    </ng-template>
+  </kendo-grid-column>
+  </ng-template>
 
   <kendo-grid-pdf
     fileName="Employees.pdf"

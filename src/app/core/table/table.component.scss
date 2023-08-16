@@ -368,6 +368,13 @@ color: #005daa;
     color: white !important;
   }
 }
+.k-icon {
+  display: block;
+  clear: both;
+  margin: 0 auto 10px;
+  color: #656565;
+  font-size: 32px;
+}
 ::ng-deep ::-webkit-scrollbar {
   width: 6px;
   border-radius: 100px;

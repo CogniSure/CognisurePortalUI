@@ -38,68 +38,78 @@ export class TableComponent implements OnInit {
       width:40,
       type: "checkbox",
       filterable : false,
-      sortable:false
+      sortable:false,
+      groupable:true
     },
     {
       field: "SubmissionID",
       format: "{0:c}",
-      title: "SubmissionID",
+      title: "Submission ID",
       type: "link",
-      sortable:true
+      sortable:true,
+      groupable:true
     },
     {
         field: "AccountName",
         title: "Account Name",
-        type: "text",
-        sortable:false
+        type: "icon",
+        sortable:false,
+        groupable:true
       },
       {
         field: "EffectiveDate",
         format: "{0:c}",
         title: "Effective Date",
         type: "text",
-        sortable:true
+        sortable:true,
+        groupable:true
       },
       {
         field: "Type",
         format: "{0:c}",
         title: "Type",
         type: "text",
-        sortable:true
+        sortable:true,
+        groupable:true
       },
     {
         field: "AgencyName",
         title: "Agency Name",
         type: "text",
-        sortable:false
+        sortable:false,
+        groupable:true
       },
       {
         field: "LOB",
         format: "{0:c}",
         title: "LOB",
         type: "text",
-        sortable:true
+        sortable:true,
+        groupable:true
       },
       {
         field: "Priority",
         format: "{0:c}",
         title: "Priority",
         type: "text",
-        sortable:true
+        sortable:true,
+        groupable:true
       },
       {
         field: "Status",
         format: "{0:c}",
         title: "Status",
         type: "text",
-        sortable:true
+        sortable:true,
+        groupable:true
       },
       {
         field: "AssignedBy",
         format: "{0:c}",
         title: "Assigned By",
         type: "text",
-        sortable:true
+        sortable:true,
+        groupable:true
       }
   ];
   data1 = [
@@ -367,6 +377,7 @@ export class TableComponent implements OnInit {
 
   public ngOnInit(): void {
     console.log(JSON.stringify(this.columns));
+    //this.columns = 
     this.gridData = this.data;
     this.gridView = this.data;
 
