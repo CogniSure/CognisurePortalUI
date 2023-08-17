@@ -2,7 +2,7 @@
 $primary-color: #009CC1;
 $secondary-color: #758591;
 $primary-black-color: black;
-
+$primary-background-color: #EEF2F7;
 $secondary-orange-color: #F99D20;
 $secondary-lightblue-color: #00A6CF;
 
@@ -11,6 +11,9 @@ $secondary-lightblue-color: #00A6CF;
 }
 ::ng-deep .orange-color{
   color: #F99D20!important;
+}
+::ng-deep .primary-background{
+  background-color: $primary-background-color !important;
 }
 
 ::ng-deep .light-blue-color{

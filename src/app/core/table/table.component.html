@@ -9,8 +9,11 @@
   [groupable]="false"
   [reorderable]="true"
   [resizable]="true"
+  allowScrolling = "true"
+  scrollable="scrollable"
   [columnMenu]="{ filter: true }"
-  [style]="'height:38em'"
+  [style.maxHeight.em]="38"
+  [style.maxWidth]="'auto'"
 >
   <ng-template kendoGridToolbarTemplate>
     <kendo-textbox

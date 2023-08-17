@@ -34,6 +34,8 @@ import { LabelModule } from '@progress/kendo-angular-label';
 import { AppConfigService } from './app-config-service';
 import { environment } from 'src/environments/environment';
 import { catchError, of, tap } from 'rxjs';
+import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+
 export function initializeApp(appConfig: AppConfigService) {
   return () => appConfig.load();
 }
@@ -51,6 +53,7 @@ export function initializeApp(appConfig: AppConfigService) {
     ListViewModule,
     ChartsModule,
     LabelModule,
+    IndicatorsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
