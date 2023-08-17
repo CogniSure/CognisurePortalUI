@@ -24,7 +24,7 @@
       <kendo-tabstrip-tab title="Claim Details">
         <ng-template kendoTabContent>
           <div class="content">
-            <generic-table></generic-table>
+            <generic-table [columns]="columns" [data]="tableData"></generic-table> 
           </div>
         </ng-template>
       </kendo-tabstrip-tab>
