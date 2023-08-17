@@ -14,6 +14,7 @@
   [columnMenu]="{ filter: true }"
   [style.maxHeight.em]="38"
   [style.maxWidth]="'auto'"
+  [loading]="loading"
 >
   <ng-template kendoGridToolbarTemplate>
     <kendo-textbox
@@ -142,15 +143,15 @@
           <div style="display: flex; text-align: center">
             <img
               src="../../../assets/images/Extraction.svg"
-              style="padding-right: 0.5rem"
+              style="padding: 0 0.25em 0 0.25em;"
             />
             <img
               src="../../../assets/images/Completeness Check.svg"
-              style="padding-right: 0.5rem"
+              style="padding: 0 0.25em 0 0.25em;"
             />
             <img
               src="../../../assets/images/Risk Clearance.svg"
-              style="padding-right: 0.5rem"
+              style="padding: 0 0.25em 0 0.25em;"
             />
           </div>
         </div>
@@ -161,7 +162,7 @@
         let-rowIndex="rowIndex"
         let-value="value"
       >
-        <div style="display: flex">
+        <div style="display: flex; justify-content: center;">
           <span class="k-icon k-i-circle" style="color: gray"></span>
           <span class="k-icon k-i-circle" style="color: gray"></span>
           <span class="k-icon k-i-circle" style="color: gray"></span>
@@ -169,7 +170,12 @@
       </ng-template>
     </kendo-grid-column>
   </ng-template>
-
+  <ng-template kendoGridLoadingTemplate>
+    <div class="k-loading-color"></div>
+    <div class="loading-container">
+      <kendo-loader type="converging-spinner" size="large"></kendo-loader>
+    </div>
+  </ng-template>
   <kendo-grid-pdf
     fileName="Employees.pdf"
     [repeatHeaders]="true"

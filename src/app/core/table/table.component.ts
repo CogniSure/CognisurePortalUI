@@ -5,6 +5,8 @@ import { process } from '@progress/kendo-data-query';
 import { employees } from './employees';
 import { images } from './images';
 import { InboxIconsService } from 'src/app/services/inboxicons.service';
+import { State } from "@progress/kendo-data-query";
+import { LoaderType, LoaderThemeColor, LoaderSize } from '@progress/kendo-angular-indicators';
 
 interface NavItem {
   title: string;
@@ -31,6 +33,7 @@ export class TableComponent implements OnInit {
     { title: 'Rush 1', routeLink: '', icon: '', icon1: '' },
     { title: 'Evelyn Salt', routeLink: '', icon: 'arrow_drop_down', icon1: '' },
   ];
+  loading = false;
   customColumns: any[] = [
     {
       field: 'Id',
@@ -370,7 +373,9 @@ export class TableComponent implements OnInit {
 
   @Input() columns: any;
 
-  constructor(public inboxiconsService: InboxIconsService) {}
+  constructor(public inboxiconsService: InboxIconsService) {
+    this.loading=true
+  }
 
   @ViewChild(DataBindingDirective) dataBinding:
     | DataBindingDirective
@@ -382,13 +387,17 @@ export class TableComponent implements OnInit {
   public pdfSVG: SVGIcon = filePdfIcon;
   public excelSVG: SVGIcon = fileExcelIcon;
 
+  
   public ngOnInit(): void {
-    console.log(JSON.stringify(this.columns));
-    //this.columns =
+    this.loading=true;
+    console.log(Date.now())
+    setTimeout(()=>31000)
+    console.log(Date.now())
     this.gridData = this.data;
     this.gridView = this.data;
 
     this.fetchDropdownOptions();
+    this.loading=false;
   }
 
   public onFilter(value: Event): void {

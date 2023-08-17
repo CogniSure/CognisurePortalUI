@@ -18,6 +18,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { ContextMenuModule, MenuModule } from '@progress/kendo-angular-menu';
 import { ListViewModule } from "@progress/kendo-angular-listview";
 import { LabelModule } from '@progress/kendo-angular-label';
+import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 
 const routes:Routes = [
 ];
@@ -45,7 +46,8 @@ const KendoComponents = [];
     MenuModule,
     ContextMenuModule,
     ListViewModule,
-    LabelModule 
+    LabelModule ,
+    IndicatorsModule 
   ],
   exports:[
     GridModule,
@@ -65,7 +67,8 @@ const KendoComponents = [];
     MenuModule,
     ContextMenuModule,
     ListViewModule ,
-    LabelModule 
+    LabelModule ,
+    IndicatorsModule
   ]
 })
 export class KendoModule { }
