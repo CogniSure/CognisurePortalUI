@@ -6,15 +6,17 @@
     padding: 2%;
   }
   .custom-size {
-    width: 30px;
-    height: 30px;
+    width: 18px;
+    height: 18px;
   }
   .k-checkbox {
     background-color: aliceblue;
   }
 
-.k-checkbox:checked, .k-checkbox.k-checked {
-    border-color: #ff6358;
+::ng-deep .k-checkbox:checked, .k-checkbox.k-checked {
+    border:none;
     color: white;
-    background-color: #ff6358;
+font-size: 9px;
+    background-color: #00B6AD!important;
 }
+

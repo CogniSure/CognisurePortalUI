@@ -28,3 +28,15 @@
   ::ng-deep .k-tabstrip-items-wrapper .k-item {
     color: #009CC1;
 }
+
+::ng-deep .exposer_property .generic-table .k-grid .k-grid-header .k-table-th {
+  padding: 0.6%!important;
+}
+
+::ng-ddep .k-tabstrip-top > .k-tabstrip-content {
+  background-color: #EEF2F7!important;
+}
+
+::ng-deep .k-tabstrip-items-wrapper .k-item:hover {
+  color: #000000!important;
+}
