@@ -1,1 +1,9 @@
-<p>prior-carrier-information works!</p>
+<kendo-grid [data]="gridData" [height]="400" [sortable]="true" [pageable]="true" (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="PolicyNumber" title="Policy Number"></kendo-grid-column>
+    <kendo-grid-column field="LineOfBusiness" title="Line Of Business"></kendo-grid-column>
+    <kendo-grid-column field="Carrier" title="Carrier"></kendo-grid-column>
+    <kendo-grid-column field="EffectiveDate" title="Effective Date"></kendo-grid-column>
+    <kendo-grid-column field="ExpirationDate" title="Expiration Date"></kendo-grid-column>
+    <kendo-grid-column field="Premium" title="Premium"></kendo-grid-column>
+  </kendo-grid>
+  
