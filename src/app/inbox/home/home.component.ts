@@ -16,10 +16,10 @@ export class HomeComponent {
     { title: '', routeLink: '', icon: 'description' },
     { title: '', routeLink: '/contact', icon: 'filter_alt' },
     { title: '', routeLink: '', icon: 'settings' },
-    { title: 'All 24', routeLink: '/contact', icon: '' },
-    { title: 'New 4', routeLink: '/contact', icon: '' },
-    { title: 'Pending Review 5', routeLink: '', icon: '', icon1: '' },
-    { title: 'Rush 1', routeLink: '', icon: '', icon1: '' },
+    { title: 'All',title1:'24', routeLink: '/contact', icon: '' },
+    { title: 'New',title1:'4', routeLink: '/contact', icon: '' },
+    { title: 'Pending Review', title1:'5', routeLink: '', icon: '', icon1: '' },
+    { title: 'Rush', title1:'1', routeLink: '', icon: '', icon1: '' },
     { title: 'Evelyn Salt', routeLink: '', icon: 'arrow_drop_down', icon1: '' },
   ];
   fetchDropdownOptions(): void {
