@@ -2,3 +2,16 @@
 //     background-color: #00B6AD!important; 
 //     color: white;
 //   }
+
+::ng-deep .k-grid-header th.k-header {
+    background-color: #00B6AD!important; 
+    color: white;
+  }
+
+::ng-deep .k-grid-content {
+    background-color: #fff;
+}
+
+.prior_details{
+padding: 1%;
+}

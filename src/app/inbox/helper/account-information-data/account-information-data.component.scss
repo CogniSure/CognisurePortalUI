@@ -22,11 +22,19 @@
 .name_input input {
   width: 50%;
   height: 100%;
-  padding: 0.5% 0.5% 0.5% 1%;
+  padding: 0.7% 0.7% 0.7% 2%;
   font-size: 14px;
+  background-color: #EEF2F7;
+  border: 1px solid #EEF2F7;
+  border-radius: 8px;
 }
 
 // .account-card{
 //   height: 18rem; 
 //   overflow: auto; 
 // }
+
+
+::ng-deep .home-menu .k-card-body {
+  background-color: #fff;
+}

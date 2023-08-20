@@ -44,6 +44,32 @@
 
 
 
+// ::ng-deep .k-tilelayout {
+//   grid-auto-rows: auto!important;
+// }
+
+::ng-deep .k-tabstrip-items-wrapper {
+  background-color: #fff;
+}
+
+::ng-deep .k-tabstrip-top > .k-tabstrip-content {
+background-color: #EEF2F7;
+}
+
+::ng-deep .k-tabstrip-items-wrapper {
+  background-color: #EEF2F7;
+  border-color: 1px solid #fff!important;
+}
+
+::ng-deep .k-tabstrip-top > .k-tabstrip-items-wrapper {
+  border-bottom-width: 0px;
+}
+
+::ng-deep .k-tabstrip-content, .k-tabstrip > .k-content {
+  border-color: #EEF2F7;
+}
+
+
 // ::ng-deep .wrapper .content {
 //   height: 18rem; 
 //   overflow: auto; 

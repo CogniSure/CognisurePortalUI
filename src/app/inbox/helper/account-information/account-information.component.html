@@ -5,6 +5,7 @@
     [resizable]="false"
     [reorderable]="false"
     class="home-menu"
+    style="background-color: #EEF2F7!important;"
   >
     <kendo-tilelayout-item
       [col]="1"
@@ -13,7 +14,7 @@
       [rowSpan]="1"
       class="home-menu"
     >
-    <kendo-tilelayout-item-header style="background: rgb(0, 182, 173); color: white;">Account Information</kendo-tilelayout-item-header>
+    <kendo-tilelayout-item-header class="account_info">Account Information</kendo-tilelayout-item-header>
       <kendo-tilelayout-item-body>
         <app-account-information-data></app-account-information-data>
       </kendo-tilelayout-item-body>
@@ -25,7 +26,7 @@
       [rowSpan]="1"
       class="home-menu"
     >
-    <kendo-tilelayout-item-header style="background: rgb(0, 182, 173); color: white;">Coverage Requested (Indicate Line of Business)</kendo-tilelayout-item-header>
+    <kendo-tilelayout-item-header class="coverage_requested">Coverage Requested (Indicate Line of Business)</kendo-tilelayout-item-header>
       <kendo-tilelayout-item-body>
         <app-coverage-requested></app-coverage-requested>
       </kendo-tilelayout-item-body>
@@ -37,7 +38,7 @@
       [rowSpan]="1"
       class="home-menu"
     >
-    <kendo-tilelayout-item-header style="background: rgb(0, 182, 173); color: white;">Prior Carrier Information</kendo-tilelayout-item-header>
+    <kendo-tilelayout-item-header class="prior_carrier">Prior Carrier Information</kendo-tilelayout-item-header>
       <kendo-tilelayout-item-body>
         <app-prior-carrier-information></app-prior-carrier-information>
       </kendo-tilelayout-item-body>

@@ -169,6 +169,37 @@
         </div>
       </ng-template>
     </kendo-grid-column>
+
+
+    <kendo-grid-column
+    *ngIf="column.type == 'SubmissionID'"
+    field="{{ column.field }}"
+    title="{{ column.title }}"
+    format="{{ column.format }}"
+    [filterable]="column.filterable"
+    [sortable]="column.sortable"
+    [filter]="column.type"
+    [width]="column.width"
+    [columnMenu]="column.columnmenu"
+>
+<ng-template
+kendoGridHeaderTemplate
+let-column
+let-columnIndex="columnIndex"
+>
+<div>
+  <!-- <div style="text-align: center">
+    {{ column.title }}
+  </div> -->
+    <img
+      src="../../../assets/images/Extraction.svg"
+      style="padding: 0 0.25em 0 0.25em;"
+    />
+</div>
+</ng-template>
+</kendo-grid-column>
+
+
   </ng-template>
   <ng-template kendoGridLoadingTemplate>
     <div class="k-loading-color"></div>
