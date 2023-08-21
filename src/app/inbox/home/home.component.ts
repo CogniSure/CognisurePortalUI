@@ -58,10 +58,11 @@ export class HomeComponent {
     field: "SubmissionID",
     format: "{0:c}",
     title: "Submission ID",
-    width:180,
-    type: "link",
+    width:250,
+    type: "SubmissionId",
     sortable:true,
     columnmenu:true,
+    IsNew:"NewStatus"
   },
   {
       field: "AccountName",
@@ -139,6 +140,7 @@ export class HomeComponent {
     Priority: "High",
     Status : "AutoApproved",
     AssignedBy: "Auto Assigned",
+    NewStatus: true
   },
   {
     Id: "2",
@@ -151,6 +153,7 @@ export class HomeComponent {
     Priority: "Low",
     Status : "ExtractionException",
     AssignedBy: "John Williams",
+    NewStatus: true
   },
   {
     Id: "3",
@@ -163,6 +166,7 @@ export class HomeComponent {
     Priority: "High",
     Status : "AutoApproved",
     AssignedBy: "Auto Assigned",
+    NewStatus: false
   },
   {
     Id: "4",

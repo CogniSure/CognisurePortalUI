@@ -24,3 +24,7 @@
 //     background-color: #fff;
 //     height: 22rem;
 //   }
+
+::ng-deep .kendo-tilelayout{
+    grid-auto-rows: auto!important;
+}

@@ -16,7 +16,7 @@
   [style.maxWidth]="'auto'"
   [loading]="loading"
 >
-   <ng-template kendoGridToolbarTemplate>
+  <ng-template kendoGridToolbarTemplate>
     <kendo-textbox
       [style.width]="'25%'"
       [style.border.px]="2"
@@ -172,7 +172,7 @@
 
 
     <kendo-grid-column
-    *ngIf="column.type == 'SubmissionID'"
+    *ngIf="column.type == 'SubmissionId'"
     field="{{ column.field }}"
     title="{{ column.title }}"
     format="{{ column.format }}"
@@ -181,24 +181,29 @@
     [filter]="column.type"
     [width]="column.width"
     [columnMenu]="column.columnmenu"
->
-<ng-template
-kendoGridHeaderTemplate
-let-column
-let-columnIndex="columnIndex"
->
-<div>
-  <!-- <div style="text-align: center">
-    {{ column.title }}
-  </div> -->
-    <img
-      src="../../../assets/images/Extraction.svg"
-      style="padding: 0 0.25em 0 0.25em;"
-    />
-</div>
-</ng-template>
-</kendo-grid-column>
-
+  >
+    <ng-template
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+      let-value="value"
+      style="width:100%"
+    >
+      <ng-container>
+        <a class ="submissionid" routerLink="/inbox/detail/summary" [ngStyle]="{ color: '#009CC1' }">
+          {{ dataItem[column.field] }}
+        <span class="newtext" *ngIf="dataItem[column.IsNew]">New</span>
+        <span class="submissionicon"><span class="k-icon k-i-email"></span></span>
+        </a>
+      </ng-container>
+      <!-- <ng-container *ngIf="column.type === 'icon1'">
+        <span class="k-icon k-i-email"></span>
+      </ng-container> -->
+      <!-- <ng-container *ngIf="column.type === 'text1'">
+        <span>New</span>
+      </ng-container> -->
+    </ng-template>
+  </kendo-grid-column>
 
   </ng-template>
   <ng-template kendoGridLoadingTemplate>

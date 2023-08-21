@@ -56,9 +56,9 @@ export class TableComponent implements OnInit {
       format: '{0:c}',
       title: 'Submission ID',
       type: 'link',
+      width: 350,
       sortable: true,
       groupable: true,
-      template: this.submissionIdTemplate,
     },
     {
       field: 'AccountName',
@@ -72,6 +72,7 @@ export class TableComponent implements OnInit {
       format: '{0:c}',
       title: 'Effective Date',
       type: 'text',
+      width: 180,
       sortable: true,
       groupable: false,
     },
@@ -469,15 +470,15 @@ export class TableComponent implements OnInit {
 
 
 
-  submissionIdTemplate(dataItem: any): string {
-    return `
-      <div>
-        <img src="../../../assets/images/Extraction.svg" style="padding-right: 0.25em;" />
-        <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">
-          ${dataItem.SubmissionID}
-        </a>
-      </div>`
-  }
+  // submissionIdTemplate(dataItem: any): string {
+  //   return `
+  //     <div>
+  //       <img src="../../../assets/images/Extraction.svg" style="padding-right: 0.25em;" />
+  //       <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">
+  //         ${dataItem.SubmissionID}
+  //       </a>
+  //     </div>`
+  // }
   
 
 
