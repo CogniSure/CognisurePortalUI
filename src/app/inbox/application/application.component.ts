@@ -17,7 +17,7 @@ export class ApplicationComponent {
     {
       field: "ClaimNo",
       title: "Claim No.",
-      width:150,
+      width:160,
       type: "text",
       columnmenu:true,
       filterable : true,
@@ -35,7 +35,7 @@ export class ApplicationComponent {
       field: "PolicyEffectiveDate",
       // format: "{0:c}",
       title: "Policy Effective Date",
-      width:230,
+      width:250,
       type: "text",
       sortable:true,
       filterable : true,

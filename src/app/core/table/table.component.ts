@@ -57,7 +57,7 @@ export class TableComponent implements OnInit {
       title: 'Submission ID',
       type: 'link',
       sortable: true,
-      groupable: false,
+      groupable: true,
     },
     {
       field: 'AccountName',
@@ -464,4 +464,23 @@ export class TableComponent implements OnInit {
   toggleDropdown(): void {
     this.isToggleOn = !this.isToggleOn;
   }
+
+
+
+
+  // submissionIdTemplate(dataItem: any): string {
+  //   return `
+  //     <div>
+  //       <img src="../../../assets/images/Extraction.svg" style="padding-right: 0.25em;" />
+  //       <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">
+  //         ${dataItem.SubmissionID}
+  //       </a>
+  //     </div>`
+  // }
+  
+
+
+
+
+  
 }
