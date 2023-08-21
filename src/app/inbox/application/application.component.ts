@@ -73,7 +73,7 @@ export class ApplicationComponent {
     {
         field: "LossLocation",
         title: "Loss Location",
-        width:200,
+        width:350,
         type: "text",
         sortable:false,
         columnmenu:true,
@@ -123,7 +123,7 @@ export class ApplicationComponent {
         field: "ClaimDescription",
         // format: "{0:c}",
         title: "Claim Description",
-        width:270,
+        width:400,
         type: "text",
         sortable:true,
         columnmenu:true,

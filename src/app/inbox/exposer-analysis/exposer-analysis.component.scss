@@ -20,4 +20,8 @@ border: 1px solid #eee;
     background-color: #ffd700; 
   }
 
-  
+  ::ng-deep .generic-table .k-grid .k-grid-header .k-table-th {
+    background-color: #00b6ad !important;
+    color: white;
+    padding: 0.6%!important;
+}

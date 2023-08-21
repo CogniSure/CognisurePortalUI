@@ -48,7 +48,7 @@ export class ExposerAnalysisComponent {
         field: "FullAddress",
         // format: "{0:c}",
         title: "Full Address",
-        width:200,
+        width:350,
         type: "text",
         sortable:true,
         columnmenu:true,

@@ -66,7 +66,7 @@ export class LossAnalysisComponent {
     {
         field: "LossLocation",
         title: "Loss Location",
-        width:200,
+        width:350,
         type: "text",
         sortable:true,
         columnmenu:true,
@@ -116,7 +116,7 @@ export class LossAnalysisComponent {
         field: "ClaimDescription",
         // format: "{0:c}",
         title: "Claim Description",
-        width:260,
+        width:450,
         type: "text",
         sortable:true,
         columnmenu:true,

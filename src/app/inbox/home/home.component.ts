@@ -68,6 +68,7 @@ export class HomeComponent {
       field: "AccountName",
       title: "Account Name",
       type: "text",
+      width:180,
       sortable:false,
       columnmenu:true,
     },
@@ -75,6 +76,7 @@ export class HomeComponent {
       field: "EffectiveDate",
       format: "{0:c}",
       title: "Effective Date",
+      width:180,
       type: "text",
       sortable:true,
       columnmenu:true,
@@ -83,6 +85,7 @@ export class HomeComponent {
       field: "Type",
       format: "{0:c}",
       title: "Type",
+      width:180,
       type: "text",
       sortable:true,
       columnmenu:true,
@@ -90,6 +93,7 @@ export class HomeComponent {
   {
       field: "AgencyName",
       title: "Agency Name",
+      width:180,
       type: "text",
       sortable:false,
       columnmenu:true,
@@ -99,6 +103,7 @@ export class HomeComponent {
       format: "{0:c}",
       title: "LOB",
       type: "text",
+      width:180,
       sortable:true,
       columnmenu:true,
     },
@@ -106,6 +111,7 @@ export class HomeComponent {
       field: "Priority",
       format: "{0:c}",
       title: "Priority",
+      width:150,
       type: "text",
       sortable:true,
       columnmenu:true,
@@ -115,6 +121,7 @@ export class HomeComponent {
       format: "{0:c}",
       title: "Status",
       type: "text",
+      width:180,
       sortable:true,
       columnmenu:true,
     },
@@ -179,6 +186,7 @@ export class HomeComponent {
     Priority: "Low",
     Status : "ExtractionException",
     AssignedBy: "John Williams",
+    NewStatus: true
   },
   {
     Id: "5",
@@ -191,6 +199,7 @@ export class HomeComponent {
     Priority: "High",
     Status : "AutoApproved",
     AssignedBy: "Auto Assigned",
+    NewStatus: false
   },
   {
     Id: "6",
@@ -203,6 +212,7 @@ export class HomeComponent {
     Priority: "Low",
     Status : "ExtractionException",
     AssignedBy: "John Williams",
+    NewStatus: true
   },
   {
     Id: "7",
@@ -215,6 +225,7 @@ export class HomeComponent {
     Priority: "High",
     Status : "AutoApproved",
     AssignedBy: "Auto Assigned",
+    NewStatus: false
   },
   {
     Id: "8",
@@ -227,6 +238,7 @@ export class HomeComponent {
     Priority: "Low",
     Status : "ExtractionException",
     AssignedBy: "John Williams",
+    NewStatus: true
   },
   {
     Id: "9",
@@ -239,6 +251,7 @@ export class HomeComponent {
     Priority: "High",
     Status : "AutoApproved",
     AssignedBy: "Auto Assigned",
+    NewStatus: false
   },
   {
     Id: "10",
@@ -251,6 +264,7 @@ export class HomeComponent {
     Priority: "Low",
     Status : "ExtractionException",
     AssignedBy: "John Williams",
+    NewStatus: true
   },
   {
     Id: "11",
@@ -275,6 +289,7 @@ export class HomeComponent {
     Priority: "Low",
     Status : "ExtractionException",
     AssignedBy: "John Williams",
+    NewStatus: true
   },
   {
     Id: "13",
