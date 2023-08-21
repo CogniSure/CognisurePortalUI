@@ -5,7 +5,8 @@
     [resizable]="false"
     [reorderable]="false"
     class="home-menu"
-    style="background-color: #EEF2F7!important;"
+    style="background-color: #EEF2F7!important;grid-auto-rows: auto!important;"
+    
   >
     <kendo-tilelayout-item
       [col]="1"
@@ -13,9 +14,10 @@
       [row] = "1"
       [rowSpan]="1"
       class="home-menu"
+      style="height: 100%;"
     >
     <kendo-tilelayout-item-header class="account_info">Account Information</kendo-tilelayout-item-header>
-      <kendo-tilelayout-item-body>
+      <kendo-tilelayout-item-body class="account_section">
         <app-account-information-data></app-account-information-data>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
@@ -25,9 +27,10 @@
       [row] = "2"
       [rowSpan]="1"
       class="home-menu"
+      style="height: 54%;"
     >
     <kendo-tilelayout-item-header class="coverage_requested">Coverage Requested (Indicate Line of Business)</kendo-tilelayout-item-header>
-      <kendo-tilelayout-item-body>
+      <kendo-tilelayout-item-body class="account_section1"> 
         <app-coverage-requested></app-coverage-requested>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>

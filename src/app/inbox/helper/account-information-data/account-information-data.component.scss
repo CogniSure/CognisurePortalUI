@@ -11,7 +11,7 @@
 }
 
 .name_input {
-  padding: 2%;
+  padding: 3%;
 }
 
 .account_deatils {
@@ -38,4 +38,13 @@
 ::ng-deep .home-menu .k-card-body {
   background-color: #fff;
   // height: 19rem;
+}
+
+// .account_section{
+//   height: 50%;
+// }
+
+::ng-deep .home-menu .k-card-body {
+  background-color: #fff;
+  // height: 22rem;
 }

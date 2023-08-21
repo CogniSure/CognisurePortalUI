@@ -13,6 +13,10 @@ export class PriorCarrierInformationComponent {
     { PolicyNumber: "Business Auto", LineOfBusiness: "Business Auto", Carrier: "Business Auto", EffectiveDate:"Business Auto", ExpirationDate:"Business Auto", Premium:"Business Auto" },
     { PolicyNumber: "Business Auto", LineOfBusiness: "Business Auto", Carrier: "Business Auto", EffectiveDate:"Business Auto", ExpirationDate:"Business Auto", Premium:"Business Auto" },
     { PolicyNumber: "Business Auto", LineOfBusiness: "Business Auto", Carrier: "Business Auto", EffectiveDate:"Business Auto", ExpirationDate:"Business Auto", Premium:"Business Auto" },
+    { PolicyNumber: "Business Auto", LineOfBusiness: "Business Auto", Carrier: "Business Auto", EffectiveDate:"Business Auto", ExpirationDate:"Business Auto", Premium:"Business Auto" },
+    { PolicyNumber: "Business Auto", LineOfBusiness: "Business Auto", Carrier: "Business Auto", EffectiveDate:"Business Auto", ExpirationDate:"Business Auto", Premium:"Business Auto" },
+    { PolicyNumber: "Business Auto", LineOfBusiness: "Business Auto", Carrier: "Business Auto", EffectiveDate:"Business Auto", ExpirationDate:"Business Auto", Premium:"Business Auto" },
+    { PolicyNumber: "Business Auto", LineOfBusiness: "Business Auto", Carrier: "Business Auto", EffectiveDate:"Business Auto", ExpirationDate:"Business Auto", Premium:"Business Auto" },
   ];
   public gridData: GridDataResult = { data: this.data, total: this.data.length };
   public state: State = {
