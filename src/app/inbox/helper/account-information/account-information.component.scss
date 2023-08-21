@@ -1,3 +1,5 @@
+.wrapper{
+
 // ::ng-deep .home-menu .k-card-body {
 //     height: 18rem!important;
 // }
@@ -25,6 +27,7 @@
 //     height: 22rem;
 //   }
 
-::ng-deep .kendo-tilelayout{
+::ng-deep .k-tilelayout{
     grid-auto-rows: auto!important;
+}
 }
