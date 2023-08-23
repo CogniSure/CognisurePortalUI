@@ -25,9 +25,13 @@
       (valueChange)="onFilter($event)"
     ></kendo-textbox>
     <kendo-grid-spacer></kendo-grid-spacer>
-    <button kendoGridExcelCommand type="button" [svgIcon]="excelSVG">
+    <button kendoGridExcelCommand type="button" style="background-image: none;">
+      
+      <kendo-svg-icon [icon]="excelSVG" size="xxlarge"></kendo-svg-icon>
     </button>
-    <button kendoGridPDFCommand [svgIcon]="pdfSVG"></button>
+    <button kendoGridPDFCommand style="background-image: none;">
+      <kendo-svg-icon [icon]="pdfSVG" size="xxlarge" style="color: red;"></kendo-svg-icon>
+    </button>
   </ng-template>
   <ng-template ngFor [ngForOf]="columns" let-column>
     <kendo-grid-column
