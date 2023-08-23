@@ -4,3 +4,8 @@
 // .k-tilelayout {
 //     background-color: #F5F5F5!important;
 // }
+
+::ng-deep .home-separator{
+border-radius: none!important;
+width:100%!important;
+}
