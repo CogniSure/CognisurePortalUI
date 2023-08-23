@@ -42,12 +42,12 @@ export class SummaryComponent {
   }
 
   ngOnInit(): void {
-    console.log('ngOn Init -summary');
+    //console.log('ngOn Init -summary');
 
-    this.globalService.getCurrentSubmission().subscribe((sub) => {
-      console.log('Submission in Summary');
-      console.log(sub.value.account_Level_Info        );
-    });
+    // this.globalService.getCurrentSubmission().subscribe((sub) => {
+    //   console.log('Submission in Summary');
+    //   console.log(sub.value.account_Level_Info        );
+    // });
 
     this.globalService.animationClass$.next('slide-effect-x');
     this.componentOrder = DataComponent.Datahub;

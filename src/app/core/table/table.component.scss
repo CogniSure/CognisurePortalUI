@@ -1,7 +1,13 @@
 .generic-table {
   ::ng-deep .k-grid-excel {
-    background-color: #009cc1;
-    color: white;
+    background-color: transparent;
+    color: #009cc1;
+    border: none;
+  }
+  ::ng-deep .k-grid-pdf {
+    background-color: transparent;
+    color: #009cc1;
+    border: none;
   }
   .loading-container {
     height: 100%;
@@ -24,10 +30,7 @@
   ::ng-deep .k-grid .k-grid-header .k-table-th {
     vertical-align: inherit;
   }
-  ::ng-deep .k-grid-pdf {
-    background-color: #009cc1;
-    color: white;
-  }
+  
   ::ng-deep .k-grid-pdf:hover {
     background-color: #00b6ad;
     color: white;

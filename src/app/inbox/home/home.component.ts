@@ -49,6 +49,7 @@ export class HomeComponent {
   {
     field: 'alerts',
     title: 'Alerts',
+    width:100,
     type: 'alerts',
     columnmenu:false,
     sortable: false,
@@ -76,15 +77,6 @@ export class HomeComponent {
       field: "EffectiveDate",
       format: "{0:c}",
       title: "Effective Date",
-      width:180,
-      type: "text",
-      sortable:true,
-      columnmenu:true,
-    },
-    {
-      field: "Type",
-      format: "{0:c}",
-      title: "Type",
       width:180,
       type: "text",
       sortable:true,

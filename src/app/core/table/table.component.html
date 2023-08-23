@@ -6,7 +6,7 @@
   [pageSize]="10"
   [pageable]="true"
   [sortable]="true"
-  [groupable]="false"
+  [groupable]="true"
   [reorderable]="true"
   [resizable]="true"
   allowScrolling = "true"
@@ -25,9 +25,8 @@
     ></kendo-textbox>
     <kendo-grid-spacer></kendo-grid-spacer>
     <button kendoGridExcelCommand type="button" [svgIcon]="excelSVG">
-      Export to Excel
     </button>
-    <button kendoGridPDFCommand [svgIcon]="pdfSVG">Export to PDF</button>
+    <button kendoGridPDFCommand [svgIcon]="pdfSVG"></button>
   </ng-template>
   <ng-template ngFor [ngForOf]="columns" let-column>
     <kendo-grid-column

@@ -45,7 +45,7 @@ export class TableComponent implements OnInit {
       groupable: true,
     },
     {
-      field: 'alerts',
+      field: 'Alerts',
       title: 'Alerts',
       type: 'alerts',
       sortable: false,
@@ -127,6 +127,7 @@ export class TableComponent implements OnInit {
   data1 = [
     {
       Id: '1',
+      Alerts:"red",
       SubmissionID: 'B143-03312302301',
       AccountName: 'Dante Mason',
       EffectiveDate: '03/01/2023',
@@ -139,6 +140,7 @@ export class TableComponent implements OnInit {
     },
     {
       Id: '2',
+      Alerts:"red",
       SubmissionID: 'B143-03312302302',
       AccountName: 'Duke & Duke',
       EffectiveDate: '04/01/2023',

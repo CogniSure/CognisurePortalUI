@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 interface NavItem {
   title: string;
@@ -31,12 +32,22 @@ export class InboxTopbarComponent {
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   
+  accountInformation : any;
+  propertyInformation : any;
 
-
-  constructor(public inboxService: InboxService,  private router: Router) {}
+  constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router) {}
   
   ngOnInit(): void {
     this.fetchDropdownOptions();
+    this.globalService.getCurrentSubmission().subscribe((sub) => {
+      if(sub!=null)
+      {
+      this.accountInformation = sub.value.account_Level_Info[0]
+      this.propertyInformation = sub.value.property_Policy_Info_Blanket_Summary[0]
+      console.log('Account Information');
+      console.log(sub.value      );
+      }
+    });
   }
 
   fetchDropdownOptions(): void {
