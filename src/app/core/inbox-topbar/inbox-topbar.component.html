@@ -51,8 +51,8 @@
                         {{navItems[2].icon}}
                         </span></mat-icon>
                         <br>
-                    <span class="calender_date">NA</span>
-                   
+                    <span class="calender_date" *ngIf="propertyInformation.policy_Effectivedate==null" style="font-size: 14px;">NA</span>
+                    <span class="calender_date">{{propertyInformation.policy_Effectivedate}}</span>
                     </span>
                 </div>
           </kendo-tilelayout-item-body>
