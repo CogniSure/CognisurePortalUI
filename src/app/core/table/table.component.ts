@@ -33,6 +33,7 @@ export class TableComponent implements OnInit {
     { title: 'Rush 1', routeLink: '', icon: '', icon1: '' },
     { title: 'Evelyn Salt', routeLink: '', icon: 'arrow_drop_down', icon1: '' },
   ];
+  
   loading = false;
   customColumns: any[] = [
     {
@@ -374,8 +375,8 @@ export class TableComponent implements OnInit {
   isDataAvailble = false;
 
   @Input() data: any[];
-
   @Input() columns: any;
+  @Input() height: number = 42;
 
   constructor(public inboxiconsService: InboxIconsService) {
     this.loading=true

@@ -9,6 +9,9 @@
     color: #009cc1;
     border: none;
   }
+  ::ng-deep .k-grid-toolbar {
+    background: transparent !important;
+  }
   .loading-container {
     height: 100%;
     display: flex;
