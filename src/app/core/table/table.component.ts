@@ -407,37 +407,47 @@ export class TableComponent implements OnInit {
 
   public onFilter(value: Event): void {
     const inputValue = value;
-
+    let custFilters :any[] = []
+    this.columns.forEach( (col:any) => {
+      custFilters.push(
+        {
+          field: col.field,
+          operator: 'contains',
+          value: inputValue,
+        }
+      );
+    })
     this.gridView = process(this.gridData, {
       filter: {
         logic: 'or',
-        filters: [
-          {
-            field: 'full_name',
-            operator: 'contains',
-            value: inputValue,
-          },
-          {
-            field: 'job_title',
-            operator: 'contains',
-            value: inputValue,
-          },
-          {
-            field: 'budget',
-            operator: 'contains',
-            value: inputValue,
-          },
-          {
-            field: 'phone',
-            operator: 'contains',
-            value: inputValue,
-          },
-          {
-            field: 'address',
-            operator: 'contains',
-            value: inputValue,
-          },
-        ],
+        filters : custFilters
+        // filters: [
+        //   {
+        //     field: 'full_name',
+        //     operator: 'contains',
+        //     value: inputValue,
+        //   },
+        //   {
+        //     field: 'job_title',
+        //     operator: 'contains',
+        //     value: inputValue,
+        //   },
+        //   {
+        //     field: 'budget',
+        //     operator: 'contains',
+        //     value: inputValue,
+        //   },
+        //   {
+        //     field: 'phone',
+        //     operator: 'contains',
+        //     value: inputValue,
+        //   },
+        //   {
+        //     field: 'address',
+        //     operator: 'contains',
+        //     value: inputValue,
+        //   },
+        // ],
       },
     }).data;
 
