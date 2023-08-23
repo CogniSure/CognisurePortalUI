@@ -11,4 +11,13 @@ export class GlobalService {
   animationClass$ = new BehaviorSubject<string>("");
   constructor() {}
 
+  public CurrentSubmission$ = new BehaviorSubject<any>({});
+
+
+  setCurrentSubmission(submission: any) {
+    this.CurrentSubmission$.next(submission)
+  }
+  getCurrentSubmission() {
+    return this.CurrentSubmission$;
+  }
 }

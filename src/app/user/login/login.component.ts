@@ -83,27 +83,29 @@ export class LoginComponent {
     if (this.validationErrors.length == 0) {
       event.preventDefault();
       this.email = this.loginForm.value.email!;
-      this.router.navigate(['/dashboard/home'], {
-        queryParamsHandling: 'preserve',
-      });
-    //   this.urlService.getUrl(0,"Login","loginsubmit","load").subscribe((res:any)=>{
-    //     console.log("LoginUrl");
-    //     console.log(res.value.widgetURL)
-    //     const loginUrl = res.value.widgetURL;
-    //     this.accService.login(loginUrl,this.loginForm.value).subscribe((res:any) => {
-    //          if (res.success) {
-    //            this.auth.setToken(res);
-    //            this.accService.getUserProfile(this.apiUrl,this.email).subscribe((user:any) => {
+      // this.router.navigate(['/dashboard/home'], {
+      //   queryParamsHandling: 'preserve',
+      // });
+      // this.urlService.getUrl(0,"Login","loginsubmit","load").subscribe((res:any)=>{
+      //   console.log("LoginUrl");
+      //   console.log(res.value.widgetURL)
+      //   const loginUrl = res.value.widgetURL;
+        this.accService.login(this.loginForm.value).subscribe((res:any) => {
+             if (res.success) {
+               this.auth.setToken(res);
+               this.accService.getUserProfile(this.email).subscribe((user:any) => {
 
-    //            })
-    //            this.router.navigate(['/dashboard/home'], {
-    //                               queryParamsHandling: 'preserve',
-    //                             });
-    //          }
-    //         });
-    //   //         
-    //   // })
-    // })
+               })
+               this.router.navigate(['/dashboard/home'], {
+                                  queryParamsHandling: 'preserve',
+                                });
+             }
+             this.router.navigate(['/dashboard/home'], {
+              queryParamsHandling: 'preserve',
+            });
+            });
+      
+    //})
 
 
 

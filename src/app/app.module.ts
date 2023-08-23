@@ -58,11 +58,11 @@ export function initializeApp(appConfig: AppConfigService) {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
    
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     //   {
     //     provide: HTTP_INTERCEPTORS,
     //     useClass: LoaderInterceptor

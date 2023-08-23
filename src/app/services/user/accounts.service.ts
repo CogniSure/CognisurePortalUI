@@ -230,8 +230,8 @@ export class AccountService {
       catchError(this.errorHandl))
   }
   */
-  login(apiUrl:string , { email, password }: any): Observable<any> {
-    
+  login({ email, password }: any): Observable<any> {
+    var apiUrl = this.env.baseUrl + "api/login?"
     var result;
     let hParams = new HttpParams();
     hParams = hParams.set('username', email);
@@ -246,8 +246,9 @@ export class AccountService {
     
   }
   
-  getUserProfile(apiUrl:string , email:string){
-    return this.http.getData(apiUrl+"userdetails/",email).pipe(
+  getUserProfile(email:string){
+    var apiUrl = this.env.baseUrl
+    return this.http.getData(apiUrl+"api/userdetails/",email).pipe(
         map((result:any)=>{
             const profile : UserProfile = {
                 UserID :result.value.userID,
