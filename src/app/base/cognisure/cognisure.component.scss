@@ -463,6 +463,7 @@ color: #005daa;
   ::ng-deep .home-separator-body{
     padding: 0 !important;
     border: none !important;
+    border-radius: 0%;
     // background: #009CC1 !important;
     background: linear-gradient(to bottom, #0084A4 20%, #009CC1 50%, #009CC1 80%);
   }
