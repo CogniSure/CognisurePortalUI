@@ -83,9 +83,9 @@ export class LoginComponent {
     if (this.validationErrors.length == 0) {
       event.preventDefault();
       this.email = this.loginForm.value.email!;
-      // this.router.navigate(['/dashboard/home'], {
-      //   queryParamsHandling: 'preserve',
-      // });
+      this.router.navigate(['/dashboard/home'], {
+        queryParamsHandling: 'preserve',
+      });
       // this.urlService.getUrl(0,"Login","loginsubmit","load").subscribe((res:any)=>{
       //   console.log("LoginUrl");
       //   console.log(res.value.widgetURL)
@@ -105,6 +105,18 @@ export class LoginComponent {
             });
             });
       
+
+
+
+
+
+
+
+
+
+
+
+
     //})
 
 
