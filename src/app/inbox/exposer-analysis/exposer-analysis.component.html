@@ -1,2 +1,12 @@
-<generic-table [columns]="columns" [data]="tableData"></generic-table> 
+
+<kendo-tabstrip (tabSelect)="onTabSelect($event)" style="grid-auto-rows: auto; position: relative;">
+    <kendo-tabstrip-tab title="Property" [selected]="true" style="grid-auto-rows: auto;">
+      <ng-template kendoTabContent>
+        <div class="content">
+            <generic-table [columns]="columns" [data]="tableData"></generic-table> 
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+</kendo-tabstrip>
+    
 

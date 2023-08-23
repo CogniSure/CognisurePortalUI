@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-
+import { SelectEvent } from '@progress/kendo-angular-layout';
 @Component({
   selector: 'app-loss-analysis',
   templateUrl: './loss-analysis.component.html',
   styleUrls: ['./loss-analysis.component.scss']
 })
 export class LossAnalysisComponent {
+  public onTabSelect(e: SelectEvent): void {
+    console.log(e);
+  }
   public columns: any =[
     {
       field: "ClaimNo",

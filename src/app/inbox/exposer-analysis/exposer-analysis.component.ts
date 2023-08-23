@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-
+import { SelectEvent } from '@progress/kendo-angular-layout';
 @Component({
   selector: 'app-exposer-analysis',
   templateUrl: './exposer-analysis.component.html',
   styleUrls: ['./exposer-analysis.component.scss']
 })
 export class ExposerAnalysisComponent {
-
+  public onTabSelect(e: SelectEvent): void {
+    console.log(e);
+  }
   public columns: any =[
     {
       field: "LocationNumber",
