@@ -15,6 +15,7 @@
   [style.maxHeight.em]="height"
   [style.maxWidth]="'auto'"
   [loading]="loading"
+  [selectable]="selectableSettings"
 >
   <ng-template kendoGridToolbarTemplate>
     <kendo-textbox
@@ -87,7 +88,7 @@
         let-column
         let-columnIndex="columnIndex"
       >
-        <input type="checkbox" kendoCheckBox />
+        <input type="checkbox" kendoCheckBox kendoGridSelectAllCheckbox />
       </ng-template>
       <ng-template
         kendoGridCellTemplate
@@ -95,7 +96,10 @@
         let-rowIndex="rowIndex"
         let-value="value"
       >
-        <input type="checkbox" kendoCheckBox />
+      
+        <input kendoCheckBox [kendoGridSelectionCheckbox]=rowIndex 
+        (click)="onCheckBoxClick($event, rowIndex, dataItem)"
+        />
       </ng-template>
     </kendo-grid-column>
     <kendo-grid-column

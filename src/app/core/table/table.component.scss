@@ -38,6 +38,18 @@
     background-color: #00b6ad;
     color: white;
   }
+  ::ng-deep .k-checkbox:checked{
+    background-color: #00b6ad;
+    color: white;
+  }
+
+  ::ng-deep .k-grid td.k-selected, .k-grid .k-table-row.k-selected > td, .k-grid .k-table-td.k-selected, .k-grid .k-table-row.k-selected > .k-table-td {
+    background-color: transparent !important;
+  }
+
+  ::ng-deep .k-table-tbody .k-table-row.k-selected > .k-table-td, .k-table-list .k-table-row.k-selected {
+    background-color: transparent !important;
+  }
   ::ng-deep .k-svg-i-sort-desc-small {
     color: white;
   }

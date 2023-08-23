@@ -7,6 +7,10 @@ import { images } from './images';
 import { InboxIconsService } from 'src/app/services/inboxicons.service';
 import { State } from "@progress/kendo-data-query";
 import { LoaderType, LoaderThemeColor, LoaderSize } from '@progress/kendo-angular-indicators';
+import {
+  SelectableSettings,
+  SelectableMode,
+} from "@progress/kendo-angular-grid";
 
 interface NavItem {
   title: string;
@@ -391,10 +395,15 @@ export class TableComponent implements OnInit {
   public mySelection: string[] = [];
   public pdfSVG: SVGIcon = filePdfIcon;
   public excelSVG: SVGIcon = fileExcelIcon;
-
+  public selectableSettings: SelectableSettings;
   
   public ngOnInit(): void {
     this.loading=true;
+    this.selectableSettings = {
+      checkboxOnly: true,
+      mode: "multiple",
+      drag: true,
+    };
     console.log(Date.now())
     setTimeout(()=>31000)
     console.log(Date.now())
@@ -481,7 +490,14 @@ export class TableComponent implements OnInit {
   }
 
 
+  onCheckBoxClick(e:any, rowIndex:any, dataItem:any) {
+    console.log("ShiftKey? ", e.shiftKey);
+    console.log("RowIndex: ", rowIndex);
+    console.log("Data item: ", JSON.stringify(dataItem));
 
+    // perform the desired custom logic for selecting items based on the currently selected
+    // ones, and the checkbox being shift-clicked
+  }
 
   // submissionIdTemplate(dataItem: any): string {
   //   return `
