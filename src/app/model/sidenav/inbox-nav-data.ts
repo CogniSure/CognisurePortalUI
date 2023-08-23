@@ -21,7 +21,7 @@ export const inboxNavbarData = [
         routeLink: '/inbox/detail/exposeranalysis',
         // icon: 'far fa-chart-line',
         imagePath:'/assets/images/Exposure analysis.svg',
-        label: 'Exposer Analysis'
+        label: 'Exposuer Analysis'
     },
     {
         routeLink: '/inbox/detail/lossanalysis',

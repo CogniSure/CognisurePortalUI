@@ -32,15 +32,15 @@ export class InboxTopbarComponent {
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   
-  accountInformation : any;
-  propertyInformation : any;
+  accountInformation : any={};
+  propertyInformation : any={};
 
   constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router) {}
   
   ngOnInit(): void {
     this.fetchDropdownOptions();
     this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if(sub!=null)
+      if(sub!=null && sub.value!= null)
       {
       this.accountInformation = sub.value.account_Level_Info[0]
       this.propertyInformation = sub.value.property_Policy_Info_Blanket_Summary[0]

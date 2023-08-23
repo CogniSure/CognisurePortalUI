@@ -380,4 +380,13 @@ export class HomeComponent {
     AssignedBy: "John Williams",
   }
 ];
+
+// getSubmissionDetail(string submissionId){
+//   this.inboxService.getSubmissionData("AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=").subscribe(res=>{
+//     console.log("Test");
+//     this.submissionData = res.value;
+//     console.log(res)
+//     this.globalService.setCurrentSubmission(res)
+//   })
+// }
 }
