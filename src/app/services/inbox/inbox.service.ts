@@ -2,7 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '../common/http.service';
-import { Observable } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
+import { Submission } from 'src/app/model/inbox/Submission';
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +59,37 @@ export class InboxService {
       apiUrl,
       hParams
     )
+  }
+  getAllSubmissionData():Observable<any> {
+    var submissions :Submission[] = []; 
+    var apiUrl = this.env.baseUrl + "api/AllSubmission"
+    //return this.httpService.getData(,submis)
+    var result;
+    let hParams = new HttpParams();
+    this.httpService
+    .postData(
+      //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
+      apiUrl,"",""
+      
+    ).pipe(map((res:any)=>{
+      if(res!=null){
+        var sub = {
+          Id: res["submissionId"],
+          SubmissionID: res["submissionId"],
+          AccountName: res["submissionId"],
+          EffectiveDate: res["submissionId"],
+        Type: res["submissionId"],
+        AgencyName: res["submissionId"],
+        LOB: res["submissionId"],
+        Priority: res["submissionId"],
+        Status : res["submissionId"],
+        AssignedBy: res["submissionId"],
+        NewStatus: true,
+        MessageId : res["submissionId"],
+        }
+        submissions.push(sub);
+      }
+    }))
+    return of(submissions);
   }
 }

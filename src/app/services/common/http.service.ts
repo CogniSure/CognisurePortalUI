@@ -12,6 +12,7 @@ export class HttpService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
+      params : ""
     };
   constructor(private http:HttpClient) { }
 
@@ -37,7 +38,13 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
   }
   postData(apiUrl:string,urlParams : string,dataParams:any):any
   {
-    const res =  this.http.post<any>(apiUrl,urlParams,{params:dataParams}
+    var options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      params : dataParams
+    };
+    const res =  this.http.post<any>(apiUrl,"",options
       ).pipe(
         map((result)=>{
           return result
