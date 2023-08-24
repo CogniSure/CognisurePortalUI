@@ -10,6 +10,5 @@ import { GlobalService } from './services/common/global.service';
 export class AppComponent {
   title = 'Submission-Portal';
   constructor(private config : AppConfigService){
-    console.log(config.settings.baseUrl)
   }
 }

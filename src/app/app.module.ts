@@ -32,7 +32,10 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { AppConfigService } from './app-config-service';
-import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+import {
+  IndicatorsModule,
+  LoaderComponent,
+} from '@progress/kendo-angular-indicators';
 
 // export function initializeApp(appConfig: AppConfigService) {
 //   return () => appConfig.load();
@@ -60,17 +63,17 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
       useClass: AuthInterceptor,
       multi: true,
     },
-    //   {
-    //     provide: HTTP_INTERCEPTORS,
-    //     useClass: LoaderInterceptor
-    //     multi: true,
-    //  },
-    //AppConfigService,
     {
-      provide : APP_INITIALIZER,
-      multi : true,
-       deps : [AppConfigService],
-       useFactory : (appConfigService : AppConfigService) =>  () => appConfigService.load()
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [AppConfigService],
+      useFactory: (appConfigService: AppConfigService) => () =>
+        appConfigService.load(),
     },
     HttpService,
     AuthService,

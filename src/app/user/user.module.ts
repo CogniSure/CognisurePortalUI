@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserRoutingModule } from './user-routing.module';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -20,7 +21,8 @@ import { UserRoutingModule } from './user-routing.module';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    UserRoutingModule
+    UserRoutingModule,
+    CoreModule
   ]
 })
 export class UserModule { }

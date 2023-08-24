@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InboxMenuComponent } from './inbox-menu/inbox-menu.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { LoaderComponent } from './loader/loader.component';
 
 const routes:Routes = [
 ];
@@ -26,7 +27,8 @@ const routes:Routes = [
     TopbarComponent,
     RecentlyViewedComponent,
     InboxMenuComponent,
-    FooterComponent
+    FooterComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ const routes:Routes = [
     TopbarComponent,
     RecentlyViewedComponent,
     InboxMenuComponent,
-    FooterComponent
+    FooterComponent,
+    LoaderComponent
   ]
 })
 export class CoreModule { }

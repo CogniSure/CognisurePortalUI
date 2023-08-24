@@ -16,8 +16,15 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(private loaderService: LoaderService) {
   }
+//   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+//     this.loaderService.show();
 
+//     return next.handle(request).pipe(
+//           finalize(() => this.loaderService.hide()),
+//     );
+//  }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log("Spinner Stattus interceptor" )
      this.loaderService.requestStarted();
      return this.handler(next,request)
   }
@@ -25,7 +32,7 @@ export class LoaderInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
     tap((event:any)=>{
       if(event instanceof HttpResponse){
-        this.loaderService.requestEnded()
+        this.loaderService.requestEnded();
       }
      },
      //catchError(this.errorHandl)
