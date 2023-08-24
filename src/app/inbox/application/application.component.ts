@@ -9,11 +9,22 @@ import { SelectEvent } from '@progress/kendo-angular-layout';
 export class ApplicationComponent {
   public onTabSelect(e: SelectEvent): void {
     console.log(e);
+    if(e.index ==2 )
+      {
+        this.column = this.columns2 
+        this.data = this.tableData2
+      }
+      else if(e.index ==1 )
+      {
+        this.column = this.columns1
+        this.data = this.tableData1
+      }
   }
 
 
-
-  public columns: any =[
+public column:any=[]
+public data:any=[]
+  public columns2: any =[
     {
       field: "ClaimNo",
       title: "Claim No.",
@@ -200,7 +211,7 @@ export class ApplicationComponent {
         filterable : true,
       }
   ];
-   public tableData: any[]= 
+   public tableData2: any[]= 
    [
     {
       ClaimNo: "1900918971",

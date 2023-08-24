@@ -17,14 +17,14 @@
       <kendo-tabstrip-tab title="Exposer Property">
         <ng-template kendoTabContent>
           <div class="content exposer_property">
-            <generic-table [columns]="columns1" [data]="tableData1"></generic-table> 
+            <generic-table #property [columns]="columns1" [data]="tableData1"></generic-table> 
           </div>
         </ng-template>
       </kendo-tabstrip-tab>
       <kendo-tabstrip-tab title="Claim Details">
         <ng-template kendoTabContent>
           <div class="content">
-            <generic-table [columns]="columns" [data]="tableData"></generic-table> 
+            <generic-table #claimDetails [columns]="columns2" [data]="tableData2"></generic-table> 
           </div>
         </ng-template>
       </kendo-tabstrip-tab>

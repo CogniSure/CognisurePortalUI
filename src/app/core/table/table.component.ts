@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { DataBindingDirective } from '@progress/kendo-angular-grid';
 import { SVGIcon, filePdfIcon, fileExcelIcon } from '@progress/kendo-svg-icons';
 import { process } from '@progress/kendo-data-query';
@@ -25,7 +25,7 @@ interface NavItem {
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit,OnChanges {
+export class TableComponent implements OnInit,OnChanges,OnDestroy {
    loading = false;
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
@@ -48,6 +48,10 @@ export class TableComponent implements OnInit,OnChanges {
   constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef) {
     this.loading=true
   }
+  @HostListener('unloaded')
+  ngOnDestroy(): void {
+    
+  }
 
 
   
@@ -68,7 +72,7 @@ export class TableComponent implements OnInit,OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.log("TableComponent-onchange")
     console.log(changes)
-    if (changes['data']!=null ) {
+    if (changes!=null && changes['data']!=null ) {
       this.data = changes['data'].currentValue;
       this.gridData = this.data;
       this.gridView = this.data;
@@ -79,12 +83,7 @@ export class TableComponent implements OnInit,OnChanges {
       //this.dataBinding.dataChanged = true;
       //this.dataBinding.notifyDataChange();
       //this.changedetector.detectChanges()
-      
-    console.log("TableComponent-onchange 2")
-    console.log(this.dataBinding.data)
     }
-    console.log("TableComponent-onchange 1")
-    console.log(this.dataBinding.data)
     
   }
   public onFilter(value: Event): void {
