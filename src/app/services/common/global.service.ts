@@ -10,7 +10,7 @@ export class GlobalService {
   }
   animationClass$ = new BehaviorSubject<string>("");
   constructor() {}
-
+  public CurrentSubmissionId$ = new BehaviorSubject<string>("");
   public CurrentSubmission$ = new BehaviorSubject<any>({});
 
 

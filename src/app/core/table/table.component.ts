@@ -11,6 +11,7 @@ import {
   SelectableSettings,
   SelectableMode,
 } from "@progress/kendo-angular-grid";
+import { GlobalService } from 'src/app/services/common/global.service';
 
 interface NavItem {
   title: string;
@@ -44,7 +45,7 @@ export class TableComponent implements OnInit,OnChanges {
   @Input() columns: any;
   @Input() height: number = 42;
 
-  constructor(public inboxiconsService: InboxIconsService,private changedetector: ChangeDetectorRef) {
+  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef) {
     this.loading=true
   }
 
@@ -136,7 +137,9 @@ export class TableComponent implements OnInit,OnChanges {
   // }
   
 
-
+  reDirect(url:string, param:any){
+    this.globalService.CurrentSubmissionId$.next(param.MessageId)
+  }
 
 
   

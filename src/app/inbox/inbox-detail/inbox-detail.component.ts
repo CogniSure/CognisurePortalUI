@@ -13,12 +13,15 @@ export class InboxDetailComponent implements OnInit {
   }
   submissionData :any
   ngOnInit(): void {
-    this.inboxService.getSubmissionData("AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=").subscribe(res=>{
-      console.log("Test");
-      this.submissionData = res.value;
-      console.log(res)
-      this.globalService.setCurrentSubmission(res)
+    this.globalService.CurrentSubmissionId$.subscribe(subId=>{
+      this.inboxService.getSubmissionData(subId
+        // "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA="
+        ).subscribe(res=>{
+        this.submissionData = res.value;
+        this.globalService.setCurrentSubmission(res)
+      })
     })
+    
     
   }
 

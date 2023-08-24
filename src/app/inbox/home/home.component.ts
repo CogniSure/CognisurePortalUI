@@ -76,6 +76,7 @@ export class HomeComponent implements OnInit {
     title: "Submission ID",
     width:250,
     type: "SubmissionId",
+    redirectUrl:"/inbox/detail/summary",
     sortable:true,
     columnmenu:true,
     filterable : true,

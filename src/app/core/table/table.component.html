@@ -198,7 +198,7 @@
       style="width:100%"
     >
       <ng-container>
-        <a class ="submissionid" routerLink="/inbox/detail/summary" [ngStyle]="{ color: '#009CC1' }">
+        <a class ="submissionid" routerLink="{{column.redirectUrl}}" (click)="reDirect(column.redirectUrl,dataItem)" [ngStyle]="{ color: '#009CC1' }">
           {{ dataItem[column.field] }}
         <span class="newtext" *ngIf="dataItem[column.IsNew]">New</span>
         <span class="submissionicon"><span class="k-icon k-i-email"></span></span>
