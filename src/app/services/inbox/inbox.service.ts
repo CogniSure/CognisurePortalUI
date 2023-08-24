@@ -9,7 +9,7 @@ import { Submission } from 'src/app/model/inbox/Submission';
   providedIn: 'root',
 })
 export class InboxService {
-   env = environment;
+  env = environment;
   // //baseurl = 'https://csbbenqa.cognisure.ai:1089';
   // httpOptions = {
   //   headers: new HttpHeaders({
@@ -31,7 +31,7 @@ export class InboxService {
   alternateIconURL = '../../../assets/images/dropdown_icon.png';
 
   idToDisplay = 1;
-  constructor(private httpService: HttpService,private http: HttpClient) {}
+  constructor(private httpService: HttpService, private http: HttpClient) {}
   // constructor(private http: HttpClient, private globalService:GlobalService) {}
 
   private dropdownOptions: { label: string; link: string }[] = [
@@ -45,51 +45,40 @@ export class InboxService {
     return this.dropdownOptions;
   }
 
-  getSubmissionData(submissionId: string):Observable<any> {
-
-    var apiUrl = this.env.baseUrl + "Submission?"
-    var apiUrl = this.env.baseUrl + "Submission?"
-    //return this.httpService.getData(,submis)
+  getSubmissionData(submissionId: string): Observable<any> {
+    var apiUrl = this.env.baseUrl + 'Submission?';
     var result;
     let hParams = new HttpParams();
     hParams = hParams.set('submissionid', submissionId);
-    return this.httpService
-    .getData(
-      //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
-      apiUrl,
-      hParams
-    )
+    return this.httpService.getData(apiUrl, hParams);
   }
-  getAllSubmissionData():Observable<any> {
-    var submissions :Submission[] = []; 
-    var apiUrl = this.env.baseUrl + "api/AllSubmission"
-    //return this.httpService.getData(,submis)
+  getAllSubmissionData(): Observable<any> {
+    var submissions: Submission[] = [];
+    var apiUrl = this.env.baseUrl + 'api/AllSubmission';
     var result;
     let hParams = new HttpParams();
-    this.httpService
-    .postData(
-      //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
-      apiUrl,"",""
-      
-    ).pipe(map((res:any)=>{
-      if(res!=null){
-        var sub = {
-          Id: res["submissionId"],
-          SubmissionID: res["submissionId"],
-          AccountName: res["submissionId"],
-          EffectiveDate: res["submissionId"],
-        Type: res["submissionId"],
-        AgencyName: res["submissionId"],
-        LOB: res["submissionId"],
-        Priority: res["submissionId"],
-        Status : res["submissionId"],
-        AssignedBy: res["submissionId"],
-        NewStatus: true,
-        MessageId : res["submissionId"],
-        }
-        submissions.push(sub);
-      }
-    }))
-    return of(submissions);
+    return this.httpService.postData(apiUrl, '', '').pipe(
+      map((result: any) => {
+        result.value.forEach((res: any) => {
+          var sub = {
+            Id: res['submissionId'],
+            SubmissionID: res['submissionId'],
+            AccountName: res['accountName']!=""?res['accountName']:"NA",
+            EffectiveDate: res['effectiveDate']!=""?res['effectiveDate']:"NA",
+            Type: "New Submission",
+            AgencyName: res['agencyName']!=""?res['agencyName']:"NA",
+            LOB: res['lineOfBusiness']!=""?res['lineOfBusiness']:"NA",
+            Priority: res['priority']!=""?res['priority']:"NA",
+            Status: res['submissionStatusName']!=""?res['submissionStatusName']:"NA",
+            AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
+            NewStatus: true,
+            MessageId: res['messageId']!=""?res['messageId']:"NA",
+          };
+          submissions.push(sub);
+        });
+
+        return submissions;
+      })
+    );
   }
 }

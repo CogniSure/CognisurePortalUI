@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 @Component({
@@ -11,18 +11,20 @@ export class HomeComponent implements OnInit {
   {
 
   }
-  ngOnInit(): void {
-    this.inboxservice.getAllSubmissionData().subscribe(result=>{
-      this.tableData = result;
-
-      console.log("Inbox Data");
-      console.log(result);
-    })
-  }
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
+  tableData: any[]
+  ngOnInit(): void {
+    this.inboxservice.getAllSubmissionData().subscribe(result=>{
+      this.tableData = result;
+      // this.changedetector.detectChanges();
+      console.log("Inbox Data");
+      console.log(this.tableData);
+    })
+  }
+ 
   navItems = [
     { title: 'Create Submisson', content: '', icon: 'add_box' },
     { title: '', content: '', icon: 'refresh' },
@@ -76,6 +78,7 @@ export class HomeComponent implements OnInit {
     type: "SubmissionId",
     sortable:true,
     columnmenu:true,
+    filterable : true,
     IsNew:"NewStatus"
   },
   {
@@ -139,7 +142,7 @@ export class HomeComponent implements OnInit {
       columnmenu:true,
     }
 ];
- public tableData: any[]= []
+ 
 //  [
 //   {
 //     Id: "1",
