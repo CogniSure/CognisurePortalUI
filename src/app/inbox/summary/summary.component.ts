@@ -9,6 +9,7 @@ import {
 } from 'src/app/model/constants/widgetinfo';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { GlobalService } from 'src/app/services/common/global.service';
+import { SVGIcon, downloadIcon } from '@progress/kendo-svg-icons';
 
 @Component({
   selector: 'app-summary',
@@ -18,6 +19,7 @@ import { GlobalService } from 'src/app/services/common/global.service';
 export class SummaryComponent {
   public custComponents: WidgetComponentInfo[] = [];
   reloadReq = true;
+  public downloadIcon:SVGIcon = downloadIcon;
   @Input() collapsed = false;
   componentOrder: any;
   isFullScreen = false;
@@ -94,5 +96,24 @@ export class SummaryComponent {
     });
     //this.reloadReq = false;
     return myInjector;
+  }
+  download(){
+    var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
+    this.globalService.CurrentSubmissionId$.subscribe(sub=>{
+      console.log("DownloadService")
+      console.log(sub)
+      this.dbService.downloadSubmission360(submissionId).subscribe(downloadRes=>{
+        console.log(downloadRes)
+        const source = `data:application/pdf;base64,${downloadRes.value.data}`;
+        const downloadLink = document.createElement('a');
+        const fileName = downloadRes.value.fileName;
+    
+        downloadLink.href = source;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      });
+      
+      
+    })
   }
 }

@@ -46,7 +46,7 @@ export class InboxService {
   }
 
   getSubmissionData(submissionId: string): Observable<any> {
-    var apiUrl = this.env.baseUrl + 'Submission?';
+    var apiUrl = this.env.baseUrl + 'api/Submission';
     var result;
     let hParams = new HttpParams();
     hParams = hParams.set('submissionid', submissionId);
