@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, retry, Subscriber, throwError } from 'rxjs';
 //import { UserNotification } from 'src/app/model/Notification';
 import { GlobalService } from '../common/global.service';
-import { environment } from 'src/environments/environment';
 import { DataComponent } from 'src/app/model/samples/data';
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
-  // env = environment;
-  // constructor(private http: HttpClient) {}
+  // env = this.configService.settings;
+  // constructor(private http: HttpClient,private configService:AppConfigService) {}
   // getAllNotification(userId: number,accountId:number): Observable<UserNotification[]> {
   //   var notifications: UserNotification[] = [];
   //   //notifications = DataComponent.Notifications;

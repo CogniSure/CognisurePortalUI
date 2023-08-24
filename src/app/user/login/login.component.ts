@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { UrlService } from 'src/app/services/common/url.service';
 import { AccountService } from 'src/app/services/user/accounts.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -27,12 +26,10 @@ export class LoginComponent {
     private router: Router,
     private globalService: GlobalService,
     private accService: AccountService,
-    // private validationService: ValidationService,
     private formBuilder: FormBuilder
     
   ) {}
   isvalidform = true;
-  env = environment;
   imageObject: any;
   enableSlideButton = false;
   email: string = '';

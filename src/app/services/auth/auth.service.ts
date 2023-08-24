@@ -11,22 +11,24 @@ import {
   throwError,
 } from 'rxjs';
 import { Injectable, Inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import * as moment from 'moment';
-import { UserProfile } from 'src/app/model/profile/userprofile';
-
-import { environment } from 'src/environments/environment';
-import { FAResult } from 'src/app/model/common/2faresult';
-// import { SessionTimerService } from './session-timer.service';
 import {
   ConfigToken,
   SessionExpirationConfig,
 } from 'src/app/model/common/session-expiration-config';
+import { AppConfigService } from 'src/app/app-config-service';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  //private http: HttpClient
+  constructor(
+    //@Inject(ConfigToken) readonly config: SessionExpirationConfig,
+    private http: HttpClient,private configService : AppConfigService
+  ) {
+    this._timeoutSeconds = this._sessionTime * 60;
+  }
   private readonly _timeoutSeconds: number;
   private _count: number = 0;
   private _sessionTime: number = 20;
@@ -42,7 +44,7 @@ export class AuthService {
   sessionstart$ = this._sessionstart.asObservable();
   remainSeconds$ = this._remainSeconds.asObservable();
   remainMinutes$ = this._remainMinutes.asObservable();
-  env = environment;
+  env = this.configService.settings;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -53,13 +55,7 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded',
     }),
   };
-  //private http: HttpClient
-  constructor(
-    //@Inject(ConfigToken) readonly config: SessionExpirationConfig,
-    private http: HttpClient
-  ) {
-    this._timeoutSeconds = this._sessionTime * 60;
-  }
+  
   resetSession() {}
   public setToken(authResult: any) {
     // const expiresAt = moment().add(

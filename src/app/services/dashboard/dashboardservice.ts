@@ -11,18 +11,13 @@ import {
   Subject,
   Subscription,
 } from 'rxjs';
-import { Dashboard } from 'src/app/model/dashboard/dashboard';
-import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
-import { DataComponent } from 'src/app/model/samples/data';
-import { environment } from 'src/environments/environment';
-import { GlobalService } from '../common/global.service';
-import { DashboardData } from 'src/app/model/dashboard/dashboardData';
 import { HttpService } from '../common/http.service';
+import { AppConfigService } from 'src/app/app-config-service';
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  env = environment;
+  env = this.configService.settings;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,7 +26,7 @@ export class DashboardService {
   resetDashboardData: any;
   
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService,private configService:AppConfigService) {}
 
   downloadSubmission360(submissionId : string) : Observable<any>{
     var apiUrl = this.env.baseUrl + 'api/submission360';

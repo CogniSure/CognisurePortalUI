@@ -4,18 +4,17 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import * as moment from "moment";
 import { UserProfile } from 'src/app/model/profile/userprofile';
-
-import { environment } from 'src/environments/environment';
 import { FAResult } from 'src/app/model/common/2faresult';
 
 import { GlobalService } from '../common/global.service';
+import { AppConfigService } from 'src/app/app-config-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   
-    env = environment;
+    env = this.configService.settings;
     //baseurl = 'https://csbbenqa.cognisure.ai:1089';
     httpOptions = {
       headers: new HttpHeaders({
@@ -27,7 +26,7 @@ export class LoginService {
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
     };
-  constructor(private http: HttpClient, private globalService:GlobalService) {}
+  constructor(private globalService:GlobalService,private configService:AppConfigService) {}
 
   
   

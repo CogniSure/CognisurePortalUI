@@ -1,15 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { HttpService } from '../common/http.service';
 import { Observable, map, of } from 'rxjs';
 import { Submission } from 'src/app/model/inbox/Submission';
+import { AppConfigService } from 'src/app/app-config-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InboxService {
-  env = environment;
+  env = this.configService.settings;
   // //baseurl = 'https://csbbenqa.cognisure.ai:1089';
   // httpOptions = {
   //   headers: new HttpHeaders({
@@ -31,7 +31,7 @@ export class InboxService {
   alternateIconURL = '../../../assets/images/dropdown_icon.png';
 
   idToDisplay = 1;
-  constructor(private httpService: HttpService, private http: HttpClient) {}
+  constructor(private httpService: HttpService, private configService:AppConfigService) {}
   // constructor(private http: HttpClient, private globalService:GlobalService) {}
 
   private dropdownOptions: { label: string; link: string }[] = [

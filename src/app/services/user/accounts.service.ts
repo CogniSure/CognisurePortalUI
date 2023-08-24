@@ -7,11 +7,11 @@ import { UserProfile } from 'src/app/model/profile/userprofile';
 import { GlobalService } from '../common/global.service';
 // import { ContactUs } from 'src/app/model/common/contactus';
 import { LoginData } from 'src/app/model/common/logindata';
-import { environment } from "src/environments/environment";
 // import { ForgotPassword } from "src/app/model/common/forgotpassword";
 import { FAResult } from "src/app/model/common/2faresult";
 import { Accounts } from "src/app/model/profile/accounts";
 import { HttpService } from "../common/http.service";
+import { AppConfigService } from "src/app/app-config-service";
 // import { News } from "src/app/model/common/news";
 // import { NewsData } from "src/app/model/common/newsData";
 
@@ -20,20 +20,10 @@ import { HttpService } from "../common/http.service";
 })
 export class AccountService {
   
-    env = environment;
-    //baseurl = 'https://csbbenqa.cognisure.ai:1089';
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    };
-    httpOption1 = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    };
-  constructor(private http: HttpService, private globalService:GlobalService) {}
-  
+  constructor(private http: HttpService, private globalService:GlobalService ,private configService : AppConfigService) {
+    console.log(configService.settings)
+  }
+  env = this.configService.settings;
   // getAcountDetails(apiUrl:string , userId:number){
   //   return this.http.getData(apiUrl+"accounts",userId).pipe(
   //     map((result)=>{

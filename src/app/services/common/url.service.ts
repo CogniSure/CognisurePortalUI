@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { HttpService } from './http.service';
+import { AppConfigService } from 'src/app/app-config-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UrlService {
 
-  env = environment;
+  env = this.configService.settings;
   //baseurl = 'https://csbbenqa.cognisure.ai:1089';
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,7 +20,7 @@ export class UrlService {
       'Content-Type': 'application/x-www-form-urlencoded',
     }),
   };
-constructor(private httpService: HttpService) {}
+constructor(private httpService: HttpService,private configService:AppConfigService) {}
 
 getUrl(userId:number, pageName:string, widgetCode : string, action:string){
   return this.httpService.getConfiguredUrl(userId, pageName, widgetCode,action)

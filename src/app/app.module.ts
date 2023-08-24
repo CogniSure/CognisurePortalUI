@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthService } from './services/auth/auth.service';
-import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {
   HTTP_INTERCEPTORS,
   HttpClient,
@@ -32,13 +32,11 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { AppConfigService } from './app-config-service';
-import { environment } from 'src/environments/environment';
-import { catchError, of, tap } from 'rxjs';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 
-export function initializeApp(appConfig: AppConfigService) {
-  return () => appConfig.load();
-}
+// export function initializeApp(appConfig: AppConfigService) {
+//   return () => appConfig.load();
+// }
 
 @NgModule({
   declarations: [AppComponent],
@@ -57,7 +55,6 @@ export function initializeApp(appConfig: AppConfigService) {
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-   
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -68,54 +65,19 @@ export function initializeApp(appConfig: AppConfigService) {
     //     useClass: LoaderInterceptor
     //     multi: true,
     //  },
-    AppConfigService,
-      { provide: APP_INITIALIZER,
-        useFactory: initializeApp,
-        deps: [AppConfigService], multi: true
-       }
-   ,
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: () => {
-    //     const configService = Inject(AppConfigService);
-    //     const http = Inject(HttpClient);
-    //     const env = environment;
-    //     return () =>
-    //       new Promise((resolve) => {
-    //         if (env.production) {
-    //           http
-    //             .get('../assets/config.json')
-    //             .pipe(
-    //               tap((data: any) => {
-    //                 configService.baseUrl = data.baseurl;
-    //                 resolve(true);
-    //               }),
-    //               catchError((error) => {
-    //                 resolve(true);
-    //                 return of(null);
-    //               })
-    //             )
-    //             .subscribe();
-    //         } else {
-    //           new Promise((resolve) => {
-    //             console.log("Error")
-    //             resolve(true);
-    //             const settings = require('../assets/config.json');
-    //             configService.baseUrl = settings.baseUrl;
-    //             console.log("App Module:" + settings.baseUrl)
-    //             resolve(true);
-    //           });
-    //         }
-    //       });
-    //   },
-    //   multi: true,
-    // },
+    //AppConfigService,
+    {
+      provide : APP_INITIALIZER,
+      multi : true,
+       deps : [AppConfigService],
+       useFactory : (appConfigService : AppConfigService) =>  () => appConfigService.load()
+    },
     HttpService,
     AuthService,
     {
       provide: SessionInterruptService,
       useClass: AppSessionInterruptService,
-    }
+    },
   ],
   bootstrap: [AppComponent],
 })
