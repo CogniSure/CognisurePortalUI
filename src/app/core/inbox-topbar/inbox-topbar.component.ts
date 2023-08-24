@@ -71,4 +71,16 @@ export class InboxTopbarComponent {
   closeMyMenu(menuTrigger: MatMenuTrigger) {
     menuTrigger.closeMenu();
   }
+  Guidewire(){
+      var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
+      this.globalService.CurrentSubmissionId$.subscribe(sub=>{
+        console.log("DownloadService")
+        console.log(sub)
+        this.inboxService.sendToGuidewire(submissionId).subscribe(downloadRes=>{
+          console.log(downloadRes)
+        });
+        
+        
+      })
+  }
 }

@@ -81,4 +81,11 @@ export class InboxService {
       })
     );
   }
+  sendToGuidewire(submissionId : string) : Observable<any>{
+    var apiUrl = this.env.baseUrl + 'api/SendtoGuidewire';
+    var result;
+    let hParams = new HttpParams();
+    hParams = hParams.set('submissionid', submissionId);
+    return this.httpService.postData(apiUrl,"", hParams);
+  }
 }
