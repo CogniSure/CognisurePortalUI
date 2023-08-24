@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 interface NavItem {
@@ -15,7 +16,7 @@ interface NavItem {
   styleUrls: ['./inbox-topbar.component.scss']
 })
 
-export class InboxTopbarComponent {
+export class InboxTopbarComponent implements OnInit, OnDestroy {
   navItems = [
     { title: 'Duke & Duke', content: '885 Street, Warrnville, illinois 60555', icon: '' },
     { title: 'Hotel', content: '', icon: 'bed' },
@@ -36,16 +37,20 @@ export class InboxTopbarComponent {
   propertyInformation : any={};
 
   constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router) {}
+  subscription: Subscription;
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
   
   ngOnInit(): void {
     this.fetchDropdownOptions();
-    this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if(sub!=null && sub.value!= null)
+    this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
+      if(sub!=null && sub!= null)
       {
       this.accountInformation = sub.value.account_Level_Info[0]
       this.propertyInformation = sub.value.property_Policy_Info_Blanket_Summary[0]
-      console.log('Account Information');
-      console.log(sub.value      );
       }
     });
   }
@@ -72,10 +77,10 @@ export class InboxTopbarComponent {
     menuTrigger.closeMenu();
   }
   Guidewire(){
-      var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
-      this.globalService.CurrentSubmissionId$.subscribe(sub=>{
+      // var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
+      this.subscription = this.globalService.getCurrentSubmissionId().subscribe(submissionId=>{
         console.log("DownloadService")
-        console.log(sub)
+        console.log(submissionId)
         this.inboxService.sendToGuidewire(submissionId).subscribe(downloadRes=>{
           console.log(downloadRes)
         });

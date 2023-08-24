@@ -137,7 +137,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   
 
   reDirect(url:string, param:any){
-    this.globalService.CurrentSubmissionId$.next(param.MessageId)
+    this.globalService.setCurrentSubmissionId(param.MessageId)
   }
 
 

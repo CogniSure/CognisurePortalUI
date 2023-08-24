@@ -1,4 +1,4 @@
-import { Component, Injector, Input } from '@angular/core';
+import { Component, Injector, Input, OnDestroy, OnInit } from '@angular/core';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { DataComponent } from 'src/app/model/samples/data';
@@ -10,13 +10,15 @@ import {
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { SVGIcon, downloadIcon } from '@progress/kendo-svg-icons';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss'],
 })
-export class SummaryComponent {
+export class SummaryComponent implements OnInit,OnDestroy {
+  subscription: Subscription;
   public custComponents: WidgetComponentInfo[] = [];
   reloadReq = true;
   public downloadIcon:SVGIcon = downloadIcon;
@@ -30,6 +32,11 @@ export class SummaryComponent {
     private dbService: DashboardService
   ) {
     //this.globalService.setDashboardReload(true);
+  }
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
   animationClass = 'slide-effect-x';
   ngAfterViewInit() {
@@ -98,10 +105,8 @@ export class SummaryComponent {
     return myInjector;
   }
   download(){
-    var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
-    this.globalService.CurrentSubmissionId$.subscribe(sub=>{
-      console.log("DownloadService")
-      console.log(sub)
+    // var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
+    this.subscription = this.globalService.getCurrentSubmissionId().subscribe(submissionId=>{
       this.dbService.downloadSubmission360(submissionId).subscribe(downloadRes=>{
         console.log(downloadRes)
         const source = `data:application/pdf;base64,${downloadRes.value.data}`;
