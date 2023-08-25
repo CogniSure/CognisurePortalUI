@@ -24,7 +24,7 @@ export class CoveragesComponent {
     this.globalService.getCurrentSubmission().subscribe((sub) => {
       if(sub!=null && sub.value!= null)
       {
-      this.summary = sub.value.account_Level_Info[0]
+      this.summary = sub.value.Account_Level_Info[0]
       console.log('Summary');
       console.log(sub.value);
       }
