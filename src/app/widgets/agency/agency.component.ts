@@ -15,6 +15,9 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   // produceremail: any = 'jkelly@aceinsurance.com';
   // phone: string = '312-987-3456';
   // activityrank: string = '234 / 4389';
+
+  summary : any={};
+
   animationClass = "slide-effect-x";
   agencyData: any; 
   @Input() widgetInput:WidgetInput
@@ -29,6 +32,18 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
     // if(this.widgetInput!=null && !this.widgetInput.ReloadRequired){
       
     // }
+
+      this.globalService.getCurrentSubmission().subscribe((sub) => {
+        if(sub!=null && sub.value!= null)
+        {
+        this.summary = sub.value.account_Level_Info[0]
+        console.log('Summary');
+        console.log(sub.value);
+        }
+      });
+
+
+
   }
   ngAfterViewInit() {
     //console.log("Enable Transition 2 : " +this.enableTransition)
@@ -41,4 +56,7 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   ngOnChanges(changes: any){
 
   }
+
+
+
 }
