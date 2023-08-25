@@ -44,4 +44,15 @@ export class TopbarComponent {
   closeMyMenu(menuTrigger: MatMenuTrigger) {
     menuTrigger.closeMenu();
   }
+
+  public opened = true;
+  public dataSaved = false;
+
+  public close(): void {
+    this.opened = false;
+  }
+
+  public open(): void {
+    this.opened = true;
+  }
 }

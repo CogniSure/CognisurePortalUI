@@ -31,12 +31,32 @@
       <kendo-tilelayout-item-body style="float: right; padding: 2%">
         <div class="header-icons" style="display: flex">
           <div class="kendoimg" style="width: 17%">
-            <span class="copied_icontop">
+            <!-- <span class="copied_icontop">
               <img
                 [src]="genericService.topbarIconURL"
                 class="imgHeight copied_icon1"
               />
-            </span>
+            </span> -->
+            <kendo-button class="copied_icontop" style="    background: transparent;
+            border: none;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;">
+              <img
+                [src]="genericService.topbarIconURL"
+                class="imgHeight copied_icon1"
+              />
+            </kendo-button>
+            <kendo-window
+            title="Please provide additional data"
+            *ngIf="opened"
+            (close)="close()"
+            [minWidth]="250"
+            [width]="450"
+          >
+           <app-copilot></app-copilot>
+          </kendo-window>
           </div>
           <div class="notificationimg" style="width: 17%">
             <span class="notification_icon">

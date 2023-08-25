@@ -14,6 +14,7 @@ import { InboxMenuComponent } from './inbox-menu/inbox-menu.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
+import { CopilotComponent } from './copilot/copilot.component';
 
 const routes:Routes = [
 ];
@@ -28,7 +29,8 @@ const routes:Routes = [
     RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    CopilotComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ const routes:Routes = [
     RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    CopilotComponent
   ]
 })
 export class CoreModule { }

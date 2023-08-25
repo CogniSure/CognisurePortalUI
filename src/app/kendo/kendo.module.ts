@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { ChartsModule } from '@progress/kendo-angular-charts';
-import { DialogModule } from '@progress/kendo-angular-dialog';
+import { DialogModule, DialogsModule } from '@progress/kendo-angular-dialog';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
@@ -47,7 +47,8 @@ const KendoComponents = [];
     ContextMenuModule,
     ListViewModule,
     LabelModule ,
-    IndicatorsModule 
+    IndicatorsModule ,
+    DialogsModule 
   ],
   exports:[
     GridModule,
@@ -68,7 +69,8 @@ const KendoComponents = [];
     ContextMenuModule,
     ListViewModule ,
     LabelModule ,
-    IndicatorsModule
+    IndicatorsModule,
+    DialogsModule 
   ]
 })
 export class KendoModule { }

@@ -36,6 +36,8 @@ import {
   IndicatorsModule,
   LoaderComponent,
 } from '@progress/kendo-angular-indicators';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+
 
 // export function initializeApp(appConfig: AppConfigService) {
 //   return () => appConfig.load();
@@ -55,6 +57,7 @@ import {
     ChartsModule,
     LabelModule,
     IndicatorsModule,
+    DialogsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
