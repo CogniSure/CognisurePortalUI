@@ -7,7 +7,6 @@ import { SelectEvent } from '@progress/kendo-angular-layout';
 })
 export class ExposerAnalysisComponent {
   public onTabSelect(e: SelectEvent): void {
-    console.log(e);
   }
   public columns: any =[
     {

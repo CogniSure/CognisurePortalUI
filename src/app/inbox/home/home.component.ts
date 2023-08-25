@@ -21,8 +21,6 @@ export class HomeComponent implements OnInit {
     this.inboxservice.getAllSubmissionData().subscribe(result=>{
       this.tableData = result;
       // this.changedetector.detectChanges();
-      console.log("Inbox Data");
-      console.log(this.tableData);
     })
   }
  
@@ -411,9 +409,7 @@ export class HomeComponent implements OnInit {
 
 // getSubmissionDetail(string submissionId){
 //   this.inboxService.getSubmissionData("AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=").subscribe(res=>{
-//     console.log("Test");
 //     this.submissionData = res.value;
-//     console.log(res)
 //     this.globalService.setCurrentSubmission(res)
 //   })
 // }

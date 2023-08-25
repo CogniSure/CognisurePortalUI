@@ -37,12 +37,12 @@
                 class="imgHeight copied_icon1"
               />
             </span> -->
-            <kendo-button class="copied_icontop" style="    background: transparent;
+            <kendo-button class="copied_icontop" style="background: transparent;
             border: none;
             height: 100%;
             width: 100%;
             padding: 0;
-            margin: 0;">
+            margin: 0;" (click)="open()">
               <img
                 [src]="genericService.topbarIconURL"
                 class="imgHeight copied_icon1"
@@ -50,12 +50,38 @@
             </kendo-button>
             <kendo-window
             title="Please provide additional data"
+            class="copilot-wrapper"
             *ngIf="opened"
             (close)="close()"
             [minWidth]="250"
             [width]="450"
           >
-           <app-copilot></app-copilot>
+          <form class="k-form">
+            <fieldset>
+              <legend>User Details</legend>
+  
+              <label class="k-form-field">
+                <span>First Name</span>
+                <input kendoTextBox placeholder="Your Name" />
+              </label>
+              <label class="k-form-field">
+                <span>Last Name</span>
+                <input kendoTextBox placeholder="Your Last Name" />
+              </label>
+            </fieldset>
+  
+            <div class="k-actions k-actions-end">
+              <button kendoButton type="button" (click)="close()">Cancel</button>
+              <button
+                kendoButton
+                themeColor="primary"
+                type="button"
+                
+              >
+                Submit
+              </button>
+            </div>
+          </form>
           </kendo-window>
           </div>
           <div class="notificationimg" style="width: 17%">

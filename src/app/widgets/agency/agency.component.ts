@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { subreportIcon } from '@progress/kendo-svg-icons';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { AgencyService } from 'src/app/services/inbox/agency.service';
@@ -17,15 +18,14 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   // activityrank: string = '234 / 4389';
 
   summary : any={};
-
   animationClass = "slide-effect-x";
   agencyData: any; 
   @Input() widgetInput:WidgetInput
   constructor(private agencyService: AgencyService,private globalService : GlobalService) {}
 
   ngOnInit() {
-    this.agencyData = this.agencyService.getAgencyData();
-    //console.log("Enable Transition 1 : " +this.enableTransition)
+    //this.agencyData = this.agencyService.getAgencyData();
+   
     // this.globalService.animationClass$.subscribe((x)=>{
     //   this.animationClass = x
     // })
@@ -34,11 +34,10 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
     // }
 
       this.globalService.getCurrentSubmission().subscribe((sub) => {
-        if(sub!=null && sub.value!= null)
+        if(sub!=null && subreportIcon!= null)
         {
-        this.summary = sub.value.Account_Level_Info[0]
-        console.log('Summary');
-        console.log(sub.value);
+        // this.summary = sub.Account_Level_Info[0]
+       
         }
       });
 
@@ -46,12 +45,10 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
 
   }
   ngAfterViewInit() {
-    //console.log("Enable Transition 2 : " +this.enableTransition)
   }
 
   ngOnDestroy(){
     this.animationClass = "";
-    //console.log("Enable Transition 3 : " +this.enableTransition)
   }
   ngOnChanges(changes: any){
 

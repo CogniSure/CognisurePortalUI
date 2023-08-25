@@ -18,8 +18,6 @@ export class AppConfigService {
         return new Promise<void>((resolve, reject) => {
             this.http.get(jsonFile).pipe(tap((data:any)=>{
               this.settings = data
-              console.log("Config")
-              console.log(this.settings)
               resolve();
             })
             ,catchError((error) => {

@@ -47,17 +47,9 @@ export class SummaryComponent implements OnInit,OnDestroy {
     //   }
     // })
     this.globalService.animationClass$.next('');
-    console.log('ng after view init -summary');
   }
 
   ngOnInit(): void {
-    //console.log('ngOn Init -summary');
-
-    // this.globalService.getCurrentSubmission().subscribe((sub) => {
-    //   console.log('Submission in Summary');
-    //   console.log(sub.value.account_Level_Info        );
-    // });
-
     this.globalService.animationClass$.next('slide-effect-x');
     this.componentOrder = DataComponent.Datahub;
     this.custComponents = [];
@@ -88,7 +80,6 @@ export class SummaryComponent implements OnInit,OnDestroy {
     this.globalService.setDashboardReload(false);
   }
   createInjector(header: string, widgetType: string): any {
-    console.log('Create Injector -summary : ' + this.reloadReq);
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
       WidgetName: header,
@@ -108,7 +99,6 @@ export class SummaryComponent implements OnInit,OnDestroy {
     // var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
     this.subscription = this.globalService.getCurrentSubmissionId().subscribe(submissionId=>{
       this.dbService.downloadSubmission360(submissionId).subscribe(downloadRes=>{
-        console.log(downloadRes)
         const source = `data:application/pdf;base64,${downloadRes.value.data}`;
         const downloadLink = document.createElement('a');
         const fileName = downloadRes.value.fileName;

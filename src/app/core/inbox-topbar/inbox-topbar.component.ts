@@ -49,8 +49,8 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
       if(sub!=null && sub!= null)
       {
-      this.accountInformation = sub.value.Account_Level_Info[0]
-      this.propertyInformation = sub.value.Property_Policy_Info_Blanket_Summary[0]
+      // this.accountInformation = sub.value.Account_Level_Info[0]
+      // this.propertyInformation = sub.value.Property_Policy_Info_Blanket_Summary[0]
       }
     });
   }
@@ -79,10 +79,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   Guidewire(){
       // var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
       this.subscription = this.globalService.getCurrentSubmissionId().subscribe(submissionId=>{
-        console.log("DownloadService")
-        console.log(submissionId)
         this.inboxService.sendToGuidewire(submissionId).subscribe(downloadRes=>{
-          console.log(downloadRes)
         });
         
         

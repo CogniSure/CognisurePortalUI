@@ -19,14 +19,13 @@ export class CoveragesComponent {
   constructor(private coveragesService: CoveragesService, private globalService : GlobalService) {}
 
   ngOnInit(): void {
-    this.getCoveragesData();
+    //this.getCoveragesData();
 
     this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if(sub!=null && sub.value!= null)
+      if(sub!=null && sub!= null)
       {
-      this.summary = sub.value.Account_Level_Info[0]
-      console.log('Summary');
-      console.log(sub.value);
+      // this.summary = sub.Account_Level_Info[0]
+    
       }
     });
 

@@ -21,7 +21,6 @@ import { AppConfigService } from "src/app/app-config-service";
 export class AccountService {
   
   constructor(private http: HttpService, private globalService:GlobalService ,private configService : AppConfigService) {
-    console.log(configService.settings)
   }
   env = this.configService.settings;
   // getAcountDetails(apiUrl:string , userId:number){
@@ -72,12 +71,10 @@ export class AccountService {
         const newsList:News[] = [];
         let counter = 0
         result.value.forEach( (acc:any) => {
-          // console.log("News Filter : " + counter + ":" + acc.newsCategory)
-          // console.log(newsList.filter(x=>x.NewsCategory === acc.newsCategory))
+          
           if(!this.isNewsCategoryExists(newsList,acc.newsCategory))
           {
-            // console.log("News If : " + counter)
-            // console.log(newsList)
+           
             let newsData : NewsData= {
               TitleName : acc.titleName,
               Link : acc.link
@@ -90,8 +87,7 @@ export class AccountService {
           }
           else
           {
-            // console.log("News Else : " + counter)
-            // console.log(newsList)
+            
             // let newsData : NewsData= {
             //   TitleName : acc.titleName,
             //   Link : acc.link

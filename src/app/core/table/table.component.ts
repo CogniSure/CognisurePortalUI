@@ -62,16 +62,11 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       mode: "multiple",
       drag: true,
     };
-    console.log(Date.now())
-    setTimeout(()=>31000)
-    console.log(Date.now())
     this.gridData = this.data;
     this.gridView = this.data;
     this.loading=false;
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("TableComponent-onchange")
-    console.log(changes)
     if (changes!=null && changes['data']!=null ) {
       this.data = changes['data'].currentValue;
       this.gridData = this.data;
@@ -117,9 +112,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 
 
   onCheckBoxClick(e:any, rowIndex:any, dataItem:any) {
-    console.log("ShiftKey? ", e.shiftKey);
-    console.log("RowIndex: ", rowIndex);
-    console.log("Data item: ", JSON.stringify(dataItem));
 
     // perform the desired custom logic for selecting items based on the currently selected
     // ones, and the checkbox being shift-clicked

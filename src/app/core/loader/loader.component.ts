@@ -19,7 +19,6 @@ ngOnInit(): void {
 
   init(){
     this.loaderService.getSpinnerObservable().subscribe((status)=>{
-      console.log("Spinner Stattus loader comp" + status)
       if(status === 'start'){
         this.showSpinner=true
       this.cdRef.detectChanges()

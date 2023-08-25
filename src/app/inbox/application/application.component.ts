@@ -8,7 +8,6 @@ import { SelectEvent } from '@progress/kendo-angular-layout';
 })
 export class ApplicationComponent {
   public onTabSelect(e: SelectEvent): void {
-    console.log(e);
     if(e.index ==2 )
       {
         this.column = this.columns2 

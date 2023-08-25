@@ -84,8 +84,7 @@ export class LoginComponent {
       //   queryParamsHandling: 'preserve',
       // });
       // this.urlService.getUrl(0,"Login","loginsubmit","load").subscribe((res:any)=>{
-      //   console.log("LoginUrl");
-      //   console.log(res.value.widgetURL)
+    
       //   const loginUrl = res.value.widgetURL;
         this.accService.login(this.loginForm.value).subscribe((res:any) => {
              if (res.success) {

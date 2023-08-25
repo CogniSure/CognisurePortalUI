@@ -34,10 +34,7 @@ export class FunnelComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {}
   ngOnInit(): void {
-    console.log("funnelFIlter:")
-    console.log(this.input)
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-      console.log(res)
       this.chartData = res;
     });
   }

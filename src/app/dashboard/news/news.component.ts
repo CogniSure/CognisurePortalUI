@@ -34,7 +34,6 @@ export class NewsComponent {
   }
 
   public onPanelChange(event: PanelBarStateChangeEvent): void {
-    console.log("stateChange: ", event);
   }
 
 }

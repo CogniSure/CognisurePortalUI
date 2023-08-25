@@ -51,7 +51,6 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
         }),
         retry(1), catchError(this.errorHandl))
 
-      console.log("Result : " + JSON.stringify(res));
       return res;
   }
   deleteData(apiUrl:string,urlParams : string){

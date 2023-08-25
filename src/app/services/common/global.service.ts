@@ -14,21 +14,26 @@ export class GlobalService {
   public CurrentSubmission$ = new BehaviorSubject<any>({});
 
   setCurrentSubmission(submission: any) {
-    this.CurrentSubmission$.next(submission);
+    sessionStorage.setItem('CurrentSubmission', JSON.stringify(submission));
+   // this.CurrentSubmission$.next(submission);
   }
   getCurrentSubmission() {
-    return this.CurrentSubmission$;
+   // return this.CurrentSubmission$;
+   var submission = sessionStorage.getItem('CurrentSubmission')==null?"":sessionStorage.getItem('CurrentSubmission');
+
+    //this.CurrentSubmission$.next(submissionId)
+    return of(JSON.parse(submission!));
   }
 
   setCurrentSubmissionId(submissionId: any) {
-    // submissionId =
-    //   'AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=';
-    sessionStorage.setItem('CurrentSubmission', submissionId);
+    submissionId =
+      'AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=';
+    sessionStorage.setItem('CurrentSubmissionId', submissionId);
     //this.CurrentSubmission$.next(submissionId)
   }
   getCurrentSubmissionId() {
     var submissionId: any = '';
-    submissionId = sessionStorage.getItem('CurrentSubmission')==null?"":sessionStorage.getItem('CurrentSubmission');
+    submissionId = sessionStorage.getItem('CurrentSubmissionId')==null?"":sessionStorage.getItem('CurrentSubmissionId');
 
     //this.CurrentSubmission$.next(submissionId)
     return of(submissionId);

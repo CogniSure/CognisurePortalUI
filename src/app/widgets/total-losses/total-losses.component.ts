@@ -37,7 +37,6 @@ export class TotalLossesComponent {
 
   onYearChange(event: any) {
     this.selectedYear = event.target.value;
-    console.log('Selected Year:', this.selectedYear);
   }
   
   

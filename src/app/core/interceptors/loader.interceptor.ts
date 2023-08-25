@@ -24,7 +24,6 @@ export class LoaderInterceptor implements HttpInterceptor {
 //     );
 //  }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("Spinner Stattus interceptor" )
      this.loaderService.requestStarted();
      return this.handler(next,request)
   }
