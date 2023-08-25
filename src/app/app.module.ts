@@ -38,6 +38,9 @@ import {
 } from '@progress/kendo-angular-indicators';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { UploadsModule } from '@progress/kendo-angular-upload';
+import { ChatModule } from '@progress/kendo-angular-conversational-ui';
+import { ChatService } from './services/common/chat.service';
+
 
 
 
@@ -61,6 +64,7 @@ import { UploadsModule } from '@progress/kendo-angular-upload';
     IndicatorsModule,
     DialogsModule,
     UploadsModule,
+    ChatModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
@@ -82,6 +86,7 @@ import { UploadsModule } from '@progress/kendo-angular-upload';
         appConfigService.load(),
     },
     HttpService,
+    ChatService,
     AuthService,
     {
       provide: SessionInterruptService,

@@ -20,6 +20,7 @@ import { ListViewModule } from "@progress/kendo-angular-listview";
 import { LabelModule } from '@progress/kendo-angular-label';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 import { UploadsModule,FileSelectModule } from '@progress/kendo-angular-upload';
+import { ChatModule } from '@progress/kendo-angular-conversational-ui';
 
 const routes:Routes = [
 ];
@@ -51,7 +52,8 @@ const KendoComponents = [];
     IndicatorsModule ,
     DialogsModule ,
     UploadsModule ,
-    FileSelectModule 
+    FileSelectModule ,
+    ChatModule 
   ],
   exports:[
     GridModule,
@@ -75,7 +77,8 @@ const KendoComponents = [];
     IndicatorsModule,
     DialogsModule ,
     UploadsModule ,
-    FileSelectModule 
+    FileSelectModule, 
+    ChatModule 
   ]
 })
 export class KendoModule { }

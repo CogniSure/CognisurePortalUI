@@ -1,35 +1,46 @@
 <div>
-  <h2 mat-dialog-title>Ask Me</h2>
-  <mat-dialog-content class="mat-typography">
+    <h2 mat-dialog-title >Ask Me</h2>
+
+  <mat-dialog-content class="mat-typography" style="max-height:80%;">
     <div>
-        <kendo-tilelayout
-    [columns]="2"
-    [rowHeight]="'100%'"
-    [resizable]="false"
-    [reorderable]="false"
-    class="top-bar-header"
-    [gap]="0"
-  >
-  <kendo-tilelayout-item [col]="1" [colSpan]="1" [row]="1" [rowSpan]="1">
-    <kendo-tilelayout-item-body>
-        <p>FileSelect</p>
+      <kendo-tilelayout
+        [columns]="2"
+        [rowHeight]="'100%'"
+        [resizable]="false"
+        [reorderable]="false"
+        class="top-bar-header"
+        [style]="'position: relative;'"
+        [gap]="0"
+      >
+        <kendo-tilelayout-item [col]="1" [colSpan]="1" [row]="1" [rowSpan]="1">
+          <kendo-tilelayout-item-body style="max-height: 82%;">
+            <p>FileSelect</p>
             <kendo-fileselect (ngModel)="(uploadedFiles)"> </kendo-fileselect>
-            <kendo-button class="copied_icontop" style="background: transparent;" (click)="Upload()"> Upload
+            <kendo-button
+              class="copied_icontop"
+              style="background: transparent"
+              (click)="Upload()"
+            >
+              Upload
             </kendo-button>
-    </kendo-tilelayout-item-body>
-  </kendo-tilelayout-item>
-  <kendo-tilelayout-item [col]="2" [colSpan]="1" [row]="1" [rowSpan]="1">
-    <kendo-tilelayout-item-body>
-        
-    </kendo-tilelayout-item-body>
-  </kendo-tilelayout-item>
-</kendo-tilelayout>
+          </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+        <kendo-tilelayout-item [col]="2" [colSpan]="1" [row]="1" [rowSpan]="1">
+          <kendo-tilelayout-item-body style="max-height: 82%;">
+            <div>
+              <kendo-chat
+                [messages]="(feed | async)!"
+                [user]="user"
+                (sendMessage)="sendMessage($event)"
+              >
+              </kendo-chat>
+            </div>
+          </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+      </kendo-tilelayout>
     </div>
-</mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
-      Install
-    </button>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" style="float: right;">
+    <button mat-button mat-dialog-close>Close</button>
   </mat-dialog-actions>
 </div>
