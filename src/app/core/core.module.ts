@@ -29,8 +29,7 @@ const routes:Routes = [
     RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
-    LoaderComponent,
-    CopilotComponent
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -48,8 +47,7 @@ const routes:Routes = [
     RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
-    LoaderComponent,
-    CopilotComponent
+    LoaderComponent
   ]
 })
 export class CoreModule { }

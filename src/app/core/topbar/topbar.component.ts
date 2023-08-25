@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { GenericService } from 'src/app/services/common/generic.service';
+import { CopilotComponent } from '../copilot/copilot.component';
 
 @Component({
   selector: 'app-topbar',
@@ -16,7 +18,7 @@ export class TopbarComponent {
   
 
 
-  constructor(public genericService: GenericService,  private router: Router) {}
+  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog) {}
   
   ngOnInit(): void {
     this.fetchDropdownOptions();
@@ -45,14 +47,12 @@ export class TopbarComponent {
     menuTrigger.closeMenu();
   }
 
-  public opened = true;
-  public dataSaved = false;
 
-  public close(): void {
-    this.opened = false;
-  }
+  openDialog() {
+    const dialogRef = this.dialog.open(CopilotComponent);
 
-  public open(): void {
-    this.opened = true;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
