@@ -37,6 +37,8 @@ import {
   LoaderComponent,
 } from '@progress/kendo-angular-indicators';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { UploadsModule } from '@progress/kendo-angular-upload';
+
 
 
 // export function initializeApp(appConfig: AppConfigService) {
@@ -58,6 +60,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
     LabelModule,
     IndicatorsModule,
     DialogsModule,
+    UploadsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

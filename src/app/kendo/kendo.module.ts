@@ -19,6 +19,7 @@ import { ContextMenuModule, MenuModule } from '@progress/kendo-angular-menu';
 import { ListViewModule } from "@progress/kendo-angular-listview";
 import { LabelModule } from '@progress/kendo-angular-label';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+import { UploadsModule,FileSelectModule } from '@progress/kendo-angular-upload';
 
 const routes:Routes = [
 ];
@@ -48,7 +49,9 @@ const KendoComponents = [];
     ListViewModule,
     LabelModule ,
     IndicatorsModule ,
-    DialogsModule 
+    DialogsModule ,
+    UploadsModule ,
+    FileSelectModule 
   ],
   exports:[
     GridModule,
@@ -70,7 +73,9 @@ const KendoComponents = [];
     ListViewModule ,
     LabelModule ,
     IndicatorsModule,
-    DialogsModule 
+    DialogsModule ,
+    UploadsModule ,
+    FileSelectModule 
   ]
 })
 export class KendoModule { }
