@@ -21,8 +21,8 @@ export class GlobalService {
   }
 
   setCurrentSubmissionId(submissionId: any) {
-    submissionId =
-      'AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=';
+    // // submissionId =
+    // //   'AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=';
     sessionStorage.setItem('CurrentSubmission', submissionId);
     //this.CurrentSubmission$.next(submissionId)
   }
