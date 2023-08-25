@@ -37,7 +37,7 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
         if(sub!=null && sub.value!= null)
         {
           console.log(sub)
-        // this.summary = sub.account_Level_Info[0]
+        this.summary = sub.account_Level_Info[0]
        
         }
       });

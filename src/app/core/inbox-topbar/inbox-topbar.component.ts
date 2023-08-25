@@ -49,8 +49,8 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
       if(sub!=null && sub!= null)
       {
-      // this.accountInformation = sub.value.Account_Level_Info[0]
-      // this.propertyInformation = sub.value.Property_Policy_Info_Blanket_Summary[0]
+      this.accountInformation = sub.value.account_Level_Info[0]
+      this.propertyInformation = sub.value.property_Policy_Info_Blanket_Summary[0]
       }
     });
   }
