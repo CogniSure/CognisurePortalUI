@@ -164,9 +164,14 @@
   // }
   
   .side_icons{
-    width: 105%;
+    width: 97%;
     }
-    
+    ::ng-deep .k-state-selected.k-state-focused {
+      background-color: #6F9300 !important;
+  }
+  ::ng-deep .k-list .k-item .k-state-selected {
+    background-color: blue !important;
+  }
   
     .subheaderdropdown {
       // position: fixed;

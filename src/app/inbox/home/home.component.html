@@ -160,48 +160,12 @@
               >
                 <kendo-tilelayout-item-body style="text-align: left; padding: 0">
                   <div class="side_icons">
-                    <span class="copied_icon">
-                      <span class="subdropdown">
-                        <span
-                          *ngIf="!isToggleOn"
-                          (click)="toggleDropdown()"
-                          class="imgHeight input-with-icon action_btn"
-                        >
-                          <span class="subheaderdropdown">
-                            <span class="view">View as : <span class="view_name">{{ navItems[9].title }}</span></span>
-                            <mat-icon style="padding-top: 3%;">
-                              <span class="material-icons-outlined">
-                                {{ navItems[9].icon }}
-                              </span>
-                            </mat-icon>
-                          </span>
-                        </span>
-                      </span>
-          
-                      <span class="subdropdown">
-                        <span
-                          *ngIf="isToggleOn"
-                          (click)="toggleDropdown()"
-                          class="imgHeight input-with-icon action_btn"
-                        >
-                          <span class="subheaderdropdown">
-                            <span class="view">View as : {{ navItems[9].title }}</span>
-                            <mat-icon style="padding-top: 3%;">
-                              <span class="material-icons-outlined">
-                                {{ navItems[9].icon }}
-                              </span>
-                            </mat-icon>
-                          </span>
-                        </span>
-                      </span>
-                    </span>
-                    <div class="dropdown" *ngIf="isToggleOn">
-                      <ul>
-                        <li *ngFor="let option of dropdownOption">
-                          <a [routerLink]="option.link">{{ option.label }}</a>
-                        </li>
-                      </ul>
-                    </div>
+
+                      <kendo-dropdownlist [data]="dropdownOption"
+                      [(ngModel)]="selectedValue"
+                      fillmode="solid"
+                      textField="label" valueField="link" style="background: white; border-radius: 8px;"
+                      ></kendo-dropdownlist>
                   </div>
                 </kendo-tilelayout-item-body>
               </kendo-tilelayout-item>

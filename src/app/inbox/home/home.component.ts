@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       { label: 'Sign Out', link: '/sign-out' }
     ];;
   }
-
+  selectedValue =  { label: 'Mark Thomas', link: '/option1' };
   dropdownOption = [
     { label: 'Mark Thomas', link: '/option1' },
     { label: 'Lisa Scott', link: '/option2' },
