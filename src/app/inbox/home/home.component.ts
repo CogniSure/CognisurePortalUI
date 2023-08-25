@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
 
   }
   dropdownValues: string[] = [];
-  isToggleOn: boolean = false;
+  // isToggleOn: boolean = false;
+  isToggleOn = false;
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   tableData: any[]
@@ -46,6 +47,16 @@ export class HomeComponent implements OnInit {
     ];;
   }
 
+  dropdownOption = [
+    { label: 'Mark Thomas', link: '/option1' },
+    { label: 'Lisa Scott', link: '/option2' },
+    { label: 'John Williams', link: '/option3' },
+    { label: 'Kane Williams', link: '/option4' },
+    { label: 'Mark Thomas', link: '/option5' },
+    { label: 'Lisa Scott', link: '/option6' },
+    { label: 'John Williams', link: '/option7' }
+  ];
+  
   onSelectOption(option: string): void {}
 
   toggleDropdown(): void {

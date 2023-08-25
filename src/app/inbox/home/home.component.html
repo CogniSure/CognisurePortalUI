@@ -169,7 +169,7 @@
                         >
                           <span class="subheaderdropdown">
                             <span class="view">View as : <span class="view_name">{{ navItems[9].title }}</span></span>
-                            <mat-icon>
+                            <mat-icon style="padding-top: 3%;">
                               <span class="material-icons-outlined">
                                 {{ navItems[9].icon }}
                               </span>
@@ -186,7 +186,7 @@
                         >
                           <span class="subheaderdropdown">
                             <span class="view">View as : {{ navItems[9].title }}</span>
-                            <mat-icon>
+                            <mat-icon style="padding-top: 3%;">
                               <span class="material-icons-outlined">
                                 {{ navItems[9].icon }}
                               </span>
@@ -197,7 +197,7 @@
                     </span>
                     <div class="dropdown" *ngIf="isToggleOn">
                       <ul>
-                        <li *ngFor="let option of dropdownOptions">
+                        <li *ngFor="let option of dropdownOption">
                           <a [routerLink]="option.link">{{ option.label }}</a>
                         </li>
                       </ul>
