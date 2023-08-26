@@ -20,7 +20,7 @@
             <h3 class="account_deatils">Account Name *</h3>
             <input
               matInput
-              [ngModel]="accountInformation.namedinsured_Fullname"
+              [ngModel]="accountInformation.NamedinsuredFullname"
               [attr.disabled]="true"
               disabled
             />
@@ -31,7 +31,7 @@
 
             <input
               matInput
-              [ngModel]="accountInformation.namedInsured_MailingAddress_LineOne + ' ' + accountInformation.namedInsured_MailingAddress_CityName + ' ' + accountInformation.namedInsured_MailingAddress_StateOrProvinceCode + ' ' + accountInformation.namedInsured_MailingAddress_PostalCode"
+              [ngModel]="accountInformation.FullAddress"
               [attr.disabled]="true"
               disabled
             />
@@ -42,7 +42,7 @@
 
             <input
               matInput
-              [ngModel]="accountInformation.CommercialPolicy_OperationsDescription"
+              [ngModel]="accountInformation.BusinessDescription"
               [attr.disabled]="true"
               disabled
             />
@@ -53,7 +53,7 @@
 
             <input
               matInput
-              [ngModel]="accountInformation.NamedInsured_LegalEntity_CorporationIndicator + accountInformation.NamedInsured_LegalEntity_IndividualIndicator + accountInformation.NamedInsured_LegalEntity_JointVentureIndicator + accountInformation.NamedInsured_LegalEntity_LimitedLiabilityCorporationIndicator + accountInformation.NamedInsured_LegalEntity_MemberManagerCount + accountInformation.NamedInsured_LegalEntity_NotForProfitIndicator + accountInformation.NamedInsured_LegalEntity_PartnershipIndicator + accountInformation.NamedInsured_LegalEntity_SubchapterSCorporationIndicator + accountInformation.NamedInsured_LegalEntity_TrustIndicator + accountInformation.NamedInsured_LegalEntity_OtherIndicator + accountInformation.NamedInsured_LegalEntity_OtherDescription"
+              [ngModel]="accountInformation.BusinessType"
               [attr.disabled]="true"
               disabled
             />
@@ -64,7 +64,7 @@
 
             <input
               matInput
-              [ngModel]="accountInformation.policy_Effectivedate"
+              [ngModel]="accountInformation.EffectiveDate"
               [attr.disabled]="true"
               disabled
             />
@@ -85,7 +85,7 @@
 
             <input
               matInput
-              [ngModel]="organizationType"
+              [ngModel]="accountInformation.OrganizationType"
               [attr.disabled]="true"
               disabled
             />
@@ -96,7 +96,7 @@
 
             <input
               matInput
-              [ngModel]="yearStarted"
+              [ngModel]="accountInformation.YearStarted"
               [attr.disabled]="true"
               disabled
             />
@@ -107,7 +107,7 @@
 
             <input
               matInput
-              [ngModel]="numberofEmployees"
+              [ngModel]="accountInformation.NumberOfEmployees"
               [attr.disabled]="true"
               disabled
             />
@@ -118,7 +118,7 @@
 
             <input
               matInput
-              [ngModel]="accountInformation.NamedInsured_SICCode"
+              [ngModel]="accountInformation.SICCode"
               [attr.disabled]="true"
               disabled
             />
@@ -127,7 +127,7 @@
           <div style="display: flex" class="name_input">
             <h3 class="account_deatils">FEIN *</h3>
 
-            <input matInput [ngModel]="accountInformation.namedinsured_Taxidentifier" [attr.disabled]="true" disabled />
+            <input matInput [ngModel]="accountInformation.Taxidentifier" [attr.disabled]="true" disabled />
           </div>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
@@ -145,7 +145,7 @@
 
             <input
               matInput
-              [ngModel]="contactName"
+              [ngModel]="accountInformation.ContactName"
               [attr.disabled]="true"
               disabled
             />
@@ -154,13 +154,13 @@
           <div style="display: flex" class="name_input">
             <h3 class="account_deatils">Phone *</h3>
 
-            <input matInput [ngModel]="accountInformation.NamedInsured_Primary_PhoneNumber" [attr.disabled]="true" disabled />
+            <input matInput [ngModel]="accountInformation.PhoneNumber" [attr.disabled]="true" disabled />
           </div>
 
           <div style="display: flex" class="name_input">
             <h3 class="account_deatils">Email *</h3>
 
-            <input matInput [ngModel]="email" [attr.disabled]="true" disabled />
+            <input matInput [ngModel]="accountInformation.Email" [attr.disabled]="true" disabled />
           </div>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
