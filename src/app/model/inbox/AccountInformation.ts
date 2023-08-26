@@ -7,6 +7,7 @@ export interface AccountInformation {
     OrganizationType : string,
     YearStarted : string,
     NumberOfEmployees : string,
+    ProducerFullname : string,
     SICCode : string,
     Taxidentifier : string,
     ContactName : string,

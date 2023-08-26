@@ -11,9 +11,8 @@
     >
       <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
-            <div>{{ accountInformation.namedinsured_Fullname}}</div>
-           <span class="adress_size">{{ accountInformation.namedInsured_MailingAddress_LineOne + accountInformation.namedInsured_MailingAddress_CityName + accountInformation.namedInsured_MailingAddress_StateOrProvinceCode +accountInformation.namedInsured_MailingAddress_PostalCode
-          }}</span>
+            <div>{{ accountInformation.NamedinsuredFullname}}</div>
+           <span class="adress_size">{{ accountInformation.FullAddress}}</span>
           <!-- <ng-template #noHeaderImage> </ng-template> -->
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
@@ -32,7 +31,7 @@
                         </span> 
                     </mat-icon>
                         <br>
-                 <span>NA</span>     
+                 <span>{{accountInformation.SICCode}}</span>     
                   </span>
                 </div>
                
@@ -51,8 +50,8 @@
                         {{navItems[2].icon}}
                         </span></mat-icon>
                         <br>
-                    <span class="calender_date" *ngIf="propertyInformation.policy_Effectivedate==null" style="font-size: 14px;">NA</span>
-                    <span class="calender_date">{{propertyInformation.policy_Effectivedate}}</span>
+                    <span class="calender_date" *ngIf="accountInformation.EffectiveDate==null" style="font-size: 14px;">NA</span>
+                    <span class="calender_date">{{accountInformation.EffectiveDate}}</span>
                     </span>
                 </div>
           </kendo-tilelayout-item-body>
@@ -71,7 +70,7 @@
                 </span> 
             </mat-icon>
                  <br>
-               <span>NA</span>
+               <span>{{accountInformation.OrganizationType}}</span>
 
                 </div>
           </kendo-tilelayout-item-body>
@@ -90,7 +89,7 @@
                 </span> 
             </mat-icon>
             <br>
-            <span>{{ accountInformation.producer_Fullname }}</span>
+            <span>{{ accountInformation.ProducerFullname}}</span>
          
           </div>
           </kendo-tilelayout-item-body>

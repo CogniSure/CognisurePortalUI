@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 interface NavItem {
@@ -17,6 +18,8 @@ interface NavItem {
 })
 
 export class InboxTopbarComponent implements OnInit, OnDestroy {
+  
+  constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router) {}
   navItems = [
     { title: 'Duke & Duke', content: '885 Street, Warrnville, illinois 60555', icon: '' },
     { title: 'Hotel', content: '', icon: 'bed' },
@@ -33,10 +36,24 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   
-  accountInformation : any={};
+  accountInformation: AccountInformation = {
+    NamedinsuredFullname: 'NA',
+    FullAddress: 'NA',
+    BusinessDescription: 'NA',
+    BusinessType: 'NA',
+    EffectiveDate: 'NA',
+    OrganizationType: 'NA',
+    YearStarted: 'NA',
+    NumberOfEmployees: 'NA',
+    SICCode: 'NA',
+    Taxidentifier: 'NA',
+    ContactName: 'NA',
+    PhoneNumber: 'NA',
+    Email: 'NA',
+    ProducerFullname : 'NA'
+  };
   propertyInformation : any={};
 
-  constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router) {}
   subscription: Subscription;
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -46,11 +63,49 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.fetchDropdownOptions();
-    this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if(sub!=null && sub!= null)
-      {
-      this.accountInformation = sub.value.account_Level_Info[0]
-      this.propertyInformation = sub.value.property_Policy_Info_Blanket_Summary[0]
+    this.globalService.getCurrentSubmission().subscribe((sub) => {
+      if (sub != null && sub.value != null) {
+        let accInfo = sub.value.account_Level_Info[0];
+        let propertyInfo = sub.value.property_Policy_Info_Premises_Information[0];
+        this.accountInformation = {
+          NamedinsuredFullname: this.getConcatenateString([
+            accInfo.namedinsured_Fullname,
+          ]),
+          FullAddress: this.getConcatenateString([
+            accInfo.namedInsured_MailingAddress_LineOne,
+            accInfo.namedInsured_MailingAddress_CityName,
+            accInfo.namedInsured_MailingAddress_StateOrProvinceCode,
+            accInfo.namedInsured_MailingAddress_PostalCode,
+          ],""),
+          BusinessDescription: this.getConcatenateString([
+            accInfo.commercialPolicy_OperationsDescription,
+          ]),
+          BusinessType: this.getConcatenateString([
+            accInfo.namedInsured_LegalEntity_CorporationIndicator,
+            accInfo.namedInsured_LegalEntity_IndividualIndicator,
+            accInfo.namedInsured_LegalEntity_JointVentureIndicator,
+            accInfo.namedInsured_LegalEntity_LimitedLiabilityCorporationIndicator,
+            accInfo.namedInsured_LegalEntity_MemberManagerCount,
+            accInfo.namedInsured_LegalEntity_NotForProfitIndicator,
+            accInfo.namedInsured_LegalEntity_PartnershipIndicator,
+            accInfo.namedInsured_LegalEntity_SubchapterSCorporationIndicator,
+            accInfo.namedInsured_LegalEntity_TrustIndicator,
+            accInfo.namedInsured_LegalEntity_OtherIndicator,
+            accInfo.namedInsured_LegalEntity_OtherDescription,
+          ]),
+          EffectiveDate: this.getConcatenateString([propertyInfo.policy_Effectivedate]),
+          OrganizationType: 'NA',
+          YearStarted: 'NA',
+          NumberOfEmployees: 'NA',
+          ProducerFullname : this.getConcatenateString([propertyInfo.producer_Fullname ]),
+          SICCode: this.getConcatenateString([propertyInfo.namedInsured_SICCode]),
+          Taxidentifier: this.getConcatenateString([propertyInfo.namedinsured_Taxidentifier]),
+          ContactName: 'NA',
+          PhoneNumber: this.getConcatenateString([propertyInfo.namedInsured_Primary_PhoneNumber]),
+          Email: 'NA',
+        };
+        //this.accountInformation = sub.value.account_Level_Info[0];
+        //this.propertyInformation = sub.value.property_Policy_Info_Premises_Information[0];
       }
     });
   }
@@ -84,5 +139,29 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         
         
       })
+  }
+  getConcatenateString(elements: string[],defaultValue:string="NA") {
+    let concatenatedString = '';
+    if (elements != null && elements != undefined && elements.length > 0) {
+      for (let i = 0; i <= elements.length; i++) {
+        let element = elements[i];
+        if (element != undefined && element != '') {
+          let separator: string = '';
+          if (element != '' && i <= elements.length) separator = ',';
+          concatenatedString += element + separator;
+        }
+      }
+    }
+    if (
+      concatenatedString == null ||
+      concatenatedString == '' ||
+      concatenatedString.trim() === '' ||
+      concatenatedString == 'undefined'
+    )
+      concatenatedString = defaultValue;
+    else if (concatenatedString.endsWith(','))
+      concatenatedString = concatenatedString.slice(0, -1);
+
+    return concatenatedString;
   }
 }

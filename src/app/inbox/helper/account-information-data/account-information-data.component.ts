@@ -22,6 +22,7 @@ export class AccountInformationDataComponent {
     ContactName: 'NA',
     PhoneNumber: 'NA',
     Email: 'NA',
+    ProducerFullname : 'NA'
   };
   propertyInformation: any = {};
 
@@ -67,6 +68,7 @@ export class AccountInformationDataComponent {
           ContactName: 'NA',
           PhoneNumber: this.getConcatenateString([propertyInfo.namedInsured_Primary_PhoneNumber]),
           Email: 'NA',
+          ProducerFullname:"NA"
         };
         //this.accountInformation = sub.value.account_Level_Info[0];
         //this.propertyInformation = sub.value.property_Policy_Info_Premises_Information[0];
