@@ -4,7 +4,7 @@
   <mat-dialog-content class="mat-typography" style="max-height:80%;">
     <div>
       <kendo-tilelayout
-        [columns]="2"
+        [columns]="6"
         [rowHeight]="'100%'"
         [resizable]="false"
         [reorderable]="false"
@@ -25,13 +25,14 @@
             </kendo-button>
           </kendo-tilelayout-item-body>
         </kendo-tilelayout-item>
-        <kendo-tilelayout-item [col]="2" [colSpan]="1" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item [col]="2" [colSpan]="6" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="max-height: 82%;">
             <div>
               <kendo-chat
                 [messages]="(feed | async)!"
                 [user]="user"
                 (sendMessage)="sendMessage($event)"
+                style="max-width: none !important;"
               >
               </kendo-chat>
             </div>

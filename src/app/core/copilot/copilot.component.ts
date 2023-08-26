@@ -37,24 +37,24 @@ export class CopilotComponent {
   public feed: Observable<Message[]>;
   private local: Subject<Message> = new Subject<Message>();
   public restrictions: FileRestrictions = {
-    allowedExtensions: [".pdf"],
+    allowedExtensions: [],
   };
 
   constructor(private svc: ChatService) {
     const hello: Message = {
       author: this.bot,
       suggestedActions: [
-        {
-          type: "reply",
-          value: "Neat!",
-        },
-        {
-          type: "reply",
-          value: "Thanks, but this is boring.",
-        },
+        // {
+        //   type: "reply",
+        //   value: "Neat!",
+        // },
+        // {
+        //   type: "reply",
+        //   value: "Thanks, but this is boring.",
+        // },
       ],
       timestamp: new Date(),
-      text: "Hello, this is a demo bot. I don`t do much, but I can count symbols!",
+      text: "Hello, Please ask your queries below for the selected files.",
     };
 
     // Merge local and remote messages into a single stream
