@@ -15,7 +15,7 @@
         <kendo-tilelayout-item [col]="1" [colSpan]="1" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="max-height: 82%;">
             <p>FileSelect</p>
-            <kendo-fileselect (ngModel)="(uploadedFiles)"> </kendo-fileselect>
+            <kendo-fileselect [(ngModel)]="uploadedFiles" [restrictions]="restrictions" [multiple]="false"> </kendo-fileselect>
             <kendo-button
               class="copied_icontop"
               style="background: transparent"

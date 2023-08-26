@@ -226,8 +226,8 @@ export class AccountService {
     .postData(
       //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
       apiUrl,
-      "",
-      hParams
+      hParams,
+      ""
     )
     
   }

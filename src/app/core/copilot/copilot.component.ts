@@ -1,30 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { ChatModule, Message, SendMessageEvent, User } from '@progress/kendo-angular-conversational-ui';
 import { LayoutModule } from '@progress/kendo-angular-layout';
-import { UploadsModule,FileSelectModule } from '@progress/kendo-angular-upload';
+import { UploadsModule,FileSelectModule,FileRestrictions  } from '@progress/kendo-angular-upload';
 import { Observable, Subject, from, map, merge, scan } from 'rxjs';
+import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
 @Component({
   selector: 'app-copilot',
   templateUrl: './copilot.component.html',
   styleUrls: ['./copilot.component.scss'],
   standalone: true,
-  imports: [CommonModule,MatButtonModule, MatDialogModule, UploadsModule ,
+  imports: [CommonModule,FormsModule,MatButtonModule, MatDialogModule, UploadsModule ,
     FileSelectModule,LayoutModule,ButtonModule,ChatModule  ],
 })
 // export class DialogContentExample {
   
 // }
 export class CopilotComponent {
-  public uploadedFiles: Array<File>;
+  public uploadedFiles: File[];
   uploadSaveUrl = "saveUrl"; // should represent an actual API endpoint
   uploadRemoveUrl = "removeUrl"; // should represent an actual API endpoint
-
-  ;
+  messageGuid : string = "guid";
 
   public readonly user: User = {
     id: 1,
@@ -35,7 +36,9 @@ export class CopilotComponent {
   };
   public feed: Observable<Message[]>;
   private local: Subject<Message> = new Subject<Message>();
-
+  public restrictions: FileRestrictions = {
+    allowedExtensions: [".pdf"],
+  };
 
   constructor(private svc: ChatService) {
     const hello: Message = {
@@ -80,12 +83,32 @@ export class CopilotComponent {
       typing: true,
     });
 
-    this.svc.submit(e.message.text!);
+    this.svc.submit(e.message.text!,this.messageGuid);
   }
   public clearModel(): void {
     this.uploadedFiles = [];
   }
   Upload(){
+    let uplfile : UploadFile;
+    let reader = new FileReader();
+    if(this.uploadedFiles && this.uploadedFiles.length > 0) {
+      let file = this.uploadedFiles[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        uplfile = {
+          FileName : file.name,
+          FileGUID : "",
+          FileSize : file.size,
+          FileType: file.type,
+          FileContent: reader.result as string
+        }
+        this.svc.uploadCopilotFiles(uplfile).subscribe(res=>{
+          this.messageGuid = res;
+        })
+      };
+     
+    }
 
+    
   }
 }

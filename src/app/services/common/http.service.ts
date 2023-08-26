@@ -36,15 +36,25 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
         }),
         retry(1), catchError(this.errorHandl))
   }
-  postData(apiUrl:string,urlParams : string,dataParams:any):any
+  postData(apiUrl:string,urlParams : any,dataParams:any):any
   {
     var options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      params : dataParams
+      params : urlParams
     };
-    const res =  this.http.post<any>(apiUrl,"",options
+    
+
+    // const formData = new FormData();
+    // formData.append("files", dataParams[0]);
+    // var data = {
+    //   value:JSON.stringify(dataParams[0])
+    // }//JSON.stringify(dataParams)
+
+    // console.log("Bod Data")
+    // console.log(formData)
+    const res =  this.http.post<any>(apiUrl,dataParams,options
       ).pipe(
         map((result)=>{
           return result
