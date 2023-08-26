@@ -1,11 +1,11 @@
-export interface Submission {
+export interface ExposureDetail {
     LocationNumber: string,
     BuildingNumber: string,
     BuildingName: string,
     FullAddress: string,
     YearBuilt: string,
     TotalArea: string,
-    RootType: string,
+    RoofType: string,
     NumberOfStories: string,
     TIV : string,
     Geolocation: string,
