@@ -3,6 +3,7 @@ import { subreportIcon } from '@progress/kendo-svg-icons';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { AgencyService } from 'src/app/services/inbox/agency.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-agency',
@@ -21,7 +22,14 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   animationClass = "slide-effect-x";
   agencyData: any; 
   @Input() widgetInput:WidgetInput
+  subscription: any;
   constructor(private agencyService: AgencyService,private globalService : GlobalService) {}
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   ngOnInit() {
     //this.agencyData = this.agencyService.getAgencyData();
@@ -33,14 +41,12 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
       
     // }
 
-      this.globalService.getCurrentSubmission().subscribe((sub) => {
-        if(sub!=null && sub.value!= null)
-        {
-          console.log(sub)
-        this.summary = sub.account_Level_Info[0]
-       
-        }
-      });
+    this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
+      if(sub!=null && sub!= null)
+      {
+      this.summary = sub.value.account_Level_Info[0]
+      }
+    });
 
 
 
@@ -48,9 +54,9 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   ngAfterViewInit() {
   }
 
-  ngOnDestroy(){
-    this.animationClass = "";
-  }
+  // ngOnDestroy(){
+  //   this.animationClass = "";
+  // }
   ngOnChanges(changes: any){
 
   }
