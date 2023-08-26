@@ -17,4 +17,5 @@ export interface ClaimDetail {
   IndemnityPaid: string;
   ExpensePaid: string;
   TotalIncurred: string;
+  
 }

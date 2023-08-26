@@ -40,8 +40,6 @@ export class LossAnalysisComponent implements OnInit {
           this.claimDetails.push(tempClaim)
         });
       }
-      console.log("Exposure Data")
-      console.log(this.claimDetails)
     });
   }
   public onTabSelect(e: SelectEvent): void {}
