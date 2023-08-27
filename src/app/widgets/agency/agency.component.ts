@@ -3,7 +3,7 @@ import { subreportIcon } from '@progress/kendo-svg-icons';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { AgencyService } from 'src/app/services/inbox/agency.service';
-import { Subscription } from 'rxjs';
+import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
 
 @Component({
   selector: 'app-agency',
@@ -11,12 +11,19 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./agency.component.scss']
 })
 export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges{
-  // agencynamevalue: string = 'ACE Insurance';
-  // agencycodevalue: string = 'A548889';
-  // producer: string = 'John Kelly';
-  // produceremail: any = 'jkelly@aceinsurance.com';
-  // phone: string = '312-987-3456';
-  // activityrank: string = '234 / 4389';
+  accountInformation: AccountInfo = {
+    Namedinsured_Fullname: "NA",
+  Namedinsured_Mailingaddress_Lineone: "NA",
+  Namedinsured_Mailingaddress_Cityname: "NA",
+  Namedinsured_Mailingaddress_Stateorprovincecode: "NA",
+  Namedinsured_Mailingaddress_Postalcode: "NA",
+  Namedinsured_Naicscode: "NA",
+  Naics_Description: "NA",
+  Producer_Fullname: "NA",
+  Insurer_Produceridentifier: "NA",
+  Producer_Mailingaddress_Lineone: "NA",
+  Producer_Mailingaddress_Postalcode: "NA",
+  };
 
   summary : any={};
   animationClass = "slide-effect-x";
@@ -32,19 +39,32 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   }
 
   ngOnInit() {
-    //this.agencyData = this.agencyService.getAgencyData();
-   
-    // this.globalService.animationClass$.subscribe((x)=>{
-    //   this.animationClass = x
-    // })
-    // if(this.widgetInput!=null && !this.widgetInput.ReloadRequired){
-      
-    // }
-
     this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if(sub!=null && sub.value!= null)
-      {
-      this.summary = sub.value.account_Level_Info[0]
+      if (sub != null && sub.value != null) {
+        let accInfo = sub.value.account_Level_Info[0];
+        this.accountInformation = {
+          Namedinsured_Fullname: this.getConcatenateString([
+            accInfo.namedinsured_Fullname,
+          ]),
+          Namedinsured_Mailingaddress_Lineone: this.getConcatenateString([
+            accInfo.namedinsured_Mailingaddress_Lineone
+          ]),
+          Namedinsured_Mailingaddress_Cityname: this.getConcatenateString([
+            accInfo.namedinsured_Mailingaddress_Cityname,
+          ]),
+          Namedinsured_Mailingaddress_Stateorprovincecode: this.getConcatenateString([
+            accInfo.namedinsured_Mailingaddress_Stateorprovincecode
+          ]),
+          Namedinsured_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.Namedinsured_mailingaddress_Postalcode]),
+          Namedinsured_Naicscode: this.getConcatenateString([accInfo.namedinsured_Naicscode]),
+          Naics_Description: this.getConcatenateString([accInfo.naics_Description]),
+          Producer_Fullname: this.getConcatenateString([accInfo.producer_Fullname]),
+          Insurer_Produceridentifier: this.getConcatenateString([accInfo.insurer_Produceridentifier]),
+          Producer_Mailingaddress_Lineone: this.getConcatenateString([accInfo.producer_Mailingaddress_Lineone]),
+          Producer_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.producer_Mailingaddress_Postalcode]),
+        };
+        //this.accountInformation = sub.value.account_Level_Info[0];
+        //this.propertyInformation = sub.value.property_Policy_Info_Premises_Information[0];
       }
     });
 
@@ -61,6 +81,29 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
 
   }
 
+  getConcatenateString(elements: string[]) {
+    let concatenatedString = '';
+    if (elements != null && elements != undefined && elements.length > 0) {
+      for (let i = 0; i <= elements.length; i++) {
+        let element = elements[i];
+        if (element != undefined && element != '') {
+          let separator: string = '';
+          if (element != '' && i <= elements.length) separator = ',';
+          concatenatedString += element + separator;
+        }
+      }
+    }
+    if (
+      concatenatedString == null ||
+      concatenatedString == '' ||
+      concatenatedString.trim() === '' ||
+      concatenatedString == 'undefined'
+    )
+      concatenatedString = 'NA';
+    else if (concatenatedString.endsWith(','))
+      concatenatedString = concatenatedString.slice(0, -1);
 
+    return concatenatedString;
+  }
 
 }
