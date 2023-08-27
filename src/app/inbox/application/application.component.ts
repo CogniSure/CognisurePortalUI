@@ -34,7 +34,7 @@ export class ApplicationComponent implements OnInit {
                 exposure.commercialstructure_Location_Produceridentifier,
               ]),
               BuildingNumber: this.getConcatenateString([
-                exposure.Commercialstructure_Building_Produceridentifier,
+                exposure.commercialstructure_Building_Produceridentifier,
               ]),
               BuildingName: this.getConcatenateString([
                 exposure.commercialstructure_Building_Sublocationdescription,

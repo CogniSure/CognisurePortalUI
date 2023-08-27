@@ -20,7 +20,7 @@ export class ExposerAnalysisComponent implements OnInit {
           (exposure: any) => {
             let tempExposure: PropertyDetail = {
               LocationNumber:this.getConcatenateString([exposure.commercialstructure_Location_Produceridentifier]),
-              BuildingNumber: this.getConcatenateString([exposure.Commercialstructure_Building_Produceridentifier]),
+              BuildingNumber: this.getConcatenateString([exposure.commercialstructure_Building_Produceridentifier]),
               BuildingName: this.getConcatenateString([exposure.commercialstructure_Building_Sublocationdescription]),
               FullAddress: this.getConcatenateString([
                 exposure.commercialstructure_Physicaladdress_Lineone,

@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
-import {TotalLossesData} from '../../model/summary/totallossesdata';
-import {TotalLossesService} from '../../services/inbox/summary.service'
-import {TotalIncurredValue} from '../../model/summary/totallossesdata';
-import {DataService} from '../../model/summary/dataservice';
-import {Data} from '../../model/summary/data';
-
+import { Component, OnInit } from '@angular/core';
+import { TotalLossesData } from '../../model/summary/totallossesdata';
+import { TotalLossesService } from '../../services/inbox/summary.service';
+import { TotalIncurredValue } from '../../model/summary/totallossesdata';
+import { DataService } from '../../model/summary/dataservice';
+import { Data } from '../../model/summary/data';
+import { ClaimDetail } from 'src/app/model/inbox/ClaimDetail';
+import { GlobalService } from 'src/app/services/common/global.service';
+import { parseNumber } from '@progress/kendo-angular-intl';
 
 @Component({
   selector: 'app-total-losses',
   templateUrl: './total-losses.component.html',
-  styleUrls: ['./total-losses.component.scss']
+  styleUrls: ['./total-losses.component.scss'],
 })
-export class TotalLossesComponent {
+export class TotalLossesComponent implements OnInit {
   totalincurred: string = 'Total Losses';
-  totalincurredvalue: string = ''
+  totalincurredvalue: string = '';
   totallossesdata: TotalLossesData[] = [];
   selected = 'option2';
   selectedOption: string = '1';
-  globalService: any;
+ 
   totalloss: any;
   // public selectedYears: string = '';
   selectedValue = '0';
@@ -25,21 +27,45 @@ export class TotalLossesComponent {
   public selectedYear: string;
   totallosses: string = '$75,000';
   selectedYears: number = 1;
-
-  constructor(private totalLossesService: TotalLossesService,private dataService: DataService){
+  claimDetails: ClaimDetail[] = [];
+  constructor(
+    private globalService: GlobalService,
+  ) {
     this.selectedYear = this.years[0];
   }
- 
-  ngOnInit(): void {
-    this.totallossesdata = this.totalLossesService.getTotalLossesData();
-  }
 
+  ngOnInit(): void {
+    this.globalService.getCurrentSubmission().subscribe((sub: any) => {
+      this.claimDetails = [];
+      if (sub != null && sub.value != null) {
+        let noOfClaims = 0;
+        let noOfOpenClaims = 0;
+        let totalIncurred = 0;
+        let highestIncurred = 0;
+        sub.value.claim_Info.forEach((claim: any) => {
+          let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
+          totalIncurred += totalIncurredTemp;
+          if (totalIncurredTemp > highestIncurred)
+            highestIncurred = totalIncurredTemp;
+
+          noOfClaims++;
+          if(claim.claim_Status == "Open")
+            noOfOpenClaims++
+        });
+
+        this.totallosses = totalIncurred.toLocaleString('en-GB');
+        this.totallossesdata = [
+          {numberofclaims: noOfClaims, numberofopenclaims: noOfOpenClaims, highestclaim: highestIncurred }
+        ];
+      }
+    });
+    
+  }
 
   onYearChange(event: any) {
     this.selectedYear = event.target.value;
   }
-  
-  
+
   onDropdownChange(value: any) {
     this.selectedYears = value;
     if (this.selectedYears === 1) {
@@ -52,5 +78,4 @@ export class TotalLossesComponent {
       this.totallosses = '$80,000';
     }
   }
-
 }
