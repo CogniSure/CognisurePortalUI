@@ -137,7 +137,8 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       Status : param.Status,
       Extraction : "",
       Completeness : "",
-      RiskClearance : ""
+      RiskClearance : "",
+      LOB : param.lineOfBusiness
     }
     this.globalService.setCurrentSubmissionId(param)
   }

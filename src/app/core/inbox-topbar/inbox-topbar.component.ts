@@ -68,11 +68,27 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     RiskClearance : "",
     Status : "",
     SubmissionId : "",
-    SubmissionName : ""
+    SubmissionName : "",
+    LOB : ""
+  }
+  getDistinctLOB(lob: string ){
+      if(lob!=null && lob !=""){
+        var lobArr = lob.split(",")
+        if(lobArr != null && lobArr.length>0)
+        {
+          let apendStr=""
+          const distinctArray = lobArr.filter((n, i) => lobArr.indexOf(n) === i && n!="");
+          apendStr = distinctArray.toString();
+          lob = apendStr
+        }
+        
+        
+      }
+      return lob;
   }
   ngOnInit(): void {
     this.fetchDropdownOptions();
-
+    
     this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
       this.submissionInfo = {
         Completeness : subInfo.Completeness,
@@ -81,7 +97,8 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         RiskClearance : subInfo.RiskClearance,
         Status : subInfo.Status,
         SubmissionId : subInfo.SubmissionId,
-        SubmissionName : subInfo.SubmissionName
+        SubmissionName : subInfo.SubmissionName,
+        LOB : this.getDistinctLOB(subInfo.LOB)
       }
     })
     this.globalService.getCurrentSubmission().subscribe((sub) => {
@@ -118,7 +135,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
           OrganizationType: 'NA',
           YearStarted: 'NA',
           NumberOfEmployees: 'NA',
-          ProducerFullname : this.getConcatenateString([propertyInfo.producer_Fullname ]),
+          ProducerFullname : this.getConcatenateString([accInfo.producer_Fullname ]),
           SICCode: this.getConcatenateString([propertyInfo.namedInsured_SICCode]),
           Taxidentifier: this.getConcatenateString([propertyInfo.namedinsured_Taxidentifier]),
           ContactName: 'NA',

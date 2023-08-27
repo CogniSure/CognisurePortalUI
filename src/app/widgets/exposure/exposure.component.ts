@@ -31,7 +31,12 @@ export class ExposureComponent implements OnInit {
 
         sub.value.property_Policy_Info_Blanket_Summary.forEach(
           (exposure: any) => {
-           totalIncurred += parseNumber(exposure.commercialproperty_Summary_Blanketlimitamount.replace('$',''));
+            if(exposure.commercialproperty_Summary_Blanketlimitamount!=null)
+            {
+              var str = exposure.commercialproperty_Summary_Blanketlimitamount.replace('$','')
+              totalIncurred += parseNumber(str);
+            }
+           
           }
         );
 

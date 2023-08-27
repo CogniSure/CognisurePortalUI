@@ -43,7 +43,14 @@ export class TotalLossesComponent implements OnInit {
         let totalIncurred = 0;
         let highestIncurred = 0;
         sub.value.claim_Info.forEach((claim: any) => {
-          let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
+          //let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
+
+          let totalIncurredTemp = 0;
+          if(claim.total_Incurred!=null)
+            {
+              var str = claim.total_Incurred.replace('$','')
+              totalIncurredTemp = parseNumber(str);
+            }
           totalIncurred += totalIncurredTemp;
           if (totalIncurredTemp > highestIncurred)
             highestIncurred = totalIncurredTemp;

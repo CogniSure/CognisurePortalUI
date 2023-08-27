@@ -5,5 +5,6 @@ export interface SubmissionInfo {
     Status : string,
     Extraction :string,
     Completeness : string,
-    RiskClearance : string
+    RiskClearance : string,
+    LOB : string
 }

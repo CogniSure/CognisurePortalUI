@@ -27,16 +27,16 @@ export class GlobalService {
   }
 
   setCurrentSubmissionId(submission: SubmissionInfo) {
-    let subInfo : SubmissionInfo = {
-      SubmissionId : "",
-      SubmissionName : "",
-      MessageId : "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKRkKuFAAA=",
-      Status : submission.Status,
-      Extraction : "",
-      Completeness : "",
-      RiskClearance : ""
-    }
-    sessionStorage.setItem('CurrentSubmissionInfo', JSON.stringify(subInfo));
+    // let subInfo : SubmissionInfo = {
+    //   SubmissionId : "",
+    //   SubmissionName : "",
+    //   MessageId : "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKRkKuFAAA=",
+    //   Status : submission.Status,
+    //   Extraction : "",
+    //   Completeness : "",
+    //   RiskClearance : ""
+    // }
+    sessionStorage.setItem('CurrentSubmissionInfo', JSON.stringify(submission));
     //this.CurrentSubmission$.next(submissionId)
   }
   getCurrentSubmissionId() {
