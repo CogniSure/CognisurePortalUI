@@ -170,24 +170,38 @@
                   routerLink="/my-profile"
                   queryParamsHandling="preserve"
                 >
-                My Profile
+                Approve
                 </button>
                 <button
                   mat-menu-item
                   routerLink="/change-password"
                   queryParamsHandling="preserve"
                 >
-                Change Password
+                Approve & Submit
                 </button>
                 <button
                   mat-menu-item
                   routerLink="/notifications-settings"
                   queryParamsHandling="preserve"
                 >
-                Notifications Settings
+                Reject 
                 </button>
-                <button mat-menu-item (click)="Guidewire()">Send to Guidewire</button>
-                <button mat-menu-item (click)="Logout()">Sign Out</button>
+                <button
+                mat-menu-item
+                routerLink="/notifications-settings"
+                queryParamsHandling="preserve"
+              >
+              Refer 
+              </button>
+              <button
+              mat-menu-item
+              routerLink="/notifications-settings"
+              queryParamsHandling="preserve"
+            >
+            Reprocess 
+            </button>
+                <!-- <button mat-menu-item (click)="Guidewire()">Send to Guidewire</button>
+                <button mat-menu-item (click)="Logout()">Sign Out</button> -->
               </span>
             </mat-menu>
             </span>
