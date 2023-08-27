@@ -19,12 +19,11 @@ export class ChatService {
       console.log("Chat Answer")
       
       var resultVal = JSON.parse(res.value)
-      var result1 = resultVal[0]
-      var result2 = result1[1]
-      console.log(result2);
+      var result = resultVal[1]
+      console.log(result);
       //const answer = `"${question}" contains exactly ${length} symbols.`;
       
-      const answer = result2;
+      const answer = result;
       setTimeout(() => this.responses.next(answer), 1000);
     })
     
