@@ -54,7 +54,7 @@ export class CopilotComponent {
         // },
       ],
       timestamp: new Date(),
-      text: "Hello, Please ask your queries below for the selected files.",
+      text: "",
     };
 
     // Merge local and remote messages into a single stream

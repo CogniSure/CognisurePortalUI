@@ -3,3 +3,17 @@
     margin-top: 5px;
     margin-bottom: 5px;
   }
+
+  ::ng-deep .k-chat .k-timestamp {
+    color: #fff;
+}
+
+.new_chat{
+  color:#fff;
+  background-color: #00D6CB;
+  padding: 10%;
+}
+
+::ng-deep .k-tilelayout-item-body {
+padding: 0;
+}

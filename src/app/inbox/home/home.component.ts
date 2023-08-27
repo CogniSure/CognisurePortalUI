@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
     field: "SubmissionID",
     format: "{0:c}",
     title: "Submission ID",
-    width:250,
+    width:160,
     type: "SubmissionId",
     redirectUrl:"/inbox/detail/summary",
     sortable:true,
