@@ -2,7 +2,7 @@ import { Dashboard } from '../dashboard/dashboard';
 
 
 export class DataComponent {
-  public static Datahub = [
+  public static Summaryhub = [
     {
       id: 1,
       BoxType: 'SmallBox',
@@ -38,7 +38,9 @@ export class DataComponent {
       RowSpan :  1,
       HeaderColor : '#00B6AD',
       FontColor : '#fff'
-    },
+    }
+  ];
+  public static Propertyhub = [
     {
       id: 5,
       BoxType: 'MediumBox',
@@ -76,7 +78,6 @@ export class DataComponent {
       FontColor : '#fff'
     }
   ];
-
   public static Dashboardhub = [
     {
       id: 1,

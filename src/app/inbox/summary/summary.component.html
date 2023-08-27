@@ -1,21 +1,47 @@
-<div class="summary-container" style="background-color: #EEF2F7;">
-  <div style="text-align: end; padding: 0px 6px 6px 0px;">
-    <button type="button" style=" border: none; color: white; background-color: #00A6CF; border-radius: 10px;" (click)="download()">
-      <kendo-svg-icon [icon]="downloadIcon" style="color: white;" size="xlarge"></kendo-svg-icon>
+<div class="summary-container" style="background-color: #eef2f7">
+  <div style="text-align: end; padding: 0px 6px 6px 0px">
+    <button
+      type="button"
+      style="
+        border: none;
+        color: white;
+        background-color: #00a6cf;
+        border-radius: 10px;
+      "
+      (click)="download()"
+    >
+      <kendo-svg-icon
+        [icon]="downloadIcon"
+        style="color: white"
+        size="xlarge"
+      ></kendo-svg-icon>
       Submission 360
     </button>
   </div>
-  <kendo-tilelayout
-  [columns]="3"
-  [resizable]="true"
-  [reorderable]="true"
-  class="home-body"
-  [rowHeight]="285"
-  [style]="'padding: 0 0.5% 0 0.5% !important; height: 100%; overflow:auto;'"
->
-  <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="item.ColumnSpan" [rowSpan]="item.RowSpan" style="border: 2px !important; border-radius:10 !important; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 12px 0 rgba(0, 0, 0, 0.1);" >
-
-    <!-- <kendo-tilelayout-item-header style="height: 3em;" [style.background-color]="item.HeaderColor">
+  <div >
+    <kendo-tilelayout
+      [columns]="3"
+      [resizable]="true"
+      [reorderable]="true"
+      class="home-body"
+      [rowHeight]="285"
+      [style]="
+        'padding: 0 0.5% 0 0.5% !important; height: 100%; overflow:auto;'
+      "
+    >
+      <kendo-tilelayout-item
+        *ngFor="let item of summaryComponents"
+        [col]="item.ColumnId"
+        [colSpan]="item.ColumnSpan"
+        [rowSpan]="item.RowSpan"
+        style="
+          border: 2px !important;
+          border-radius: 10 !important;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+            0 4px 12px 0 rgba(0, 0, 0, 0.1);
+        "
+      >
+        <!-- <kendo-tilelayout-item-header style="height: 3em;" [style.background-color]="item.HeaderColor">
       <h5 class="header-text" style="font-size: 16px" >
         <div style="text-align: center;border: 2">
           <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
@@ -45,15 +71,55 @@
         </div>
       </h5>
     </kendo-tilelayout-item-header> -->
-    <kendo-tilelayout-item-body style="padding: 0">
-      <ng-template 
-      *ngComponentOutlet="
-        item.Widget;
-        injector: createInjector(item.WidgetName, item.WidgetType)
-      "
-    ></ng-template>
-
-    </kendo-tilelayout-item-body>
-  </kendo-tilelayout-item>
-</kendo-tilelayout>
+        <kendo-tilelayout-item-body style="padding: 0">
+          <ng-template
+            *ngComponentOutlet="
+              item.Widget;
+              injector: createInjector(item.WidgetName, item.WidgetType)
+            "
+          ></ng-template>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+    </kendo-tilelayout>
   </div>
+  <div style="margin-top: 1%;">
+    <div style="width: 99%;
+    height: 2rem;
+    margin: 0.5%;
+    border-radius: 5px;background: #97EAE6;text-align: start;">
+    <span><h3 style="margin: 0; padding: 0.1% 0 0 1%;">Property</h3></span>
+    </div>
+    <kendo-tilelayout
+      [columns]="3"
+      [resizable]="true"
+      [reorderable]="true"
+      class="home-body"
+      [rowHeight]="285"
+      [style]="
+        'padding: 0 0.5% 0 0.5% !important; height: 100%; overflow:auto;'
+      "
+    >
+      <kendo-tilelayout-item
+        *ngFor="let item of propertyComponents"
+        [col]="item.ColumnId"
+        [colSpan]="item.ColumnSpan"
+        [rowSpan]="item.RowSpan"
+        style="
+          border: 2px !important;
+          border-radius: 10 !important;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+            0 4px 12px 0 rgba(0, 0, 0, 0.1);
+        "
+      >
+        <kendo-tilelayout-item-body style="padding: 0">
+          <ng-template
+            *ngComponentOutlet="
+              item.Widget;
+              injector: createInjector(item.WidgetName, item.WidgetType)
+            "
+          ></ng-template>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+    </kendo-tilelayout>
+  </div>
+</div>

@@ -19,12 +19,14 @@ import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
   styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit,OnDestroy {
-  subscription: Subscription;
-  public custComponents: WidgetComponentInfo[] = [];
+  subscription: Subscription;  
+  summaryComponentOrder: any;
+  public summaryComponents: WidgetComponentInfo[] = [];
+  propertyComponentOrder: any;
+  public propertyComponents: WidgetComponentInfo[] = [];
   reloadReq = true;
   public downloadIcon:SVGIcon = downloadIcon;
   @Input() collapsed = false;
-  componentOrder: any;
   isFullScreen = false;
   widgetTemp: any;
   constructor(
@@ -52,11 +54,37 @@ export class SummaryComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.globalService.animationClass$.next('slide-effect-x');
-    this.componentOrder = DataComponent.Datahub;
-    this.custComponents = [];
+    this.getSummaryWidgets();
+    this.getPropertyWidgets();
+  }
+  getSummaryWidgets(){
+    this.summaryComponentOrder = DataComponent.Summaryhub;
+    this.summaryComponents = [];
     var i = 1;
-    this.componentOrder.forEach((entry: any) => {
-      this.custComponents.push({
+    this.summaryComponentOrder.forEach((entry: any) => {
+      this.summaryComponents.push({
+        ColWidth: BoxDetails.get(entry.BoxType)!,
+        Widget: ComponentDetails.get(entry.WidgetType)![0],
+        WidgetName: entry.WidgetName,
+        WidgetType: entry.WidgetType,
+        Header: entry.Header,
+        BoxClass: entry.BoxType,
+        Fullscreen: entry.Fullscreen,
+        ColumnId: entry.ColumnId,
+        ColumnSpan: entry.ColumnSpan,
+        RowSpan: entry.RowSpan,
+        HeaderColor: entry.HeaderColor,
+        FontColor: entry.FontColor,
+      });
+      i++;
+    });
+  }
+  getPropertyWidgets(){
+    this.propertyComponentOrder = DataComponent.Propertyhub;
+    this.propertyComponents = [];
+    var i = 1;
+    this.propertyComponentOrder.forEach((entry: any) => {
+      this.propertyComponents.push({
         ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
