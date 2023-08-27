@@ -17,3 +17,15 @@
 ::ng-deep .k-tilelayout-item-body {
 padding: 0;
 }
+
+::ng-deep .k-message-box {
+padding: 1%;
+}
+
+.delete_conversation{
+position: fixed;
+bottom: 20%;
+padding-left: 0.5%;
+font-size: 13px;
+color:#fff;
+}
