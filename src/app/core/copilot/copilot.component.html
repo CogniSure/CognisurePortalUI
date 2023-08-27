@@ -18,7 +18,7 @@
             <!-- <p>FileSelect</p> -->
            <p class="new_chat">+    New Chat</p>
             <kendo-fileselect [(ngModel)]="uploadedFiles" [restrictions]="restrictions" [multiple]="false"> </kendo-fileselect> 
-          <div style="padding: 6% 0 6% 25%; background: white;">
+          <div style="    padding: 3% 0 0% 6%;">
             <kendo-button
               class="copied_icontop"
               (click)="Upload()"
@@ -39,7 +39,7 @@
                 [messages]="(feed | async)!"
                 [user]="user"
                 (sendMessage)="sendMessage($event)"
-                style="max-width: none !important; margin-top: 5%;"
+                style="max-width: none !important; margin-top: 5%;margin-right: 5%;margin-bottom: 2%;"
               >
               </kendo-chat>
             </div>
