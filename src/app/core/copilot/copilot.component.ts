@@ -54,7 +54,7 @@ export class CopilotComponent {
         // },
       ],
       timestamp: new Date(),
-      text: "",
+      text: "CogniSure Copilot",
     };
 
     // Merge local and remote messages into a single stream

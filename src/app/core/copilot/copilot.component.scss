@@ -29,3 +29,38 @@ padding-left: 0.5%;
 font-size: 13px;
 color:#fff;
 }
+
+::ng-deep .k-upload {
+  width: 95%;
+}
+
+::ng-deep .k-upload .k-dropzone, .k-upload .k-upload-dropzone {
+  color: #fff;
+  background-color: #00b6ad;
+}
+
+::ng-deep .k-upload {
+  border: none;
+}
+::ng-deep .k-upload .k-dropzone .k-dropzone-hint, .k-upload .k-upload-dropzone .k-dropzone-hint {
+ color: #fff;
+  font-size: 10px;
+}
+.copied_icontop{
+  border:1px solid #fff;
+}
+
+::ng-deep .k-chat .k-message-group:not(.k-alt) .k-only .k-bubble {
+  color: #00B6AD;
+  font-size: 20px;
+}
+
+::ng-deep .k-upload .k-dropzone .k-dropzone-hint{
+  color: #fff;
+  font-size: 10px;
+  padding-left: 4%;
+}
+
+::ng-deep .k-upload .k-upload-button {
+  font-size: 12px;
+}
