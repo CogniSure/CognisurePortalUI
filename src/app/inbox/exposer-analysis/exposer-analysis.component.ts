@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectEvent } from '@progress/kendo-angular-layout';
-import { ExposureDetail } from 'src/app/model/inbox/ExposureDetail';
+import { PropertyDetail } from 'src/app/model/inbox/PropertyDetail';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
 import { GlobalService } from 'src/app/services/common/global.service';
 @Component({
@@ -10,7 +10,7 @@ import { GlobalService } from 'src/app/services/common/global.service';
 })
 export class ExposerAnalysisComponent implements OnInit {
   constructor(private globalService: GlobalService) {}
-  exposureDetails: ExposureDetail[] = [];
+  exposureDetails: PropertyDetail[] = [];
   columns = ColumnSample.ExposureColumns;
   ngOnInit(): void {
     this.globalService.getCurrentSubmission().subscribe((sub) => {
@@ -18,7 +18,7 @@ export class ExposerAnalysisComponent implements OnInit {
       if (sub != null && sub.value != null) {
         sub.value.property_Policy_Info_Premises_Information.forEach(
           (exposure: any) => {
-            let tempExposure: ExposureDetail = {
+            let tempExposure: PropertyDetail = {
               LocationNumber:this.getConcatenateString([exposure.commercialstructure_Location_Produceridentifier]),
               BuildingNumber: this.getConcatenateString([exposure.Commercialstructure_Building_Produceridentifier]),
               BuildingName: this.getConcatenateString([exposure.commercialstructure_Building_Sublocationdescription]),

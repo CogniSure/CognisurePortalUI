@@ -15,7 +15,7 @@
                 <div class="agency_value agency_value_5"><b>Producer</b></div>
                 <div class="agency_value agency_value_6">{{ accountInformation.Producer_Fullname }}</div>
                 <div class="agency_value agency_value_7"></div>
-                <div class="agency_value agency_value_8">{{ accountInformation.Producer_Mailingaddress_Lineone + ' ' + accountInformation.Producer_Mailingaddress_Postalcode }}</div>
+                <div class="agency_value agency_value_8">{{getConcatenateString([accountInformation.Producer_Mailingaddress_Lineone ,accountInformation.Producer_Mailingaddress_Postalcode])}}</div>
                 <div class="agency_value agency_value_9"></div>
                 <div class="agency_value agency_value_10"></div>
                 <div class="agency_value agency_value_11"><b>Agency Code</b></div>

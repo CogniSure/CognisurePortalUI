@@ -1,4 +1,4 @@
-export interface ExposureDetail {
+export interface PropertyDetail {
   LocationNumber: string;
   BuildingNumber: string;
   BuildingName: string;
@@ -21,7 +21,7 @@ export interface ExposureDetail {
   Sprinkler: string;
   FireAlarm: string;
 }
-export interface ApplicationExposure extends ExposureDetail {
+export interface ApplicationProperty extends PropertyDetail {
   BuildingNameAndOccupancy: string;
   City: string;
   State: string;

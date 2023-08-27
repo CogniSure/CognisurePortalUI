@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectEvent } from '@progress/kendo-angular-layout';
 import { ClaimDetail } from 'src/app/model/inbox/ClaimDetail';
-import { ApplicationExposure } from 'src/app/model/inbox/ExposureDetail';
+import { ApplicationProperty } from 'src/app/model/inbox/PropertyDetail';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
 import { GlobalService } from 'src/app/services/common/global.service';
 
@@ -16,7 +16,7 @@ export class ApplicationComponent implements OnInit {
     this.getApplicationExposure();
     this.getApplicationClaimDetails();
   }
-  exposureDetails: ApplicationExposure[] = [];
+  exposureDetails: ApplicationProperty[] = [];
   tableData2: ClaimDetail[] = [];
   public columns1: any = ColumnSample.ApplicationExposureColumns;
   public columns2: any = ColumnSample.ClaimDetailColumns;
@@ -29,7 +29,7 @@ export class ApplicationComponent implements OnInit {
       if (sub != null && sub.value != null) {
         sub.value.property_Policy_Info_Premises_Information.forEach(
           (exposure: any) => {
-            let tempExposure: ApplicationExposure = {
+            let tempExposure: ApplicationProperty = {
               LocationNumber: this.getConcatenateString([
                 exposure.commercialstructure_Location_Produceridentifier,
               ]),
