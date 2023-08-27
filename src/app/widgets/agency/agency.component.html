@@ -8,18 +8,18 @@
     <kendo-card-body class="agency_section">
         <div class="agency-details">
             <div class="row" style="padding: 0 5% 0 5%;">
-                <div class="agency_value agency_value_1"><b>Agency Name</b></div>
-                <div class="agency_value agency_value_2">{{ accountInformation.Producer_Fullname }}</div>
-                <div class="agency_value agency_value_3"><b>Agency Code</b></div>
-                <div class="agency_value agency_value_4">{{ accountInformation.Insurer_Produceridentifier }}</div>
-                <div class="agency_value agency_value_5"><b>Producer</b></div>
-                <div class="agency_value agency_value_6">{{ accountInformation.Producer_Fullname }}</div>
-                <div class="agency_value agency_value_7"></div>
-                <div class="agency_value agency_value_8">{{getConcatenateString([accountInformation.Producer_Mailingaddress_Lineone ,accountInformation.Producer_Mailingaddress_Postalcode])}}</div>
-                <div class="agency_value agency_value_9"></div>
-                <div class="agency_value agency_value_10"></div>
-                <div class="agency_value agency_value_11"><b>Agency Code</b></div>
-                <div class="agency_value agency_value_12">{{ accountInformation.Insurer_Produceridentifier }}</div>
+                <div class="agency_key"><b>Agency Name</b></div>
+                <div class="agency_value">{{ accountInformation.Producer_Fullname }}</div>
+                <div class="agency_key"><b>Agency Code</b></div>
+                <div class="agency_value">{{ accountInformation.Insurer_Produceridentifier }}</div>
+                <div class="agency_key"><b>Producer</b></div>
+                <div class="agency_value">{{ accountInformation.Producer_Fullname }}</div>
+                <div class="agency_key"></div>
+                <div class="agency_value">{{getConcatenateString([accountInformation.Producer_Mailingaddress_Lineone ,accountInformation.Producer_Mailingaddress_Postalcode])}}</div>
+                <div class="agency_key"></div>
+                <div class="agency_value"></div>
+                <div class="agency_key"><b>Agency Code</b></div>
+                <div class="agency_value">{{ accountInformation.Insurer_Produceridentifier }}</div>
             </div>
             <!-- Add other detail rows here -->
         </div>

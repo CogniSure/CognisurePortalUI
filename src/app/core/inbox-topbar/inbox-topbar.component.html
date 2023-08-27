@@ -1,6 +1,6 @@
 <div class="bluetopbar">
     <kendo-tilelayout
-      [columns]="18"
+      [columns]="40"
       [rowHeight]="'100%'"
       [resizable]="false"
       [reorderable]="false"
@@ -9,19 +9,19 @@
       style="background-color: #009cc1!important;color: #fff!important;"
       
     >
-      <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="6" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
-            <div style="font-size:16px"><b>{{ accountInformation.NamedinsuredFullname}}</b></div>
+            <div style="font-size:16px"><h3 style="margin: 0;"><b>{{ accountInformation.NamedinsuredFullname}}</b></h3></div>
            <span class="adress_size">{{ accountInformation.FullAddress}}</span>
           <!-- <ng-template #noHeaderImage> </ng-template> -->
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item class="divider" [col]="3" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="7" [colSpan]="1" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
       <span class="pipeline">|</span>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item class="divider" [col]="4" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="8" [colSpan]="4" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
               <div>
                   <span class="profile_icon">
@@ -37,12 +37,12 @@
                
           </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item class="divider" [col]="5" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="12" [colSpan]="1" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
       <span class="pipeline">|</span>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-       <kendo-tilelayout-item class="divider" [col]="6" [colSpan]="1" [row]="1" [rowSpan]="1">
+       <kendo-tilelayout-item class="divider" [col]="13" [colSpan]="4" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
               <div>
                   <span class="notification_icon">
@@ -56,12 +56,12 @@
                 </div>
           </kendo-tilelayout-item-body>
       </kendo-tilelayout-item> 
-      <kendo-tilelayout-item class="divider" [col]="7" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="17" [colSpan]="1" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
       <span class="pipeline">|</span>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item class="divider" [col]="8" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="18" [colSpan]="6" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
               <div>
               <mat-icon>
@@ -75,12 +75,12 @@
                 </div>
           </kendo-tilelayout-item-body>
       </kendo-tilelayout-item> 
-      <kendo-tilelayout-item class="divider" [col]="9" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="24" [colSpan]="1" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
       <span class="pipeline">|</span>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-       <kendo-tilelayout-item class="divider" [col]="10" [colSpan]="2" [row]="1" [rowSpan]="1">
+       <kendo-tilelayout-item class="divider" [col]="25" [colSpan]="4" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
           <div>
             <mat-icon>
@@ -94,12 +94,12 @@
           </div>
           </kendo-tilelayout-item-body>
         </kendo-tilelayout-item> 
-        <kendo-tilelayout-item class="divider" [col]="12" [colSpan]="1" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item class="divider" [col]="29" [colSpan]="1" [row]="1" [rowSpan]="1">
             <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
           <span class="pipeline">|</span>
           </kendo-tilelayout-item-body>
           </kendo-tilelayout-item>
-        <kendo-tilelayout-item class="divider" [col]="13" [colSpan]="2" [row]="1" [rowSpan]="1">
+        <kendo-tilelayout-item class="divider" [col]="30" [colSpan]="4" [row]="1" [rowSpan]="1">
             <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
           <div>
 
@@ -114,13 +114,13 @@
           </div>
           </kendo-tilelayout-item-body>
       </kendo-tilelayout-item> 
-      <kendo-tilelayout-item class="divider" [col]="15" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item class="divider" [col]="34" [colSpan]="1" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #009cc1!important;color: #fff!important;">
       <span class="pipeline">|</span>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
 
-    <kendo-tilelayout-item class="divider" [col]="16" [colSpan]="2" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item class="divider" [col]="35" [colSpan]="4" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: left;background-color: #009cc1!important;color: #fff!important;">
             <div class="side_icons">
                 <span class="profile_icon" style="padding-top: 5%;">

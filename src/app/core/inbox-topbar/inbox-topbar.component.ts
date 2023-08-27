@@ -78,8 +78,10 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         {
           let apendStr=""
           const distinctArray = lobArr.filter((n, i) => lobArr.indexOf(n) === i && n!="");
-          apendStr = distinctArray.toString();
+          apendStr = distinctArray[0].toString();
           lob = apendStr
+          console.log("LOB")
+          console.log(apendStr)
         }
         
         
