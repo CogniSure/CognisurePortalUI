@@ -67,3 +67,7 @@ color:#fff;
 ::ng-deep .k-chat .k-timestamp {
   color: #000;
 }
+::ng-deep .mat-mdc-button .mdc-button__label{
+  z-index: 1;
+  font-size: 20px;
+}
