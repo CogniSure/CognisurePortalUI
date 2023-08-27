@@ -24,7 +24,7 @@
       [resizable]="true"
       [reorderable]="true"
       class="home-body"
-      [rowHeight]="285"
+      [rowHeight]="255"
       [style]="
         'padding: 0 0.5% 0 0.5% !important; height: 100%; overflow:auto;'
       "
@@ -41,36 +41,6 @@
             0 4px 12px 0 rgba(0, 0, 0, 0.1);
         "
       >
-        <!-- <kendo-tilelayout-item-header style="height: 3em;" [style.background-color]="item.HeaderColor">
-      <h5 class="header-text" style="font-size: 16px" >
-        <div style="text-align: center;border: 2">
-          <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
-            
-            <div style="width: 90%; text-align:left; padding: 0; color: #005DAA !important;font-weight: 500;" [style.color]="item.FontColor">
-            
-            {{ item.Header }}
-          </div>
-          
-          <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
-            <button *ngIf="item.Fullscreen"
-            mat-icon-button
-            class="max-button"
-            (click)="
-              toggleFullScreen();
-            "
-          >
-            <mat-icon class="max-icon" *ngIf="!isFullScreen"
-              >fullscreen</mat-icon
-            >
-            <mat-icon class="max-icon" *ngIf="isFullScreen"
-              >fullscreen_exit</mat-icon
-            >
-          </button>
-          </div>
-          </div>
-        </div>
-      </h5>
-    </kendo-tilelayout-item-header> -->
         <kendo-tilelayout-item-body style="padding: 0">
           <ng-template
             *ngComponentOutlet="
@@ -94,7 +64,7 @@
       [resizable]="true"
       [reorderable]="true"
       class="home-body"
-      [rowHeight]="285"
+      [rowHeight]="255"
       [style]="
         'padding: 0 0.5% 0 0.5% !important; height: 100%; overflow:auto;'
       "
