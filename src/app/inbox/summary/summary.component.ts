@@ -11,6 +11,7 @@ import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { SVGIcon, downloadIcon } from '@progress/kendo-svg-icons';
 import { Subscription } from 'rxjs';
+import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 
 @Component({
   selector: 'app-summary',
@@ -97,8 +98,8 @@ export class SummaryComponent implements OnInit,OnDestroy {
   }
   download(){
     // var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
-    this.subscription = this.globalService.getCurrentSubmissionId().subscribe(submissionId=>{
-      this.dbService.downloadSubmission360(submissionId).subscribe(downloadRes=>{
+    this.subscription = this.globalService.getCurrentSubmissionId().subscribe((submissionId:SubmissionInfo)=>{
+      this.dbService.downloadSubmission360(submissionId.MessageId).subscribe(downloadRes=>{
         const source = `data:application/pdf;base64,${downloadRes.value.data}`;
         const downloadLink = document.createElement('a');
         const fileName = downloadRes.value.fileName;

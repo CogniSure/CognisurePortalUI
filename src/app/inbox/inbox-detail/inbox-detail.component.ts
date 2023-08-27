@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 
@@ -20,10 +21,9 @@ export class InboxDetailComponent implements OnInit,OnDestroy {
   }
   submissionData :any
   ngOnInit(): void {
-    this.subscription = this.globalService.getCurrentSubmissionId().subscribe(subId=>{
-     
+    this.subscription = this.globalService.getCurrentSubmissionId().subscribe((subId:any)=>{
       this.inboxService.getSubmissionData(
-        subId
+        subId.MessageId
         // "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA="
         ).subscribe(res=>{
         this.submissionData = res.value;

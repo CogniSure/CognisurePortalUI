@@ -42,7 +42,7 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
     // }
 
     this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if(sub!=null && sub!= null)
+      if(sub!=null && sub.value!= null)
       {
       this.summary = sub.value.account_Level_Info[0]
       }

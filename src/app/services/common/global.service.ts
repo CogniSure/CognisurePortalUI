@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
+import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 
 @Injectable({
   providedIn: 'root',
@@ -25,17 +26,25 @@ export class GlobalService {
     return of(JSON.parse(submission!));
   }
 
-  setCurrentSubmissionId(submissionId: any) {
-    submissionId =
-      'AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKRkKuFAAA=';
-    sessionStorage.setItem('CurrentSubmissionId', submissionId);
+  setCurrentSubmissionId(submission: SubmissionInfo) {
+    let subInfo : SubmissionInfo = {
+      SubmissionId : "",
+      SubmissionName : "",
+      MessageId : "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKRkKuFAAA=",
+      Status : submission.Status,
+      Extraction : "",
+      Completeness : "",
+      RiskClearance : ""
+    }
+    sessionStorage.setItem('CurrentSubmissionInfo', JSON.stringify(subInfo));
     //this.CurrentSubmission$.next(submissionId)
   }
   getCurrentSubmissionId() {
     var submissionId: any = '';
-    submissionId = sessionStorage.getItem('CurrentSubmissionId')==null?"":sessionStorage.getItem('CurrentSubmissionId');
+    submissionId = sessionStorage.getItem('CurrentSubmissionInfo')==null?"":sessionStorage.getItem('CurrentSubmissionInfo');
 
+    let submission:SubmissionInfo = JSON.parse(submissionId)
     //this.CurrentSubmission$.next(submissionId)
-    return of(submissionId);
+    return of(submission);
   }
 }

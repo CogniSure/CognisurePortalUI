@@ -3,6 +3,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
+import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 interface NavItem {
@@ -60,9 +61,29 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-  
+  submissionInfo : SubmissionInfo={
+    Completeness : "",
+    Extraction : "",
+    MessageId : "",
+    RiskClearance : "",
+    Status : "",
+    SubmissionId : "",
+    SubmissionName : ""
+  }
   ngOnInit(): void {
     this.fetchDropdownOptions();
+
+    this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
+      this.submissionInfo = {
+        Completeness : subInfo.Completeness,
+        Extraction : subInfo.Extraction,
+        MessageId : subInfo.MessageId,
+        RiskClearance : subInfo.RiskClearance,
+        Status : subInfo.Status,
+        SubmissionId : subInfo.SubmissionId,
+        SubmissionName : subInfo.SubmissionName
+      }
+    })
     this.globalService.getCurrentSubmission().subscribe((sub) => {
       if (sub != null && sub.value != null) {
         let accInfo = sub.value.account_Level_Info[0];
@@ -133,8 +154,8 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   }
   Guidewire(){
       // var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
-      this.subscription = this.globalService.getCurrentSubmissionId().subscribe(submissionId=>{
-        this.inboxService.sendToGuidewire(submissionId).subscribe(downloadRes=>{
+      this.subscription = this.globalService.getCurrentSubmissionId().subscribe((submission:SubmissionInfo)=>{
+        this.inboxService.sendToGuidewire(submission.MessageId).subscribe(downloadRes=>{
         });
         
         

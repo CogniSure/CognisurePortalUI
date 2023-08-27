@@ -12,6 +12,7 @@ import {
   SelectableMode,
 } from "@progress/kendo-angular-grid";
 import { GlobalService } from 'src/app/services/common/global.service';
+import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 
 interface NavItem {
   title: string;
@@ -129,7 +130,16 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   
 
   reDirect(url:string, param:any){
-    this.globalService.setCurrentSubmissionId(param.MessageId)
+    let subInfo : SubmissionInfo = {
+      SubmissionId : param.SubmissionID,
+      SubmissionName : "",
+      MessageId : param.MessageId,
+      Status : param.Status,
+      Extraction : "",
+      Completeness : "",
+      RiskClearance : ""
+    }
+    this.globalService.setCurrentSubmissionId(param)
   }
 
 
