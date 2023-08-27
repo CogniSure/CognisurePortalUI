@@ -15,16 +15,25 @@ export class ChatService {
   public submit(question: string,messageGuid:string): void {
     console.log("Chat message : " + question +" : "+ messageGuid )
     const length = question.length;
-    const answer = `"${question}" contains exactly ${length} symbols.`;
-
-    setTimeout(() => this.responses.next(answer), 1000);
+    this.AskCopilot(messageGuid,question).subscribe((res:any)=>{
+      console.log("Chat Answer")
+      
+      var resultVal = JSON.parse(res.value)
+      var result1 = resultVal[0]
+      var result2 = result1[1]
+      console.log(result2);
+      //const answer = `"${question}" contains exactly ${length} symbols.`;
+      
+      const answer = result2;
+      setTimeout(() => this.responses.next(answer), 1000);
+    })
+    
   }
 
-  AskCopilot(question: string,messageGuid:string){
-    
-    var apiUrl = this.env.baseUrl + 'api/UploadCopilotFIles';
+  AskCopilot(messageGuid:string,question: string){
+    var apiUrl = this.env.baseUrl + 'api/AskCopilot';
     let hParams = new HttpParams();
-    hParams = hParams.set('uniqId', messageGuid);
+    hParams = hParams.set('uniqId', JSON.parse(messageGuid));
     hParams = hParams.set('message', question);
     return this.httpService.getData(apiUrl,hParams );
   }

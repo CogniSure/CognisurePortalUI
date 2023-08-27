@@ -102,8 +102,8 @@ export class CopilotComponent {
           FileType: file.type,
           FileContent: reader.result as string
         }
-        this.svc.uploadCopilotFiles(uplfile).subscribe(res=>{
-          this.messageGuid = res;
+        this.svc.uploadCopilotFiles(uplfile).subscribe((res:any)=>{
+          this.messageGuid = res.value;
         })
       };
      
