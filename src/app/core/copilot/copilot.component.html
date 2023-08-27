@@ -18,17 +18,17 @@
             <!-- <p>FileSelect</p> -->
            <p class="new_chat">+    New Chat</p>
             <kendo-fileselect [(ngModel)]="uploadedFiles" [restrictions]="restrictions" [multiple]="false"> </kendo-fileselect> 
-          <div style="padding-left: 5%;padding-top: 4%;">
+          <div style="padding: 6% 0 6% 25%; background: white;">
             <kendo-button
               class="copied_icontop"
-              style="background: transparent"
               (click)="Upload()"
+              style="background-color: #009CC1; color: white;"
             >
-             <span style="color:#fff;font-size: 11px;"> Upload</span>
+             <span style="font-size: 11px;"> Upload</span>
             </kendo-button>
             </div>
             <!-- <kendo-icon icon="delete" class="delete-icon"></kendo-icon> -->
-            <p class="delete_conversation">Delete Conversations</p>
+            <!-- <p class="delete_conversation">Delete Conversations</p> -->
           </kendo-tilelayout-item-body>
         </kendo-tilelayout-item>
         <kendo-tilelayout-item [col]="2" [colSpan]="6" [row]="1" [rowSpan]="1">
@@ -39,7 +39,7 @@
                 [messages]="(feed | async)!"
                 [user]="user"
                 (sendMessage)="sendMessage($event)"
-                style="max-width: none !important;"
+                style="max-width: none !important; margin-top: 5%;"
               >
               </kendo-chat>
             </div>
