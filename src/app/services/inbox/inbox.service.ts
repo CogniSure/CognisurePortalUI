@@ -66,8 +66,8 @@ export class InboxService {
             AccountName: res['accountName']!=""?res['accountName']:"NA",
             EffectiveDate: res['effectiveDate']!=""?res['effectiveDate']:"NA",
             Type: "New Submission",
-            AgencyName: res['agencyName']!=""?res['agencyName']:"NA",
-            LOB: res['lineOfBusiness']!=""?res['lineOfBusiness']:"NA",
+            AgencyName: (res['agencyName']==null || res['agencyName']=="")?"NA":this.getConcatenateString(res['agencyName'].split(",")),
+            LOB: (res['lineOfBusiness']==null || res['lineOfBusiness']=="")?"NA":this.getConcatenateString(res['lineOfBusiness'].split(",")),
             Priority: "High",//res['priority']!=""?res['priority']:"NA",
             Status: res['submissionStatusName']!=""?res['submissionStatusName']:"NA",
             AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
@@ -80,6 +80,30 @@ export class InboxService {
         return submissions;
       })
     );
+  }
+  getConcatenateString(elements: string[],defaultValue:string="NA") {
+    let concatenatedString = '';
+    if (elements != null && elements != undefined && elements.length > 0) {
+      for (let i = 0; i <= elements.length; i++) {
+        let element = elements[i];
+        if (element != undefined && element != '') {
+          let separator: string = '';
+          if (element != '' && i <= elements.length) separator = ',';
+          concatenatedString += element + separator;
+        }
+      }
+    }
+    if (
+      concatenatedString == null ||
+      concatenatedString == '' ||
+      concatenatedString.trim() === '' ||
+      concatenatedString == 'undefined'
+    )
+      concatenatedString = defaultValue;
+    else if (concatenatedString.endsWith(','))
+      concatenatedString = concatenatedString.slice(0, -1);
+
+    return concatenatedString;
   }
   sendToGuidewire(submissionId : string) : Observable<any>{
     var apiUrl = this.env.baseUrl + 'api/SendtoGuidewire';

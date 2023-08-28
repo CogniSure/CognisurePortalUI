@@ -87,8 +87,8 @@ export class HomeComponent implements OnInit {
     type: "SubmissionId",
     redirectUrl:"/inbox/detail/summary",
     sortable:true,
-    columnmenu:true,
-    filterable : true,
+    columnmenu:false,
+    filterable : false,
     IsNew:"NewStatus"
   },
   {
@@ -96,8 +96,9 @@ export class HomeComponent implements OnInit {
       title: "Account Name",
       type: "text",
       width:180,
-      sortable:false,
       columnmenu:true,
+      sortable:true,
+      filterable : true,
     },
     {
       field: "EffectiveDate",
@@ -105,16 +106,18 @@ export class HomeComponent implements OnInit {
       title: "Effective Date",
       width:180,
       type: "text",
-      sortable:true,
       columnmenu:true,
+      sortable:true,
+      filterable : true,
     },
   {
       field: "AgencyName",
       title: "Agency Name",
       width:180,
       type: "text",
-      sortable:false,
       columnmenu:true,
+      sortable:true,
+      filterable : true,
     },
     {
       field: "LOB",
@@ -122,8 +125,9 @@ export class HomeComponent implements OnInit {
       title: "LOB",
       type: "text",
       width:180,
-      sortable:true,
       columnmenu:true,
+      sortable:true,
+      filterable : true,
     },
     {
       field: "Priority",
@@ -131,8 +135,9 @@ export class HomeComponent implements OnInit {
       title: "Priority",
       width:150,
       type: "text",
-      sortable:true,
       columnmenu:true,
+      sortable:true,
+      filterable : true,
     },
     {
       field: "Status",
@@ -140,16 +145,18 @@ export class HomeComponent implements OnInit {
       title: "Status",
       type: "text",
       width:180,
-      sortable:true,
       columnmenu:true,
+      sortable:true,
+      filterable : true,
     },
     {
       field: "AssignedBy",
       format: "{0:c}",
       title: "Assigned By",
       type: "text",
-      sortable:true,
       columnmenu:true,
+      sortable:true,
+      filterable : true,
     }
 ];
  
