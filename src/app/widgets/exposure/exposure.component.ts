@@ -29,16 +29,16 @@ export class ExposureComponent implements OnInit {
         let states: string[] = [];
         let totalIncurred = 0;
 
-        sub.value.property_Policy_Info_Blanket_Summary.forEach(
-          (exposure: any) => {
-            if(exposure.commercialproperty_Summary_Blanketlimitamount!=null)
-            {
-              var str = exposure.commercialproperty_Summary_Blanketlimitamount.replace('$','')
-              totalIncurred += parseNumber(str);
-            }
+        // sub.value.property_Policy_Info_Blanket_Summary.forEach(
+        //   (exposure: any) => {
+        //     if(exposure.commercialproperty_Summary_Blanketlimitamount!=null)
+        //     {
+        //       var str = exposure.commercialproperty_Summary_Blanketlimitamount.replace('$','')
+        //       totalIncurred += parseNumber(str);
+        //     }
            
-          }
-        );
+        //   }
+        // );
 
         sub.value.property_Policy_Info_Premises_Information.forEach(
           (property: any) => {
@@ -55,6 +55,14 @@ export class ExposureComponent implements OnInit {
             let stateTemp =
               property.commercialstructure_Physicaladdress_Stateorprovincecode;
             if (stateTemp != null && stateTemp != '') states.push(stateTemp);
+
+            let totalIncurredTemp = 0;
+            if(property.commercialproperty_Premises_Limitamount!=null)
+            {
+              var str = property.commercialproperty_Premises_Limitamount.replace('$','')
+              totalIncurredTemp = parseNumber(str);
+            }
+          totalIncurred += totalIncurredTemp;
             // totalIncurred += totalIncurredTemp;
             // if (totalIncurredTemp > highestIncurred)
             //   highestIncurred = totalIncurredTemp;

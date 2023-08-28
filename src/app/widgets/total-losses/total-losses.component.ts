@@ -19,7 +19,7 @@ export class TotalLossesComponent implements OnInit {
   totallossesdata: TotalLossesData[] = [];
   selected = 'option2';
   selectedOption: string = '1';
- 
+
   totalloss: any;
   // public selectedYears: string = '';
   selectedValue = '0';
@@ -29,7 +29,8 @@ export class TotalLossesComponent implements OnInit {
   selectedYears: number = 1;
   claimDetails: ClaimDetail[] = [];
   constructor(
-    private globalService: GlobalService,private cdRef:ChangeDetectorRef
+    private globalService: GlobalService,
+    private cdRef: ChangeDetectorRef
   ) {
     this.selectedYear = this.years[0];
   }
@@ -44,30 +45,31 @@ export class TotalLossesComponent implements OnInit {
         let highestIncurred = 0;
         sub.value.claim_Info.forEach((claim: any) => {
           //let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
-
           let totalIncurredTemp = 0;
-          if(claim.total_Incurred!=null)
-            {
-              var str = claim.total_Incurred.replace('$','')
-              totalIncurredTemp = parseNumber(str);
-            }
+
+          if (claim.total_Incurred != null) {
+            var str = claim.total_Incurred.replace('$', '');
+            totalIncurredTemp = parseNumber(str);
+          }
           totalIncurred += totalIncurredTemp;
           if (totalIncurredTemp > highestIncurred)
             highestIncurred = totalIncurredTemp;
 
           noOfClaims++;
-          if(claim.claim_Status == "Open")
-            noOfOpenClaims++
+          if (claim.claim_Status == 'Open') noOfOpenClaims++;
         });
 
-        this.totallosses = "$"+totalIncurred.toLocaleString('en-GB');
+        this.totallosses = '$' + totalIncurred.toLocaleString('en-GB');
         this.totallossesdata = [
-          {numberofclaims: noOfClaims, numberofopenclaims: noOfOpenClaims, highestclaim:"$"+highestIncurred.toLocaleString('en-GB') }
+          {
+            numberofclaims: noOfClaims,
+            numberofopenclaims: noOfOpenClaims,
+            highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
+          },
         ];
       }
-      this.cdRef.detectChanges()
+      this.cdRef.detectChanges();
     });
-    
   }
 
   onYearChange(event: any) {

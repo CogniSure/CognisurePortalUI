@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { parseNumber } from '@progress/kendo-angular-intl';
 import { SelectEvent } from '@progress/kendo-angular-layout';
 import { ClaimDetail } from 'src/app/model/inbox/ClaimDetail';
 import { ApplicationProperty } from 'src/app/model/inbox/PropertyDetail';
@@ -53,20 +54,20 @@ export class ApplicationComponent implements OnInit {
               RoofType: this.getConcatenateString([
                 exposure.construction_RoofMaterialCode,
               ]),
-              NumberOfStories: 'NA',
-              TIV: 'NA',
+              NumberOfStories:this.getConcatenateString([exposure.construction_Storeycount]),
+              TIV: "$"+parseNumber(this.getConcatenateString([exposure.commercialproperty_Premises_Limitamount])).toLocaleString('en-GB'),
               Geolocation: 'NA',
               Flood: 'NA',
               Earthquake: 'NA',
               NamedStorm: 'NA',
               Hail: 'NA',
               RoofAge: 'NA',
-              Construction: 'NA',
-              Occupancy: 'NA',
-              Protection: 'NA',
-              Wiring: 'NA',
-              Sprinkler: 'NA',
-              FireAlarm: 'NA',
+              Construction: this.getConcatenateString([exposure.construction_Constructioncode]),
+              Occupancy: this.getConcatenateString([exposure.buildingoccupancy_Otheroccupanciesdescription]),
+              Protection:this.getConcatenateString([exposure.buildingfireprotection_Protectionclasscode]),
+              Wiring: this.getConcatenateString([exposure.buildingimprovement_Wiringyear]),
+              Sprinkler: this.getConcatenateString([exposure.buildingfireprotection_Alarm_Sprinklerpercent]),
+              FireAlarm: this.getConcatenateString([exposure.buildingfireprotection_Alarm_Protectiondescription]),
               BuildingNameAndOccupancy : this.getConcatenateString([
                 exposure.buildingoccupancy_Otheroccupanciesdescription]),
               City: this.getConcatenateString([
@@ -137,17 +138,17 @@ export class ApplicationComponent implements OnInit {
             ClaimReportDate: this.getConcatenateString([claim.reported_Date]),
             LossLocation: this.getConcatenateString([claim.city]),
             LossState: this.getConcatenateString([claim.state]),
-            Carrier: 'NA',
+            Carrier: this.getConcatenateString([claim.carrier_Nm]),
             PolicyNo: this.getConcatenateString([claim.policy_Nbr]),
             ClaimantName: this.getConcatenateString([claim.claimant_Nm]),
             ClaimDescription: this.getConcatenateString([claim.loss_Desc]),
             ClaimStatus: this.getConcatenateString([claim.claim_Status]),
             ValuationDate: this.getConcatenateString([claim.valuation_Date]),
-            IndemnityRes: this.getConcatenateString([claim.pd_Reserves]),
-            ExpenseRes: this.getConcatenateString([claim.reserve_Alae]),
-            IndemnityPaid: this.getConcatenateString([claim.pd_Paid]),
-            ExpensePaid: this.getConcatenateString([claim.paid_Alae]),
-            TotalIncurred: this.getConcatenateString([claim.total_Incurred]),
+            IndemnityRes: "$"+parseNumber(this.getConcatenateString([claim.pd_Reserves])).toLocaleString('en-GB'),
+            ExpenseRes: "$"+parseNumber(this.getConcatenateString([claim.reserve_Alae])).toLocaleString('en-GB'),
+            IndemnityPaid: "$"+parseNumber(this.getConcatenateString([claim.pd_Paid])).toLocaleString('en-GB'),
+            ExpensePaid: "$"+parseNumber(this.getConcatenateString([claim.paid_Alae])).toLocaleString('en-GB'),
+            TotalIncurred: "$"+parseNumber(this.getConcatenateString([claim.total_Incurred])).toLocaleString('en-GB'),
           };
           this.tableData2.push(tempClaim)
         });
