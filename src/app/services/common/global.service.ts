@@ -30,11 +30,12 @@ export class GlobalService {
     // let subInfo : SubmissionInfo = {
     //   SubmissionId : "",
     //   SubmissionName : "",
-    //   MessageId : "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKRkKuFAAA=",
+    //   MessageId : "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKnp6z4AAA=",
     //   Status : submission.Status,
     //   Extraction : "",
     //   Completeness : "",
-    //   RiskClearance : ""
+    //   RiskClearance : "",
+    //   LOB:submission.LOB
     // }
     sessionStorage.setItem('CurrentSubmissionInfo', JSON.stringify(submission));
     //this.CurrentSubmission$.next(submissionId)

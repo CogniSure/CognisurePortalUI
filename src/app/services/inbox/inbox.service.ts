@@ -68,7 +68,7 @@ export class InboxService {
             Type: "New Submission",
             AgencyName: res['agencyName']!=""?res['agencyName']:"NA",
             LOB: res['lineOfBusiness']!=""?res['lineOfBusiness']:"NA",
-            Priority: res['priority']!=""?res['priority']:"NA",
+            Priority: "High",//res['priority']!=""?res['priority']:"NA",
             Status: res['submissionStatusName']!=""?res['submissionStatusName']:"NA",
             AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
             NewStatus: true,
