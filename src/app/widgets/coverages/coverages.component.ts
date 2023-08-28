@@ -40,18 +40,18 @@ export class CoveragesComponent implements OnInit {
   Building = 0;
   Content = 0;
   BusinessIncome = 0;
+  Other = 0;
   ngOnInit(): void {
     this.globalService.getCurrentSubmission().subscribe((sub) => {
       this.Building = 0;
       this.Content = 0;
       this.BusinessIncome = 0;
+      this.Other = 0;
       if (sub != null && sub.value != null) {
         
-        console.log("Property Coverage");
         sub.value.property_Policy_Info_Premises_Information.forEach(
           (exposure: any) => {
             
-            console.log("Property Coverage 1");
             let propertyType1 =
               exposure.commercialproperty_Premises_Subjectofinsurancecode;
             let propertyValue = 0;
@@ -64,8 +64,6 @@ export class CoveragesComponent implements OnInit {
               propertyValue = parseNumber(str);
             }
             
-            console.log("Property Coverage 2");
-            console.log(propertyType1)
             if ((propertyType1 != null && propertyType1 != '')) {
               let propertyType = propertyType1.toLowerCase();
               console.log(propertyType);
@@ -81,6 +79,9 @@ export class CoveragesComponent implements OnInit {
               ) {
                this.BusinessIncome = this.BusinessIncome + propertyValue;
               }
+              else {
+                this.Other = this.Other + propertyValue;
+              }
             }
             
           }
@@ -88,22 +89,25 @@ export class CoveragesComponent implements OnInit {
         this.coverages.push({
           CoverageName : "Building",
           CoverageType : 'Blanket',
-          CoverageValue : this.Building.toString()
+          CoverageValue : "$"+this.Building.toLocaleString('en-GB')
         },
         {
           CoverageName : "Content",
           CoverageType : 'Blanket',
-          CoverageValue : this.Content.toString()
+          CoverageValue : "$"+this.Content.toLocaleString('en-GB')
         },
         {
           CoverageName : "Business Income",
           CoverageType : 'Blanket',
-          CoverageValue : this.BusinessIncome.toString()
+          CoverageValue : "$"+this.BusinessIncome.toLocaleString('en-GB')
+        },
+        {
+          CoverageName : "Other",
+          CoverageType : 'Blanket',
+          CoverageValue : "$"+this.Other.toLocaleString('en-GB')
         }
         );
         
-        console.log("Property Coverage 3");
-        console.log(this.coverages)
         this.cdRef.detectChanges();
       }
     });

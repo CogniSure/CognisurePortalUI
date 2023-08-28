@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { parseNumber } from '@progress/kendo-angular-intl';
 import { SelectEvent } from '@progress/kendo-angular-layout';
 import { PropertyDetail } from 'src/app/model/inbox/PropertyDetail';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
@@ -30,20 +31,20 @@ export class ExposerAnalysisComponent implements OnInit {
               YearBuilt: this.getConcatenateString([exposure.commercialstructure_Builtyear]),
               TotalArea: this.getConcatenateString([exposure.construction_BuildingArea]),
               RoofType: this.getConcatenateString([exposure.construction_RoofMaterialCode]),
-              NumberOfStories: 'NA',
-              TIV: 'NA',
+              NumberOfStories: this.getConcatenateString([exposure.construction_Storeycount]),
+              TIV: "$"+parseNumber(this.getConcatenateString([exposure.commercialproperty_Premises_Limitamount])).toLocaleString('en-GB'),
               Geolocation: 'NA',
               Flood: 'NA',
               Earthquake: 'NA',
               NamedStorm: 'NA',
               Hail: 'NA',
               RoofAge: 'NA',
-              Construction: 'NA',
-              Occupancy: 'NA',
-              Protection: 'NA',
-              Wiring: 'NA',
-              Sprinkler: 'NA',
-              FireAlarm: 'NA',
+              Construction: this.getConcatenateString([exposure.construction_Constructioncode]),
+              Occupancy: this.getConcatenateString([exposure.buildingoccupancy_Otheroccupanciesdescription]),
+              Protection:this.getConcatenateString([exposure.buildingfireprotection_Protectionclasscode]),
+              Wiring: this.getConcatenateString([exposure.buildingimprovement_Wiringyear]),
+              Sprinkler: this.getConcatenateString([exposure.buildingfireprotection_Alarm_Sprinklerpercent]),
+              FireAlarm: this.getConcatenateString([exposure.buildingfireprotection_Alarm_Protectiondescription]),
             };
             this.exposureDetails.push(tempExposure);
           }

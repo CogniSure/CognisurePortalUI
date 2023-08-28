@@ -61,7 +61,7 @@ export class ExposureComponent implements OnInit {
           }
         );
 
-        this.exposurelosses = totalIncurred.toLocaleString('en-GB');
+        this.exposurelosses = "$"+totalIncurred.toLocaleString('en-GB');
         this.exposuredata = [
           {
             numberoflocations: [...new Set(locations)].length,

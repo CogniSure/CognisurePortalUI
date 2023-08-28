@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -20,7 +20,7 @@ interface NavItem {
 
 export class InboxTopbarComponent implements OnInit, OnDestroy {
   
-  constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router) {}
+  constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router, private cdRef:ChangeDetectorRef) {}
   navItems = [
     { title: 'Duke & Duke', content: '885 Street, Warrnville, illinois 60555', icon: '' },
     { title: 'Hotel', content: '', icon: 'bed' },
@@ -100,8 +100,9 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         Status : subInfo.Status,
         SubmissionId : subInfo.SubmissionId,
         SubmissionName : subInfo.SubmissionName,
-        LOB : this.getDistinctLOB(subInfo.LOB)
+        LOB : "Property"//this.getDistinctLOB(subInfo.LOB)
       }
+      this.cdRef.detectChanges();
     })
     this.globalService.getCurrentSubmission().subscribe((sub) => {
       if (sub != null && sub.value != null) {
@@ -147,7 +148,9 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         //this.accountInformation = sub.value.account_Level_Info[0];
         //this.propertyInformation = sub.value.property_Policy_Info_Premises_Information[0];
       }
-    });
+      this.cdRef.detectChanges();
+    }
+    );
   }
 
   fetchDropdownOptions(): void {

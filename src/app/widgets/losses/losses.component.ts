@@ -48,9 +48,9 @@ export class LossesComponent {
             noOfOpenClaims++
         });
 
-        this.totallosses = totalIncurred.toLocaleString('en-GB')
+        this.totallosses = "$"+totalIncurred.toLocaleString('en-GB')
         this.lossesdata = [
-          {numberofclaims: noOfClaims, numberofopenclaims: noOfOpenClaims, highestclaim: highestIncurred }
+          {numberofclaims: noOfClaims, numberofopenclaims: noOfOpenClaims, highestclaim: "$"+highestIncurred.toLocaleString('en-GB') }
         ];
       }
     });

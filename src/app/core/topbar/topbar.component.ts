@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class TopbarComponent {
   
 
 
-  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog) {}
+  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog, private cdRef:ChangeDetectorRef) {}
   
   ngOnInit(): void {
     this.fetchDropdownOptions();

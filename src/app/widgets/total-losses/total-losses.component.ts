@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TotalLossesData } from '../../model/summary/totallossesdata';
 import { TotalLossesService } from '../../services/inbox/summary.service';
 import { TotalIncurredValue } from '../../model/summary/totallossesdata';
@@ -29,7 +29,7 @@ export class TotalLossesComponent implements OnInit {
   selectedYears: number = 1;
   claimDetails: ClaimDetail[] = [];
   constructor(
-    private globalService: GlobalService,
+    private globalService: GlobalService,private cdRef:ChangeDetectorRef
   ) {
     this.selectedYear = this.years[0];
   }
@@ -60,11 +60,12 @@ export class TotalLossesComponent implements OnInit {
             noOfOpenClaims++
         });
 
-        this.totallosses = totalIncurred.toLocaleString('en-GB');
+        this.totallosses = "$"+totalIncurred.toLocaleString('en-GB');
         this.totallossesdata = [
-          {numberofclaims: noOfClaims, numberofopenclaims: noOfOpenClaims, highestclaim: highestIncurred }
+          {numberofclaims: noOfClaims, numberofopenclaims: noOfOpenClaims, highestclaim:"$"+highestIncurred.toLocaleString('en-GB') }
         ];
       }
+      this.cdRef.detectChanges()
     });
     
   }
