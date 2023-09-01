@@ -1,0 +1,63 @@
+<body>
+    <!-- <app-loader [showSpinner]="showSpinner"></app-loader> -->
+    <div class="forgetpassword" style="text-align: center">
+      <!-- <app-csb-header></app-csb-header> -->
+      <div class="row" style="padding:0;margin:0">
+        <div class="col-md-4">
+          <div class="frgt_side"></div>
+        </div>
+        <div class="col-md-4" style="text-align: -webkit-center;">
+          
+            <div class="forgetpassword_form">
+              <div class="frgt_paswrd">
+                <div>
+                  <h2 class="header-black"><b>Two factor authentication</b></h2>
+                  <h2 class="subheader-secondary-large margin-padding-zero">
+                    <p class="margin-padding-zero">Enter the OTP from Authenticator</p>
+                  </h2>
+                  <h2 class="subheader-secondary-large">
+                    <p>Application on your mobile.</p>
+                  </h2>
+                </div>
+                
+                <div class="otp">
+                  <form >
+                  <!-- <ng-otp-input
+                    #otpInput
+                    [config]="{ length: 6 }"
+                    (onInputChange)="onOtpChange($event)"
+                  >
+                  </ng-otp-input> -->
+              </form>
+  
+                  <div class="col-md-12">
+                    <mat-error
+                      *ngFor="let err of validationErrors"
+                      style="text-align: center"
+                    >
+                      {{ err.Error }}
+                    </mat-error>
+                  </div>
+  
+                  <div class="signin-btn signin_text">
+                    <button matButton class="reset-button">
+                      Verify
+                    </button>
+                  </div>
+                  <p class="back_btn">
+                    <span class="material-icons">arrow_back</span>Back to
+                    <a routerLink="/login">Sign In</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="frgt_side"></div>
+        </div>
+  
+        <!-- <app-csb-footer></app-csb-footer> -->
+      </div>
+    </div>
+  </body>
+  

@@ -19,6 +19,10 @@ import { AppConfigService } from "src/app/app-config-service";
   providedIn: 'root',
 })
 export class AccountService {
+  forgotPassword(arg0: { email: string; }) {
+    throw new Error('Method not implemented.');
+  }
+  contactUs: any;
   
   constructor(private http: HttpService, private globalService:GlobalService ,private configService : AppConfigService) {
   }

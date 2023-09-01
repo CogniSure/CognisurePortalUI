@@ -40,7 +40,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { UploadsModule } from '@progress/kendo-angular-upload';
 import { ChatModule } from '@progress/kendo-angular-conversational-ui';
 import { ChatService } from './services/common/chat.service';
-
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -65,6 +65,7 @@ import { ChatService } from './services/common/chat.service';
     DialogsModule,
     UploadsModule,
     ChatModule,
+    MatCardModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

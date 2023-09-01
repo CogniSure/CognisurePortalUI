@@ -1,0 +1,210 @@
+<div class="bootstrap-wrapper-reg">
+    <div class="row">
+      <div class="col-md-6">
+   
+  <!-- <div class="slider">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="2000" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img [src]="imagesrc" height="auto" width = "100%"/>
+            </div>
+            <div class="carousel-item">
+              <img [src]="imagesrc1" height="auto" width = "100%"/>
+            </div>
+            <div class="carousel-item">
+              <img [src]="imagesrc2" height="auto" width = "100%"/>
+            </div>
+  
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        
+  </div> -->
+  
+  
+  <div class="slider">
+  
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" [src]="imagesrc1" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" [src]="imagesrc2" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" [src]="imagesrc3" alt="Third slide">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        
+      </button> -->
+      <!-- <a class="carousel-control-prev" href="" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a> 
+    </div>-->
+        <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-interval="2000" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-slide-to="0" >
+              <img [src]="imagesrc" class="d-block" height="auto" width = "100%"/>
+            </div>
+            <div class="carousel-item" data-bs-slide-to="1">
+              <img [src]="imagesrc1" class="d-block" height="auto" width = "100%"/>
+            </div>
+            <div class="carousel-item" data-bs-slide-to="2">
+              <img [src]="imagesrc2" class="d-block" height="auto" width = "100%"/>
+            </div>
+  
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div> -->
+        
+  
+        <ngb-carousel
+        [showNavigationArrows]="true" 
+  [showNavigationIndicators]="false"
+  [interval]="2000"
+  [keyboard]="true"
+  [pauseOnHover]="true"
+  [wrap]="true"
+  [activeId]="'firstSlide'"
+        
+        >
+          <ng-template ngbSlide id="firstSlide">
+            <div class="picsum-img-wrapper" >
+              <img src="assets/images/registrationsample1.jpg" alt="Angular Carousel 1" style="width:100%;height:auto;">
+            </div>
+  
+          </ng-template>
+          <ng-template ngbSlide id="secondSlide">
+            <div class="picsum-img-wrapper">
+              <img src="assets/images/registrationsample2.jpg" alt="Angular Carousel 2" style="width:100%;height:auto;">
+            </div>
+            
+          </ng-template>
+          <ng-template ngbSlide id="thirdslide">
+            <div class="picsum-img-wrapper">
+              <img src="assets/images/registrationsample3.jpg" alt="Angular Carousel 2" style="width:100%;height:auto;">
+            </div>
+           
+          </ng-template>
+        </ngb-carousel>
+  </div>
+  
+  
+  
+        <!-- <div
+          class="container"
+          (mouseover)="imageClickHandler(true)"
+          (mouseleave)="imageClickHandler(false)"
+        >
+          <ng-image-slider
+            [images]="imageObject"
+            [infinite]="true"
+            [autoSlide]="0"
+            slideImage="1"
+            [showArrow]="enableSlideButton"
+          
+          ></ng-image-slider>
+        </div> -->
+      </div>
+      <div class="col-md-5">
+        <div class="col-md-11" style="text-align: center;">
+          <h2 style="text-align: center;" class="regclr"><u><h2><b>Register</b></h2></u></h2>
+        </div>
+          <form style="padding-top: 0px;">
+           
+            <mat-form-field class="halfWidth Loginborder" appearance="outline">
+              <mat-label class="loginpage_1">*First Name</mat-label>
+              <input matInput placeholder="" class="inputlogincolor"/>
+            </mat-form-field>
+            <mat-form-field class="halfWidth shortPadding Loginborder" appearance="outline">
+              <mat-label class="loginpage_1">*Last Name</mat-label>
+              <input matInput placeholder="" class="inputlogincolor"/>
+            </mat-form-field>
+            <mat-form-field class="fillWidth Loginborder" appearance="outline">
+              <mat-label class="loginpage_1">*Company Name</mat-label>
+              <input matInput placeholder="" class="inputlogincolor"/>
+            </mat-form-field>
+            <mat-form-field class="fillWidth Loginborder" appearance="outline">
+              <mat-label class="loginpage_1">*Business E-mail ID</mat-label>
+              <input matInput placeholder="" class="inputlogincolor"/>
+            </mat-form-field>
+            <mat-form-field class="fillWidth Loginborder" appearance="outline">
+              <mat-label class="loginpage_1">User Role in the Company (Optional)</mat-label>
+              <input matInput placeholder="" class="inputlogincolor"/>
+            </mat-form-field>
+            <mat-form-field class="fillWidth Loginborder" appearance="outline">
+              <mat-label class="loginpage_1">Phone Number (Optional)</mat-label>
+              <input matInput placeholder="" class="inputlogincolor"/>
+            </mat-form-field>
+            <mat-form-field class="fillWidth Loginborder" appearance="outline">
+              <mat-label class="loginpage_1">*Password</mat-label>
+              
+              <input
+                type="password"
+                matInput
+                placeholder=""
+               
+                tooltip-class="tooltipCss"
+                class="inputlogincolor"
+              />
+          
+            </mat-form-field>
+            <mat-form-field class="fillWidth Loginborder" appearance="outline">
+              <mat-label style="color: #758591;">*Confirm Password</mat-label>
+              <input type="password" matInput placeholder="" class="inputlogincolor"/>
+            </mat-form-field>
+                    </form>
+       
+        <div class="row">
+          <div class="col-md-12" style="text-align:center;"> 
+           <mat-checkbox class="fillWidthTerms loginpage_1" style="text-align: left;">
+            I agree to 
+             <a class="logincontact">Terms and Conditions</a>
+            and acknowledge the
+             <a class="logincontact">Privacy Policy</a>
+            
+           </mat-checkbox>
+           </div> 
+           <div class="col-md-11 size register-btn">
+            <button class="largeButton" routerLink="/verifyemail" queryParamsHandling="preserve" mat-raised-button>
+              <b><h3>Register Now</h3></b>
+            </button>
+          </div>
+          <div class="col-md-11 size" style="text-align: left;">
+              <mat-label class="trbreg_1">Trouble Registering? <a  class="logincontact">Contact Us</a></mat-label>
+  
+            </div>
+            <div class="col-md-12 size" style="text-align: left;">
+              <mat-label class="trbreg_1">Already Registered? <a routerLink="/login" queryParamsHandling="preserve" class="logincontact">Login</a> </mat-label>
+            </div>
+          
+          </div>
+      </div>
+    </div>
+  </div>
+  

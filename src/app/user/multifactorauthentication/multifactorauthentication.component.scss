@@ -1,0 +1,228 @@
+body{
+    background-color:#d6e5f1;  
+}
+.forgetpassword{
+    background-color:#d6e5f1;  
+.frgt_side{
+background-color:#d6e5f1;
+}
+.forgetpassword_form{
+    width: 82%;
+    background-color:#ffffff;   
+}
+// .col-md-4{
+//     background-color:#d6e5f1;  
+// }
+// .frgt_paswrd h2{
+//     color:#000;
+//     font-size: 20px;
+// }
+// .frgt_paswrd p{
+//     color:#758591;
+//     font-size: 16px;
+// }
+.reset-button{
+    padding: 6px 123px 6px 123px;
+    color: #ffffff;
+    background-color: #005DAA;
+    border: 1px solid #005DAA;
+    border-radius: 8px;
+    font-size: 14px;
+}
+.back_btn{
+    color:#758591;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 14px;
+}
+.signin_text{
+    padding-bottom: 20px;
+}
+
+::ng-deep .mat-form-field-infix {
+    width: 278px !important;
+}
+.back_btn span{
+    position: absolute;
+    margin-left: -25px;
+    font-size: 19px;
+    }
+    ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+        color: #758591;
+        font-size: 8.5px;
+        width: 65px;
+    }
+    ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+        height: 1px;
+        width: 100%;
+        color: #758591;
+    }
+    .multi_factorotp{
+        display: inline-flex;
+        padding-left: 98px;
+    padding-right: 96px;
+    }
+    .forgetpassword .mat-form-field-infix{
+     width: 0 !important;
+    }
+    ::ng-deep .mat-form-field-infix{
+        width: 10% !important;
+        margin-left: 4% !important;
+    }
+    ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+        margin-top: 0.541667em;
+        top: calc(100% - 1.6666666667em);
+        margin-left: 40%;
+        width: 8rem;
+    }
+    .signin-btn{
+        padding-top: 15px;
+        padding-bottom: 40px;
+    }
+    .frgt_paswrd{
+    height: 476px;
+    padding-top: 75px;
+    margin-top: 30%;
+    }
+    .otp_timer{
+    text-align: right;
+    padding-right: 94px;
+    color:#758591;
+    padding-top: 20px;
+    }
+    ::ng-deep .mat-form-field-infix input{
+    text-align: center;
+    }
+    ::ng-deep .mat-form-field-flex{
+    text-align: center!important;
+    }
+    form{
+        display: flex;
+        justify-content: center;
+    }
+    ::ng-deep .mat-form-field input{
+        text-align: center;
+    font-size: 16px;
+    color: #758591;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.back_btn a{
+color:#005DAA;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    color: #758591 !important;
+  }
+  ::ng-deep .mat-form-field{
+    padding:10px;
+  }
+  ::ng-deep  .otp-input {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    border-bottom: 1px solid #758591;
+    border-radius: 0;
+    // border: none;
+    text-align: center;
+    font-size: 16px!important;
+    color: #000000;
+}
+.otp_border{
+    border-bottom: 1px solid #758591!important;
+}
+::ng-deep input[type=text]:focus{
+    outline: 2px solid #fff;  
+    border-bottom: 2px solid #000000; 
+  }
+  ::ng-deep .backtosignin{
+    color: #758591;
+    font-size: 14px;
+  }
+  .backtosignin u{
+ padding-left: 5px;
+  }
+  
+  @media screen and (max-width: 1280px) {
+  .frgt_paswrd {
+    margin-top: 40%;
+    padding-top: 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+.frgt_paswrd {
+    margin-top: 20%;
+}
+.reset-button {
+    padding: 6px 90px 6px 90px;
+}
+.frgt_paswrd {
+    padding-top: 50px;
+}
+}
+
+@media screen and (max-width: 912px) {
+    .forgetpassword_form {
+        width: 100%;
+    }
+    .frgt_paswrd {
+        margin-top: 85%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+.forgetpassword_form {
+    width: 110%;
+}
+}
+
+@media screen and (max-width: 540px){
+.forgetpassword_form {
+    width: 70%;
+}
+.frgt_paswrd {
+        margin-top: 35%;
+    }
+}
+
+@media screen and (max-width: 540px){
+    .frgt_paswrd {
+        margin-top: 55%;
+    }
+}
+
+@media screen and (max-width: 376px){
+.forgetpassword_form {
+    width: 75%;
+}
+.frgt_paswrd {
+    margin-top: 42%;
+}
+}
+
+@media screen and (max-width: 360px){
+.frgt_paswrd {
+    margin-top: 46%;
+}
+}
+
+@media screen and (max-width: 360px){
+.frgt_paswrd {
+    padding-top: 20px;
+}
+}
+
+@media screen and (max-width: 281px){
+    .reset-button {
+    padding: 6px 60px 6px 60px;
+}
+.frgt_paswrd {
+    height: 530px;
+    margin-top: 50%;
+}
+}
+
+}

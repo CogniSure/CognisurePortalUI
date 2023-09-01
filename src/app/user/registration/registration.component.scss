@@ -1,0 +1,241 @@
+::ng-deep .tooltipCss {
+    background-color: #f5f5f5 !important;
+    font-size: 9px !important;
+    align-self: right !important;
+    text-align: left !important;
+    align-items: flex-start;
+    color: #0c2340 !important;
+  
+  }
+  
+  .bootstrap-wrapper-reg{
+    height: 86%;
+  .container {
+    margin-left: 15px;
+    margin-top: 10px;
+    min-width: none;
+  }
+  .customPadding {
+     margin-left: 20%;
+    margin-top: 10px;
+    min-width: none; 
+  
+  }
+  .col-md-5{
+    width: 40%;
+  }
+  .img-div {
+    width: auto !important;
+    height: 100% !important;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  u {
+    font-size: 12px;
+  }
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  input.mat-input-element  {
+      font-size: 12px;
+  } 
+  .mat-form-field-label{
+      font-size: 25px;
+  }
+  .fillWidth {
+    width: 90%;
+    padding-bottom: 0px;
+  }
+  .fillWidthTerms {
+    max-width:100% ;
+    width: 100%;
+    padding-bottom: 0px;
+    font-size: 12px;
+  }
+  .halfWidth {
+    width: 45%;
+  }
+  .halfWidth.shortPadding {
+    height: 20px;
+    width: 45%;
+    padding-left: 2%;
+  }
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 2px;
+  }
+  .mat-custButtonColor {
+    color: #fff;
+  }
+  .mat-list-item {
+    height: 12px;
+  }
+  
+  /* .center {
+    margin: auto;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: 70%;
+  } */
+  
+  mat-label {
+      font-size: 12px !important;
+  }
+  ul li {
+    font-size: 8px;
+  }
+  
+  /* image{
+    width:100%;
+    height: auto;
+  } */
+  
+  .img-div {
+    width: auto !important;
+      height: 100% !important;
+      margin-left: 3px;
+      margin-right: 3px;
+  }
+  
+  /* img .ng-star-inserted{
+    width: 100%!important;
+    height: auto!important;
+  } */
+  
+  /* .ng-image-slider .ng-image-slider-container .main .main-inner .img-div img, .ng-image-slider .ng-image-slider-container .main .main-inner .img-div video {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+  } */
+  
+  
+  
+  .carousel-control-next-icon::after {
+    content: "";
+    font-weight: 700;
+    font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free";
+    font-size: 1.7rem;
+  }
+  
+  .carousel-control-prev-icon::after {
+    content: "";
+    font-weight: 700;
+    font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free";
+    font-size: 1.7rem;
+  } 
+  
+  
+  .size{
+    text-align: center;
+    line-height: 2.0;
+    padding-top: 5px;
+  }
+  
+  .center{
+    text-align: right;
+    line-height: 2.8;
+  }
+  
+  .slider{
+    padding: 4px;
+    }
+  
+    #Font{
+  font-size: 11px;
+    }
+  
+  .size{
+      font-size: 2px!important;
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: whitesmoke;
+    }
+    ::ng-deep .mat-form-field {
+        font-size: 10px !important; 
+    }
+  ::ng-deep .mat-checkbox 
+  {
+    font-size: 10px  !important;
+  }
+  .register-btn{
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  // .mat-label{
+  // color: #758591!important;
+  // }
+  .mat-form-field{
+    color: #D9D8D6!important;
+  }
+  .regclr{
+    color:#000;
+  }
+  .mat-raised-button:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+  }
+  .trbreg_1{
+    color: #000;
+  }
+  ::ng-deep .carousel .carousel-control-prev-icon {
+    visibility: hidden;
+  }
+  ::ng-deep .carousel:hover .carousel-control-prev-icon {
+    visibility: visible;
+  }
+  ::ng-deep .carousel .carousel-control-next-icon {
+    visibility: hidden;
+  }
+  ::ng-deep .carousel:hover .carousel-control-next-icon {
+    visibility: visible;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #D9D8D6!important;
+  }
+  ::ng-deep .mat-form-field-label {
+    color: #758591 !important;
+  }
+  
+  ::ng-deep .mat-label {
+    color: #758591 !important;
+  }
+  .mat-checkbox-frame {
+    border-color: #758591 !important;
+  }
+  }
+  
+  
+  @media screen and (max-width: 820px) {
+    .col-md-6 {
+      flex: 0 0 auto;
+      width: 100%;
+  }
+  .col-md-5 {
+      flex: 0 0 auto;
+      width: 100%;
+  }
+  .bootstrap-wrapper-reg .col-md-5 {
+    width: 100%;
+  }
+    }
+  @media screen and (max-width: 768px) {
+    .col-md-6 {
+      flex: 0 0 auto;
+      width: 100%;
+  }
+  .col-md-5 {
+      flex: 0 0 auto;
+      width: 100%;
+  }
+    }
+  
+    @media screen and (max-width: 1024px) {
+    input.mat-input-element {height:10px}
+    .slider{
+      padding: 4px;
+      padding-top: 50px!important;
+      }
+    }

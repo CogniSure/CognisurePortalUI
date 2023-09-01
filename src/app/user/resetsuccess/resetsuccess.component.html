@@ -1,0 +1,73 @@
+  <div class="forgetpassword">
+  
+    <div class="bluetopbar">
+      <kendo-tilelayout
+        [columns]="30"
+        [rowHeight]="'100%'"
+        [resizable]="false"
+        [reorderable]="false"
+        class="top-bar-header"
+        [gap]="05"
+        style="background-color: #d6e5f1;"
+      >
+      
+        <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
+          <kendo-tilelayout-item-body>
+            
+          </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+        <kendo-tilelayout-item class="divider" [col]="11" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #fff;margin-top: 20%;">
+  
+          <kendo-tilelayout-item-body>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="forgetpassword_form">
+                      <div style="justify-content: center;padding-top: 7%;">
+                          <h2 class="header-black"><b>Password Changed!</b></h2>
+                          <div class="password_text">
+                          <img src="assets/images/changesuccess.png" style="width: 30%; height: auto;justify-content: center;margin-left: 34%;" />
+                      <h2 class="inputtext-large" style="margin:0;">Your password has been changed successfully.</h2>
+                      <!-- <h2 class="inputtext-large">changed successfully.</h2> -->
+                      </div>
+                      </div>
+                    <div class="frgt_paswrd">
+                      
+                      <div style="justify-content: center; display: flex">
+                        <button matButton class="largeButton" routerLink="/login">
+                          Continue Sign In
+                        </button>
+                      </div>
+                      <div class="backtosignin" style="justify-content: center; display: flex; padding-top: 10%;">
+                          <div><mat-icon class="back-arrow">arrow_back</mat-icon></div>
+                          <span>Back to </span>
+                          <a
+                            routerLink="/login"
+                            queryParamsHandling="preserve"
+                          >
+                            <u>Sign In</u></a
+                          >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+        <kendo-tilelayout-item class="divider" [col]="21" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
+            <kendo-tilelayout-item-body>
+      
+            </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+      </kendo-tilelayout>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

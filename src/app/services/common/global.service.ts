@@ -6,6 +6,7 @@ import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
   providedIn: 'root',
 })
 export class GlobalService {
+  password$: any;
   setDashboardReload(arg0: boolean) {
     throw new Error('Method not implemented.');
   }

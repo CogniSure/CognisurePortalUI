@@ -1,0 +1,10 @@
+.DivWithScroll{
+    height:33rem;
+    overflow:scroll;
+    overflow-x:hidden;
+    padding-right: 2%;
+}
+
+::ng-deep .k-tilelayout {
+    background-color: #d6e5f1;
+}

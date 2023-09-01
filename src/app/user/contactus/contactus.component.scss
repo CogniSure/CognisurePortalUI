@@ -1,0 +1,166 @@
+::ng-deep .app-footer-csb.footer_img.imgsize{
+    bottom: 2% !important;
+  }
+  ::ng-deep .app-footer-csb.Powered_text.label_text{
+    bottom: 4% !important;
+  }
+  .contactUs {
+    height: 100vh;
+    width: 100vw;
+    justify-items: center;
+    overflow: hidden;
+    //background-color: #7a9ec2;
+    background-color: #d6e5f1;
+  .contactusForm{
+      justify-content: center;
+      display: grid;
+  }
+  .messageField{
+    justify-content: inherit;
+    padding: 0px 8%;
+  }
+  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid .mat-form-field-outline{
+    color: red !important;
+  }
+    .matStyle {
+      height: 75%;
+      width: 32%;
+      margin-top: 4%;
+      margin-left: 33%;
+      //box-shadow: 55px 100px white;
+    }
+    .logincontact {
+      color: #758591;
+    }
+    .contactusheader {
+      text-align: center;
+      // height: 8%;
+      //padding-top: 12px;
+      margin-bottom: 0;
+      font-size: 20px;
+      color:#000000
+    }
+  .col-md-12-size{
+      width: 100% !important;
+  }
+  .col-md-6-size {
+      background: white !important;
+      display: flex !important;
+      width: 50% !important;
+    }
+  
+    ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+      color: #758591 !important;
+      font-size: 16px;
+    }
+    ::ng-deep .backtosignin{
+      color: #758591;
+      font-size: 14px;
+    }
+  
+    ::ng-deep textarea::placeholder {
+      color: #758591;
+    }
+  
+    .backtosignin u{
+   padding-left: 5px;
+    }
+    .back-to-signin u{
+      color:#005daa;
+    }
+  
+    @media screen and (max-width: 1024px) {
+      .col-md-6-size {
+        width: 53% !important;
+      }
+      .contact_us h1 {
+        text-align: center;
+      }
+      .matStyle {
+        height: 86%;
+        width: 32%;
+        margin-top: 1%;
+        margin-left: 33%;
+      }
+    }
+  
+    @media screen and (max-width: 912px) {
+      .matStyle {
+        height: 55%;
+        width: 60%;
+        margin-top: 25%;
+        margin-left: 20%;
+      }
+    }
+  
+    @media screen and (max-width: 820px) {
+      .matStyle {
+        height: 59%;
+      }
+    }
+  
+    @media screen and (max-width: 768px) {
+      .matStyle {
+        height: 64%;
+      }
+    }
+  
+    @media screen and (max-width: 540px) {
+      .matStyle {
+        height: 77%;
+        margin-top: 20%;
+      }
+    }
+  
+    @media screen and (max-width: 415px) {
+      .matStyle {
+        height: 64% !important;
+        margin-top: 35%;
+      }
+      
+    }
+  
+    @media screen and (max-width: 394px) {
+      .matStyle {
+        height: 66% !important;
+      }
+    }
+  
+    @media screen and (max-width: 376px) {
+      .matStyle {
+        height: 78% !important;
+        margin-top: 28%;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      .matStyle {
+        height: 72% !important;
+        margin-top: 30%;
+      }
+      .col-md-6-size {
+        background: none !important
+    }
+  }
+    @media screen and (max-width: 280px) {
+      .matStyle {
+        height: 79% !important;
+        width: 80%;
+        margin-top: 35%;
+        margin-left: 10%;
+      }
+    }
+  }
+  
+  ::ng-deep .k-tilelayout {
+    background-color: #d6e5f1;
+  }  
+  
+  .header-black{
+    padding-top: 2%;
+    text-align: center;
+    padding-bottom: 0.5%;
+  }
+
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #fff;
+}

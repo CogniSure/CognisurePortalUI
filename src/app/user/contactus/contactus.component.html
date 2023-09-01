@@ -1,0 +1,172 @@
+<div class="contactUs">
+
+  <h1 class="header-black"><b>Contact Us</b></h1>
+
+  <div class="bluetopbar">
+    <kendo-tilelayout
+      [columns]="30"
+      [rowHeight]="'100%'"
+      [resizable]="false"
+      [reorderable]="false"
+      class="top-bar-header"
+      [gap]="05"
+      
+    >
+    
+      <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
+        <kendo-tilelayout-item-body>
+          
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+      <kendo-tilelayout-item class="divider" [col]="11" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #fff;">
+
+        <kendo-tilelayout-item-body>
+          <div class="row contactusheader header">
+          </div>
+          <div class="row" style="justify-content: center">
+            <img src="../../../assets/images/contactus.png" style="width: 18%; height: auto" />
+          </div>
+          <form
+            [formGroup]="contactusForm"
+            class="contactusForm"
+            (keydown.enter)="submitForm()"
+          >
+            <div class="row">
+              <div class="col-md-6-size">
+                <div clas="col-md-6 ">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      class="inputtext-large"
+                      formControlName="firstName"
+                      placeholder="* First Name"
+                      (keyup)="resetError('firstName')"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-6-size">
+                <div clas="col-md-6">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      class="inputtext-large"
+                      formControlName="lastName"
+                      placeholder="* Last Name"
+                      (keyup)="resetError('lastName')"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12-size">
+                <div clas="col-md-12">
+                  <mat-form-field class="col-md-12-size" style="width: inherit">
+                    <input
+                      matInput
+                      class="inputtext-large"
+                      formControlName="email"
+                      placeholder="* Business Email"
+                      (keyup)="resetError('email')"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12-size">
+                <div clas="col-md-12">
+                  <mat-form-field class="col-md-12-size" style="width: inherit">
+                    <mat-select
+                      placeholder="* Subject"
+                      style="border-radius: 3px"
+                      panelClass="myPanelClass"
+                      name="sub"
+                      formControlName="subject"
+                      class="inputtext-large"
+                      (selectionChange)="resetError('subject')"
+                    >
+                      <ng-container *ngFor="let sub of subjects; let last = last">
+                        <mat-option [value]="sub" class="inputtext-large">{{
+                          sub
+                        }}</mat-option>
+                        <mat-divider *ngIf="!last"></mat-divider>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="messageForm" class="messageField">
+            <div class="row">
+              <div class="col-md-12-size">
+                <div clas="col-md-12">
+                  <mat-form-field
+                    class="col-md-12-size"
+                    style="width: inherit; border: 40px; height: 21vh; width: inherit"
+                    appearance="outline"
+                  >
+                    <textarea
+                      matInput
+                      placeholder="Message : "
+                      class="inputtext-large message_area"
+                      style="height: 12vh !important; resize: none;"
+                      formControlName="message"
+                      
+                    ></textarea>
+                  </mat-form-field>
+                  <mat-error
+                    *ngFor="let err of validationErrors"
+                    style="text-align: center"
+                  >
+                    {{ err.Error }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div clas="col-md-12" style="text-align: center; width: 100%">
+                <button class="mediumButton" matbutton (click)="submitForm()">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+          <div
+            class="text-secondary-large"
+            style="margin: 5px; display: flex; justify-content: center"
+          >
+            <div class="back-to-signin">
+              <mat-icon class="back-arrow">arrow_back</mat-icon>
+            </div>
+            <p
+              *ngIf="!isLoggedIn"
+              class="text-secondary-large contact_signin"
+              routerLink="/login"
+              queryParamsHandling="preserve"
+            >
+              Back to <u>Sign In</u>
+            </p>
+      
+            <a
+              *ngIf="isLoggedIn"
+              class="text-secondary-large"
+              routerLink="/dashboard/home"
+              queryParamsHandling="preserve"
+            >
+              Back to Dashboard</a
+            >
+          </div>
+      </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+      <kendo-tilelayout-item class="divider" [col]="21" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
+          <kendo-tilelayout-item-body>
+    
+          </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+    </kendo-tilelayout>
+  </div>
+
+  </div>
