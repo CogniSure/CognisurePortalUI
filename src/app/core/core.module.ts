@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CopilotComponent } from './copilot/copilot.component';
+import { TextboxComponent } from './generic/textbox/textbox.component';
+import { TooltipComponent } from './generic/tooltip/tooltip.component';
 
 const routes:Routes = [
 ];
@@ -29,7 +31,9 @@ const routes:Routes = [
     RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    TextboxComponent,
+    TooltipComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,8 @@ const routes:Routes = [
     RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    TextboxComponent
   ]
 })
 export class CoreModule { }

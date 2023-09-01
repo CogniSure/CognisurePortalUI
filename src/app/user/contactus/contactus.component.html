@@ -35,6 +35,10 @@
               <div class="col-md-6-size">
                 <div clas="col-md-6 ">
                   <mat-form-field>
+                    <ng-template formControlName="firstName">
+                      <app-textbox [Placeholder]="'* First Name'"></app-textbox>
+                   </ng-template>
+                    <!-- <app-textbox  ></app-textbox> -->
                     <input
                       matInput
                       class="inputtext-large"
