@@ -1,82 +1,95 @@
-<div class="emailSentContainer">
-
-<div class="bluetopbar">
-    <kendo-tilelayout
-      [columns]="30"
-      [rowHeight]="'100%'"
-      [resizable]="false"
-      [reorderable]="false"
-      class="top-bar-header"
-      [gap]="05"
+<div class="forgetpassword">
+  
+    <div class="bluetopbar">
+      <kendo-tilelayout
+        [columns]="30"
+        [rowHeight]="'100%'"
+        [resizable]="false"
+        [reorderable]="false"
+        class="top-bar-header"
+        [gap]="05"
+        style="background-color: #d6e5f1;"
+      >
       
-    >
-    
-      <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
-        <kendo-tilelayout-item-body>
-          
-        </kendo-tilelayout-item-body>
-      </kendo-tilelayout-item>
-      <kendo-tilelayout-item class="divider" [col]="11" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #fff;">
+        <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
+          <kendo-tilelayout-item-body>
+            
+          </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+        <kendo-tilelayout-item class="divider" [col]="11" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #fff;margin-top: 35%;">
+  
+          <kendo-tilelayout-item-body>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="forgetpassword_form">
+                      <div style="justify-content: center;">
+                          <h2 class="header-black"><b>Check your Email</b></h2>
+                          <div class="emailsent1">
+                            <h4 class="inputtext-large" style="margin: 0">
+                              We sent a password reset link to
+                            </h4>
+                            <!-- <h4 class="textprimary-black">{{ forgotPasswordInput.Email }}</h4> -->
+                            </div>
 
-        <kendo-tilelayout-item-body>
-            <div class="emailsent justify-center">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-12" style="text-align: center">
-                      <div class="frgtpswrd1 justify-center">
-                        <h1 class="header-black">
-                          <b>Check your Email</b>
-                        </h1>
+                            <div class="col-md-12 emailsent1">
+                                <h4 class="inputtext-large" style="margin: 0">
+                                  Didn't recieve the email?
+                                  
+                                </h4>
+                                <h4 class="inputtext-large">
+                                  <a
+                                    style="padding: 0; cursor: pointer"
+                                    class="inputtext-large emailsnt"
+                                    >Click to resend</a
+                                  >
+                                  <span>
+                                    or
+                                    <a routerLink="/contactus/1"
+                                      ><u class="emailsnt">Contact Us</u></a
+                                    ></span
+                                  >
+                                </h4>
+                              </div>
+
                       </div>
-                    </div>
-                    <div class="col-md-12 emailsent1">
-                      <h4 class="inputtext-large" style="margin: 0">
-                        We sent a password reset link to
-                      </h4>
-                      <h4 class="textprimary-black">{{ forgotPasswordInput.Email }}</h4>
-                    </div>
-                    <div class="col-md-12 emailsent1">
-                      <h4 class="inputtext-large" style="margin: 0">
-                        Didn't recieve the email?
-                        
-                      </h4>
-                      <h4 class="inputtext-large">
-                        <a
-                          style="padding: 0; cursor: pointer"
-                          class="inputtext-large emailsnt"
-                          >Click to resend</a
-                        >
-                        <span>
-                          or
-                          <a routerLink="/contactus/1"
-                            ><u class="emailsnt">Contact Us</u></a
-                          ></span
-                        >
-                      </h4>
-                    </div>
-                    <div
-                      class="col-md-12 backtosignin"
-                      style="margin: 15% 0 5% 0; display: flex; justify-content: center"
-                    >
-                      <div><mat-icon class="back-arrow">arrow_back</mat-icon></div>
-                      <span>Back to </span>
-                      <a routerLink="/login" queryParamsHandling="preserve">
-                        <u>Sign In</u></a
-                      >
+                    <div class="frgt_paswrd">
+                      
+                      <div style="justify-content: center; display: flex">
+                        <button matButton class="largeButton" routerLink="/login">
+                          Continue Sign In
+                        </button>
+                      </div>
+                      <div class="backtosignin" style="justify-content: center; display: flex; padding-top: 10%;">
+                          <div><mat-icon class="back-arrow">arrow_back</mat-icon></div>
+                          <span>Back to </span>
+                          <a
+                            routerLink="/login"
+                            queryParamsHandling="preserve"
+                          >
+                            <u>Sign In</u></a
+                          >
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-      </kendo-tilelayout-item-body>
-      </kendo-tilelayout-item>
-      <kendo-tilelayout-item class="divider" [col]="21" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
-          <kendo-tilelayout-item-body>
-    
-          </kendo-tilelayout-item-body>
-      </kendo-tilelayout-item>
-    </kendo-tilelayout>
+        </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+        <kendo-tilelayout-item class="divider" [col]="21" [colSpan]="10" [row]="1" [rowSpan]="1" style="background-color: #d6e5f1;">
+            <kendo-tilelayout-item-body>
+      
+            </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+      </kendo-tilelayout>
+    </div>
   </div>
-
-
-
-  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
