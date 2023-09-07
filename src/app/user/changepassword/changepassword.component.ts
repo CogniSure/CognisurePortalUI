@@ -70,26 +70,26 @@ export class ChangepasswordComponent implements OnInit {
     this.showErrors();
     if (this.validationErrors.length == 0) {
     this.accServ
-      // .changePassword(this.userProfile.UserID,this.resetPasswordForm.value.oldpassword!, this.resetPasswordForm.value.password!)
-      // .subscribe((res) => {
-      //   if (res.success) {
-      //     this.showSpinner=false;
-      //     let loginData:LoginData
-      //     loginData = {
-      //       Email:this.userProfile.Email,
-      //       Password:this.resetPasswordForm.value.password!
-      //     }
+      .changePassword(this.userProfile.UserID,this.resetPasswordForm.value.oldpassword!, this.resetPasswordForm.value.password!)
+      .subscribe((res) => {
+        if (res.success) {
+          this.showSpinner=false;
+          let loginData:LoginData
+          loginData = {
+            Email:this.userProfile.Email,
+            Password:this.resetPasswordForm.value.password!
+          }
           
-      //     this.globalService.loginDetails$.subscribe(x=>x);
-      //     this.globalService.loginDetails$.next(loginData);
-      //     this.router.navigate(['/resetsuccess'], {
-      //       queryParamsHandling: 'preserve',
-      //     });
-      //   } else {
-      //     this.isSuccess = false;
-      //     this.validationErrors.push({Key:'email', Error : 'Password Updation failed!!'})
-      //   }
-      // });
+          this.globalService.loginDetails$.subscribe((x: any)=>x);
+          this.globalService.loginDetails$.next(loginData);
+          this.router.navigate(['/resetsuccess'], {
+            queryParamsHandling: 'preserve',
+          });
+        } else {
+          this.isSuccess = false;
+          this.validationErrors.push({Key:'email', Error : 'Password Updation failed!!'})
+        }
+      });
     }
     else
     this.showSpinner=false;

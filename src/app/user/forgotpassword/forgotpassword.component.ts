@@ -48,35 +48,35 @@ export class ForgotpasswordComponent implements OnInit {
   imageClickHandler(val: any) {
     this.enableSlideButton = val;
   }
-  // forgotpassword(event: any) {
-  //   this.showSpinner=true;
-  //   event.preventDefault();
-  //   this.validationErrors = [];
-  //   this.validationErrors = this.validateInput();
-  //   this.showErrors();
-  //   if (this.validationErrors.length == 0) {
-  //   this.accServ
-  //     .forgotPassword(this.forgotPasswordForm.value)
-  //     .subscribe((res) => {
-  //       this.forgotPasswordInput = {
-  //         Email: this.forgotPasswordForm.value.email!,
-  //         OldPassword: '',
-  //         NewPassword: '',
-  //       };
-  //       if (res.success) {
-  //         this.globalService.password$.subscribe((x) => x);
-  //         this.globalService.password$.next(this.forgotPasswordInput);
-  //         this.router.navigate(['/emailsent'], {
-  //           queryParamsHandling: 'preserve',
-  //         });
-  //       } else {
-  //         this.isSuccess = false;
-  //       }
-  //     });
-  //   }
-  //   else
-  //   this.showSpinner=false;
-  // }
+  forgotpassword(event: any) {
+    this.showSpinner=true;
+    event.preventDefault();
+    this.validationErrors = [];
+    this.validationErrors = this.validateInput();
+    this.showErrors();
+    if (this.validationErrors.length == 0) {
+    this.accServ
+      .forgotPassword(this.forgotPasswordForm.value)
+      .subscribe((res) => {
+        this.forgotPasswordInput = {
+          Email: this.forgotPasswordForm.value.email!,
+          OldPassword: '',
+          NewPassword: '',
+        };
+        if (res.success) {
+          this.globalService.password$.subscribe((x:any) => x);
+          this.globalService.password$.next(this.forgotPasswordInput);
+          this.router.navigate(['/emailsent'], {
+            queryParamsHandling: 'preserve',
+          });
+        } else {
+          this.isSuccess = false;
+        }
+      });
+    }
+    else
+    this.showSpinner=false;
+  }
   formValues = new Map<string, string>()
   resetError(key: string, $event:any) {
     let removeError = false
@@ -114,16 +114,16 @@ export class ForgotpasswordComponent implements OnInit {
     }
     this.showSpinner=false;
   }
-  // showErrors() {
-  //   this.validationErrors.forEach((element) => {
-  //     if (element.Key === 'email') {
-  //       this.forgotPasswordForm.controls[element.Key].setErrors({
-  //         incorrect: true,
-  //       });
-  //       this.forgotPasswordForm.controls[element.Key].markAsTouched();
-  //     }
-  //   });
-  // }
+  showErrors() {
+    this.validationErrors.forEach((element) => {
+      if (element.Key === 'email') {
+        this.forgotPasswordForm.controls[element.Key].setErrors({
+          incorrect: true,
+        });
+        this.forgotPasswordForm.controls[element.Key].markAsTouched();
+      }
+    });
+  }
   validateInput(): Errors[] {
     let loginData: LoginData = {
       Email: this.forgotPasswordForm.value.email!,

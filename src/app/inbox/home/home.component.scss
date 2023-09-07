@@ -264,3 +264,14 @@
   //   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.6);
   //   z-index: -1; 
   // }
+
+
+::ng-deep .k-list-item.k-selected {
+    color: white;
+    background-color: #009CC1;
+}
+
+::ng-deep .k-list-item.k-selected:hover {
+  color: white;
+  background-color: #009CC1;
+}
