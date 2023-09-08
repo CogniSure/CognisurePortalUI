@@ -5,9 +5,9 @@ import { catchError, map, Observable, retry, throwError } from "rxjs";
 import { UserProfile } from 'src/app/model/profile/userprofile';
 // import { Accounts } from 'src/app/model/profile/accounts';
 import { GlobalService } from '../common/global.service';
-// import { ContactUs } from 'src/app/model/common/contactus';
+import { ContactUs } from '../../../../src/app/model/common/contactus';
 import { LoginData } from 'src/app/model/common/logindata';
-// import { ForgotPassword } from "src/app/model/common/forgotpassword";
+import { ForgotPassword } from "src/app/model/common/forgotpassword";
 import { FAResult } from "src/app/model/common/2faresult";
 import { Accounts } from "src/app/model/profile/accounts";
 import { HttpService } from "../common/http.service";
@@ -19,10 +19,13 @@ import { AppConfigService } from "src/app/app-config-service";
   providedIn: 'root',
 })
 export class AccountService {
-  forgotPassword(arg0: { email: string; }) {
-    throw new Error('Method not implemented.');
-  }
-  contactUs: any;
+  // contactUs: any;
+
+  httpOption1 = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }),
+  };
   
   constructor(private http: HttpService, private globalService:GlobalService ,private configService : AppConfigService) {
   }
@@ -220,6 +223,35 @@ export class AccountService {
       catchError(this.errorHandl))
   }
   */
+
+
+  contactUs(contact:ContactUs) : Observable<any>{
+    var result;
+    let data :any = {
+      "firstName":contact.FirstName,
+      "middleName":contact.MiddleName!=""?contact.MiddleName:"",
+      "lastName":contact.LastName,
+      "email":contact.Email,
+      "phoneNumber":contact.PhoneNumber!=""?contact.PhoneNumber:"",
+      "message":contact.Message,
+      "companyName":contact.CompanyName !=""?contact.CompanyName:"",
+      "designation":contact.Designation!=""?contact.Designation:"",
+      "interests":contact.Interests
+    }
+    return this.http
+    .postData(
+      this.env.apiUrl+"contactus",
+      data,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      }
+    ) .pipe(retry(1), catchError(this.errorHandl))
+    
+  }
+
+
   login({ email, password }: any): Observable<any> {
     var apiUrl = this.env.baseUrl + "api/login?"
     var result;
@@ -236,6 +268,31 @@ export class AccountService {
     
   }
   
+
+  forgotPassword({ email}: any): Observable<any>{
+    var result;
+
+    var apiUrl = this.env.apiUrl+"forgotpassword/"+email
+    return this.http
+    .postData(
+      apiUrl,
+      "",
+      ""
+    )
+  }
+
+  changePassword(userId: number, oldPassword:string, newPassword:string ): Observable<any>{
+    var apiUrl = this.env.apiUrl+"changepassword/"+userId+"/"+encodeURIComponent(oldPassword)+"/"+encodeURIComponent(newPassword)
+    return this.http
+    .postData(
+     apiUrl,
+      "",
+      this.httpOption1
+    ) .pipe(retry(1), catchError(this.errorHandl))
+    
+  }
+
+
   getUserProfile(email:string){
     var apiUrl = this.env.baseUrl
     return this.http.getData(apiUrl+"api/userdetails/",email).pipe(
