@@ -91,6 +91,8 @@ export class ContactusComponent implements OnInit {
     this.showSpinner = true;
     let input: ContactUs;
     let formValue: any = this.contactusForm.value;
+    console.log("Contact Us Form Data : ")
+    console.log(formValue)
     let message = this.messageForm.getRawValue().message; 
     input = {
       FirstName: formValue.firstName,

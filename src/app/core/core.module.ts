@@ -11,12 +11,13 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { RecentlyViewedComponent } from './recently-viewed/recently-viewed.component';
 import { RouterModule, Routes } from '@angular/router';
 import { InboxMenuComponent } from './inbox-menu/inbox-menu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CopilotComponent } from './copilot/copilot.component';
-import { TextboxComponent } from './generic/textbox/textbox.component';
+import { InputComponent } from './generic/input/input.component';
 import { TooltipComponent } from './generic/tooltip/tooltip.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes:Routes = [
 ];
@@ -32,7 +33,7 @@ const routes:Routes = [
     InboxMenuComponent,
     FooterComponent,
     LoaderComponent,
-    TextboxComponent,
+    InputComponent,
     TooltipComponent
   ],
   imports: [
@@ -40,6 +41,7 @@ const routes:Routes = [
     MaterialModule,
     KendoModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   exports:[
@@ -52,7 +54,7 @@ const routes:Routes = [
     InboxMenuComponent,
     FooterComponent,
     LoaderComponent,
-    TextboxComponent
+    InputComponent
   ]
 })
 export class CoreModule { }

@@ -1,0 +1,15 @@
+<div class="dvs-form-control">
+  <!-- <label [for]="inputId" *ngIf="label">{{label}}</label> -->
+  <!-- <input [type]="type" [id]="inputId" FormControl="control" /> -->
+
+  <kendo-textbox
+    class="inputtext-large"
+    [id]="inputId"
+    [placeholder]="label"
+    [formControl]="control"
+    fillMode="flat"
+    size="large"
+    rounded="large"
+    [clearButton]="true"
+  ></kendo-textbox>
+</div>
