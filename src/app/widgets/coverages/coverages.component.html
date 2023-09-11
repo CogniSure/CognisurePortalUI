@@ -5,7 +5,7 @@
             Coverages
         </h3>
     </kendo-card-header>
-    <kendo-card-body style="padding: 0;">
+    <kendo-card-body style="padding: 0;" *ngIf="noDataFound; else noDataNotFound">
     <div class="lossesdetails">
         <!-- <div *ngFor="let item of coverages" class="row">
             <div class="col-xl-4 ">
@@ -29,5 +29,10 @@
         </table>
     </div>
     </kendo-card-body>
+    <ng-template #noDataNotFound>
+        <div class="no-data-message">
+          <p>No data found.</p>
+        </div>
+      </ng-template>
     </kendo-card>
 </div>

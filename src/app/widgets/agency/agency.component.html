@@ -6,6 +6,8 @@
         <h3 class="k-card-title Agency_header" >Agency</h3>
     </div>
     <kendo-card-body class="agency_section">
+
+          <div *ngIf="isDataAvailable; else noDataFound">
         <div class="agency-details">
             <div class="row" style="padding: 0 5% 0 5%;">
                 <div class="agency_key"><b>Agency Name</b></div>
@@ -23,6 +25,14 @@
             </div>
             <!-- Add other detail rows here -->
         </div>
+        </div>
+        <ng-template #noDataFound>
+          <div class="no-data-message">
+            <p>No data found.</p>
+          </div>
+        </ng-template>
+
+        
     </kendo-card-body>
 </kendo-card>
 </div>

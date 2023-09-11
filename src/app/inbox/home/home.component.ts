@@ -20,10 +20,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.inboxservice.getAllSubmissionData().subscribe(result=>{
       this.tableData = result;
+
       // this.changedetector.detectChanges();
+
+      this.totalRecordCCount = this.tableData.length;
     })
   }
- 
+  getNewRecordCount(){
+
+  }
+  getTotalRecordCount(){
+
+  }
+ newRecordCCount=0
+ totalRecordCCount=0
   navItems = [
     { title: 'Create Submisson', content: '', icon: 'add_box' },
     { title: '', content: '', icon: 'refresh' },
