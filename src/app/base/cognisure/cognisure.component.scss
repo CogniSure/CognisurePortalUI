@@ -12,6 +12,9 @@ $secondary-lightblue-color: #00A6CF;
 ::ng-deep .orange-color{
   color: #F99D20!important;
 }
+::ng-deep kendo-textbox .k-input-inner::placeholder {
+  color: $secondary-color;
+}
 ::ng-deep .primary-background{
   background-color: $primary-background-color !important;
 }

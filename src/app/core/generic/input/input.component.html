@@ -7,7 +7,6 @@
         *ngIf="Type === 'text'"
         class="inputtext-large"
         [id]="InputId"
-        [placeholder]="PlaceHolder"
         [formControl]="control"
         fillMode="flat"
         size="large"
@@ -15,10 +14,10 @@
         showErrors="initial"
         showSuccessIcon="initial"
         showErrorIcon="initial"
+        [class]="'textColor'"
       ></kendo-textbox>
       <kendo-textarea
         *ngIf="Type === 'area'"
-        [placeholder]="PlaceHolder"
         [rows]="3"
         resizable="vertical"
         [formControl]="control"
@@ -26,6 +25,27 @@
         rounded="large"
         showErrors="initial"
       ></kendo-textarea>
+      <kendo-textbox
+        #textbox
+        placeholder="PlaceHolder"
+        *ngIf="Type === 'password'"
+        [formControl]="control"
+        fillMode="flat"
+        size="large"
+        rounded="large"
+        showErrors="initial"
+        showErrorIcon="initial"
+        [class]="'textColor'"
+      >
+        <ng-template kendoTextBoxSuffixTemplate>
+          <button
+            kendoButton
+            look="clear"
+            [svgIcon]="eyeIcon"
+            (click)="toggleVisibility()"
+          ></button>
+        </ng-template>
+      </kendo-textbox>
     </kendo-floatinglabel>
     <app-validation-errors
       *ngIf="control.touched && control.invalid"

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Errors } from 'src/app/model/common/errors';
 import { LoginData } from 'src/app/model/common/logindata';
@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { UrlService } from 'src/app/services/common/url.service';
 import { AccountService } from 'src/app/services/user/accounts.service';
+import { matchValidator } from 'src/app/core/generic/utils/match-validator';
 
 @Component({
   selector: 'app-login',
@@ -58,15 +59,15 @@ export class LoginComponent {
   };
   loginForm = new FormGroup({
     email: new FormControl(''),
-    password: new FormControl(''),
+    password: new FormControl('')
   });
 
   validationErrors: Errors[] = [];
   ngOnInit(): void {
     this.auth.logout();
     this.loginForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: new FormControl('',[Validators.required,Validators.email]),
+      password: new FormControl('',[Validators.required])
     });
     sessionStorage.setItem('Accounts', '');
   }
@@ -74,18 +75,12 @@ export class LoginComponent {
   Login(event: any) {
     
     this.showSpinner=true;
-    this.validationErrors = [];
-    this.validationErrors = this.validateInput();
-    this.showErrors();
-    if (this.validationErrors.length == 0) {
+    // this.validationErrors = [];
+    // this.validationErrors = this.validateInput();
+    // this.showErrors();
+    if (this.loginForm.valid) {
       event.preventDefault();
       this.email = this.loginForm.value.email!;
-      // this.router.navigate(['/dashboard/home'], {
-      //   queryParamsHandling: 'preserve',
-      // });
-      // this.urlService.getUrl(0,"Login","loginsubmit","load").subscribe((res:any)=>{
-    
-      //   const loginUrl = res.value.widgetURL;
         this.accService.login(this.loginForm.value).subscribe((res:any) => {
              if (res.success) {
                this.auth.setToken(res);
@@ -96,9 +91,9 @@ export class LoginComponent {
                                   queryParamsHandling: 'preserve',
                                 });
              }
-             this.router.navigate(['/dashboard/home'], {
-              queryParamsHandling: 'preserve',
-            });
+            //  this.router.navigate(['/dashboard/home'], {
+            //   queryParamsHandling: 'preserve',
+            //});
             });
       
 

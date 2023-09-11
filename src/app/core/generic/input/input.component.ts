@@ -1,6 +1,8 @@
-import { Component,ElementRef,Injectable,Input,OnInit,ViewChild,forwardRef} from '@angular/core';
+import { AfterViewInit, Component,ElementRef,Injectable,Input,OnInit,ViewChild,forwardRef} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import { ControlValueAccessDirective } from '../../directives/control-value-access.directive';
+import { TextBoxComponent } from '@progress/kendo-angular-inputs';
+import { SVGIcon, eyeIcon } from '@progress/kendo-svg-icons';
 
 type InputType = 'text' | 'number' | 'email' | 'password' | 'area'
 @Component({
@@ -15,7 +17,7 @@ type InputType = 'text' | 'number' | 'email' | 'password' | 'area'
     }
   ]
 })
-export class InputComponent<T> extends ControlValueAccessDirective<T>{
+export class InputComponent<T> extends ControlValueAccessDirective<T> implements AfterViewInit{
   @Input() InputId = ""
   @Input() PlaceHolder = "";
   @Input() Type:InputType = "text";
@@ -29,6 +31,23 @@ export class InputComponent<T> extends ControlValueAccessDirective<T>{
     console.log(this.control)
     return this.control;
 
+  }
+  @ViewChild("textbox") public textbox: TextBoxComponent;
+
+  public eyeIcon: SVGIcon = eyeIcon;
+
+  public ngAfterViewInit(): void {
+    this.textbox.input.nativeElement.type = "password";
+  }
+
+  public toggleVisibility(): void {
+    const inputEl = this.textbox.input.nativeElement;
+
+    if (inputEl.type === "password") {
+      inputEl.type = "text";
+    } else {
+      inputEl.type = "password";
+    }
   }
 
 }

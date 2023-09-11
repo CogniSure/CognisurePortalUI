@@ -26,7 +26,8 @@
           <div class="example-container">
             <form [formGroup]="loginForm" (keydown.enter)="Login($any($event))">
               <div class="email">
-                <mat-form-field style="width: 100%;font-size: 16px;" appearance="outline">
+                <app-input [PlaceHolder]="'* Business Email'" formControlName="email"></app-input>
+                <!-- <mat-form-field style="width: 100%;font-size: 16px;" appearance="outline">
                 <mat-label>* Business Email</mat-label>
                   <input
                     matInput
@@ -36,10 +37,11 @@
                     
                 
                   />
-                </mat-form-field>
+                </mat-form-field> -->
               </div>
               <div class="password">
-                <mat-form-field style="width: 100%;font-size: 16px;" appearance="outline">
+                <app-input [PlaceHolder]="'* Password'" [Type]="'password'" formControlName="password"></app-input>
+                <!-- <mat-form-field style="width: 100%;font-size: 16px;" appearance="outline">
                     <mat-label>* Password</mat-label>
                   <input
                     formControlName="password"
@@ -56,7 +58,7 @@
                     (click)="hide = !hide"
                     >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
                   >
-                </mat-form-field>
+                </mat-form-field> -->
               </div>
             </form>
             <div style="display: flex" class="row">
