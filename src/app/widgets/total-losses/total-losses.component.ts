@@ -14,7 +14,6 @@ import { parseNumber } from '@progress/kendo-angular-intl';
   styleUrls: ['./total-losses.component.scss'],
 })
 export class TotalLossesComponent implements OnInit {
-  noDataFound: boolean = true;
   totalincurred: string = 'Total Losses';
   totalincurredvalue: string = '';
   totallossesdata: TotalLossesData[] = [];
@@ -39,12 +38,7 @@ export class TotalLossesComponent implements OnInit {
   ngOnInit(): void {
     this.globalService.getCurrentSubmission().subscribe((sub: any) => {
       this.claimDetails = [];
-
-
-
-
       if (sub != null && sub.value != null) {
-
         let noOfClaims = 0;
         let noOfOpenClaims = 0;
         let totalIncurred = 0;
@@ -73,49 +67,7 @@ export class TotalLossesComponent implements OnInit {
             highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
           },
         ];
-
-        if (noOfClaims === 0) {
-          this.noDataFound = true;
-        }
-      } else {
-        this.noDataFound = true;
       }
-
-
-
-
-
-
-      // if (sub != null && sub.value != null) {
-      //   let noOfClaims = 0;
-      //   let noOfOpenClaims = 0;
-      //   let totalIncurred = 0;
-      //   let highestIncurred = 0;
-      //   sub.value.claim_Info.forEach((claim: any) => {
-      //     //let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
-      //     let totalIncurredTemp = 0;
-
-      //     if (claim.total_Incurred != null) {
-      //       var str = claim.total_Incurred.replace('$', '');
-      //       totalIncurredTemp = parseNumber(str);
-      //     }
-      //     totalIncurred += totalIncurredTemp;
-      //     if (totalIncurredTemp > highestIncurred)
-      //       highestIncurred = totalIncurredTemp;
-
-      //     noOfClaims++;
-      //     if (claim.claim_Status == 'Open') noOfOpenClaims++;
-      //   });
-
-      //   this.totallosses = '$' + totalIncurred.toLocaleString('en-GB');
-      //   this.totallossesdata = [
-      //     {
-      //       numberofclaims: noOfClaims,
-      //       numberofopenclaims: noOfOpenClaims,
-      //       highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
-      //     },
-      //   ];
-      // }
       this.cdRef.detectChanges();
     });
   }

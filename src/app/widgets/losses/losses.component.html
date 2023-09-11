@@ -5,7 +5,7 @@
                 Losses
         </div>
         </kendo-card-header>
-        <kendo-card-body style="padding: 0;" *ngIf="noDataFound; else noDataNotFound">
+        <kendo-card-body style="padding: 0;">
         <div class="agency_details1">
             <div class="row">
                 <div class="totalloss">
@@ -48,10 +48,5 @@
             </table>
         </div>
         </kendo-card-body>
-        <ng-template #noDataNotFound>
-            <div class="no-data-message">
-              <p>No data found.</p>
-            </div>
-          </ng-template>
         </kendo-card>
     </div>

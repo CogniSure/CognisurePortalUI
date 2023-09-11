@@ -3,7 +3,7 @@
         <kendo-card-header class="exposure">
             <h3 class="k-card-title exposure_header">Exposure</h3>
         </kendo-card-header>
-        <kendo-card-body style="padding: 0;" *ngIf="noDataFound; else noDataNotFound">
+        <kendo-card-body style="padding: 0;">
 
             <div class="agency_details1">
                 <div class="row">
@@ -39,12 +39,6 @@
 
 
         </kendo-card-body>
-
-        <ng-template #noDataNotFound>
-          <div class="no-data-message">
-            <p>No data found.</p>
-          </div>
-        </ng-template>
     </kendo-card>
 </div>
 

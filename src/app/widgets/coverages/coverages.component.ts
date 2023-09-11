@@ -10,7 +10,6 @@ import { parseNumber } from '@progress/kendo-angular-intl';
   styleUrls: ['./coverages.component.scss']
 })
 export class CoveragesComponent implements OnInit {
-  noDataFound: boolean = true;
   exposureDetails: PropertyBlanketSummary[] = [];
   coverages: CoverageData[] = [];
   // {
@@ -110,9 +109,6 @@ export class CoveragesComponent implements OnInit {
         );
         
         this.cdRef.detectChanges();
-      }
-      else {
-        this.noDataFound = true;
       }
     });
   }

@@ -10,7 +10,6 @@ import { parseNumber } from '@progress/kendo-angular-intl';
   styleUrls: ['./exposure.component.scss'],
 })
 export class ExposureComponent implements OnInit {
-  noDataFound: boolean = true;
   totalinsuredvalue: string = 'Total Insured Value';
   totalincurredvalue: string = '';
   exposurelosses: any = '$27,654,321';
@@ -78,10 +77,7 @@ export class ExposureComponent implements OnInit {
             states: [...new Set(states)].length,
           },
         ];
-
-      }
-      else {
-        this.noDataFound = true;
+        
       }
       
     });

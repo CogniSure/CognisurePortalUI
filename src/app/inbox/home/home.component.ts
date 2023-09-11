@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
       // this.changedetector.detectChanges();
 
       this.totalRecordCCount = this.tableData.length;
+      this.newRecordCCount = this.tableData.filter(item => item.IsNew).length;
     })
   }
   getNewRecordCount(){
