@@ -1,15 +1,35 @@
 <div class="dvs-form-control">
   <!-- <label [for]="inputId" *ngIf="label">{{label}}</label> -->
   <!-- <input [type]="type" [id]="inputId" FormControl="control" /> -->
-
-  <kendo-textbox
-    class="inputtext-large"
-    [id]="inputId"
-    [placeholder]="label"
-    [formControl]="control"
-    fillMode="flat"
-    size="large"
-    rounded="large"
-    [clearButton]="true"
-  ></kendo-textbox>
+  <kendo-formfield showHints="always" showErrors="initial">
+    <kendo-floatinglabel [text]="PlaceHolder" class="floatingLabel k-form">
+      <kendo-textbox
+        *ngIf="Type === 'text'"
+        class="inputtext-large"
+        [id]="InputId"
+        [placeholder]="PlaceHolder"
+        [formControl]="control"
+        fillMode="flat"
+        size="large"
+        rounded="large"
+        showErrors="initial"
+        showSuccessIcon="initial"
+        showErrorIcon="initial"
+      ></kendo-textbox>
+      <kendo-textarea
+        *ngIf="Type === 'area'"
+        [placeholder]="PlaceHolder"
+        [rows]="3"
+        resizable="vertical"
+        [formControl]="control"
+        size="large"
+        rounded="large"
+        showErrors="initial"
+      ></kendo-textarea>
+    </kendo-floatinglabel>
+    <app-validation-errors
+      *ngIf="control.touched && control.invalid"
+      [control]="control"
+    ></app-validation-errors>
+  </kendo-formfield>
 </div>

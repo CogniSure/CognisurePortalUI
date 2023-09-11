@@ -1,0 +1,12 @@
+<!-- <ul class="dvs-validation-errors">
+    <li *ngFor="let error of errorMessage | keyvalue">
+        {{errorMessages[error.key]}}
+    </li>
+</ul> -->
+<ng-container *ngIf="errorMessage !== null" >
+    <div  class="dvs-validation-errors">
+    <li>
+        {{errorMessage}}
+    </li>
+</div>
+</ng-container>

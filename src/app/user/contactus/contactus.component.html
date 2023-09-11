@@ -34,37 +34,19 @@
             <div class="row">
               <div class="col-md-6-size">
                 <div clas="col-md-6 ">
-                  <app-input [label]="'* First Name'" formControlName="firstName"></app-input>
-                  <!-- <mat-form-field>
-                    <input
-                      matInput
-                      class="inputtext-large"
-                      formControlName="firstName"
-                      placeholder="* First Name"
-                      (keyup)="resetError('firstName')"
-                    />
-                  </mat-form-field> -->
+                  <app-input [PlaceHolder]="'* First Name'" formControlName="firstName"></app-input>
                 </div>
               </div>
               <div class="col-md-6-size">
                 <div clas="col-md-6">
-                  <app-input [label]="'* Last Name'" formControlName="lastName"></app-input>
-                  <!-- <mat-form-field>
-                    <input
-                      matInput
-                      class="inputtext-large"
-                      formControlName="lastName"
-                      placeholder="* Last Name"
-                      (keyup)="resetError('lastName')"
-                    />
-                  </mat-form-field> -->
+                  <app-input [PlaceHolder]="'* Last Name'" formControlName="lastName"></app-input>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12-size">
                 <div clas="col-md-12">
-                  <app-input [label]="'* Business Email'" formControlName="email"></app-input>
+                  <app-input [PlaceHolder]="'* Business Email'" formControlName="email"></app-input>
                   <!-- <mat-form-field class="col-md-12-size" style="width: inherit">
                     <input
                       matInput
@@ -88,7 +70,6 @@
                       name="sub"
                       formControlName="subject"
                       class="inputtext-large"
-                      (selectionChange)="resetError('subject')"
                     >
                       <ng-container *ngFor="let sub of subjects; let last = last">
                         <mat-option [value]="sub" class="inputtext-large">{{
@@ -101,31 +82,10 @@
                 </div>
               </div>
             </div>
-          </form>
-          <form [formGroup]="messageForm" class="messageField">
             <div class="row">
               <div class="col-md-12-size">
                 <div clas="col-md-12">
-                  <mat-form-field
-                    class="col-md-12-size"
-                    style="width: inherit; border: 40px; height: 21vh; width: inherit"
-                    appearance="outline"
-                  >
-                    <textarea
-                      matInput
-                      placeholder="Message : "
-                      class="inputtext-large message_area"
-                      style="height: 12vh !important; resize: none;"
-                      formControlName="message"
-                      
-                    ></textarea>
-                  </mat-form-field>
-                  <mat-error
-                    *ngFor="let err of validationErrors"
-                    style="text-align: center"
-                  >
-                    {{ err.Error }}
-                  </mat-error>
+                  <app-input [PlaceHolder]="'Message : '" [Type]="'area'" formControlName="message"></app-input>
                 </div>
               </div>
             </div>
@@ -137,6 +97,7 @@
               </div>
             </div>
           </form>
+         
           <div
             class="text-secondary-large"
             style="margin: 5px; display: flex; justify-content: center"

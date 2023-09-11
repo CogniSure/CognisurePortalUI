@@ -18,6 +18,7 @@ import { CopilotComponent } from './copilot/copilot.component';
 import { InputComponent } from './generic/input/input.component';
 import { TooltipComponent } from './generic/tooltip/tooltip.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ValidationErrorsComponent } from './generic/validation-errors/validation-errors.component';
 
 const routes:Routes = [
 ];
@@ -34,7 +35,8 @@ const routes:Routes = [
     FooterComponent,
     LoaderComponent,
     InputComponent,
-    TooltipComponent
+    TooltipComponent,
+    ValidationErrorsComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ const routes:Routes = [
     InboxMenuComponent,
     FooterComponent,
     LoaderComponent,
-    InputComponent
+    InputComponent,
+    ValidationErrorsComponent
   ]
 })
 export class CoreModule { }

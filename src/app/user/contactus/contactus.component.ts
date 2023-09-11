@@ -6,8 +6,14 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   ElementRef,
+  ViewEncapsulation,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 import { take } from 'rxjs/operators';
@@ -24,19 +30,7 @@ import { ValidationService } from 'src/app/services/validations/validation.servi
 })
 export class ContactusComponent implements OnInit {
   showSpinner = false;
-  messageForm =  new FormGroup({
-    message: new FormControl(''),
-  });
   contactusForm: FormGroup;
-   
- // ({
-  //   firstName: new FormControl(''),
-  //   lastName: new FormControl(''),
-  //   email: new FormControl(''),
-  //   subject: new FormControl(''),
-  //   message: new FormControl(''),
-  // });
-  @ViewChild('message') messageElement: ElementRef;
   validationErrors: Errors[] = [];
   userDetail: UserProfile;
   backUrl = '/login';
@@ -48,7 +42,8 @@ export class ContactusComponent implements OnInit {
     private userService: AccountService,
     private validationService: ValidationService,
     private router: Router,
-    private cdRef:ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private formBuilder: FormBuilder
   ) {}
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   //isInvalid = false;
@@ -68,48 +63,55 @@ export class ContactusComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contactusForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl(''),
-      subject: new FormControl(''),
+    this.contactusForm = this.formBuilder.group({
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      subject: new FormControl('', Validators.required),
+      message:new FormControl('', [Validators.required, Validators.minLength(5)]),
     });
     const id = this.route.snapshot.paramMap.get('pageId');
     if (Number(id) == 2) {
       this.isLoggedIn = true;
       this.userDetail = JSON.parse(sessionStorage.getItem('UserDetail')!);
       if (this.userDetail != null) {
-        this.contactusForm.get('firstName')!.patchValue(this.userDetail.FirstName);
-        this.contactusForm.get('lastName')!.patchValue(this.userDetail.LastName);
+        this.contactusForm
+          .get('firstName')!
+          .patchValue(this.userDetail.FirstName);
+        this.contactusForm
+          .get('lastName')!
+          .patchValue(this.userDetail.LastName);
         this.contactusForm.get('email')!.patchValue(this.userDetail.Email);
-        
-      this.cdRef.detectChanges()
+
+        this.cdRef.detectChanges();
       }
     } else this.isLoggedIn = false;
+    this.contactusForm.markAsUntouched();
+    this.contactusForm.reset();
+    this.cdRef.detectChanges();
   }
   submitForm() {
     this.showSpinner = true;
     let input: ContactUs;
     let formValue: any = this.contactusForm.value;
-    console.log("Contact Us Form Data : ")
-    console.log(formValue)
-    let message = this.messageForm.getRawValue().message; 
+    console.log('Contact Us Form Data : ');
+    console.log(formValue);
     input = {
       FirstName: formValue.firstName,
       LastName: formValue.lastName,
       Email: formValue.email,
       Interests: formValue.subject,
-      Message: message!.toString(),
+      Message: formValue?.message,
       CompanyName: '',
       Designation: '',
       MiddleName: '',
       PhoneNumber: '',
     };
-    this.validationErrors = [];
-    this.validationErrors = this.validateInput();
-    this.showErrors();
+    // this.validationErrors = [];
+    // this.validationErrors = this.validateInput();
+    // this.showErrors();
     if (this.validationErrors.length == 0) {
-      this.userService.contactUs(input).subscribe((res: { success: any; }) => {
+      this.userService.contactUs(input).subscribe((res: { success: any }) => {
         if (res.success) {
           this.contactusForm.reset();
           this.showSpinner = false;
@@ -126,85 +128,84 @@ export class ContactusComponent implements OnInit {
     } else this.showSpinner = false;
   }
   formValues = new Map<string, string>();
-  resetMessage(key: string) {
-    
-    let removeError = false;
-    if (this.contactusForm.get(key)!.value === '') {
-      removeError = false;
-    } else {
-      removeError = true;
-      this.formValues.set(key, this.contactusForm.get(key)!.value);
-    }
+  // resetMessage(key: string) {
+  //   let removeError = false;
+  //   if (this.contactusForm.get(key)!.value === '') {
+  //     removeError = false;
+  //   } else {
+  //     removeError = true;
+  //     this.formValues.set(key, this.contactusForm.get(key)!.value);
+  //   }
 
-    if (!removeError) return;
-    this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
-    if (
-      this.validationErrors.filter((x) => x.Key == 'all').length ===
-      this.validationErrors.length
-    ) {
-      this.validationErrors = [];
-    }
-  }
-  resetError(key: string) {
-    let removeError = false;
-    if (this.formValues.has(key)) {
-      let val: string = this.formValues.get(key)!;
-      if (val != this.contactusForm.get(key)!.value) {
-        removeError = true;
-        this.formValues.set(key, this.contactusForm.get(key)!.value);
-      } else {
-        removeError = false;
-      }
-    } else {
-      if (this.contactusForm.get(key)!.value === '') {
-        removeError = false;
-      } else {
-        removeError = true;
-        this.formValues.set(key, this.contactusForm.get(key)!.value);
-      }
-    }
+  //   if (!removeError) return;
+  //   this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
+  //   if (
+  //     this.validationErrors.filter((x) => x.Key == 'all').length ===
+  //     this.validationErrors.length
+  //   ) {
+  //     this.validationErrors = [];
+  //   }
+  // }
+  // resetError(key: string) {
+  //   let removeError = false;
+  //   if (this.formValues.has(key)) {
+  //     let val: string = this.formValues.get(key)!;
+  //     if (val != this.contactusForm.get(key)!.value) {
+  //       removeError = true;
+  //       this.formValues.set(key, this.contactusForm.get(key)!.value);
+  //     } else {
+  //       removeError = false;
+  //     }
+  //   } else {
+  //     if (this.contactusForm.get(key)!.value === '') {
+  //       removeError = false;
+  //     } else {
+  //       removeError = true;
+  //       this.formValues.set(key, this.contactusForm.get(key)!.value);
+  //     }
+  //   }
 
-    if (!removeError) return;
-    this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
-    if (
-      this.validationErrors.filter((x) => x.Key == 'all').length ===
-      this.validationErrors.length
-    ) {
-      this.validationErrors = [];
-    }
-  }
-  showErrors() {
-    let validations: Errors[] = [];
-    this.validationErrors.forEach((element) => {
-      if (element.Key === 'message') {
-        this.messageForm.controls[element.Key].setErrors({ incorrect: true });
-        this.messageForm.controls[element.Key].markAsTouched();
-      } else {
-        this.contactusForm.controls[element.Key].setErrors({ incorrect: true });
-        this.contactusForm.controls[element.Key].markAsTouched();
-      }
+  //   if (!removeError) return;
+  //   this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
+  //   if (
+  //     this.validationErrors.filter((x) => x.Key == 'all').length ===
+  //     this.validationErrors.length
+  //   ) {
+  //     this.validationErrors = [];
+  //   }
+  // }
+  // showErrors() {
+  //   let validations: Errors[] = [];
+  //   this.validationErrors.forEach((element) => {
+  //     if (element.Key === 'message') {
+  //       this.messageForm.controls[element.Key].setErrors({ incorrect: true });
+  //       this.messageForm.controls[element.Key].markAsTouched();
+  //     } else {
+  //       this.contactusForm.controls[element.Key].setErrors({ incorrect: true });
+  //       this.contactusForm.controls[element.Key].markAsTouched();
+  //     }
 
-      if (!validations.some((i) => i.Error == element.Error)) {
-        validations.push(element);
-      }
-    });
-    this.validationErrors = validations;
-  }
-  validateInput(): Errors[] {
-    let loginData: ContactUs = {
-      FirstName: this.contactusForm.value.firstName!,
-      LastName: this.contactusForm.value.lastName!,
-      Email: this.contactusForm.value.email!,
-      Interests: this.contactusForm.value.subject!,
-      Message: this.messageForm.value.message!,
-      MiddleName: '',
-      PhoneNumber: '',
-      CompanyName: '',
-      Designation: '',
-    };
-    let result: Errors[] = [];
+  //     if (!validations.some((i) => i.Error == element.Error)) {
+  //       validations.push(element);
+  //     }
+  //   });
+  //   this.validationErrors = validations;
+  // }
+  // validateInput(): Errors[] {
+  //   let loginData: ContactUs = {
+  //     FirstName: this.contactusForm.value.firstName!,
+  //     LastName: this.contactusForm.value.lastName!,
+  //     Email: this.contactusForm.value.email!,
+  //     Interests: this.contactusForm.value.subject!,
+  //     Message: this.messageForm.value.message!,
+  //     MiddleName: '',
+  //     PhoneNumber: '',
+  //     CompanyName: '',
+  //     Designation: '',
+  //   };
+  //   let result: Errors[] = [];
 
-    result = this.validationService.validateContactUs(loginData);
-    return result;
-  }
+  //   result = this.validationService.validateContactUs(loginData);
+  //   return result;
+  // }
 }
