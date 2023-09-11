@@ -11,6 +11,7 @@ import { parseNumber } from '@progress/kendo-angular-intl';
   styleUrls: ['./losses.component.scss'],
 })
 export class LossesComponent {
+  noDataFound: boolean = true;
   totalincurred: string = 'Total Incurred';
   totalincurredvalue: string = '';
   totallosses: any = '$75,000';
@@ -55,6 +56,9 @@ export class LossesComponent {
             highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
           },
         ];
+      }
+      else {
+        this.noDataFound = true;
       }
     });
   }
