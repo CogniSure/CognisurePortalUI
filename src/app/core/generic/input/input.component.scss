@@ -7,4 +7,9 @@
 .textColor{
     color : black
 }
+::ng-deep svg{
+    color: blue;
+    width: 60px !important;
+    height: 60px !important;
+}
 }
