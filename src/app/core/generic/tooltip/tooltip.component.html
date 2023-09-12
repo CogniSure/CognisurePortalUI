@@ -1,6 +1,9 @@
-<div class="toolTip">
-  <b>{{TooltipContent['Heading']}}</b>
-  <ul>
-    <li *ngFor="let error of TooltipContent['Messages']">{{ error }}</li>
-  </ul>
+<div class="toolTipContainer">
+  <div class="toolTip">
+    <b>{{ TooltipContent["Heading"] }}</b>
+    <ul>
+      <li *ngFor="let error of TooltipContent['Messages']">{{ error }}</li>
+    </ul>
+  </div>
 </div>
+
