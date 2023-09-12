@@ -411,4 +411,26 @@
     padding-left: 0px;
 }
 }
+
+.signin_icon{
+display: flex;
+margin-left: 14%;
+margin-top: 5%;
+}
+.signin_img{
+    width:10%;
+    height: auto;
+}
+.signin_icon h2{
+    margin-top: 10%;
+}
+
+}
+
+::ng-deep .k-input:active{
+    border-color: #fff!important;
+    outline: none!important;
+}
+::ng-deep .k-input-flat.k-focus{
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }

@@ -7,7 +7,7 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private inboxservice:InboxService)
+  constructor(private inboxservice:InboxService, private changeDetectorRef: ChangeDetectorRef)
   {
 
   }
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
       this.totalRecordCCount = this.tableData.length;
       this.newRecordCCount = this.tableData.filter(item => item.IsNew).length;
+       this.changeDetectorRef.detectChanges();
     })
   }
   getNewRecordCount(){

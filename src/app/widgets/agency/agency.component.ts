@@ -4,7 +4,6 @@ import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { AgencyService } from 'src/app/services/inbox/agency.service';
 import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-agency',
@@ -12,7 +11,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./agency.component.scss']
 })
 export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges{
-  isDataAvailable = true;
+  isDataAvailable = false;
   isDataAvailble = false;
 
   accountInformation: AccountInfo = {
@@ -34,9 +33,7 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   agencyData: any; 
   @Input() widgetInput:WidgetInput
   subscription: any;
-  constructor(private agencyService: AgencyService,private globalService : GlobalService, private cdr: ChangeDetectorRef) {}
-
-
+  constructor(private agencyService: AgencyService,private globalService : GlobalService) {}
 
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -48,75 +45,42 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
     this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
       if (sub != null && sub.value != null) {
         let accInfo = sub.value.account_Level_Info[0];
-
-
-        if (this.isDataAvailable) {
-          this.accountInformation = {
-            Namedinsured_Fullname: this.getConcatenateString([
-              accInfo.namedinsured_Fullname,
-            ]),
-            Namedinsured_Mailingaddress_Lineone: this.getConcatenateString([
-              accInfo.namedinsured_Mailingaddress_Lineone
-            ]),
-            Namedinsured_Mailingaddress_Cityname: this.getConcatenateString([
-              accInfo.namedinsured_Mailingaddress_Cityname,
-            ]),
-            Namedinsured_Mailingaddress_Stateorprovincecode: this.getConcatenateString([
-              accInfo.namedinsured_Mailingaddress_Stateorprovincecode
-            ]),
-            Namedinsured_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.Namedinsured_mailingaddress_Postalcode]),
-            Namedinsured_Naicscode: this.getConcatenateString([accInfo.namedinsured_Naicscode]),
-            Naics_Description: this.getConcatenateString([accInfo.naics_Description]),
-            Producer_Fullname: this.getConcatenateString([accInfo.producer_Fullname]),
-            Insurer_Produceridentifier: this.getConcatenateString([accInfo.insurer_Produceridentifier]),
-            Producer_Mailingaddress_Lineone: this.getConcatenateString([accInfo.producer_Mailingaddress_Lineone]),
-            Producer_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.producer_Mailingaddress_Postalcode]),
-          };
-        } else {
-          this.accountInformation = {
-            Namedinsured_Fullname: "NA",
-          Namedinsured_Mailingaddress_Lineone: "NA",
-          Namedinsured_Mailingaddress_Cityname: "NA",
-          Namedinsured_Mailingaddress_Stateorprovincecode: "NA",
-          Namedinsured_Mailingaddress_Postalcode: "NA",
-          Namedinsured_Naicscode: "NA",
-          Naics_Description: "NA",
-          Producer_Fullname: "NA",
-          Insurer_Produceridentifier: "NA",
-          Producer_Mailingaddress_Lineone: "NA",
-          Producer_Mailingaddress_Postalcode: "NA",
-          };
-
-        }
-
-        
-
-
-        
-        // this.accountInformation = {
-        //   Namedinsured_Fullname: this.getConcatenateString([
-        //     accInfo.namedinsured_Fullname,
-        //   ]),
-        //   Namedinsured_Mailingaddress_Lineone: this.getConcatenateString([
-        //     accInfo.namedinsured_Mailingaddress_Lineone
-        //   ]),
-        //   Namedinsured_Mailingaddress_Cityname: this.getConcatenateString([
-        //     accInfo.namedinsured_Mailingaddress_Cityname,
-        //   ]),
-        //   Namedinsured_Mailingaddress_Stateorprovincecode: this.getConcatenateString([
-        //     accInfo.namedinsured_Mailingaddress_Stateorprovincecode
-        //   ]),
-        //   Namedinsured_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.Namedinsured_mailingaddress_Postalcode]),
-        //   Namedinsured_Naicscode: this.getConcatenateString([accInfo.namedinsured_Naicscode]),
-        //   Naics_Description: this.getConcatenateString([accInfo.naics_Description]),
-        //   Producer_Fullname: this.getConcatenateString([accInfo.producer_Fullname]),
-        //   Insurer_Produceridentifier: this.getConcatenateString([accInfo.insurer_Produceridentifier]),
-        //   Producer_Mailingaddress_Lineone: this.getConcatenateString([accInfo.producer_Mailingaddress_Lineone]),
-        //   Producer_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.producer_Mailingaddress_Postalcode]),
-        // };
+        this.accountInformation = {
+          Namedinsured_Fullname: this.getConcatenateString([
+            accInfo.namedinsured_Fullname,
+          ]),
+          Namedinsured_Mailingaddress_Lineone: this.getConcatenateString([
+            accInfo.namedinsured_Mailingaddress_Lineone
+          ]),
+          Namedinsured_Mailingaddress_Cityname: this.getConcatenateString([
+            accInfo.namedinsured_Mailingaddress_Cityname,
+          ]),
+          Namedinsured_Mailingaddress_Stateorprovincecode: this.getConcatenateString([
+            accInfo.namedinsured_Mailingaddress_Stateorprovincecode
+          ]),
+          Namedinsured_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.Namedinsured_mailingaddress_Postalcode]),
+          Namedinsured_Naicscode: this.getConcatenateString([accInfo.namedinsured_Naicscode]),
+          Naics_Description: this.getConcatenateString([accInfo.naics_Description]),
+          Producer_Fullname: this.getConcatenateString([accInfo.producer_Fullname]),
+          Insurer_Produceridentifier: this.getConcatenateString([accInfo.insurer_Produceridentifier]),
+          Producer_Mailingaddress_Lineone: this.getConcatenateString([accInfo.producer_Mailingaddress_Lineone]),
+          Producer_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.producer_Mailingaddress_Postalcode]),
+        };
         //this.accountInformation = sub.value.account_Level_Info[0];
         //this.propertyInformation = sub.value.property_Policy_Info_Premises_Information[0];
       }
+
+
+
+
+      if (this.accountInformation) {
+        // Data is available, set isDataAvailable to true
+        this.isDataAvailable = true;
+      } else {
+        // No data available, set isDataAvailable to false
+        this.isDataAvailable = false;
+      }
+
 
   
     });
