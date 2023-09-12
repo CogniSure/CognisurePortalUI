@@ -1,5 +1,4 @@
 import {
-  ComponentFactoryResolver,
   ViewContainerRef,
   ComponentRef,
   Directive,
