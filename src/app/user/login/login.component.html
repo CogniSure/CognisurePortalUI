@@ -24,6 +24,7 @@
           <h2 class="header-black" style="margin: 0"><b>Sign In</b></h2>
           <h5 class="inputtext-large">Welcome! Please enter your details.</h5>
           <div class="example-container">
+            <validation-summary [form]="loginForm" [errors]="validationErrors" *ngIf="validationErrors.length>0"></validation-summary>
             <form [formGroup]="loginForm" (keydown.enter)="Login($any($event))">
               <div class="email">
                 <app-input [PlaceHolder]="'* Business Email'" formControlName="email"></app-input>
@@ -77,13 +78,13 @@
                 </h5>
               </div>
             </div>
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
               <mat-error *ngFor="let err of validationErrors" style="text-align: center;">
               {{
                 err.Error
               }}
-            </mat-error>
-            </div>
+            </mat-error> 
+            </div>-->
             <div class="signin-btn">
               <button
                 matButton

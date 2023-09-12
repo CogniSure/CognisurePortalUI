@@ -62,7 +62,7 @@ export class LoginComponent {
     password: new FormControl('')
   });
 
-  validationErrors: Errors[] = [];
+  validationErrors: string[] = [];
   ngOnInit(): void {
     this.auth.logout();
     this.loginForm = this.formBuilder.group({
@@ -75,7 +75,7 @@ export class LoginComponent {
   Login(event: any) {
     
     this.showSpinner=true;
-    // this.validationErrors = [];
+    this.validationErrors = [];
     // this.validationErrors = this.validateInput();
     // this.showErrors();
     if (this.loginForm.valid) {
@@ -90,6 +90,9 @@ export class LoginComponent {
                this.router.navigate(['/dashboard/home'], {
                                   queryParamsHandling: 'preserve',
                                 });
+             }
+             else{
+              this.validationErrors.push("Invalid Username and password")
              }
             //  this.router.navigate(['/dashboard/home'], {
             //   queryParamsHandling: 'preserve',
@@ -177,55 +180,55 @@ export class LoginComponent {
   }
 
   formValues = new Map<string, string>();
-  resetError(key: string) {
-    let removeError = false;
-    if (this.formValues.has(key)) {
-      let val: string = this.formValues.get(key)!;
-      if (val != this.loginForm.get(key)!.value) {
-        removeError = true;
-        this.formValues.set(key, this.loginForm.get(key)!.value);
-      } else {
-        removeError = false;
-      }
-    } else {
-      if (this.loginForm.get(key)!.value === '') {
-        removeError = false;
-      } else {
-        removeError = true;
-        this.formValues.set(key, this.loginForm.get(key)!.value);
-      }
-    }
+  // resetError(key: string) {
+  //   let removeError = false;
+  //   if (this.formValues.has(key)) {
+  //     let val: string = this.formValues.get(key)!;
+  //     if (val != this.loginForm.get(key)!.value) {
+  //       removeError = true;
+  //       this.formValues.set(key, this.loginForm.get(key)!.value);
+  //     } else {
+  //       removeError = false;
+  //     }
+  //   } else {
+  //     if (this.loginForm.get(key)!.value === '') {
+  //       removeError = false;
+  //     } else {
+  //       removeError = true;
+  //       this.formValues.set(key, this.loginForm.get(key)!.value);
+  //     }
+  //   }
 
-    if (!removeError) return;
-    this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
-    if (
-      this.validationErrors.filter((x) => x.Key == 'all').length ===
-      this.validationErrors.length
-    ) {
-      this.validationErrors = [];
-    }
-  }
-  showErrors() {
-    this.validationErrors.forEach((element) => {
-      if (element.Key === 'email') {
-        this.loginForm.controls[element.Key].setErrors({ incorrect: true });
-        this.loginForm.controls[element.Key].markAsTouched();
-      }
-      if (element.Key === 'password') {
-        this.loginForm.controls[element.Key].setErrors({ incorrect: true });
-        this.loginForm.controls[element.Key].markAsTouched();
-      }
-      if (element.Key === 'all') {
-        this.loginForm.controls['email'].setErrors({ incorrect: true });
-        this.loginForm.controls['email'].markAsTouched();
-        this.loginForm.controls['password'].setErrors({ incorrect: true });
-        this.loginForm.controls['password'].markAsTouched();
-      }
-      this.showSpinner=false;
-    });
+  //   if (!removeError) return;
+  //   this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
+  //   if (
+  //     this.validationErrors.filter((x) => x.Key == 'all').length ===
+  //     this.validationErrors.length
+  //   ) {
+  //     this.validationErrors = [];
+  //   }
+  // }
+  // showErrors() {
+  //   this.validationErrors.forEach((element) => {
+  //     if (element.Key === 'email') {
+  //       this.loginForm.controls[element.Key].setErrors({ incorrect: true });
+  //       this.loginForm.controls[element.Key].markAsTouched();
+  //     }
+  //     if (element.Key === 'password') {
+  //       this.loginForm.controls[element.Key].setErrors({ incorrect: true });
+  //       this.loginForm.controls[element.Key].markAsTouched();
+  //     }
+  //     if (element.Key === 'all') {
+  //       this.loginForm.controls['email'].setErrors({ incorrect: true });
+  //       this.loginForm.controls['email'].markAsTouched();
+  //       this.loginForm.controls['password'].setErrors({ incorrect: true });
+  //       this.loginForm.controls['password'].markAsTouched();
+  //     }
+  //     this.showSpinner=false;
+  //   });
     
     
-  }
+  // }
   validateInput(): Errors[] {
     let loginData: LoginData = {
       Email: this.loginForm.value.email!,

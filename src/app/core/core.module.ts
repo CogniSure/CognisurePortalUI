@@ -19,6 +19,7 @@ import { InputComponent } from './generic/input/input.component';
 import { TooltipComponent } from './generic/tooltip/tooltip.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ValidationErrorsComponent } from './generic/validation-errors/validation-errors.component';
+import { ValidationSummaryComponent } from './generic/validation-summary/validation-summary.component';
 
 const routes:Routes = [
 ];
@@ -36,7 +37,8 @@ const routes:Routes = [
     LoaderComponent,
     InputComponent,
     TooltipComponent,
-    ValidationErrorsComponent
+    ValidationErrorsComponent,
+    ValidationSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ const routes:Routes = [
     FooterComponent,
     LoaderComponent,
     InputComponent,
-    ValidationErrorsComponent
+    ValidationErrorsComponent,
+    ValidationSummaryComponent
   ]
 })
 export class CoreModule { }
