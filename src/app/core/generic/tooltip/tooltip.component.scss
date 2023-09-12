@@ -1,17 +1,4 @@
-@keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes fadein {
-    from { opacity: 0}
-    to   { opacity: 1}
-  }  
 .toolTipContainer {
-    animation: fadein 1s;
   .toolTip {
     transition-property: opacity, left, top, height;
     transition-duration: 13s, 5s, 3s, 5s;
