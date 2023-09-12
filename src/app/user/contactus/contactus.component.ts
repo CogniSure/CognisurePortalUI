@@ -23,6 +23,7 @@ import { ContactUs } from 'src/app/model/common/contactus';
 import { AccountService } from 'src/app/services/user/accounts.service';
 import { Errors } from 'src/app/model/common/errors';
 import { ValidationService } from 'src/app/services/validations/validation.service';
+import { CSSelect } from 'src/app/model/common/select';
 @Component({
   selector: 'app-contactus',
   templateUrl: './contactus.component.html',
@@ -47,13 +48,13 @@ export class ContactusComponent implements OnInit {
   ) {}
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   //isInvalid = false;
-  subjects = [
-    'Error - Login',
-    'Error - Page Loading',
-    'Error - Incorrect Data',
-    'Error - Others',
-    'Query',
-    'Feedback',
+  subjects : CSSelect[] = [
+    {ID:1,Value:'Error - Login'},
+    {ID:2,Value:'Error - Page Loading'},
+    {ID:3,Value:'Error - Incorrect Data'},
+    {ID:4,Value:'Error - Others'},
+    {ID:5,Value:'Query'},
+    {ID:6,Value:'Feedback'},
   ];
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
@@ -128,84 +129,4 @@ export class ContactusComponent implements OnInit {
     } else this.showSpinner = false;
   }
   formValues = new Map<string, string>();
-  // resetMessage(key: string) {
-  //   let removeError = false;
-  //   if (this.contactusForm.get(key)!.value === '') {
-  //     removeError = false;
-  //   } else {
-  //     removeError = true;
-  //     this.formValues.set(key, this.contactusForm.get(key)!.value);
-  //   }
-
-  //   if (!removeError) return;
-  //   this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
-  //   if (
-  //     this.validationErrors.filter((x) => x.Key == 'all').length ===
-  //     this.validationErrors.length
-  //   ) {
-  //     this.validationErrors = [];
-  //   }
-  // }
-  // resetError(key: string) {
-  //   let removeError = false;
-  //   if (this.formValues.has(key)) {
-  //     let val: string = this.formValues.get(key)!;
-  //     if (val != this.contactusForm.get(key)!.value) {
-  //       removeError = true;
-  //       this.formValues.set(key, this.contactusForm.get(key)!.value);
-  //     } else {
-  //       removeError = false;
-  //     }
-  //   } else {
-  //     if (this.contactusForm.get(key)!.value === '') {
-  //       removeError = false;
-  //     } else {
-  //       removeError = true;
-  //       this.formValues.set(key, this.contactusForm.get(key)!.value);
-  //     }
-  //   }
-
-  //   if (!removeError) return;
-  //   this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
-  //   if (
-  //     this.validationErrors.filter((x) => x.Key == 'all').length ===
-  //     this.validationErrors.length
-  //   ) {
-  //     this.validationErrors = [];
-  //   }
-  // }
-  // showErrors() {
-  //   let validations: Errors[] = [];
-  //   this.validationErrors.forEach((element) => {
-  //     if (element.Key === 'message') {
-  //       this.messageForm.controls[element.Key].setErrors({ incorrect: true });
-  //       this.messageForm.controls[element.Key].markAsTouched();
-  //     } else {
-  //       this.contactusForm.controls[element.Key].setErrors({ incorrect: true });
-  //       this.contactusForm.controls[element.Key].markAsTouched();
-  //     }
-
-  //     if (!validations.some((i) => i.Error == element.Error)) {
-  //       validations.push(element);
-  //     }
-  //   });
-  //   this.validationErrors = validations;
-  // }
-  // validateInput(): Errors[] {
-  //   let loginData: ContactUs = {
-  //     FirstName: this.contactusForm.value.firstName!,
-  //     LastName: this.contactusForm.value.lastName!,
-  //     Email: this.contactusForm.value.email!,
-  //     Interests: this.contactusForm.value.subject!,
-  //     Message: this.messageForm.value.message!,
-  //     MiddleName: '',
-  //     PhoneNumber: '',
-  //     CompanyName: '',
-  //     Designation: '',
-  //   };
-  //   let result: Errors[] = [];
-
-  //   result = this.validationService.validateContactUs(loginData);
-  //   return result;
-  // }
 }

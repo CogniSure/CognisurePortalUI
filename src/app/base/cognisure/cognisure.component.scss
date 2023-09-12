@@ -395,7 +395,21 @@ $secondary-lightblue-color: #00a6cf;
     padding: 0;
   }
 }
-
+::ng-deep .k-list-item.k-selected
+ {
+    background: $primary-color !important;
+}
+::ng-deep .k-selected.k-list-optionlabel
+ {
+    background: $primary-color !important;
+}
+::ng-deep .k-selected.k-list-optionlabel:hover
+ {
+    background: $primary-color !important;
+}
+::ng-deep .k-list-item.k-selected:hover{
+    background: $primary-color !important;
+}
 ::ng-deep .slide-effect-y {
   animation: slideInAnimationY ease 3s;
   animation-iteration-count: 1;

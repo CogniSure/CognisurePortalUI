@@ -1,0 +1,27 @@
+<div class="dvs-form-control-select">
+    <kendo-formfield showHints="always" showErrors="initial">
+        <kendo-dropdownlist
+        #dropdownlist
+            [data]="DataOptions"
+            [value]="selectedData"
+            [defaultItem]="defaultData"
+            textField="Value"
+            valueField="ID"
+            [formControl]="control"
+            [size]="'medium'"
+            [rounded]="'large'"
+            [fillMode]="'solid'"
+            (valueChange)="handleDataChange($event)"
+            class="select-dropdown"
+          >
+          <ng-template kendoDropDownListItemTemplate let-dataItem>
+            <span class="template">{{ dataItem.Value }}</span>
+          </ng-template>
+          </kendo-dropdownlist>
+    </kendo-formfield>
+<!-- <select>
+    <option *ngFor="let option of Options" [value]="option">
+        {{option}}
+    </option>
+</select> -->
+</div>

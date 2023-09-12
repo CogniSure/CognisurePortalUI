@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ValidationErrorsComponent } from './generic/validation-errors/validation-errors.component';
 import { ValidationSummaryComponent } from './generic/validation-summary/validation-summary.component';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { SelectComponent } from './generic/select/select.component';
 
 const routes:Routes = [
 ];
@@ -40,7 +41,8 @@ const routes:Routes = [
     CustomTooltipComponent,
     ValidationErrorsComponent,
     ValidationSummaryComponent,
-    TooltipDirective
+    TooltipDirective,
+    SelectComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +65,8 @@ const routes:Routes = [
     InputComponent,
     ValidationErrorsComponent,
     ValidationSummaryComponent,
-    TooltipDirective
+    TooltipDirective,
+    SelectComponent
   ]
 })
 export class CoreModule { }
