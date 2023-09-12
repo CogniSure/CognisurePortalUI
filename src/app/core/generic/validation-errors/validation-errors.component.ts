@@ -36,8 +36,6 @@ ngOnChanges(changes: SimpleChanges): void {
 // }
 get errorMessage() {  
     for (const validatorName in this.control?.errors) {
-      console.log("ValidatorName")
-      console.log(validatorName)
         if(this.control.touched)
           
           return ValidatorErrorMessage(validatorName, this.control.errors[validatorName]);

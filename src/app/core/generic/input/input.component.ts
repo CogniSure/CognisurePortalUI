@@ -25,7 +25,7 @@ export class InputComponent<T> extends ControlValueAccessDirective<T> implements
  
 
   @Input() Width : string
-  @Input() Tooltip : any
+  @Input() TooltipContent : Record<string,string[]> = {};
 
   getControl(){
     console.log(this.control)
@@ -37,6 +37,7 @@ export class InputComponent<T> extends ControlValueAccessDirective<T> implements
   public eyeIcon: SVGIcon = eyeIcon;
 
   public ngAfterViewInit(): void {
+    if(this.textbox != null)
     this.textbox.input.nativeElement.type = "password";
   }
 

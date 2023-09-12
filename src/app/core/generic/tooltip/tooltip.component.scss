@@ -1,0 +1,15 @@
+.toolTip{
+    padding: 2%;
+    position: absolute;
+    top: 0%;
+    left : 100%;
+    width: 20em;
+    background-color: #f5f5f5 !important;
+    font-size: 12px !important;
+    align-self: right !important;
+    text-align: left !important;
+    align-items: flex-start;
+    color: #0c2340 !important;
+    border-radius: 10px;
+    z-index: 100000;
+}

@@ -16,10 +16,11 @@ import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CopilotComponent } from './copilot/copilot.component';
 import { InputComponent } from './generic/input/input.component';
-import { TooltipComponent } from './generic/tooltip/tooltip.component';
+import { CustomTooltipComponent } from './generic/tooltip/tooltip.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ValidationErrorsComponent } from './generic/validation-errors/validation-errors.component';
 import { ValidationSummaryComponent } from './generic/validation-summary/validation-summary.component';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 const routes:Routes = [
 ];
@@ -36,9 +37,10 @@ const routes:Routes = [
     FooterComponent,
     LoaderComponent,
     InputComponent,
-    TooltipComponent,
+    CustomTooltipComponent,
     ValidationErrorsComponent,
-    ValidationSummaryComponent
+    ValidationSummaryComponent,
+    TooltipDirective
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,8 @@ const routes:Routes = [
     LoaderComponent,
     InputComponent,
     ValidationErrorsComponent,
-    ValidationSummaryComponent
+    ValidationSummaryComponent,
+    TooltipDirective
   ]
 })
 export class CoreModule { }

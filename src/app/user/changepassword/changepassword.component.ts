@@ -10,7 +10,7 @@ import { GlobalService } from 'src/app/services/common/global.service';
 import { AccountService } from 'src/app/services/user/accounts.service';
 import { ValidationService } from 'src/app/services/validations/validation.service';
 import { environment } from 'src/environments/environment';
-import { MatTooltip } from '@angular/material/tooltip';
+import { PasswordToolTip } from '../../model/constants/tooltipDetails';
 import { matchValidator } from 'src/app/core/generic/utils/match-validator';
 
 @Component({
@@ -20,8 +20,7 @@ import { matchValidator } from 'src/app/core/generic/utils/match-validator';
 })
 export class ChangepasswordComponent implements OnInit {
   showSpinner = false;
-  public tooltip = `<div class="size"><b>Password must consist of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>`;
-
+  tooltip = PasswordToolTip;
   constructor(
     private route: ActivatedRoute,
     private accServ: AccountService,

@@ -28,38 +28,9 @@
             <form [formGroup]="loginForm" (keydown.enter)="Login($any($event))">
               <div class="email">
                 <app-input [PlaceHolder]="'* Business Email'" formControlName="email"></app-input>
-                <!-- <mat-form-field style="width: 100%;font-size: 16px;" appearance="outline">
-                <mat-label>* Business Email</mat-label>
-                  <input
-                    matInput
-                    formControlName="email"
-                    [ngClass]="{ 'has-error': !isvalidform }"
-                    (keyup)="resetError('email')"
-                    
-                
-                  />
-                </mat-form-field> -->
               </div>
               <div class="password">
-                <app-input [PlaceHolder]="'* Password'" [Type]="'password'" formControlName="password"></app-input>
-                <!-- <mat-form-field style="width: 100%;font-size: 16px;" appearance="outline">
-                    <mat-label>* Password</mat-label>
-                  <input
-                    formControlName="password"
-                    tooltip-class="tooltipCss"
-                    matInput
-                    [type]="hide ? 'password' : 'text'"
-                    (keyup)="resetError('password')"
-                    (paste)="(false)"
-                    maxlength="24"
-                  />
-                  <mat-icon
-                    matSuffix
-                    class="watermarkeye"
-                    (click)="hide = !hide"
-                    >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
-                  >
-                </mat-form-field> -->
+                <app-input [PlaceHolder]="'* Password'" [Type]="'password'" [TooltipContent]="tooltip" formControlName="password"></app-input>
               </div>
             </form>
             <div style="display: flex" class="row">

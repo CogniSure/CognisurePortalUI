@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Errors } from 'src/app/model/common/errors';
 import { LoginData } from 'src/app/model/common/logindata';
@@ -10,37 +15,31 @@ import { GlobalService } from 'src/app/services/common/global.service';
 import { UrlService } from 'src/app/services/common/url.service';
 import { AccountService } from 'src/app/services/user/accounts.service';
 import { matchValidator } from 'src/app/core/generic/utils/match-validator';
+import { PasswordToolTip } from 'src/app/model/constants/tooltipDetails';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   hide = true;
   showSpinner = false;
-  apiUrl = "";
+  apiUrl = '';
   showSpinner1 = false;
   constructor(
     private auth: AuthService,
-    private urlService : UrlService,
+    private urlService: UrlService,
     private router: Router,
     private globalService: GlobalService,
     private accService: AccountService,
     private formBuilder: FormBuilder
-    
   ) {}
   isvalidform = true;
   imageObject: any;
   enableSlideButton = false;
   email: string = '';
-  myOptions = {
-    placement: 'right',
-    showDelay: 2,
-    hideDelay: 2,
-    width: '180px',
-    'tooltip-class': 'tooltipCss',
-  };
+  tooltip = PasswordToolTip;
   userDetail: UserProfile = {
     UserID: 0,
     FirstName: '',
@@ -59,62 +58,45 @@ export class LoginComponent {
   };
   loginForm = new FormGroup({
     email: new FormControl(''),
-    password: new FormControl('')
+    password: new FormControl(''),
   });
 
   validationErrors: string[] = [];
   ngOnInit(): void {
     this.auth.logout();
     this.loginForm = this.formBuilder.group({
-      email: new FormControl('',[Validators.required,Validators.email]),
-      password: new FormControl('',[Validators.required])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
     sessionStorage.setItem('Accounts', '');
   }
   passwordInfo = DataComponent.Tooltip;
   Login(event: any) {
-    
-    this.showSpinner=true;
+    this.showSpinner = true;
     this.validationErrors = [];
     // this.validationErrors = this.validateInput();
     // this.showErrors();
     if (this.loginForm.valid) {
       event.preventDefault();
       this.email = this.loginForm.value.email!;
-        this.accService.login(this.loginForm.value).subscribe((res:any) => {
-             if (res.success) {
-               this.auth.setToken(res);
-               this.accService.getUserProfile(this.email).subscribe((user:any) => {
+      this.accService.login(this.loginForm.value).subscribe((res: any) => {
+        if (res.success) {
+          this.auth.setToken(res);
+          this.accService
+            .getUserProfile(this.email)
+            .subscribe((user: any) => {});
+          this.router.navigate(['/dashboard/home'], {
+            queryParamsHandling: 'preserve',
+          });
+        } else {
+          this.validationErrors.push('Invalid Username and password');
+        }
+        //  this.router.navigate(['/dashboard/home'], {
+        //   queryParamsHandling: 'preserve',
+        //});
+      });
 
-               })
-               this.router.navigate(['/dashboard/home'], {
-                                  queryParamsHandling: 'preserve',
-                                });
-             }
-             else{
-              this.validationErrors.push("Invalid Username and password")
-             }
-            //  this.router.navigate(['/dashboard/home'], {
-            //   queryParamsHandling: 'preserve',
-            //});
-            });
-      
-
-
-
-
-
-
-
-
-
-
-
-
-    //})
-
-
-
+      //})
 
       // this.accService.login(this.apiUrl,this.loginForm.value).subscribe((res:any) => {
       //   if (res.success) {
@@ -130,7 +112,7 @@ export class LoginComponent {
       //           this.showSpinner=false;
       //           return;
       //         }
-              
+
       //         // this.accService.Check2FAStatus(this.email).subscribe((fa:any) => {
       //         //   if (!fa.success) {
       //         //     this.accService.Send2FAEmail(this.email).subscribe((fae:any) => {
@@ -180,65 +162,7 @@ export class LoginComponent {
   }
 
   formValues = new Map<string, string>();
-  // resetError(key: string) {
-  //   let removeError = false;
-  //   if (this.formValues.has(key)) {
-  //     let val: string = this.formValues.get(key)!;
-  //     if (val != this.loginForm.get(key)!.value) {
-  //       removeError = true;
-  //       this.formValues.set(key, this.loginForm.get(key)!.value);
-  //     } else {
-  //       removeError = false;
-  //     }
-  //   } else {
-  //     if (this.loginForm.get(key)!.value === '') {
-  //       removeError = false;
-  //     } else {
-  //       removeError = true;
-  //       this.formValues.set(key, this.loginForm.get(key)!.value);
-  //     }
-  //   }
-
-  //   if (!removeError) return;
-  //   this.validationErrors = this.validationErrors.filter((x) => x.Key != key);
-  //   if (
-  //     this.validationErrors.filter((x) => x.Key == 'all').length ===
-  //     this.validationErrors.length
-  //   ) {
-  //     this.validationErrors = [];
-  //   }
-  // }
-  // showErrors() {
-  //   this.validationErrors.forEach((element) => {
-  //     if (element.Key === 'email') {
-  //       this.loginForm.controls[element.Key].setErrors({ incorrect: true });
-  //       this.loginForm.controls[element.Key].markAsTouched();
-  //     }
-  //     if (element.Key === 'password') {
-  //       this.loginForm.controls[element.Key].setErrors({ incorrect: true });
-  //       this.loginForm.controls[element.Key].markAsTouched();
-  //     }
-  //     if (element.Key === 'all') {
-  //       this.loginForm.controls['email'].setErrors({ incorrect: true });
-  //       this.loginForm.controls['email'].markAsTouched();
-  //       this.loginForm.controls['password'].setErrors({ incorrect: true });
-  //       this.loginForm.controls['password'].markAsTouched();
-  //     }
-  //     this.showSpinner=false;
-  //   });
-    
-    
-  // }
-  validateInput(): Errors[] {
-    let loginData: LoginData = {
-      Email: this.loginForm.value.email!,
-      Password: this.loginForm.value.password!,
-    };
-    let result: Errors[] = [];
-
-    //result = this.validationService.validateLogin(loginData);
-    return result;
-  }
+  
   imageClickHandler(val: any) {
     this.enableSlideButton = val;
   }
@@ -254,5 +178,4 @@ export class LoginComponent {
   //     //this.globalService.setUserProfile(res);
   //   });
   // }
-  
 }

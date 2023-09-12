@@ -1,6 +1,13 @@
 <div class="dvs-form-control">
-  <!-- <label [for]="inputId" *ngIf="label">{{label}}</label> -->
-  <!-- <input [type]="type" [id]="inputId" FormControl="control" /> -->
+  <ng-template #template let-anchor>
+    <div class="size"><b>Password must consist of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>
+  </ng-template>
+  <!-- <div
+  kendoTooltip
+  [tooltipTemplate]="template"
+  filter="a[href]"
+  style="padding-top: 10px;"
+> -->
   <kendo-formfield showHints="always" showErrors="initial">
     <kendo-floatinglabel [text]="PlaceHolder" class="floatingLabel k-form">
       <kendo-textbox
@@ -25,6 +32,7 @@
         rounded="large"
         showErrors="initial"
       ></kendo-textarea>
+     
       <kendo-textbox
         #textbox
         placeholder="PlaceHolder"
@@ -35,6 +43,8 @@
         rounded="large"
         showErrors="initial"
         [class]="'textColor'"
+        appTooltip
+        [TooltipContent] = TooltipContent
       >
         <ng-template kendoTextBoxSuffixTemplate>
           <button
@@ -46,6 +56,7 @@
           ></button>
         </ng-template>
       </kendo-textbox>
+     
     </kendo-floatinglabel>
     <app-validation-errors
       *ngIf="control.touched && control.invalid"
@@ -53,3 +64,4 @@
     ></app-validation-errors>
   </kendo-formfield>
 </div>
+<!-- </div> -->

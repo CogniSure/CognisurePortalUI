@@ -41,6 +41,8 @@ import { UploadsModule } from '@progress/kendo-angular-upload';
 import { ChatModule } from '@progress/kendo-angular-conversational-ui';
 import { ChatService } from './services/common/chat.service';
 import { MatCardModule } from '@angular/material/card';
+import { TooltipsModule } from '@progress/kendo-angular-tooltip';
+
 
 
 
@@ -66,6 +68,7 @@ import { MatCardModule } from '@angular/material/card';
     UploadsModule,
     ChatModule,
     MatCardModule,
+    TooltipsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
