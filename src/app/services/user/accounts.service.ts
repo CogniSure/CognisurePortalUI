@@ -295,7 +295,7 @@ export class AccountService {
 
   getUserProfile(email:string){
     var apiUrl = this.env.baseUrl
-    return this.http.getData(apiUrl+"api/userdetails/",email).pipe(
+    return this.http.getData(apiUrl+"api/userdetails/"+email,"").pipe(
         map((result:any)=>{
             const profile : UserProfile = {
                 UserID :result.value.userID,
