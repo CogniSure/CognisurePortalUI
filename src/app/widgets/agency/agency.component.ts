@@ -43,7 +43,7 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
 
   ngOnInit() {
     this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if (sub != null && sub.value != null) {
+      if (sub != null && sub.value != null && sub.value.account_Level_Info!=null) {
         let accInfo = sub.value.account_Level_Info[0];
         this.accountInformation = {
           Namedinsured_Fullname: this.getConcatenateString([

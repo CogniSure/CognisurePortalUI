@@ -23,7 +23,7 @@ export class ExposureComponent implements OnInit {
   getExposureData(): void {
     this.globalService.getCurrentSubmission().subscribe((sub: any) => {
       this.exposuredata = [];
-      if (sub != null && sub.value != null) {
+      if (sub != null && sub.value != null && sub.value.property_Policy_Info_Premises_Information!=null) {
         let locations: string[] = [];
         let buildings: string[] = [];
         let states: string[] = [];

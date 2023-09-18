@@ -47,7 +47,7 @@ export class CoveragesComponent implements OnInit {
       this.Content = 0;
       this.BusinessIncome = 0;
       this.Other = 0;
-      if (sub != null && sub.value != null) {
+      if (sub != null && sub.value != null && sub.value.property_Policy_Info_Premises_Information!=null) {
         
         sub.value.property_Policy_Info_Premises_Information.forEach(
           (exposure: any) => {

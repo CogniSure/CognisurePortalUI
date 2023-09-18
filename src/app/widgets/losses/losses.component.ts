@@ -24,7 +24,7 @@ export class LossesComponent {
   ngOnInit(): void {
     this.globalService.getCurrentSubmission().subscribe((sub: any) => {
       this.claimDetails = [];
-      if (sub != null && sub.value != null) {
+      if (sub != null && sub.value != null && sub.value.claim_Info!=null) {
         let noOfClaims = 0;
         let noOfOpenClaims = 0;
         let totalIncurred = 0;
