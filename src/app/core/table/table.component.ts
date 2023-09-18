@@ -13,6 +13,8 @@ import {
 } from "@progress/kendo-angular-grid";
 import { GlobalService } from 'src/app/services/common/global.service';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
+import { alertsData } from 'src/app/model/sidenav/nav-data';
+import { navbarData } from '../../model/sidenav/nav-data';
 
 interface NavItem {
   title: string;
@@ -32,6 +34,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   isToggleOn: boolean = false;
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
+  navData = alertsData;
   
   public gridData: any[];
   public gridView!: any[];
