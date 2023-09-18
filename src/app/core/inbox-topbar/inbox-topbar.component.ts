@@ -105,7 +105,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
       this.cdRef.detectChanges();
     })
     this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if (sub != null && sub.value != null) {
+      if (sub != null && sub.value != null && sub.value.account_Level_Info!=null && sub.value.property_Policy_Info_Premises_Information!=null) {
         let accInfo = sub.value.account_Level_Info[0];
         let propertyInfo = sub.value.property_Policy_Info_Premises_Information[0];
         this.accountInformation = {
