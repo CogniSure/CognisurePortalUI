@@ -9,9 +9,9 @@
     color: #009cc1;
     border: none;
   }
-  ::ng-deep .k-grid-toolbar {
-    background: transparent !important;
-  }
+  // ::ng-deep .k-grid-toolbar {
+  //   background: transparent !important;
+  // }
   .loading-container {
     height: 100%;
     display: flex;
@@ -149,4 +149,16 @@ fill:red;
 .image-container {
   padding: 0 0.25em;
   text-align: center;
+}
+
+::ng-deep .generic-table .k-grid-toolbar {
+  /* background: transparent !important; */
+  background: #EEF2F7!important;
+}
+
+::ng-deep .k-toolbar .k-input {
+  // width: 10em;
+  width: 90%!important;
+  border: 2px;
+  height: 2.5rem;
 }

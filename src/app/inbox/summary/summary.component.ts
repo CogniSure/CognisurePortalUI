@@ -41,7 +41,7 @@ export class SummaryComponent implements OnInit,OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-  animationClass = 'slide-effect-x';
+  animationClass = 'slide-effect-x1';
   ngAfterViewInit() {
     // this.globalService.dashboardFilter$.subscribe(x=>{
     //   if(x.ReloadRequired){
@@ -53,7 +53,7 @@ export class SummaryComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    this.globalService.animationClass$.next('slide-effect-x');
+    this.globalService.animationClass$.next('slide-effect-x1');
     this.getSummaryWidgets();
     this.getPropertyWidgets();
   }

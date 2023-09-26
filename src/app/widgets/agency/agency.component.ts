@@ -29,7 +29,7 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   };
 
   summary : any={};
-  animationClass = "slide-effect-x";
+  animationClass = "slide-effect-x1";
   agencyData: any; 
   @Input() widgetInput:WidgetInput
   subscription: any;

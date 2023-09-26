@@ -41,19 +41,21 @@
 // }
 
 .copied_icontop img {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border: 1px solid gray;
   border-radius: 28px;
   padding: 8% 8% 8% 8%;
+  margin-top: 10%;
 }
 
 .notification_icon img {
-  width: 100%;
+  width: 78%;
   height: auto;
   border: 1px solid gray;
   border-radius: 30px;
   padding: 0.6%;
+  margin-top: 10%;
 }
 
 .copied_icon {
@@ -144,12 +146,11 @@
 .badge {
   background-color: red;
   color: white;
-  /* padding: 4px 8px; */
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 10px;
   position: absolute;
-  top: 3%;
-  right: 66%;
+  top: 11%;
+  right: 17%;
 }
 
 .dropdown ul li a {
@@ -185,17 +186,17 @@
   }
 }
 
-.header-icons{
-  text-align: right;
-}
+// .header-icons{
+//   text-align: right;
+// }
 
-.kendoimg{
-  padding-right: 3%;
-}
+// .kendoimg{
+//   padding-right: 3%;
+// }
 
-.notificationimg{
-  padding-right: 3%;
-}
+// .notificationimg{
+//   padding-right: 3%;
+// }
 
 .profileimg{
   padding-right: 3%;
@@ -223,10 +224,26 @@
   padding-top: 3% !important;
 }
 .dropdown_icon span{
-font-size: 47px;
-border: 1px solid gray;
+// font-size: 47px;
+// border: 1px solid gray;
 border-radius: 50%;
 // position: fixed;
 // right: 1%;
 // top: 1.5%;
 }
+
+.profile_img{
+  position: absolute;
+}
+
+// .profile_dropdown{
+  // position: absolute;
+// }
+
+
+::ng-deep .cdk-overlay-container{
+  pointer-events: none;
+  top: 7%;
+  left: 3%;
+}
+

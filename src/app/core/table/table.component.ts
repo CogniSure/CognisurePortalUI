@@ -15,6 +15,8 @@ import { GlobalService } from 'src/app/services/common/global.service';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { alertsData } from 'src/app/model/sidenav/nav-data';
 import { navbarData } from '../../model/sidenav/nav-data';
+import {Alert1ToolTip} from '../../model/constants/tooltipDetails';
+import { DataComponent } from 'src/app/model/samples/data';
 
 interface NavItem {
   title: string;
@@ -52,6 +54,9 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef) {
     this.loading=true
   }
+
+  tooltip = Alert1ToolTip;
+
   @HostListener('unloaded')
   ngOnDestroy(): void {
     
@@ -70,6 +75,9 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.gridView = this.data;
     this.loading=false;
   }
+
+  alertsInfo = DataComponent.Tooltip;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes!=null && changes['data']!=null ) {
       this.data = changes['data'].currentValue;

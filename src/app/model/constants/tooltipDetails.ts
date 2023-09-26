@@ -8,3 +8,23 @@ export const PasswordToolTip: Record<string, string[]> = {
     'Length of password should be between 8 and 24 Characters',
   ],
 };
+
+
+export const Alert1ToolTip: Record<string, string[]> = {
+  Messages: [
+    'Extraction',
+  ],
+};
+
+export const Alert2ToolTip: Record<string, string[]> = {
+  Messages: [
+    'C',
+  ],
+};
+
+
+export const Alert3ToolTip: Record<string, string[]> = {
+  Messages: [
+    'R',
+  ],
+};
