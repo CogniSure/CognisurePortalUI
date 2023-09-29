@@ -15,11 +15,11 @@
   border-radius: 50%;
 }
 
-.k-tilelayout {
-  gap: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-}
+// .k-tilelayout {
+//   gap: 0 !important;
+//   padding: 0 !important;
+//   border: 0 !important;
+// }
 
 ::ng-deep .kendo-tabstrip {
   background-color: #009cc1 !important;
@@ -139,7 +139,7 @@
 
   border-radius: 20px;
 
-  margin-left: 0.3%;
+  // margin-left: 0.3%;
 
   margin-top: 0.3%;
 
@@ -182,6 +182,13 @@
 
 // ::ng-deep .cdk-overlay-container {
 //   pointer-events: none;
-//   top: 3%;
-//   left: 7.5%;
+//   top: 0%;
+//   left: 0%;
 // }
+
+::ng-deep .cdk-overlay-container{
+top: 0%;
+left: 0%;
+height: 100%;
+width: 100%;
+}
