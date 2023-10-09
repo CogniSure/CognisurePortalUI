@@ -50,13 +50,13 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
     var i = 1;
     this.componentOrder.forEach((entry: any) => {
       this.custComponents.push({
-        ColWidth: BoxDetails.get(entry.BoxType)!,
+        //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
         WidgetType : entry.WidgetType,
         Header: entry.Header,
-        BoxClass: entry.BoxType,
-        Fullscreen : entry.Fullscreen,
+        //BoxClass: entry.BoxType,
+        //Fullscreen : entry.Fullscreen,
         ColumnId :  entry.ColumnId,
         ColumnSpan :  entry.ColumnSpan,
         RowSpan :  entry.RowSpan,

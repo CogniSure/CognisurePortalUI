@@ -1,11 +1,11 @@
 export interface WidgetComponentInfo {
     Widget:any,
-    ColWidth:string,
+    //ColWidth:string,
     WidgetName:string,
     WidgetType:string,
     Header:string,
-    BoxClass:string,
-    Fullscreen:boolean
+    //BoxClass:string,
+    //Fullscreen:boolean
     ColumnId : number,
     ColumnSpan : number,
     RowSpan : number,

@@ -63,13 +63,13 @@ export class SummaryComponent implements OnInit,OnDestroy {
     var i = 1;
     this.summaryComponentOrder.forEach((entry: any) => {
       this.summaryComponents.push({
-        ColWidth: BoxDetails.get(entry.BoxType)!,
+        //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
         WidgetType: entry.WidgetType,
         Header: entry.Header,
-        BoxClass: entry.BoxType,
-        Fullscreen: entry.Fullscreen,
+        //BoxClass: entry.BoxType,
+        //Fullscreen: entry.Fullscreen,
         ColumnId: entry.ColumnId,
         ColumnSpan: entry.ColumnSpan,
         RowSpan: entry.RowSpan,
@@ -85,13 +85,13 @@ export class SummaryComponent implements OnInit,OnDestroy {
     var i = 1;
     this.propertyComponentOrder.forEach((entry: any) => {
       this.propertyComponents.push({
-        ColWidth: BoxDetails.get(entry.BoxType)!,
+        //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
         WidgetType: entry.WidgetType,
         Header: entry.Header,
-        BoxClass: entry.BoxType,
-        Fullscreen: entry.Fullscreen,
+        //BoxClass: entry.BoxType,
+        //Fullscreen: entry.Fullscreen,
         ColumnId: entry.ColumnId,
         ColumnSpan: entry.ColumnSpan,
         RowSpan: entry.RowSpan,

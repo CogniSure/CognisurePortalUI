@@ -10,18 +10,18 @@
   >
     <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="item.ColumnSpan" [rowSpan]="item.RowSpan" style="border: 2px !important; border-radius:10 !important; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-      <kendo-tilelayout-item-header style="height: 3em;" [style.background-color]="item.HeaderColor">
-        <h5 class="header-text" style="font-size: 16px" >
-          <div style="text-align: center;border: 2">
-            <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%;">
+      <kendo-tilelayout-item-header style="height: 3em; padding: 0 0 0 2%;" [style.background-color]="item.HeaderColor">
+       
+          <div style="text-align: center;border: 2;font-size: 16px; height:100%">
+            <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%; display: flex; height:100%">
               
               <div style="width: 90%; text-align:left; padding: 0; color: #005DAA !important;font-weight: 500;" [style.color]="item.FontColor">
               <!-- <b class="textprimary-base bold">{{ item.Header }}</b> -->
               {{ item.Header }}
             </div>
             
-            <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
-              <button *ngIf="item.Fullscreen"
+            <!-- <div style="width: 10%; text-align:right; margin-top:0.5%; margin-right: 2%;">
+              <button 
               mat-icon-button
               class="max-button"
               (click)="
@@ -35,10 +35,9 @@
                 >fullscreen_exit</mat-icon
               >
             </button>
-            </div>
+            </div> -->
             </div>
           </div>
-        </h5>
       </kendo-tilelayout-item-header>
       <kendo-tilelayout-item-body style="padding: 0">
         <ng-template 
