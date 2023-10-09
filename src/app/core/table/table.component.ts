@@ -37,7 +37,8 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   navData = alertsData;
-  
+  cellExpansionState: boolean[] = [];
+
   public gridData: any[];
   public gridView!: any[];
 
@@ -154,6 +155,11 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.globalService.setCurrentSubmissionId(param)
   }
 
+
+  toggleCellExpansion(dataItem: any) {
+    const rowIndex = this.gridData.indexOf(dataItem);
+    this.cellExpansionState[rowIndex] = !this.cellExpansionState[rowIndex];
+  }
 
   
 }

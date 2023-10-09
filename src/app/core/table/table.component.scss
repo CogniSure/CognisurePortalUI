@@ -162,3 +162,18 @@ fill:red;
   border: 2px;
   height: 2.5rem;
 }
+
+
+.fixed-height-cell {
+  max-height: 50px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.expanded-cell {
+  max-height: none; 
+  white-space: normal; 
+  cursor: initial; 
+}

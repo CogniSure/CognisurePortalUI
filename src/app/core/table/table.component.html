@@ -55,7 +55,21 @@
         let-rowIndex="rowIndex"
         let-value="value"
       >
-        {{ dataItem[column.field] }}
+
+      <!-- <div
+      [class.fixed-height-cell]="!dataItem.isExpanded"
+      [class.expanded-cell]="dataItem.isExpanded"
+      (click)="toggleCellExpansion(dataItem)"
+    >
+      {{ dataItem[column.field] }}
+    </div> -->
+    <div
+      [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
+      [class.expanded-cell]="cellExpansionState[rowIndex]"
+      (click)="toggleCellExpansion(dataItem)"
+    >
+      {{ dataItem[column.field] }}
+    </div>
       </ng-template>
     </kendo-grid-column>
     <kendo-grid-column
