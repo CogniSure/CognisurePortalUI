@@ -206,6 +206,9 @@ $secondary-lightblue-color: #00a6cf;
     }
   }
 }
+::ng-deep kendo-textbox .k-input-inner {
+  color: $primary-black-color;
+}
 ::ng-deep .mat-select-arrow {
   color: #758591;
 }
