@@ -28,8 +28,10 @@ export class AccountService {
   };
   
   constructor(private http: HttpService, private globalService:GlobalService ,private configService : AppConfigService) {
+    
   }
   env = this.configService.settings;
+  
   // getAcountDetails(apiUrl:string , userId:number){
   //   return this.http.getData(apiUrl+"accounts",userId).pipe(
   //     map((result)=>{
@@ -251,24 +253,6 @@ export class AccountService {
     
   }
 
-
-  login({ email, password }: any): Observable<any> {
-    var apiUrl = this.env.baseUrl + "api/login?"
-    var result;
-    let hParams = new HttpParams();
-    hParams = hParams.set('username', email);
-    hParams = hParams.set('password', password);
-    return this.http
-    .postData(
-      //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
-      apiUrl,
-      hParams,
-      ""
-    )
-    
-  }
-  
-
   forgotPassword({ email}: any): Observable<any>{
     var result;
 
@@ -294,6 +278,7 @@ export class AccountService {
 
 
   getUserProfile(email:string){
+    this.env = this.configService.settings
     var apiUrl = this.env.baseUrl
     return this.http.getData(apiUrl+"api/userdetails/"+email,"").pipe(
         map((result:any)=>{

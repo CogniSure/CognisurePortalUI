@@ -28,7 +28,6 @@ export class InputComponent<T> extends ControlValueAccessDirective<T> implements
   @Input() TooltipContent : Record<string,string[]> = {};
 
   getControl(){
-    console.log(this.control)
     return this.control;
 
   }

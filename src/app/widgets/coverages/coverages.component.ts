@@ -66,8 +66,6 @@ export class CoveragesComponent implements OnInit {
             
             if ((propertyType1 != null && propertyType1 != '')) {
               let propertyType = propertyType1.toLowerCase();
-              console.log(propertyType);
-              console.log(propertyValue)
               if (propertyType.indexOf('building') !== -1) {
                 this.Building = this.Building + propertyValue;
               } else if (propertyType.indexOf('content') !== -1) {

@@ -28,7 +28,7 @@ export class LoginComponent {
   apiUrl = '';
   showSpinner1 = false;
   constructor(
-    private auth: AuthService,
+    private authService: AuthService,
     private urlService: UrlService,
     private router: Router,
     private globalService: GlobalService,
@@ -63,7 +63,7 @@ export class LoginComponent {
 
   validationErrors: string[] = [];
   ngOnInit(): void {
-    this.auth.logout();
+    this.authService.logout();
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -79,9 +79,9 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       event.preventDefault();
       this.email = this.loginForm.value.email!;
-      this.accService.login(this.loginForm.value).subscribe((res: any) => {
+      this.authService.login(this.loginForm.value).subscribe((res: any) => {
         if (res.success) {
-          this.auth.setToken(res);
+          this.authService.setToken(res);
           this.accService
             .getUserProfile(this.email)
             .subscribe((user: any) => {});

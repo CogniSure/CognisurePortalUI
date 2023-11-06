@@ -52,8 +52,6 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
     //   value:JSON.stringify(dataParams[0])
     // }//JSON.stringify(dataParams)
 
-    // console.log("Bod Data")
-    // console.log(formData)
     const res =  this.http.post<any>(apiUrl,dataParams,options
       ).pipe(
         map((result)=>{

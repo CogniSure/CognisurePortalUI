@@ -19,6 +19,7 @@ import { AccountInformationDataComponent } from './helper/account-information-da
 import { CoverageRequestedComponent } from './helper/coverage-requested/coverage-requested.component';
 import { PriorCarrierInformationComponent } from './helper/prior-carrier-information/prior-carrier-information.component';
 import { FormsModule } from '@angular/forms';
+import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
 
 
 
@@ -45,7 +46,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     KendoModule,
     MaterialModule,
-    InboxRoutingModule
+    InboxRoutingModule,
+    SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
   ]
 })
 export class InboxModule { }

@@ -1,0 +1,81 @@
+ 
+  .sea-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2050;
+    overflow: auto;
+  }
+  
+  .sea-modal .sea-modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    //border: 1px solid #0003;
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 0;
+    position: relative;
+    width: auto;
+    margin: 12%;
+  }
+  @media (min-width: 576px) {
+    .sea-modal .sea-modal-content {
+      max-width: 500px;
+      margin: 12% auto;
+    }
+  }
+  
+  .sea-modal .sea-modal-content .sea-modal-header {
+    background-color: #005daa !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: white;
+  }
+  .sea-modal .sea-modal-content .sea-modal-body {
+    display: flex;
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1.5rem 3rem;
+    font-size: 14px;
+    text-align: center;
+    color:#000;
+  }
+  
+  .sea-modal .sea-modal-content .sea-modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    //border-top: 1px solid #dee2e6;
+  }
+  .sea-modal .sea-modal-content .sea-modal-footer > * {
+    margin: 0.25rem;
+  }
+  .sea-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.75;
+    z-index: 2000;
+  }
+  
+  body.sea-modal-open {
+    overflow: hidden;
+  }
+  

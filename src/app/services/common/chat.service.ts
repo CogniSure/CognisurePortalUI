@@ -13,14 +13,11 @@ export class ChatService {
   env = this.configService.settings;
   constructor(private httpService: HttpService, private configService:AppConfigService) {}
   public submit(question: string,messageGuid:string): void {
-    console.log("Chat message : " + question +" : "+ messageGuid )
     const length = question.length;
     this.AskCopilot(messageGuid,question).subscribe((res:any)=>{
-      console.log("Chat Answer")
       
       var resultVal = JSON.parse(res.value)
       var result = resultVal[1]
-      console.log(result);
       //const answer = `"${question}" contains exactly ${length} symbols.`;
       
       const answer = result;

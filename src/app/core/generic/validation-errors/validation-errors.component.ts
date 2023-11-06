@@ -26,7 +26,6 @@ ngOnChanges(changes: SimpleChanges): void {
   // }
 }
 // get errorMessage() {
-//   console.log(this.errors)
 //   this.errorMessages = {}
 //   for (const validatorName in this.errors) {
 //               return ValidatorErrorMessage(validatorName, this.control.errors[validatorName]);

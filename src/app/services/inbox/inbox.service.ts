@@ -46,7 +46,7 @@ export class InboxService {
   }
 
   getSubmissionData(submissionId: string): Observable<any> {
-    var apiUrl = this.env.baseUrl + 'api/Submission';
+    var apiUrl = this.configService.settings.baseUrl + 'api/Submission';
     var result;
     let hParams = new HttpParams();
     hParams = hParams.set('submissionid', submissionId);
@@ -54,7 +54,7 @@ export class InboxService {
   }
   getAllSubmissionData(): Observable<any> {
     var submissions: Submission[] = [];
-    var apiUrl = this.env.baseUrl + 'api/AllSubmission';
+    var apiUrl = this.configService.settings.baseUrl + 'api/AllSubmission';
     var result;
     let hParams = new HttpParams();
     return this.httpService.postData(apiUrl, '', '').pipe(

@@ -1,0 +1,66 @@
+<div
+  class="sea-modal"
+  id="session-expiration-alert"
+  role="dialog"
+  tabindex="-1"
+  aria-modal="true"
+  aria-label="session-expiration-alert"
+  [hidden]="!showModal"
+>
+  <div role="document" class="sea-modal-content" id="expiring" *ngIf="!expired">
+    <div class="sea-modal-header">Session is about to expire</div>
+    <div class="sea-modal-body">
+      <p>
+        <img
+      style="
+        background: transparent;
+        height: 6vh;
+        width: auto;
+        padding-left: 1%;
+      "
+      src="assets/images/timingout.png"
+    />
+      </p>
+      <p style="padding-top: 3%;">
+        Your session will expire in
+        {{ sessionTimer.remainMinutes$ | async }} minutes.
+      </p>
+    </div>
+    <div class="sea-modal-footer">
+      <!-- <button type="button" class="btn btn-secondary" (click)="logout()">
+        Logout
+      </button> -->
+      <button type="button" class="btn btn-primary largeButton" (click)="continue()">
+        Continue Working
+      </button>
+    </div>
+  </div>
+  <div role="document" class="sea-modal-content" id="expired" *ngIf="expired">
+    <div class="sea-modal-header">Session expired</div>
+    <div class="sea-modal-body">
+      <p>
+          <img
+        style="
+          background: transparent;
+          height: 6vh;
+          width: auto;
+          padding-left: 1%;
+        "
+        src="assets/images/timedout.png"
+      />
+      </p>
+      <p style="padding-top: 1%;">
+        Your session has expired since you were inactive for more than 20 mins. Please sign in to continue.
+      </p>
+    </div>
+    <div class="sea-modal-footer">
+      <!-- <button type="button" class="btn btn-secondary" (click)="logout()">
+        Logout
+      </button> -->
+      <button type="button" class="btn btn-primary largeButton" (click)="reload()">
+        Sign In
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sea-modal-background" [hidden]="!showModal"></div>

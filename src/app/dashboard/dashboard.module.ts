@@ -12,6 +12,7 @@ import { InfoPanelComponent } from './info-panel/info-panel.component';
 import { NewsComponent } from './news/news.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { KendoModule } from '../kendo/kendo.module';
+import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
 
 
 
@@ -34,7 +35,8 @@ import { KendoModule } from '../kendo/kendo.module';
     WidgetsModule,
     FormsModule,
     ReactiveFormsModule,
-    KendoModule
+    KendoModule,
+    SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
   ]
 })
 export class DashboardModule { }

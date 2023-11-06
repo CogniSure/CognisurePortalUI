@@ -42,6 +42,7 @@ import { ChatModule } from '@progress/kendo-angular-conversational-ui';
 import { ChatService } from './services/common/chat.service';
 import { MatCardModule } from '@angular/material/card';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
+import { SessionExpirationAlert } from './session-expiration-alert/session-expiration-alert.module';
 
 
 
@@ -69,6 +70,7 @@ import { TooltipsModule } from '@progress/kendo-angular-tooltip';
     ChatModule,
     MatCardModule,
     TooltipsModule,
+    SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

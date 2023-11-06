@@ -11,6 +11,7 @@ export class AppSessionInterruptService extends SessionInterruptService {
     super();
   }
   override continueSession() {
+    console.log("Continue session")
     this.sessionTimer.setSession();
   }
   override stopSession() {

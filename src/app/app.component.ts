@@ -5,7 +5,7 @@ import { GlobalService } from './services/common/global.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [GlobalService],
+  providers: [GlobalService,AppConfigService],
 })
 export class AppComponent {
   title = 'Submission-Portal';

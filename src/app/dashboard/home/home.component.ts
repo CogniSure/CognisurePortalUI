@@ -18,7 +18,6 @@ export class HomeComponent {
   private startHttpRequest = () => {
     this.http.get('https://localhost:7026/api/Notification')
       .subscribe(res => {
-        console.log(res);
       })
   }
 }

@@ -52,7 +52,6 @@ export class TopbarComponent {
     const dialogRef = this.dialog.open(CopilotComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }
