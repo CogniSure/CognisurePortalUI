@@ -34,7 +34,7 @@
   </kendo-tilelayout>
 </div>
 <div style = "background: #EEF2F7; height: 87%;">
-  <div style="float: left; height: 90%; margin-top: 1%; margin-left: 1%; background: #EEF2F7;">
+  <div style="float: left; height: 100%; background: #EEF2F7;">
     <kendo-tilelayout
       [columns]="1"
       [rowHeight]="'110%'"
@@ -49,6 +49,7 @@
         [row] = "1"
         [rowSpan]="2"
         class="home-menu"
+        [style]="'border-radius: unset;'"
       >
         <kendo-tilelayout-item-body>
           <app-sidemenubar></app-sidemenubar>
