@@ -43,6 +43,7 @@ import { ChatService } from './services/common/chat.service';
 import { MatCardModule } from '@angular/material/card';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
 import { SessionExpirationAlert } from './session-expiration-alert/session-expiration-alert.module';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 
 
@@ -82,6 +83,11 @@ import { SessionExpirationAlert } from './session-expiration-alert/session-expir
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
     {

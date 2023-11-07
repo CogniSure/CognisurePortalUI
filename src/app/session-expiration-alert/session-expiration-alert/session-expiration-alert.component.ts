@@ -23,33 +23,31 @@ export class SessionExpirationAlertComponent
   implements OnInit, OnChanges, OnDestroy
 {
   startTimer? = false;
-  alertAt? =2;
+  alertAt? = 2;
 
   showModal = false;
   expired = false;
   private sessionTimerSubscription!: Subscription;
   private sessionStartSubscription!: Subscription;
-  private sessionTime!: Subscription;
 
   constructor(
     private el: ElementRef,
     private sessionInterrupter: SessionInterruptService,
     public sessionTimer: AuthService
   ) {
-    this.alertAt = this.sessionTimer.expiresAt
+    this.alertAt = this.sessionTimer.expiresAt;
   }
 
   ngOnInit() {
     this.sessionStartSubscription = this.sessionTimer.sessionstart$.subscribe(
       (t) => {
-       
         this.startTimer = t;
         if (!this.sessionTimerSubscription && this.startTimer) {
           this.trackSessionTime();
         }
-      })
+      }
+    );
 
-    
     document.body.appendChild(this.el.nativeElement);
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -60,14 +58,11 @@ export class SessionExpirationAlertComponent
       }
     }
   }
-  sessionTimeOut = "";
+  sessionTimeOut = '';
   private trackSessionTime() {
     this.expired = false;
-    console.log("Timer Start")
     this.sessionTimerSubscription = this.sessionTimer.remainSeconds$.subscribe(
       (t) => {
-        // console.log("Timer Data")
-        // console.log(t)
         if (t === this.alertAt) {
           this.open();
         }
@@ -80,9 +75,7 @@ export class SessionExpirationAlertComponent
     );
   }
   continue() {
-    this.sessionTimer.refreshToken().subscribe(res=>{
-      //console.log(res)
-      //this.sessionTimer.setToken(res.value)
+    this.sessionTimer.refreshToken().subscribe((res) => {
       if (res.success) {
         this.sessionTimer.setToken(res);
       }
@@ -92,7 +85,7 @@ export class SessionExpirationAlertComponent
     this.close();
   }
   logout() {
-    this.sessionTimer.logout();
+    this.sessionTimer.stopTimer();
     this.close();
     this.sessionInterrupter.stopSession();
   }
@@ -108,9 +101,12 @@ export class SessionExpirationAlertComponent
   }
 
   cleanUp() {
-    //this.sessionTimer.logout();
+    this.logout();
     if (this.sessionTimerSubscription) {
       this.sessionTimerSubscription.unsubscribe();
+    }
+    if (this.sessionStartSubscription) {
+      this.sessionStartSubscription.unsubscribe();
     }
   }
   reload() {

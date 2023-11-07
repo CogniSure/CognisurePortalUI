@@ -13,10 +13,7 @@ import {
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import * as moment from 'moment';
-import {
-  ConfigToken,
-  SessionExpirationConfig,
-} from 'src/app/model/common/session-expiration-config';
+
 import { AppConfigService } from 'src/app/app-config-service';
 import { HttpService } from '../common/http.service';
 @Injectable({
@@ -24,17 +21,19 @@ import { HttpService } from '../common/http.service';
 })
 export class AuthService {
   constructor(
-    //@Inject(ConfigToken) readonly config: SessionExpirationConfig,
-    private configService : AppConfigService, private http:HttpService
+    private configService: AppConfigService,
+    private http: HttpService
   ) {
     this._timeoutSeconds = this._sessionTime * 60;
-    this._remainSeconds.next(this._timeoutSeconds)
-    console.log("Timer Values set")
+    this._remainSeconds.next(this._timeoutSeconds);
+    this.remainSeconds$ = this._remainSeconds.asObservable();
+    this._sessionstart.next(true);
+    this.setSession();
   }
   private readonly _timeoutSeconds: number;
   private _count: number = 0;
   private _sessionTime: number = 20;
-  expiresAt: number = 19*60;
+  expiresAt: number = 19 * 60;
   private timerSubscription!: Subscription;
 
   private timerStartSubscription!: Subscription;
@@ -58,79 +57,72 @@ export class AuthService {
     }),
   };
   public login({ email, password }: any): Observable<any> {
-    this.env = this.configService.settings
-    var apiUrl = this.env.baseUrl + "api/login?"
-    var result;
+    this.env = this.configService.settings;
+    var apiUrl = this.env.baseUrl + 'api/login?';
     let hParams = new HttpParams();
     hParams = hParams.set('username', email);
     hParams = hParams.set('password', password);
-    return this.http
-    .postData(
+    return this.http.postData(
       //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
       apiUrl,
       hParams,
-      ""
-    )
-    
+      ''
+    );
   }
   public refreshToken(): Observable<any> {
-    this.env = this.configService.settings
-    //var apiUrl = this.env.baseUrl + "https://localhost:7026/api/refreshtoken"
-    var apiUrl = "https://localhost:7026/api/refreshtoken"
-    let tokenObjStr = sessionStorage.getItem('session_token_obj')
-      
+    this.env = this.configService.settings;
+    var apiUrl = this.env.baseUrl + 'api/refreshtoken';
+    //var apiUrl = "https://localhost:7026/api/refreshtoken"
+    let tokenObjStr = sessionStorage.getItem('session_token_obj');
+
     const tokenObj = JSON.parse(tokenObjStr!);
-    console.log("Token Object: " + JSON.stringify(tokenObj) )
-    console.log(tokenObj)
+    console.log('Token Object: ' + JSON.stringify(tokenObj));
+    console.log(tokenObj);
     var result;
     let hParams = new HttpParams();
-    return this.http
-    .postData(
+    return this.http.postData(
       //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
       apiUrl,
       hParams,
       tokenObj
-    )
+    );
     //return of(null)
-    
   }
   resetSession() {}
   public setToken(authResult: any) {
-    console.log("Token Object: " + JSON.stringify(authResult.value.accessToken) )
+    this.logout();
+    this.resetTimer();
     var twentyMinutesLater = new Date();
-    sessionStorage.setItem('session_token_obj', JSON.stringify(authResult.value));
+    sessionStorage.setItem(
+      'session_token_obj',
+      JSON.stringify(authResult.value)
+    );
     twentyMinutesLater.setMinutes(twentyMinutesLater.getMinutes() + 20);
     sessionStorage.setItem('session_token', authResult.value.accessToken);
     sessionStorage.setItem('refresh_token', authResult.value.refreshToken);
     sessionStorage.setItem('expires_at', JSON.stringify(twentyMinutesLater));
-    
-     this._sessionstart.next(true);
-     this.setSession();
-  }
-  
-  public setSession() {
-    
-    //console.log("Set session")
-    const expiresAt = moment().add(
-      this._sessionTime,
-      'minutes'
-    );
 
-     sessionStorage.setItem('isLoggedIn', 'true');
-     this._sessionstart.next (true)
-     sessionStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     this._sessionstart.next(true);
-    this.startTimer1();
+    this.setSession();
+  }
+
+  public setSession() {
+    const expiresAt = moment().add(this._sessionTime, 'minutes');
+
+    sessionStorage.setItem('isLoggedIn', 'true');
+    this._sessionstart.next(true);
+    sessionStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    this._sessionstart.next(true);
+    this.startTimer();
   }
   logout() {
-    
     this._sessionstart.next(false);
     sessionStorage.removeItem('Accounts');
     sessionStorage.removeItem('SelectedAccounts');
     sessionStorage.removeItem('SelectedDates');
     sessionStorage.removeItem('UserDetail');
     sessionStorage.removeItem('id_token');
-    
+
     sessionStorage.removeItem('session_token');
     sessionStorage.removeItem('expires_at1');
     sessionStorage.removeItem('UserAdminDetail');
@@ -140,10 +132,9 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    console.log("Is Logged In")
-    if(moment().isBefore(this.getExpiration())){
-      this.setSession()
-      return moment().isBefore(this.getExpiration())
+    if (moment().isBefore(this.getExpiration())) {
+      this.setSession();
+      return moment().isBefore(this.getExpiration());
     }
     return moment().isBefore(this.getExpiration());
   }
@@ -157,20 +148,17 @@ export class AuthService {
     const expiresAt = JSON.parse(expiration!);
     return moment(expiresAt);
   }
-  startTimer1() {
-    //this.stopTimer1();
-    console.log("Timer Started")
+  startTimer() {
+    this.stopTimer();
     this._count = this._timeoutSeconds;
     this.timerSubscription = this.timer.subscribe((n) => {
       if (this._sessionstart) {
         if (this._count > 0) {
           this._count--;
           this._remainSeconds.next(this._count);
-          // this._remainSeconds.subscribe((sub)=>{
-            
-          //   console.log("Remaining Seconds: "+sub)
-          // })
-          this._remainMinutes.next(Math.floor(this._count / 60) +":"+ this._count % 60)
+          this._remainMinutes.next(
+            Math.floor(this._count / 60) + ':' + (this._count % 60)
+          );
         }
       } else {
         this._count = 0;
@@ -178,15 +166,14 @@ export class AuthService {
     });
   }
 
-  stopTimer1() {
-    this._sessionstart.next(false);
+  stopTimer() {
     if (this.timerSubscription) {
       this.timerSubscription.unsubscribe();
     }
   }
 
   resetTimer() {
-    this.stopTimer1()
-    this.startTimer1();
+    this.stopTimer();
+    this.startTimer();
   }
 }

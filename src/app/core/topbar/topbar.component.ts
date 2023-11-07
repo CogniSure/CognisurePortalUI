@@ -4,6 +4,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { GenericService } from 'src/app/services/common/generic.service';
 import { CopilotComponent } from '../copilot/copilot.component';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-topbar',
@@ -18,7 +19,7 @@ export class TopbarComponent {
   
 
 
-  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog, private cdRef:ChangeDetectorRef) {}
+  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog, private cdRef:ChangeDetectorRef,private auth : AuthService) {}
   
   ngOnInit(): void {
     this.fetchDropdownOptions();
@@ -37,7 +38,7 @@ export class TopbarComponent {
   }
 
   Logout() {
-    //this.auth.logout();
+    this.auth.logout();
     this.router.navigate(['/login'], { queryParamsHandling: 'preserve' });
   }
   openMyMenu(menuTrigger: MatMenuTrigger) {
