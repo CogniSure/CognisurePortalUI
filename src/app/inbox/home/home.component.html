@@ -1,5 +1,5 @@
 <!-- <p>Home</p> -->
-<div style="height: 9%;background-color: #EEF2F7 !important;">
+<!-- <div style="height: 9%;background-color: #EEF2F7 !important;">
   <kendo-tilelayout
     [columns]="1"
     [rowHeight]="'100%'"
@@ -13,14 +13,28 @@
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
   </kendo-tilelayout>
-</div>
-<div style="height: 4%; position: relative;background: linear-gradient(to bottom, #0084a4 20%, #009cc1 50%, #009cc1 80%);">
+</div> -->
+<div style="height: 10%; position: relative;background: linear-gradient(to bottom, #0084a4 20%, #009cc1 50%, #009cc1 80%);">
+  <!-- <kendo-tilelayout
+    [columns]="1"
+    [rowHeight]="'100%'"
+    [resizable]="false"
+    [reorderable]="false"
+    class="home-header"
+  >
+    <kendo-tilelayout-item [col]="1" [colSpan]="1" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item-body style="padding: 0;">
+        <app-topbar></app-topbar>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+  </kendo-tilelayout> -->
   <kendo-tilelayout
     [columns]="1"
     [rowHeight]="'100%'"
     [resizable]="false"
     [reorderable]="false"
-    class="home-separator"
+    class="home-header"
+    [style]="'height:100%'"
   >
     <kendo-tilelayout-item
       [col]="1"
@@ -29,11 +43,13 @@
       [rowSpan]="1"
       class="home-separator-body"
     >
-      <kendo-tilelayout-item-body> </kendo-tilelayout-item-body>
+      <kendo-tilelayout-item-body style="padding: 0;"> 
+        <app-topbar></app-topbar>
+      </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
   </kendo-tilelayout>
 </div>
-<div style = "background: #EEF2F7; height: 87%;">
+<div style = "background: #EEF2F7; height: 90%;">
   <div style="float: left; height: 100%; background: #EEF2F7;">
     <kendo-tilelayout
       [columns]="1"
