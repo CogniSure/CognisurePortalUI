@@ -1,0 +1,80 @@
+.create-rule-container {
+  background: white;
+  height: 100%;
+  ::ng-deep .k-listview-item {
+    padding-top: 5px;
+  }
+  .rule-name {
+    display: flex;
+    padding: 1% 2%;
+  }
+  .add-condition {
+    background: white;
+    height: 15%;
+    padding: 0 2%;
+    .custom-kendo-tile-item {
+      border: 2px !important;
+      border-radius: 10 !important;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+        0 4px 12px 0 rgba(0, 0, 0, 0.1);
+      height: fit-content;
+      //width: fit-content;
+      background: transparent;
+    }
+    .custom-kendo-tile {
+      margin-top: 0%;
+      padding-top: 5%;
+      height: 84%;
+    }
+    .label-font {
+      font-weight: bold;
+    }
+  }
+  .rule-details {
+    padding: 0 2%;
+    .customHeader {
+      justify-content: center;
+      display: flex;
+      font-size: large;
+      font-weight: bold;
+      border: 2px !important;
+      border-radius: 10 !important;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+        0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    }
+    .customBody {
+      justify-content: center;
+      display: flex;
+    }
+  }
+  .additionalRules {
+    padding: 1% 2%;
+    .additionalRuleBtn {
+      padding-top: 1%;
+    }
+  }
+  .saveRule {
+    padding: 0 2%;
+  }
+  .result {
+    padding: 0 2%;
+    .Green {
+      background: green;
+      width: 20em;
+      height: 20px;
+      border-radius: 10px;
+    }
+    .Amber {
+      background: yellow;
+      width: 20em;
+      height: 20px;
+      border-radius: 10px;
+    }
+    .Red {
+      background: red;
+      width: 20em;
+      height: 20px;
+      border-radius: 10px;
+    }
+  }
+}

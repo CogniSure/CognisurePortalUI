@@ -10,6 +10,11 @@ export const navbarData = [
         label: 'Inbox'
     },
     {
+        routeLink: '/admin',
+        icon: 'fal fa-gears',
+        label: 'Admin'
+    },
+    {
         routeLink: '/volumetrics',
         icon: 'fal fa-chart-line',
         label: 'Volumetrics'

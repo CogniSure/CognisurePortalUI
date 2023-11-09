@@ -1,0 +1,248 @@
+<div class="create-rule-container">
+  <div class="rule-name">
+    <div
+      style="
+        text-align: center;
+        padding-top: 6px;
+        font-size: large;
+        font-weight: bold;
+      "
+    >
+      Rule Name :
+    </div>
+    <div style="padding-left: 1%">
+      <kendo-textbox placeholder="Enter Name"></kendo-textbox>
+    </div>
+  </div>
+  <div class="add-condition">
+    <kendo-tilelayout
+      [columns]="5"
+      [resizable]="true"
+      [reorderable]="true"
+      class="custom-kendo-tile"
+      [rowHeight]="255"
+    >
+      <kendo-tilelayout-item
+        [col]="1"
+        [colSpan]="1"
+        [rowSpan]="1"
+        class="custom-kendo-tile-item"
+      >
+        <kendo-tilelayout-item-body style="padding: 0">
+          <kendo-label text="Common JSON Keys" class="label-font">
+            <br />
+            <kendo-dropdowntree
+              kendoDropDownTreeExpandable
+              [kendoDropDownTreeHierarchyBinding]="treeItems"
+              textField="text"
+              valueField="id"
+              childrenField="items"
+              [value]="complexValue"
+              [popupSettings]="{
+                width: 'fit-content'
+              }"
+              [expandedKeys]="['0']"
+            ></kendo-dropdowntree>
+          </kendo-label>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+      <kendo-tilelayout-item
+        [col]="2"
+        [colSpan]="1"
+        [rowSpan]="1"
+        class="custom-kendo-tile-item"
+      >
+        <kendo-tilelayout-item-body style="padding: 0">
+          <kendo-label text="Operand" class="label-font">
+            <br />
+            <kendo-dropdownlist [data]="Operands" value="Equals">
+            </kendo-dropdownlist>
+          </kendo-label>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+      <kendo-tilelayout-item
+        [col]="3"
+        [colSpan]="1"
+        [rowSpan]="1"
+        class="custom-kendo-tile-item"
+      >
+        <kendo-tilelayout-item-body style="padding: 0">
+          <kendo-label text="Comparison Type" class="label-font">
+            <br />
+            <kendo-dropdownlist [data]="RHSType" value="Free Text">
+            </kendo-dropdownlist>
+          </kendo-label>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+      <kendo-tilelayout-item
+        [col]="4"
+        [colSpan]="1"
+        [rowSpan]="1"
+        class="custom-kendo-tile-item"
+      >
+        <kendo-tilelayout-item-body style="padding: 0">
+          <kendo-formfield showHints="always">
+            <kendo-label text="Value" class="label-font">
+              <kendo-textbox placeholder="Enter Value"></kendo-textbox>
+            </kendo-label>
+          </kendo-formfield>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+      <kendo-tilelayout-item
+        [col]="5"
+        [colSpan]="1"
+        [rowSpan]="1"
+        class="custom-kendo-tile-item"
+        style="width: 30%;margin-top: 6%;"
+      >
+        <kendo-tilelayout-item-body style="padding:0;">
+          <kendo-button style="width:100%">Add</kendo-button>
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+    </kendo-tilelayout>
+  </div>
+  <div class="rule-details">
+    <kendo-listview #listview [data]="RuleDetails">
+      <ng-template kendoListViewHeaderTemplate>
+        <!-- <button class="k-add-button" kendoListViewAddCommand>
+          Add new item
+        </button> -->
+        <div
+          class="row"
+          style="
+            width: 100%;
+            display: inline-flex;
+            position: relative;
+            padding-left: 10px;
+          "
+        >
+          <div class="col-md-2 customHeader">Condition</div>
+          <div class="col-md-3 customHeader">LHS</div>
+          <div class="col-md-2 customHeader">Operands</div>
+          <div class="col-md-3 customHeader">Value</div>
+          <div class="col-md-2 customHeader">Action</div>
+        </div>
+      </ng-template>
+
+      <ng-template
+        kendoListViewItemTemplate
+        let-dataItem="dataItem"
+        let-index="index"
+      >
+        <div class="product-view k-widget">
+          <div class="row">
+            <div class="col-md-2 customBody">
+              <kendo-dropdownlist [data]="Condition" value="And" style="width: 50%;">
+              </kendo-dropdownlist>
+            </div>
+            <div class="col-md-3 customBody">
+              <dd>{{ dataItem.LHS }}</dd>
+            </div>
+            <div class="col-md-2 customBody">
+              <dd>{{ dataItem.Operands }}</dd>
+            </div>
+            <div class="col-md-3 customBody">
+              <dd>{{ dataItem.RHS }}</dd>
+            </div>
+            <div class="col-md-2 customBody">
+              <div class="edit-buttons">
+                <button kendoListViewRemoveCommand>Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </kendo-listview>
+  </div>
+  <div class="additionalRules">
+    <kendo-expansionpanel #panel title=" Add Additional Rules">
+      <div style="display: flex; justify-content: flex-start">
+        <kendo-label
+          text="Cognisure Validations"
+          class="label-font"
+          style="margin-right: 2%; margin-bottom: 1%"
+        >
+          <br />
+          <kendo-dropdownlist
+            [data]="CognisureValidations"
+            value="Select"
+            [popupSettings]="{
+              width: 'fit-content'
+            }"
+          >
+          </kendo-dropdownlist>
+        </kendo-label>
+        <kendo-label text="Condition" class="label-font">
+          <br />
+          <kendo-dropdownlist
+            [data]="ValidationConditions"
+            value="Select"
+            [popupSettings]="{
+              width: 'fit-content'
+            }"
+          >
+          </kendo-dropdownlist>
+        </kendo-label>
+        <kendo-button style="margin: 1%; width: 80px"> Add </kendo-button>
+      </div>
+
+      <kendo-listview #listview [data]="ValidationRules">
+        <ng-template kendoListViewHeaderTemplate>
+          <!-- <button class="k-add-button" kendoListViewAddCommand>
+                Add new item
+              </button> -->
+          <div
+            class="row"
+            style="
+              width: 100%;
+              display: inline-flex;
+              position: relative;
+              padding-left: 10px;
+            "
+          >
+            <div class="col-md-4 customHeader">Validation Name</div>
+            <div class="col-md-2 customHeader">Action</div>
+          </div>
+        </ng-template>
+
+        <ng-template
+          kendoListViewItemTemplate
+          let-dataItem="dataItem"
+          let-index="index"
+        >
+          <div class="product-view k-widget">
+            <div class="row">
+              <div class="col-md-4 customBody">
+                <dd>{{ dataItem }}</dd>
+              </div>
+              <div class="col-md-2 customBody">
+                <div class="edit-buttons">
+                  <button kendoListViewRemoveCommand>Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </kendo-listview>
+    </kendo-expansionpanel>
+  </div>
+  <div class="result">
+    <div style="display: flex">
+      <p style="font-size: medium; font-weight: bold">Rule Result:</p>
+      <div [class]="resultVal" style="margin-left: 1%"></div>
+    </div>
+
+    <form formGroup="resultGroup">
+      <kendo-dropdownlist
+        [data]="Result"
+        value="Green"
+        [(ngModel)]="resultVal"
+        style="width: 10%"
+      >
+      </kendo-dropdownlist>
+    </form>
+  </div>
+  <div class="saveRule" style="margin-top: 1%">
+    <kendo-button>Save Rule</kendo-button>
+  </div>
+</div>

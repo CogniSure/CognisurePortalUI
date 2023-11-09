@@ -10,6 +10,7 @@ import { TotalLossesComponent } from './widgets/total-losses/total-losses.compon
 import { DashboardwidgetsComponent } from './dashboard/dashboardwidgets/dashboardwidgets.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 import { SummaryComponent } from './inbox/summary/summary.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 
 // const routes:Routes = [
@@ -26,15 +27,21 @@ import { SummaryComponent } from './inbox/summary/summary.component';
 const routes: Routes = [
   {
     path: 'dashboard',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: 'inbox',
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./inbox/inbox.module').then((m) => m.InboxModule),
+  },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
   },
   {
     path: '',
