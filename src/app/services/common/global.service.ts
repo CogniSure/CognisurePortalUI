@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
+import { UserProfile } from '../../model/profile/userprofile';
+import { Accounts } from 'src/app/model/profile/accounts';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +10,51 @@ import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 export class GlobalService {
   password$: any;
   loginDetails$: any;
+  dashboardFilter$ = new BehaviorSubject<any>(null);
   setDashboardReload(arg0: boolean) {
     throw new Error('Method not implemented.');
   }
   animationClass$ = new BehaviorSubject<string>('');
+
+  private accounts$ = new BehaviorSubject<Accounts>({
+    AccountID: 0,
+    AccountName: '',
+    BenPortalLinks : []
+  });
+
+  private userProfile$ = new BehaviorSubject<UserProfile>({
+    UserID: 0,
+    FirstName: '',
+    MiddleName: '',
+    LastName: '',
+    Password: '',
+    PhoneNumber: '',
+    Email: '',
+    ClientID: 0,
+    ClientName: '',
+    UserTypeName: '',
+    UserTypeID: 0,
+    ClientCode: '',
+    IsAdmin: false,
+    UserImage : ""
+  }) 
+
+
   constructor() {}
   public CurrentSubmissionId$ = new BehaviorSubject<any>({});
   public CurrentSubmission$ = new BehaviorSubject<any>({});
+
+
+  setAccounts(account: Accounts[]) {
+    sessionStorage.setItem('Accounts', JSON.stringify(account));
+    this.setSelectedAccount(account[0])
+  }
+
+  setSelectedAccount(account: Accounts) {
+    sessionStorage.setItem('SelectedAccounts', JSON.stringify(account));
+    this.accounts$.next(account);
+    this.dashboardFilter$.next({...this.dashboardFilter$.value,Account : account})
+  }
 
   setCurrentSubmission(submission: any) {
     sessionStorage.setItem('CurrentSubmission', JSON.stringify(submission));
@@ -50,4 +90,17 @@ export class GlobalService {
     //this.CurrentSubmission$.next(submissionId)
     return of(submission);
   }
+
+
+  setUserProfile(profile: UserProfile) {
+    sessionStorage.setItem('UserDetail', JSON.stringify(profile));
+    this.userProfile$.next(profile);
+  }
+  getUserProfile() {
+    const profile = sessionStorage.getItem("UserDetail")
+    this.userProfile$.next(JSON.parse(profile!));
+    return this.userProfile$
+  }
+
+
 }

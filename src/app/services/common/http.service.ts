@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { catchError, map, retry, throwError } from 'rxjs';
 import { AppConfigService } from 'src/app/app-config-service';
 
@@ -7,6 +8,9 @@ import { AppConfigService } from 'src/app/app-config-service';
   providedIn: 'root'
 })
 export class HttpService {
+  get<T>(arg0: string) {
+    throw new Error("Method not implemented.");
+  }
   env = this.configService.settings;
     httpOptions = {
       headers: new HttpHeaders({
@@ -25,7 +29,7 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
     }),
     retry(1), catchError(this.errorHandl));
   }
-  getData(apiUrl:string,urlParams : any):any{
+  getData(apiUrl:string,urlParams : any): Observable<any>{
     return this.http.get<any>(apiUrl,
       {
         'params' : urlParams
@@ -36,7 +40,7 @@ pageName+"&widgetCode="+widgetCode+"&action="+action).pipe(
         }),
         retry(1), catchError(this.errorHandl))
   }
-  postData(apiUrl:string,urlParams : any,dataParams:any):any
+  postData(apiUrl:string,urlParams : any,dataParams:any): Observable<any>
   {
     var options = {
       headers: new HttpHeaders({

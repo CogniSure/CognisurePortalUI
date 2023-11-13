@@ -16,6 +16,8 @@ import { UrlService } from 'src/app/services/common/url.service';
 import { AccountService } from 'src/app/services/user/accounts.service';
 import { matchValidator } from 'src/app/core/generic/utils/match-validator';
 import { PasswordToolTip } from 'src/app/model/constants/tooltipDetails';
+import { Accounts } from '../../model/profile/accounts';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,10 +25,13 @@ import { PasswordToolTip } from 'src/app/model/constants/tooltipDetails';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  
   hide = true;
   showSpinner = false;
   apiUrl = '';
   showSpinner1 = false;
+  accounts$ = new BehaviorSubject<any>(null);
+dashboardFilter$ = new BehaviorSubject<any>(null);
   constructor(
     private authService: AuthService,
     private urlService: UrlService,
@@ -40,6 +45,18 @@ export class LoginComponent {
   enableSlideButton = false;
   email: string = '';
   tooltip = PasswordToolTip;
+
+  setAccounts(account: Accounts[]) {
+    sessionStorage.setItem('Accounts', JSON.stringify(account));
+    this.setSelectedAccount(account[0])
+  }
+ 
+  setSelectedAccount(account: Accounts) {
+    sessionStorage.setItem('SelectedAccounts', JSON.stringify(account));
+    this.accounts$.next(account);
+    this.dashboardFilter$.next({...this.dashboardFilter$.value,Account : account})
+  }
+
   userDetail: UserProfile = {
     UserID: 0,
     FirstName: '',
@@ -166,6 +183,20 @@ export class LoginComponent {
   imageClickHandler(val: any) {
     this.enableSlideButton = val;
   }
+
+  getUser({ email, password }: any) {
+    this.accService.getUserProfile(email).subscribe((res: UserProfile) => {
+      this.userDetail = res;
+      this.accService.getAcountDetails(res.UserID).subscribe((acc: any) => {
+        this.globalService.setAccounts(acc);
+        this.router.navigate(['/dashboard/home'], {
+          queryParamsHandling: 'preserve',
+        });
+      });
+      this.globalService.setUserProfile(res);
+    });
+  }
+
   // getUser({ email, password }: any) {
   //   this.accService.getUserProfile(this.apiUrl,email).subscribe((res:any) => {
   //     this.userDetail = res;
@@ -178,4 +209,6 @@ export class LoginComponent {
   //     //this.globalService.setUserProfile(res);
   //   });
   // }
+
+
 }

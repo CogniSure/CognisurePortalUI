@@ -12,6 +12,7 @@ import { FAResult } from "src/app/model/common/2faresult";
 import { Accounts } from "src/app/model/profile/accounts";
 import { HttpService } from "../common/http.service";
 import { AppConfigService } from "src/app/app-config-service";
+import { defer } from "rxjs";
 // import { News } from "src/app/model/common/news";
 // import { NewsData } from "src/app/model/common/newsData";
 
@@ -32,9 +33,27 @@ export class AccountService {
   }
   env = this.configService.settings;
   
-  // getAcountDetails(apiUrl:string , userId:number){
+  getAcountDetails(userId:number): Observable<Accounts[]>{
+    return defer(() => from(this.http.get<any>(this.env.apiUrl+"accounts/"+userId))).pipe(
+      map((result: any)=>{
+        const accounts:Accounts[] = [];
+        
+        result.value.forEach( (acc:any) => {
+          const account:Accounts = {
+            AccountID : acc.accountID,
+            AccountName : acc.accountName,
+            BenPortalLinks : acc.benePortalLinks.split(',')
+          }
+          accounts.push(account);
+        });
+        //this.globalService.setAccounts(accounts);
+        return accounts
+      }))
+  }
+  
+  // getAcountDetails(apiUrl:string , userId:number): Observable<Accounts[]>{
   //   return this.http.getData(apiUrl+"accounts",userId).pipe(
-  //     map((result)=>{
+  //     map((result: any)=>{
   //       const accounts:Accounts[] = [];
         
   //       result.value.forEach( (acc:any) => {
@@ -45,7 +64,7 @@ export class AccountService {
   //         }
   //         accounts.push(account);
   //       });
-  //       //this.globalService.setAccounts(accounts);
+      
   //       return accounts
   //     }))
   // }
@@ -227,6 +246,44 @@ export class AccountService {
   */
 
 
+  // getAcountDetails(userId:number){
+  //   return this.http.get<any>(this.env.apiUrl+"accounts/"+userId).pipe(
+  //     map((result)=>{
+  //       const accounts:Accounts[] = [];
+        
+  //       result.value.forEach( (acc:any) => {
+  //         const account:Accounts = {
+  //           AccountID : acc.accountID,
+  //           AccountName : acc.accountName,
+  //           BenPortalLinks : acc.benePortalLinks.split(',')
+  //         }
+  //         accounts.push(account);
+  //       });
+  //       //this.globalService.setAccounts(accounts);
+  //       return accounts
+  //     }))
+  // }
+
+
+  // getAcountDetails(userId:number){
+  //   return this.http.get<any>(this.env.apiUrl+"accounts/"+userId).pipe(
+  //     map((result)=>{
+  //       const accounts:Accounts[] = [];
+        
+  //       result.value.forEach( (acc:any) => {
+  //         const account:Accounts = {
+  //           AccountID : acc.accountID,
+  //           AccountName : acc.accountName,
+  //           BenPortalLinks : acc.benePortalLinks.split(',')
+  //         }
+  //         accounts.push(account);
+  //       });
+  //       //this.globalService.setAccounts(accounts);
+  //       return accounts
+  //     }))
+  // }
+
+
   contactUs(contact:ContactUs) : Observable<any>{
     var result;
     let data :any = {
@@ -277,7 +334,7 @@ export class AccountService {
   }
 
 
-  getUserProfile(email:string){
+  getUserProfile(email:string):  Observable<UserProfile>{
     this.env = this.configService.settings
     var apiUrl = this.env.baseUrl
     return this.http.getData(apiUrl+"api/userdetails/"+email,"").pipe(
@@ -317,3 +374,7 @@ export class AccountService {
     });
   }
 }
+function from(arg0: void): any {
+  throw new Error("Function not implemented.");
+}
+

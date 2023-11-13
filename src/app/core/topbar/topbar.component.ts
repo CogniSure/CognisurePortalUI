@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { GenericService } from 'src/app/services/common/generic.service';
 import { CopilotComponent } from '../copilot/copilot.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserProfile } from 'src/app/model/profile/userprofile';
+import { GlobalService } from '../../services/common/global.service';
+import { Subscription } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-topbar',
@@ -19,10 +23,34 @@ export class TopbarComponent {
   
 
 
-  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog, private cdRef:ChangeDetectorRef,private auth : AuthService) {}
+  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog, private cdRef:ChangeDetectorRef,private auth : AuthService, private globalService: GlobalService, private sanitizer: DomSanitizer) {}
   
+  defaultProfile = false;
+  imageSource: any;
+  public userDetail: UserProfile = {
+    UserID: 0,
+    FirstName: '',
+    MiddleName: '',
+    LastName: '',
+    Password: '',
+    PhoneNumber: '',
+    Email: '',
+    ClientID: 0,
+    ClientName: '',
+    UserTypeName: '',
+    UserTypeID: 0,
+    ClientCode: '',
+    IsAdmin: false,
+    UserImage: '',
+  };
+
+  
+  subscription: Subscription;
+  size = 32;
+
   ngOnInit(): void {
     this.fetchDropdownOptions();
+    this.getUserDetail();
   }
 
   fetchDropdownOptions(): void {
@@ -55,4 +83,24 @@ export class TopbarComponent {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
+
+  getUserDetail(): UserProfile {
+    this.subscription = this.globalService
+      .getUserProfile()
+      .subscribe((mission) => {
+        if (
+          this.userDetail.UserImage != null &&
+          this.userDetail.UserImage != ''
+        ) {
+          this.defaultProfile = false;
+          this.imageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+            `data:image/png;base64, ${this.userDetail.UserImage}`
+          );
+        } else this.defaultProfile = true;
+        return (this.userDetail = mission);
+      });
+    return this.userDetail;
+  }
+
+
 }
