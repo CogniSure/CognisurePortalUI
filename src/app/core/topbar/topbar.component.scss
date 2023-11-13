@@ -2,7 +2,9 @@
 //   padding-block: 0;
 // }
 .header_img img {
-  width: 40%;
+  width: 60%;
+  margin-top: 1%;
+  margin-left: 4%;
   // margin-top: 5%;
 }
 .top_bar {
@@ -45,21 +47,23 @@
 // }
 
 .copied_icontop img {
-  width: 2.8rem;
-  height: 2.8rem;
-  border: 1px solid gray;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid #fff;
   border-radius: 28px;
-  padding: 8% 8% 8% 8%;
-  margin-top: 10%;
+  /* padding: 8% 8% 8% 8%; */
+  margin-top: 68%;
+  margin-left: 150%;
 }
 
 .notification_icon img {
-  width: 78%;
+  width: 100%;
   height: auto;
-  border: 1px solid gray;
-  border-radius: 30px;
+  // border: 1px solid gray;
+  // border-radius: 30px;
   padding: 0.6%;
-  margin-top: 10%;
+  margin-top: 100%;
+  margin-left: 180%;
 }
 
 .copied_icon {
@@ -74,8 +78,8 @@
     img {
       width: 100%;
       height: auto;
-      border: 1px solid gray;
-      border-radius: 21px;
+      // border: 1px solid gray;
+      // border-radius: 21px;
       padding: 0.6%;
       // margin-left: 13%;
     }
@@ -152,10 +156,13 @@
 }
 
 .badge {
-  background-color: red;
+  background-color: #FF5A5A;
   color: white;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 8px;
+  position: absolute;
+  top: 21%;
+  margin-left: 14%;
   //position: absolute;
   //top: 11%;
   //right: 17%;
@@ -235,6 +242,7 @@
 // font-size: 47px;
 // border: 1px solid gray;
 border-radius: 50%;
+margin-top: 1%;
 // position: fixed;
 // right: 1%;
 // top: 1.5%;

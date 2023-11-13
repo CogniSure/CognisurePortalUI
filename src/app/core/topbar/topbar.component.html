@@ -86,7 +86,7 @@
                 <mat-icon class="custom-icon"
                   >
                     <span class="profile_img icon-span">
-                     <!-- <img
+                     <!-- <img *ngIf="defaultProfile"
                     [src]="genericService.profileImageURL"
                     class="imgHeight rounded-circle"
                     style="width:74%;height: auto;right:10%;margin-right: 6%;"
@@ -94,6 +94,7 @@
 
                   <img *ngIf="!defaultProfile" [src]="imageSource" [width]="size" [height]="size"
                   class="hy-profile-image" />
+            
           
                 <img *ngIf="defaultProfile" src="assets/images/defaultprofilepic.png" [width]="size" [height]="size"
                   class="hy-profile-image" />

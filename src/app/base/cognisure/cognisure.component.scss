@@ -485,7 +485,8 @@ $secondary-lightblue-color: #00a6cf;
   border: none !important;
   border-radius: 0%;
   // background: #009CC1 !important;
-  background: linear-gradient(to bottom, #0084a4 20%, #009cc1 50%, #009cc1 80%);
+  // background: linear-gradient(to bottom, #0084a4 20%, #009cc1 50%, #009cc1 80%);
+  background: #19465F;
 }
 ::ng-deep .home-menu {
   padding: 0 !important;
@@ -559,4 +560,9 @@ $secondary-lightblue-color: #00a6cf;
 .k-grid td:first-child,
 .k-grid .k-table-td {
   text-align: center !important;
+}
+
+::ng-deep .primary_bg{
+  background-color: #19465F;
+  margin-top: 0.1%;
 }
