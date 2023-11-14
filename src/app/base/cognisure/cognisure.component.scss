@@ -39,7 +39,7 @@ $secondary-lightblue-color: #00a6cf;
   background-color: #758591 !important;
 }
 ::ng-deep .primaryBG {
-  background-color: $primary-color !important;
+  // background-color: $primary-color !important;
   // height: 60px;
   // margin-top: 12px;
 }
@@ -241,7 +241,7 @@ $secondary-lightblue-color: #00a6cf;
 
 ::ng-deep .sidenav {
   width: 170px;
-  background-color: $primary-color !important;
+  // background-color: $primary-color !important;
 }
 
 ::ng-deep .loginpage_1 {

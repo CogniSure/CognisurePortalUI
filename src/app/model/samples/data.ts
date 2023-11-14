@@ -88,7 +88,7 @@ export class DataComponent {
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  1,
-      HeaderColor : '#00B6AD',
+      HeaderColor : '#009CC1',
       FontColor : '#fff'
     },
     {
@@ -100,7 +100,7 @@ export class DataComponent {
       ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  1,
-      HeaderColor : '#00B6AD',
+      HeaderColor : '#009CC1',
       FontColor : '#fff'
     },
     {
@@ -112,7 +112,7 @@ export class DataComponent {
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  1,
-      HeaderColor : '#00B6AD',
+      HeaderColor : '#009CC1',
       FontColor : '#fff'
     },
     {
