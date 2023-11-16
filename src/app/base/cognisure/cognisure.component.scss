@@ -547,12 +547,12 @@ $secondary-lightblue-color: #00a6cf;
 ::ng-deep .k-tabstrip-items-wrapper .k-item.k-selected::after {
   content: "";
   display: block;
-  width: 100%;
+  width: 50%;
   height: 3px;
   background-color: #009cc1;
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 35px;
   text-align: center;
 }
 

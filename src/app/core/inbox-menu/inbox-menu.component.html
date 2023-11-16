@@ -2,12 +2,12 @@
   <div class="logo-container">
     <div style="float: left; width: 60%;">
       <button class="logo-back">
-        <div style="width: fit-content; color: #fff;" *ngIf="!collapsed" [routerLink]="['/inbox/home']">
+        <div style="width: fit-content; color: #000;" *ngIf="!collapsed" [routerLink]="['/inbox/home']">
           <span>
             <mat-icon >arrow_back</mat-icon>
           </span>
         </div>
-        <div style="width: fit-content;display: flex; align-items: center; color: #fff;font-weight: 400;" *ngIf="collapsed" [routerLink]="['/inbox/home']">
+        <div style="width: fit-content;display: flex; align-items: center; color: #000;font-weight: 400;" *ngIf="collapsed" [routerLink]="['/inbox/home']">
           <mat-icon >arrow_back</mat-icon><div style="width:100%;padding-left: 1%;"> back to inbox</div>
         
         </div>
