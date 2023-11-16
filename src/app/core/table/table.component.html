@@ -26,16 +26,111 @@
       (valueChange)="onFilter($event)"
     ></kendo-textbox>
     <kendo-grid-spacer></kendo-grid-spacer>
-    <button kendoGridExcelCommand type="button" style="background-image: none;">
+    <span class="export_dropdown">Export</span>
+    <!-- <kendo-dropdownlist [data]="dropdownOption"
+    [(ngModel)]="selectedValue"
+    fillmode="solid"
+    textField="label" 
+    valueField="link" 
+   style="background: white; border-radius: 8px;margin-left: 2%;
+    "
+    >
+    <ng-template kendoDropDownListItemTemplate #selectedItemTemplate let-dataItem>
+      <kendo-icon [name]="dataItem.icon" style="margin-right: 5px;"></kendo-icon>
+      {{ dataItem.label }}
+    </ng-template>
+  </kendo-dropdownlist> -->
+
+
+  <!-- <kendo-dropdowntree
+              kendoDropDownTreeExpandable
+              [kendoDropDownTreeHierarchyBinding]="treeItems"
+              textField="text"
+              valueField="id"
+              childrenField="items"
+              [value]="complexValue"
+              [popupSettings]="{
+                width: 'fit-content'
+              }"
+              [expandedKeys]="['0']"
+            ></kendo-dropdowntree> -->
+
+
+        
+            <!-- <select>
+              <option value="" selected disabled hidden> <img src="../../../assets/images/download-icon.jpg"></option>
+              <option value="1">
+ <button kendoGridExcelCommand type="button" style="background-image: none;">
       <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;">
+    </button>
+              </option>
+              <option value="2"> 
+              <button kendoGridPDFCommand style="background-image: none;">
+                <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
+              </button></option>
+            </select> -->
+<!-- 
+            <span><img src="../../../assets/images/download-icon.jpg"></span> -->
+
+            <!-- <div class="dropdown">
+              
+              <button class="dropdown-button"></button>
+              <div class="dropdown-content">
+                  <div>
+                    <button kendoGridExcelCommand type="button" style="background-image: none;">
+                      <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;">
+                    </button>
+                  </div>
+                  <div>
+                    <button kendoGridPDFCommand style="background-image: none;">
+                      <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
+                    </button>
+                  </div>
+              </div>
+          </div> -->
+
+
+
+        <!-- <div class="">
+          <kendo-dropdownlist
+          [data]="dropdownOption"
+          [(ngModel)]="selectedValue"
+          textField="label"
+          valueField="value"
+          style="background: white; border-radius: 8px; margin-left: 0.5%;"
+        >
+          Export
+        </kendo-dropdownlist>
+        
+        <ng-template #itemTemplate let-dataItem>
+          <div style="display: flex; align-items: center;">
+            <img [src]="dataItem.imageUrl" alt="Image" style="width: 20px; height: 20px; margin-right: 8px;">
+            <span>{{ dataItem.label }}</span>
+            <span style="margin-left: 8px;">({{ dataItem.value }})</span>
+          </div>
+        </ng-template>
+</div> -->
+
+          
+
+<button kendoGridExcelCommand type="button" style="background-image: none;">
+  <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;">
+</button>
+          <button kendoGridPDFCommand style="background-image: none;">
+            <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
+          </button>
+
+          
+    <!-- <button kendoGridExcelCommand type="button" style="background-image: none;">
+      <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;"> -->
     
 
       <!-- <kendo-svg-icon [icon]="excelSVG" size="xxlarge"><img src="../../../assets/images/XL.svg"></kendo-svg-icon> -->
-    </button>
-    <button kendoGridPDFCommand style="background-image: none;">
-      <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
+    <!-- </button> -->
+    <!-- <button kendoGridPDFCommand style="background-image: none;">
+      <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;"> -->
       <!-- <kendo-svg-icon [icon]="pdfSVG" size="xxlarge" style="color: red;"><img src="../../../assets/images/PDF.svg"></kendo-svg-icon> -->
-    </button>
+    <!-- </button> -->
   </ng-template>
   <ng-template ngFor [ngForOf]="columns" let-column>
     <kendo-grid-column

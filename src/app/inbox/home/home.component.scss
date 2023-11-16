@@ -164,7 +164,8 @@
   // }
   
   .side_icons{
-    width: 97%;
+    width: 100%;
+    display: flex;
     }
     ::ng-deep .k-state-selected.k-state-focused {
       background-color: #6F9300 !important;
@@ -275,3 +276,12 @@
   color: white;
   background-color: #009CC1;
 }
+
+.view_as{
+width: 44%;
+padding-top: 2.5%;
+}
+
+// ::ng-deep .home-menu .k-card-body {
+//   background-color: #19465F;
+// }

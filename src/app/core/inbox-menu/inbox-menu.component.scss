@@ -11,7 +11,7 @@
     .logo-container {
       display: flex;
       align-items: center;
-      padding: 0.938rem 0 0 0.2rem;
+      padding: 0.938rem 0 0.8rem 0.2rem;
       width: 100%;
   
       .logo {
@@ -63,7 +63,7 @@
   }
   
   .sidenav-collapsed {
-    width: 13rem;
+    width: 7rem;
   }
   
   .sidenav-nav {
@@ -81,14 +81,14 @@
       margin-bottom: 1.5rem;
   
       .sidenav-nav-link {
-        display: flex;
+        // display: flex;
         align-items: center;
         height: 1.5rem;
         color: #F5F5F5;
         text-decoration: none;
         border-radius: 0.625rem;
         transition: all 0.3s ease;
-        padding: 10% 8% 10% 2%;
+        // padding: 10% 8% 10% 2%;
         // justify-content: center;
         .sidenav-link-icon {
           font-size: 14px;
@@ -97,8 +97,8 @@
           //margin: 0 0.5rem;
           text-align: center;
           // color: #f5f5f5;
-          width: 24px;
-          height: 24px;
+          width: 22px;
+          height: 22px;
           padding-right: 4%;
         }
   
@@ -119,16 +119,25 @@
       }
     }
   }
-  
-  .active {
+.active .summary_menu {
     background-color: #d9d8d66b;
-  
+    padding: 2%;
     .sidenav-link-icon,
     .sidenav-link-text {
       color: #fff;
     }
   }
-  
+
+  .summary_menu{
+    padding: 2%;
+  }
+
+ .summary_menu:hover{
+    background-color: #d9d8d66b;
+    padding: 2%;
+  }
+
+
   .mat-card {
     height: 3.5rem;
     margin-right: -0.7rem !important;
@@ -152,6 +161,7 @@
   }
   .sidenav-nav .sidenav-nav-item{
     color:#F5F5F5!important;
+    text-align: center;
   }
 
   .logo{
@@ -175,6 +185,6 @@
 .skip_previous{
   color: #f5f5f5;
 position: absolute;
-right: 3%;
-top: 2.5%;
+top: 5%;
+    right: 2%;
 }

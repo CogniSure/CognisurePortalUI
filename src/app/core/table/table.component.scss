@@ -68,9 +68,9 @@
   }
 
   ::ng-deep .k-grid .k-grid-header .k-table-th {
-    background-color: #00b6ad !important;
+    background-color: #009CC1 !important;
     color: white;
-    padding: 0.8%;
+    padding: 1%;
   }
   ::ng-deep .k-grid .k-grid-header .k-table-th:last-child {
     border-top-right-radius: 10px;
@@ -154,13 +154,18 @@ fill:red;
 ::ng-deep .generic-table .k-grid-toolbar {
   /* background: transparent !important; */
   background: #EEF2F7!important;
+  border: none!important;
 }
 
 ::ng-deep .k-toolbar .k-input {
   // width: 10em;
-  width: 90%!important;
+  width: 30% !important;
   border: 2px;
-  height: 2.5rem;
+  height: 2rem;
+}
+
+::ng-deep .k-grouping-header {
+  background-color: #EEF2F7;
 }
 
 
@@ -177,3 +182,77 @@ fill:red;
   white-space: normal; 
   cursor: initial; 
 }
+
+::ng-deep .k-grouping-header > .k-grouping-drop-container {
+  padding-block: 0;
+  font-size: 12px;
+}
+
+::ng-deep .k-grid-md .k-grouping-header {
+  padding-block: 0;
+  padding-bottom: 0.6%;
+}
+
+::ng-deep .k-grid-header {
+  background-color: #EEF2F7!important;
+  border:none!important;
+}
+
+::ng-deep .k-toolbar .k-picker {
+  width: 12em;
+}
+
+::ng-deep .k-toolbar-md {
+  gap: 0;
+}
+
+// ::ng-deep .export-icon {
+//   background-image: url('path/to/download-icon.jpg');
+// }
+
+// .icon {
+//   margin-left: 5px; 
+//   background: url('path/to/download-icon.jpg') no-repeat center center;
+//   width: 16px; 
+//   height: 16px; 
+//   display: inline-block;
+// }
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            // padding: 10px;
+            // background-color: #3498db;
+            // color: white;
+            // border: none;
+            // cursor: pointer;
+            height:10px;
+            width:10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            // position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            // z-index: 1;
+        }
+
+        .dropdown-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .dropdown-content p {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }

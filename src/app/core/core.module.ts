@@ -22,6 +22,9 @@ import { ValidationErrorsComponent } from './generic/validation-errors/validatio
 import { ValidationSummaryComponent } from './generic/validation-summary/validation-summary.component';
 import { TooltipDirective } from './directives/tooltip.directive';
 import { SelectComponent } from './generic/select/select.component';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { IconsModule } from '@progress/kendo-angular-icons';
 
 const routes:Routes = [
 ];
@@ -49,7 +52,10 @@ const routes:Routes = [
     MaterialModule,
     KendoModule,
     FormsModule,
+    DropDownsModule,
     ReactiveFormsModule,
+    DropDownListModule,
+    IconsModule,
     RouterModule.forChild(routes)
   ],
   exports:[

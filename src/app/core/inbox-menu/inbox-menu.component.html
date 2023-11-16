@@ -54,7 +54,8 @@
     [routerLinkActiveOptions]="{ exact: false }"
     queryParamsHandling="preserve"
   >
-    <img
+  <div class="summary_menu">
+        <img
       class="sidenav-link-icon icon_alignment"
       *ngIf="!collapsed"
       matTooltip="{{ data.label }}"
@@ -66,9 +67,11 @@
       *ngIf="collapsed"
       [src]="data.imagePath" 
     />
+    <br>
     <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
       {{ data.label }}
     </span>
+    </div>
   </a>
     </li>
   </ul>

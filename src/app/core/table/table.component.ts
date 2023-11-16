@@ -161,5 +161,68 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.cellExpansionState[rowIndex] = !this.cellExpansionState[rowIndex];
   }
 
+  // selectedValue =  { label: 'Export', link: '/option1', icon: 'export' };
+  // dropdownOption = [
+  //   { label: 'Export', link: '/option1', icon: 'export' },
+  //   { label: 'Lisa Scott', link: '/option2', icon: 'user' },
+  //   { label: 'John Williams', link: '/option3', icon: 'user' },
+  // ];
+
+  public complexValue = { text: "Export", id: 2 };
+  // public Operands: Array<string> = [
+  //   "Equals",
+  //   "Less Than",
+  //   "Greter Than",
+  // ];
+  // public ValidationConditions: Array<string> = [
+  //   "Fail if any Failed",
+  //   "Fail if all Failed",
+  //   "Pass if any Passed",
+  //   "Pass if all Passed"
+  // ];
+  // public ValidationRules : string[] = [
+  //   "Missing data",
+  //   "Reconciliation Issue",
+  //   "Format Issue"
+  // ];
+  // public CognisureValidations: Array<string> = [
+  //   "Select",
+  //   "Missing data",
+  //   "Reconciliation Issue",
+  //   "Format Issue",
+  //   "Invalid date",
+  //   "Bad Data",
+  //   "Bad Amount",
+  //   "Invalid number",
+  //   "Invalid check",
+  //   "Others",
+  //   "Non standard data",
+  //   "Total Incurred Mismatch",
+  //   "Claim Count Mismatch"
+  // ];
+  // public Condition : string[] = [
+  //   "And",
+  //   "Or"
+  // ]
+  public treeItems: any[] = [
+    {
+      text: "Export as pdf",
+    },
+    {
+      text: "Export as XL",
+    }
+  ];
+
+  selectedValue: any; // Assuming your data structure for selectedValue
+  dropdownOption = [
+    { label: 'Option 1', value: 'value1', imageUrl: '../../../' },
+    { label: 'Option 2', value: 'value2', imageUrl: 'PDF.svg' },
+    // other items
+  ];
+
+ 
+
+
+
   
 }
