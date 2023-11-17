@@ -283,3 +283,11 @@ fill:red;
     padding-inline: 0;
      padding-inline-end: 0;
       }
+
+      .export_psdxl{
+        background-color: transparent;
+      }
+
+      ::ng-deep .k-menu-popup{
+        border-radius: 10px;
+      }

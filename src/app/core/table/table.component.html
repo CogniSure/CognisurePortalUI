@@ -135,15 +135,15 @@
 
 
     <kendo-splitbutton [data]="export">
-      Export
+      <span class="export_psdxl">Export</span>
       <ng-template kendoSplitButtonItemTemplate let-dataItem>
         <button *ngIf="dataItem.text == 'excel'" kendoGridExcelCommand type="button" style="background-image: none;">
           <span class="export_xl">Export as XL</span>
-          <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:1.5rem;height:1rem;padding-left: 5%;">
+          <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:1.5rem;height:1rem;padding-left: 10%;">
         </button>
         <button *ngIf="dataItem.text == 'pdf'" kendoGridPDFCommand style="background-image: none;">
           <span class="export_pdf">Export as pdf</span>
-          <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:1.5rem;height:1rem;padding-left: 5%;">
+          <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:1.5rem;height:1rem;padding-left: 10%;">
         </button>
       </ng-template>
     </kendo-splitbutton>
