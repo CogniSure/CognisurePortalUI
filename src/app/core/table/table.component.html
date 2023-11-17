@@ -26,7 +26,7 @@
       (valueChange)="onFilter($event)"
     ></kendo-textbox>
     <kendo-grid-spacer></kendo-grid-spacer>
-    <span class="export_dropdown">Export</span>
+    <!-- <span class="export_dropdown">Export</span> -->
     <!-- <kendo-dropdownlist [data]="dropdownOption"
     [(ngModel)]="selectedValue"
     fillmode="solid"
@@ -113,12 +113,92 @@
 
           
 
-<button kendoGridExcelCommand type="button" style="background-image: none;">
+<!-- <button kendoGridExcelCommand type="button" style="background-image: none;">
   <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;">
 </button>
           <button kendoGridPDFCommand style="background-image: none;">
             <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
-          </button>
+          </button> -->
+
+
+
+<!-- 
+          <kendo-splitbutton
+      [data]="shareData"
+      [arrowButtonSvgIcon]="svgArrow"
+     
+    >
+    Export
+
+    </kendo-splitbutton> -->
+
+
+
+    <kendo-splitbutton [data]="export">
+      Export
+      <ng-template kendoSplitButtonItemTemplate let-dataItem>
+        <button *ngIf="dataItem.text == 'excel'" kendoGridExcelCommand type="button" style="background-image: none;">
+          <span class="export_xl">Export as XL</span>
+          <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:1.5rem;height:1rem;padding-left: 5%;">
+        </button>
+        <button *ngIf="dataItem.text == 'pdf'" kendoGridPDFCommand style="background-image: none;">
+          <span class="export_pdf">Export as pdf</span>
+          <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:1.5rem;height:1rem;padding-left: 5%;">
+        </button>
+      </ng-template>
+    </kendo-splitbutton>
+
+
+
+    <!-- <kendo-splitbutton [data]="exdata">
+      Save
+      <ng-template kendoSplitButtonItemTemplate let-dataItem>
+        <em>{{ dataItem.text }}</em>
+      </ng-template>
+      <ng-template kendoSplitButtonItemTemplate let-dataItem>
+        <em>{{dataItem.imageUrl }}</em>
+      </ng-template>
+
+    </kendo-splitbutton> -->
+
+
+    <!-- <kendo-splitbutton>
+      <ng-container *ngFor="let item of shareData1">
+        <kendo-button 
+          *ngIf="!item.isDisabled"
+          (click)="onButtonClick(item.text)"
+        >
+          <span [class]="item.iconClass"></span>
+          {{ item.text }}
+        </kendo-button>
+        <kendo-button
+          *ngIf="item.isDisabled"
+          [disabled]="true"
+        >
+          <span [class]="item.iconClass"></span>
+          {{ item.text }}
+        </kendo-button>
+      </ng-container>
+    </kendo-splitbutton> -->
+
+
+    <!-- <kendo-splitbutton [arrowButtonSvgIcon]="svgArrow" [data]="shareData">
+        <button *ngIf="!item.isDisabled" (click)="onButtonClick(item.text)">
+          <img [src]="item.imageUrl" alt="{{ item.text }}" />
+          {{ item.text }}
+        </button>
+        <button *ngIf="item.isDisabled" disabled>
+          <img [src]="item.imageUrl" alt="{{ item.text }}" />
+          {{ item.text }}
+        </button>
+    </kendo-splitbutton> -->
+
+
+
+
+
+
+
 
           
     <!-- <button kendoGridExcelCommand type="button" style="background-image: none;">
@@ -132,6 +212,7 @@
       <!-- <kendo-svg-icon [icon]="pdfSVG" size="xxlarge" style="color: red;"><img src="../../../assets/images/PDF.svg"></kendo-svg-icon> -->
     <!-- </button> -->
   </ng-template>
+
   <ng-template ngFor [ngForOf]="columns" let-column>
     <kendo-grid-column
       *ngIf="column.type == 'text'"

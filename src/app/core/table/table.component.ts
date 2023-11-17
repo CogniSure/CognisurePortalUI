@@ -17,6 +17,14 @@ import { alertsData } from 'src/app/model/sidenav/nav-data';
 import { navbarData } from '../../model/sidenav/nav-data';
 import {Alert1ToolTip} from '../../model/constants/tooltipDetails';
 import { DataComponent } from 'src/app/model/samples/data';
+import {
+  shareIcon,
+  arrowDownIcon,
+  facebookIcon,
+  twitterIcon,
+  linkedinIcon,
+  redditIcon,
+} from "@progress/kendo-svg-icons";
 
 interface NavItem {
   title: string;
@@ -46,6 +54,9 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   public pdfSVG: SVGIcon = filePdfIcon;
   public excelSVG: SVGIcon = fileExcelIcon;
   public selectableSettings: SelectableSettings;
+  public svgShare: SVGIcon = shareIcon;
+  public svgArrow: SVGIcon = arrowDownIcon;
+
 
   @ViewChild("generictable") dataBinding: DataBindingDirective;
   @Input() data: any[];
@@ -221,8 +232,66 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   ];
 
  
+  // public shareData = [
+  //   {
+  //     text: "Export as XL",
+  //     imageUrl: "../../../assets/images/XL.svg",
+  //     isDisabled: false,
+  //   },
+  //   {
+  //     text: "Export as pdf",
+  //     imageUrl: "../../../assets/images/PDF.svg",
+  //     isDisabled: false,
+  //   }
+  // ];
 
 
+  // public exdata = [
+  //   {
+  //     text: "Export as pdf",
+  //     imageUrl:"../../../assets/images/PDF.svg",
+  //   },
+  //   {
+  //     text: "Export as XL",
+  //     imageUrl:"../../../assets/images/XL.svg",
+  //   },
+  // ];
+
+  public export :any[]= [
+    {
+      text: "excel",
+    },
+    {
+      text: "pdf",
+    },
+  ];
 
   
+
+  // onButtonClick(action: string) {
+  //   console.log(`Button clicked: ${action}`);
+  // }
+
+
+  // public svgArrow1: string = 'arrow-icon'; 
+  
+
+  // public shareData1 = [
+  //   {
+  //     text: 'Export as XL',
+  //     iconClass: 'k-icon k-i-excel',
+  //     isDisabled: false,
+  //   },
+  //   {
+  //     text: 'Export as PDF',
+  //     iconClass: 'k-icon k-i-pdf',
+  //     isDisabled: false,
+  //   },
+  // ];
+
+  onButtonClick(action: string) {
+    // Handle button click based on the action
+    console.log(`Button clicked: ${action}`);
+  }
+
 }

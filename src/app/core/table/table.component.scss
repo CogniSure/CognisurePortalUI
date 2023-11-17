@@ -256,3 +256,30 @@ fill:red;
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
+
+      ::ng-deep  .kendo-splitbutton {
+          margin: 0 3px;
+        }
+        .export_xl{
+          font-size: 12px;
+        }
+        .export_pdf{
+          font-size: 12px;
+        }
+      ::ng-deep .k-button-solid-base{
+        border:#fff;
+        background-color: #fff;
+      }
+      ::ng-deep .k-menu-group .k-item.k-focus > .k-link{
+        box-shadow:none;
+      }
+      // ::ng-deep .k-menu-group .k-item.k-focus > .k-link:hover{
+      //   background-color: #fff;
+      // }
+
+      ::ng-deep .k-menu-group-md .k-menu-link{
+        padding-block: 0;
+    padding-inline: 0;
+     padding-inline-end: 0;
+      }
