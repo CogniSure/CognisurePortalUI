@@ -5,6 +5,7 @@ import {
   Injectable,
   Injector,
   Input,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { DataComponent } from '../../model/samples/data';
@@ -14,6 +15,7 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
+import { WidgetService } from 'src/app/services/widget/widget.service';
 
 
 // Injectable()
@@ -23,15 +25,20 @@ import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
   styleUrls: ['./dashboardwidgets.component.scss'], 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
+export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestroy{
+
   public custComponents: WidgetComponentInfo[] = [];
   reloadReq = true;
   @Input() collapsed = false;
   componentOrder: any;
   isFullScreen = false;
   widgetTemp:any;
-  constructor( private injector: Injector,private globalService:GlobalService,private dbService : DashboardService) {
+  constructor( private injector: Injector,private widgetService:WidgetService,private globalService:GlobalService,private dbService : DashboardService) {
     //this.globalService.setDashboardReload(true);
+  }
+  ngOnDestroy(): void {
+    // throw new Error('Method not implemented.');
+    this.globalService.clearDashboardSession()
   }
   ngAfterViewInit() {
     // this.globalService.dashboardFilter$.subscribe(x=>{
@@ -45,6 +52,43 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
    // this.globalService.setDashboardReload(true);
+   
+
+    this.widgetService.getTopLocationsFromDB().subscribe(topLocationSubject=>{
+      console.log("TopLocation");
+      console.log(topLocationSubject);
+      this.globalService.setTopLocation(topLocationSubject)
+    
+    })
+
+    this.widgetService.getTopBrokersFromDB().subscribe(topBrokerSubject=>{
+      console.log("TopBroker");
+      console.log(topBrokerSubject);
+      this.globalService.setTopBroker(topBrokerSubject)
+    
+    })
+
+    this.widgetService.getTopIndustriesFromDB().subscribe(topIndustrySubject=>{
+      console.log("TopIndustry");
+      console.log(topIndustrySubject);
+      this.globalService.setTopIndustry(topIndustrySubject)
+    
+    })
+
+    this.widgetService.getSubmissionTurnaroundTimeFromDB().subscribe(submissionTurnaroundTimeSubject=>{
+      console.log("SubmissionTurnaroundTime");
+      console.log(submissionTurnaroundTimeSubject);
+      this.globalService.setSubmissionTurnaroundTime(submissionTurnaroundTimeSubject)
+    
+    })
+
+    this.widgetService.getSubmissionConversionsFromDB().subscribe(submissionConversionSubject=>{
+      console.log("SubmissionConversion");
+      console.log(submissionConversionSubject);
+      this.globalService.setSubmissionConversion(submissionConversionSubject)
+    
+    })
+   
     this.componentOrder = DataComponent.Dashboardhub;
     this.custComponents = [];
     var i = 1;

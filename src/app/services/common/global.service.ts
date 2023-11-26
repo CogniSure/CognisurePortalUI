@@ -3,6 +3,8 @@ import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { UserProfile } from '../../model/profile/userprofile';
 import { Accounts } from 'src/app/model/profile/accounts';
+import { ChartData } from 'src/app/model/charts/chartdata';
+// import { WidgetService } from '../widget/widget.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +13,10 @@ export class GlobalService {
   password$: any;
   loginDetails$: any;
   dashboardFilter$ = new BehaviorSubject<any>(null);
+  jsonDataSubject: any;
+  jsonData$: Observable<any[]>;
+  piechartDataSubject: any;
+  piechartData$: Observable<any[]>;
   setDashboardReload(arg0: boolean) {
     throw new Error('Method not implemented.');
   }
@@ -103,4 +109,121 @@ export class GlobalService {
   }
 
 
+  private topLocationSubject = new BehaviorSubject<any[]>(
+    [
+    {
+    Dimension: "",
+    Measure: "" 
+  }]);
+  topLocationData$: Observable<any[]> = this.topLocationSubject.asObservable();
+  public setTopLocation(updatedChartData: any[]): void {
+    sessionStorage.setItem('topLocationSubject', JSON.stringify(updatedChartData));
+    this.topLocationSubject.next(updatedChartData);
+   
+  }
+
+  // topLocationData$: Observable<any> = this.widgetService.getTopLocationsFromDB();
+  // public setTopLocation(updatedChartData: any): void {
+  //   this.topLocationSubject.next(updatedChartData);
+  // }
+  
+  getTopLocation() {
+    // this.topLocationData$.subscribe(data=>{
+    //   console.log("TopLocation-1");
+    //   console.log(data);
+    // })
+    let toplocation = sessionStorage.getItem('topLocationSubject')
+   
+    return JSON.parse(toplocation!)
+    // return this.topLocationData$;
+  }
+
+    // setTopLocation(updatedChartData: any) {
+  //   sessionStorage.setItem('topLocationSubject', JSON.stringify(updatedChartData));
+  //   this.topLocationSubject.next(updatedChartData);
+  // }
+
+
+
+
+  private topBrokerSubject = new BehaviorSubject<any[]>(
+    [
+    {
+    Dimension: "",
+    Measure: "" 
+  }]);
+  topBrokerData$: Observable<any[]> = this.topBrokerSubject.asObservable();
+  public setTopBroker(updatedChartData: any[]): void {
+    sessionStorage.setItem('topBrokerSubject', JSON.stringify(updatedChartData));
+    this.topBrokerSubject.next(updatedChartData);
+  }
+
+  getTopBroker() {
+    let topBroker = sessionStorage.getItem('topBrokerSubject')
+    return JSON.parse(topBroker!)
+  }
+
+
+  private topIndustrySubject = new BehaviorSubject<any[]>(
+    [
+    {
+    Dimension: "",
+    Measure: "" 
+  }]);
+  topIndustryData$: Observable<any[]> = this.topIndustrySubject.asObservable();
+  public setTopIndustry(updatedChartData: any[]): void {
+    sessionStorage.setItem('topIndustrySubject', JSON.stringify(updatedChartData));
+    this.topIndustrySubject.next(updatedChartData);
+   
+  }
+  
+  getTopIndustry() {
+    let topIndustry = sessionStorage.getItem('topIndustrySubject') 
+    return JSON.parse(topIndustry!)
+  }
+
+  private submissionTurnaroundTimeSubject = new BehaviorSubject<any[]>(
+    [
+    {
+    Dimension: "",
+    Measure: "" 
+  }]);
+  submissionTurnaroundTimeData$: Observable<any[]> = this.submissionTurnaroundTimeSubject.asObservable();
+  public setSubmissionTurnaroundTime(updatedChartData: any[]): void {
+    sessionStorage.setItem('submissionTurnaroundTimeSubject', JSON.stringify(updatedChartData));
+    this.submissionTurnaroundTimeSubject.next(updatedChartData);
+   
+  }
+  
+  getSubmissionTurnaroundTime() {
+    let submissionTurnaroundTime = sessionStorage.getItem('submissionTurnaroundTimeSubject') 
+    return JSON.parse(submissionTurnaroundTime!)
+  }
+
+  private submissionConversionSubject = new BehaviorSubject<any[]>(
+    [
+    {
+    Dimension: "",
+    Measure: "" 
+  }]);
+  submissionConversionData$: Observable<any[]> = this.submissionConversionSubject.asObservable();
+  public setSubmissionConversion(updatedChartData: any[]): void {
+    sessionStorage.setItem('submissionConversionSubject', JSON.stringify(updatedChartData));
+    this.submissionConversionSubject.next(updatedChartData);
+   
+  }
+  
+  getSubmissionConversion() {
+    let submissionConversion = sessionStorage.getItem('submissionConversionSubject')
+    return JSON.parse(submissionConversion!)
+  }
+
+
+
+clearDashboardSession(){
+  sessionStorage.removeItem('topBrokerSubject')
+  sessionStorage.removeItem('topLocationSubject')
+  sessionStorage.removeItem('topIndustrySubject')
+  sessionStorage.removeItem('submissionTurnaroundTimeSubject')
+}
 }

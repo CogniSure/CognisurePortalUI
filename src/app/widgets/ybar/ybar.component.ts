@@ -26,7 +26,14 @@ export class YBarComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,
     @Inject(InjectToken) private input: WidgetInput
   ) {}
-  chartData: ChartData;
+  chartData: ChartData = {  
+    Categories : [],
+    Data : [
+      {
+        Name:"",
+        Data : []
+      }
+    ]};
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
@@ -36,6 +43,8 @@ export class YBarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
       this.chartData = res;
+      console.log(this.input);
+      console.log(res);
     });
   }
 

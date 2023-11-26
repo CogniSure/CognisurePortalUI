@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Reminder } from '../../model/common/reminder';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 export interface NewsItem {
   title: string;
@@ -12,6 +15,10 @@ export interface NewsItem {
   providedIn: 'root'
 })
 export class GenericService {
+  // private dataUrl = '...';
+
+  // private jsonDataSubject = new BehaviorSubject<any[]>([]);
+  // jsonData$ = this.jsonDataSubject.asObservable();
 
   notificationCount = 20;
 
@@ -23,7 +30,7 @@ export class GenericService {
   alternateIconURL = '../../../assets/images/dropdown_icon.png';
 
   idToDisplay = 1;
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   private dropdownOptions: { label: string; link: string }[] = [
     { label: 'My Profile', link: '/my-profile' },
@@ -61,4 +68,66 @@ export class GenericService {
       { title: 'Submission #1234 / Adams & Co.', time: new Date(), status: 'waiting' },
     ];
   }
+
+
+
+
+  // private dummyData = [
+  //   {
+  //     "Meta Data_lineOfBusiness": "Business Type B",
+  //     "Account_Level_Info/Producer_Fullname": "Broker A",
+  //     "Count of Submission ID": 25,
+  //   },
+  //   {
+  //     "Meta Data_lineOfBusiness": "Business Type A",
+  //     "Account_Level_Info/Producer_Fullname": "Broker B",
+  //     "Count of Submission ID": 18,
+  //   },
+  //   {
+  //     "Meta Data_lineOfBusiness": "Business Type B",
+  //     "Account_Level_Info/Producer_Fullname": "Broker A",
+  //     "Count of Submission ID": 30,
+  //   }
+  // ];
+
+  // setData(newData: any[]): void {
+  //   this.jsonDataSubject.next(newData);
+  // }
+
+  // getData(): Observable<any> {
+    // return this.http.get<any>(this.dataUrl);
+  //   return of(this.dummyData);
+
+  // }
+
+
+
+
+
+  // private jsonDataSubject = new BehaviorSubject<any[]>([
+  //   {
+  //     "Dimension": "GL",
+  //     "Measure": 25,
+   
+  //   },
+  //   {
+  //     "Dimension": "Property",
+  //     "Measure": 18,
+     
+  //   },
+  //   {
+  //     "Dimension": "Liablity",
+  //     "Measure": 30,
+      
+  //   }
+  // ]);
+
+  // jsonData$ = this.jsonDataSubject.asOblservable();
+
+
 }
+
+
+
+
+

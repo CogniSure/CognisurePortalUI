@@ -13,13 +13,24 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
   styleUrls: ['./xbar.component.scss']
 })
 export class XBarComponent implements OnInit, OnDestroy {
+  xbarData:any;
+
+
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
     @Inject(InjectToken) private input: WidgetInput
   ) {}
 
-  chartData: ChartData;
+  chartData: ChartData = {  
+    Categories : [],
+    Data : [
+      {
+        Name:"",
+        Data : []
+      }
+    ]};
+
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
@@ -30,10 +41,38 @@ export class XBarComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-      this.chartData = res
+      this.chartData = res;
+      console.log(this.input);
+      console.log(res);
     });
+
+    // this.dbService.getData().subscribe(data => {
+    //   this.xbarData = data;
+    //   this.processDataForXbarChart(this.xbarData);
+    // });
+
+    // const dummyCategories = ['Category A', 'Category B', 'Category C'];
+    // const dummyData = [10, 20, 30];
+    // this.dbService.setChartData(dummyCategories, dummyData);
+
+    // this.dbService.getChartData().subscribe((chartData) => {
+    //   console.log(chartData);
+    // });
+
+
+
   }
-  
+
+
+  // processDataForXbarChart(data: any[]): void {
+
+  //   this.chartData = data.map(item => ({
+  //     stat: item['Categories'],
+  //     count: item['Data'],
+  //     // color: item['Color'], 
+  //   }));
+  // }
+
   public exportChart(): void {
     this.chart
       .exportImage({

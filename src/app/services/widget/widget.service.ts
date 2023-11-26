@@ -1,14 +1,31 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { ChartData } from 'src/app/model/charts/chartdata';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
+import { GlobalService } from '../common/global.service';
+import { FunnelData } from 'src/app/model/charts/funneldata';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class WidgetService {
 
-  constructor() { }
+  private chartDataSubject = new BehaviorSubject<any>(
+    {
+    Dimension: "",
+    Measure: ""
+  });
+  chartData$: Observable<ChartData> = this.chartDataSubject.asObservable();
+
+  // private jsonDataSubject = new BehaviorSubject<any[]>([]);
+
+  // private jsonData$ = this.jsonDataSubject.asObservable();
+
+  constructor(private globalService : GlobalService) { 
+     
+  }
 
   getDashboard(
     widget: WidgetInput,
@@ -40,7 +57,10 @@ export class WidgetService {
       return this.getTopIndustries(filter)
     }
     else if (widget.WidgetName === 'TopLocations') {
+      // let TopLocations = this.getTopLocations(filter);
+      // console.log(TopLocations);
       return this.getTopLocations(filter)
+      // return of(topLocations)
     }
     else if (widget.WidgetName === 'SubmissionConversion') {
       return this.getSubmissionConversions(filter)
@@ -72,20 +92,20 @@ export class WidgetService {
       ItemIcon_2 : "PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjciIHZpZXdCb3g9IjAgMCAyNyAyNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjA3MTQgMTcuMDcxTDkuOTI4NjMgOS45MjgyMk05LjkyODU3IDE3LjA3MThMMTcuMDcxNCA5LjkyOTA0TTI2IDEzLjVDMjYgMjAuNDAzNiAyMC40MDM2IDI2IDEzLjUgMjZDNi41OTY0NCAyNiAxIDIwLjQwMzYgMSAxMy41QzEgNi41OTY0NCA2LjU5NjQ0IDEgMTMuNSAxQzIwLjQwMzYgMSAyNiA2LjU5NjQ0IDI2IDEzLjVaIiBzdHJva2U9IiMyRDJEMkQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg=="
     });
   }
-  getTopBrokers(filter: DashboardFilter): Observable<any> {
-    return of({
-      Categories: ['Assured Partners', 'Lockton', 'AJG', 'Brown & Brown', 'Marsh'],
-      Data: [
-        {
-          Name: '',
-          Data: [
-            .27, .22, .14, .12, .05
-          ],
-        },
-      ],
-    });
-  }
-  getCoverageDistribution(filter: DashboardFilter): Observable<any> {
+  // getTopBrokers(filter: DashboardFilter): Observable<any> {
+  //   return of({
+  //     Categories: ['Assured Partners', 'Lockton', 'AJG', 'Brown & Brown', 'Marsh'],
+  //     Data: [
+  //       {
+  //         Name: '',
+  //         Data: [
+  //           .27, .22, .14, .12, .05
+  //         ],
+  //       },
+  //     ],
+  //   });
+  // }
+  // getCoverageDistribution(filter: DashboardFilter): Observable<any> {
     // return of({
     //   Categories: ['Property', 'Automobile', 'Umbrella', 'General Liability', 'Workers Compensation', 'Others'],
     //   Data: [
@@ -97,71 +117,481 @@ export class WidgetService {
     //     },
     //   ],
     // });
-    return of([
-      {category: 'Property', value: 24},
-      {category: 'Automobile', value: 22},
-      {category: 'Umbrella', value: 15},
-      {category: 'General Liability', value: 17},
-      {category: 'Workers Compensation', value: 18},
-      {category: 'Others', value: 4}
-    ])
+  //   return of([
+  //     {category: 'Property', value: 24},
+  //     {category: 'Automobile', value: 22},
+  //     {category: 'Umbrella', value: 15},
+  //     {category: 'General Liability', value: 17},
+  //     {category: 'Workers Compensation', value: 18},
+  //     {category: 'Others', value: 4}
+  //   ])
+  // }
+  // getTopIndustries(filter: DashboardFilter): Observable<any> {
+  //   return of({
+  //     Categories: ['Manufacturing', 'Construction', 'Warehouses', 'Trucking', 'Aviation'],
+  //     Data: [
+  //       {
+  //         Name: '',
+  //         Data: [
+  //           .35, .32, .12, .05, .03
+  //         ],
+  //       },
+  //     ],
+  //   });
+  // }
+  // getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
+  //   return of({
+  //     Categories: ['0.5', '1', '2', '3', '3+'],
+  //     Data: [
+  //       {
+  //         Name: '',
+  //         Data: [
+  //           .68,.24,.06,.02,0
+  //         ],
+  //       },
+  //     ],
+  //   });
+  // }
+  // getTopLocations(filter: DashboardFilter): Observable<any> {
+  //   return of({
+  //     Categories: ['Boston', 'Rhode Island', 'Worcester', 'Lowell', 'New Bedford'],
+  //     Data: [
+  //       {
+  //         Name: '',
+  //         Data: [
+  //           .27, .14, .13, .08, .05
+  //         ],
+  //       },
+  //     ],
+  //   });
+  // }
+  // getSubmissionConversions(filter: DashboardFilter): Observable<any> {
+  //   return of([
+  //       {
+  //         stat: 'Total Submissions',
+  //         count: 4870,
+  //         color: '#009CC1',
+  //       },
+  //       {
+  //         stat: 'Quoted',
+  //         count: 3380,
+  //         color: '#00B4DF',
+  //       },
+  //       {
+  //         stat: 'Bound',
+  //         count: 1021,
+  //         color: '#0CD0FF',
+  //       }
+  //     ]);
+  // }
+
+
+  // private chartDataSubject = new BehaviorSubject<ChartData | null>(null);
+  // chartData$ = this.chartDataSubject.asObservable();
+
+  
+  // getSubmissionConversions(filter: DashboardFilter): Observable<any> {
+  //   return this.jsonData$; 
+  
+  // }
+  
+  // private jsonDataSubject = new BehaviorSubject<any[]>([
+  //   {
+  //     "Dimension": "GL",
+  //     "Measure": 25,
+  //     "color": '#009CC1',
+  //   },
+  //   {
+  //     "Dimension": "Property",
+  //     "Measure": 18,
+  //     "color": '#00B4DF',
+  //   },
+  //   {
+  //     "Dimension": "Liability",
+  //     "Measure": 30,
+  //     "color": '#0CD0FF',
+  //   }
+  // ]);
+
+  // private jsonData$ = this.jsonDataSubject.asObservable();
+
+  // setData(newData: any[]): void {
+  //   this.jsonDataSubject.next(newData);
+  // }
+
+  // getData(): Observable<any[]> {
+  //   return this.jsonData$; 
+  // }
+
+  // logData(): void {
+  // this.jsonData$.subscribe((data) => {
+  //   console.log('jsonDataSubject values:', data);
+  // });
+  // }
+
+
+  // getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
+  //   this.chartData$.subscribe((chartData: any) => {
+  //     // console.log('ChartData from getSubmissionTurnaroundTime:', chartData);
+  //   });
+  
+  //   const updatedChartData: ChartData = {
+  //     Categories: ['0.5', '1', '2', '3', '3+'],
+  //     Data: [
+  //       {
+  //         Name: '',
+  //         Data: [.68, .45, .25, .10, 0]
+  //       },
+  //     ],
+  //   };
+ 
+  //   // this.setChartData(updatedChartData);
+  //   return of(updatedChartData);
+  // }
+
+
+  // getTopBrokers(filter: DashboardFilter): Observable<any> {
+  //   this.chartData$.subscribe((chartData: ChartData) => {
+  //   });
+  
+  //   const updatedChartData: ChartData = {
+  //     Categories: ['Assured Partners', 'Lockton', 'AJG', 'Brown & Brown', 'Marsh'],
+  //     Data: [
+  //       {
+  //         Name: '',
+  //         Data: [.27, .22, .14, .12, .05]
+  //       },
+  //     ],
+  //   };
+ 
+  //   // this.setChartData(updatedChartData);
+  //   return of(updatedChartData);
+  // }
+
+
+  // getTopIndustries(filter: DashboardFilter): Observable<any> {
+  //   this.chartData$.subscribe((chartData: ChartData) => {
+  //   });
+  
+  //   const updatedChartData: ChartData = {
+  //     Categories: ['Manufacturing', 'Construction', 'Warehouses', 'Trucking', 'Aviation'],
+  //     Data: [
+  //       {
+  //         Name: '',
+  //         Data: [.35, .32, .12, .05, .03]
+  //       },
+  //     ],
+  //   };
+ 
+  //   this.setChartData(updatedChartData);
+  //   return of(updatedChartData);
+  // }
+  getTopLocationsFromDB(): Observable<any> {
+    let topLocation = [
+      {
+        Dimension: "Boston",
+        Measure: "10"
+      },
+      {
+        Dimension: "Boston1",
+        Measure: "20"
+      },
+      {
+        Dimension: "Boston2",
+        Measure: "10"
+      },
+      {
+        Dimension: "Boston3",
+        Measure: "25"
+      },
+      {
+        Dimension: "Boston4",
+        Measure: "13"
+      }
+     ]
+    return of(topLocation)
   }
-  getTopIndustries(filter: DashboardFilter): Observable<any> {
-    return of({
-      Categories: ['Manufacturing', 'Construction', 'Warehouses', 'Trucking', 'Aviation'],
-      Data: [
+  getTopLocations(filter: DashboardFilter) {
+    let updatedChartData: ChartData = {
+      Categories : [],
+      Data : [
         {
-          Name: '',
-          Data: [
-            .35, .32, .12, .05, .03
-          ],
-        },
-      ],
-    });
-  }
-  getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
-    return of({
-      Categories: ['0.5', '1', '2', '3', '3+'],
-      Data: [
-        {
-          Name: '',
-          Data: [
-            .68,.24,.06,.02,0
-          ],
-        },
-      ],
-    });
-  }
-  getTopLocations(filter: DashboardFilter): Observable<any> {
-    return of({
-      Categories: ['Boston', 'Rhode Island', 'Worcester', 'Lowell', 'New Bedford'],
-      Data: [
-        {
-          Name: '',
-          Data: [
-            .27, .14, .13, .08, .05
-          ],
-        },
-      ],
-    });
-  }
-  getSubmissionConversions(filter: DashboardFilter): Observable<any> {
-    return of([
-        {
-          stat: 'Total Submissions',
-          count: 4870,
-          color: '#009CC1',
-        },
-        {
-          stat: 'Quoted',
-          count: 3380,
-          color: '#00B4DF',
-        },
-        {
-          stat: 'Bound',
-          count: 1021,
-          color: '#0CD0FF',
+          Name:"",
+          Data : []
         }
-      ]);
+      ]
+    }
+
+    let locations = this.globalService.getTopLocation()
+      locations.forEach((data: any)=>{
+        updatedChartData.Categories.push(data.Dimension)
+        updatedChartData.Data[0].Data.push(data.Measure)
+      })
+    console.log("TopLocation-1");
+    console.log(updatedChartData);
+    // this.globalService.getTopLocation().subscribe((chartData: any[]) => { 
+      
+    //   console.log('chartData:', chartData);
+    //   chartData.forEach(data=>{
+    //     updatedChartData.Categories.push(data.Dimension)
+    //     updatedChartData.Data[0].Data.push(data.Measure)
+    //   })
+    //   return of(updatedChartData);
+      // this.setTopLocation(updatedChartData);
+    // });
+    // return this.getTopLocation();
+    return of(updatedChartData);
   }
+  
+  // public setChartData(updatedChartData: ChartData): void {
+  //   this.chartDataSubject.next(updatedChartData);
+  // }
+  
+  // getChartData(): Observable<ChartData> {
+  //   return this.chartData$;
+  // }
+
+
+  getTopBrokersFromDB(): Observable<any> {
+    let topBroker = [
+      {
+        Dimension: "Assured Partners",
+        Measure: "27"
+      },
+      {
+        Dimension: "Lockton",
+        Measure: "22"
+      },
+      {
+        Dimension: "AJG",
+        Measure: "14"
+      },
+      {
+        Dimension: "Brown & Brown",
+        Measure: "12"
+      },
+      {
+        Dimension: "Marsh",
+        Measure: "05"
+      }
+     ]
+    return of(topBroker)
+  }
+  getTopBrokers(filter: DashboardFilter) {
+    let updatedChartData: ChartData = {
+      Categories : [],
+      Data : [
+        {
+          Name:"",
+          Data : []
+        }
+      ]
+    }
+
+    let brokers = this.globalService.getTopBroker()
+    brokers.forEach((data: any)=>{
+        updatedChartData.Categories.push(data.Dimension)
+        updatedChartData.Data[0].Data.push(data.Measure)
+      })
+    console.log("TopBrokers-1");
+    console.log(updatedChartData);
+    return of(updatedChartData);
+  }
+  
+
+
+
+  getTopIndustriesFromDB(): Observable<any> {
+    let topIndustry = [
+      {
+        Dimension: "Manufacturing",
+        Measure: "35"
+      },
+      {
+        Dimension: "Construction",
+        Measure: "32"
+      },
+      {
+        Dimension: "Warehouses",
+        Measure: "12"
+      },
+      {
+        Dimension: "Trucking",
+        Measure: "05"
+      },
+      {
+        Dimension: "Aviation",
+        Measure: "03"
+      }
+     ]
+    return of(topIndustry)
+  }
+  getTopIndustries(filter: DashboardFilter) {
+    let updatedChartData: ChartData = {
+      Categories : [],
+      Data : [
+        {
+          Name:"",
+          Data : []
+        }
+      ]
+    }
+
+    let industries = this.globalService.getTopIndustry()
+    industries.forEach((data: any)=>{
+        updatedChartData.Categories.push(data.Dimension)
+        updatedChartData.Data[0].Data.push(data.Measure)
+      })
+    console.log("TopIndustry-1");
+    console.log(updatedChartData);
+    return of(updatedChartData);
+  }
+
+
+  getSubmissionTurnaroundTimeFromDB(): Observable<any> {
+    let submissionTurnaroundTime = [
+      {
+        Dimension: "Boston",
+        Measure: "10"
+      },
+      {
+        Dimension: "Boston1",
+        Measure: "20"
+      },
+      {
+        Dimension: "Boston2",
+        Measure: "10"
+      },
+      {
+        Dimension: "Boston3",
+        Measure: "25"
+      },
+      {
+        Dimension: "Boston4",
+        Measure: "13"
+      }
+     ]
+    return of(submissionTurnaroundTime)
+  }
+  getSubmissionTurnaroundTime(filter: DashboardFilter) {
+    let updatedChartData: ChartData = {
+      Categories : [],
+      Data : [
+        {
+          Name:"",
+          Data : []
+        }
+      ]
+    }
+
+    let turnaroundTime = this.globalService.getSubmissionTurnaroundTime()
+    turnaroundTime.forEach((data: any)=>{
+        updatedChartData.Categories.push(data.Dimension)
+        updatedChartData.Data[0].Data.push(data.Measure)
+      })
+    console.log("SubmissionTurnaroundTime-1");
+    console.log(updatedChartData);
+    return of(updatedChartData);
+  }
+
+
+  getSubmissionConversionsFromDB(): Observable<any> {
+    let submissionConversion = [
+      {
+        Dimension: "Boston",
+        Measure: "10"
+      },
+      {
+        Dimension: "Boston1",
+        Measure: "20"
+      },
+      {
+        Dimension: "Boston2",
+        Measure: "10"
+      },
+     ]
+    return of(submissionConversion)
+  }
+
+  getSubmissionConversions(filter: DashboardFilter): Observable<FunnelData[]> {
+    let updatedChartData: FunnelData[]= [];
+
+    let conversions = this.globalService.getSubmissionConversion()
+    conversions.forEach((data: any)=>{
+              // updatedChartData.Categories.push(data.Dimension)
+        // updatedChartData.Data[0].Data.push(data.Measure)
+        let newData: FunnelData = {
+          Categories: [data.Dimension],
+          Data: [data.Measure],
+        };
+        updatedChartData.push(newData);
+        
+
+      })
+    console.log("submissionConversion-1");
+    console.log(updatedChartData);
+    return of(updatedChartData);
+  }
+
+
+
+
+
+
+
+
+
+  getCoverageDistribution(filter: DashboardFilter): Observable<any> {
+    return this.piechartData$; 
+  }
+  
+
+  private piechartDataSubject = new BehaviorSubject<any[]>([
+    {
+      "category": "Property",
+      "value": 25,
+    },
+    {
+      "category": "Automobile",
+      "value": 20,
+    },
+    {
+      "category": "Umbrella",
+      "value": 15,
+    },
+    {
+      "category": "General Liability",
+      "value": 10,
+    },
+    {
+      "category": "Workers Compensation",
+      "value": 5,
+    },
+    {
+      "category": "Others",
+      "value": 1,
+    }
+  ]);
+
+  piechartData$ = this.piechartDataSubject.asObservable();
+
+
+  setPie(pieData: any[]): void {
+    this.piechartDataSubject.next(pieData);
+  }
+
+  getPie(): Observable<any[]> {
+    return this.piechartData$; 
+  }
+
+  logPieData(): void {
+    this.piechartData$.subscribe((data) => {
+      console.log('piechartDataSubject values:', data);
+    });
+  }
+
+ 
+
+
+
 }

@@ -1,10 +1,14 @@
 <kendo-chart
+[seriesColors]="seriesColors"
 [style]="'height: 100%;width:80%;font-size:11px'"
 >
     <kendo-chart-series>
+      <!-- <ng-container *ngFor="let data of funnelData"> -->
+      <!-- <ng-container *ngFor="let data of funnelData"> -->
       <kendo-chart-series-item
+      *ngFor="let data of funnelData"
         type="funnel"
-        [data]="chartData"
+        [data]="[ data.Data ]"
         field="count"
         categoryField="stat"
         colorField="color"
@@ -15,9 +19,13 @@
           background="none"
           color="white"
           format="N0"
+          
+          [style]="{'font-size': '4px' }"
         >
         </kendo-chart-series-item-labels>
       </kendo-chart-series-item>
+      <!-- </ng-container> -->
+    <!-- </ng-container> -->
     </kendo-chart-series>
     <kendo-chart-legend [visible]="true" position="bottom"></kendo-chart-legend>
   </kendo-chart>

@@ -20,6 +20,7 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
   styleUrls: ['./pie.component.scss'],
 })
 export class PieComponent implements OnInit, OnDestroy {
+  piechartData: any;
   ChartType:SeriesType = "donut";
   public data: any[];
   constructor(
@@ -36,13 +37,14 @@ export class PieComponent implements OnInit, OnDestroy {
   @ViewChild('chart')
   private chart: ChartComponent;
   seriesColors: string[] = SeriesColorConst;
-  chartData: any;
+  public chartData: any[];
   filter: DashboardFilter;
   ngOnDestroy(): void {}
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
       this.chartData = res
     });
+
   }
   public exportChart(): void {
     this.chart
@@ -57,5 +59,14 @@ export class PieComponent implements OnInit, OnDestroy {
   public pieLabelContent(e: any): string {
     return e.value + '%';
   }
+
+  processDataForXbarChart(data: any[]): void {
+
+    // this.chartData = data.map(item => ({
+    //   category: item['category'],
+    //   value: item['value'], 
+    // }));
+  }
+
 
 }
