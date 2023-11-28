@@ -82,12 +82,29 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
     
     })
 
+    this.widgetService.getCoverageDistributionFromDB().subscribe(coverageDistributionsSubject=>{
+      console.log("CoverageDistributions");
+      console.log(coverageDistributionsSubject);
+      this.globalService.setCoverageDistributions(coverageDistributionsSubject)
+    
+    })
+
+    this.widgetService.getTopLocationsFromDB().subscribe(topLocationSubject=>{
+      console.log("TopLocation");
+      console.log(topLocationSubject);
+      this.globalService.setTopLocation(topLocationSubject)
+    
+    })
+
+
     this.widgetService.getSubmissionConversionsFromDB().subscribe(submissionConversionSubject=>{
       console.log("SubmissionConversion");
       console.log(submissionConversionSubject);
       this.globalService.setSubmissionConversion(submissionConversionSubject)
     
     })
+
+
    
     this.componentOrder = DataComponent.Dashboardhub;
     this.custComponents = [];

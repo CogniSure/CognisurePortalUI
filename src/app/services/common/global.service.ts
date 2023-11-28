@@ -200,6 +200,26 @@ export class GlobalService {
     return JSON.parse(submissionTurnaroundTime!)
   }
 
+  private coverageDistributionsSubject = new BehaviorSubject<any[]>(
+    [
+    {
+    Dimension: "",
+    Measure: "" 
+  }]);
+  coverageDistributionsData$: Observable<any[]> = this.coverageDistributionsSubject.asObservable();
+  public setCoverageDistributions(updatedChartData: any[]): void {
+    sessionStorage.setItem('coverageDistributionsSubject', JSON.stringify(updatedChartData));
+    this.coverageDistributionsSubject.next(updatedChartData);
+   
+  }
+  
+  getCoverageDistributions() {
+    let coverageDistributions = sessionStorage.getItem('coverageDistributionsSubject')
+   
+    return JSON.parse(coverageDistributions!)
+  }
+
+
   private submissionConversionSubject = new BehaviorSubject<any[]>(
     [
     {
@@ -215,8 +235,15 @@ export class GlobalService {
   
   getSubmissionConversion() {
     let submissionConversion = sessionStorage.getItem('submissionConversionSubject')
+   
     return JSON.parse(submissionConversion!)
   }
+
+
+
+
+
+
 
 
 

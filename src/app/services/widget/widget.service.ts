@@ -4,7 +4,6 @@ import { ChartData } from 'src/app/model/charts/chartdata';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from '../common/global.service';
-import { FunnelData } from 'src/app/model/charts/funneldata';
 
 
 @Injectable({
@@ -495,100 +494,124 @@ export class WidgetService {
   }
 
 
+
+
+  getCoverageDistributionFromDB(): Observable<any> {
+    let coverageDistributions = [
+      {
+        Dimension: ["Boston", "Boston1", "Boston2", "Boston3"],
+        Measure: ["10", "20", "25", "13"],
+        // InnerRadius: 80,
+      },
+     ]
+    return of(coverageDistributions)
+  }
+  getCoverageDistribution(filter: DashboardFilter) {
+    let updatedChartData=
+    [
+          {category: '', value: ''},
+        ]
+    
+
+    let coverageDistributions = this.globalService.getCoverageDistributions()
+      // locations.forEach((data: any)=>{
+      //   let piechartdata={category: data.Dimension, value: data.Measure}
+      //   updatedChartData.push(piechartdata)
+        // updatedChartData.Categories.push(data.Dimension)
+        // updatedChartData.Data.push(data.Measure)
+      // })
+
+  let count= coverageDistributions[0].Dimension.length;
+  for (let i = 0;i<count;i++) {
+    let piechartdata={category: coverageDistributions[0].Dimension[i], value: coverageDistributions[0].Measure[i]}
+      updatedChartData.push(piechartdata)
+ }
+
+    console.log("CoverageDistributions-1");
+    console.log(coverageDistributions);
+    return of(updatedChartData);
+  }
+
+  
+
   getSubmissionConversionsFromDB(): Observable<any> {
     let submissionConversion = [
       {
-        Dimension: "Boston",
-        Measure: "10"
-      },
-      {
-        Dimension: "Boston1",
-        Measure: "20"
-      },
-      {
-        Dimension: "Boston2",
-        Measure: "10"
+        Dimension: ["Boston", "Boston1", "Boston2", "Boston3"],
+        Measure: ["10", "20", "25", "13"],
+        // InnerRadius: 80,
       },
      ]
     return of(submissionConversion)
   }
+  getSubmissionConversions(filter: DashboardFilter) {
+    let updatedChartData=
+    [
+          {category: '', data: ''},
+        ]
+    
 
-  getSubmissionConversions(filter: DashboardFilter): Observable<FunnelData[]> {
-    let updatedChartData: FunnelData[]= [];
+    let submissionConversion = this.globalService.getSubmissionConversion()
+  let count= submissionConversion[0].Dimension.length;
+  for (let i = 0;i<count;i++) {
+    let funnelchartdata={category: submissionConversion[0].Dimension[i], data: submissionConversion[0].Measure[i]}
+      updatedChartData.push(funnelchartdata)
+ }
 
-    let conversions = this.globalService.getSubmissionConversion()
-    conversions.forEach((data: any)=>{
-              // updatedChartData.Categories.push(data.Dimension)
-        // updatedChartData.Data[0].Data.push(data.Measure)
-        let newData: FunnelData = {
-          Categories: [data.Dimension],
-          Data: [data.Measure],
-        };
-        updatedChartData.push(newData);
-        
-
-      })
-    console.log("submissionConversion-1");
-    console.log(updatedChartData);
+    console.log("SubmissionConversion-1");
+    console.log(submissionConversion);
     return of(updatedChartData);
   }
 
 
-
-
-
-
-
-
-
-  getCoverageDistribution(filter: DashboardFilter): Observable<any> {
-    return this.piechartData$; 
-  }
+  // getCoverageDistribution(filter: DashboardFilter): Observable<any> {
+  //   return this.piechartData$; 
+  // }
   
 
-  private piechartDataSubject = new BehaviorSubject<any[]>([
-    {
-      "category": "Property",
-      "value": 25,
-    },
-    {
-      "category": "Automobile",
-      "value": 20,
-    },
-    {
-      "category": "Umbrella",
-      "value": 15,
-    },
-    {
-      "category": "General Liability",
-      "value": 10,
-    },
-    {
-      "category": "Workers Compensation",
-      "value": 5,
-    },
-    {
-      "category": "Others",
-      "value": 1,
-    }
-  ]);
+  // private piechartDataSubject = new BehaviorSubject<any[]>([
+  //   {
+  //     "category": "Property",
+  //     "value": 25,
+  //   },
+  //   {
+  //     "category": "Automobile",
+  //     "value": 20,
+  //   },
+  //   {
+  //     "category": "Umbrella",
+  //     "value": 15,
+  //   },
+  //   {
+  //     "category": "General Liability",
+  //     "value": 10,
+  //   },
+  //   {
+  //     "category": "Workers Compensation",
+  //     "value": 5,
+  //   },
+  //   {
+  //     "category": "Others",
+  //     "value": 1,
+  //   }
+  // ]);
 
-  piechartData$ = this.piechartDataSubject.asObservable();
+  // piechartData$ = this.piechartDataSubject.asObservable();
 
 
-  setPie(pieData: any[]): void {
-    this.piechartDataSubject.next(pieData);
-  }
+  // setPie(pieData: any[]): void {
+  //   this.piechartDataSubject.next(pieData);
+  // }
 
-  getPie(): Observable<any[]> {
-    return this.piechartData$; 
-  }
+  // getPie(): Observable<any[]> {
+  //   return this.piechartData$; 
+  // }
 
-  logPieData(): void {
-    this.piechartData$.subscribe((data) => {
-      console.log('piechartDataSubject values:', data);
-    });
-  }
+  // logPieData(): void {
+  //   this.piechartData$.subscribe((data) => {
+  //     console.log('piechartDataSubject values:', data);
+  //   });
+  // }
 
  
 
