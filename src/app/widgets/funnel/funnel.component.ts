@@ -25,7 +25,7 @@ export class FunnelComponent implements OnInit, OnDestroy {
   public dynamicHeight = false;
   filter: DashboardFilter;
   ChartType: SeriesType = 'funnel';
-  // public chartData: any[];
+  public chartData: any[];
   @ViewChild('chart')
   private chart: ChartComponent;
   constructor(
@@ -36,21 +36,17 @@ export class FunnelComponent implements OnInit, OnDestroy {
     this.ChartType = input.WidgetType as SeriesType;
   }
 
-  // funnelData: FunnelData = {  
-  //   Categories : [],
-  //   Data : []
-  // };
-  seriesColors: string[] = SeriesColorConst;
-  funnelData: FunnelData[] = [];
-  
   ngOnDestroy(): void {}
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-      this.funnelData = res;
-      console.log(this.input);
-      console.log(res);
-      console.log('Funnel Data:', this.funnelData);
+      this.chartData = res;
     });
+    // this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
+    //   this.chartData = res;
+    //   console.log(this.input);
+    //   console.log(res);
+    //   console.log('Chart Data:', this.chartData);
+    // });
   }
   public exportChart(): void {
     // this.chart
