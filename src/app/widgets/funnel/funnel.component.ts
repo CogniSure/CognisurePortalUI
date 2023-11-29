@@ -36,6 +36,8 @@ export class FunnelComponent implements OnInit, OnDestroy {
     this.ChartType = input.WidgetType as SeriesType;
   }
 
+  seriesColors: string[] = SeriesColorConst;
+
   ngOnDestroy(): void {}
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {

@@ -97,11 +97,10 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
     })
 
 
-    this.widgetService.getSubmissionConversionsFromDB().subscribe(submissionConversionSubject=>{
-      console.log("SubmissionConversion");
-      console.log(submissionConversionSubject);
-      this.globalService.setSubmissionConversion(submissionConversionSubject)
-    
+    this.widgetService.getSubmissionConversionsFromDB().subscribe(submissionConversionsSubject=>{
+      console.log("SubmissionConversions");
+      console.log(submissionConversionsSubject);
+      this.globalService.setSubmissionConversions(submissionConversionsSubject) 
     })
 
 

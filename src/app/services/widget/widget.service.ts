@@ -62,7 +62,7 @@ export class WidgetService {
       // return of(topLocations)
     }
     else if (widget.WidgetName === 'SubmissionConversion') {
-      return this.getSubmissionConversions(filter)
+      return this.getSubmissionConversion(filter)
     }
     else
       return dsData;
@@ -535,31 +535,30 @@ export class WidgetService {
   
 
   getSubmissionConversionsFromDB(): Observable<any> {
-    let submissionConversion = [
+    let submissionConversions = [
       {
-        Dimension: ["Boston", "Boston1", "Boston2", "Boston3"],
-        Measure: ["10", "20", "25", "13"],
-        // InnerRadius: 80,
+        Dimension: ["Boston", "Boston1", "Boston2"],
+        Measure: ["25", "20", "25"],
       },
      ]
-    return of(submissionConversion)
+    return of(submissionConversions)
   }
-  getSubmissionConversions(filter: DashboardFilter) {
+  getSubmissionConversion(filter: DashboardFilter) {
     let updatedChartData=
     [
           {category: '', data: ''},
         ]
     
 
-    let submissionConversion = this.globalService.getSubmissionConversion()
-  let count= submissionConversion[0].Dimension.length;
+    let submissionConversions = this.globalService.getSubmissionConversions()
+  let count= submissionConversions[0].Dimension.length;
   for (let i = 0;i<count;i++) {
-    let funnelchartdata={category: submissionConversion[0].Dimension[i], data: submissionConversion[0].Measure[i]}
+    let funnelchartdata={category: submissionConversions[0].Dimension[i], data: submissionConversions[0].Measure[i]}
       updatedChartData.push(funnelchartdata)
  }
 
-    console.log("SubmissionConversion-1");
-    console.log(submissionConversion);
+    console.log("SubmissionConversions-1");
+    console.log(submissionConversions);
     return of(updatedChartData);
   }
 

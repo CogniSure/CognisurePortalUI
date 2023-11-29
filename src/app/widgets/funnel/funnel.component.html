@@ -58,14 +58,15 @@
 
 
     <kendo-chart
+    [seriesColors]="seriesColors"
 [style]="'height: 100%;width:80%;font-size:11px'"
 >
     <kendo-chart-series>
       <kendo-chart-series-item
       type="funnel"
       [data]="chartData"
-      field="count"
-      categoryField="stat"
+      field="data"
+      categoryField="category"
       colorField="color"
       [dynamicHeight]="true"
       [dynamicSlope]="false"

@@ -220,23 +220,23 @@ export class GlobalService {
   }
 
 
-  private submissionConversionSubject = new BehaviorSubject<any[]>(
+  private submissionConversionsSubject = new BehaviorSubject<any[]>(
     [
     {
     Dimension: "",
     Measure: "" 
   }]);
-  submissionConversionData$: Observable<any[]> = this.submissionConversionSubject.asObservable();
-  public setSubmissionConversion(updatedChartData: any[]): void {
-    sessionStorage.setItem('submissionConversionSubject', JSON.stringify(updatedChartData));
-    this.submissionConversionSubject.next(updatedChartData);
+  submissionConversionsData$: Observable<any[]> = this.submissionConversionsSubject.asObservable();
+  public setSubmissionConversions(updatedChartData: any[]): void {
+    sessionStorage.setItem('submissionConversionsSubject', JSON.stringify(updatedChartData));
+    this.submissionConversionsSubject.next(updatedChartData);
    
   }
   
-  getSubmissionConversion() {
-    let submissionConversion = sessionStorage.getItem('submissionConversionSubject')
+  getSubmissionConversions() {
+    let submissionConversions = sessionStorage.getItem('submissionConversionsSubject')
    
-    return JSON.parse(submissionConversion!)
+    return JSON.parse(submissionConversions!)
   }
 
 
