@@ -4,13 +4,17 @@ import { ChartData } from 'src/app/model/charts/chartdata';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from '../common/global.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { AppConfigService } from "src/app/app-config-service";
+import { HttpService } from '../common/http.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class WidgetService {
-
+  env = this.configService.settings;
   private chartDataSubject = new BehaviorSubject<any>(
     {
     Dimension: "",
@@ -22,7 +26,7 @@ export class WidgetService {
 
   // private jsonData$ = this.jsonDataSubject.asObservable();
 
-  constructor(private globalService : GlobalService) { 
+  constructor(private globalService : GlobalService, private http: HttpClient, private configService:AppConfigService, private httpService: HttpService) { 
      
   }
 
@@ -285,32 +289,53 @@ export class WidgetService {
   //   this.setChartData(updatedChartData);
   //   return of(updatedChartData);
   // }
-  getTopLocationsFromDB(): Observable<any> {
-    let topLocation = [
-      {
-        Dimension: "Boston",
-        Measure: "10"
-      },
-      {
-        Dimension: "Boston1",
-        Measure: "20"
-      },
-      {
-        Dimension: "Boston2",
-        Measure: "10"
-      },
-      {
-        Dimension: "Boston3",
-        Measure: "25"
-      },
-      {
-        Dimension: "Boston4",
-        Measure: "13"
-      }
-     ]
-    return of(topLocation)
+  getTopLocationsFromDB(clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+    // let topLocation = [
+    //   {
+    //     Dimension: "Boston",
+    //     Measure: "10"
+    //   },
+    //   {
+    //     Dimension: "Boston1",
+    //     Measure: "20"
+    //   },
+    //   {
+    //     Dimension: "Boston2",
+    //     Measure: "10"
+    //   },
+    //   {
+    //     Dimension: "Boston3",
+    //     Measure: "25"
+    //   },
+    //   {
+    //     Dimension: "Boston4",
+    //     Measure: "13"
+    //   }
+    //  ]
+    // return of(topLocation)
+    // const apiUrl = `${environment.baseUrl}+/api/DashboardGraph`;
+    // return this.http.get<any[]>(apiUrl);
+
+    // const apiUrl = `${environment.baseUrl}api/DashboardGraph`;
+
+    const apiUrl = this.env.baseUrl+'api/DashboardGraph';
+
+    const params = new HttpParams()
+      .set('CLIENTID', clientId)
+      .set('UserEmailId', userEmailId)
+      .set('StartDate', startDate)
+      .set('EndDate', endDate)
+      .set('Type', type);
+console.log(startDate);
+    return this.http.get<any[]>(apiUrl, { params });
+
+    // const apiUrl = `${environment.baseUrl}api/DashboardGraph`;
+    // return this.http.get<any[]>(apiUrl);
+
+    
+
   }
-  getTopLocations(filter: DashboardFilter) {
+  getTopLocations(filter: DashboardFilter): Observable<ChartData> {
     let updatedChartData: ChartData = {
       Categories : [],
       Data : [
@@ -326,8 +351,29 @@ export class WidgetService {
         updatedChartData.Categories.push(data.Dimension)
         updatedChartData.Data[0].Data.push(data.Measure)
       })
-    console.log("TopLocation-1");
-    console.log(updatedChartData);
+
+      console.log("TopLocation-1");
+      console.log(updatedChartData);
+    
+      // Assuming you have an observable that represents your data, replace the next line accordingly
+      return of(updatedChartData);
+    // console.log("TopLocation-1");
+    // console.log(updatedChartData);
+    // if (locations) {
+    //   locations.forEach((data: any) => {
+    //     updatedChartData.Categories.push(data.Dimension);
+    //     updatedChartData.Data[0].Data.push(data.Measure);
+    //   });
+       // console.log("TopLocation-1");
+    // console.log(updatedChartData);
+    // } else {
+    //   console.error('Top locations data is null or undefined.');
+      
+    // }
+
+
+
+    
     // this.globalService.getTopLocation().subscribe((chartData: any[]) => { 
       
     //   console.log('chartData:', chartData);
@@ -339,7 +385,7 @@ export class WidgetService {
       // this.setTopLocation(updatedChartData);
     // });
     // return this.getTopLocation();
-    return of(updatedChartData);
+    // return of(updatedChartData);
   }
   
   // public setChartData(updatedChartData: ChartData): void {

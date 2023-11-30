@@ -52,13 +52,17 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
 
   ngOnInit(): void {
    // this.globalService.setDashboardReload(true);
-   
+   const clientId = '1075';
+const userEmailId = 'jhon@gmail.com';
+const startDate = '01/03/2023';
+const endDate = '11/27/2023';
+const type = 'gfhnf';
 
-    this.widgetService.getTopLocationsFromDB().subscribe(topLocationSubject=>{
+    this.widgetService.getTopLocationsFromDB(clientId, userEmailId, startDate, endDate, type).subscribe(topLocationSubject=>{
       console.log("TopLocation");
       console.log(topLocationSubject);
       this.globalService.setTopLocation(topLocationSubject)
-    
+ 
     })
 
     this.widgetService.getTopBrokersFromDB().subscribe(topBrokerSubject=>{
@@ -89,12 +93,12 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
     
     })
 
-    this.widgetService.getTopLocationsFromDB().subscribe(topLocationSubject=>{
-      console.log("TopLocation");
-      console.log(topLocationSubject);
-      this.globalService.setTopLocation(topLocationSubject)
+    // this.widgetService.getTopLocationsFromDB().subscribe(topLocationSubject=>{
+    //   console.log("TopLocation");
+    //   console.log(topLocationSubject);
+    //   this.globalService.setTopLocation(topLocationSubject)
     
-    })
+    // })
 
 
     this.widgetService.getSubmissionConversionsFromDB().subscribe(submissionConversionsSubject=>{
