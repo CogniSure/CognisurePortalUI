@@ -290,7 +290,147 @@ export class WidgetService {
   //   return of(updatedChartData);
   // }
   getTopLocationsFromDB(clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
-    // let topLocation = [
+    const apiUrl = this.env.baseUrl+'api/DashboardGraph';
+    const params = new HttpParams()
+      .set('CLIENTID', clientId)
+      .set('UserEmailId', userEmailId)
+      .set('StartDate', startDate)
+      .set('EndDate', endDate)
+      .set('Type', type);
+    return this.http.get<any[]>(apiUrl, { params });
+  }
+  getTopLocations(filter: DashboardFilter): Observable<ChartData> {
+    let updatedChartData: ChartData = {
+      Categories : [],
+      Data : []
+    }
+
+    let locations = this.globalService.getTopLocation()
+    locations.value.forEach((data: any)=>{
+          updatedChartData.Categories.push(data.dimension);
+          updatedChartData.Data[0].Data.push("20");
+        })
+      return of(updatedChartData);
+  }
+  
+
+  getTopBrokersFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+    // let topBroker = [
+    //   {
+    //     Dimension: "Assured Partners",
+    //     Measure: "27"
+    //   },
+    //   {
+    //     Dimension: "Lockton",
+    //     Measure: "22"
+    //   },
+    //   {
+    //     Dimension: "AJG",
+    //     Measure: "14"
+    //   },
+    //   {
+    //     Dimension: "Brown & Brown",
+    //     Measure: "12"
+    //   },
+    //   {
+    //     Dimension: "Marsh",
+    //     Measure: "05"
+    //   }
+    //  ]
+    // return of(topBroker)
+    const apiUrl = this.env.baseUrl+'api/DashboardGraph';
+    const params = new HttpParams()
+      .set('TOPNUMBER', topNumber)
+      .set('CLIENTID', clientId)
+      .set('UserEmailId', userEmailId)
+      .set('StartDate', startDate)
+      .set('EndDate', endDate)
+      .set('Type', type);
+    return this.http.get<any[]>(apiUrl, { params });
+  }
+  getTopBrokers(filter: DashboardFilter) {
+    let updatedChartData: ChartData = {
+      Categories : [],
+      Data : [
+        {
+          Name:"",
+          Data : []
+        }
+      ]
+    }
+
+    let brokers = this.globalService.getTopBroker()
+    brokers.value.forEach((data: any)=>{
+        updatedChartData.Categories.push(data.dimension)
+        updatedChartData.Data.push(data.measure)
+      })
+    // console.log("TopBrokers-1");
+    // console.log(updatedChartData);
+    return of(updatedChartData);
+  }
+  
+
+
+
+  getTopIndustriesFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+    // let topIndustry = [
+    //   {
+    //     Dimension: "Manufacturing",
+    //     Measure: "35"
+    //   },
+    //   {
+    //     Dimension: "Construction",
+    //     Measure: "32"
+    //   },
+    //   {
+    //     Dimension: "Warehouses",
+    //     Measure: "12"
+    //   },
+    //   {
+    //     Dimension: "Trucking",
+    //     Measure: "05"
+    //   },
+    //   {
+    //     Dimension: "Aviation",
+    //     Measure: "03"
+    //   }
+    //  ]
+    // return of(topIndustry)
+    const apiUrl = this.env.baseUrl+'api/DashboardGraph';
+    const params = new HttpParams()
+      .set('TOPNUMBER', topNumber)
+      .set('CLIENTID', clientId)
+      .set('UserEmailId', userEmailId)
+      .set('StartDate', startDate)
+      .set('EndDate', endDate)
+      .set('Type', type);
+    return this.http.get<any[]>(apiUrl, { params });
+  }
+  getTopIndustries(filter: DashboardFilter) {
+    let updatedChartData: ChartData = {
+      Categories : [],
+      Data : [
+        {
+          Name:"",
+          Data : []
+        }
+      ]
+    }
+
+    let industries = this.globalService.getTopIndustry()
+    console.log(industries);
+    industries.value.forEach((data: any)=>{
+        updatedChartData.Categories.push(data.dimension)
+        updatedChartData.Data.push(data.measure)
+      })
+    // console.log("TopIndustry-1");
+    // console.log(updatedChartData);
+    return of(updatedChartData);
+  }
+
+
+  getSubmissionTurnaroundTimeFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+    // let submissionTurnaroundTime = [
     //   {
     //     Dimension: "Boston",
     //     Measure: "10"
@@ -312,207 +452,16 @@ export class WidgetService {
     //     Measure: "13"
     //   }
     //  ]
-    // return of(topLocation)
-    // const apiUrl = `${environment.baseUrl}+/api/DashboardGraph`;
-    // return this.http.get<any[]>(apiUrl);
-
-    // const apiUrl = `${environment.baseUrl}api/DashboardGraph`;
-
+    // return of(submissionTurnaroundTime)
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
-
     const params = new HttpParams()
+      .set('TOPNUMBER', topNumber)
       .set('CLIENTID', clientId)
       .set('UserEmailId', userEmailId)
       .set('StartDate', startDate)
       .set('EndDate', endDate)
       .set('Type', type);
-// console.log(startDate);
     return this.http.get<any[]>(apiUrl, { params });
-
-    // const apiUrl = `${environment.baseUrl}api/DashboardGraph`;
-    // return this.http.get<any[]>(apiUrl);
-
-    
-
-  }
-  getTopLocations(filter: DashboardFilter): Observable<ChartData> {
-    // console.log(topLocation)
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : []
-    }
-
-    let locations = this.globalService.getTopLocation()
-      // locations.forEach((data: any)=>{
-        updatedChartData.Categories.push()
-        updatedChartData.Data[0].Data.push()
-      // })
-
-      // console.log("TopLocation-1");
-      // console.log(updatedChartData);
-    
-      // Assuming you have an observable that represents your data, replace the next line accordingly
-      return of(updatedChartData);
-    // console.log("TopLocation-1");
-    // console.log(updatedChartData);
-    // if (locations) {
-    //   locations.forEach((data: any) => {
-    //     updatedChartData.Categories.push(data.Dimension);
-    //     updatedChartData.Data[0].Data.push(data.Measure);
-    //   });
-       // console.log("TopLocation-1");
-    // console.log(updatedChartData);
-    // } else {
-    //   console.error('Top locations data is null or undefined.');
-      
-    // }
-
-
-
-    
-    // this.globalService.getTopLocation().subscribe((chartData: any[]) => { 
-      
-    //   console.log('chartData:', chartData);
-    //   chartData.forEach(data=>{
-    //     updatedChartData.Categories.push(data.Dimension)
-    //     updatedChartData.Data[0].Data.push(data.Measure)
-    //   })
-    //   return of(updatedChartData);
-      // this.setTopLocation(updatedChartData);
-    // });
-    // return this.getTopLocation();
-    // return of(updatedChartData);
-  }
-  
-  // public setChartData(updatedChartData: ChartData): void {
-  //   this.chartDataSubject.next(updatedChartData);
-  // }
-  
-  // getChartData(): Observable<ChartData> {
-  //   return this.chartData$;
-  // }
-
-
-  getTopBrokersFromDB(): Observable<any> {
-    let topBroker = [
-      {
-        Dimension: "Assured Partners",
-        Measure: "27"
-      },
-      {
-        Dimension: "Lockton",
-        Measure: "22"
-      },
-      {
-        Dimension: "AJG",
-        Measure: "14"
-      },
-      {
-        Dimension: "Brown & Brown",
-        Measure: "12"
-      },
-      {
-        Dimension: "Marsh",
-        Measure: "05"
-      }
-     ]
-    return of(topBroker)
-  }
-  getTopBrokers(filter: DashboardFilter) {
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
-    }
-
-    let brokers = this.globalService.getTopBroker()
-    brokers.forEach((data: any)=>{
-        updatedChartData.Categories.push(data.Dimension)
-        updatedChartData.Data[0].Data.push(data.Measure)
-      })
-    // console.log("TopBrokers-1");
-    // console.log(updatedChartData);
-    return of(updatedChartData);
-  }
-  
-
-
-
-  getTopIndustriesFromDB(): Observable<any> {
-    let topIndustry = [
-      {
-        Dimension: "Manufacturing",
-        Measure: "35"
-      },
-      {
-        Dimension: "Construction",
-        Measure: "32"
-      },
-      {
-        Dimension: "Warehouses",
-        Measure: "12"
-      },
-      {
-        Dimension: "Trucking",
-        Measure: "05"
-      },
-      {
-        Dimension: "Aviation",
-        Measure: "03"
-      }
-     ]
-    return of(topIndustry)
-  }
-  getTopIndustries(filter: DashboardFilter) {
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
-    }
-
-    let industries = this.globalService.getTopIndustry()
-    industries.forEach((data: any)=>{
-        updatedChartData.Categories.push(data.Dimension)
-        updatedChartData.Data[0].Data.push(data.Measure)
-      })
-    // console.log("TopIndustry-1");
-    // console.log(updatedChartData);
-    return of(updatedChartData);
-  }
-
-
-  getSubmissionTurnaroundTimeFromDB(): Observable<any> {
-    let submissionTurnaroundTime = [
-      {
-        Dimension: "Boston",
-        Measure: "10"
-      },
-      {
-        Dimension: "Boston1",
-        Measure: "20"
-      },
-      {
-        Dimension: "Boston2",
-        Measure: "10"
-      },
-      {
-        Dimension: "Boston3",
-        Measure: "25"
-      },
-      {
-        Dimension: "Boston4",
-        Measure: "13"
-      }
-     ]
-    return of(submissionTurnaroundTime)
   }
   getSubmissionTurnaroundTime(filter: DashboardFilter) {
     let updatedChartData: ChartData = {
@@ -526,9 +475,9 @@ export class WidgetService {
     }
 
     let turnaroundTime = this.globalService.getSubmissionTurnaroundTime()
-    turnaroundTime.forEach((data: any)=>{
-        updatedChartData.Categories.push(data.Dimension)
-        updatedChartData.Data[0].Data.push(data.Measure)
+    turnaroundTime.value.forEach((data: any)=>{
+        updatedChartData.Categories.push(data.dimension)
+        updatedChartData.Data.push(data.measure)
       })
     // console.log("SubmissionTurnaroundTime-1");
     // console.log(updatedChartData);

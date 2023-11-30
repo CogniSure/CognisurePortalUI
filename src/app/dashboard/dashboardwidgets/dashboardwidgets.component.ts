@@ -52,6 +52,7 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
 
   ngOnInit(): void {
    // this.globalService.setDashboardReload(true);
+   const topNumber = '10';
    const clientId = '1075';
 const userEmailId = 'Jhon@gmail.com';
 const startDate = '01/01/2023';
@@ -65,21 +66,21 @@ const endDate = '11/28/2023';
  
     })
 
-    this.widgetService.getTopBrokersFromDB().subscribe(topBrokerSubject=>{
+    this.widgetService.getTopBrokersFromDB(topNumber,clientId, userEmailId, startDate, endDate, "Countbycity").subscribe(topBrokerSubject=>{
       // console.log("TopBroker");
       // console.log(topBrokerSubject);
       this.globalService.setTopBroker(topBrokerSubject)
     
     })
 
-    this.widgetService.getTopIndustriesFromDB().subscribe(topIndustrySubject=>{
+    this.widgetService.getTopIndustriesFromDB(topNumber,clientId, userEmailId, startDate, endDate, "countbyindustries").subscribe(topIndustrySubject=>{
       // console.log("TopIndustry");
       // console.log(topIndustrySubject);
       this.globalService.setTopIndustry(topIndustrySubject)
     
     })
 
-    this.widgetService.getSubmissionTurnaroundTimeFromDB().subscribe(submissionTurnaroundTimeSubject=>{
+    this.widgetService.getSubmissionTurnaroundTimeFromDB(topNumber,clientId, userEmailId, startDate, endDate, "countbyindustries").subscribe(submissionTurnaroundTimeSubject=>{
       // console.log("SubmissionTurnaroundTime");
       // console.log(submissionTurnaroundTimeSubject);
       this.globalService.setSubmissionTurnaroundTime(submissionTurnaroundTimeSubject)
