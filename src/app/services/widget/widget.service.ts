@@ -302,14 +302,31 @@ export class WidgetService {
   getTopLocations(filter: DashboardFilter): Observable<ChartData> {
     let updatedChartData: ChartData = {
       Categories : [],
-      Data : []
+      Data : [
+        {
+          Name:"",
+          Data : []
+        }
+      ]
     }
 
     let locations = this.globalService.getTopLocation()
-    locations.value.forEach((data: any)=>{
-          updatedChartData.Categories.push(data.dimension);
-          updatedChartData.Data[0].Data.push("20");
-        })
+    // locations.value.forEach((data: any)=>{
+    //       updatedChartData.Categories.push(data.dimension);
+    //       updatedChartData.Data[0].Data.push(data.measure);
+    //     })
+
+        if (locations && locations.value) {
+          locations.value.forEach((data: any) => {
+            if (data.dimension && data.measure) {
+              updatedChartData.Categories.push(data.dimension);
+              updatedChartData.Data[0].Data.push(data.measure);
+            }
+          });
+        }
+
+
+
       return of(updatedChartData);
   }
   
@@ -360,10 +377,20 @@ export class WidgetService {
     }
 
     let brokers = this.globalService.getTopBroker()
-    brokers.value.forEach((data: any)=>{
-        updatedChartData.Categories.push(data.dimension)
-        updatedChartData.Data.push(data.measure)
-      })
+
+    if (brokers && brokers.value) {
+      brokers.value.forEach((data: any) => {
+        if (data.dimension && data.measure) {
+          updatedChartData.Categories.push(data.dimension);
+          updatedChartData.Data[0].Data.push(data.measure);
+        }
+      });
+    }
+
+    // brokers.value.forEach((data: any)=>{
+    //     updatedChartData.Categories.push(data.dimension)
+    //     updatedChartData.Data.push(data.measure)
+    //   })
     // console.log("TopBrokers-1");
     // console.log(updatedChartData);
     return of(updatedChartData);
@@ -419,10 +446,21 @@ export class WidgetService {
 
     let industries = this.globalService.getTopIndustry()
     console.log(industries);
-    industries.value.forEach((data: any)=>{
-        updatedChartData.Categories.push(data.dimension)
-        updatedChartData.Data.push(data.measure)
-      })
+    // industries.value.forEach((data: any)=>{
+    //     updatedChartData.Categories.push(data.dimension)
+    //     updatedChartData.Data.push(data.measure)
+    //   })
+
+    if (industries && industries.value) {
+      industries.value.forEach((data: any) => {
+        if (data.dimension && data.measure) {
+          updatedChartData.Categories.push(data.dimension);
+          updatedChartData.Data[0].Data.push(data.measure);
+        }
+      });
+    }
+
+
     // console.log("TopIndustry-1");
     // console.log(updatedChartData);
     return of(updatedChartData);
@@ -475,10 +513,18 @@ export class WidgetService {
     }
 
     let turnaroundTime = this.globalService.getSubmissionTurnaroundTime()
-    turnaroundTime.value.forEach((data: any)=>{
-        updatedChartData.Categories.push(data.dimension)
-        updatedChartData.Data.push(data.measure)
-      })
+    if (turnaroundTime && turnaroundTime.value) {
+      turnaroundTime.value.forEach((data: any) => {
+        if (data.dimension && data.measure) {
+          updatedChartData.Categories.push(data.dimension);
+          updatedChartData.Data[0].Data.push(data.measure);
+        }
+      });
+    }
+    // turnaroundTime.value.forEach((data: any)=>{
+    //     updatedChartData.Categories.push(data.dimension)
+    //     updatedChartData.Data.push(data.measure)
+    //   })
     // console.log("SubmissionTurnaroundTime-1");
     // console.log(updatedChartData);
     return of(updatedChartData);
