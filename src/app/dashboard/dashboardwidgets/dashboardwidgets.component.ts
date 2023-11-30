@@ -55,40 +55,40 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
    const clientId = '1075';
 const userEmailId = 'jhon@gmail.com';
 const startDate = '01/03/2023';
-const endDate = '11/27/2023';
-const type = 'gfhnf';
+const endDate = '11/28/2023';
+// const type = '';
 
-    this.widgetService.getTopLocationsFromDB(clientId, userEmailId, startDate, endDate, type).subscribe(topLocationSubject=>{
-      console.log("TopLocation");
-      console.log(topLocationSubject);
+    this.widgetService.getTopLocationsFromDB(clientId, userEmailId, startDate, endDate, "countbylob").subscribe(topLocationSubject=>{
+      // console.log("TopLocation");
+      // console.log(topLocationSubject);
       this.globalService.setTopLocation(topLocationSubject)
  
     })
 
     this.widgetService.getTopBrokersFromDB().subscribe(topBrokerSubject=>{
-      console.log("TopBroker");
-      console.log(topBrokerSubject);
+      // console.log("TopBroker");
+      // console.log(topBrokerSubject);
       this.globalService.setTopBroker(topBrokerSubject)
     
     })
 
     this.widgetService.getTopIndustriesFromDB().subscribe(topIndustrySubject=>{
-      console.log("TopIndustry");
-      console.log(topIndustrySubject);
+      // console.log("TopIndustry");
+      // console.log(topIndustrySubject);
       this.globalService.setTopIndustry(topIndustrySubject)
     
     })
 
     this.widgetService.getSubmissionTurnaroundTimeFromDB().subscribe(submissionTurnaroundTimeSubject=>{
-      console.log("SubmissionTurnaroundTime");
-      console.log(submissionTurnaroundTimeSubject);
+      // console.log("SubmissionTurnaroundTime");
+      // console.log(submissionTurnaroundTimeSubject);
       this.globalService.setSubmissionTurnaroundTime(submissionTurnaroundTimeSubject)
     
     })
 
     this.widgetService.getCoverageDistributionFromDB().subscribe(coverageDistributionsSubject=>{
-      console.log("CoverageDistributions");
-      console.log(coverageDistributionsSubject);
+      // console.log("CoverageDistributions");
+      // console.log(coverageDistributionsSubject);
       this.globalService.setCoverageDistributions(coverageDistributionsSubject)
     
     })
@@ -102,8 +102,8 @@ const type = 'gfhnf';
 
 
     this.widgetService.getSubmissionConversionsFromDB().subscribe(submissionConversionsSubject=>{
-      console.log("SubmissionConversions");
-      console.log(submissionConversionsSubject);
+      // console.log("SubmissionConversions");
+      // console.log(submissionConversionsSubject);
       this.globalService.setSubmissionConversions(submissionConversionsSubject) 
     })
 

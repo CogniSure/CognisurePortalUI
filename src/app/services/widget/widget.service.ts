@@ -352,8 +352,8 @@ console.log(startDate);
         updatedChartData.Data[0].Data.push(data.Measure)
       })
 
-      console.log("TopLocation-1");
-      console.log(updatedChartData);
+      // console.log("TopLocation-1");
+      // console.log(updatedChartData);
     
       // Assuming you have an observable that represents your data, replace the next line accordingly
       return of(updatedChartData);
@@ -438,8 +438,8 @@ console.log(startDate);
         updatedChartData.Categories.push(data.Dimension)
         updatedChartData.Data[0].Data.push(data.Measure)
       })
-    console.log("TopBrokers-1");
-    console.log(updatedChartData);
+    // console.log("TopBrokers-1");
+    // console.log(updatedChartData);
     return of(updatedChartData);
   }
   
@@ -487,8 +487,8 @@ console.log(startDate);
         updatedChartData.Categories.push(data.Dimension)
         updatedChartData.Data[0].Data.push(data.Measure)
       })
-    console.log("TopIndustry-1");
-    console.log(updatedChartData);
+    // console.log("TopIndustry-1");
+    // console.log(updatedChartData);
     return of(updatedChartData);
   }
 
@@ -534,8 +534,8 @@ console.log(startDate);
         updatedChartData.Categories.push(data.Dimension)
         updatedChartData.Data[0].Data.push(data.Measure)
       })
-    console.log("SubmissionTurnaroundTime-1");
-    console.log(updatedChartData);
+    // console.log("SubmissionTurnaroundTime-1");
+    // console.log(updatedChartData);
     return of(updatedChartData);
   }
 
@@ -573,8 +573,8 @@ console.log(startDate);
       updatedChartData.push(piechartdata)
  }
 
-    console.log("CoverageDistributions-1");
-    console.log(coverageDistributions);
+    // console.log("CoverageDistributions-1");
+    // console.log(coverageDistributions);
     return of(updatedChartData);
   }
 
@@ -603,8 +603,8 @@ console.log(startDate);
       updatedChartData.push(funnelchartdata)
  }
 
-    console.log("SubmissionConversions-1");
-    console.log(submissionConversions);
+    // console.log("SubmissionConversions-1");
+    // console.log(submissionConversions);
     return of(updatedChartData);
   }
 
