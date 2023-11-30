@@ -53,14 +53,14 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
   ngOnInit(): void {
    // this.globalService.setDashboardReload(true);
    const clientId = '1075';
-const userEmailId = 'jhon@gmail.com';
-const startDate = '01/03/2023';
+const userEmailId = 'Jhon@gmail.com';
+const startDate = '01/01/2023';
 const endDate = '11/28/2023';
 // const type = '';
 
     this.widgetService.getTopLocationsFromDB(clientId, userEmailId, startDate, endDate, "countbylob").subscribe(topLocationSubject=>{
       // console.log("TopLocation");
-      // console.log(topLocationSubject);
+      console.log(topLocationSubject);
       this.globalService.setTopLocation(topLocationSubject)
  
     })

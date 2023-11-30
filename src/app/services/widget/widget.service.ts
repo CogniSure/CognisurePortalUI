@@ -326,7 +326,7 @@ export class WidgetService {
       .set('StartDate', startDate)
       .set('EndDate', endDate)
       .set('Type', type);
-console.log(startDate);
+// console.log(startDate);
     return this.http.get<any[]>(apiUrl, { params });
 
     // const apiUrl = `${environment.baseUrl}api/DashboardGraph`;
@@ -336,21 +336,17 @@ console.log(startDate);
 
   }
   getTopLocations(filter: DashboardFilter): Observable<ChartData> {
+    // console.log(topLocation)
     let updatedChartData: ChartData = {
       Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
+      Data : []
     }
 
     let locations = this.globalService.getTopLocation()
-      locations.forEach((data: any)=>{
-        updatedChartData.Categories.push(data.Dimension)
-        updatedChartData.Data[0].Data.push(data.Measure)
-      })
+      // locations.forEach((data: any)=>{
+        updatedChartData.Categories.push()
+        updatedChartData.Data[0].Data.push()
+      // })
 
       // console.log("TopLocation-1");
       // console.log(updatedChartData);

@@ -119,7 +119,7 @@ export class GlobalService {
   public setTopLocation(updatedChartData: any[]): void {
     sessionStorage.setItem('topLocationSubject', JSON.stringify(updatedChartData));
     this.topLocationSubject.next(updatedChartData);
-   
+
   }
 
   // topLocationData$: Observable<any> = this.widgetService.getTopLocationsFromDB();
