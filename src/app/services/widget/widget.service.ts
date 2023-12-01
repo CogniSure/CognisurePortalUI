@@ -468,38 +468,38 @@ export class WidgetService {
 
 
   getSubmissionTurnaroundTimeFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
-    // let submissionTurnaroundTime = [
-    //   {
-    //     Dimension: "Boston",
-    //     Measure: "10"
-    //   },
-    //   {
-    //     Dimension: "Boston1",
-    //     Measure: "20"
-    //   },
-    //   {
-    //     Dimension: "Boston2",
-    //     Measure: "10"
-    //   },
-    //   {
-    //     Dimension: "Boston3",
-    //     Measure: "25"
-    //   },
-    //   {
-    //     Dimension: "Boston4",
-    //     Measure: "13"
-    //   }
-    //  ]
-    // return of(submissionTurnaroundTime)
-    const apiUrl = this.env.baseUrl+'api/DashboardGraph';
-    const params = new HttpParams()
-      .set('TOPNUMBER', topNumber)
-      .set('CLIENTID', clientId)
-      .set('UserEmailId', userEmailId)
-      .set('StartDate', startDate)
-      .set('EndDate', endDate)
-      .set('Type', type);
-    return this.http.get<any[]>(apiUrl, { params });
+    let submissionTurnaroundTime = [
+      {
+        Dimension: "Boston",
+        Measure: "10"
+      },
+      {
+        Dimension: "Boston1",
+        Measure: "20"
+      },
+      {
+        Dimension: "Boston2",
+        Measure: "10"
+      },
+      {
+        Dimension: "Boston3",
+        Measure: "25"
+      },
+      {
+        Dimension: "Boston4",
+        Measure: "13"
+      }
+     ]
+    return of(submissionTurnaroundTime)
+    // const apiUrl = this.env.baseUrl+'api/DashboardGraph';
+    // const params = new HttpParams()
+    //   .set('TOPNUMBER', topNumber)
+    //   .set('CLIENTID', clientId)
+    //   .set('UserEmailId', userEmailId)
+    //   .set('StartDate', startDate)
+    //   .set('EndDate', endDate)
+    //   .set('Type', type);
+    // return this.http.get<any[]>(apiUrl, { params });
   }
   getSubmissionTurnaroundTime(filter: DashboardFilter) {
     let updatedChartData: ChartData = {
@@ -513,35 +513,37 @@ export class WidgetService {
     }
 
     let turnaroundTime = this.globalService.getSubmissionTurnaroundTime()
-    if (turnaroundTime && turnaroundTime.value) {
-      turnaroundTime.value.forEach((data: any) => {
+    if (turnaroundTime && turnaroundTime) {
+      turnaroundTime.forEach((data: any) => {
         if (data.dimension && data.measure) {
           updatedChartData.Categories.push(data.dimension);
           updatedChartData.Data[0].Data.push(data.measure);
         }
       });
     }
-    // turnaroundTime.value.forEach((data: any)=>{
-    //     updatedChartData.Categories.push(data.dimension)
-    //     updatedChartData.Data.push(data.measure)
-    //   })
-    // console.log("SubmissionTurnaroundTime-1");
-    // console.log(updatedChartData);
     return of(updatedChartData);
   }
 
 
 
 
-  getCoverageDistributionFromDB(): Observable<any> {
-    let coverageDistributions = [
-      {
-        Dimension: ["Boston", "Boston1", "Boston2", "Boston3"],
-        Measure: ["10", "20", "25", "13"],
-        // InnerRadius: 80,
-      },
-     ]
-    return of(coverageDistributions)
+  getCoverageDistributionFromDB(clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+    // let coverageDistributions = [
+    //   {
+    //     Dimension: ["Boston", "Boston1", "Boston2", "Boston3"],
+    //     Measure: ["10", "20", "25", "13"],
+    //     // InnerRadius: 80,
+    //   },
+    //  ]
+    // return of(coverageDistributions)
+     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
+    const params = new HttpParams()
+      .set('CLIENTID', clientId)
+      .set('UserEmailId', userEmailId)
+      .set('StartDate', startDate)
+      .set('EndDate', endDate)
+      .set('Type', type);
+    return this.http.get<any[]>(apiUrl, { params });
   }
   getCoverageDistribution(filter: DashboardFilter) {
     let updatedChartData=
@@ -551,18 +553,18 @@ export class WidgetService {
     
 
     let coverageDistributions = this.globalService.getCoverageDistributions()
-      // locations.forEach((data: any)=>{
-      //   let piechartdata={category: data.Dimension, value: data.Measure}
-      //   updatedChartData.push(piechartdata)
-        // updatedChartData.Categories.push(data.Dimension)
-        // updatedChartData.Data.push(data.Measure)
-      // })
+    coverageDistributions.value.forEach((data: any)=>{
+        let piechartdata={category: data.dimension, value: data.Measure}
+        updatedChartData.push(piechartdata)
+        //updatedChartData.Categories.push(data.Dimension)
+        //updatedChartData.Data.push(data.Measure)
+      })
 
-  let count= coverageDistributions[0].Dimension.length;
-  for (let i = 0;i<count;i++) {
-    let piechartdata={category: coverageDistributions[0].Dimension[i], value: coverageDistributions[0].Measure[i]}
-      updatedChartData.push(piechartdata)
- }
+//   let count= coverageDistributions.value.length;
+//   for (let i = 0;i<count;i++) {
+//     let piechartdata={category: coverageDistributions.value.Dimension[i], value: coverageDistributions[0].Measure[i]}
+//       updatedChartData.push(piechartdata)
+//  }
 
     // console.log("CoverageDistributions-1");
     // console.log(coverageDistributions);
