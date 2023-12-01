@@ -66,7 +66,7 @@ const endDate = '11/28/2023';
  
     })
 
-    this.widgetService.getTopBrokersFromDB(topNumber,clientId, userEmailId, startDate, endDate, "Countbycity").subscribe(topBrokerSubject=>{
+    this.widgetService.getTopBrokersFromDB(topNumber,clientId, userEmailId, startDate, endDate, "countbybroker").subscribe(topBrokerSubject=>{
       // console.log("TopBroker");
       // console.log(topBrokerSubject);
       this.globalService.setTopBroker(topBrokerSubject)
@@ -80,19 +80,20 @@ const endDate = '11/28/2023';
     
     })
 
-    this.widgetService.getSubmissionTurnaroundTimeFromDB(topNumber,clientId, userEmailId, startDate, endDate, "countbyindustries").subscribe(submissionTurnaroundTimeSubject=>{
+    this.widgetService.getSubmissionTurnaroundTimeFromDB(topNumber,clientId, userEmailId, startDate, endDate, "").subscribe(submissionTurnaroundTimeSubject=>{
       // console.log("SubmissionTurnaroundTime");
       // console.log(submissionTurnaroundTimeSubject);
       this.globalService.setSubmissionTurnaroundTime(submissionTurnaroundTimeSubject)
     
     })
 
-    this.widgetService.getCoverageDistributionFromDB().subscribe(coverageDistributionsSubject=>{
+    this.widgetService.getCoverageDistributionFromDB(clientId, userEmailId, startDate, endDate, "countbylob").subscribe(coverageDistributionsSubject=>{
       // console.log("CoverageDistributions");
       // console.log(coverageDistributionsSubject);
       this.globalService.setCoverageDistributions(coverageDistributionsSubject)
     
     })
+    
 
     // this.widgetService.getTopLocationsFromDB().subscribe(topLocationSubject=>{
     //   console.log("TopLocation");
