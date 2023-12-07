@@ -175,6 +175,16 @@ export class DataComponent {
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3
+    },
+    {
+      id: 1,
+      BoxType: 'SmallBox',
+      WidgetName: 'TopLocations',
+      WidgetType: 'Ybar',
+      Header: 'Top Locations by State',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  3
     }
   ];
   public static Tooltip = `<div class="size"><b>Password must consists of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>`;

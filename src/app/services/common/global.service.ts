@@ -144,8 +144,6 @@ export class GlobalService {
   // }
 
 
-
-
   private topBrokerSubject = new BehaviorSubject<any[]>(
     [
     {
@@ -241,6 +239,34 @@ export class GlobalService {
 
 
 
+  private topLocationbyStateSubject = new BehaviorSubject<any[]>(
+    [
+    {
+    Dimension: "",
+    Measure: "" 
+  }]);
+  topLocationbyStateData$: Observable<any[]> = this.topLocationbyStateSubject.asObservable();
+  public setTopLocationbyState(updatedChartData: any[]): void {
+    sessionStorage.setItem('topLocationbyStateSubject', JSON.stringify(updatedChartData));
+    this.topLocationbyStateSubject.next(updatedChartData);
+
+  }
+
+  // topLocationData$: Observable<any> = this.widgetService.getTopLocationsFromDB();
+  // public setTopLocation(updatedChartData: any): void {
+  //   this.topLocationSubject.next(updatedChartData);
+  // }
+  
+  getTopLocationbyState() {
+    // this.topLocationData$.subscribe(data=>{
+    //   console.log("TopLocation-1");
+    //   console.log(data);
+    // })
+    let topLocationbyState = sessionStorage.getItem('topLocationbyStateSubject')
+   
+    return JSON.parse(topLocationbyState!)
+    // return this.topLocationData$;
+  }
 
 
 

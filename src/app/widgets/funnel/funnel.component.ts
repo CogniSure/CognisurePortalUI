@@ -21,10 +21,12 @@ import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
   styleUrls: ['./funnel.component.scss'],
 })
 export class FunnelComponent implements OnInit, OnDestroy {
+  funnelchartdata:any;
   public dynamicSlope = false;
   public dynamicHeight = false;
   filter: DashboardFilter;
   ChartType: SeriesType = 'funnel';
+  public data: any[];
   public chartData: any[];
   @ViewChild('chart')
   private chart: ChartComponent;
