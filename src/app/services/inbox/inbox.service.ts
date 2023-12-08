@@ -69,6 +69,7 @@ export class InboxService {
             AgencyName: (res['agencyName']==null || res['agencyName']=="")?"NA":this.getConcatenateString(res['agencyName'].split(",")),
             LOB: (res['lineOfBusiness']==null || res['lineOfBusiness']=="")?"NA":this.getConcatenateString(res['lineOfBusiness'].split(",")),
             Priority: "High",//res['priority']!=""?res['priority']:"NA",
+            // QualityScore: res['qualityScore']!=""?res['qualityScore']:"NA",
             Status: res['submissionStatusName']!=""?res['submissionStatusName']:"NA",
             AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
             NewStatus: true,

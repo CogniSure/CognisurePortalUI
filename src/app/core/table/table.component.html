@@ -340,7 +340,7 @@
 
         <div >
           <div style="text-align: center">
-            {{ column.title }} 
+            <!-- {{ column.title }}  -->
           </div>
           <div class="image-row">
           <div *ngFor="let data of navData" class="image-container">
@@ -369,8 +369,8 @@
         let-value="value"
       >
         <div style="display: flex; justify-content: center;">
-          <span class="k-icon k-i-circle" style="color:#80808059;"></span>
-          <span class="k-icon k-i-circle" style="color:#80808059;"></span>
+          <!-- <span class="k-icon k-i-circle" style="color:#80808059;"></span>
+          <span class="k-icon k-i-circle" style="color:#80808059;"></span> -->
           <span class="k-icon k-i-circle" style="color:#80808059;"></span>
         </div>
       </ng-template>
@@ -410,6 +410,20 @@
       </ng-container> -->
     </ng-template>
   </kendo-grid-column>
+
+  <kendo-grid-column
+  *ngIf="column.type == 'dropdown'"
+  field="{{ column.field }}"
+  title="{{ column.title }}"
+  format="{{ column.format }}"
+  [filterable]="column.filterable"
+  [sortable]="column.sortable"
+  [filter]="column.type"
+  [width]="column.width"
+  [columnMenu]="column.columnmenu"
+  [editor]="column.editor"
+>
+</kendo-grid-column>
 
   </ng-template>
   <ng-template kendoGridLoadingTemplate>
