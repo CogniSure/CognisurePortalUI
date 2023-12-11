@@ -411,8 +411,21 @@
     </ng-template>
   </kendo-grid-column>
 
+  <!-- <kendo-grid-column>
+  <ng-template kendoGridCellTemplate let-dataItem>
+    <ng-container *ngIf="dataItem.S360Report">
+      <a [href]="generateDownloadLink(dataItem.S360Report)" download>
+        Download
+      </a>
+    </ng-container>
+    <ng-container *ngIf="!dataItem.S360Report">
+      N/A
+    </ng-container>
+  </ng-template>
+</kendo-grid-column> -->
+
   <kendo-grid-column
-  *ngIf="column.type == 'dropdown'"
+  *ngIf="column.type == 'DownloadXL'"
   field="{{ column.field }}"
   title="{{ column.title }}"
   format="{{ column.format }}"
@@ -423,6 +436,19 @@
   [columnMenu]="column.columnmenu"
   [editor]="column.editor"
 >
+<ng-template kendoGridCellTemplate let-dataItem>
+  <ng-container *ngIf="!dataItem.S360Report">
+    <!-- <a [href]="generateDownloadLink(dataItem.S360Report)" download> -->
+      <!-- Download -->
+      <a color="primary"  (click) = "download(dataItem)">
+      <span class="excel_icon"><span class="k-icon k-i-excel"></span></span>
+      </a>
+    <!-- </a> -->
+  </ng-container>
+  <ng-container *ngIf="dataItem.S360Report">
+    N/A
+  </ng-container>
+</ng-template>
 </kendo-grid-column>
 
   </ng-template>

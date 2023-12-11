@@ -43,6 +43,7 @@ export class PieComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
       this.chartData = res
+      this.changeDetector.detectChanges();
     });
 
   }

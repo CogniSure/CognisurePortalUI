@@ -294,4 +294,33 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     console.log(`Button clicked: ${action}`);
   }
 
+  download(rowElement: any) {
+    const source = `data:submission360;base64,${rowElement.FileContent}`;
+    const downloadLink = document.createElement('a');
+    const fileName = rowElement.FileName;
+
+    downloadLink.href = source;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
+
+  // generateDummyReportUrl(): string {
+  //   // Assuming a base URL and a unique identifier for the report
+  //   const baseUrl = 'http://localhost:4200/#/inbox/detail/summary';
+  //   const uniqueIdentifier = Math.floor(Math.random() * 1000); // Replace this with your logic
+  
+  //   // Combining the base URL and unique identifier to create a dummy report URL
+  //   const dummyReportUrl = `${baseUrl}report-${uniqueIdentifier}.xlsx`;
+  
+  //   return dummyReportUrl;
+  // }
+
+  // generateDownloadLink(reportUrl: string): string {
+  //   if (reportUrl) {
+  //     return reportUrl;
+  //   } else {
+  //     return this.generateDummyReportUrl();
+  //   }
+  // }
+
 }

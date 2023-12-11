@@ -44,7 +44,7 @@ import { MatCardModule } from '@angular/material/card';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
 import { SessionExpirationAlert } from './session-expiration-alert/session-expiration-alert.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-
+import { DatePipe } from '@angular/common';
 
 
 
@@ -100,6 +100,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     HttpService,
     ChatService,
     AuthService,
+    DatePipe,
     {
       provide: SessionInterruptService,
       useClass: AppSessionInterruptService,

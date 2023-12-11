@@ -42,6 +42,7 @@ export class XBarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
       this.chartData = res;
+      this.changeDetector.detectChanges();
       // console.log(this.input);
       // console.log(res);
     });

@@ -55,8 +55,8 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
    const topNumber = '10';
    const clientId = '1075';
 const userEmailId = 'Jhon@gmail.com';
-const startDate = '01/01/2023';
-const endDate = '11/28/2023';
+const startDate = '';
+const endDate = '';
 // const type = '';
 
     this.widgetService.getTopLocationsFromDB(clientId, userEmailId, startDate, endDate, "countbycity").subscribe(topLocationSubject=>{

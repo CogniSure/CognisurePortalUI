@@ -4,6 +4,7 @@ import { HttpService } from '../common/http.service';
 import { Observable, map, of } from 'rxjs';
 import { Submission } from 'src/app/model/inbox/Submission';
 import { AppConfigService } from 'src/app/app-config-service';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +32,16 @@ export class InboxService {
   alternateIconURL = '../../../assets/images/dropdown_icon.png';
 
   idToDisplay = 1;
-  constructor(private httpService: HttpService, private configService:AppConfigService) {}
+  constructor(private httpService: HttpService, private configService:AppConfigService, private datePipe: DatePipe) {}
   // constructor(private http: HttpClient, private globalService:GlobalService) {}
+
+  private getFormattedDate(dateString: string): string {
+    const date = new Date(dateString);
+    if (!isNaN(date.getTime())) {
+      return this.datePipe.transform(date, 'MM/dd/yyyy') || 'NA';
+    }
+    return 'NA';
+  }
 
   private dropdownOptions: { label: string; link: string }[] = [
     { label: 'My Profile', link: '/my-profile' },
@@ -64,12 +73,13 @@ export class InboxService {
             Id: res['submissionId'],
             SubmissionID: res['submissionId'],
             AccountName: res['accountName']!=""?res['accountName']:"NA",
-            EffectiveDate: res['effectiveDate']!=""?res['effectiveDate']:"NA",
+            // EffectiveDate: res['effectiveDate']!=""?res['effectiveDate']:"NA",
+            EffectiveDate: this.getFormattedDate(res['effectiveDate']),
             Type: "New Submission",
             AgencyName: (res['agencyName']==null || res['agencyName']=="")?"NA":this.getConcatenateString(res['agencyName'].split(",")),
             LOB: (res['lineOfBusiness']==null || res['lineOfBusiness']=="")?"NA":this.getConcatenateString(res['lineOfBusiness'].split(",")),
             Priority: "High",//res['priority']!=""?res['priority']:"NA",
-            // QualityScore: res['qualityScore']!=""?res['qualityScore']:"NA",
+            QualityScore: res['riskScore']!=""?res['riskScore']:"NA",
             Status: res['submissionStatusName']!=""?res['submissionStatusName']:"NA",
             AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
             NewStatus: true,
