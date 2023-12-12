@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
   {
     field: "Id",
     title: "",
-    width:35,
+    width:40,
     type: "checkbox",
     columnmenu:false,
     filterable : false,
