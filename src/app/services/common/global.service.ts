@@ -100,12 +100,12 @@ export class GlobalService {
 
   setUserProfile(profile: UserProfile) {
     sessionStorage.setItem('UserDetail', JSON.stringify(profile));
-    this.userProfile$.next(profile);
+    //this.userProfile$.next(profile);
   }
   getUserProfile() {
-    const profile = sessionStorage.getItem("UserDetail")
-    this.userProfile$.next(JSON.parse(profile!));
-    return this.userProfile$
+    const profile = JSON.parse(sessionStorage.getItem("UserDetail")!)
+    //this.userProfile$.next(JSON.parse(profile!));
+    return profile
   }
 
 

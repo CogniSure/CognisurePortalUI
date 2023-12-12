@@ -52,9 +52,13 @@ export class DashboardwidgetsComponent implements OnInit,AfterViewInit, OnDestro
 
   ngOnInit(): void {
    // this.globalService.setDashboardReload(true);
+   const user = this.globalService.getUserProfile();
+   console.log("User Detail");
+   console.log(user);
+              
    const topNumber = '10';
-   const clientId = '1075';
-const userEmailId = 'Jhon@gmail.com';
+   const clientId = user.ClientID;
+const userEmailId = user.Email;
 const startDate = '';
 const endDate = '';
 // const type = '';
@@ -119,9 +123,9 @@ const endDate = '';
     
     })
 
-    this.widgetService.getSubmissionTurnaroundTimeFromDB(topNumber,clientId, userEmailId, startDate, endDate, "Countbystate").subscribe(submissionTurnaroundTimeSubject=>{
-      console.log("SubmissionTurnaroundTime");
-      console.log(submissionTurnaroundTimeSubject);
+    this.widgetService.getSubmissionTurnaroundTimeFromDB(topNumber,clientId, userEmailId, startDate, endDate, "countbyturnaroundtime").subscribe(submissionTurnaroundTimeSubject=>{
+      // console.log("SubmissionTurnaroundTime");
+      // console.log(submissionTurnaroundTimeSubject);
       if(submissionTurnaroundTimeSubject!=null && submissionTurnaroundTimeSubject.success)
       {
         this.globalService.setSubmissionTurnaroundTime(submissionTurnaroundTimeSubject)

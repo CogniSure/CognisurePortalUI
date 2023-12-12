@@ -84,10 +84,11 @@ export class TopbarComponent {
     });
   }
 
-  getUserDetail(): UserProfile {
-    this.subscription = this.globalService
-      .getUserProfile()
-      .subscribe((mission) => {
+  getUserDetail() {
+    this.userDetail = this.globalService.getUserProfile();
+    //   .subscribe((mission) => {
+      // console.log("Top Bar User Detail")
+      // console.log(this.userDetail)
         if (
           this.userDetail.UserImage != null &&
           this.userDetail.UserImage != ''
@@ -97,9 +98,9 @@ export class TopbarComponent {
             `data:image/png;base64, ${this.userDetail.UserImage}`
           );
         } else this.defaultProfile = true;
-        return (this.userDetail = mission);
-      });
-    return this.userDetail;
+    //     return (this.userDetail = mission);
+    //   });
+    //return this.userDetail;
   }
 
 

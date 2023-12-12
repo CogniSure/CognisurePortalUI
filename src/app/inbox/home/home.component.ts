@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private inboxservice:InboxService, private changeDetectorRef: ChangeDetectorRef)
+  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private changeDetectorRef: ChangeDetectorRef)
   {
 
   }
@@ -454,4 +455,27 @@ export class HomeComponent implements OnInit {
 //     this.globalService.setCurrentSubmission(res)
 //   })
 // }
+
+DownloadSumission360(newItem: any) {
+    this.dashboardservice.downloadSubmission360(newItem.Id).subscribe(downloadRes=>{
+      const source = `data:application/pdf;base64,${downloadRes.value.data}`;
+      const downloadLink = document.createElement('a');
+      const fileName = downloadRes.value.fileName;
+  
+      downloadLink.href = source;
+      downloadLink.download = fileName;
+      downloadLink.click();
+    });
+    
+  //this.items.push(newItem);
+
+  // const source = `data:submission360;base64,${rowElement.FileContent}`;
+  //   const downloadLink = document.createElement('a');
+  //   const fileName = rowElement.FileName;
+
+  //   downloadLink.href = source;
+  //   downloadLink.download = fileName;
+  //   downloadLink.click();
+}
+
 }

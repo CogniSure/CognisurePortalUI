@@ -7,6 +7,7 @@ import { images } from './images';
 import { InboxIconsService } from 'src/app/services/inboxicons.service';
 import { State } from "@progress/kendo-data-query";
 import { LoaderType, LoaderThemeColor, LoaderSize } from '@progress/kendo-angular-indicators';
+import { Output, EventEmitter } from '@angular/core';
 import {
   SelectableSettings,
   SelectableMode,
@@ -74,7 +75,11 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     
   }
 
+  @Output() newDownloadEvent = new EventEmitter<string>();
 
+  DownloadEvent(value: any) {
+    this.newDownloadEvent.emit(value);
+  }
   
   public ngOnInit(): void {
     this.loading=true;
@@ -172,13 +177,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.cellExpansionState[rowIndex] = !this.cellExpansionState[rowIndex];
   }
 
-  // selectedValue =  { label: 'Export', link: '/option1', icon: 'export' };
-  // dropdownOption = [
-  //   { label: 'Export', link: '/option1', icon: 'export' },
-  //   { label: 'Lisa Scott', link: '/option2', icon: 'user' },
-  //   { label: 'John Williams', link: '/option3', icon: 'user' },
-  // ];
-
   public complexValue = { text: "Export", id: 2 };
   // public Operands: Array<string> = [
   //   "Equals",
@@ -231,32 +229,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     // other items
   ];
 
- 
-  // public shareData = [
-  //   {
-  //     text: "Export as XL",
-  //     imageUrl: "../../../assets/images/XL.svg",
-  //     isDisabled: false,
-  //   },
-  //   {
-  //     text: "Export as pdf",
-  //     imageUrl: "../../../assets/images/PDF.svg",
-  //     isDisabled: false,
-  //   }
-  // ];
-
-
-  // public exdata = [
-  //   {
-  //     text: "Export as pdf",
-  //     imageUrl:"../../../assets/images/PDF.svg",
-  //   },
-  //   {
-  //     text: "Export as XL",
-  //     imageUrl:"../../../assets/images/XL.svg",
-  //   },
-  // ];
-
   public export :any[]= [
     {
       text: "excel",
@@ -267,28 +239,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   ];
 
   
-
-  // onButtonClick(action: string) {
-  //   console.log(`Button clicked: ${action}`);
-  // }
-
-
-  // public svgArrow1: string = 'arrow-icon'; 
-  
-
-  // public shareData1 = [
-  //   {
-  //     text: 'Export as XL',
-  //     iconClass: 'k-icon k-i-excel',
-  //     isDisabled: false,
-  //   },
-  //   {
-  //     text: 'Export as PDF',
-  //     iconClass: 'k-icon k-i-pdf',
-  //     isDisabled: false,
-  //   },
-  // ];
-
   onButtonClick(action: string) {
     // Handle button click based on the action
     console.log(`Button clicked: ${action}`);
@@ -303,24 +253,5 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     downloadLink.download = fileName;
     downloadLink.click();
   }
-
-  // generateDummyReportUrl(): string {
-  //   // Assuming a base URL and a unique identifier for the report
-  //   const baseUrl = 'http://localhost:4200/#/inbox/detail/summary';
-  //   const uniqueIdentifier = Math.floor(Math.random() * 1000); // Replace this with your logic
-  
-  //   // Combining the base URL and unique identifier to create a dummy report URL
-  //   const dummyReportUrl = `${baseUrl}report-${uniqueIdentifier}.xlsx`;
-  
-  //   return dummyReportUrl;
-  // }
-
-  // generateDownloadLink(reportUrl: string): string {
-  //   if (reportUrl) {
-  //     return reportUrl;
-  //   } else {
-  //     return this.generateDummyReportUrl();
-  //   }
-  // }
 
 }

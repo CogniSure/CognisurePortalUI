@@ -101,10 +101,13 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
           this.authService.setToken(res);
           this.accService
             .getUserProfile(this.email)
-            .subscribe((user: any) => {});
-          this.router.navigate(['/dashboard/home'], {
-            queryParamsHandling: 'preserve',
-          });
+            .subscribe((user: any) => {
+              this.globalService.setUserProfile(user);
+              this.router.navigate(['/dashboard/home'], {
+                queryParamsHandling: 'preserve',
+              });
+            });
+         
         } else {
           this.validationErrors.push('Invalid Username and password');
         }
