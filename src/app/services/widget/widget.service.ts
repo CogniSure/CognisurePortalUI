@@ -292,9 +292,10 @@ export class WidgetService {
   //   this.setChartData(updatedChartData);
   //   return of(updatedChartData);
   // }
-  getTopLocationsbyStateFromDB(clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+  getTopLocationsbyStateFromDB(topNumber:string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
+      .set('TOPNUMBER', topNumber)
       .set('CLIENTID', clientId)
       .set('UserEmailId', userEmailId)
       .set('StartDate', startDate)
@@ -331,9 +332,10 @@ export class WidgetService {
   }
   
 
-  getTopLocationsFromDB(clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+  getTopLocationsFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
+      .set('TOPNUMBER', topNumber)
       .set('CLIENTID', clientId)
       .set('UserEmailId', userEmailId)
       .set('StartDate', startDate)
@@ -486,7 +488,7 @@ export class WidgetService {
     }
 
     let industries = this.globalService.getTopIndustry()
-    console.log(industries);
+    //console.log(industries);
     // industries.value.forEach((data: any)=>{
     //     updatedChartData.Categories.push(data.dimension)
     //     updatedChartData.Data.push(data.measure)
@@ -591,7 +593,7 @@ export class WidgetService {
     
 
     let coverageDistributions = this.globalService.getCoverageDistributions()
-    console.log(coverageDistributions);
+    //console.log(coverageDistributions);
     coverageDistributions.forEach((data: any)=>{
       
         let piechartdata={category: data.dimension, value: data.measure}
@@ -599,7 +601,7 @@ export class WidgetService {
         //updatedChartData.Categories.push(data.Dimension)
         //updatedChartData.Data.push(data.Measure)
       })
-      console.log(updatedChartData);
+     // console.log(updatedChartData);
 
 //   let count= coverageDistributions.value.length;
 //   for (let i = 0;i<count;i++) {

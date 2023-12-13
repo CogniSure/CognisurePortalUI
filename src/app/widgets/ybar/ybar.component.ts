@@ -43,9 +43,11 @@ export class YBarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
       this.chartData = res;
+      console.log(this.input.WidgetName+"-Start");
+      console.log(res);
+      console.log(this.input.WidgetName+"-End");
       this.changeDetector.detectChanges();
-      // console.log(this.input);
-      // console.log(res);
+      
     });
   }
 

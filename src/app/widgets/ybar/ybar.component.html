@@ -11,7 +11,7 @@
     orientation="horizontal"
   ></kendo-chart-legend>
   <kendo-chart-category-axis>
-    <kendo-chart-category-axis-item [categories]="this.chartData.Categories">
+    <kendo-chart-category-axis-item [categories]="chartData.Categories">
       <kendo-chart-category-axis-item-labels [position]="'start'">
       </kendo-chart-category-axis-item-labels>
     </kendo-chart-category-axis-item>
@@ -28,7 +28,7 @@
   </kendo-chart-series-defaults>
   <kendo-chart-series>
     <kendo-chart-series-item
-      *ngFor="let item of this.chartData.Data"
+      *ngFor="let item of chartData.Data"
       type="bar"
       [data]="item.Data"
       [name]="item.Name"
