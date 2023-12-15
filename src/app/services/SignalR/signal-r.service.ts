@@ -23,7 +23,6 @@ export class SignalRService {
     public addTransferChartDataListener = () => {
       this.hubConnection.on('transferchartdata', (data) => {
         this.data = data;
-        console.log(data);
       });
     }
 }

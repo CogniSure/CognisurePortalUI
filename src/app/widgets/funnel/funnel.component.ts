@@ -46,12 +46,6 @@ export class FunnelComponent implements OnInit, OnDestroy {
       this.chartData = res;
       this.changeDetector.detectChanges();
     });
-    // this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-    //   this.chartData = res;
-    //   console.log(this.input);
-    //   console.log(res);
-    //   console.log('Chart Data:', this.chartData);
-    // });
   }
   public exportChart(): void {
     // this.chart

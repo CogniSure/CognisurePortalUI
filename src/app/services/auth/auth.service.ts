@@ -62,31 +62,17 @@ export class AuthService {
     let hParams = new HttpParams();
     hParams = hParams.set('username', email);
     hParams = hParams.set('password', password);
-    return this.http.postData(
-      //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
-      apiUrl,
-      hParams,
-      ''
-    );
+    return this.http.postData(apiUrl, hParams, '');
   }
   public refreshToken(): Observable<any> {
     this.env = this.configService.settings;
     var apiUrl = this.env.baseUrl + 'api/refreshtoken';
-    //var apiUrl = "https://localhost:7026/api/refreshtoken"
     let tokenObjStr = sessionStorage.getItem('session_token_obj');
 
     const tokenObj = JSON.parse(tokenObjStr!);
-    console.log('Token Object: ' + JSON.stringify(tokenObj));
-    console.log(tokenObj);
     var result;
     let hParams = new HttpParams();
-    return this.http.postData(
-      //this.env.apiUrl+"login?username="+email+"&password="+JSON.stringify(password),
-      apiUrl,
-      hParams,
-      tokenObj
-    );
-    //return of(null)
+    return this.http.postData(apiUrl, hParams, tokenObj);
   }
   resetSession() {}
   public setToken(authResult: any) {

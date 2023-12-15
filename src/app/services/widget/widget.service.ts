@@ -60,10 +60,7 @@ export class WidgetService {
       return this.getTopIndustries(filter)
     }
     else if (widget.WidgetName === 'TopLocations') {
-      // let TopLocations = this.getTopLocations(filter);
-      // console.log(TopLocations);
       return this.getTopLocations(filter)
-      // return of(topLocations)
     }
     else if (widget.WidgetName === 'TopLocationsbyState') {
       return this.getTopLocationsbyState(filter)
@@ -191,54 +188,8 @@ export class WidgetService {
   //     ]);
   // }
 
-
-  // private chartDataSubject = new BehaviorSubject<ChartData | null>(null);
-  // chartData$ = this.chartDataSubject.asObservable();
-
-  
-  // getSubmissionConversions(filter: DashboardFilter): Observable<any> {
-  //   return this.jsonData$; 
-  
-  // }
-  
-  // private jsonDataSubject = new BehaviorSubject<any[]>([
-  //   {
-  //     "Dimension": "GL",
-  //     "Measure": 25,
-  //     "color": '#009CC1',
-  //   },
-  //   {
-  //     "Dimension": "Property",
-  //     "Measure": 18,
-  //     "color": '#00B4DF',
-  //   },
-  //   {
-  //     "Dimension": "Liability",
-  //     "Measure": 30,
-  //     "color": '#0CD0FF',
-  //   }
-  // ]);
-
-  // private jsonData$ = this.jsonDataSubject.asObservable();
-
-  // setData(newData: any[]): void {
-  //   this.jsonDataSubject.next(newData);
-  // }
-
-  // getData(): Observable<any[]> {
-  //   return this.jsonData$; 
-  // }
-
-  // logData(): void {
-  // this.jsonData$.subscribe((data) => {
-  //   console.log('jsonDataSubject values:', data);
-  // });
-  // }
-
-
   // getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
   //   this.chartData$.subscribe((chartData: any) => {
-  //     // console.log('ChartData from getSubmissionTurnaroundTime:', chartData);
   //   });
   
   //   const updatedChartData: ChartData = {
@@ -259,22 +210,6 @@ export class WidgetService {
   // getTopBrokers(filter: DashboardFilter): Observable<any> {
   //   this.chartData$.subscribe((chartData: ChartData) => {
   //   });
-  
-  //   const updatedChartData: ChartData = {
-  //     Categories: ['Assured Partners', 'Lockton', 'AJG', 'Brown & Brown', 'Marsh'],
-  //     Data: [
-  //       {
-  //         Name: '',
-  //         Data: [.27, .22, .14, .12, .05]
-  //       },
-  //     ],
-  //   };
- 
-  //   // this.setChartData(updatedChartData);
-  //   return of(updatedChartData);
-  // }
-
-
   // getTopIndustries(filter: DashboardFilter): Observable<any> {
   //   this.chartData$.subscribe((chartData: ChartData) => {
   //   });
@@ -315,11 +250,6 @@ export class WidgetService {
     }
 
     let locationsbyState = this.globalService.getTopLocationbyState()
-    // locations.value.forEach((data: any)=>{
-    //       updatedChartData.Categories.push(data.dimension);
-    //       updatedChartData.Data[0].Data.push(data.measure);
-    //     })
-
         if (locationsbyState && locationsbyState.value) {
           locationsbyState.value.forEach((data: any) => {
             if (data.dimension && data.measure) {
@@ -355,11 +285,6 @@ export class WidgetService {
     }
 
     let locations = this.globalService.getTopLocation()
-    // locations.value.forEach((data: any)=>{
-    //       updatedChartData.Categories.push(data.dimension);
-    //       updatedChartData.Data[0].Data.push(data.measure);
-    //     })
-
         if (locations && locations.value) {
           locations.value.forEach((data: any) => {
             if (data.dimension && data.measure) {
@@ -375,29 +300,6 @@ export class WidgetService {
   }
 
   getTopBrokersFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
-    // let topBroker = [
-    //   {
-    //     Dimension: "Assured Partners",
-    //     Measure: "27"
-    //   },
-    //   {
-    //     Dimension: "Lockton",
-    //     Measure: "22"
-    //   },
-    //   {
-    //     Dimension: "AJG",
-    //     Measure: "14"
-    //   },
-    //   {
-    //     Dimension: "Brown & Brown",
-    //     Measure: "12"
-    //   },
-    //   {
-    //     Dimension: "Marsh",
-    //     Measure: "05"
-    //   }
-    //  ]
-    // return of(topBroker)
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
       .set('TOPNUMBER', topNumber)
@@ -429,13 +331,6 @@ export class WidgetService {
         }
       });
     }
-
-    // brokers.value.forEach((data: any)=>{
-    //     updatedChartData.Categories.push(data.dimension)
-    //     updatedChartData.Data.push(data.measure)
-    //   })
-    // console.log("TopBrokers-1");
-    // console.log(updatedChartData);
     return of(updatedChartData);
   }
   
@@ -443,29 +338,6 @@ export class WidgetService {
 
 
   getTopIndustriesFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
-    // let topIndustry = [
-    //   {
-    //     Dimension: "Manufacturing",
-    //     Measure: "35"
-    //   },
-    //   {
-    //     Dimension: "Construction",
-    //     Measure: "32"
-    //   },
-    //   {
-    //     Dimension: "Warehouses",
-    //     Measure: "12"
-    //   },
-    //   {
-    //     Dimension: "Trucking",
-    //     Measure: "05"
-    //   },
-    //   {
-    //     Dimension: "Aviation",
-    //     Measure: "03"
-    //   }
-    //  ]
-    // return of(topIndustry)
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
       .set('TOPNUMBER', topNumber)
@@ -488,12 +360,6 @@ export class WidgetService {
     }
 
     let industries = this.globalService.getTopIndustry()
-    //console.log(industries);
-    // industries.value.forEach((data: any)=>{
-    //     updatedChartData.Categories.push(data.dimension)
-    //     updatedChartData.Data.push(data.measure)
-    //   })
-
     if (industries && industries.value) {
       industries.value.forEach((data: any) => {
         if (data.dimension && data.measure) {
@@ -502,38 +368,11 @@ export class WidgetService {
         }
       });
     }
-
-
-    // console.log("TopIndustry-1");
-    // console.log(updatedChartData);
     return of(updatedChartData);
   }
 
 
   getSubmissionTurnaroundTimeFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
-    // let submissionTurnaroundTime = [
-    //   {
-    //     Dimension: "Boston",
-    //     Measure: "10"
-    //   },
-    //   {
-    //     Dimension: "Boston1",
-    //     Measure: "20"
-    //   },
-    //   {
-    //     Dimension: "Boston2",
-    //     Measure: "10"
-    //   },
-    //   {
-    //     Dimension: "Boston3",
-    //     Measure: "25"
-    //   },
-    //   {
-    //     Dimension: "Boston4",
-    //     Measure: "13"
-    //   }
-    //  ]
-    // return of(submissionTurnaroundTime)
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
       .set('TOPNUMBER', topNumber)
@@ -568,14 +407,6 @@ export class WidgetService {
   }
 
   getCoverageDistributionFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
-    // let coverageDistributions = [
-    //   {
-    //     Dimension: ["Boston", "Boston1", "Boston2", "Boston3"],
-    //     Measure: ["10", "20", "25", "13"],
-    //     // InnerRadius: 80,
-    //   },
-    //  ]
-    // return of(coverageDistributions)
      const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
       .set('CLIENTID', clientId)
@@ -593,24 +424,11 @@ export class WidgetService {
     
 
     let coverageDistributions = this.globalService.getCoverageDistributions()
-    //console.log(coverageDistributions);
     coverageDistributions.forEach((data: any)=>{
       
         let piechartdata={category: data.dimension, value: data.measure}
         updatedChartData.push(piechartdata)
-        //updatedChartData.Categories.push(data.Dimension)
-        //updatedChartData.Data.push(data.Measure)
       })
-     // console.log(updatedChartData);
-
-//   let count= coverageDistributions.value.length;
-//   for (let i = 0;i<count;i++) {
-//     let piechartdata={category: coverageDistributions.value.Dimension[i], value: coverageDistributions[0].Measure[i]}
-//       updatedChartData.push(piechartdata)
-//  }
-
-    // console.log("CoverageDistributions-1");
-    // console.log(coverageDistributions);
     return of(updatedChartData);
   }
 
@@ -622,16 +440,6 @@ export class WidgetService {
       },
      ]
     return of(submissionConversions)
-
-    // const apiUrl = this.env.baseUrl+'api/DashboardGraph';
-    // const params = new HttpParams()
-    //   .set('CLIENTID', clientId)
-    //   .set('UserEmailId', userEmailId)
-    //   .set('StartDate', startDate)
-    //   .set('EndDate', endDate)
-    //   .set('Type', type);
-    // return this.http.get<any[]>(apiUrl, { params });
-
   }
   getSubmissionConversion(filter: DashboardFilter) {
     let updatedChartData=
@@ -646,64 +454,6 @@ export class WidgetService {
     let funnelchartdata={category: submissionConversions[0].Dimension[i], data: submissionConversions[0].Measure[i]}
       updatedChartData.push(funnelchartdata)
  }
-
-    // console.log("SubmissionConversions-1");
-    // console.log(submissionConversions);
     return of(updatedChartData);
   }
-
-
-  // getCoverageDistribution(filter: DashboardFilter): Observable<any> {
-  //   return this.piechartData$; 
-  // }
-  
-
-  // private piechartDataSubject = new BehaviorSubject<any[]>([
-  //   {
-  //     "category": "Property",
-  //     "value": 25,
-  //   },
-  //   {
-  //     "category": "Automobile",
-  //     "value": 20,
-  //   },
-  //   {
-  //     "category": "Umbrella",
-  //     "value": 15,
-  //   },
-  //   {
-  //     "category": "General Liability",
-  //     "value": 10,
-  //   },
-  //   {
-  //     "category": "Workers Compensation",
-  //     "value": 5,
-  //   },
-  //   {
-  //     "category": "Others",
-  //     "value": 1,
-  //   }
-  // ]);
-
-  // piechartData$ = this.piechartDataSubject.asObservable();
-
-
-  // setPie(pieData: any[]): void {
-  //   this.piechartDataSubject.next(pieData);
-  // }
-
-  // getPie(): Observable<any[]> {
-  //   return this.piechartData$; 
-  // }
-
-  // logPieData(): void {
-  //   this.piechartData$.subscribe((data) => {
-  //     console.log('piechartDataSubject values:', data);
-  //   });
-  // }
-
- 
-
-
-
 }

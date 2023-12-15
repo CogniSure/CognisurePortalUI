@@ -13,18 +13,24 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.scss']
+  styleUrls: ['./topbar.component.scss'],
 })
 export class TopbarComponent {
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
-  
 
+  constructor(
+    public genericService: GenericService,
+    private router: Router,
+    public dialog: MatDialog,
+    private cdRef: ChangeDetectorRef,
+    private auth: AuthService,
+    private globalService: GlobalService,
+    private sanitizer: DomSanitizer
+  ) {}
 
-  constructor(public genericService: GenericService,  private router: Router,public dialog: MatDialog, private cdRef:ChangeDetectorRef,private auth : AuthService, private globalService: GlobalService, private sanitizer: DomSanitizer) {}
-  
   defaultProfile = false;
   imageSource: any;
   public userDetail: UserProfile = {
@@ -44,7 +50,6 @@ export class TopbarComponent {
     UserImage: '',
   };
 
-  
   subscription: Subscription;
   size = 32;
 
@@ -57,9 +62,7 @@ export class TopbarComponent {
     this.dropdownOptions = this.genericService.getDropdownOptions();
   }
 
-  onSelectOption(option: string): void {
-   
-  }
+  onSelectOption(option: string): void {}
 
   toggleDropdown(): void {
     this.isToggleOn = !this.isToggleOn;
@@ -76,32 +79,19 @@ export class TopbarComponent {
     menuTrigger.closeMenu();
   }
 
-
   openDialog() {
     const dialogRef = this.dialog.open(CopilotComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   getUserDetail() {
     this.userDetail = this.globalService.getUserProfile();
-    //   .subscribe((mission) => {
-      // console.log("Top Bar User Detail")
-      // console.log(this.userDetail)
-        if (
-          this.userDetail.UserImage != null &&
-          this.userDetail.UserImage != ''
-        ) {
-          this.defaultProfile = false;
-          this.imageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
-            `data:image/png;base64, ${this.userDetail.UserImage}`
-          );
-        } else this.defaultProfile = true;
-    //     return (this.userDetail = mission);
-    //   });
-    //return this.userDetail;
+    if (this.userDetail.UserImage != null && this.userDetail.UserImage != '') {
+      this.defaultProfile = false;
+      this.imageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+        `data:image/png;base64, ${this.userDetail.UserImage}`
+      );
+    } else this.defaultProfile = true;
   }
-
-
 }

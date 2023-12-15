@@ -25,7 +25,7 @@ export class GlobalService {
   private accounts$ = new BehaviorSubject<Accounts>({
     AccountID: 0,
     AccountName: '',
-    BenPortalLinks : []
+    BenPortalLinks: [],
   });
 
   private userProfile$ = new BehaviorSubject<UserProfile>({
@@ -42,35 +42,35 @@ export class GlobalService {
     UserTypeID: 0,
     ClientCode: '',
     IsAdmin: false,
-    UserImage : ""
-  }) 
-
+    UserImage: '',
+  });
 
   constructor() {}
   public CurrentSubmissionId$ = new BehaviorSubject<any>({});
   public CurrentSubmission$ = new BehaviorSubject<any>({});
 
-
   setAccounts(account: Accounts[]) {
     sessionStorage.setItem('Accounts', JSON.stringify(account));
-    this.setSelectedAccount(account[0])
+    this.setSelectedAccount(account[0]);
   }
 
   setSelectedAccount(account: Accounts) {
     sessionStorage.setItem('SelectedAccounts', JSON.stringify(account));
     this.accounts$.next(account);
-    this.dashboardFilter$.next({...this.dashboardFilter$.value,Account : account})
+    this.dashboardFilter$.next({
+      ...this.dashboardFilter$.value,
+      Account: account,
+    });
   }
 
   setCurrentSubmission(submission: any) {
     sessionStorage.setItem('CurrentSubmission', JSON.stringify(submission));
-   // this.CurrentSubmission$.next(submission);
   }
   getCurrentSubmission() {
-   // return this.CurrentSubmission$;
-   var submission = sessionStorage.getItem('CurrentSubmission')==null?"":sessionStorage.getItem('CurrentSubmission');
-
-    //this.CurrentSubmission$.next(submissionId)
+    var submission =
+      sessionStorage.getItem('CurrentSubmission') == null
+        ? ''
+        : sessionStorage.getItem('CurrentSubmission');
     return of(JSON.parse(submission!));
   }
 
@@ -90,193 +90,180 @@ export class GlobalService {
   }
   getCurrentSubmissionId() {
     var submissionId: any = '';
-    submissionId = sessionStorage.getItem('CurrentSubmissionInfo')==null?"":sessionStorage.getItem('CurrentSubmissionInfo');
+    submissionId =
+      sessionStorage.getItem('CurrentSubmissionInfo') == null
+        ? ''
+        : sessionStorage.getItem('CurrentSubmissionInfo');
 
-    let submission:SubmissionInfo = JSON.parse(submissionId)
+    let submission: SubmissionInfo = JSON.parse(submissionId);
     //this.CurrentSubmission$.next(submissionId)
     return of(submission);
   }
 
-
   setUserProfile(profile: UserProfile) {
     sessionStorage.setItem('UserDetail', JSON.stringify(profile));
-    //this.userProfile$.next(profile);
   }
   getUserProfile() {
-    const profile = JSON.parse(sessionStorage.getItem("UserDetail")!)
-    //this.userProfile$.next(JSON.parse(profile!));
-    return profile
+    const profile = JSON.parse(sessionStorage.getItem('UserDetail')!);
+    return profile;
   }
 
-
-  private topLocationSubject = new BehaviorSubject<any[]>(
-    [
+  private topLocationSubject = new BehaviorSubject<any[]>([
     {
-    Dimension: "",
-    Measure: "" 
-  }]);
+      Dimension: '',
+      Measure: '',
+    },
+  ]);
   topLocationData$: Observable<any[]> = this.topLocationSubject.asObservable();
   public setTopLocation(updatedChartData: any[]): void {
-    sessionStorage.setItem('topLocationSubject', JSON.stringify(updatedChartData));
+    sessionStorage.setItem(
+      'topLocationSubject',
+      JSON.stringify(updatedChartData)
+    );
     this.topLocationSubject.next(updatedChartData);
-
   }
 
-  // topLocationData$: Observable<any> = this.widgetService.getTopLocationsFromDB();
-  // public setTopLocation(updatedChartData: any): void {
-  //   this.topLocationSubject.next(updatedChartData);
-  // }
-  
   getTopLocation() {
-    // this.topLocationData$.subscribe(data=>{
-    //   console.log("TopLocation-1");
-    //   console.log(data);
-    // })
-    let toplocation = sessionStorage.getItem('topLocationSubject')
-   
-    return JSON.parse(toplocation!)
-    // return this.topLocationData$;
+    let toplocation = sessionStorage.getItem('topLocationSubject');
+    return JSON.parse(toplocation!);
   }
 
-    // setTopLocation(updatedChartData: any) {
-  //   sessionStorage.setItem('topLocationSubject', JSON.stringify(updatedChartData));
-  //   this.topLocationSubject.next(updatedChartData);
-  // }
-
-
-  private topBrokerSubject = new BehaviorSubject<any[]>(
-    [
+  private topBrokerSubject = new BehaviorSubject<any[]>([
     {
-    Dimension: "",
-    Measure: "" 
-  }]);
+      Dimension: '',
+      Measure: '',
+    },
+  ]);
   topBrokerData$: Observable<any[]> = this.topBrokerSubject.asObservable();
   public setTopBroker(updatedChartData: any[]): void {
-    sessionStorage.setItem('topBrokerSubject', JSON.stringify(updatedChartData));
+    sessionStorage.setItem(
+      'topBrokerSubject',
+      JSON.stringify(updatedChartData)
+    );
     this.topBrokerSubject.next(updatedChartData);
   }
 
   getTopBroker() {
-    let topBroker = sessionStorage.getItem('topBrokerSubject')
-    return JSON.parse(topBroker!)
+    let topBroker = sessionStorage.getItem('topBrokerSubject');
+    return JSON.parse(topBroker!);
   }
 
-
-  private topIndustrySubject = new BehaviorSubject<any[]>(
-    [
+  private topIndustrySubject = new BehaviorSubject<any[]>([
     {
-    Dimension: "",
-    Measure: "" 
-  }]);
+      Dimension: '',
+      Measure: '',
+    },
+  ]);
   topIndustryData$: Observable<any[]> = this.topIndustrySubject.asObservable();
   public setTopIndustry(updatedChartData: any[]): void {
-    sessionStorage.setItem('topIndustrySubject', JSON.stringify(updatedChartData));
+    sessionStorage.setItem(
+      'topIndustrySubject',
+      JSON.stringify(updatedChartData)
+    );
     this.topIndustrySubject.next(updatedChartData);
-   
   }
-  
+
   getTopIndustry() {
-    let topIndustry = sessionStorage.getItem('topIndustrySubject') 
-    return JSON.parse(topIndustry!)
+    let topIndustry = sessionStorage.getItem('topIndustrySubject');
+    return JSON.parse(topIndustry!);
   }
 
-  private submissionTurnaroundTimeSubject = new BehaviorSubject<any[]>(
-    [
+  private submissionTurnaroundTimeSubject = new BehaviorSubject<any[]>([
     {
-    Dimension: "",
-    Measure: "" 
-  }]);
-  submissionTurnaroundTimeData$: Observable<any[]> = this.submissionTurnaroundTimeSubject.asObservable();
+      Dimension: '',
+      Measure: '',
+    },
+  ]);
+  submissionTurnaroundTimeData$: Observable<any[]> =
+    this.submissionTurnaroundTimeSubject.asObservable();
   public setSubmissionTurnaroundTime(updatedChartData: any[]): void {
-    sessionStorage.setItem('submissionTurnaroundTimeSubject', JSON.stringify(updatedChartData));
+    sessionStorage.setItem(
+      'submissionTurnaroundTimeSubject',
+      JSON.stringify(updatedChartData)
+    );
     this.submissionTurnaroundTimeSubject.next(updatedChartData);
-   
   }
-  
+
   getSubmissionTurnaroundTime() {
-    let submissionTurnaroundTime = sessionStorage.getItem('submissionTurnaroundTimeSubject') 
-    return JSON.parse(submissionTurnaroundTime!)
+    let submissionTurnaroundTime = sessionStorage.getItem(
+      'submissionTurnaroundTimeSubject'
+    );
+    return JSON.parse(submissionTurnaroundTime!);
   }
 
-  private coverageDistributionsSubject = new BehaviorSubject<any[]>(
-    [
+  private coverageDistributionsSubject = new BehaviorSubject<any[]>([
     {
-    Dimension: "",
-    Measure: "" 
-  }]);
-  coverageDistributionsData$: Observable<any[]> = this.coverageDistributionsSubject.asObservable();
+      Dimension: '',
+      Measure: '',
+    },
+  ]);
+  coverageDistributionsData$: Observable<any[]> =
+    this.coverageDistributionsSubject.asObservable();
   public setCoverageDistributions(updatedChartData: any[]): void {
-    sessionStorage.setItem('coverageDistributionsSubject', JSON.stringify(updatedChartData));
+    sessionStorage.setItem(
+      'coverageDistributionsSubject',
+      JSON.stringify(updatedChartData)
+    );
     this.coverageDistributionsSubject.next(updatedChartData);
-   
   }
-  
+
   getCoverageDistributions() {
-    let coverageDistributions = sessionStorage.getItem('coverageDistributionsSubject')
-   
-    return JSON.parse(coverageDistributions!)
+    let coverageDistributions = sessionStorage.getItem(
+      'coverageDistributionsSubject'
+    );
+
+    return JSON.parse(coverageDistributions!);
   }
 
-
-  private submissionConversionsSubject = new BehaviorSubject<any[]>(
-    [
+  private submissionConversionsSubject = new BehaviorSubject<any[]>([
     {
-    Dimension: "",
-    Measure: "" 
-  }]);
-  submissionConversionsData$: Observable<any[]> = this.submissionConversionsSubject.asObservable();
+      Dimension: '',
+      Measure: '',
+    },
+  ]);
+  submissionConversionsData$: Observable<any[]> =
+    this.submissionConversionsSubject.asObservable();
   public setSubmissionConversions(updatedChartData: any[]): void {
-    sessionStorage.setItem('submissionConversionsSubject', JSON.stringify(updatedChartData));
+    sessionStorage.setItem(
+      'submissionConversionsSubject',
+      JSON.stringify(updatedChartData)
+    );
     this.submissionConversionsSubject.next(updatedChartData);
-   
   }
-  
+
   getSubmissionConversions() {
-    let submissionConversions = sessionStorage.getItem('submissionConversionsSubject')
-   
-    return JSON.parse(submissionConversions!)
+    let submissionConversions = sessionStorage.getItem(
+      'submissionConversionsSubject'
+    );
+
+    return JSON.parse(submissionConversions!);
   }
 
-
-
-  private topLocationbyStateSubject = new BehaviorSubject<any[]>(
-    [
+  private topLocationbyStateSubject = new BehaviorSubject<any[]>([
     {
-    Dimension: "",
-    Measure: "" 
-  }]);
-  topLocationbyStateData$: Observable<any[]> = this.topLocationbyStateSubject.asObservable();
+      Dimension: '',
+      Measure: '',
+    },
+  ]);
+  topLocationbyStateData$: Observable<any[]> =
+    this.topLocationbyStateSubject.asObservable();
   public setTopLocationbyState(updatedChartData: any[]): void {
-    sessionStorage.setItem('topLocationbyStateSubject', JSON.stringify(updatedChartData));
+    sessionStorage.setItem(
+      'topLocationbyStateSubject',
+      JSON.stringify(updatedChartData)
+    );
     this.topLocationbyStateSubject.next(updatedChartData);
-
   }
-
-  // topLocationData$: Observable<any> = this.widgetService.getTopLocationsFromDB();
-  // public setTopLocation(updatedChartData: any): void {
-  //   this.topLocationSubject.next(updatedChartData);
-  // }
-  
   getTopLocationbyState() {
-    // this.topLocationData$.subscribe(data=>{
-    //   console.log("TopLocation-1");
-    //   console.log(data);
-    // })
-    let topLocationbyState = sessionStorage.getItem('topLocationbyStateSubject')
-   
-    return JSON.parse(topLocationbyState!)
-    // return this.topLocationData$;
+    let topLocationbyState = sessionStorage.getItem(
+      'topLocationbyStateSubject'
+    );
+    return JSON.parse(topLocationbyState!);
   }
-
-
-
-
-
-
-clearDashboardSession(){
-  sessionStorage.removeItem('topBrokerSubject')
-  sessionStorage.removeItem('topLocationSubject')
-  sessionStorage.removeItem('topIndustrySubject')
-  sessionStorage.removeItem('submissionTurnaroundTimeSubject')
-}
+  clearDashboardSession() {
+    sessionStorage.removeItem('topBrokerSubject');
+    sessionStorage.removeItem('topLocationSubject');
+    sessionStorage.removeItem('topIndustrySubject');
+    sessionStorage.removeItem('submissionTurnaroundTimeSubject');
+  }
 }

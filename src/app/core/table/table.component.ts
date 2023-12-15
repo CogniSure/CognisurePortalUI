@@ -241,7 +241,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   
   onButtonClick(action: string) {
     // Handle button click based on the action
-    console.log(`Button clicked: ${action}`);
   }
 
   download(rowElement: any) {

@@ -34,7 +34,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
         return next.handle(cloned);
       } else {
-        console.log('Token Expired... Token Referesh');
         this.authService.logout();
         localStorage.clear();
         this.router.navigate(['/login']);

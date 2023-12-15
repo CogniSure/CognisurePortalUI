@@ -26,14 +26,15 @@ export class YBarComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,
     @Inject(InjectToken) private input: WidgetInput
   ) {}
-  chartData: ChartData = {  
-    Categories : [],
-    Data : [
+  chartData: ChartData = {
+    Categories: [],
+    Data: [
       {
-        Name:"",
-        Data : []
-      }
-    ]};
+        Name: '',
+        Data: [],
+      },
+    ],
+  };
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
@@ -43,11 +44,10 @@ export class YBarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
       this.chartData = res;
-      console.log(this.input.WidgetName+"-Start");
+      console.log(this.input.WidgetName + '-Start');
       console.log(res);
-      console.log(this.input.WidgetName+"-End");
+      console.log(this.input.WidgetName + '-End');
       this.changeDetector.detectChanges();
-      
     });
   }
 
