@@ -32,7 +32,8 @@ export class InboxService {
   alternateIconURL = '../../../assets/images/dropdown_icon.png';
 
   idToDisplay = 1;
-  constructor(private httpService: HttpService, private configService:AppConfigService, private datePipe: DatePipe) {}
+  private apiUrl = '';
+  constructor(private httpService: HttpService, private configService:AppConfigService, private datePipe: DatePipe, private http: HttpClient) {}
   // constructor(private http: HttpClient, private globalService:GlobalService) {}
 
   private getFormattedDate(dateString: string): string {
@@ -123,4 +124,9 @@ export class InboxService {
     hParams = hParams.set('submissionid', submissionId);
     return this.httpService.postData(apiUrl,"", hParams);
   }
+
+  saveChanges(data: any[]): Observable<any> {
+    return this.http.post(`${this.apiUrl}/saveChanges`, data);
+  }
+
 }

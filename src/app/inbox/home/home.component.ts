@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,14 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private changeDetectorRef: ChangeDetectorRef)
+  public formGroup: FormGroup;
+  mySelection: string[] = [];
+saveChanges: any;
+  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder)
   {
-
+    this.formGroup = this.fb.group({
+      agencyname: [''],
+    });
   }
   dropdownValues: string[] = [];
   // isToggleOn: boolean = false;
@@ -138,8 +145,8 @@ export class HomeComponent implements OnInit {
       field: "LOB",
       format: "{0:c}",
       title: "LOB",
-      type: "text",
-      width:150,
+      type: "LOB",
+      width:85,
       columnmenu:true,
       sortable:true,
       filterable : true,
@@ -149,10 +156,11 @@ export class HomeComponent implements OnInit {
       format: "{0:c}",
       title: "Priority",
       width:110,
-      type: "text",
+      type: "priority",
       columnmenu:true,
       sortable:true,
       filterable : true,
+      dropdownValue: 'High',
     },
     {
       field: "QualityScore",
@@ -478,5 +486,22 @@ DownloadSumission360(newItem: any) {
   //   downloadLink.download = fileName;
   //   downloadLink.click();
 }
+
+
+onSaveButtonClick(): void {
+  const selectedRows = this.mySelection.map(id => this.tableData.find(item => item.Id === id));
+
+  const saveData = selectedRows.map(row => ({
+    submissionId: row.SubmissionID,
+    priority: row.Priority
+  }));
+
+  this.dashboardservice.saveChanges(saveData).subscribe(response => {
+    console.log('Save successful:', response);
+
+    this.mySelection = [];
+  });
+}
+
 
 }

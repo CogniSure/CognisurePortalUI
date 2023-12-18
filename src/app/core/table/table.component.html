@@ -224,6 +224,7 @@
       [filter]="column.type"
       [width]="column.width"
       [columnMenu]="column.columnmenu"
+      [editor]="column.editor"
     >
       <ng-template
         kendoGridCellTemplate
@@ -440,7 +441,7 @@
   <ng-container *ngIf="!dataItem.S360Report">
     <!-- <a [href]="generateDownloadLink(dataItem.S360Report)" download> -->
       <!-- Download -->
-      <a color="primary"  (click) = "DownloadEvent(dataItem)">
+      <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
       <span class="excel_icon">
         <img src="../../../assets/images/s360_download.png">
       </span>
@@ -452,6 +453,218 @@
   </ng-container>
 </ng-template>
 </kendo-grid-column>
+
+<kendo-grid-column
+      *ngIf="column.type == 'dropdown'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+      [columnMenu]="column.columnmenu"
+      [editor]="column.editor"
+    >
+
+    <ng-template kendoGridEditTemplate let-dataItem="dataItem" let-formGroup="formGroup">
+      <!-- <kendo-dropdownlist
+        [data]="Priorities"
+        textField="PriorityName"
+        valueField="PriorityID"
+        [valuePrimitive]="true"
+        [formControl]="formGroup.get('Priority')"
+      ></kendo-dropdownlist> -->
+    </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column
+    *ngIf="column.type == 'priority'"
+    field="{{ column.field }}"
+    title="{{ column.title }}"
+    format="{{ column.format }}"
+    [filterable]="column.filterable"
+    [sortable]="column.sortable"
+    [filter]="column.type"
+    [width]="column.width"
+    [columnMenu]="column.columnmenu"
+    [editor]="column.editor"
+  >
+
+  <ng-template
+    kendoGridEditTemplate
+    let-dataItem="dataItem"
+    let-formGroup="formGroup"
+  >
+    <kendo-dropdownlist
+    *ngIf="dataLoaded"
+      [formControl]="formGroup.get(column.field)"
+      [data]="dropdownData"
+      [(ngModel)]="selectedValue"
+      textField="label"
+      valueField="value"
+    ></kendo-dropdownlist>
+  </ng-template>
+  <!-- <ng-template
+    kendoGridCellTemplate
+    let-dataItem
+    let-rowIndex="rowIndex"
+    let-value="value"
+  >
+    <ng-container *ngIf="isCellEditable(dataItem, column)">
+      <kendo-dropdownlist
+        [data]="dropdownData"
+        [(ngModel)]="selectedValues[dataItem.id]"
+        textField="label"
+        valueField="value"
+      ></kendo-dropdownlist>
+    </ng-container>
+    <ng-container *ngIf="!isCellEditable(dataItem, column)">
+      {{ dataItem[column.field] }}
+    </ng-container>
+  </ng-template> -->
+
+
+  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
+    <ng-container *ngIf="isCellEditable(dataItem, column)">
+      <kendo-dropdownlist
+        [data]="dropdownData"
+        [ngModel]="selectedValue"
+        (ngModelChange)="onDropdownChange(dataItem, $event)"
+        textField="label"
+        valueField="value"
+      ></kendo-dropdownlist>
+    </ng-container>
+    <ng-container *ngIf="!isCellEditable(dataItem, column)">
+      {{ dataItem[column.field] }}
+    </ng-container>
+  </ng-template>
+
+
+  </kendo-grid-column>
+
+  <kendo-grid-column
+  *ngIf="column.type == 'agencyname'"
+  field="{{ column.field }}"
+  title="{{ column.title }}"
+  format="{{ column.format }}"
+  [filterable]="column.filterable"
+  [sortable]="column.sortable"
+  [filter]="column.type"
+  [width]="column.width"
+  [columnMenu]="column.columnmenu"
+  [editor]="column.editor"
+
+>
+
+<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
+  <ng-container *ngIf="isCellEditable(dataItem, column)">
+    <kendo-textbox [value]="dataItem[column.field]">{{ dataItem[column.field] }}</kendo-textbox>
+  </ng-container>
+  <!-- <ng-container *ngIf="!isCellEditable(dataItem, column)">
+    {{ dataItem[column.field] }}
+  </ng-container> -->
+</ng-template>
+
+<!-- <ng-template
+kendoGridEditTemplate
+let-dataItem="dataItem"
+let-formGroup="formGroup"
+>
+<kendo-textbox
+  [formControl]="formGroup.get(column.field)"
+  [value]="dataItem[column.field]"
+></kendo-textbox> -->
+<!-- <kendo-textbox [formControl]="formGroup.get('agencyname')" [(ngModel)]="dataItem.agencyname"></kendo-textbox> -->
+<!-- </ng-template> -->
+
+<!-- <ng-template kendoGridEditTemplate let-dataItem="dataItem" let-formGroup="formGroup">
+  <input [formControl]="formGroup.get(column.field)" [(ngModel)]="dataItem[column.field]" />
+</ng-template> -->
+
+<ng-template
+kendoGridCellTemplate
+let-dataItem
+let-rowIndex="rowIndex"
+let-value="value"
+>
+<div
+  [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
+  [class.expanded-cell]="cellExpansionState[rowIndex]"
+  (click)="toggleCellExpansion(dataItem)"
+>
+  {{ dataItem[column.field] }}
+</div>
+</ng-template>
+</kendo-grid-column>
+
+<kendo-grid-column
+  *ngIf="column.type == 'LOB'"
+  field="{{ column.field }}"
+  title="{{ column.title }}"
+  format="{{ column.format }}"
+  [filterable]="column.filterable"
+  [sortable]="column.sortable"
+  [filter]="column.type"
+  [width]="column.width"
+  [columnMenu]="column.columnmenu"
+>
+  <ng-template
+    kendoGridCellTemplate
+    let-dataItem
+    let-rowIndex="rowIndex"
+    let-value="value"
+  >
+    <div
+      [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
+      [class.expanded-cell]="cellExpansionState[rowIndex]"
+      (click)="toggleCellExpansion(dataItem)"
+    >
+      <!-- {{ dataItem[column.field] }}
+      <span *ngIf="dataItem[column.field].extraData">{{ dataItem[column.field].extraData }}</span> -->
+
+      <!-- <span *ngIf="!isInEditMode(dataItem)">
+        {{ dataItem[column.field] }}
+      </span>
+      <div *ngIf="isInEditMode(dataItem)">
+        <input
+          kendoTextBox
+          [value]="dataItem[column.field]"
+          (valueChange)="onEditValueChange(newValue, $event, dataItem, column)"
+        />
+        <input
+          kendoTextBox
+          [value]="dataItem[column.field].extraData"
+          (valueChange)="onEditValueChange(newValue, $event, dataItem, column)"
+        />
+      </div> -->
+
+
+
+      {{ dataItem[column.field] }}
+      <span *ngIf="dataItem[column.field].extraData">{{ dataItem[column.field].extraData }}</span>
+
+
+    </div>
+  </ng-template>
+  <!-- <ng-template kendoGridCellTemplate let-dataItem let-column="column">
+    <div *ngIf="column.type == 'agencyname'" [ngSwitch]="column.type">
+      <div *ngSwitchDefault>
+        <span *ngIf="!isInEditMode(dataItem)">
+          {{ dataItem[column.field] }}
+        </span>
+        <input
+          *ngIf="isInEditMode(dataItem)"
+          kendoTextBox
+          [value]="dataItem[column.field]"
+          (valueChange)="onEditValueChange(newValue, $event, dataItem, column)"
+        />
+      </div>
+    </div>
+  </ng-template> -->
+</kendo-grid-column>
+
+
 
   </ng-template>
   <ng-template kendoGridLoadingTemplate>

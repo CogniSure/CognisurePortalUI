@@ -24,9 +24,10 @@ export class DashboardService {
     }),
   };
   resetDashboardData: any;
+  private apiUrl = '';
   
 
-  constructor(private httpService: HttpService,private configService:AppConfigService) {}
+  constructor(private httpService: HttpService,private configService:AppConfigService, private http: HttpClient) {}
 
   downloadSubmission360(submissionId : string) : Observable<any>{
     var apiUrl = this.env.baseUrl + 'api/submission360';
@@ -34,6 +35,10 @@ export class DashboardService {
     let hParams = new HttpParams();
     hParams = hParams.set('submissionid', submissionId);
     return this.httpService.getData(apiUrl, hParams);
+  }
+
+  saveChanges(data: any[]): Observable<any> {
+    return this.http.post(`${this.apiUrl}/saveChanges`, data);
   }
 
 }

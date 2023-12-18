@@ -26,6 +26,10 @@ import {
   linkedinIcon,
   redditIcon,
 } from "@progress/kendo-svg-icons";
+import { NgModel } from '@angular/forms';
+import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { TextBoxModule } from '@progress/kendo-angular-inputs';
 
 interface NavItem {
   title: string;
@@ -34,19 +38,34 @@ interface NavItem {
   adress?: string;
 }
 
+export interface DropdownOption {
+  label: string;
+  value: string;
+}
+
 @Component({
   selector: 'generic-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit,OnChanges,OnDestroy {
+  public formGroup: FormGroup;
    loading = false;
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
-  dropdownOptions: { label: string; link: string }[] = [];
+  // saveChanges: any;
+  // dropdownOptions: { label: string; link: string }[] = [];
+  dropdownData: { label: string; value: string }[] = [
+    { label: 'High', value: 'value1' },
+    { label: 'Low', value: 'value2' },
+    { label: 'Medium', value: 'value3' },
+    // ...
+  ];
   isDataAvailble = false;
   navData = alertsData;
   cellExpansionState: boolean[] = [];
+  selectedValue: { label: string; value: string };
+  // selectedValues: { [key: string]: { label: string; value: string } } = {};
 
   public gridData: any[];
   public gridView!: any[];
@@ -63,9 +82,17 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   @Input() data: any[];
   @Input() columns: any;
   @Input() height: number = 42;
+  dataLoaded: any;
+newValue: string;
+  tableData: any;
 
-  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef) {
+  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder) {
     this.loading=true
+
+    this.formGroup = this.fb.group({
+      agencyname: [''],
+    });
+
   }
 
   tooltip = Alert1ToolTip;
@@ -88,9 +115,16 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       mode: "multiple",
       drag: true,
     };
+
+// this.gridData.forEach((row) => {
+//     this.selectedValues[row.id] = { label: 'High', value: 'value1' };
+//   });
+
     this.gridData = this.data;
     this.gridView = this.data;
     this.loading=false;
+    this.dataLoaded = true;
+    this.selectedValue = { label: 'High', value: 'option1' };
   }
 
   alertsInfo = DataComponent.Tooltip;
@@ -222,13 +256,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     }
   ];
 
-  selectedValue: any; // Assuming your data structure for selectedValue
-  dropdownOption = [
-    { label: 'Option 1', value: 'value1', imageUrl: '../../../' },
-    { label: 'Option 2', value: 'value2', imageUrl: 'PDF.svg' },
-    // other items
-  ];
-
   public export :any[]= [
     {
       text: "excel",
@@ -240,7 +267,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 
   
   onButtonClick(action: string) {
-    // Handle button click based on the action
+    console.log(`Button clicked: ${action}`);
   }
 
   download(rowElement: any) {
@@ -252,5 +279,51 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     downloadLink.download = fileName;
     downloadLink.click();
   }
+
+  priorityDropdownOptions = [
+    { label: 'High', value: 'High' },
+    { label: 'Medium', value: 'Medium' },
+    { label: 'Low', value: 'Low' },
+  ];
+  
+  isCellEditable(dataItem: any, column: any): boolean {
+    return true;
+    return column.type === 'agencyname';
+  }
+
+  // isCellEditable(dataItem: any, column: any): boolean {
+  //   return column.type === 'agencyname';
+  // }
+  
+  toggleEditMode(dataItem: any): void {
+    dataItem.isEditing = true;
+  }
+
+  saveChanges(dataItem: any): void {
+    dataItem.isEditing = true;
+  }
+
+  cancelEdit(dataItem: any): void {
+    dataItem.isEditing = false;
+  }
+
+  editedItems: Set<number> = new Set<number>();
+  isInEditMode(item: any): boolean {
+    return this.editedItems.has(item.id);
+  }
+  
+  onEditValueChange(newValue: string, item: any, column: any, event: Event): void {
+    item[column.field] = newValue;
+    if (newValue !== item[column.field]) {
+      this.editedItems.add(item.id);
+    } else {
+      this.editedItems.delete(item.id);
+    }
+  }
+
+  onDropdownChange(dataItem: any, newValue: string): void {
+    dataItem.dropdownValue = newValue;
+  }
+
 
 }
