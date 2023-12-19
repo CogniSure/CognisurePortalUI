@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 export class HomeComponent implements OnInit {
   public formGroup: FormGroup;
   mySelection: string[] = [];
-saveChanges: any;
+// saveChanges: any;
   constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder)
   {
     this.formGroup = this.fb.group({
@@ -181,6 +181,7 @@ saveChanges: any;
       columnmenu:true,
       sortable:true,
       filterable : true,
+      template: '<img class="status-image" [src]="dataItem.statusImage" alt="Status Image">',
     },
     {
       field: "S360Report",
@@ -487,21 +488,37 @@ DownloadSumission360(newItem: any) {
   //   downloadLink.click();
 }
 
+// saveChanges(dataItem: any): void {
+//   dataItem.isEditing = true;
+// }
+
+// onSaveButtonClick(dataItem?: any): void {
+//   if (dataItem) {
+//     dataItem.isEditing = true;
+//   } else {
+//     console.log('No data item provided for editing');
+//   }
+// }
+
 
 onSaveButtonClick(): void {
   const selectedRows = this.mySelection.map(id => this.tableData.find(item => item.Id === id));
+  console.log('Selected Rows:', selectedRows);
 
   const saveData = selectedRows.map(row => ({
     submissionId: row.SubmissionID,
     priority: row.Priority
   }));
 
-  this.dashboardservice.saveChanges(saveData).subscribe(response => {
-    console.log('Save successful:', response);
+  console.log('Save Data:', saveData);
 
+  this.inboxservice.saveChanges(saveData).subscribe(response => {
+    console.log('Save successful:', response);
+    console.log('Updated tableData:', this.tableData);
     this.mySelection = [];
   });
 }
+
 
 
 }

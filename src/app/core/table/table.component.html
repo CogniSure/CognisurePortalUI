@@ -288,6 +288,7 @@
         let-columnIndex="columnIndex"
       >
         <input type="checkbox" kendoCheckBox kendoGridSelectAllCheckbox />
+      
       </ng-template>
       <ng-template
         kendoGridCellTemplate
@@ -443,13 +444,14 @@
       <!-- Download -->
       <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
       <span class="excel_icon">
-        <img src="../../../assets/images/s360_download.png">
+        <img src="../../../assets/images/execl_downloadimg.png">
       </span>
       </a>
     <!-- </a> -->
   </ng-container>
   <ng-container *ngIf="dataItem.S360Report">
-    N/A
+    <!-- N/A -->
+    <img src="../../../assets/images/disabled_excel.png">
   </ng-container>
 </ng-template>
 </kendo-grid-column>

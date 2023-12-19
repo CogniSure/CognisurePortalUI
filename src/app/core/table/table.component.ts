@@ -30,6 +30,7 @@ import { NgModel } from '@angular/forms';
 import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { TextBoxModule } from '@progress/kendo-angular-inputs';
+import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 interface NavItem {
   title: string;
@@ -43,12 +44,18 @@ export interface DropdownOption {
   value: string;
 }
 
+export interface SubmissionData {
+  Status: string;
+  statusImage: string;
+}
+
 @Component({
   selector: 'generic-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit,OnChanges,OnDestroy {
+  selectedItemId: number | null = null;
   public formGroup: FormGroup;
    loading = false;
   dropdownValues: string[] = [];
@@ -86,7 +93,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 newValue: string;
   tableData: any;
 
-  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder) {
+  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder, private inboxService:InboxService) {
     this.loading=true
 
     this.formGroup = this.fb.group({
@@ -125,6 +132,17 @@ newValue: string;
     this.loading=false;
     this.dataLoaded = true;
     this.selectedValue = { label: 'High', value: 'option1' };
+
+
+    this.inboxService.getAllSubmissionData().subscribe((result: SubmissionData[]) => {
+      this.tableData = result.map((item: SubmissionData) => {
+        // Set statusImage based on the Status field
+        item.statusImage = item.Status === 'Completed' ? 'green-image.jpg' : 'gray-image.jpg';
+        return item;
+      });
+    });
+
+
   }
 
   alertsInfo = DataComponent.Tooltip;
@@ -324,6 +342,8 @@ newValue: string;
   onDropdownChange(dataItem: any, newValue: string): void {
     dataItem.dropdownValue = newValue;
   }
+
+  
 
 
 }

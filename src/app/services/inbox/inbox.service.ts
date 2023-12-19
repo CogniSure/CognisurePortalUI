@@ -32,7 +32,7 @@ export class InboxService {
   alternateIconURL = '../../../assets/images/dropdown_icon.png';
 
   idToDisplay = 1;
-  private apiUrl = '';
+  private apiUrl = 'api/AllSubmission';
   constructor(private httpService: HttpService, private configService:AppConfigService, private datePipe: DatePipe, private http: HttpClient) {}
   // constructor(private http: HttpClient, private globalService:GlobalService) {}
 
@@ -126,7 +126,11 @@ export class InboxService {
   }
 
   saveChanges(data: any[]): Observable<any> {
-    return this.http.post(`${this.apiUrl}/saveChanges`, data);
+    // return this.http.post(`${this.apiUrl}/saveChanges`, data);
+    // return this.httpService.postData("saveChanges", '', data)
+    console.log(data);
+    return of('')
+
   }
 
 }
