@@ -55,7 +55,10 @@ export interface SubmissionData {
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit,OnChanges,OnDestroy {
+  public selectedCheckboxes: number[] = [];
   selectedItemId: number | null = null;
+  selectedCheckbox: number | null = null;
+  selectedRowIndices: Set<number> = new Set<number>();
   public formGroup: FormGroup;
    loading = false;
   dropdownValues: string[] = [];
@@ -136,7 +139,6 @@ newValue: string;
 
     this.inboxService.getAllSubmissionData().subscribe((result: SubmissionData[]) => {
       this.tableData = result.map((item: SubmissionData) => {
-        // Set statusImage based on the Status field
         item.statusImage = item.Status === 'Completed' ? 'green-image.jpg' : 'gray-image.jpg';
         return item;
       });
@@ -191,12 +193,6 @@ newValue: string;
     this.isToggleOn = !this.isToggleOn;
   }
 
-
-  onCheckBoxClick(e:any, rowIndex:any, dataItem:any) {
-
-    // perform the desired custom logic for selecting items based on the currently selected
-    // ones, and the checkbox being shift-clicked
-  }
 
   // submissionIdTemplate(dataItem: any): string {
   //   return `
@@ -343,7 +339,65 @@ newValue: string;
     dataItem.dropdownValue = newValue;
   }
 
+  onCheckboxChange(columnIndex: number): void {
+    this.selectedCheckbox = columnIndex;
+  }
+
+  onCheckBoxClick(e: any, rowIndex: number, dataItem: any): void {
+    if (e.target.checked) {
+      this.mySelection.push(dataItem.SubmissionID);
+    } else {
+      this.mySelection = this.mySelection.filter(id => id !== dataItem.SubmissionID);
+    }
+    console.log('mySelection:', this.mySelection);
+  }
+  // onCheckBoxChange(rowIndex: number, dataItem: any): void {
+  //   this.selectedItemId = dataItem.id;
+  // }
+
+
+  // getSelectedRowsData(): any[] {
+  //   return this.selectedCheckboxes.map((index) => this.gridData[index]);
+  // }
+
+  isAllSelected(): boolean {
+    return this.selectedCheckboxes.length === this.gridData.length;
+  }
+
+  getSelectedRowsData(): any[] {
+    return this.mySelection.map(selectedSubmissionID => {
+      return this.gridData.find(item => item.SubmissionID === selectedSubmissionID);
+    });
+  }
   
+  
+  // onHeaderCheckboxChange(): void {
+  //   if (this.isAllSelected()) {
+  //     this.selectedCheckboxes = []; 
+  //   } else {
+  //     this.selectedCheckboxes = this.gridData.map((_, index) => index);
+  //   }
+  // }
+
+  isSelected(dataItem: any): boolean {
+    return this.mySelection.some(item => item === dataItem);
+  }
+  
+  onCheckBoxChange(event: any, dataItem: any): void {
+    if (event.target.checked) {
+      this.mySelection.push(dataItem); 
+    } else {
+      const index = this.mySelection.findIndex(item => item === dataItem);
+      if (index !== -1) {
+        this.mySelection.splice(index, 1); 
+      }
+    }
+  }
+
+
+
+
+
 
 
 }

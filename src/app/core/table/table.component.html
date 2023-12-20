@@ -287,7 +287,11 @@
         let-column
         let-columnIndex="columnIndex"
       >
-        <input type="checkbox" kendoCheckBox kendoGridSelectAllCheckbox />
+        <input type="checkbox" 
+        kendoCheckBox 
+        [checked]="selectedCheckbox === columnIndex"
+        (change)="onCheckboxChange(columnIndex)"
+         />
       
       </ng-template>
       <ng-template
@@ -297,8 +301,10 @@
         let-value="value"
       >
       
-        <input kendoCheckBox [kendoGridSelectionCheckbox]=rowIndex 
-        (click)="onCheckBoxClick($event, rowIndex, dataItem)"
+        <input type="checkbox" 
+        kendoCheckBox 
+        [checked]="isSelected(dataItem)" 
+        (change)="onCheckBoxChange($event, dataItem)"
         />
       </ng-template>
     </kendo-grid-column>
@@ -439,20 +445,28 @@
   [editor]="column.editor"
 >
 <ng-template kendoGridCellTemplate let-dataItem>
-  <ng-container *ngIf="!dataItem.S360Report">
+  <!-- <ng-container *ngIf="!dataItem.S360Report"> -->
     <!-- <a [href]="generateDownloadLink(dataItem.S360Report)" download> -->
       <!-- Download -->
-      <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+      <!-- <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
       <span class="excel_icon">
         <img src="../../../assets/images/execl_downloadimg.png">
       </span>
-      </a>
+      </a> -->
     <!-- </a> -->
-  </ng-container>
-  <ng-container *ngIf="dataItem.S360Report">
-    <!-- N/A -->
+  <!-- </ng-container> -->
+  <!-- <ng-container *ngIf="dataItem.S360Report">
+    N/A
     <img src="../../../assets/images/disabled_excel.png">
+  </ng-container> -->
+  <ng-container *ngIf="dataItem.Status === 'Completed'; else inProgressTemplate">
+    <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+    <img src="../../../assets/images/execl_downloadimg.png" alt="Green Image">
+    </a>
   </ng-container>
+  <ng-template #inProgressTemplate>
+    <img src="../../../assets//images/disabled_excel.png" alt="Gray Image">
+  </ng-template>
 </ng-template>
 </kendo-grid-column>
 
@@ -573,7 +587,7 @@ kendoGridEditTemplate
 let-dataItem="dataItem"
 let-formGroup="formGroup"
 >
-<kendo-textbox
+<kendo-textboxrowIndex
   [formControl]="formGroup.get(column.field)"
   [value]="dataItem[column.field]"
 ></kendo-textbox> -->

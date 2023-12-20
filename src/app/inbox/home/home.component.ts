@@ -12,6 +12,9 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 export class HomeComponent implements OnInit {
   public formGroup: FormGroup;
   mySelection: string[] = [];
+  public gridData: any[] = [];
+  public selectedCheckboxes: number[] = [];
+  selectedRowIndices: Set<number> = new Set<number>();
 // saveChanges: any;
   constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder)
   {
@@ -181,7 +184,13 @@ export class HomeComponent implements OnInit {
       columnmenu:true,
       sortable:true,
       filterable : true,
-      template: '<img class="status-image" [src]="dataItem.statusImage" alt="Status Image">',
+      template: `
+      <img 
+        class="status-image" 
+        [src]="getStatusImage(dataItem.Status)" 
+        alt="Status Image"
+      >
+    `,
     },
     {
       field: "S360Report",
@@ -501,11 +510,79 @@ DownloadSumission360(newItem: any) {
 // }
 
 
-onSaveButtonClick(): void {
-  const selectedRows = this.mySelection.map(id => this.tableData.find(item => item.Id === id));
-  console.log('Selected Rows:', selectedRows);
+// getSelectedRowsData(): any[] {
+//   return this.selectedCheckboxes.map((index) => this.gridData[index]);
+// }
 
-  const saveData = selectedRows.map(row => ({
+// onSaveButtonClick(): void {
+//   const selectedRowsData = this.getSelectedRowsData();
+//   console.log('Selected Rows Data:', selectedRowsData);
+// }
+
+
+// onSaveButtonClick(): void {
+//   const selectedRowsData = this.getSelectedRowsData();
+//   console.log('Selected Rows:', selectedRowsData);
+
+//   const saveData = selectedRowsData.map(row => ({
+//     submissionId: row.SubmissionID,
+//     priority: row.Priority
+//   }));
+
+//   console.log('Save Data:', saveData);
+
+//   this.inboxservice.saveChanges(saveData).subscribe(response => {
+//     console.log('Save successful:', response);
+
+//     this.tableData = this.tableData.map(row => {
+//       const selectedRow = selectedRowsData.find(selected => selected.SubmissionID === row.SubmissionID);
+//       return selectedRow ? { ...row, ...selectedRow } : row;
+//     });
+//     console.log('Updated tableData:', this.tableData);
+//     this.mySelection = [];
+//   });
+// }
+
+
+
+
+
+
+// onSaveButtonClick(): void {
+//   const selectedRowsData = this.gridData.filter((_, index) => this.selectedRowIndices.has(index));
+//   console.log('Selected Rows:', selectedRowsData);
+
+//   const saveData = selectedRowsData.map(row => ({
+//     submissionId: row.SubmissionID,
+//     priority: row.Priority
+//   }));
+
+//   console.log('Save Data:', saveData);
+
+//   this.inboxservice.saveChanges(saveData).subscribe(response => {
+//     console.log('Save successful:', response);
+
+//     // Assuming tableData is an array that stores all the data
+//     // Update tableData with the changes (if necessary)
+//     this.tableData = this.tableData.map(row => {
+//       const selectedRow = selectedRowsData.find(selected => selected.SubmissionID === row.SubmissionID);
+//       return selectedRow ? { ...row, ...selectedRow } : row;
+//     });
+
+//     console.log('Updated tableData:', this.tableData);
+
+//     // Clear the selection
+//     this.selectedRowIndices.clear();
+//   });
+// }
+
+
+onSaveButtonClick(): void {
+  const selectedRowsData = this.getSelectedRowsData();
+  console.log('Selected Rows:', selectedRowsData);
+
+
+  const saveData = selectedRowsData.map((row: any) => ({
     submissionId: row.SubmissionID,
     priority: row.Priority
   }));
@@ -513,12 +590,51 @@ onSaveButtonClick(): void {
   console.log('Save Data:', saveData);
 
   this.inboxservice.saveChanges(saveData).subscribe(response => {
-    console.log('Save successful:', response);
+  //   console.log('Save successful:', response);
     console.log('Updated tableData:', this.tableData);
     this.mySelection = [];
   });
 }
 
+getSelectedRowsData(): any[] {
+  const selectedRows = this.mySelection.map(selectedSubmissionID => {
+    return this.gridData.find(item => item.SubmissionID === selectedSubmissionID);
+  });
+
+  console.log('Selected Rows Data:', selectedRows);
+  return selectedRows;
+}
+
+
+
+// onSaveButtonClick(): void {
+//   const selectedRows = this.mySelection.map(id => this.tableData.find(item => item.Id === id));
+//   console.log('Selected Rows:', selectedRows);
+
+//   const saveData = selectedRows.map(row => ({
+//     submissionId: row.SubmissionID,
+//     priority: row.Priority
+//   }));
+
+//   console.log('Save Data:', saveData);
+
+//   this.inboxservice.saveChanges(saveData).subscribe(response => {
+//     console.log('Save successful:', response);
+//     console.log('Updated tableData:', this.tableData);
+//     this.mySelection = [];
+//   });
+// }
+
+
+getStatusImage(status: string): string {
+  if (status === 'Completed') {
+    return '../../../assets/images/execl_downloadimg.png';
+  } else if (status === 'In Progress') {
+    return '../../../assets/images/disabled_excel.png';
+  } else {
+    return '../../../assets/images/s360_download-removebg-preview.png';
+  }
+}
 
 
 }
