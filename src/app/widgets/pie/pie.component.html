@@ -6,11 +6,13 @@
   [style]="'height: 100%;width:100%;font-size:11px'"
 >
   <kendo-chart-legend
-    position="bottom"
-    orientation="horizontal"
+    [position]="legendPos"
+    [orientation]="legendOrientation"
     [visible]="true"
     class="custom-legend"
-  ></kendo-chart-legend>
+    [markers]="{type : 'square', height:18, width : 18}"
+  >
+</kendo-chart-legend>
    
   
   <!-- <kendo-chart-series-defaults type="bar" >
@@ -18,15 +20,17 @@
     </kendo-chart-series-defaults-labels>
   </kendo-chart-series-defaults> -->
 
-  <kendo-chart-series style="font-size: 11px!important;">
+  <kendo-chart-series style="font-size: 22px!important;">
     <kendo-chart-series-item
     [autoFit]="true"
     [type]="ChartType"
     [data]="chartData"
     field="value"
     categoryField="category"
-    [labels]="{ visible: true, content: pieLabelContent, position: 'center', background: 'transparent', color: '#ffffff'  }"
+    [padding]="15"
     >
+    <kendo-chart-series-item-labels [content]="labelContent" [visible]="true" [background] = "'transparent'" [color] = "'#ffffff'">
+    </kendo-chart-series-item-labels>
     </kendo-chart-series-item>
   </kendo-chart-series>
 </kendo-chart> 

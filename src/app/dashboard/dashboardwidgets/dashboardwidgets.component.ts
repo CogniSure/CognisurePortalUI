@@ -16,6 +16,7 @@ import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { WidgetService } from 'src/app/services/widget/widget.service';
+import { of } from 'rxjs';
 
 // Injectable()
 @Component({
@@ -231,9 +232,10 @@ export class DashboardwidgetsComponent
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
       WidgetName: header,
-      Api: '',
-      ReloadRequired: this.reloadReq,
       WidgetType: widgetType,
+      Settings : {},
+      Data : [],
+      DataSubject : of([])
     };
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],

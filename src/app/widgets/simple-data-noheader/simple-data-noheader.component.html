@@ -1,0 +1,27 @@
+<!-- <kendo-card>
+    <kendo-card-body>
+
+    </kendo-card-body>
+</kendo-card> -->
+
+<kendo-tilelayout
+  [columns]="1"
+  [resizable]="false"
+  [reorderable]="false"
+  class="home-body"
+  [gap]="0"
+  [style]="'padding: 0 !important;height:100%'"
+>
+  <kendo-tilelayout-item
+    [col]="1"
+    [colSpan]="1"
+    style="border-radius: 0 !important"
+  >
+    <kendo-tilelayout-item-body style="padding: 5%;">
+      <div style="display: flex; justify-content: center;">
+        <h3 style="font-size: 14px; padding-top: 0%;">{{simpleData.ItemData}}:</h3>
+        <h3 style="font-size: 14px; padding-top: 0%;"><b>{{simpleData.ItemValue}}</b></h3>
+      </div>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+</kendo-tilelayout>

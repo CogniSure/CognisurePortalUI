@@ -187,6 +187,88 @@ export class DataComponent {
       RowSpan :  3
     }
   ];
+  public static ExposureSummaryHub = [
+    {
+      id: 1,
+      WidgetName: 'TIV',
+      WidgetType: 'SimpleDataWOHeader',
+      Header: '',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#ffffff',
+      FontColor : '#fff'
+    },
+    {
+      id: 2,
+      WidgetName: 'NoOfLocations',
+      WidgetType: 'SimpleDataWOHeader',
+      Header: '',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#ffffff',
+      FontColor : '#fff'
+    },
+    {
+      id: 3,
+      WidgetName: 'NoOfBuildings',
+      WidgetType: 'SimpleDataWOHeader',
+      Header: '',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#ffffff',
+      FontColor : '#fff'
+    },
+    {
+      id: 3,
+      WidgetName: 'EmptyBox',
+      WidgetType: 'SimpleDataWOHeader',
+      Header: '',
+      ColumnId :  4,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#ffffff',
+      FontColor : '#fff'
+    },
+    {
+      id: 1,
+      WidgetName: 'ConstructionType',
+      WidgetType: 'donut',
+      Header: 'Construction Type',
+      ColumnId :  1,
+      ColumnSpan :  2,
+      RowSpan :  4
+    },
+    {
+      id: 1,
+      WidgetName: 'OccupancyType',
+      WidgetType: 'donut',
+      Header: 'Occupancy Type',
+      ColumnId :  3,
+      ColumnSpan :  2,
+      RowSpan :  4
+    },
+    {
+      id: 1,
+      WidgetName: 'YearBuild',
+      WidgetType: 'donut',
+      Header: 'Year Build',
+      ColumnId :  1,
+      ColumnSpan :  2,
+      RowSpan :  4
+    },
+    {
+      id: 1,
+      WidgetName: 'ProtectionClass',
+      WidgetType: 'donut',
+      Header: 'Protection Class',
+      ColumnId :  3,
+      ColumnSpan :  2,
+      RowSpan :  4
+    },
+  ];
   public static Tooltip = `<div class="size"><b>Password must consists of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>`;
 
 }

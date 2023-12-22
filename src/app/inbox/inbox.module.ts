@@ -20,6 +20,7 @@ import { CoverageRequestedComponent } from './helper/coverage-requested/coverage
 import { PriorCarrierInformationComponent } from './helper/prior-carrier-information/prior-carrier-information.component';
 import { FormsModule } from '@angular/forms';
 import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
+import { ExposureSummaryComponent } from './exposure-summary/exposure-summary.component';
 
 
 
@@ -38,7 +39,8 @@ import { SessionExpirationAlert } from '../session-expiration-alert/session-expi
     AccountInformationComponent,
     AccountInformationDataComponent,
     CoverageRequestedComponent,
-    PriorCarrierInformationComponent
+    PriorCarrierInformationComponent,
+    ExposureSummaryComponent
   ],
   imports: [
     CommonModule,

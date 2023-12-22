@@ -15,6 +15,7 @@ import { PieComponent } from './pie/pie.component';
 import { SimpleDataComponent } from './simple-data/simple-data.component';
 import { MaterialModule } from '../material/material.module';
 import { FunnelComponent } from './funnel/funnel.component';
+import { SimpleDataNoheaderComponent } from './simple-data-noheader/simple-data-noheader.component';
 
 
 
@@ -30,7 +31,8 @@ import { FunnelComponent } from './funnel/funnel.component';
     YBarComponent,
     PieComponent,
     SimpleDataComponent,
-    FunnelComponent
+    FunnelComponent,
+    SimpleDataNoheaderComponent
   ],
   imports: [
     CommonModule,

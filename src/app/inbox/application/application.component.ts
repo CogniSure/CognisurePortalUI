@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { parseNumber } from '@progress/kendo-angular-intl';
 import { SelectEvent } from '@progress/kendo-angular-layout';
 import { ClaimDetail } from 'src/app/model/inbox/ClaimDetail';
@@ -11,9 +11,13 @@ import { GlobalService } from 'src/app/services/common/global.service';
   templateUrl: './application.component.html',
   styleUrls: ['./application.component.scss'],
 })
-export class ApplicationComponent implements OnInit {
+export class ApplicationComponent implements OnInit,OnDestroy {
   constructor(private globalService: GlobalService) {}
+  ngOnDestroy(): void {
+    console.log("Application Destroyed")
+  }
   ngOnInit(): void {
+    console.log("Application Started")
     this.getApplicationExposure();
     this.getApplicationClaimDetails();
   }

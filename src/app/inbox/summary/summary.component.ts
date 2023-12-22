@@ -10,7 +10,7 @@ import {
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { SVGIcon, downloadIcon } from '@progress/kendo-svg-icons';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 
 @Component({
@@ -40,6 +40,7 @@ export class SummaryComponent implements OnInit,OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    console.log("Summary Destroyed")
   }
   animationClass = 'slide-effect-x1';
   ngAfterViewInit() {
@@ -53,6 +54,7 @@ export class SummaryComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log("Summary Started")
     this.globalService.animationClass$.next('slide-effect-x1');
     this.getSummaryWidgets();
     this.getPropertyWidgets();
@@ -112,9 +114,10 @@ export class SummaryComponent implements OnInit,OnDestroy {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
       WidgetName: header,
-      Api: '',
-      ReloadRequired: this.reloadReq,
       WidgetType: widgetType,
+      Settings : {}, 
+      Data : [],
+      DataSubject : of([])
     };
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],

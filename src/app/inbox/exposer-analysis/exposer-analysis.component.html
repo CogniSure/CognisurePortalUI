@@ -1,12 +1,18 @@
 
 <kendo-tabstrip (tabSelect)="onTabSelect($event)" style="grid-auto-rows: auto; position: relative; height: 100%;">
-    <kendo-tabstrip-tab title="Property" [selected]="true" style="grid-auto-rows: auto;">
+  <kendo-tabstrip-tab title="Summary" [selected]="true" style="grid-auto-rows: auto;">
+    <ng-template kendoTabContent>
+      <app-exposure-summary></app-exposure-summary>
+    </ng-template>
+  </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Property" [selected]="false" style="grid-auto-rows: auto;">
       <ng-template kendoTabContent>
         <div class="content" style="height: 100%;">
             <generic-table [columns]="columns" [height]="43" [data]="exposureDetails"></generic-table> 
         </div>
       </ng-template>
     </kendo-tabstrip-tab>
+    
 </kendo-tabstrip>
     
 

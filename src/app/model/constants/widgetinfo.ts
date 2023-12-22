@@ -10,6 +10,7 @@ import { YBarComponent } from "../../widgets/ybar/ybar.component";
 import { PieComponent } from "../../widgets/pie/pie.component";
 import { SimpleDataComponent } from "../../widgets/simple-data/simple-data.component";
 import { FunnelComponent } from "src/app/widgets/funnel/funnel.component";
+import { SimpleDataNoheaderComponent } from "src/app/widgets/simple-data-noheader/simple-data-noheader.component";
 
 
 export interface Widgetinfo {
@@ -37,5 +38,6 @@ export const ComponentDetails:Map<string,any> = new Map([
     ["pie",[PieComponent]]  ,
     ["donut",[PieComponent]]  ,
     ["funnel",[FunnelComponent]]  ,
-    ["SimpleData",[SimpleDataComponent]]  
+    ["SimpleData",[SimpleDataComponent]],
+    ["SimpleDataWOHeader",[SimpleDataNoheaderComponent]]  
 ]);

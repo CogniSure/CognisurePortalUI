@@ -1,6 +1,9 @@
+import { ChartSettings } from "../common/chart-settings";
+
 export interface WidgetInput{
     WidgetName:string,
-    Api:string,
-    ReloadRequired:boolean,
-    WidgetType:string
+    WidgetType:string,
+    Settings:any,//ChartSettings,
+    Data:any[],
+    DataSubject : any
 }
