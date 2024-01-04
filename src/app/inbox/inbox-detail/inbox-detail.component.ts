@@ -49,7 +49,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     let submissionId: string = "a55523ff-1c8e-446a-843f-e51b6a2c4d61"
     let email:string = "QBEsub@gmail.com"
 
-    this.inboxService.getExposureSummary("exposure_tiv",clientId,submissionId,email).subscribe(res=>{
+    this.inboxService.getExposureSummary("exposure_tiv",clientId,"a88823ff-1c8e-667a-843f-f81b6a2c4d61",email).subscribe(res=>{
       console.log("TIV API Data")
       console.log(res);
       if(res!=null && res.value != null && res.value.length > 0)
