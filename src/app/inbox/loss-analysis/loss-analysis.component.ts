@@ -4,6 +4,8 @@ import { SelectEvent } from '@progress/kendo-angular-layout';
 import { ClaimDetail } from 'src/app/model/inbox/ClaimDetail';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
 import { GlobalService } from 'src/app/services/common/global.service';
+import { PropertyDetail } from 'src/app/model/inbox/PropertyDetail';
+
 @Component({
   selector: 'app-loss-analysis',
   templateUrl: './loss-analysis.component.html',
