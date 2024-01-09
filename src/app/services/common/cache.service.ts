@@ -27,7 +27,6 @@ export class CacheService {
   private dashboard_TurnAroundTime$ = new BehaviorSubject<any[]>([]);
   private dashboard_TopBrokers$ = new BehaviorSubject<any[]>([]);
   private dashboard_CoverageDistribution$ = new BehaviorSubject<any[]>([]);
-  
   private dashboard_TopIndustries$ = new BehaviorSubject<any[]>([]);
   private dashboard_TopLocationsByCity$ = new BehaviorSubject<any[]>([]);
   private dashboard_TopLocationsByState$ = new BehaviorSubject<any[]>([]);
@@ -49,11 +48,11 @@ export class CacheService {
   getExposureSummary(widgetName: string): Observable<any[]> {
     let dsData = new BehaviorSubject<any[]>([]);
     if (widgetName === 'TIV') {
-      return this.getTiv();
+      return this.tivSubject$;
     } else if (widgetName === 'NoOfLocations') {
-      return this.getNoOfLocations();
+      return this.noOfLocationsSubject$;
     } else if (widgetName === 'NoOfBuildings') {
-      return this.getNoOfBuildings();
+      return this.noOfBuildingsSubject$;;
     } else if (widgetName === 'ConstructionType') {
       return this.constructionTypeSubject$;
     } else if (widgetName === 'OccupancyType') {
@@ -137,22 +136,10 @@ export class CacheService {
     }
   }
 
-
-
   setData(key: string, data: any[]) {
     if (sessionStorage.getItem(key) != null)
       localStorage.setItem(key, JSON.stringify(data));
     this.tivSubject$.next(data);
-  }
-
-  getTiv(): Observable<any[]> {
-    return this.tivSubject$;
-  }
-  getNoOfLocations(): Observable<any[]> {
-    return this.noOfLocationsSubject$;
-  }
-  getNoOfBuildings(): Observable<any[]> {
-    return this.noOfBuildingsSubject$;
   }
 
   getDashboard(widgetName: string): Observable<any[]> {
@@ -197,4 +184,6 @@ export class CacheService {
       this.dashboard_TopLocationsByState$.next(data);
     } 
   }
+
+  
 }

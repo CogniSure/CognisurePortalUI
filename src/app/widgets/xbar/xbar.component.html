@@ -5,10 +5,15 @@
   [zoomable]="{ mousewheel: { lock: 'y' } }"
   [style]="'height: 100%;'"
 >
+
   <kendo-chart-legend
     position="bottom"
     orientation="horizontal"
-    
+    [visible]="true"
+    class="custom-legend"
+    [markers]="{type : 'square', height:18, width : 18}"
+    [offsetX]="0" [offsetY]="00"
+    [align]="'center'"
   ></kendo-chart-legend>
   <kendo-chart-category-axis reverse = true >
     <kendo-chart-category-axis-item [categories]="this.chartData.Categories">

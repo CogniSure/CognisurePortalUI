@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ChartData } from 'src/app/model/charts/chartdata';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { CacheService } from 'src/app/services/common/cache.service';
 import { GlobalService } from 'src/app/services/common/global.service';
@@ -42,6 +43,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       });
 
     this.setExposureSummary();
+    this.setLossSummary();
   }
   setExposureSummary() {
     let type:string ="exposure_tiv"
@@ -50,8 +52,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     let email:string = "QBEsub@gmail.com"
 
     this.inboxService.getExposureSummary("exposure_tiv",clientId,"a88823ff-1c8e-667a-843f-f81b6a2c4d61",email).subscribe(res=>{
-      console.log("TIV API Data")
-      console.log(res);
       if(res!=null && res.value != null && res.value.length > 0)
       {
         this.cacheService.setExposureSummary('TIV', [
@@ -73,8 +73,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
     
     this.inboxService.getExposureSummary("exposure_locationcount",clientId,submissionId,email).subscribe(res=>{
-      console.log("NoOfLocations API Data")
-      console.log(res.value[0].measure);
       if(res!=null && res.value != null && res.value.length > 0)
       {
         this.cacheService.setExposureSummary('NoOfLocations', [
@@ -96,8 +94,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
     
     this.inboxService.getExposureSummary("exposure_locationcount",clientId,submissionId,email).subscribe(res=>{
-      console.log("NoOfBuildings API Data")
-      console.log(res.value);
       if(res!=null && res.value != null && res.value.length > 0)
       {
         this.cacheService.setExposureSummary('NoOfBuildings', [
@@ -119,7 +115,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
     
     this.inboxService.getExposureSummary("exposure_constructiontype",clientId,submissionId,email).subscribe(res=>{
-      
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -138,7 +133,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
 
     this.inboxService.getExposureSummary("exposure_occupancytype",clientId,submissionId,email).subscribe(res=>{
-      
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -157,7 +151,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
 
     this.inboxService.getExposureSummary("exposure_yearbuild",clientId,submissionId,email).subscribe(res=>{
-      
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -176,7 +169,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
 
     this.inboxService.getExposureSummary("exposure_protectionclass",clientId,submissionId,email).subscribe(res=>{
-      
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -193,12 +185,244 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         this.cacheService.setExposureSummary('ProtectionClass', []);
       }
     })
+  }
 
-    // this.cacheService.setExposureSummary('OccupancyType', [
-    //   { category: 'Frame', value: '25' },
-    //   { category: 'Joisted Masonary', value: '25' },
-    //   { category: 'Non Combustible', value: '25' },
-    //   { category: 'Modified Non Combustable', value: '25' },
-    // ]);
+  setLossSummary() {
+    let clientId:string = "1074"
+    let submissionId: string = "a55523ff-1c8e-446a-843f-e51b6a2c4d61"
+    let email:string = "QBEsub@gmail.com"
+
+    this.inboxService.getLossSummary("loss_claimsbyLOBbyyear",clientId,submissionId,email).subscribe(res=>{
+      console.log('sampleData ClaimsbyLOBbyYear');
+      
+      let cdata: ChartData[] =[{
+        Categories: [],
+        Data: [
+          {
+            Name: '',
+            Data: [],
+          },
+        ],
+      }];
+      if (res != null && res.value != null && res.value.length > 0) {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            cdata[0].Categories.push(data.dimension);
+            cdata[0].Data[0].Data.push(data.measure);
+          }
+        });
+        console.log(cdata)
+        this.cacheService.setLossSummary('ClaimsbyLOBbyYear',cdata);
+       
+      } else {
+        this.cacheService.setLossSummary('ClaimsbyLOBbyYear', cdata);
+      }
+    })
+    
+    this.inboxService.getLossSummary("loss_incurredbyLOBbyyear",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData[] =[{
+        Categories: [],
+        Data: [
+          {
+            Name: '',
+            Data: [],
+          },
+        ],
+      }];
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            cdata[0].Categories.push(data.dimension);
+            cdata[0].Data[0].Data.push(data.measure);
+          }
+        });
+        this.cacheService.setLossSummary('IncurredbyLOBbyYear',cdata);
+        //this.cacheService.setLossSummary('IncurredbyLOBbyYear',mappedArr)
+      }
+      else
+      {
+        this.cacheService.setLossSummary('IncurredbyLOBbyYear', cdata);
+      }
+    })
+
+    this.inboxService.getLossSummary("loss_incurredrangecount",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData[] =[{
+        Categories: [],
+        Data: [
+          {
+            Name: '',
+            Data: [],
+          },
+        ],
+      }];
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            cdata[0].Categories.push(data.dimension);
+            cdata[0].Data[0].Data.push(data.measure);
+          }
+        });
+        this.cacheService.setLossSummary('IncurredRangeCount',cdata);
+        //this.cacheService.setLossSummary('IncurredRangeCount',mappedArr)
+      }
+      else
+      {
+        this.cacheService.setLossSummary('IncurredRangeCount', cdata);
+      }
+    })
+
+    this.inboxService.getLossSummary("loss_claimbyclaimtypebyyear",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData[] =[{
+        Categories: [],
+        Data: [
+          {
+            Name: '',
+            Data: [],
+          },
+        ],
+      }];
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            cdata[0].Categories.push(data.dimension);
+            cdata[0].Data[0].Data.push(data.measure);
+          }
+        });
+        this.cacheService.setLossSummary('ClaimbyClaimTypebyYear',cdata);
+        //this.cacheService.setLossSummary('ClaimbyClaimTypebyYear',mappedArr)
+      }
+      else
+      {
+        this.cacheService.setLossSummary('ClaimbyClaimTypebyYear', cdata);
+      }
+    })
+
+    this.inboxService.getLossSummary("loss_incurredbyclaimtypebyyear",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData[] =[{
+        Categories: [],
+        Data: [
+          {
+            Name: '',
+            Data: [],
+          },
+        ],
+      }];
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            cdata[0].Categories.push(data.dimension);
+            cdata[0].Data[0].Data.push(data.measure);
+          }
+        });
+        this.cacheService.setLossSummary('IncurredbyClaimTypebyYear',cdata);
+        //this.cacheService.setLossSummary('IncurredbyClaimTypebyYear',mappedArr)
+      }
+      else
+      {
+        this.cacheService.setLossSummary('IncurredbyClaimTypebyYear', cdata);
+      }
+    })
+ 
+    this.inboxService.getLossSummary("loss_claimsbyclaimtype",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData[] =[{
+        Categories: [],
+        Data: [
+          {
+            Name: '',
+            Data: [],
+          },
+        ],
+      }];
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            cdata[0].Categories.push(data.dimension);
+            cdata[0].Data[0].Data.push(data.measure);
+          }
+        });
+        this.cacheService.setLossSummary('ClaimsbyClaimType',cdata);
+        //this.cacheService.setLossSummary('ClaimsbyClaimType',mappedArr)
+      }
+      else
+      {
+        this.cacheService.setLossSummary('ClaimsbyClaimType', cdata);
+      }
+    })
+
+    this.inboxService.getLossSummary("loss_claimstatus",clientId,submissionId,email).subscribe(res=>{
+      let cdata=
+        [
+          {category: '', value: ''},
+        ]
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            let piechartdata={category: data.dimension, value: data.measure}
+            cdata.push(piechartdata)
+          }
+        });
+        this.cacheService.setLossSummary('ClaimStatus',cdata);
+        //this.cacheService.setLossSummary('ClaimStatus',mappedArr)
+      }
+      else
+      {
+        this.cacheService.setLossSummary('ClaimStatus', cdata);
+      }
+    })
+
+    this.inboxService.getLossSummary("loss_totalincurred",clientId,submissionId,email).subscribe(res=>{
+      let cdata=
+        [
+          {category: '', value: ''},
+        ]
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            let piechartdata={category: data.dimension, value: data.measure}
+            cdata.push(piechartdata)
+          }
+        });
+        this.cacheService.setLossSummary('TotalIncurred',cdata);
+        //this.cacheService.setLossSummary('TotalIncurred',mappedArr)
+      }
+      else
+      {
+        this.cacheService.setLossSummary('TotalIncurred', cdata);
+      }
+    })
+
+    this.inboxService.getLossSummary("loss_toplocations",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData[] =[{
+        Categories: [],
+        Data: [
+          {
+            Name: '',
+            Data: [],
+          },
+        ],
+      }];    
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((data: any) => {
+          if (data.dimension && data.measure) {
+            cdata[0].Categories.push(data.dimension);
+            cdata[0].Data[0].Data.push(data.measure);
+          }
+        });
+        this.cacheService.setLossSummary('TopLocations',cdata);
+        //this.cacheService.setLossSummary('TopLocations', mappedArr);
+      }
+      else {
+        this.cacheService.setLossSummary('TopLocations', cdata);
+      }
+    })
+
   }
 }

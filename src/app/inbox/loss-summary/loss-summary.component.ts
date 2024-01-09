@@ -57,38 +57,26 @@ implements OnInit, AfterViewInit, OnDestroy
       i++;
     });
   }
+
   createInjector(widgetName: string, widgetType: string): any {
     var myInjector: Injector;
-    //this.cacheService.getExposureSummary(widgetName).subscribe(data=>{
-
-      // console.log("Data subject: " + widgetName)
-      // console.log(data)
-
       let widgetInput: WidgetInput = {
         WidgetName: widgetName,
         WidgetType: widgetType,
         Settings : {
-          "LegendPosition" : "Right",
-          "DataType" : "Number"
+         
         },
         Data : [],//this.cacheService.getExposureSummary(widgetName),
         DataSubject : this.cacheService.getLossSummary(widgetName)
-        // Data: [
-        //   { category: 'Frame', value: '25' },
-        //   { category: 'Joisted Masonary', value: '25' },
-        //   { category: 'Non Combustible', value: '25' },
-        //   { category: 'Modified Non Combustable', value: '25' },
-        // ],
       };
+      
       myInjector = Injector.create({
         providers: [{ provide: InjectToken, useValue: widgetInput }],
         parent: this.injector,
         name: widgetName,
       });
-  
+
       return myInjector;
-    //})
-    
   }
 }
 

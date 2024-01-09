@@ -69,8 +69,12 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
     this.ChartType = this.input.WidgetType == "pie"? "pie" : "donut";
     if(this.input.Settings !=null){
       if(this.input.Settings.LegendPosition!=null){
-        this.legendPos = "right";
+        this.legendPos = this.input.Settings.LegendPosition;
         this.legendOrientation = "vertical"
+      }
+      else{
+        this.legendPos = "bottom";
+        this.legendOrientation = "horizontal"
       }
       if(this.input.Settings.DataType!=null){
         this.dataType = this.input.Settings.DataType

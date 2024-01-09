@@ -270,104 +270,12 @@ export class DataComponent {
     },
   ];
 
-  public static LossSummaryHub1 = [
-    {
-      id: 1,
-      WidgetName: 'ClaimsbyLOBbyYear',
-      WidgetType: 'SimpleDataWOHeader',
-      Header: 'Claims by LOB by Year',
-      ColumnId :  1,
-      ColumnSpan :  2,
-      RowSpan :  5,
-      // HeaderColor : '#ffffff',
-      // FontColor : '#fff'
-    },
-    {
-      id: 2,
-      WidgetName: 'IncurredbyLOBbyYear',
-      WidgetType: 'SimpleDataWOHeader',
-      Header: 'Incurred by LOB by Year',
-      ColumnId :  2,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      // HeaderColor : '#ffffff',
-      // FontColor : '#fff'
-    },
-    {
-      id: 3,
-      WidgetName: 'IncurredRangeCount',
-      WidgetType: 'SimpleDataWOHeader',
-      Header: 'Incurred Range Count',
-      ColumnId :  3,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      // HeaderColor : '#ffffff',
-      // FontColor : '#fff'
-    },
-    // {
-    //   id: 3,
-    //   WidgetName: 'ClaimbyClaimTypebyYear',
-    //   WidgetType: 'SimpleDataWOHeader',
-    //   Header: 'Claim by Claim Type by Year',
-    //   ColumnId :  4,
-    //   ColumnSpan :  1,
-    //   RowSpan :  1,
-      // HeaderColor : '#ffffff',
-      // FontColor : '#fff'
-    // },
-    {
-      id: 1,
-      WidgetName: 'IncurredbyClaimTypebyYear',
-      WidgetType: 'donut',
-      Header: 'Incurred by Claim Type by Year',
-      ColumnId :  1,
-      ColumnSpan :  2,
-      RowSpan :  4
-    },
-    {
-      id: 1,
-      WidgetName: 'ClaimsbyClaimType',
-      WidgetType: 'donut',
-      Header: 'Claims by Claim Type',
-      ColumnId :  3,
-      ColumnSpan :  2,
-      RowSpan :  4
-    },
-    {
-      id: 1,
-      WidgetName: 'ClaimStatus',
-      WidgetType: 'donut',
-      Header: 'Claim Status',
-      ColumnId :  1,
-      ColumnSpan :  2,
-      RowSpan :  4
-    },
-    {
-      id: 1,
-      WidgetName: 'TotalIncurred',
-      WidgetType: 'donut',
-      Header: 'Total Incurred',
-      ColumnId :  3,
-      ColumnSpan :  2,
-      RowSpan :  4
-    },
-    {
-      id: 1,
-      WidgetName: 'TopLocations',
-      WidgetType: 'donut',
-      Header: 'Top Locations',
-      ColumnId :  3,
-      ColumnSpan :  2,
-      RowSpan :  4
-    },
-  ];
-
   public static LossSummaryHub = [
     {
       id: 1,
       BoxType: 'SmallBox',
       WidgetName: 'ClaimsbyLOBbyYear',
-      WidgetType: 'Ybar',
+      WidgetType: 'Xbar',
       Header: 'Claims by LOB by Year',
       ColumnId :  1,
       ColumnSpan :  1,
@@ -379,7 +287,7 @@ export class DataComponent {
       id: 2,
       BoxType: 'SmallBox',
       WidgetName: 'IncurredbyLOBbyYear',
-      WidgetType: 'Ybar',
+      WidgetType: 'Xbar',
       Header: 'Incurred by LOB by Year',
       ColumnId :  2,
       ColumnSpan :  1,
@@ -439,7 +347,7 @@ export class DataComponent {
       id: 2,
       BoxType: 'SmallBox',
       WidgetName: 'ClaimStatus',
-      WidgetType: 'Ybar',
+      WidgetType: 'donut',
       Header: 'Claim Status',
       ColumnId :  1,
       ColumnSpan :  1,
@@ -451,7 +359,7 @@ export class DataComponent {
       id: 1,
       BoxType: 'SmallBox',
       WidgetName: 'TotalIncurred',
-      WidgetType: 'Ybar',
+      WidgetType: 'donut',
       Header: 'Total Incurred',
       ColumnId :  2,
       ColumnSpan :  1,
@@ -464,7 +372,7 @@ export class DataComponent {
       id: 1,
       BoxType: 'SmallBox',
       WidgetName: 'TopLocations',
-      WidgetType: 'Ybar',
+      WidgetType: 'Xbar',
       Header: 'Top Locations',
       ColumnId :  3,
       ColumnSpan :  1,

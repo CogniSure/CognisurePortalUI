@@ -142,4 +142,27 @@ export class InboxService {
     hParams = hParams.set('email', email);
     return this.httpService.getData(apiUrl, hParams);
   }
+
+  getLossSummary(type:string,clientId:string,submissionId: string,email:string): Observable<any> {
+    // var apiUrl = this.configService.settings.baseUrl + '';
+    // let hParams = new HttpParams();
+    // hParams = hParams.set('type', type);
+    // hParams = hParams.set('clientid', clientId);
+    // hParams = hParams.set('submissionid', submissionId);
+    // hParams = hParams.set('email', email);
+    // return this.httpService.getData(apiUrl, hParams);
+    let sampleData = {
+      value:[
+        {
+           dimension:"a",
+          measure:"123"
+        },
+        {
+          dimension:"ab",
+         measure:"1213"
+       }
+      ]
+    }
+    return of(sampleData);
+  }
 }
