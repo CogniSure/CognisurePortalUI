@@ -7,7 +7,7 @@ import { ChartSeries } from "./series";
   
 
   export interface ChartData {
-    Categories: string[];
+    Measure: string[];
     Data: {
       Name: string;
       Data: (string | number)[]; // Allow for both strings and numbers

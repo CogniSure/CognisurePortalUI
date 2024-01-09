@@ -154,12 +154,14 @@ export class InboxService {
     let sampleData = {
       value:[
         {
+           category : "WC",
            dimension:"a",
-          measure:"123"
+           measure:"123"
         },
         {
+          category : "WC",
           dimension:"ab",
-         measure:"1213"
+          measure:"1213"
        }
       ]
     }

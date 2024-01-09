@@ -144,7 +144,7 @@ export class CacheService {
 
   getDashboard(widgetName: string): Observable<any[]> {
     let data: ChartData[] = [{
-      Categories : [],
+      Measure : [],
       Data : [
         {
           Name:"",

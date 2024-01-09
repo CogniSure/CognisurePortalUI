@@ -196,21 +196,21 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       console.log('sampleData ClaimsbyLOBbyYear');
       
       let cdata: ChartData[] =[{
-        Categories: [],
+        Measure: ['2018','2019','2020'],
         Data: [
           {
-            Name: '',
-            Data: [],
+            Name: 'Wc',
+            Data: [100,200,300],
           },
         ],
       }];
       if (res != null && res.value != null && res.value.length > 0) {
-        res.value.forEach((data: any) => {
-          if (data.dimension && data.measure) {
-            cdata[0].Categories.push(data.dimension);
-            cdata[0].Data[0].Data.push(data.measure);
-          }
-        });
+        // res.value.forEach((data: any) => {
+        //   if (data.dimension && data.measure) {
+        //     cdata[0].Measure.push(data.dimension);
+        //     cdata[0].Data[0].Data.push(data.measure);
+        //   }
+        // });
         console.log(cdata)
         this.cacheService.setLossSummary('ClaimsbyLOBbyYear',cdata);
        
@@ -220,23 +220,28 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
     
     this.inboxService.getLossSummary("loss_incurredbyLOBbyyear",clientId,submissionId,email).subscribe(res=>{
+
       let cdata: ChartData[] =[{
-        Categories: [],
+        Measure: ['2018','2019','2020'],
         Data: [
           {
-            Name: '',
-            Data: [],
+            Name: 'Wc',
+            Data: [100,200,300],
+          },
+          {
+            Name: 'Property',
+            Data: [400,500,600],
           },
         ],
       }];
       if(res!=null && res.value != null && res.value.length > 0)
       {
-        res.value.forEach((data: any) => {
-          if (data.dimension && data.measure) {
-            cdata[0].Categories.push(data.dimension);
-            cdata[0].Data[0].Data.push(data.measure);
-          }
-        });
+        // res.value.forEach((data: any) => {
+        //   if (data.dimension && data.measure) {
+        //     cdata[0].Measure.push(data.dimension);
+        //     cdata[0].Data[0].Data.push(data.measure);
+        //   }
+        // });
         this.cacheService.setLossSummary('IncurredbyLOBbyYear',cdata);
         //this.cacheService.setLossSummary('IncurredbyLOBbyYear',mappedArr)
       }
@@ -248,7 +253,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
 
     this.inboxService.getLossSummary("loss_incurredrangecount",clientId,submissionId,email).subscribe(res=>{
       let cdata: ChartData[] =[{
-        Categories: [],
+        Measure: [],
         Data: [
           {
             Name: '',
@@ -260,7 +265,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         res.value.forEach((data: any) => {
           if (data.dimension && data.measure) {
-            cdata[0].Categories.push(data.dimension);
+            cdata[0].Measure.push(data.dimension);
             cdata[0].Data[0].Data.push(data.measure);
           }
         });
@@ -275,7 +280,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
 
     this.inboxService.getLossSummary("loss_claimbyclaimtypebyyear",clientId,submissionId,email).subscribe(res=>{
       let cdata: ChartData[] =[{
-        Categories: [],
+        Measure: [],
         Data: [
           {
             Name: '',
@@ -287,7 +292,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         res.value.forEach((data: any) => {
           if (data.dimension && data.measure) {
-            cdata[0].Categories.push(data.dimension);
+            cdata[0].Measure.push(data.dimension);
             cdata[0].Data[0].Data.push(data.measure);
           }
         });
@@ -302,7 +307,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
 
     this.inboxService.getLossSummary("loss_incurredbyclaimtypebyyear",clientId,submissionId,email).subscribe(res=>{
       let cdata: ChartData[] =[{
-        Categories: [],
+        Measure: [],
         Data: [
           {
             Name: '',
@@ -314,7 +319,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         res.value.forEach((data: any) => {
           if (data.dimension && data.measure) {
-            cdata[0].Categories.push(data.dimension);
+            cdata[0].Measure.push(data.dimension);
             cdata[0].Data[0].Data.push(data.measure);
           }
         });
@@ -329,7 +334,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
  
     this.inboxService.getLossSummary("loss_claimsbyclaimtype",clientId,submissionId,email).subscribe(res=>{
       let cdata: ChartData[] =[{
-        Categories: [],
+        Measure: [],
         Data: [
           {
             Name: '',
@@ -341,7 +346,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         res.value.forEach((data: any) => {
           if (data.dimension && data.measure) {
-            cdata[0].Categories.push(data.dimension);
+            cdata[0].Measure.push(data.dimension);
             cdata[0].Data[0].Data.push(data.measure);
           }
         });
@@ -400,7 +405,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
 
     this.inboxService.getLossSummary("loss_toplocations",clientId,submissionId,email).subscribe(res=>{
       let cdata: ChartData[] =[{
-        Categories: [],
+        Measure: [],
         Data: [
           {
             Name: '',
@@ -412,7 +417,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         res.value.forEach((data: any) => {
           if (data.dimension && data.measure) {
-            cdata[0].Categories.push(data.dimension);
+            cdata[0].Measure.push(data.dimension);
             cdata[0].Data[0].Data.push(data.measure);
           }
         });

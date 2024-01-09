@@ -9,14 +9,13 @@
   <kendo-chart-legend
     position="bottom"
     orientation="horizontal"
-    [visible]="true"
     class="custom-legend"
     [markers]="{type : 'square', height:18, width : 18}"
     [offsetX]="0" [offsetY]="00"
     [align]="'center'"
   ></kendo-chart-legend>
   <kendo-chart-category-axis reverse = true >
-    <kendo-chart-category-axis-item [categories]="this.chartData.Categories">
+    <kendo-chart-category-axis-item [categories]="this.chartData.Measure">
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
   
@@ -29,6 +28,7 @@
     <kendo-chart-series-item
       *ngFor="let item of this.chartData.Data"
       type="column"
+      [stack]="true"
       [data]="item.Data"
       [name]="item.Name"
     >

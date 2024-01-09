@@ -29,7 +29,7 @@ export class XBarComponent implements OnInit, OnDestroy {
   ) {}
 
   chartData: ChartData = {
-    Categories: [],
+    Measure: [],
     Data: [
       {
         Name: '',
