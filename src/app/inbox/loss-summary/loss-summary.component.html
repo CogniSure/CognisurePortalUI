@@ -1,0 +1,38 @@
+<div class="exposure-summary-container" style="background-color: #EEF2F7;">
+    <kendo-tilelayout
+      [columns]="3"
+      [resizable]="true"
+      [reorderable]="true"
+      class="home-body"
+      RowsCount="1"
+      [rowHeight]="'4rem'"
+      [style]="'padding: 0% 0.5% 2% 0.5%!important;'"
+    >
+      <kendo-tilelayout-item *ngFor="let item of custComponents" [col]="item.ColumnId" [colSpan]="item.ColumnSpan" [rowSpan]="item.RowSpan" style="border: 2px !important; border-radius:10 !important; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  
+        <kendo-tilelayout-item-header style="height: 3em; padding: 0 0 0 2%;" [style.background-color]="item.HeaderColor"
+        *ngIf="item.Header != ''"
+        >
+         
+            <div style="text-align: center;border: 2;font-size: 16px; height:100%">
+              <div class="widgetHeader" style="display: flex;align-items: center;margin-left: 2%; display: flex; height:100%">
+                
+                <div style="width: 90%; text-align:left; padding: 0; color: #005DAA !important;font-weight: 500;" [style.color]="item.FontColor">
+                <!-- <b class="textprimary-base bold">{{ item.Header }}</b> -->
+                {{ item.Header }}
+              </div>
+              </div>
+            </div>
+        </kendo-tilelayout-item-header>
+        <kendo-tilelayout-item-body style="padding: 0">
+          <ng-template 
+          *ngComponentOutlet="
+            item.Widget;
+            injector: createInjector(item.WidgetName, item.WidgetType)
+          "
+        ></ng-template>
+  
+        </kendo-tilelayout-item-body>
+      </kendo-tilelayout-item>
+    </kendo-tilelayout>
+  </div>
