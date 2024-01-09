@@ -1,22 +1,24 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,OnDestroy {
   public formGroup: FormGroup;
   mySelection: string[] = [];
   public gridData: any[] = [];
   public selectedCheckboxes: number[] = [];
   selectedRowIndices: Set<number> = new Set<number>();
 // saveChanges: any;
-  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder)
+  subscription : Subscription
+  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder)
   {
     this.formGroup = this.fb.group({
       agencyname: [''],
@@ -28,15 +30,19 @@ export class HomeComponent implements OnInit {
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   tableData: any[]
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+  }
   ngOnInit(): void {
-    this.inboxservice.getAllSubmissionData().subscribe(result=>{
+    console.log("Inbox Loaded");
+    this.subscription = this.inboxservice.getAllSubmissionData().subscribe(result=>{
       this.tableData = result;
-
+      console.log("Inbox Loaded from service");
       // this.changedetector.detectChanges();
 
       this.totalRecordCCount = this.tableData.length;
       this.newRecordCCount = this.tableData.filter(item => item.NewStatus).length;
-       this.changeDetectorRef.detectChanges();
+       //this.changeDetectorRef.detectChanges();
     })
   }
   getNewRecordCount(){

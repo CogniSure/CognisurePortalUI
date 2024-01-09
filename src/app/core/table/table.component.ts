@@ -93,7 +93,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   @Input() columns: any;
   @Input() height: number = 42;
   dataLoaded: any;
-newValue: string;
+  newValue: string;
   tableData: any;
 
   constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder, private inboxService:InboxService) {
@@ -137,12 +137,12 @@ newValue: string;
     this.selectedValue = { label: 'High', value: 'option1' };
 
 
-    this.inboxService.getAllSubmissionData().subscribe((result: SubmissionData[]) => {
-      this.tableData = result.map((item: SubmissionData) => {
-        item.statusImage = item.Status === 'Completed' ? 'green-image.jpg' : 'gray-image.jpg';
-        return item;
-      });
-    });
+    // this.inboxService.getAllSubmissionData().subscribe((result: SubmissionData[]) => {
+    //   this.tableData = result.map((item: SubmissionData) => {
+    //     item.statusImage = item.Status === 'Completed' ? 'green-image.jpg' : 'gray-image.jpg';
+    //     return item;
+    //   });
+    // });
 
 
   }

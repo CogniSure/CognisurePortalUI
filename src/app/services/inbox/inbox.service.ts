@@ -64,6 +64,7 @@ export class InboxService {
   }
   getAllSubmissionData(): Observable<any> {
     var submissions: Submission[] = [];
+    console.log("Inbox Http Call");
     var apiUrl = this.configService.settings.baseUrl + 'api/AllSubmission';
     var result;
     let hParams = new HttpParams();
@@ -84,7 +85,7 @@ export class InboxService {
             Status: res['submissionStatusName']!=""?res['submissionStatusName']:"NA",
             AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
             NewStatus: true,
-            MessageId: res['messageId']!=""?res['messageId']:"NA",
+            MessageId: res['messageId']!=""?res['messageId']:"NA"
           };
           submissions.push(sub);
         });
