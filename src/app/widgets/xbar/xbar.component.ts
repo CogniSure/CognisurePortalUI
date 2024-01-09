@@ -45,13 +45,28 @@ export class XBarComponent implements OnInit, OnDestroy {
   filter: DashboardFilter;
   ngOnDestroy(): void {}
   ngOnInit(): void {
-    this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-      this.chartData = res;
-      console.log(this.input.WidgetName + '-Start');
-      console.log(res);
-      console.log(this.input.WidgetName + '-End');
-      this.changeDetector.detectChanges();
-    });
+    if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
+      this.input.DataSubject.subscribe((inputData:any[])=>{
+        console.log("Dashboard Latest X Bar")
+          console.log(inputData)
+        if(inputData!=null && inputData.length>0){
+          
+          this.chartData = inputData[0];
+        }
+        // else{
+        //   this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
+        //     this.chartData = res;
+        //     console.log(this.input.WidgetName + '-Start');
+        //     console.log(res);
+        //     console.log(this.input.WidgetName + '-End');
+        //       this.changeDetector.detectChanges();
+        //   });
+        // }
+        this.changeDetector.detectChanges();
+      })
+    }
+    
+    
   }
   public exportChart(): void {
     this.chart

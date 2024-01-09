@@ -17,6 +17,9 @@ import { GlobalService } from 'src/app/services/common/global.service';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { WidgetService } from 'src/app/services/widget/widget.service';
 import { of } from 'rxjs';
+import { CacheService } from 'src/app/services/common/cache.service';
+import { ChartData } from 'src/app/model/charts/chartdata';
+import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 
 // Injectable()
 @Component({
@@ -38,167 +41,26 @@ export class DashboardwidgetsComponent
     private injector: Injector,
     private widgetService: WidgetService,
     private globalService: GlobalService,
-    private dbService: DashboardService
+    private dbService: DashboardService,
+    private cacheService: CacheService
   ) {
-    //this.globalService.setDashboardReload(true);
+
+    
+    this.getDataFromDB();
   }
   ngOnDestroy(): void {
-    // throw new Error('Method not implemented.');
     this.globalService.clearDashboardSession();
   }
-  ngAfterViewInit() {
-    // this.globalService.dashboardFilter$.subscribe(x=>{
-    //   if(x.ReloadRequired){
-    //     this.globalService.setDashboardReload(false);
-    //   }
-    // })
-    //this.globalService.setDashboardReload(false);
-  }
+  ngAfterViewInit() {}
 
   ngOnInit(): void {
-    // this.globalService.setDashboardReload(true);
     const user = this.globalService.getUserProfile();
-   
 
     //    const topNumber = '10';
     //    const clientId = user.ClientID;
     // const userEmailId = user.Email;
     // const startDate = '';
     // const endDate = '';
-    const topNumber = '10';
-    const clientId = '1074';
-    const userEmailId = 'QBEsub@gmail.com';
-    const startDate = '01/01/2023';
-    const endDate = '9/30/2024';
-
-    this.widgetService
-      .getTopLocationsFromDB(
-        topNumber,
-        clientId,
-        userEmailId,
-        startDate,
-        endDate,
-        'countbycity'
-      )
-      .subscribe((topLocationSubject) => {
-        if (topLocationSubject != null && topLocationSubject.success) {
-          this.globalService.setTopLocation(topLocationSubject);
-        } else {
-          this.globalService.setTopLocation([]);
-        }
-      });
-
-    this.widgetService
-      .getTopLocationsbyStateFromDB(
-        topNumber,
-        clientId,
-        userEmailId,
-        startDate,
-        endDate,
-        'countbystate'
-      )
-      .subscribe((topLocationbyStateSubject) => {
-        if (
-          topLocationbyStateSubject != null &&
-          topLocationbyStateSubject.success
-        ) {
-          this.globalService.setTopLocation(topLocationbyStateSubject);
-        } else {
-          this.globalService.setTopLocation([]);
-        }
-      });
-
-    this.widgetService
-      .getTopBrokersFromDB(
-        topNumber,
-        clientId,
-        userEmailId,
-        startDate,
-        endDate,
-        'countbybroker'
-      )
-      .subscribe((topBrokerSubject) => {
-        if (topBrokerSubject != null && topBrokerSubject.success) {
-          this.globalService.setTopBroker(topBrokerSubject);
-        } else {
-          this.globalService.setTopBroker([]);
-        }
-      });
-
-    this.widgetService
-      .getTopIndustriesFromDB(
-        topNumber,
-        clientId,
-        userEmailId,
-        startDate,
-        endDate,
-        'countbyindustries'
-      )
-      .subscribe((topIndustrySubject) => {
-        if (topIndustrySubject != null && topIndustrySubject.success) {
-          this.globalService.setTopIndustry(topIndustrySubject);
-        } else {
-          this.globalService.setTopIndustry([]);
-        } 
-      });
-
-    this.widgetService
-      .getSubmissionTurnaroundTimeFromDB(
-        topNumber,
-        clientId,
-        userEmailId,
-        startDate,
-        endDate,
-        'countbyturnaroundtime'
-      )
-      .subscribe((submissionTurnaroundTimeSubject) => {
-        if (
-          submissionTurnaroundTimeSubject != null &&
-          submissionTurnaroundTimeSubject.success
-        ) {
-          this.globalService.setSubmissionTurnaroundTime(
-            submissionTurnaroundTimeSubject
-          );
-        } else {
-          this.globalService.setSubmissionTurnaroundTime([]);
-        }
-      });
-
-    this.widgetService
-      .getCoverageDistributionFromDB(
-        topNumber,
-        clientId,
-        userEmailId,
-        startDate,
-        endDate,
-        'countbylob'
-      )
-      .subscribe((coverageDistributionsSubject) => {
-        if (
-          coverageDistributionsSubject != null &&
-          coverageDistributionsSubject.success
-        ) {
-          this.globalService.setCoverageDistributions(
-            coverageDistributionsSubject.value
-          );
-        } else {
-          this.globalService.setCoverageDistributions([]);
-        }
-      });
-    this.widgetService
-      .getSubmissionConversionsFromDB(
-        topNumber,
-        clientId,
-        userEmailId,
-        startDate,
-        endDate,
-        ''
-      )
-      .subscribe((submissionConversionsSubject) => {
-        this.globalService.setSubmissionConversions(
-          submissionConversionsSubject
-        );
-      });
 
     this.componentOrder = DataComponent.Dashboardhub;
     this.custComponents = [];
@@ -221,6 +83,324 @@ export class DashboardwidgetsComponent
       i++;
     });
   }
+
+  getDataFromDB() {
+    const topNumber = '10';
+    const clientId = '1074';
+    const userEmailId = 'QBEsub@gmail.com';
+    const startDate = '01/01/2023';
+    const endDate = '9/30/2024';
+
+    this.getTopLocations(topNumber, clientId, userEmailId, startDate, endDate);
+    this.getTopLocationsbyState(
+      topNumber,
+      clientId,
+      userEmailId,
+      startDate,
+      endDate
+    );
+    this.getTopIndustries(topNumber, clientId, userEmailId, startDate, endDate);
+    this.getCoverageDistribution(
+      topNumber,
+      clientId,
+      userEmailId,
+      startDate,
+      endDate
+    );
+    this.getSubmissionConversions(
+      topNumber,
+      clientId,
+      userEmailId,
+      startDate,
+      endDate
+    );
+    this.getSubmissionTurnAroundTime(
+      topNumber,
+      clientId,
+      userEmailId,
+      startDate,
+      endDate
+    );
+    this.getTopBrokers(topNumber, clientId, userEmailId, startDate, endDate);
+  }
+  getTopLocations(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ) {
+    let cdata: ChartData[] = [{
+      Categories: [],
+      Data: [
+        {
+          Name: '',
+          Data: [],
+        },
+      ],
+    }];
+    this.widgetService
+      .getTopLocationsFromDB(
+        topNumber,
+        clientId,
+        userEmailId,
+        startDate,
+        endDate,
+        'countbycity'
+      )
+      .subscribe((res) => {
+        if (res != null && res.success) {
+          if(res.value!=null){
+            res.value.forEach((data: any) => {
+              if (data.dimension && data.measure) {
+                cdata[0].Categories.push(data.dimension);
+                cdata[0].Data[0].Data.push(data.measure);
+              }
+            });
+          }
+          this.cacheService.setDashboard('TopLocationsByCity',cdata);
+        } else {
+          this.cacheService.setDashboard('TopLocationsByCity', cdata);
+        }
+      });
+  }
+  getTopLocationsbyState(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ) {
+    let cdata: ChartData[] = [{
+      Categories: [],
+      Data: [
+        {
+          Name: '',
+          Data: [],
+        },
+      ],
+    }];
+    this.widgetService
+      .getTopLocationsbyStateFromDB(
+        topNumber,
+        clientId,
+        userEmailId,
+        startDate,
+        endDate,
+        'countbystate'
+      )
+      .subscribe((res) => {
+        if (res != null && res.success) {
+          if(res.value!=null){
+            res.value.forEach((data: any) => {
+              if (data.dimension && data.measure) {
+                cdata[0].Categories.push(data.dimension);
+                cdata[0].Data[0].Data.push(data.measure);
+              }
+            });
+          }
+          this.cacheService.setDashboard('TopLocationsByState',cdata);
+        } else {
+          this.cacheService.setDashboard('TopLocationsByState', cdata);
+        }
+      });
+  }
+  getTopIndustries(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ) {
+    let cdata: ChartData[] = [{
+      Categories: [],
+      Data: [
+        {
+          Name: '',
+          Data: [],
+        },
+      ],
+    }];
+    this.widgetService
+      .getTopIndustriesFromDB(
+        topNumber,
+        clientId,
+        userEmailId,
+        startDate,
+        endDate,
+        'countbyindustries'
+      )
+      .subscribe((res) => {
+        if (res != null && res.success) {
+          if(res.value!=null){
+            res.value.forEach((data: any) => {
+              if (data.dimension && data.measure) {
+                cdata[0].Categories.push(data.dimension);
+                cdata[0].Data[0].Data.push(data.measure);
+              }
+            });
+          }
+          this.cacheService.setDashboard('TopIndustries',cdata);
+        } else {
+          this.cacheService.setDashboard('TopIndustries', cdata);
+        }
+      });
+  }
+  //Done
+  getCoverageDistribution(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ) {
+    let cdata=
+        [
+          {category: '', value: ''},
+        ]
+    
+    this.widgetService
+      .getCoverageDistributionFromDB(
+        topNumber,
+        clientId,
+        userEmailId,
+        startDate,
+        endDate,
+        'countbylob'
+      )
+      .subscribe((res) => {
+        if (
+          res != null &&
+          res.success
+        ) {
+          if(res.value!=null){
+            res.value.forEach((data: any)=>{
+              let piechartdata={category: data.dimension, value: data.measure}
+              cdata.push(piechartdata)
+            })
+          }
+          
+          this.cacheService.setDashboard('CoverageDistribution',cdata);
+
+          // this.globalService.setCoverageDistributions(
+          //   res.value
+          // );
+        } else {
+          this.cacheService.setDashboard('CoverageDistribution',cdata);
+          this.globalService.setCoverageDistributions([]);
+        }
+      });
+  }
+  getSubmissionConversions(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ) {
+    this.widgetService
+      .getSubmissionConversionsFromDB(
+        topNumber,
+        clientId,
+        userEmailId,
+        startDate,
+        endDate,
+        ''
+      )
+      .subscribe((submissionConversionsSubject) => {
+        this.globalService.setSubmissionConversions(
+          submissionConversionsSubject
+        );
+      });
+  }
+  //Done
+  getSubmissionTurnAroundTime(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ) {
+    let cdata: ChartData[] =[{
+      Categories: [],
+      Data: [
+        {
+          Name: '',
+          Data: [],
+        },
+      ],
+    }];
+    this.widgetService
+      .getSubmissionTurnaroundTimeFromDB(
+        topNumber,
+        clientId,
+        userEmailId,
+        startDate,
+        endDate,
+        'countbyturnaroundtime'
+      )
+      .subscribe((res) => {
+        if (
+          res != null &&
+          res.success
+        ) {
+          if(res.value!=null){
+            res.value.forEach((data: any) => {
+              if (data.dimension && data.measure) {
+                cdata[0].Categories.push(data.dimension);
+                cdata[0].Data[0].Data.push(data.measure);
+              }
+            });
+          }
+          this.cacheService.setDashboard('SubmissionTurnaroundTime',cdata);
+        } else {
+          this.cacheService.setDashboard('SubmissionTurnaroundTime', cdata);
+        }
+      });
+  }
+  //Done
+  getTopBrokers(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ) {
+    let cdata: ChartData[] = [{
+      Categories: [],
+      Data: [
+        {
+          Name: '',
+          Data: [],
+        },
+      ],
+    }];
+    this.widgetService
+      .getTopBrokersFromDB(
+        topNumber,
+        clientId,
+        userEmailId,
+        startDate,
+        endDate,
+        'countbybroker'
+      )
+      .subscribe((res) => {
+        if (res != null && res.success) {
+          if(res.value!=null){
+            res.value.forEach((data: any) => {
+              if (data.dimension && data.measure) {
+                cdata[0].Categories.push(data.dimension);
+                cdata[0].Data[0].Data.push(data.measure);
+              }
+            });
+          }
+          this.cacheService.setDashboard('TopBrokers',cdata);
+        } else {
+          this.cacheService.setDashboard('TopBrokers', cdata);
+        }
+      });
+  }
+
   getBodyClassBox(bodyClass: string): string {
     return bodyClass;
   }
@@ -228,19 +408,53 @@ export class DashboardwidgetsComponent
     this.isFullScreen = !this.isFullScreen;
     this.globalService.setDashboardReload(false);
   }
-  createInjector(header: string, widgetType: string): any {
+  createInjector(widgetName: string, widgetType: string): any {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
-      WidgetName: header,
+      WidgetName: widgetName,
       WidgetType: widgetType,
-      Settings : {},
-      Data : [],
-      DataSubject : of([])
+      Settings: {},
+      Data: [],
+      DataSubject: of([]),
     };
+    if(widgetName == 'CoverageDistribution' || widgetName =='SubmissionTurnaroundTime'
+    || widgetName =='TopBrokers' || widgetName =='TopIndustries'
+    || widgetName =='TopLocationsByCity' || widgetName =='TopLocationsByState'
+    ){
+      widgetInput.DataSubject = this.cacheService.getDashboard(widgetName);
+      // console.log("Data Comparison - " + widgetName)
+      // let filter: DashboardFilter = {
+      //   AccountName:"",
+      //   Date:
+      //     {
+      //       ReloadRequired:false,
+      //       FromDate: "string",
+      //       ToDate: "string",
+      //       PriorFromDate: "string",
+      //       PriorToDate: "string",
+      //       Account : 
+      //         {
+      //           AccountID: 0,
+      //           AccountName: "string",
+      //           BenPortalLinks:[]
+      //       }
+            
+      //     }
+        
+      // }
+      // // this.widgetService.getSubmissionTurnaroundTime(filter).subscribe(x=>{
+      // //   console.log("Dashboard Old")
+      // //   console.log(x)
+      // // })
+      this.cacheService.getDashboard(widgetName).subscribe(x=>{
+        console.log("Dashboard Latest - "  + widgetName)
+        console.log(x)
+      })
+    }
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],
       parent: this.injector,
-      name: header,
+      name: widgetName,
     });
 
     return myInjector;

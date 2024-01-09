@@ -47,24 +47,6 @@ export class WidgetService {
     else if (widget.WidgetName === 'StraightThroughRate') {
       return this.getStraightThroughRate(filter)
     }
-    if (widget.WidgetName === 'SubmissionTurnaroundTime') {
-      return this.getSubmissionTurnaroundTime(filter)
-    }
-    else if (widget.WidgetName === 'TopBrokers') {
-      return this.getTopBrokers(filter)
-    }
-    else if (widget.WidgetName === 'CoverageDistribution') {
-      return this.getCoverageDistribution(filter)
-    }
-    else if (widget.WidgetName === 'TopIndustries') {
-      return this.getTopIndustries(filter)
-    }
-    else if (widget.WidgetName === 'TopLocations') {
-      return this.getTopLocations(filter)
-    }
-    else if (widget.WidgetName === 'TopLocationsbyState') {
-      return this.getTopLocationsbyState(filter)
-    }
     else if (widget.WidgetName === 'SubmissionConversion') {
       return this.getSubmissionConversion(filter)
     }
@@ -95,138 +77,7 @@ export class WidgetService {
       ItemIcon_2 : "PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjciIHZpZXdCb3g9IjAgMCAyNyAyNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjA3MTQgMTcuMDcxTDkuOTI4NjMgOS45MjgyMk05LjkyODU3IDE3LjA3MThMMTcuMDcxNCA5LjkyOTA0TTI2IDEzLjVDMjYgMjAuNDAzNiAyMC40MDM2IDI2IDEzLjUgMjZDNi41OTY0NCAyNiAxIDIwLjQwMzYgMSAxMy41QzEgNi41OTY0NCA2LjU5NjQ0IDEgMTMuNSAxQzIwLjQwMzYgMSAyNiA2LjU5NjQ0IDI2IDEzLjVaIiBzdHJva2U9IiMyRDJEMkQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg=="
     });
   }
-  // getTopBrokers(filter: DashboardFilter): Observable<any> {
-  //   return of({
-  //     Categories: ['Assured Partners', 'Lockton', 'AJG', 'Brown & Brown', 'Marsh'],
-  //     Data: [
-  //       {
-  //         Name: '',
-  //         Data: [
-  //           .27, .22, .14, .12, .05
-  //         ],
-  //       },
-  //     ],
-  //   });
-  // }
-  // getCoverageDistribution(filter: DashboardFilter): Observable<any> {
-    // return of({
-    //   Categories: ['Property', 'Automobile', 'Umbrella', 'General Liability', 'Workers Compensation', 'Others'],
-    //   Data: [
-    //     {
-    //       Name: '',
-    //       Data: [
-    //         .24, .22, .15, .17, .18, .04
-    //       ],
-    //     },
-    //   ],
-    // });
-  //   return of([
-  //     {category: 'Property', value: 24},
-  //     {category: 'Automobile', value: 22},
-  //     {category: 'Umbrella', value: 15},
-  //     {category: 'General Liability', value: 17},
-  //     {category: 'Workers Compensation', value: 18},
-  //     {category: 'Others', value: 4}
-  //   ])
-  // }
-  // getTopIndustries(filter: DashboardFilter): Observable<any> {
-  //   return of({
-  //     Categories: ['Manufacturing', 'Construction', 'Warehouses', 'Trucking', 'Aviation'],
-  //     Data: [
-  //       {
-  //         Name: '',
-  //         Data: [
-  //           .35, .32, .12, .05, .03
-  //         ],
-  //       },
-  //     ],
-  //   });
-  // }
-  // getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
-  //   return of({
-  //     Categories: ['0.5', '1', '2', '3', '3+'],
-  //     Data: [
-  //       {
-  //         Name: '',
-  //         Data: [
-  //           .68,.24,.06,.02,0
-  //         ],
-  //       },
-  //     ],
-  //   });
-  // }
-  // getTopLocations(filter: DashboardFilter): Observable<any> {
-  //   return of({
-  //     Categories: ['Boston', 'Rhode Island', 'Worcester', 'Lowell', 'New Bedford'],
-  //     Data: [
-  //       {
-  //         Name: '',
-  //         Data: [
-  //           .27, .14, .13, .08, .05
-  //         ],
-  //       },
-  //     ],
-  //   });
-  // }
-  // getSubmissionConversions(filter: DashboardFilter): Observable<any> {
-  //   return of([
-  //       {
-  //         stat: 'Total Submissions',
-  //         count: 4870,
-  //         color: '#009CC1',
-  //       },
-  //       {
-  //         stat: 'Quoted',
-  //         count: 3380,
-  //         color: '#00B4DF',
-  //       },
-  //       {
-  //         stat: 'Bound',
-  //         count: 1021,
-  //         color: '#0CD0FF',
-  //       }
-  //     ]);
-  // }
-
-  // getSubmissionTurnaroundTime(filter: DashboardFilter): Observable<any> {
-  //   this.chartData$.subscribe((chartData: any) => {
-  //   });
   
-  //   const updatedChartData: ChartData = {
-  //     Categories: ['0.5', '1', '2', '3', '3+'],
-  //     Data: [
-  //       {
-  //         Name: '',
-  //         Data: [.68, .45, .25, .10, 0]
-  //       },
-  //     ],
-  //   };
- 
-  //   // this.setChartData(updatedChartData);
-  //   return of(updatedChartData);
-  // }
-
-
-  // getTopBrokers(filter: DashboardFilter): Observable<any> {
-  //   this.chartData$.subscribe((chartData: ChartData) => {
-  //   });
-  // getTopIndustries(filter: DashboardFilter): Observable<any> {
-  //   this.chartData$.subscribe((chartData: ChartData) => {
-  //   });
-  
-  //   const updatedChartData: ChartData = {
-  //     Categories: ['Manufacturing', 'Construction', 'Warehouses', 'Trucking', 'Aviation'],
-  //     Data: [
-  //       {
-  //         Name: '',
-  //         Data: [.35, .32, .12, .05, .03]
-  //       },
-  //     ],
-  //   };
- 
-  //   this.setChartData(updatedChartData);
-  //   return of(updatedChartData);
-  // }
   getTopLocationsbyStateFromDB(topNumber:string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
@@ -238,30 +89,7 @@ export class WidgetService {
       .set('Type', type);
     return this.http.get<any[]>(apiUrl, { params });
   }
-  getTopLocationsbyState(filter: DashboardFilter): Observable<ChartData> {
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
-    }
-
-    let locationsbyState = this.globalService.getTopLocationbyState()
-        if (locationsbyState && locationsbyState.value) {
-          locationsbyState.value.forEach((data: any) => {
-            if (data.dimension && data.measure) {
-              updatedChartData.Categories.push(data.dimension);
-              updatedChartData.Data[0].Data.push(data.measure);
-            }
-          });
-        }
-      return of(updatedChartData);
-  }
   
-
   getTopLocationsFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
@@ -273,32 +101,7 @@ export class WidgetService {
       .set('Type', type);
     return this.http.get<any[]>(apiUrl, { params });
   }
-  getTopLocations(filter: DashboardFilter): Observable<ChartData> {
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
-    }
-
-    let locations = this.globalService.getTopLocation()
-        if (locations && locations.value) {
-          locations.value.forEach((data: any) => {
-            if (data.dimension && data.measure) {
-              updatedChartData.Categories.push(data.dimension);
-              updatedChartData.Data[0].Data.push(data.measure);
-            }
-          });
-        }
-
-
-
-      return of(updatedChartData);
-  }
-
+  
   getTopBrokersFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
@@ -310,33 +113,7 @@ export class WidgetService {
       .set('Type', type);
     return this.http.get<any[]>(apiUrl, { params });
   }
-  getTopBrokers(filter: DashboardFilter) {
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
-    }
-
-    let brokers = this.globalService.getTopBroker()
-
-    if (brokers && brokers.value) {
-      brokers.value.forEach((data: any) => {
-        if (data.dimension && data.measure) {
-          updatedChartData.Categories.push(data.dimension);
-          updatedChartData.Data[0].Data.push(data.measure);
-        }
-      });
-    }
-    return of(updatedChartData);
-  }
   
-
-
-
   getTopIndustriesFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
@@ -348,30 +125,7 @@ export class WidgetService {
       .set('Type', type);
     return this.http.get<any[]>(apiUrl, { params });
   }
-  getTopIndustries(filter: DashboardFilter) {
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
-    }
-
-    let industries = this.globalService.getTopIndustry()
-    if (industries && industries.value) {
-      industries.value.forEach((data: any) => {
-        if (data.dimension && data.measure) {
-          updatedChartData.Categories.push(data.dimension);
-          updatedChartData.Data[0].Data.push(data.measure);
-        }
-      });
-    }
-    return of(updatedChartData);
-  }
-
-
+  
   getSubmissionTurnaroundTimeFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()
@@ -382,28 +136,6 @@ export class WidgetService {
       .set('EndDate', endDate)
       .set('Type', type);
     return this.http.get<any[]>(apiUrl, { params });
-  }
-  getSubmissionTurnaroundTime(filter: DashboardFilter) {
-    let updatedChartData: ChartData = {
-      Categories : [],
-      Data : [
-        {
-          Name:"",
-          Data : []
-        }
-      ]
-    }
-
-    let turnaroundTime = this.globalService.getSubmissionTurnaroundTime()
-    if (turnaroundTime && turnaroundTime.value) {
-      turnaroundTime.value.forEach((data: any) => {
-        if (data.dimension && data.measure) {
-          updatedChartData.Categories.push(data.dimension);
-          updatedChartData.Data[0].Data.push(data.measure);
-        }
-      });
-    }
-    return of(updatedChartData);
   }
 
   getCoverageDistributionFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
@@ -416,22 +148,7 @@ export class WidgetService {
       .set('Type', type);
     return this.http.get<any[]>(apiUrl, { params });
   }
-  getCoverageDistribution(filter: DashboardFilter) {
-    let updatedChartData=
-    [
-          {category: '', value: ''},
-        ]
-    
-
-    let coverageDistributions = this.globalService.getCoverageDistributions()
-    coverageDistributions.forEach((data: any)=>{
-      
-        let piechartdata={category: data.dimension, value: data.measure}
-        updatedChartData.push(piechartdata)
-      })
-    return of(updatedChartData);
-  }
-
+  
   getSubmissionConversionsFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     let submissionConversions = [
       {

@@ -50,12 +50,12 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
         if(data!=null && data.length > 0){
           this.chartData = data;
         }
-        else {
-          this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-            this.chartData = res;
-            this.changeDetector.detectChanges();
-          });
-        }
+        // else {
+        //   this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
+        //     this.chartData = res;
+        //     this.changeDetector.detectChanges();
+        //   });
+        // }
         this.changeDetector.detectChanges();
       })
     }

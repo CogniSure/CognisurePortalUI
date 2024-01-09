@@ -169,9 +169,9 @@ export class DataComponent {
     {
       id: 1,
       BoxType: 'SmallBox',
-      WidgetName: 'TopLocations',
+      WidgetName: 'TopLocationsByCity',
       WidgetType: 'Ybar',
-      Header: 'Top Locations',
+      Header: 'Top Locations by City',
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3
@@ -179,7 +179,7 @@ export class DataComponent {
     {
       id: 1,
       BoxType: 'SmallBox',
-      WidgetName: 'TopLocations',
+      WidgetName: 'TopLocationsByState',
       WidgetType: 'Ybar',
       Header: 'Top Locations by State',
       ColumnId :  1,

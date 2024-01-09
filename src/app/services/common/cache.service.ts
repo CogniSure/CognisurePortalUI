@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { ChartData } from 'src/app/model/charts/chartdata';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,13 @@ export class CacheService {
   private totalIncurred$ = new BehaviorSubject<any[]>([]);
   private topLocations$ = new BehaviorSubject<any[]>([]);
   
-
+  private dashboard_TurnAroundTime$ = new BehaviorSubject<any[]>([]);
+  private dashboard_TopBrokers$ = new BehaviorSubject<any[]>([]);
+  private dashboard_CoverageDistribution$ = new BehaviorSubject<any[]>([]);
+  
+  private dashboard_TopIndustries$ = new BehaviorSubject<any[]>([]);
+  private dashboard_TopLocationsByCity$ = new BehaviorSubject<any[]>([]);
+  private dashboard_TopLocationsByState$ = new BehaviorSubject<any[]>([]);
 
   constructor() {
     let isSummaryCached = sessionStorage.getItem('isSummaryCached');
@@ -146,5 +153,48 @@ export class CacheService {
   }
   getNoOfBuildings(): Observable<any[]> {
     return this.noOfBuildingsSubject$;
+  }
+
+  getDashboard(widgetName: string): Observable<any[]> {
+    let data: ChartData[] = [{
+      Categories : [],
+      Data : [
+        {
+          Name:"",
+          Data : []
+        }
+      ]
+    }]
+    if (widgetName === 'SubmissionTurnaroundTime') {
+      return this.dashboard_TurnAroundTime$;
+    } else if (widgetName === 'TopBrokers') {
+      return this.dashboard_TopBrokers$;
+    } else if (widgetName === 'CoverageDistribution') {
+      return this.dashboard_CoverageDistribution$;
+    } else if (widgetName === 'TopIndustries') {
+      return this.dashboard_TopIndustries$;
+    } else if (widgetName === 'TopLocationsByCity') {
+      return this.dashboard_TopLocationsByCity$;
+    } else if (widgetName === 'TopLocationsByState') {
+      return this.dashboard_TopLocationsByState$;
+    } 
+    
+    return of(data);
+  }
+  setDashboard(widgetName: string, data: any[]) {
+    //let dsData = new BehaviorSubject<any[]>([]);
+    if (widgetName === 'SubmissionTurnaroundTime') {
+      this.dashboard_TurnAroundTime$.next(data);
+    } else if (widgetName === 'TopBrokers') {
+      this.dashboard_TopBrokers$.next(data);
+    } else if (widgetName === 'CoverageDistribution') {
+      this.dashboard_CoverageDistribution$.next(data);
+    } else if (widgetName === 'TopIndustries') {
+      this.dashboard_TopIndustries$.next(data);
+    } else if (widgetName === 'TopLocationsByCity') {
+      this.dashboard_TopLocationsByCity$.next(data);
+    } else if (widgetName === 'TopLocationsByState') {
+      this.dashboard_TopLocationsByState$.next(data);
+    } 
   }
 }
