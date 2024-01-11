@@ -27,7 +27,7 @@ export class YBarComponent implements OnInit, OnDestroy {
     @Inject(InjectToken) private input: WidgetInput
   ) {}
   chartData: ChartData = {
-    Measure: [],
+    Dimension: [],
     Data: [
       {
         Name: '',

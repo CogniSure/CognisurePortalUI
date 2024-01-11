@@ -5,4 +5,10 @@ export const SeriesColorConst: string[] = [
   '#11CFC6',
   '#27EAEA',
   '#75D2A6'
+  // '#009CC1',
+  // 'yellow',
+  // 'red',
+  // '#11CFC6',
+  // '#27EAEA',
+  // '#75D2A6'
 ];

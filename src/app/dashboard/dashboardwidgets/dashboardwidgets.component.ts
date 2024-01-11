@@ -131,7 +131,7 @@ export class DashboardwidgetsComponent
     endDate: any
   ) {
     let cdata: ChartData[] = [{
-      Measure: [],
+      Dimension: [],
       Data: [
         {
           Name: '',
@@ -153,7 +153,7 @@ export class DashboardwidgetsComponent
           if(res.value!=null){
             res.value.forEach((data: any) => {
               if (data.dimension && data.measure) {
-                cdata[0].Measure.push(data.dimension);
+                cdata[0].Dimension.push(data.dimension);
                 cdata[0].Data[0].Data.push(data.measure);
               }
             });
@@ -172,7 +172,7 @@ export class DashboardwidgetsComponent
     endDate: any
   ) {
     let cdata: ChartData[] = [{
-      Measure: [],
+      Dimension: [],
       Data: [
         {
           Name: '',
@@ -194,7 +194,7 @@ export class DashboardwidgetsComponent
           if(res.value!=null){
             res.value.forEach((data: any) => {
               if (data.dimension && data.measure) {
-                cdata[0].Measure.push(data.dimension);
+                cdata[0].Dimension.push(data.dimension);
                 cdata[0].Data[0].Data.push(data.measure);
               }
             });
@@ -213,7 +213,7 @@ export class DashboardwidgetsComponent
     endDate: any
   ) {
     let cdata: ChartData[] = [{
-      Measure: [],
+      Dimension: [],
       Data: [
         {
           Name: '',
@@ -235,7 +235,7 @@ export class DashboardwidgetsComponent
           if(res.value!=null){
             res.value.forEach((data: any) => {
               if (data.dimension && data.measure) {
-                cdata[0].Measure.push(data.dimension);
+                cdata[0].Dimension.push(data.dimension);
                 cdata[0].Data[0].Data.push(data.measure);
               }
             });
@@ -322,7 +322,7 @@ export class DashboardwidgetsComponent
     endDate: any
   ) {
     let cdata: ChartData[] =[{
-      Measure: [],
+      Dimension: [],
       Data: [
         {
           Name: '',
@@ -345,9 +345,11 @@ export class DashboardwidgetsComponent
           res.success
         ) {
           if(res.value!=null){
+            let tempRes = res.value;
+            cdata[0].Dimension=
             res.value.forEach((data: any) => {
               if (data.dimension && data.measure) {
-                cdata[0].Measure.push(data.dimension);
+                cdata[0].Dimension.push(data.dimension);
                 cdata[0].Data[0].Data.push(data.measure);
               }
             });
@@ -367,7 +369,7 @@ export class DashboardwidgetsComponent
     endDate: any
   ) {
     let cdata: ChartData[] = [{
-      Measure: [],
+      Dimension: [],
       Data: [
         {
           Name: '',
@@ -389,7 +391,7 @@ export class DashboardwidgetsComponent
           if(res.value!=null){
             res.value.forEach((data: any) => {
               if (data.dimension && data.measure) {
-                cdata[0].Measure.push(data.dimension);
+                cdata[0].Dimension.push(data.dimension);
                 cdata[0].Data[0].Data.push(data.measure);
               }
             });
