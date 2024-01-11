@@ -87,7 +87,7 @@ export class DashboardwidgetsComponent
   getDataFromDB() {
     const topNumber = '10';
     const clientId = '1074';
-    const userEmailId = 'QBEsub@gmail.com';
+    const userEmailId = 'submissiontesting@cognisure.ai';
     const startDate = '01/01/2023';
     const endDate = '9/30/2024';
 
@@ -321,15 +321,12 @@ export class DashboardwidgetsComponent
     startDate: any,
     endDate: any
   ) {
-    let cdata: ChartData[] =[{
-      Dimension: [],
-      Data: [
-        {
-          Name: '',
-          Data: [],
-        },
-      ],
-    }];
+    let cdata: ChartData[] =[
+      {
+        Dimension:[],
+        Data:[]
+      }
+    ]
     this.widgetService
       .getSubmissionTurnaroundTimeFromDB(
         topNumber,
@@ -345,14 +342,15 @@ export class DashboardwidgetsComponent
           res.success
         ) {
           if(res.value!=null){
-            let tempRes = res.value;
-            cdata[0].Dimension=
-            res.value.forEach((data: any) => {
-              if (data.dimension && data.measure) {
-                cdata[0].Dimension.push(data.dimension);
-                cdata[0].Data[0].Data.push(data.measure);
-              }
-            });
+            // let tempRes = res.value;
+            // cdata[0].Dimension=
+            // res.value.forEach((data: any) => {
+            //   if (data.dimension && data.measure) {
+            //     cdata[0].Dimension.push(data.dimension);
+            //     cdata[0].Data[0].Data.push(data.measure);
+            //   }
+            // });
+            cdata = this.getTranformedData(res);
           }
           this.cacheService.setDashboard('SubmissionTurnaroundTime',cdata);
         } else {
@@ -460,5 +458,37 @@ export class DashboardwidgetsComponent
     });
 
     return myInjector;
+  }
+  getTranformedData(res:any){
+    let cdata: ChartData[] =[
+      {
+        Dimension:[],
+        Data:[]
+      }
+    ]
+       let distDimension = [...new Set(res.value.map((item:any) => item.dimension))] as []
+        let distCategory = [...new Set(res.value.map((item:any) => item.category))] as []
+        cdata[0].Dimension = distDimension
+        let tempResult = res.value;
+       
+        distCategory.forEach(x=>{
+          
+          let categoryGroup = tempResult.filter((rr:any)=> rr.category==x);
+          let tempCategory = categoryGroup[0].category;
+          let tempData:any[] = [];
+          distDimension.forEach(dmsn=>{
+            
+            let filterdData = categoryGroup.filter((f:any)=>f.dimension==dmsn);
+            if(filterdData!=null && filterdData.length>0){
+              tempData.push(filterdData[0].measure)
+            }
+            else{
+              tempData.push('')
+            }
+          })
+          cdata[0].Data.push({Name:tempCategory,Data:tempData})
+          
+        })
+        return cdata;
   }
 }

@@ -72,10 +72,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
   setExposureSummary() {
     let type:string ="exposure_tiv"
     let clientId:string = "1074"
-    let submissionId: string = "a55523ff-1c8e-446a-843f-e51b6a2c4d61"
-    let email:string = "QBEsub@gmail.com"
+    let submissionId: string = "b66623ff-3c5e-887a-423f-f92b8a4c8d98"
+    let email:string = "submissiontesting@cognisure.ai"
 
-    this.inboxService.getExposureSummary("exposure_tiv",clientId,"a88823ff-1c8e-667a-843f-f81b6a2c4d61",email).subscribe(res=>{
+    this.inboxService.getExposureSummary("exposure_tiv",clientId,submissionId,email).subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {
         this.cacheService.setExposureSummary('TIV', [
@@ -213,8 +213,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
   getHeader(){
     const type = 'account_information';
     const clientId = '1074';
-    const submissionId = 'a44413ee-1c8e-446a-843f-e51b6a2c4c51';
-    const email = 'QBEsub@gmail.com';
+    const submissionId = 'b66623ff-3c5e-887a-423f-f92b8a4c8d98';
+    const email = 'submissiontesting@cognisure.ai';
     let accInfo : AccountInformation = {
       SubmissionId : "",
       NamedinsuredFullname: 'NA',
@@ -285,8 +285,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     
   setLossSummary() {
     let clientId:string = "1074"
-    let submissionId: string = "a44413ee-1c8e-446a-843f-e51b6a2c4c51"
-    let email:string = "QBEsub@gmail.com"
+    let submissionId: string = "b66623ff-3c5e-887a-423f-f92b8a4c8d98"
+    let email:string = "submissiontesting@cognisure.ai"
 
     this.inboxService.getLossSummary("loss_claimsbyLOBbyyear",clientId,submissionId,email).subscribe(res=>{
       console.log('sampleData ClaimsbyLOBbyYear');
