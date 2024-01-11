@@ -1,4 +1,5 @@
 export interface AccountInformation {
+    SubmissionId : string,
     NamedinsuredFullname:string,
     FullAddress : string,
     BusinessDescription:string,
@@ -12,5 +13,6 @@ export interface AccountInformation {
     Taxidentifier : string,
     ContactName : string,
     PhoneNumber : string,
-    Email : string
+    Email : string,
+    LOB : string
 }

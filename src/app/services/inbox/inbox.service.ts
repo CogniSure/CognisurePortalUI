@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 import { CacheService } from 'src/app/services/common/cache.service';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 @Injectable({
   providedIn: 'root',
@@ -149,13 +150,13 @@ export class InboxService {
   }
 
   getLossSummary(type:string,clientId:string,submissionId: string,email:string): Observable<any> {
-    // var apiUrl = this.configService.settings.baseUrl + '';
-    // let hParams = new HttpParams();
-    // hParams = hParams.set('type', type);
-    // hParams = hParams.set('clientid', clientId);
-    // hParams = hParams.set('submissionid', submissionId);
-    // hParams = hParams.set('email', email);
-    // return this.httpService.getData(apiUrl, hParams);
+    var apiUrl = this.configService.settings.baseUrl + 'api/losssummarybyid';
+    let hParams = new HttpParams();
+    hParams = hParams.set('type', type);
+    hParams = hParams.set('clientid', clientId);
+    hParams = hParams.set('submissionid', submissionId);
+    hParams = hParams.set('email', email);
+    return this.httpService.getData(apiUrl, hParams);
     let sampleData = {
       value:[
         {
@@ -188,26 +189,33 @@ export class InboxService {
   // }
 
 
-  getAccountInformationfromDB(type: string, clientId: string, submissionId: string, email: string): Observable<AccountInformation> {
-    const accountInformation: AccountInformation = {
-      NamedinsuredFullname: 'Dante Mason',
-      FullAddress: '885 Street, Warrnville, Illinois 60555',
-      BusinessDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      BusinessType: 'Property',
-      EffectiveDate: '03/01/2023',
-      OrganizationType: '',
-      YearStarted: '',
-      NumberOfEmployees: '',
-      ProducerFullname: '',
-      SICCode: '',
-      Taxidentifier: '',
-      ContactName: '',
-      PhoneNumber: '8143-03312302301',
-      Email: '',
-    };
+  getAccountInformationfromDB(type: string, clientId: string, submissionId: string, email: string): Observable<any> {
+    var apiUrl = this.configService.settings.baseUrl + 'api/submissionheadersbyid';
+    let hParams = new HttpParams();
+    hParams = hParams.set('type', type);
+    hParams = hParams.set('clientid', clientId);
+    hParams = hParams.set('submissionid', submissionId);
+    hParams = hParams.set('email', email);
+    return this.httpService.getData(apiUrl, hParams);
+    // const accountInformation: AccountInformation = {
+    //   NamedinsuredFullname: 'Dante Mason',
+    //   FullAddress: '885 Street, Warrnville, Illinois 60555',
+    //   BusinessDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    //   BusinessType: 'Property',
+    //   EffectiveDate: '03/01/2023',
+    //   OrganizationType: '',
+    //   YearStarted: '',
+    //   NumberOfEmployees: '',
+    //   ProducerFullname: '',
+    //   SICCode: '',
+    //   Taxidentifier: '',
+    //   ContactName: '',
+    //   PhoneNumber: '8143-03312302301',
+    //   Email: '',
+    // };
 
     
-    return of(accountInformation);
+    // return of(accountInformation);
   }
   
 }

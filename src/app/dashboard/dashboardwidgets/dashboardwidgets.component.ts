@@ -448,10 +448,10 @@ export class DashboardwidgetsComponent
       // //   console.log("Dashboard Old")
       // //   console.log(x)
       // // })
-      this.cacheService.getDashboard(widgetName).subscribe(x=>{
-        console.log("Dashboard Latest - "  + widgetName)
-        console.log(x)
-      })
+      // this.cacheService.getDashboard(widgetName).subscribe(x=>{
+      //   console.log("Dashboard Latest - "  + widgetName)
+      //   console.log(x)
+      // })
     }
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],

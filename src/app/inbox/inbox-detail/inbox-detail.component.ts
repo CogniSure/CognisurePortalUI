@@ -213,22 +213,79 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
   getHeader(){
     const type = 'account_information';
     const clientId = '1074';
-    const submissionId = 'a55523ff-1c8e-446a-843f-e51b6a2c4d61';
+    const submissionId = 'a44413ee-1c8e-446a-843f-e51b6a2c4c51';
     const email = 'QBEsub@gmail.com';
+    let accInfo : AccountInformation = {
+      SubmissionId : "",
+      NamedinsuredFullname: 'NA',
+      FullAddress: 'NA',
+      BusinessDescription: 'NA',
+      BusinessType: 'NA',
+      EffectiveDate: 'NA',
+      OrganizationType: 'NA',
+      YearStarted: 'NA',
+      NumberOfEmployees: 'NA',
+      SICCode: 'NA',
+      Taxidentifier: 'NA',
+      ContactName: 'NA',
+      PhoneNumber: 'NA',
+      Email: 'NA',
+      ProducerFullname : 'NA',
+      LOB: "NA"
+    }
+    //this.inboxService.getAccountInformationfromDB
+    
+    this.inboxService.getAccountInformationfromDB("exposure_tiv",clientId,submissionId,email)
+    .subscribe(res=>{
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
 
-    this.inboxService.getAccountInformationfromDB(type, clientId, submissionId, email).subscribe(
-      (accountInformation) => {
-        this.cacheService.setAccountInformation(accountInformation);
+        console.log("Headers")
+        //SubmissionID
         
-      },
-    );
+        res.value.forEach((data:any) => {
+          if(data.dimension == "SubmissionID")
+            accInfo.SubmissionId = data.measure;
+          if(data.dimension == "Insured Name")
+            accInfo.NamedinsuredFullname = data.measure;
+          if(data.dimension == "Address"){
+            let addr = data.measure
+            accInfo.FullAddress = data.measure;
+          }
+           
+          if(data.dimension == "State and Zipcode")
+            accInfo.SICCode = data.measure;
+          if(data.dimension == "LineOfBusiness")
+            accInfo.LOB = data.measure;
+          if(data.dimension == "Min-PolicyEffDate")
+            accInfo.EffectiveDate = data.measure;
+        });
+        console.log(accInfo)
+        this.cacheService.setAccountInformation(accInfo);
+      //   this.cacheService.setExposureSummary('TIV', [
+      //     {
+      //       ItemData: 'TIV',
+      //       ItemValue: res.value[0].measure,
+      //     },
+      //   ]);
+      // }
+      // else 
+      // {
+      //   this.cacheService.setExposureSummary('TIV', [
+      //     {
+      //       ItemData: 'TIV',
+      //       ItemValue: '$0',
+      //     },
+      //   ]);
+       }
+    })
     
 
   }
     
   setLossSummary() {
     let clientId:string = "1074"
-    let submissionId: string = "a55523ff-1c8e-446a-843f-e51b6a2c4d61"
+    let submissionId: string = "a44413ee-1c8e-446a-843f-e51b6a2c4c51"
     let email:string = "QBEsub@gmail.com"
 
     this.inboxService.getLossSummary("loss_claimsbyLOBbyyear",clientId,submissionId,email).subscribe(res=>{

@@ -47,8 +47,6 @@ export class YBarComponent implements OnInit, OnDestroy {
       this.input.DataSubject.subscribe((data:any[])=>{
         if(data!=null && data.length>0){
           this.chartData = data[0];
-          console.log("Dashboard Latest-Ybar-"+this.input.WidgetName)
-          console.log(data)
         }
         // else {
         //   this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {

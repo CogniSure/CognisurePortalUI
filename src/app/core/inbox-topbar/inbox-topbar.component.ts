@@ -20,8 +20,24 @@ interface NavItem {
 })
 
 export class InboxTopbarComponent implements OnInit, OnDestroy {
-  accountInformation: AccountInformation | null = null;
-  accountInfo: AccountInformation;
+  accountInformation: AccountInformation | null = {
+      SubmissionId : "",
+      NamedinsuredFullname: 'NA',
+      FullAddress: 'NA',
+      BusinessDescription: 'NA',
+      BusinessType: 'NA',
+      EffectiveDate: 'NA',
+      OrganizationType: 'NA',
+      YearStarted: 'NA',
+      NumberOfEmployees: 'NA',
+      SICCode: 'NA',
+      Taxidentifier: 'NA',
+      ContactName: 'NA',
+      PhoneNumber: 'NA',
+      Email: 'NA',
+      ProducerFullname : 'NA',
+      LOB:"NA"
+    };
   subscription: Subscription;
   
   constructor(public inboxService: InboxService,private globalService : GlobalService, 
@@ -106,7 +122,8 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
       (accountInfo) => {
         this.accountInformation = accountInfo;
         console.log("topbar");
-        console.log(this.accountInfo);
+        console.log(this.accountInformation);
+        this.cdRef.detectChanges();
       },
     );
 
@@ -129,43 +146,43 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
       if (sub != null && sub.value != null && sub.value.account_Level_Info!=null && sub.value.property_Policy_Info_Premises_Information!=null) {
         let accInfo = sub.value.account_Level_Info[0];
         let propertyInfo = sub.value.property_Policy_Info_Premises_Information[0];
-        this.accountInformation = {
-          NamedinsuredFullname: this.getConcatenateString([
-            accInfo.namedinsured_Fullname,
-          ]),
-          FullAddress: this.getConcatenateString([
-            accInfo.namedInsured_MailingAddress_LineOne,
-            accInfo.namedInsured_MailingAddress_CityName,
-            accInfo.namedInsured_MailingAddress_StateOrProvinceCode,
-            accInfo.namedInsured_MailingAddress_PostalCode,
-          ],""),
-          BusinessDescription: this.getConcatenateString([
-            accInfo.commercialPolicy_OperationsDescription,
-          ]),
-          BusinessType: this.getConcatenateString([
-            accInfo.namedInsured_LegalEntity_CorporationIndicator,
-            accInfo.namedInsured_LegalEntity_IndividualIndicator,
-            accInfo.namedInsured_LegalEntity_JointVentureIndicator,
-            accInfo.namedInsured_LegalEntity_LimitedLiabilityCorporationIndicator,
-            accInfo.namedInsured_LegalEntity_MemberManagerCount,
-            accInfo.namedInsured_LegalEntity_NotForProfitIndicator,
-            accInfo.namedInsured_LegalEntity_PartnershipIndicator,
-            accInfo.namedInsured_LegalEntity_SubchapterSCorporationIndicator,
-            accInfo.namedInsured_LegalEntity_TrustIndicator,
-            accInfo.namedInsured_LegalEntity_OtherIndicator,
-            accInfo.namedInsured_LegalEntity_OtherDescription,
-          ]),
-          EffectiveDate: this.getConcatenateString([propertyInfo.policy_Effectivedate]),
-          OrganizationType: 'NA',
-          YearStarted: 'NA',
-          NumberOfEmployees: 'NA',
-          ProducerFullname : this.getConcatenateString([accInfo.producer_Fullname ]),
-          SICCode: this.getConcatenateString([propertyInfo.namedInsured_SICCode]),
-          Taxidentifier: this.getConcatenateString([propertyInfo.namedinsured_Taxidentifier]),
-          ContactName: 'NA',
-          PhoneNumber: this.getConcatenateString([propertyInfo.namedInsured_Primary_PhoneNumber]),
-          Email: 'NA',
-        };
+        // this.accountInformation = {
+        //   NamedinsuredFullname: this.getConcatenateString([
+        //     accInfo.namedinsured_Fullname,
+        //   ]),
+        //   FullAddress: this.getConcatenateString([
+        //     accInfo.namedInsured_MailingAddress_LineOne,
+        //     accInfo.namedInsured_MailingAddress_CityName,
+        //     accInfo.namedInsured_MailingAddress_StateOrProvinceCode,
+        //     accInfo.namedInsured_MailingAddress_PostalCode,
+        //   ],""),
+        //   BusinessDescription: this.getConcatenateString([
+        //     accInfo.commercialPolicy_OperationsDescription,
+        //   ]),
+        //   BusinessType: this.getConcatenateString([
+        //     accInfo.namedInsured_LegalEntity_CorporationIndicator,
+        //     accInfo.namedInsured_LegalEntity_IndividualIndicator,
+        //     accInfo.namedInsured_LegalEntity_JointVentureIndicator,
+        //     accInfo.namedInsured_LegalEntity_LimitedLiabilityCorporationIndicator,
+        //     accInfo.namedInsured_LegalEntity_MemberManagerCount,
+        //     accInfo.namedInsured_LegalEntity_NotForProfitIndicator,
+        //     accInfo.namedInsured_LegalEntity_PartnershipIndicator,
+        //     accInfo.namedInsured_LegalEntity_SubchapterSCorporationIndicator,
+        //     accInfo.namedInsured_LegalEntity_TrustIndicator,
+        //     accInfo.namedInsured_LegalEntity_OtherIndicator,
+        //     accInfo.namedInsured_LegalEntity_OtherDescription,
+        //   ]),
+        //   EffectiveDate: this.getConcatenateString([propertyInfo.policy_Effectivedate]),
+        //   OrganizationType: 'NA',
+        //   YearStarted: 'NA',
+        //   NumberOfEmployees: 'NA',
+        //   ProducerFullname : this.getConcatenateString([accInfo.producer_Fullname ]),
+        //   SICCode: this.getConcatenateString([propertyInfo.namedInsured_SICCode]),
+        //   Taxidentifier: this.getConcatenateString([propertyInfo.namedinsured_Taxidentifier]),
+        //   ContactName: 'NA',
+        //   PhoneNumber: this.getConcatenateString([propertyInfo.namedInsured_Primary_PhoneNumber]),
+        //   Email: 'NA',
+        // };
         //this.accountInformation = sub.value.account_Level_Info[0];
         //this.propertyInformation = sub.value.property_Policy_Info_Premises_Information[0];
       }

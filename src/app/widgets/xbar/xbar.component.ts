@@ -54,13 +54,11 @@ export class XBarComponent implements OnInit, OnDestroy {
         if(inputData!=null && inputData.length>0){
           
           this.chartData = inputData[0];
-          console.log("Dashboard Latest X Bar")
           
           let sumArr: number[] = [];
           this.chartData.Data.forEach(data=>{
             let sum: number = 0;
             data.Data.forEach(a => sum += Number(a));
-          console.log(sum)
             sumArr.push(sum)
           })
          let maxVal = sumArr.reduce((a, b)=>Math.max(a, b));
@@ -71,7 +69,6 @@ export class XBarComponent implements OnInit, OnDestroy {
             this.valueAxisMax.max = 10
           // this.valueAxisMax = maxVal>10? maxVal+10:10//this.people.reduce((a, b)=>Math.max(a, b));;
           // console.log(inputData[0].Data)
-          console.log(this.valueAxisMax )
         }
         this.changeDetector.detectChanges();
       })
@@ -91,13 +88,14 @@ export class XBarComponent implements OnInit, OnDestroy {
   }
   public seriesLabels: SeriesLabels = {
     visible: true, // Note that visible defaults to false
-    font: "bold 8px Arial, sans-serif",
+    font: "bold 12px Arial, sans-serif",
     background:"transparent",
     position :"center"
   };
 
   public valueAxisLabels: ValueAxisLabels = {
-    font: "bold 16px Arial, sans-serif",
+    //font: "bold 16px Arial, sans-serif",
+    font: "12px Arial, sans-serif",
   };
   public seriesBorder:Border={
     //color:'red'

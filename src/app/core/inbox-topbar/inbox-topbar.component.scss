@@ -38,6 +38,8 @@
 
 .adress_size {
   font-size: 11px;
+  width: fit-content;
+  display: flex;
 }
 
 .risk_E{
@@ -93,7 +95,7 @@
   font-size: 7px;
   position: fixed;
   top: 3%;
-  right: 11.2%;
+  right: 11%;
 }
 .side_icons {
   margin-top: 6%;
