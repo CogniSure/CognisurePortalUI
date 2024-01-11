@@ -2,7 +2,7 @@
 <kendo-chart #chart
   [seriesColors]="seriesColors"
   [pannable]="{ lock: 'y' }"
-  [zoomable]="{ mousewheel: { lock: 'y' } }"
+  [zoomable]="{ mousewheel: { lock: 'x' } }"
   [style]="'height: 100%;'"
 >
 
@@ -14,13 +14,31 @@
     [offsetX]="0" [offsetY]="00"
     [align]="'center'"
   ></kendo-chart-legend>
-  <kendo-chart-category-axis reverse = true >
-    <kendo-chart-category-axis-item [categories]="this.chartData.Measure">
+  
+  <kendo-chart-category-axis >
+    <kendo-chart-category-axis-item 
+    [categories]="this.chartData.Dimension"
+    [majorGridLines]="{ visible: false }"
+    >
+
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
-  
-  <kendo-chart-series-defaults type="bar">
-    <kendo-chart-series-defaults-labels format="p0">
+
+  <kendo-chart-value-axis>
+    <kendo-chart-value-axis-item 
+    [labels]="valueAxisLabels"
+    [min]="0"
+    [max]="valueAxisMax.max"
+    maxDivisions="10"
+    [majorGridLines]="{ visible: false }"
+    >
+     
+    </kendo-chart-value-axis-item>
+  </kendo-chart-value-axis>
+
+  <!-- <kendo-chart-tooltip> </kendo-chart-tooltip> -->
+  <kendo-chart-series-defaults >
+    <kendo-chart-series-defaults-labels format="c0">
     </kendo-chart-series-defaults-labels>
   </kendo-chart-series-defaults>
   
@@ -28,10 +46,16 @@
     <kendo-chart-series-item
       *ngFor="let item of this.chartData.Data"
       type="column"
-      [stack]="true"
+      [stack]="{type:'normal'}"
       [data]="item.Data"
       [name]="item.Name"
+      [labels]="seriesLabels"
+      [gap] = "2"
+      [autoFit]="true"
+      [border]="seriesBorder"
     >
+    <!-- <kendo-chart-series-item-tooltip format="Series 1 value: {0}">
+    </kendo-chart-series-item-tooltip> -->
     </kendo-chart-series-item>
   </kendo-chart-series>
 </kendo-chart>

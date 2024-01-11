@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ChartComponent } from '@progress/kendo-angular-charts';
+import { Border, ChartComponent, SeriesLabels, ValueAxisLabels } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
@@ -29,7 +29,7 @@ export class XBarComponent implements OnInit, OnDestroy {
   ) {}
 
   chartData: ChartData = {
-    Measure: [],
+    Dimension: [],
     Data: [
       {
         Name: '',
@@ -37,7 +37,10 @@ export class XBarComponent implements OnInit, OnDestroy {
       },
     ],
   };
-
+  valueAxisMax:any = {
+    max : 1000,
+    min : 0
+  }
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
@@ -47,21 +50,29 @@ export class XBarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
       this.input.DataSubject.subscribe((inputData:any[])=>{
-        console.log("Dashboard Latest X Bar")
-          console.log(inputData)
+        
         if(inputData!=null && inputData.length>0){
           
           this.chartData = inputData[0];
+          console.log("Dashboard Latest X Bar")
+          
+          let sumArr: number[] = [];
+          this.chartData.Data.forEach(data=>{
+            let sum: number = 0;
+            data.Data.forEach(a => sum += Number(a));
+          console.log(sum)
+            sumArr.push(sum)
+          })
+         let maxVal = sumArr.reduce((a, b)=>Math.max(a, b));
+         if(maxVal>10){
+            this.valueAxisMax.max = maxVal+10
+         }
+         else 
+            this.valueAxisMax.max = 10
+          // this.valueAxisMax = maxVal>10? maxVal+10:10//this.people.reduce((a, b)=>Math.max(a, b));;
+          // console.log(inputData[0].Data)
+          console.log(this.valueAxisMax )
         }
-        // else{
-        //   this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-        //     this.chartData = res;
-        //     console.log(this.input.WidgetName + '-Start');
-        //     console.log(res);
-        //     console.log(this.input.WidgetName + '-End');
-        //       this.changeDetector.detectChanges();
-        //   });
-        // }
         this.changeDetector.detectChanges();
       })
     }
@@ -77,5 +88,18 @@ export class XBarComponent implements OnInit, OnDestroy {
       .then((dataURI) => {
         saveAs(dataURI, 'chart-large.png');
       });
+  }
+  public seriesLabels: SeriesLabels = {
+    visible: true, // Note that visible defaults to false
+    font: "bold 8px Arial, sans-serif",
+    background:"transparent",
+    position :"center"
+  };
+
+  public valueAxisLabels: ValueAxisLabels = {
+    font: "bold 16px Arial, sans-serif",
+  };
+  public seriesBorder:Border={
+    //color:'red'
   }
 }
