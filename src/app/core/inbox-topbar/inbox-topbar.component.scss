@@ -210,9 +210,10 @@ width: 100%;
 .vertical-line::before {
   content: '';
   border-left: 1px solid #fff; 
-  height: 50px; 
+  height: 40px; 
   display: inline-block; 
-  padding-top: 2%;
+
+  margin-top: 20%!important;
 }
 
 
@@ -230,5 +231,5 @@ width: 100%;
 }
 
 ::ng-deep .top-bar-header{
-  padding-top: 0.8%!important;
+  padding-top: 1%!important;
 }
