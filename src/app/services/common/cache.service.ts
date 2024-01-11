@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ChartData } from 'src/app/model/charts/chartdata';
+import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CacheService {
+  getAccountInformationfromDB(type: string, clientId: string, submissionId: string, email: string) {
+    throw new Error('Method not implemented.');
+  }
+  private accountInformation: AccountInformation | null = null;
+  private accountInformationSubject$ = new BehaviorSubject<any>({});
+
+
   private tivSubject$ = new BehaviorSubject<any[]>([]);
   private noOfLocationsSubject$ = new BehaviorSubject<any[]>([]);
   private noOfBuildingsSubject$ = new BehaviorSubject<any[]>([]);
@@ -185,5 +193,37 @@ export class CacheService {
     } 
   }
 
+  setAccountInformation(accountInformation: AccountInformation | null): void {
+    this.accountInformationSubject$.next(accountInformation);
+  }
+
+  getAccountInformation(): Observable<any>{
+    return this.accountInformationSubject$   
+  }
+
+  // setAccountInformation(accountInformation: AccountInformation | null): void {
+  //   this.accountInformationSubject$.next(accountInformation);
+  // }
   
+  // getAccountInformation(): Observable<AccountInformation | null> {
+  //   return this.accountInformationSubject$.asObservable();
+  // }
+
+  // setAccountInformation(accountInformation: AccountInformation | null): void {
+  //   this.accountInformation = accountInformation;
+  // }
+
+  // getAccountInformation(): Observable<AccountInformation | null> {
+  //   return of(this.accountInformation);
+  // }
+
+  // setAccountInformation(accountInformation: AccountInformation | null): void {
+  //   this.accountInformation = accountInformation;
+  // }
+
+  // getAccountInformation(): AccountInformation | null {
+  //   return this.accountInformation;
+  // }
+
+
 }

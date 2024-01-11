@@ -5,12 +5,17 @@ import { Observable, map, of } from 'rxjs';
 import { Submission } from 'src/app/model/inbox/Submission';
 import { AppConfigService } from 'src/app/app-config-service';
 import { DatePipe } from '@angular/common';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
+import { CacheService } from 'src/app/services/common/cache.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InboxService {
   env = this.configService.settings;
+  private accountInformationSubject = new BehaviorSubject<AccountInformation| null>(null);
+  accountInformation$ = this.accountInformationSubject.asObservable();
   // //baseurl = 'https://csbbenqa.cognisure.ai:1089';
   // httpOptions = {
   //   headers: new HttpHeaders({
@@ -33,7 +38,7 @@ export class InboxService {
 
   idToDisplay = 1;
   private apiUrl = 'api/AllSubmission';
-  constructor(private httpService: HttpService, private configService:AppConfigService, private datePipe: DatePipe, private http: HttpClient) {}
+  constructor(private httpService: HttpService, private configService:AppConfigService, private datePipe: DatePipe, private http: HttpClient, private cacheService: CacheService) {}
   // constructor(private http: HttpClient, private globalService:GlobalService) {}
 
   private getFormattedDate(dateString: string): string {
@@ -167,4 +172,37 @@ export class InboxService {
     }
     return of(sampleData);
   }
+
+
+  // setAccountInformation(accountInformation: AccountInformation | null): void {
+  //   this.accountInformationSubject.next(accountInformation);
+  // }
+
+  // getAccountInformation(): AccountInformation | null {
+  //   return this.accountInformationSubject.value;
+  // }
+
+
+  getAccountInformationfromDB(type: string, clientId: string, submissionId: string, email: string): Observable<AccountInformation> {
+    const accountInformation: AccountInformation = {
+      NamedinsuredFullname: 'Dante Mason',
+      FullAddress: '885 Street, Warrnville, Illinois 60555',
+      BusinessDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      BusinessType: 'Property',
+      EffectiveDate: '03/01/2023',
+      OrganizationType: '',
+      YearStarted: '',
+      NumberOfEmployees: '',
+      ProducerFullname: '',
+      SICCode: '',
+      Taxidentifier: '',
+      ContactName: '',
+      PhoneNumber: '8143-03312302301',
+      Email: '',
+    };
+
+    
+    return of(accountInformation);
+  }
+  
 }

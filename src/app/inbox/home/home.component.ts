@@ -1,8 +1,10 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { GlobalService } from 'src/app/services/common/global.service';
 import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -18,7 +20,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   selectedRowIndices: Set<number> = new Set<number>();
 // saveChanges: any;
   subscription : Subscription
-  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder)
+  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder, private globalService: GlobalService)
   {
     this.formGroup = this.fb.group({
       agencyname: [''],
@@ -631,6 +633,19 @@ getSelectedRowsData(): any[] {
 //   });
 // }
 
+reDirect(url:string, param:any){
+  let subInfo : SubmissionInfo = {
+    SubmissionId : param.SubmissionID,
+    SubmissionName : "",
+    MessageId : param.MessageId,
+    Status : param.Status,
+    Extraction : "",
+    Completeness : "",
+    RiskClearance : "",
+    LOB : param.lineOfBusiness
+  }
+  this.globalService.setCurrentSubmissionId(param)
+}
 
 getStatusImage(status: string): string {
   if (status === 'Completed') {

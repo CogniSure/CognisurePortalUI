@@ -117,6 +117,13 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   DownloadEvent(value: any) {
     this.newDownloadEvent.emit(value);
   }
+
+  @Output() newIDclickEvent = new EventEmitter<string>();
+
+  IDclickEvent(value: any) {
+    this.newIDclickEvent.emit(value);
+  }
+
   
   public ngOnInit(): void {
     this.loading=true;

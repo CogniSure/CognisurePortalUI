@@ -1,6 +1,6 @@
-.pipeline {
-  color: #fff;
-}
+// .pipeline {
+//   color: #fff;
+// }
 
 .profile_icon {
   img {
@@ -53,12 +53,12 @@
   grid-area: 10;
 }
 .adress_size {
-  padding: 20px;
+  padding: 0;
 }
 
-.k-tilelayout-item-body {
-  margin: -4px;
-}
+// .k-tilelayout-item-body {
+//   margin: -4px;
+// }
 
 .kendo-tilelayout-item .profile-icon::before,
 .kendo-tilelayout-item .notification-icon::before {
@@ -68,10 +68,10 @@
   color: #fff;
 }
 
-.pipeline {
-  font-size: 42px;
-  font-weight: 100 !important;
-}
+// .pipeline {
+//   font-size: 42px;
+//   font-weight: 100 !important;
+// }
 .calender_date {
   font-size: 12px;
 }
@@ -197,3 +197,23 @@ height: 100%;
 width: 100%;
 }
 
+.vertical-line::before {
+  content: '';
+  border-left: 1px solid #fff; 
+  height: 50px; 
+  display: inline-block; 
+}
+
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+::ng-deep .k-card-body {
+  padding-block: 0px!important;
+  padding-inline: 0px!important;
+}

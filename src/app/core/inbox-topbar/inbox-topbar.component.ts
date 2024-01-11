@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
+import { CacheService } from 'src/app/services/common/cache.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 interface NavItem {
@@ -19,8 +20,14 @@ interface NavItem {
 })
 
 export class InboxTopbarComponent implements OnInit, OnDestroy {
+  accountInformation: AccountInformation | null = null;
+  accountInfo: AccountInformation;
+  subscription: Subscription;
   
-  constructor(public inboxService: InboxService,private globalService : GlobalService,   private router: Router, private cdRef:ChangeDetectorRef) {}
+  constructor(public inboxService: InboxService,private globalService : GlobalService, 
+      private router: Router, private cdRef:ChangeDetectorRef,
+      private cacheService : CacheService
+      ) {}
   navItems = [
     { title: 'Duke & Duke', content: '885 Street, Warrnville, illinois 60555', icon: '' },
     { title: 'Hotel', content: '', icon: 'bed' },
@@ -37,25 +44,24 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   
-  accountInformation: AccountInformation = {
-    NamedinsuredFullname: 'NA',
-    FullAddress: 'NA',
-    BusinessDescription: 'NA',
-    BusinessType: 'NA',
-    EffectiveDate: 'NA',
-    OrganizationType: 'NA',
-    YearStarted: 'NA',
-    NumberOfEmployees: 'NA',
-    SICCode: 'NA',
-    Taxidentifier: 'NA',
-    ContactName: 'NA',
-    PhoneNumber: 'NA',
-    Email: 'NA',
-    ProducerFullname : 'NA'
-  };
+  // accountInformation: AccountInformation = {
+  //   NamedinsuredFullname: 'NA',
+  //   FullAddress: 'NA',
+  //   BusinessDescription: 'NA',
+  //   BusinessType: 'NA',
+  //   EffectiveDate: 'NA',
+  //   OrganizationType: 'NA',
+  //   YearStarted: 'NA',
+  //   NumberOfEmployees: 'NA',
+  //   SICCode: 'NA',
+  //   Taxidentifier: 'NA',
+  //   ContactName: 'NA',
+  //   PhoneNumber: 'NA',
+  //   Email: 'NA',
+  //   ProducerFullname : 'NA'
+  // };
   propertyInformation : any={};
 
-  subscription: Subscription;
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
@@ -87,6 +93,23 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
       return lob;
   }
   ngOnInit(): void {
+    // this.accountInformation = this.inboxService.getAccountInformation();
+
+    // this.subscription = this.inboxService.accountInformation$.subscribe(
+    //   (accountInformation) => {
+    //     this.accountInformation = accountInformation;
+    //   }
+    // );
+
+
+    this.cacheService.getAccountInformation().subscribe(
+      (accountInfo) => {
+        this.accountInformation = accountInfo;
+        console.log("topbar");
+        console.log(this.accountInfo);
+      },
+    );
+
     this.fetchDropdownOptions();
     
     this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
