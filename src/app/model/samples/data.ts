@@ -194,7 +194,7 @@ export class DataComponent {
       WidgetType: 'SimpleDataWOHeader',
       Header: '',
       ColumnId :  1,
-      ColumnSpan :  1,
+      ColumnSpan :  2,
       RowSpan :  1,
       HeaderColor : '#ffffff',
       FontColor : '#fff'
@@ -204,8 +204,8 @@ export class DataComponent {
       WidgetName: 'NoOfLocations',
       WidgetType: 'SimpleDataWOHeader',
       Header: '',
-      ColumnId :  2,
-      ColumnSpan :  1,
+      ColumnId :  3,
+      ColumnSpan :  2,
       RowSpan :  1,
       HeaderColor : '#ffffff',
       FontColor : '#fff'
@@ -215,8 +215,8 @@ export class DataComponent {
       WidgetName: 'NoOfBuildings',
       WidgetType: 'SimpleDataWOHeader',
       Header: '',
-      ColumnId :  3,
-      ColumnSpan :  1,
+      ColumnId :  5,
+      ColumnSpan :  2,
       RowSpan :  1,
       HeaderColor : '#ffffff',
       FontColor : '#fff'
@@ -238,7 +238,7 @@ export class DataComponent {
       WidgetType: 'donut',
       Header: 'Construction Type',
       ColumnId :  1,
-      ColumnSpan :  1,
+      ColumnSpan :  3,
       RowSpan :  4
     },
     {
@@ -246,8 +246,8 @@ export class DataComponent {
       WidgetName: 'OccupancyType',
       WidgetType: 'donut',
       Header: 'Occupancy Type',
-      ColumnId :  2,
-      ColumnSpan :  1,
+      ColumnId :  4,
+      ColumnSpan :  3,
       RowSpan :  4
     },
     {
@@ -255,8 +255,8 @@ export class DataComponent {
       WidgetName: 'YearBuild',
       WidgetType: 'donut',
       Header: 'Year Build',
-      ColumnId :  3,
-      ColumnSpan :  1,
+      ColumnId :  1,
+      ColumnSpan :  3,
       RowSpan :  4
     },
     {
@@ -264,8 +264,8 @@ export class DataComponent {
       WidgetName: 'ProtectionClass',
       WidgetType: 'donut',
       Header: 'Protection Class',
-      ColumnId :  1,
-      ColumnSpan :  1,
+      ColumnId :  4,
+      ColumnSpan :  3,
       RowSpan :  4
     },
   ];

@@ -21,6 +21,8 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
   styleUrls: ['./ybar.component.scss'],
 })
 export class YBarComponent implements OnInit, OnDestroy {
+  private labelCounter: number = 1;
+
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -60,7 +62,7 @@ export class YBarComponent implements OnInit, OnDestroy {
         this.changeDetector.detectChanges();
       })
     }
-    
+    this.changeDetector.detectChanges();
   }
 
   public exportChart(): void {
@@ -73,4 +75,51 @@ export class YBarComponent implements OnInit, OnDestroy {
         saveAs(dataURI, 'chart-large.png');
       });
   }
+
+
+  // onYAxisLabelContent(e: any): string {
+  //     if (e.value >= 0.2
+  //       ) {
+  //       return '0';
+  //     }
+
+  //       return `${Math.round(e.value + 1)}`;
+     
+    // return `${e.value + 1}`;
+      // return `${Math.floor(e.value) + 1}`;
+
+  // }
+
+
+ onYAxisLabelContent(e: any): string {
+    if (e.value >= 0) {
+      return '0';
+    }
+    // return `${e.value++}`;
+    return `${this.labelCounter++}`;
+  }
+
+
+
+    // const adjustedValue = Math.floor(e.value - 0.2);
+    // return `${adjustedValue}`;
+      // return `${Math.floor(e.value) + 1}`;
+      // return e.value >= 0 ? `${Math.floor(e.value)- 1}` : '';
+  //     if (e.value === 0) {
+  //       return '0';
+  //     }
+  //     else{
+  //     return `${Math.floor(e.value + 1)}`;
+  // }
+  
+  // onYAxisLabelContent(e: any): string {
+  // //   const index = Math.floor(e.value);
+  // if (index >= 0 && index < this.chartData.Data.length) {
+  //   return `${index + 1}`;
+  // } else {
+  //   return ''; 
+  // }
+  //  }
+
+
 }

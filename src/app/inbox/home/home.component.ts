@@ -213,7 +213,7 @@ export class HomeComponent implements OnInit,OnDestroy {
     {
       field: "AssignedBy",
       format: "{0:c}",
-      title: "Assigned By",
+      title: "Assigned To",
       type: "text",
       width:120,
       columnmenu:true,
