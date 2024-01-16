@@ -221,24 +221,24 @@ export class DataComponent {
       HeaderColor : '#ffffff',
       FontColor : '#fff'
     },
-    {
-      id: 3,
-      WidgetName: 'EmptyBox',
-      WidgetType: 'SimpleDataWOHeader',
-      Header: '',
-      ColumnId :  4,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      HeaderColor : '#ffffff',
-      FontColor : '#fff'
-    },
+    // {
+    //   id: 3,
+    //   WidgetName: 'EmptyBox',
+    //   WidgetType: 'SimpleDataWOHeader',
+    //   Header: '',
+    //   ColumnId :  4,
+    //   ColumnSpan :  1,
+    //   RowSpan :  1,
+    //   HeaderColor : '#ffffff',
+    //   FontColor : '#fff'
+    // },
     {
       id: 1,
       WidgetName: 'ConstructionType',
       WidgetType: 'donut',
       Header: 'Construction Type',
       ColumnId :  1,
-      ColumnSpan :  2,
+      ColumnSpan :  1,
       RowSpan :  4
     },
     {
@@ -246,8 +246,8 @@ export class DataComponent {
       WidgetName: 'OccupancyType',
       WidgetType: 'donut',
       Header: 'Occupancy Type',
-      ColumnId :  3,
-      ColumnSpan :  2,
+      ColumnId :  2,
+      ColumnSpan :  1,
       RowSpan :  4
     },
     {
@@ -255,8 +255,8 @@ export class DataComponent {
       WidgetName: 'YearBuild',
       WidgetType: 'donut',
       Header: 'Year Build',
-      ColumnId :  1,
-      ColumnSpan :  2,
+      ColumnId :  3,
+      ColumnSpan :  1,
       RowSpan :  4
     },
     {
@@ -264,8 +264,8 @@ export class DataComponent {
       WidgetName: 'ProtectionClass',
       WidgetType: 'donut',
       Header: 'Protection Class',
-      ColumnId :  3,
-      ColumnSpan :  2,
+      ColumnId :  1,
+      ColumnSpan :  1,
       RowSpan :  4
     },
   ];

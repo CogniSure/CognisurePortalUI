@@ -657,5 +657,9 @@ getStatusImage(status: string): string {
   }
 }
 
+refreshPage() {
+  window.location.reload();
+}
+
 
 }

@@ -90,7 +90,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         this.cacheService.setExposureSummary('TIV', [
           {
             ItemData: 'TIV',
-            ItemValue: '$0',
+            ItemValue: ' $0',
           },
         ]);
       }

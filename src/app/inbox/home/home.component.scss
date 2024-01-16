@@ -80,7 +80,7 @@
   
   .pending_text{
     background-color: #ffffff; 
-    padding: 4% 0.5% 4% 0.5%;
+    padding: 4% 0.5% 3% 0.5%;
     border-radius: 8px;
   }
   
@@ -136,7 +136,7 @@
   
   .table_subheader8{
     padding-right: 1%;
-    width: 14%;
+    width: 16%;
     text-align: center;
   }
   
@@ -290,7 +290,10 @@ padding: 20%;
 //   background-color: #19465F;
 // }
 
-
+.save_btn{
+  color: #fff;
+  background-color: #009CC1!important;
+}
 .status-image {
   width: 24px; 
   height: 24px;

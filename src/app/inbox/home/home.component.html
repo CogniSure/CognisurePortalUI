@@ -120,7 +120,7 @@
                     </div>
           
                     <div class="table_subheader2">
-                      <div class="profile_icon">
+                      <div class="profile_icon" (click)="refreshPage()">
                         <mat-icon>
                           <span class="material-icons-outlined">
                             {{ navItems[1].icon }}
@@ -168,7 +168,7 @@
                     <div class="table_subheader10">
                       <div class="save_text">
                         <!-- <button kendoGridPDFCommand type="button" (click)="saveChanges()">Save Changes</button> -->
-                        <button  type="button" (click)="onSaveButtonClick()">Save</button>
+                        <button class="save_btn" type="button" (click)="onSaveButtonClick()">Save</button>
                         </div>
                       </div>
 
