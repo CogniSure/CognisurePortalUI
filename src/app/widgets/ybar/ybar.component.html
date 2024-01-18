@@ -16,37 +16,25 @@
       </kendo-chart-category-axis-item-labels>
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
-
-  <!-- <kendo-chart-category-axis>
-    <kendo-chart-category-axis-item [categories]="chartLabels">
-      <kendo-chart-category-axis-item-labels [position]="'start'">
-      </kendo-chart-category-axis-item-labels>
-    </kendo-chart-category-axis-item>
-  </kendo-chart-category-axis> -->
-  
-
-<!-- 
-  <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item [categories]="chartLabels">
+  <!-- <kendo-chart-value-axis>
+    <kendo-chart-value-axis-item>
       <kendo-chart-value-axis-item-labels [position]="'start'">
       </kendo-chart-value-axis-item-labels>
     </kendo-chart-value-axis-item>
   </kendo-chart-value-axis> -->
 
-  <!-- <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item>
-      <kendo-chart-value-axis-item-labels [content]="getLabelValue">
+  <kendo-chart-value-axis>
+    <kendo-chart-value-axis-item
+    [labels]="valueAxisLabels"
+    [min]="0"
+    [max]="valueAxisMax.max"
+    maxDivisions="1"
+    [majorGridLines]="{ visible: true }"
+    >
+      <kendo-chart-value-axis-item-labels>
       </kendo-chart-value-axis-item-labels>
     </kendo-chart-value-axis-item>
-  </kendo-chart-value-axis> -->
-
-  <!-- <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item>
-      <kendo-chart-value-axis-item-labels [content]="onYAxisLabelContent">
-      </kendo-chart-value-axis-item-labels>
-    </kendo-chart-value-axis-item>
-  </kendo-chart-value-axis> -->
-  
+  </kendo-chart-value-axis>
   
   
   <kendo-chart-series-defaults type="bar">
@@ -59,8 +47,6 @@
       type="bar"
       [data]="item.Data"
       [name]="item.Name"
-
-      [labels]="{ visible: true, format: '0' }"
     >
     </kendo-chart-series-item>
   </kendo-chart-series>

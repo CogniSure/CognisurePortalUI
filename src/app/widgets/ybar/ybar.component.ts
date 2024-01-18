@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ChartComponent } from '@progress/kendo-angular-charts';
+import { Border, SeriesLabels, ValueAxisLabels } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { ChartSeries } from 'src/app/model/charts/series';
@@ -37,6 +38,12 @@ export class YBarComponent implements OnInit, OnDestroy {
       },
     ],
   };
+
+  valueAxisMax:any = {
+    max : 1000,
+    min : 0
+  }
+
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
@@ -49,6 +56,20 @@ export class YBarComponent implements OnInit, OnDestroy {
       this.input.DataSubject.subscribe((data:any[])=>{
         if(data!=null && data.length>0){
           this.chartData = data[0];
+
+          let sumArr: number[] = [];
+          this.chartData.Data.forEach(data=>{
+            let sum: number = 0;
+            data.Data.forEach(a => sum += Number(a));
+            sumArr.push(sum)
+          })
+         let maxVal = sumArr.reduce((a, b)=>Math.max(a, b));
+         if(maxVal>10){
+            this.valueAxisMax.max = maxVal
+         }
+         else 
+            this.valueAxisMax.max = 10
+
         }
         // else {
         //   this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
@@ -62,6 +83,10 @@ export class YBarComponent implements OnInit, OnDestroy {
         this.changeDetector.detectChanges();
       })
     }
+
+
+
+    
     this.changeDetector.detectChanges();
   }
 
@@ -91,15 +116,34 @@ export class YBarComponent implements OnInit, OnDestroy {
   // }
 
 
- onYAxisLabelContent(e: any): string {
-    if (e.value >= 0) {
-      return '0';
-    }
+//  onYAxisLabelContent(e: any): string {
+//     if (e.value >= 0) {
+//       return '0';
+//     }
     // return `${e.value++}`;
-    return `${this.labelCounter++}`;
-  }
+    // return `${this.labelCounter++}`;
+      // return `${e.value + 1}`;
+  // }
+
+// private transformChartData(seriesData: any): ChartData {
+//     const transformedData = seriesData.Data.map((item: { Data: any[]; }) => {
+//       const transformedItem = {
+//         ...item,
+//         Data: item.Data.map((value: number) => value + 1), 
+//       };
+//       return transformedItem;
+//     });
+
+//     return {
+//       ...seriesData,
+//       Data: transformedData,
+//     };
+//   }
 
 
+  // onYAxisLabelContent(e: any): string {
+  //   return `${e.value - 1}`;
+  // }
 
     // const adjustedValue = Math.floor(e.value - 0.2);
     // return `${adjustedValue}`;
@@ -120,6 +164,11 @@ export class YBarComponent implements OnInit, OnDestroy {
   //   return ''; 
   // }
   //  }
+
+  public valueAxisLabels: ValueAxisLabels = {
+    //font: "bold 16px Arial, sans-serif",
+    font: "12px Arial, sans-serif",
+  };
 
 
 }
