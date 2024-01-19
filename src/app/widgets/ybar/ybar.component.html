@@ -5,6 +5,7 @@
   [pannable]="{ lock: 'y' }"
   [zoomable]="{ mousewheel: { lock: 'y' } }"
   [style]="'height: 100%;'"
+
 >
   <kendo-chart-legend
     position="bottom"
@@ -16,25 +17,19 @@
       </kendo-chart-category-axis-item-labels>
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
-  <!-- <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item>
-      <kendo-chart-value-axis-item-labels [position]="'start'">
-      </kendo-chart-value-axis-item-labels>
-    </kendo-chart-value-axis-item>
-  </kendo-chart-value-axis> -->
-
   <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item
-    [labels]="valueAxisLabels"
-    [min]="0"
-    [max]="valueAxisMax.max"
-    maxDivisions="1"
-    [majorGridLines]="{ visible: true }"
-    >
-      <kendo-chart-value-axis-item-labels>
+    <kendo-chart-value-axis-item [labels]="{ format: '{0:n}' }">
+      <kendo-chart-value-axis-item-labels [position]="'end'" [format]="'{0:0}'">
       </kendo-chart-value-axis-item-labels>
     </kendo-chart-value-axis-item>
   </kendo-chart-value-axis>
+
+  <!-- <kendo-chart-value-axis>
+    <kendo-chart-value-axis-item>
+      <kendo-chart-value-axis-item-labels [content]="onYAxisLabelContent">
+      </kendo-chart-value-axis-item-labels>
+    </kendo-chart-value-axis-item>
+  </kendo-chart-value-axis> -->
   
   
   <kendo-chart-series-defaults type="bar">
@@ -43,11 +38,13 @@
   </kendo-chart-series-defaults>
   <kendo-chart-series>
     <kendo-chart-series-item
-      *ngFor="let item of chartData.Data"
+      *ngFor="let item of chartData.Data; let i = index"
       type="bar"
       [data]="item.Data"
       [name]="item.Name"
     >
+     <kendo-chart-series-item-labels  [content]="onLabelContent">
+    </kendo-chart-series-item-labels>
     </kendo-chart-series-item>
   </kendo-chart-series>
 </kendo-chart>

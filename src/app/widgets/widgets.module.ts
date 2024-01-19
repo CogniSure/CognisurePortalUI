@@ -16,6 +16,7 @@ import { SimpleDataComponent } from './simple-data/simple-data.component';
 import { MaterialModule } from '../material/material.module';
 import { FunnelComponent } from './funnel/funnel.component';
 import { SimpleDataNoheaderComponent } from './simple-data-noheader/simple-data-noheader.component';
+import { ChartsModule } from '@progress/kendo-angular-charts';
 
 
 
@@ -37,7 +38,8 @@ import { SimpleDataNoheaderComponent } from './simple-data-noheader/simple-data-
   imports: [
     CommonModule,
     KendoModule,
-    MaterialModule
+    MaterialModule,
+    ChartsModule,
   ]
 })
 export class WidgetsModule { }

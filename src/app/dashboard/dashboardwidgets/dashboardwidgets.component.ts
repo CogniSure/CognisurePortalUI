@@ -20,6 +20,7 @@ import { of } from 'rxjs';
 import { CacheService } from 'src/app/services/common/cache.service';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
+import { YBarComponent } from 'src/app/widgets/ybar/ybar.component';
 
 // Injectable()
 @Component({
@@ -32,6 +33,7 @@ export class DashboardwidgetsComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
   public custComponents: WidgetComponentInfo[] = [];
+  public YbarChart: YBarComponent;
   reloadReq = true;
   @Input() collapsed = false;
   componentOrder: any;
@@ -47,6 +49,9 @@ export class DashboardwidgetsComponent
 
     
     this.getDataFromDB();
+
+
+    
   }
   ngOnDestroy(): void {
     this.globalService.clearDashboardSession();

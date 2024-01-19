@@ -13,8 +13,7 @@ import { NewsComponent } from './news/news.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { KendoModule } from '../kendo/kendo.module';
 import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
-
-
+import { ChartsModule } from '@progress/kendo-angular-charts';
 
 
 @NgModule({
@@ -36,6 +35,7 @@ import { SessionExpirationAlert } from '../session-expiration-alert/session-expi
     FormsModule,
     ReactiveFormsModule,
     KendoModule,
+    ChartsModule,
     SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
   ]
 })
