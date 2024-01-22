@@ -43,53 +43,55 @@ export class TotalLossesComponent implements OnInit {
   selectedCountry: any = this.countries[0].id;
   constructor(
     @Inject(InjectToken) private input: WidgetInput,
-    private cdRef: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef
   ) {
     this.selectedYear = this.years[0];
   }
 
   ngOnInit(): void {
-    // this.globalService.getCurrentSubmission().subscribe((sub: any) => {
-    //   this.claimDetails = [];
-    //   if (sub != null && sub.value != null && sub.value.claim_Info!=null) {
-    //     let noOfClaims = 0;
-    //     let noOfOpenClaims = 0;
-    //     let totalIncurred = 0;
-    //     let highestIncurred = 0;
-    //     sub.value.claim_Info.forEach((claim: any) => {
-    //       //let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
-    //       let totalIncurredTemp = 0;
+    if (this.input.DataSubject != null){
+      this.input.DataSubject.subscribe((inputData:any[])=>{
+        //console.log("Widget Data : "+ "Total Losses in Child")
+          
+        if(inputData!=null && inputData.length>0){
 
-    //       if (claim.total_Incurred != null) {
-    //         var str = claim.total_Incurred.replace('$', '');
-    //         totalIncurredTemp = parseNumber(str);
-    //       }
-    //       totalIncurred += totalIncurredTemp;
-    //       if (totalIncurredTemp > highestIncurred)
-    //         highestIncurred = totalIncurredTemp;
+          let accInfo = inputData;
+          
+          // inputData.forEach((data:any){
 
-    //       noOfClaims++;
-    //       if (claim.claim_Status == 'Open') noOfOpenClaims++;
-    //     });
+          // })
+          let maxIncurred = inputData.reduce((a, {GrossIncurred})=>Number(GrossIncurred) > a ? Number(GrossIncurred) : a , -1);
+          let maxClaims = inputData.reduce((a, {TotalNoOfClaims})=>Number(TotalNoOfClaims) > a ? Number(TotalNoOfClaims) : a , -1);
+          let maxOpenClaims = inputData.reduce((a, {TotalNoOfOpenClaims})=>Number(TotalNoOfOpenClaims) > a ? Number(TotalNoOfOpenClaims) : a , -1);
 
-    //     this.totallosses = '$' + totalIncurred.toLocaleString('en-GB');
-    //     this.totallossesdata = [
-    //       {
-    //         numberofclaims: noOfClaims,
-    //         numberofopenclaims: noOfOpenClaims,
-    //         highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
-    //       },
-    //     ];
-    //   }
-    //   this.cdRef.detectChanges();
-    // });
+          this.totalincurredvalue = inputData.reduce((sum, {GrossIncurred})=> sum + Number(GrossIncurred), 0);
+          // console.log(maxClaims);
+          // console.log(maxOpenClaims);
 
-    this.totallossesdata = [
-      {
-        numberofclaims: 110,
-        numberofopenclaims: 10,
-        highestclaim: '$' + 10000,
-      }]
+          this.totallossesdata = [
+            {
+              numberofclaims: maxClaims,
+              numberofopenclaims: maxOpenClaims,
+              highestclaim: '$' + maxIncurred,
+            }]
+          // this.businessOperation = {
+          //   SIC: accInfo.SIC,
+          //   Naics: accInfo.Naics,
+          //   Descriptions: accInfo.Descriptions
+          // };
+          // if (this.businessOperation) {
+          //   // Data is available, set isDataAvailable to true
+          //   this.isDataAvailable = true;
+          // } else {
+          //   // No data available, set isDataAvailable to false
+          //   this.isDataAvailable = false;
+          // }
+        }
+        this.changeDetector.detectChanges();
+      })
+    }
+
+    
     }
 
   onYearChange(event: any) {

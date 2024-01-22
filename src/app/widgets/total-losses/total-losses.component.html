@@ -10,11 +10,11 @@
           <div class="totalloss">
             <div class="col-md-12">
               <div class="total_losses1" id="totalincurred">
-                <b> {{ totalincurred }} </b>
+                <b> Total Incurred </b>
               </div>
               <div class="loss_years">
                 <div class="total-values light-green-color" id="totallosses">
-                  <b>{{ totallosses }}</b>
+                  <b>{{ totalincurredvalue }}</b>
                 </div>
                 <div class="totallosses_year">
                   <select name="selectedCountry" class="rounded-inputs20 select-select col-md-3" (change)="onDropdownChange($event)">
@@ -44,12 +44,7 @@
               </div>
             </div>
             <div class="col-md-12">
-              <div
-                class="total_losses2 light-green-color"
-                id="totalincurredvalue"
-              >
-                {{ totalincurredvalue }}
-              </div>
+              
             </div>
           </div>
         </div>

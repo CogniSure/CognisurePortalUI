@@ -24,16 +24,16 @@ import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss'],
 })
-export class SummaryComponent implements OnInit,OnDestroy {
-  subscription: Subscription;  
+export class SummaryComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
   summaryComponentOrder: any;
-  widgetComponents:WidgetComponent[] = []
+  widgetComponents: WidgetComponent[] = [];
 
   public summaryComponents: WidgetComponentInfo[] = [];
   propertyComponentOrder: any;
   //public propertyComponents: WidgetComponentInfo[] = [];
   reloadReq = true;
-  public downloadIcon:SVGIcon = downloadIcon;
+  public downloadIcon: SVGIcon = downloadIcon;
   @Input() collapsed = false;
   isFullScreen = false;
   widgetTemp: any;
@@ -41,8 +41,8 @@ export class SummaryComponent implements OnInit,OnDestroy {
     private injector: Injector,
     private globalService: GlobalService,
     private dbService: DashboardService,
-    private inboxService : InboxService,
-    private cacheService: CacheService,
+    private inboxService: InboxService,
+    private cacheService: CacheService
   ) {
     //this.globalService.setDashboardReload(true);
   }
@@ -50,7 +50,7 @@ export class SummaryComponent implements OnInit,OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    console.log("Summary Destroyed")
+    console.log('Summary Destroyed');
   }
   animationClass = 'slide-effect-x1';
   ngAfterViewInit() {
@@ -58,17 +58,16 @@ export class SummaryComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log("Summary Started")
+    console.log('Summary Started');
     this.globalService.animationClass$.next('slide-effect-x1');
-    
+
     this.getWidgets();
   }
-  getWidgets(){
-     
+  getWidgets() {
     // this.getPropertyWidgets();
-    
-    this.cacheService.getAccountInformation().subscribe((info:any)=>{
-      console.log("LOB List");
+
+    this.cacheService.getAccountInformation().subscribe((info: any) => {
+      console.log('LOB List');
       let lobs = info.LOB;
       this.getSummaryWidgets();
       this.getSummaryWidgetsData();
@@ -80,15 +79,15 @@ export class SummaryComponent implements OnInit,OnDestroy {
       //     if(widgetData!=null && widgetData.length>0){
       //       this.widgetComponents.push({Header : lob, Widget : widgetData})
       //     }
-          
+
       //   })
       // }
-    })
+    });
     // this.widgetComponents.push({Header : "Property", Widget : this.getPropertyWidgets()})
     // this.widgetComponents.push({Header : "Workers Compensastion", Widget : this.getPropertyWidgets()})
   }
 
-  getSummaryWidgets(){
+  getSummaryWidgets() {
     this.summaryComponentOrder = DataComponent.Summaryhub;
     this.summaryComponents = [];
     var i = 1;
@@ -110,118 +109,135 @@ export class SummaryComponent implements OnInit,OnDestroy {
       i++;
     });
   }
-  getWidgetData(lob:any){
-    switch(lob.toLowerCase()){
-      case "property":{
+  getWidgetData(lob: any) {
+    switch (lob.toLowerCase()) {
+      case 'property': {
         this.getPropertyWidgetConfigs();
         return this.getPropertyWidgetData();
       }
-        
-      case "generalliability":
+
+      case 'generalliability':
         return this.getPropertyWidgetData();
-      default :
+      default:
         return null;
     }
   }
-  getPropertyWidgetData(){
-
-
-  }
-  getSummaryWidgetsData(){
+  getPropertyWidgetData() {}
+  getSummaryWidgetsData() {
     const topNumber = '10';
     const clientId = '1074';
     const userEmailId = 'QBEsub@gmail.com';
     const startDate = '01/01/2023';
     const endDate = '9/30/2024';
-    const submissionId = "a44413ee-1c8e-446a-843f-e51b6a2c4c51"
-    let data:any = {}
+    const submissionId = 'a44413ee-1c8e-446a-843f-e51b6a2c4c51';
+    let data: any = {};
     //let data = this.getPropertyWidgetConfigs();
-    this.inboxService.getSummaryByLOB("sub_agencies_all",clientId,submissionId,userEmailId).subscribe(res=>{
-      
-      let cdata : any = {
-        AgencyName: "NA",
-        AgencyCode: "NA",
-        Producer: "NA",
-        ProducerEmail: "NA",
-        ProducerPhoneNo: "NA",
-        ActivityRank: "NA",
-      };
-      if (res != null && res.value != null && res.value.agency != null) {
-        
-        let tempData  = res.value.agency;
-        cdata.AgencyName = tempData.agencyName != null ? tempData.agencyName:"NA"
-        cdata.AgencyCode = tempData.agencyCode != null ? tempData.agencyCode:"NA"
-        cdata.Producer = tempData.producer != null ? tempData.producer:"NA"
-        cdata.ProducerEmail = tempData.producerEmail != null ? tempData.producerEmail:"NA"
-        cdata.ProducerPhoneNo = tempData.producerPhoneNo != null ? tempData.producerPhoneNo:"NA"
-        cdata.ActivityRank = tempData.activityRank != null ? tempData.activityRank:"NA"
+    this.inboxService
+      .getSummaryByLOB('sub_agencies_all', clientId, submissionId, userEmailId)
+      .subscribe((res) => {
+        let cdata: any = {
+          AgencyName: 'NA',
+          AgencyCode: 'NA',
+          Producer: 'NA',
+          ProducerEmail: 'NA',
+          ProducerPhoneNo: 'NA',
+          ActivityRank: 'NA',
+        };
+        if (res != null && res.value != null && res.value.agency != null) {
+          let tempData = res.value.agency;
+          cdata.AgencyName =
+            tempData.agencyName != null ? tempData.agencyName : 'NA';
+          cdata.AgencyCode =
+            tempData.agencyCode != null ? tempData.agencyCode : 'NA';
+          cdata.Producer = tempData.producer != null ? tempData.producer : 'NA';
+          cdata.ProducerEmail =
+            tempData.producerEmail != null ? tempData.producerEmail : 'NA';
+          cdata.ProducerPhoneNo =
+            tempData.producerPhoneNo != null ? tempData.producerPhoneNo : 'NA';
+          cdata.ActivityRank =
+            tempData.activityRank != null ? tempData.activityRank : 'NA';
 
-        
-       // console.log(cdata)
-        this.cacheService.setSummaryByLOB('Agency',[cdata]);
-       
-      } else {
-        this.cacheService.setSummaryByLOB('Agency', []);
-      }
-    })
-    this.inboxService.getSummaryByLOB("sub_businessoperations_all",clientId,submissionId,userEmailId).subscribe(res=>{
-      let cdata : any = {
-        SIC: "NA",
-        Naics: "NA",
-        Descriptions: "NA"
-      };
-      console.log("Widget Data : "+ "Business Operations Before")
-        console.log(res)
-      if (res != null && res.value != null) {
-        let tempData = res.value.businessOperation;
-        cdata.SIC = tempData.sic != null ? tempData.sic:"NA"
-        cdata.Naics = tempData.naics != null ? tempData.naics:"NA"
-        cdata.Descriptions = tempData.descriptions != null ? tempData.descriptions:"NA"
-        this.cacheService.setSummaryByLOB('BusinessOperations',[cdata]);
-       
-      } else {
-        this.cacheService.setSummaryByLOB('BusinessOperations', []);
-      }
-    })
+          // console.log(cdata)
+          this.cacheService.setSummaryByLOB('Agency', [cdata]);
+        } else {
+          this.cacheService.setSummaryByLOB('Agency', []);
+        }
+      });
+    this.inboxService
+      .getSummaryByLOB(
+        'sub_businessoperations_all',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any = {
+          SIC: 'NA',
+          Naics: 'NA',
+          Descriptions: 'NA',
+        };
+        if (res != null && res.value != null) {
+          let tempData = res.value.businessOperation;
+          cdata.SIC = tempData.sic != null ? tempData.sic : 'NA';
+          cdata.Naics = tempData.naics != null ? tempData.naics : 'NA';
+          cdata.Descriptions =
+            tempData.descriptions != null ? tempData.descriptions : 'NA';
+          this.cacheService.setSummaryByLOB('BusinessOperations', [cdata]);
+        } else {
+          this.cacheService.setSummaryByLOB('BusinessOperations', []);
+        }
+      });
 
     // this.cacheService.getSummaryByLOB("Agency").subscribe(x=>{
     //   console.log("Widget Data : "+ "Agency")
     //   console.log(x)
     //  })
-    this.inboxService.getSummaryByLOB("sub_totallosses_all",clientId,submissionId,userEmailId).subscribe(res=>{
-      let cdata : any[] = []
-      // {
-      //   Year: "NA",
-      //   GrossIncurred: "NA",
-      //   TotalNoOfClaims: "NA",
-      //   TotalNoOfOpenClaims: "NA"
-      // };
-      if (res != null && res.value != null ) {
-        
-        let tempData = res.value.businessOperation;
-        
-          if(tempData!=null && tempData.length>0){
-            tempData.forEach((element:any) => {
-              let cDataTemp : any = {
-                Year: tempData.year != null ? tempData.year:"",
-                GrossIncurred: tempData.grossAmount != null ? tempData.grossAmount:"",
-                TotalNoOfClaims: tempData.totalNoOfClaims != null ? tempData.totalNoOfClaims:"",
-                TotalNoOfOpenClaims: tempData.noOfOpenClaims != null ? tempData.noOfOpenClaims:""
+    this.inboxService
+      .getSummaryByLOB(
+        'sub_totallosses_all',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        // {
+        //   Year: "NA",
+        //   GrossIncurred: "NA",
+        //   TotalNoOfClaims: "NA",
+        //   TotalNoOfOpenClaims: "NA"
+        // };
+        if (res != null && res.value != null) {
+          let tempData = res.value.totalLosses;
+
+
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: any = {
+                Year: element.year != null ? element.year : '',
+                GrossIncurred:
+                  element.grossAmount != null ? element.grossAmount : '',
+                TotalNoOfClaims:
+                  element.totalNoOfClaims != null
+                    ? element.totalNoOfClaims
+                    : '',
+                TotalNoOfOpenClaims:
+                  element.noOfOpenClaims != null ? element.noOfOpenClaims : '',
               };
               cdata.push(cDataTemp);
             });
           }
-        this.cacheService.setLossSummary('Totallosses',cdata);
-       
-      } else {
-        this.cacheService.setLossSummary('Totallosses', cdata);
-      }
-    })
+          //console.log(cdata)
+          this.cacheService.setSummaryByLOB('Totallosses', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('Totallosses', []);
+        }
+      });
     return data;
   }
-  getPropertyWidgetConfigs(){
+  getPropertyWidgetConfigs() {
     this.propertyComponentOrder = DataComponent.Propertyhub;
-    let propertyComponents:any[] = [];
+    let propertyComponents: any[] = [];
     var i = 1;
     this.propertyComponentOrder.forEach((entry: any) => {
       propertyComponents.push({
@@ -241,7 +257,6 @@ export class SummaryComponent implements OnInit,OnDestroy {
       i++;
     });
 
-    
     return propertyComponents;
   }
   getBodyClassBox(bodyClass: string): string {
@@ -256,11 +271,11 @@ export class SummaryComponent implements OnInit,OnDestroy {
     let widgetInput: WidgetInput = {
       WidgetName: widgetName,
       WidgetType: widgetType,
-      Settings : {}, 
-      Data : [],
-      DataSubject : this.cacheService.getSummaryByLOB(widgetName)
+      Settings: {},
+      Data: [],
+      DataSubject: this.cacheService.getSummaryByLOB(widgetName),
     };
-   
+
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],
       parent: this.injector,
@@ -269,52 +284,54 @@ export class SummaryComponent implements OnInit,OnDestroy {
     //this.reloadReq = false;
     return myInjector;
   }
-  download(){
+  download() {
     // var submissionId = "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=";
-    this.subscription = this.globalService.getCurrentSubmissionId().subscribe((submissionId:SubmissionInfo)=>{
-      this.dbService.downloadSubmission360(submissionId.MessageId).subscribe(downloadRes=>{
-        const source = `data:application/pdf;base64,${downloadRes.value.data}`;
-        const downloadLink = document.createElement('a');
-        const fileName = downloadRes.value.fileName;
-    
-        downloadLink.href = source;
-        downloadLink.download = fileName;
-        downloadLink.click();
+    this.subscription = this.globalService
+      .getCurrentSubmissionId()
+      .subscribe((submissionId: SubmissionInfo) => {
+        this.dbService
+          .downloadSubmission360(submissionId.MessageId)
+          .subscribe((downloadRes) => {
+            const source = `data:application/pdf;base64,${downloadRes.value.data}`;
+            const downloadLink = document.createElement('a');
+            const fileName = downloadRes.value.fileName;
+
+            downloadLink.href = source;
+            downloadLink.download = fileName;
+            downloadLink.click();
+          });
       });
-      
-      
-    })
   }
-  getTranformedData(res:any){
-    let cdata: ChartData[] =[
+  getTranformedData(res: any) {
+    let cdata: ChartData[] = [
       {
-        Dimension:[],
-        Data:[]
-      }
-    ]
-       let distDimension = [...new Set(res.value.map((item:any) => item.dimension))] as []
-        let distCategory = [...new Set(res.value.map((item:any) => item.category))] as []
-        cdata[0].Dimension = distDimension
-        let tempResult = res.value;
-       
-        distCategory.forEach(x=>{
-          
-          let categoryGroup = tempResult.filter((rr:any)=> rr.category==x);
-          let tempCategory = categoryGroup[0].category;
-          let tempData:any[] = [];
-          distDimension.forEach(dmsn=>{
-            
-            let filterdData = categoryGroup.filter((f:any)=>f.dimension==dmsn);
-            if(filterdData!=null && filterdData.length>0){
-              tempData.push(filterdData[0].measure)
-            }
-            else{
-              tempData.push('')
-            }
-          })
-          cdata[0].Data.push({Name:tempCategory,Data:tempData})
-          
-        })
-        return cdata;
+        Dimension: [],
+        Data: [],
+      },
+    ];
+    let distDimension = [
+      ...new Set(res.value.map((item: any) => item.dimension)),
+    ] as [];
+    let distCategory = [
+      ...new Set(res.value.map((item: any) => item.category)),
+    ] as [];
+    cdata[0].Dimension = distDimension;
+    let tempResult = res.value;
+
+    distCategory.forEach((x) => {
+      let categoryGroup = tempResult.filter((rr: any) => rr.category == x);
+      let tempCategory = categoryGroup[0].category;
+      let tempData: any[] = [];
+      distDimension.forEach((dmsn) => {
+        let filterdData = categoryGroup.filter((f: any) => f.dimension == dmsn);
+        if (filterdData != null && filterdData.length > 0) {
+          tempData.push(filterdData[0].measure);
+        } else {
+          tempData.push('');
+        }
+      });
+      cdata[0].Data.push({ Name: tempCategory, Data: tempData });
+    });
+    return cdata;
   }
 }
