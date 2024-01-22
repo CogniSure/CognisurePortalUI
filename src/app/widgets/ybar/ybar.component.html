@@ -10,21 +10,25 @@
   <kendo-chart-legend
     position="bottom"
     orientation="horizontal"
+    class="custom-legend"
+    [markers]="{type : 'square', height:18, width : 18}"
+    [offsetX]="0" [offsetY]="00"
+    [align]="'center'"
   ></kendo-chart-legend>
   <kendo-chart-category-axis>
-    <kendo-chart-category-axis-item [categories]="chartData.Dimension">
+    <kendo-chart-category-axis-item [categories]="chartData.Dimension"   [majorGridLines]="{ visible: false }">
       <kendo-chart-category-axis-item-labels [position]="'start'">
       </kendo-chart-category-axis-item-labels>
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
   <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item [labels]="{ format: '{0:n}' }"   
+    <kendo-chart-value-axis-item 
      [labels]="valueAxisLabels"
     [min]="0"
     [max]="valueAxisMax.max"
     maxDivisions="10"
     [majorGridLines]="{ visible: false }">
-      <kendo-chart-value-axis-item-labels [position]="'end'" [format]="'{0:0}'">
+      <kendo-chart-value-axis-item-labels [position]="'end'">
       </kendo-chart-value-axis-item-labels>
     </kendo-chart-value-axis-item>
   </kendo-chart-value-axis>
@@ -47,6 +51,8 @@
       type="bar"
       [data]="item.Data"
       [name]="item.Name"
+      [gap] = "1"
+      [autoFit]="true"
     >
      <!-- <kendo-chart-series-item-labels  [content]="onLabelContent">
     </kendo-chart-series-item-labels> -->
