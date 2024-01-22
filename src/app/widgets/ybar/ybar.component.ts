@@ -81,10 +81,10 @@ export class YBarComponent implements OnInit, OnDestroy {
           })
          let maxVal = sumArr.reduce((a, b)=>Math.max(a, b));
          if(maxVal>10){
-            this.valueAxisMax.max = maxVal+14
+            this.valueAxisMax.max = maxVal+6
          }
          else 
-            this.valueAxisMax.max = 14
+            this.valueAxisMax.max = 6
         
         }
         // if(data!=null && data.length>0){
