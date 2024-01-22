@@ -11,4 +11,7 @@ export interface Submission {
     AssignedBy: string,
     NewStatus: boolean,
     MessageId : string,
+    ExtractionComplete : boolean,
+    Completeness : boolean,
+    RiskClearance : boolean,
 }

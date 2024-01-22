@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit,OnDestroy {
       this.tableData = result;
       console.log("Inbox Loaded from service");
       // this.changedetector.detectChanges();
-
+      console.log(result)
       this.totalRecordCCount = this.tableData.length;
       this.newRecordCCount = this.tableData.filter(item => item.NewStatus).length;
        //this.changeDetectorRef.detectChanges();

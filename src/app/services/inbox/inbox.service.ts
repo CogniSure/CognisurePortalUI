@@ -91,7 +91,10 @@ export class InboxService {
             Status: res['submissionStatusName']!=""?res['submissionStatusName']:"NA",
             AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
             NewStatus: true,
-            MessageId: res['messageId']!=""?res['messageId']:"NA"
+            MessageId: res['messageId']!=""?res['messageId']:"NA",
+            ExtractionComplete: res['extractionComplete']!=""?res['extractionComplete']:false,
+            Completeness: res['completeness']!=""?res['completeness']:false,
+            RiskClearance: res['riskClearance']!=""?res['riskClearance']:false,
           };
           submissions.push(sub);
         });
