@@ -31,6 +31,8 @@ import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { TextBoxModule } from '@progress/kendo-angular-inputs';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CopilotComponent } from '../copilot/copilot.component';
 
 interface NavItem {
   title: string;
@@ -78,6 +80,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   selectedValue: { label: string; value: string };
   // selectedValues: { [key: string]: { label: string; value: string } } = {};
 
+  public dialog: MatDialog;
   public gridData: any[];
   public gridView!: any[];
 
@@ -113,12 +116,16 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     
   }
 
-  @Output() newDownloadEvent = new EventEmitter<string>();
+  @Output() DownloadEvent = new EventEmitter<string>();
 
-  DownloadEvent(value: any) {
-    this.newDownloadEvent.emit(value);
+  Download_Click(value: any) {
+    this.DownloadEvent.emit(value);
   }
+  @Output() CopilotEvent = new EventEmitter<string>();
 
+  Copilot_Click(value: any) {
+    this.CopilotEvent.emit(value);
+  }
   @Output() newIDclickEvent = new EventEmitter<string>();
 
   IDclickEvent(value: any) {
@@ -134,24 +141,12 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       drag: true,
     };
 
-// this.gridData.forEach((row) => {
-//     this.selectedValues[row.id] = { label: 'High', value: 'value1' };
-//   });
 
     this.gridData = this.data;
     this.gridView = this.data;
     this.loading=false;
     this.dataLoaded = true;
     this.selectedValue = { label: 'High', value: 'option1' };
-
-
-    // this.inboxService.getAllSubmissionData().subscribe((result: SubmissionData[]) => {
-    //   this.tableData = result.map((item: SubmissionData) => {
-    //     item.statusImage = item.Status === 'Completed' ? 'green-image.jpg' : 'gray-image.jpg';
-    //     return item;
-    //   });
-    // });
-
 
   }
 
@@ -162,13 +157,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       this.data = changes['data'].currentValue;
       this.gridData = this.data;
       this.gridView = this.data;
-      //this.gridView = process(this.data, this.state)
-      //this.gridData = process(this.data, this.state)
-      //this.dataBinding.data=this.data;
-      //this.dataBinding.rebind();
-      //this.dataBinding.dataChanged = true;
-      //this.dataBinding.notifyDataChange();
-      //this.changedetector.detectChanges()
     }
     
   }
@@ -201,18 +189,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.isToggleOn = !this.isToggleOn;
   }
 
-
-  // submissionIdTemplate(dataItem: any): string {
-  //   return `
-  //     <div>
-  //       <img src="../../../assets/images/Extraction.svg" style="padding-right: 0.25em;" />
-  //       <a routerLink="/inbox/detail/summary" [ngStyle]="{ color: 'blue' }">
-  //         ${dataItem.SubmissionID}
-  //       </a>
-  //     </div>`
-  // }
-  
-
   reDirect(url:string, param:any){
     let subInfo : SubmissionInfo = {
       SubmissionId : param.SubmissionID,
@@ -234,41 +210,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   }
 
   public complexValue = { text: "Export", id: 2 };
-  // public Operands: Array<string> = [
-  //   "Equals",
-  //   "Less Than",
-  //   "Greter Than",
-  // ];
-  // public ValidationConditions: Array<string> = [
-  //   "Fail if any Failed",
-  //   "Fail if all Failed",
-  //   "Pass if any Passed",
-  //   "Pass if all Passed"
-  // ];
-  // public ValidationRules : string[] = [
-  //   "Missing data",
-  //   "Reconciliation Issue",
-  //   "Format Issue"
-  // ];
-  // public CognisureValidations: Array<string> = [
-  //   "Select",
-  //   "Missing data",
-  //   "Reconciliation Issue",
-  //   "Format Issue",
-  //   "Invalid date",
-  //   "Bad Data",
-  //   "Bad Amount",
-  //   "Invalid number",
-  //   "Invalid check",
-  //   "Others",
-  //   "Non standard data",
-  //   "Total Incurred Mismatch",
-  //   "Claim Count Mismatch"
-  // ];
-  // public Condition : string[] = [
-  //   "And",
-  //   "Or"
-  // ]
+  
   public treeItems: any[] = [
     {
       text: "Export as pdf",
@@ -292,16 +234,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     console.log(`Button clicked: ${action}`);
   }
 
-  download(rowElement: any) {
-    const source = `data:submission360;base64,${rowElement.FileContent}`;
-    const downloadLink = document.createElement('a');
-    const fileName = rowElement.FileName;
-
-    downloadLink.href = source;
-    downloadLink.download = fileName;
-    downloadLink.click();
-  }
-
   priorityDropdownOptions = [
     { label: 'High', value: 'High' },
     { label: 'Medium', value: 'Medium' },
@@ -313,10 +245,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     return column.type === 'agencyname';
   }
 
-  // isCellEditable(dataItem: any, column: any): boolean {
-  //   return column.type === 'agencyname';
-  // }
-  
   toggleEditMode(dataItem: any): void {
     dataItem.isEditing = true;
   }
@@ -359,14 +287,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     }
     console.log('mySelection:', this.mySelection);
   }
-  // onCheckBoxChange(rowIndex: number, dataItem: any): void {
-  //   this.selectedItemId = dataItem.id;
-  // }
-
-
-  // getSelectedRowsData(): any[] {
-  //   return this.selectedCheckboxes.map((index) => this.gridData[index]);
-  // }
 
   isAllSelected(): boolean {
     return this.selectedCheckboxes.length === this.gridData.length;
@@ -377,15 +297,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       return this.gridData.find(item => item.SubmissionID === selectedSubmissionID);
     });
   }
-  
-  
-  // onHeaderCheckboxChange(): void {
-  //   if (this.isAllSelected()) {
-  //     this.selectedCheckboxes = []; 
-  //   } else {
-  //     this.selectedCheckboxes = this.gridData.map((_, index) => index);
-  //   }
-  // }
 
   isSelected(dataItem: any): boolean {
     return this.mySelection.some(item => item === dataItem);
@@ -401,11 +312,4 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       }
     }
   }
-
-
-
-
-
-
-
 }

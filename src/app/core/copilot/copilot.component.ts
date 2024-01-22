@@ -14,9 +14,9 @@ import { ChatService } from 'src/app/services/common/chat.service';
   selector: 'app-copilot',
   templateUrl: './copilot.component.html',
   styleUrls: ['./copilot.component.scss'],
-  standalone: true,
-  imports: [CommonModule,FormsModule,MatButtonModule, MatDialogModule, UploadsModule ,
-    FileSelectModule,LayoutModule,ButtonModule,ChatModule  ],
+  // standalone: true,
+  // imports: [CommonModule,FormsModule,MatButtonModule, MatDialogModule, UploadsModule ,
+  //   FileSelectModule,LayoutModule,ButtonModule,ChatModule  ],
 })
 // export class DialogContentExample {
   

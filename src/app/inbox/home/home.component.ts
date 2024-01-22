@@ -6,6 +6,8 @@ import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { CopilotComponent } from 'src/app/core/copilot/copilot.component';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +19,11 @@ export class HomeComponent implements OnInit,OnDestroy {
   mySelection: string[] = [];
   public gridData: any[] = [];
   public selectedCheckboxes: number[] = [];
+  //public dialog: MatDialog;
   selectedRowIndices: Set<number> = new Set<number>();
 // saveChanges: any;
   subscription : Subscription
-  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder, private globalService: GlobalService)
+  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder, private globalService: GlobalService, private dialog: MatDialog)
   {
     this.formGroup = this.fb.group({
       agencyname: [''],
@@ -137,21 +140,10 @@ export class HomeComponent implements OnInit,OnDestroy {
       title: "Effective Date",
       width:150,
       type: "text",
-      // template: "#= kendo.toString(kendo.parseDate(EffectiveDate), 'yyyy-MM-dd') #",
-      // format: "{0:yyyy-MM-dd}",
       columnmenu:true,
       sortable:true,
       filterable : true,
     },
-  // {
-  //     field: "AgencyName",
-  //     title: "Agency Name",
-  //     width:150,
-  //     type: "text",
-  //     columnmenu:true,
-  //     sortable:true,
-  //     filterable : true,
-  //   },
     {
       field: "LOB",
       format: "{0:c}",
@@ -200,16 +192,6 @@ export class HomeComponent implements OnInit,OnDestroy {
       >
     `,
     },
-    // {
-    //   field: "S360Report",
-    //   // format: "{0:c}",
-    //   title: "S360 Report",
-    //   type: "DownloadXL",
-    //   width:120,
-    //   columnmenu:true,
-    //   sortable:true,
-    //   filterable : true,
-    // },
     {
       field: "AssignedBy",
       format: "{0:c}",
@@ -230,267 +212,6 @@ export class HomeComponent implements OnInit,OnDestroy {
       groupable: true,
     }
 ];
- 
-//  [
-//   {
-//     Id: "1",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//     NewStatus: true
-//   },
-//   {
-//     Id: "2",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//     NewStatus: true
-//   },
-//   {
-//     Id: "3",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//     NewStatus: false
-//   },
-//   {
-//     Id: "4",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//     NewStatus: true
-//   },
-//   {
-//     Id: "5",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//     NewStatus: false
-//   },
-//   {
-//     Id: "6",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//     NewStatus: true
-//   },
-//   {
-//     Id: "7",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//     NewStatus: false
-//   },
-//   {
-//     Id: "8",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//     NewStatus: true
-//   },
-//   {
-//     Id: "9",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//     NewStatus: false
-//   },
-//   {
-//     Id: "10",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//     NewStatus: true
-//   },
-//   {
-//     Id: "11",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//   },
-//   {
-//     Id: "12",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//     NewStatus: true
-//   },
-//   {
-//     Id: "13",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//   },
-//   {
-//     Id: "14",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//   },
-//   {
-//     Id: "15",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//   },
-//   {
-//     Id: "16",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//   },
-//   {
-//     Id: "17",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//   },
-//   {
-//     Id: "18",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//   },
-//   {
-//     Id: "19",
-//     SubmissionID: "B143-03312302301",
-//     AccountName: "Dante Mason",
-//     EffectiveDate: "03/01/2023",
-//     Type: "New Business",
-//     AgencyName: "ACE Insurance",
-//     LOB: "Property",
-//     Priority: "High",
-//     Status : "AutoApproved",
-//     AssignedBy: "Auto Assigned",
-//   },
-//   {
-//     Id: "20",
-//     SubmissionID: "B143-03312302302",
-//     AccountName: "Duke & Duke",
-//     EffectiveDate: "04/01/2023",
-//     Type: "Renewal",
-//     AgencyName: "Welch Ins Agency",
-//     LOB: "Property,GL, WC",
-//     Priority: "Low",
-//     Status : "ExtractionException",
-//     AssignedBy: "John Williams",
-//   }
-//];
-
-// getSubmissionDetail(string submissionId){
-//   this.inboxService.getSubmissionData("AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA=").subscribe(res=>{
-//     this.submissionData = res.value;
-//     this.globalService.setCurrentSubmission(res)
-//   })
-// }
 
 DownloadSumission360(newItem: any) {
     this.dashboardservice.downloadSubmission360(newItem.Id).subscribe(downloadRes=>{
@@ -502,110 +223,14 @@ DownloadSumission360(newItem: any) {
       downloadLink.download = fileName;
       downloadLink.click();
     });
-    
-  //this.items.push(newItem);
-
-  // const source = `data:submission360;base64,${rowElement.FileContent}`;
-  //   const downloadLink = document.createElement('a');
-  //   const fileName = rowElement.FileName;
-
-  //   downloadLink.href = source;
-  //   downloadLink.download = fileName;
-  //   downloadLink.click();
-}
-
-// saveChanges(dataItem: any): void {
-//   dataItem.isEditing = true;
-// }
-
-// onSaveButtonClick(dataItem?: any): void {
-//   if (dataItem) {
-//     dataItem.isEditing = true;
-//   } else {
-//     console.log('No data item provided for editing');
-//   }
-// }
-
-
-// getSelectedRowsData(): any[] {
-//   return this.selectedCheckboxes.map((index) => this.gridData[index]);
-// }
-
-// onSaveButtonClick(): void {
-//   const selectedRowsData = this.getSelectedRowsData();
-//   console.log('Selected Rows Data:', selectedRowsData);
-// }
-
-
-// onSaveButtonClick(): void {
-//   const selectedRowsData = this.getSelectedRowsData();
-//   console.log('Selected Rows:', selectedRowsData);
-
-//   const saveData = selectedRowsData.map(row => ({
-//     submissionId: row.SubmissionID,
-//     priority: row.Priority
-//   }));
-
-//   console.log('Save Data:', saveData);
-
-//   this.inboxservice.saveChanges(saveData).subscribe(response => {
-//     console.log('Save successful:', response);
-
-//     this.tableData = this.tableData.map(row => {
-//       const selectedRow = selectedRowsData.find(selected => selected.SubmissionID === row.SubmissionID);
-//       return selectedRow ? { ...row, ...selectedRow } : row;
-//     });
-//     console.log('Updated tableData:', this.tableData);
-//     this.mySelection = [];
-//   });
-// }
-
-
-
-
-
-
-// onSaveButtonClick(): void {
-//   const selectedRowsData = this.gridData.filter((_, index) => this.selectedRowIndices.has(index));
-//   console.log('Selected Rows:', selectedRowsData);
-
-//   const saveData = selectedRowsData.map(row => ({
-//     submissionId: row.SubmissionID,
-//     priority: row.Priority
-//   }));
-
-//   console.log('Save Data:', saveData);
-
-//   this.inboxservice.saveChanges(saveData).subscribe(response => {
-//     console.log('Save successful:', response);
-
-//     // Assuming tableData is an array that stores all the data
-//     // Update tableData with the changes (if necessary)
-//     this.tableData = this.tableData.map(row => {
-//       const selectedRow = selectedRowsData.find(selected => selected.SubmissionID === row.SubmissionID);
-//       return selectedRow ? { ...row, ...selectedRow } : row;
-//     });
-
-//     console.log('Updated tableData:', this.tableData);
-
-//     // Clear the selection
-//     this.selectedRowIndices.clear();
-//   });
-// }
-
+  }
 
 onSaveButtonClick(): void {
   const selectedRowsData = this.getSelectedRowsData();
-  console.log('Selected Rows:', selectedRowsData);
-
-
   const saveData = selectedRowsData.map((row: any) => ({
     submissionId: row.SubmissionID,
     priority: row.Priority
   }));
-
-  console.log('Save Data:', saveData);
-
   this.inboxservice.saveChanges(saveData).subscribe(response => {
   //   console.log('Save successful:', response);
     console.log('Updated tableData:', this.tableData);
@@ -617,30 +242,8 @@ getSelectedRowsData(): any[] {
   const selectedRows = this.mySelection.map(selectedSubmissionID => {
     return this.gridData.find(item => item.SubmissionID === selectedSubmissionID);
   });
-
-  console.log('Selected Rows Data:', selectedRows);
   return selectedRows;
 }
-
-
-
-// onSaveButtonClick(): void {
-//   const selectedRows = this.mySelection.map(id => this.tableData.find(item => item.Id === id));
-//   console.log('Selected Rows:', selectedRows);
-
-//   const saveData = selectedRows.map(row => ({
-//     submissionId: row.SubmissionID,
-//     priority: row.Priority
-//   }));
-
-//   console.log('Save Data:', saveData);
-
-//   this.inboxservice.saveChanges(saveData).subscribe(response => {
-//     console.log('Save successful:', response);
-//     console.log('Updated tableData:', this.tableData);
-//     this.mySelection = [];
-//   });
-// }
 
 reDirect(url:string, param:any){
   let subInfo : SubmissionInfo = {
@@ -655,7 +258,12 @@ reDirect(url:string, param:any){
   }
   this.globalService.setCurrentSubmissionId(param)
 }
+OpenCopilot(item: any) {
+  let dialog1: MatDialog;
+  const dialogRef = this.dialog.open(CopilotComponent);
 
+  dialogRef.afterClosed().subscribe((result) => {});
+}
 getStatusImage(status: string): string {
   if (status === 'Completed') {
     return '../../../assets/images/execl_downloadimg.png';

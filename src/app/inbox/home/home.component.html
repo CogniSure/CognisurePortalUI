@@ -199,7 +199,8 @@
             </kendo-tilelayout>
 
           </div>
-          <generic-table [columns]="columns" (newDownloadEvent)="DownloadSumission360($event)" [data]="tableData"></generic-table>
+          <generic-table [columns]="columns" (DownloadEvent)="DownloadSumission360($event)" (CopilotEvent)="OpenCopilot($event)" 
+          [data]="tableData"></generic-table>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
     </kendo-tilelayout>

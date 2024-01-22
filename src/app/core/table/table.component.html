@@ -428,7 +428,7 @@
         <div style="width: 33%; text-align: center;">
       <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
         
-        <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+        <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
         <img src="../../../assets/icons/S360ReportCompleted.svg" alt="Green Image" >
         </a>
       
@@ -436,16 +436,23 @@
     </div>
     <div style="width: 33%; text-align: center;">
       <ng-container *ngIf="dataItem.Status === 'Completed'; else ConvaiPending">
-        
-        <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+        <kendo-button class="copied_icontop" style="background: transparent;
+        border: none;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;" (click)="Copilot_Click(dataItem)">
+          <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
+        </kendo-button>
+        <!-- <a color="primary" class="excel_download" (click) = "CopilotEvent(dataItem)">
         <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
-        </a>
+        </a> -->
       
       </ng-container>
     </div>
     <div style="width: 33%; text-align: center;">
       <ng-container *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending">
-        <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+        <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
         <img src="../../../assets/icons/InsightsCompleted.svg" alt="Green Image">
         </a>
       </ng-container>
@@ -545,7 +552,7 @@
     <img src="../../../assets/images/disabled_excel.png">
   </ng-container> -->
   <ng-container *ngIf="dataItem.Status === 'Completed'; else inProgressTemplate">
-    <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+    <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
     <img src="../../../assets/images/execl_downloadimg.png" alt="Green Image">
     </a>
   </ng-container>

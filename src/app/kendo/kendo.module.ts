@@ -9,7 +9,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { DialogModule, DialogsModule } from '@progress/kendo-angular-dialog';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { ButtonModule, ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { IconsModule, SVGIconModule } from '@progress/kendo-angular-icons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
@@ -55,7 +55,8 @@ const KendoComponents = [];
     UploadsModule ,
     FileSelectModule ,
     ChatModule,
-    TooltipsModule 
+    TooltipsModule ,
+    ButtonModule
   ],
   exports:[
     GridModule,
@@ -81,7 +82,8 @@ const KendoComponents = [];
     UploadsModule ,
     FileSelectModule, 
     ChatModule ,
-    TooltipsModule
+    TooltipsModule,
+    ButtonModule
   ]
 })
 export class KendoModule { }

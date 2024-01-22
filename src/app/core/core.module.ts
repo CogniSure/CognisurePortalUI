@@ -45,7 +45,8 @@ const routes:Routes = [
     ValidationErrorsComponent,
     ValidationSummaryComponent,
     TooltipDirective,
-    SelectComponent
+    SelectComponent,
+    CopilotComponent
   ],
   imports: [
     CommonModule,
@@ -72,7 +73,8 @@ const routes:Routes = [
     ValidationErrorsComponent,
     ValidationSummaryComponent,
     TooltipDirective,
-    SelectComponent
+    SelectComponent,
+    CopilotComponent
   ]
 })
 export class CoreModule { }

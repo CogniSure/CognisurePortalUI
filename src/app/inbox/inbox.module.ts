@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
 import { ExposureSummaryComponent } from './exposure-summary/exposure-summary.component';
 import { LossSummaryComponent } from './loss-summary/loss-summary.component';
+import { CopilotComponent } from '../core/copilot/copilot.component';
 
 
 
@@ -51,7 +52,7 @@ import { LossSummaryComponent } from './loss-summary/loss-summary.component';
     KendoModule,
     MaterialModule,
     InboxRoutingModule,
-    SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
+    SessionExpirationAlert.forRoot({ totalMinutes: 0.5 })
   ]
 })
 export class InboxModule { }
