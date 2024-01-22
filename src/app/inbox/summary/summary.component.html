@@ -88,14 +88,14 @@
         <ng-template
           *ngComponentOutlet="
             item.Widget;
-            injector: createInjector(item.WidgetName, item.WidgetType)
+            injector: createInjector(item.WidgetName, item.WidgetType, item.Header)
           "
         ></ng-template>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
   </kendo-tilelayout>
   </div>
-  <div style="margin-top: 1%;">
+  <!-- <div style="margin-top: 1%;">
     <div style="width: 99%;
     height: 2rem;
     margin: 0.5%;
@@ -135,5 +135,5 @@
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
     </kendo-tilelayout>
-  </div>
+  </div> -->
 </div>

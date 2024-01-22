@@ -20,11 +20,12 @@ export class LossesComponent {
   dropdownOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
   selectedOption: string = 'Option 1';
   claimDetails: ClaimDetail[] = [];
-
+  header : any = "";
   constructor(@Inject(InjectToken) private input: WidgetInput,
   private changeDetector: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    this.header = this.input.WidgetHeader;
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
         // console.log("Property Exposure Child")

@@ -58,11 +58,12 @@ implements OnInit, AfterViewInit, OnDestroy
     });
   }
 
-  createInjector(widgetName: string, widgetType: string): any {
+  createInjector(widgetName: string, widgetType: string,widgetHeader:string=""): any {
     var myInjector: Injector;
       let widgetInput: WidgetInput = {
         WidgetName: widgetName,
         WidgetType: widgetType,
+        WidgetHeader : widgetHeader,
         Settings : {
          
         },

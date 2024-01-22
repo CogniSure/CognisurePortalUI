@@ -21,6 +21,7 @@ export class ExposureComponent implements OnInit {
       StatesCount: "0",
       TIV : "0"
   }];
+  header : any = "";
   constructor(@Inject(InjectToken) private input: WidgetInput,
   private changeDetector: ChangeDetectorRef) {}
 
@@ -29,7 +30,7 @@ export class ExposureComponent implements OnInit {
   }
 
   getExposureData(): void {
-
+    this.header = this.input.WidgetHeader;
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
           

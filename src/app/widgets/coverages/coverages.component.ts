@@ -14,6 +14,7 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 export class CoveragesComponent implements OnInit {
   exposureDetails: PropertyBlanketSummary[] = [];
   coverages: CoverageData[] = [];
+  header : any = "";
   // {
   //   LocationNumber: 'NA',
   //   BuildingNumber: 'NA',
@@ -45,6 +46,7 @@ export class CoveragesComponent implements OnInit {
   BusinessIncome = 0;
   Other = 0;
   ngOnInit(): void {
+    this.header = this.input.WidgetHeader;
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
         if(inputData!=null && inputData.length>0){

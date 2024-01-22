@@ -76,11 +76,13 @@ export class SummaryComponent implements OnInit, OnDestroy {
           //console.log(lob);
           let currLob = lob.replace(" ", "") 
           let lobConfig = this.getWidgetConfigsForLOB(currLob);
-          if(lobConfig!=null && lobConfig.length>0){
-            lobConfig.forEach((widgetyConfig:any)=>{
-              this.lobComponents.push(widgetyConfig!)
-            })
-          }
+          // let lobWidgets = [];
+          // if(lobConfig!=null && lobConfig.length>0){
+          //   lobConfig.forEach((widgetyConfig:any)=>{
+          //     lobWidgets.push(widgetyConfig!)
+          //   })
+
+          // }
           this.getWidgetDataForLOB(currLob)
           //this.lobComponents.push(lobConfig!)
           // if(widgetData!=null && widgetData.length>0){
@@ -335,17 +337,51 @@ export class SummaryComponent implements OnInit, OnDestroy {
   getWidgetConfigsForLOB (lob:string){
     switch (lob.toLowerCase()) {
       case 'property': {
-        return this.getPropertyWidgetConfigs();
+        let lobConfig = this.getPropertyWidgetConfigs();
+        if(lobConfig!=null && lobConfig.length>0){
+          this.widgetComponents.push({Header : "Property", Widget : lobConfig})
+        }
+        break;
       }
 
-      // case 'generalliability':
-      //   return this.getPropertyWidgetData();
+      case 'auto':{
+        let lobConfig =  this.getAutoWidgetConfigs();
+        if(lobConfig!=null && lobConfig.length>0){
+          this.widgetComponents.push({Header : "Auto Mobiles", Widget : lobConfig})
+        }
+        break;
+      }
+        
       default:
-        return null;
+        break;
     }
   }
   getPropertyWidgetConfigs() {
     this.propertyComponentOrder = DataComponent.Propertyhub;
+    let propertyComponents: any[] = [];
+    var i = 1;
+    this.propertyComponentOrder.forEach((entry: any) => {
+      propertyComponents.push({
+        //ColWidth: BoxDetails.get(entry.BoxType)!,
+        Widget: ComponentDetails.get(entry.WidgetType)![0],
+        WidgetName: entry.WidgetName,
+        WidgetType: entry.WidgetType,
+        Header: entry.Header,
+        //BoxClass: entry.BoxType,
+        //Fullscreen: entry.Fullscreen,
+        ColumnId: entry.ColumnId,
+        ColumnSpan: entry.ColumnSpan,
+        RowSpan: entry.RowSpan,
+        HeaderColor: entry.HeaderColor,
+        FontColor: entry.FontColor,
+      });
+      i++;
+    });
+
+    return propertyComponents;
+  }
+  getAutoWidgetConfigs() {
+    this.propertyComponentOrder = DataComponent.Autohub;
     let propertyComponents: any[] = [];
     var i = 1;
     this.propertyComponentOrder.forEach((entry: any) => {
@@ -375,16 +411,18 @@ export class SummaryComponent implements OnInit, OnDestroy {
     this.isFullScreen = !this.isFullScreen;
     this.globalService.setDashboardReload(false);
   }
-  createInjector(widgetName: string, widgetType: string): any {
+  createInjector(widgetName: string, widgetType: string,widgetHeader:string=""): any {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
       WidgetName: widgetName,
       WidgetType: widgetType,
+      WidgetHeader :widgetHeader,
       Settings: {},
       Data: [],
       DataSubject: this.cacheService.getSummaryByLOB(widgetName),
     };
-
+    console.log("Header")
+    console.log(widgetHeader)
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],
       parent: this.injector,

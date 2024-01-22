@@ -78,6 +78,44 @@ export class DataComponent {
       FontColor : '#fff'
     }
   ];
+  public static Autohub = [
+    {
+      id: 5,
+      BoxType: 'MediumBox',
+      WidgetName: 'AutoExposure',
+      WidgetType: 'Exposure',
+      Header: 'Exposure',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 6,
+      BoxType: 'LargeBox',
+      WidgetName: 'AutoCoverages',
+      WidgetType: 'Coverages',
+      Header: 'Vehicle',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 7,
+      BoxType: 'LargeBox',
+      WidgetName: 'AutoLosses',
+      WidgetType: 'Losses',
+      Header: 'Losses',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    }
+  ];
   public static Dashboardhub = [
     // {
     //   id: 1,

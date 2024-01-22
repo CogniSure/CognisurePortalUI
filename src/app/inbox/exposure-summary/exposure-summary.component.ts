@@ -57,7 +57,7 @@ export class ExposureSummaryComponent
       i++;
     });
   }
-  createInjector(widgetName: string, widgetType: string): any {
+  createInjector(widgetName: string, widgetType: string,widgetHeader:string=""): any {
     var myInjector: Injector;
     //this.cacheService.getExposureSummary(widgetName).subscribe(data=>{
 
@@ -67,6 +67,7 @@ export class ExposureSummaryComponent
       let widgetInput: WidgetInput = {
         WidgetName: widgetName,
         WidgetType: widgetType,
+        WidgetHeader:widgetHeader,
         Settings : {
           "LegendPosition" : "Right",
           "DataType" : "Number"
