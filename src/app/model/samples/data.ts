@@ -56,7 +56,7 @@ export class DataComponent {
     {
       id: 6,
       BoxType: 'LargeBox',
-      WidgetName: 'PreopertyCoverages',
+      WidgetName: 'PropertyCoverages',
       WidgetType: 'Coverages',
       Header: 'Coverages',
       ColumnId :  2,

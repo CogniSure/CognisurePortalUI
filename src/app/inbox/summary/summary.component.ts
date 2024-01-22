@@ -18,6 +18,7 @@ import { ChartData } from 'src/app/model/charts/chartdata';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
+import { CoverageData } from 'src/app/model/summary/CoverageData';
 
 @Component({
   selector: 'app-summary',
@@ -265,6 +266,38 @@ export class SummaryComponent implements OnInit, OnDestroy {
           this.cacheService.setSummaryByLOB('PropertyExposure', []);
         }
       });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_coverage_property',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        //console.log("Property Exposure Before")
+        if (res != null && res.value != null && res.value.propertyCoverages != null) {
+          let tempData = res.value.propertyCoverages;
+
+          
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: CoverageData = {
+                CoverageName: element.coverageName != null ? element.coverageName : '',
+                CoverageValue: element.coverageValue != null ? element.coverageValue : '',
+                CoverageType: element.CoverageType != null ? element.CoverageType : ''
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          //console.log(cdata)
+          this.cacheService.setSummaryByLOB('PropertyCoverages', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('PropertyCoverages', []);
+        }
+      });
+
       this.inboxService
       .getSummaryByLOB(
         'sub_losses_property',
@@ -274,11 +307,9 @@ export class SummaryComponent implements OnInit, OnDestroy {
       )
       .subscribe((res) => {
         let cdata: any[] = [];
-        console.log("Property Exposure Before")
         if (res != null && res.value != null && res.value.propertyLosses != null) {
           let tempData = res.value.propertyLosses;
 
-          console.log(cdata)
           if (tempData != null && tempData.length > 0) {
             tempData.forEach((element: any) => {
               let cDataTemp: any = {

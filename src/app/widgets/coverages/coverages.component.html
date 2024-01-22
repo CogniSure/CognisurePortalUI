@@ -7,25 +7,13 @@
     </kendo-card-header>
     <kendo-card-body style="padding: 0;">
     <div class="lossesdetails">
-        <!-- <div *ngFor="let item of coverages" class="row">
-            <div class="col-xl-4 ">
-                {{ item.CoverageName }}
-            </div>
-            <div class="col-xl-4 ">
-                {{ item.CoverageValue }}
-            </div>
-            <div class="col-xl-4 ">
-                {{ item.CoverageType }}
-            </div>
-        </div> -->
         <table style="width:100%;">
             <tr *ngFor="let item of coverages">
                 <td  style="position: relative; width: 50%; "><b>{{ item.CoverageName }}</b></td>
                 <td  style="position: relative; width: 30%; ">{{ item.CoverageValue }}</td>
                 <td  style="position: relative; width: 20%;">{{ item.CoverageType }}</td>
             </tr>
-            <tr></tr>
-            <tr></tr>
+           
         </table>
     </div>
     </kendo-card-body>
