@@ -51,41 +51,22 @@ export class TotalLossesComponent implements OnInit {
   ngOnInit(): void {
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
-        //console.log("Widget Data : "+ "Total Losses in Child")
           
         if(inputData!=null && inputData.length>0){
 
-          let accInfo = inputData;
-          
-          // inputData.forEach((data:any){
-
-          // })
           let maxIncurred = inputData.reduce((a, {GrossIncurred})=>Number(GrossIncurred) > a ? Number(GrossIncurred) : a , -1);
           let maxClaims = inputData.reduce((a, {TotalNoOfClaims})=>Number(TotalNoOfClaims) > a ? Number(TotalNoOfClaims) : a , -1);
           let maxOpenClaims = inputData.reduce((a, {TotalNoOfOpenClaims})=>Number(TotalNoOfOpenClaims) > a ? Number(TotalNoOfOpenClaims) : a , -1);
 
           this.totalincurredvalue = inputData.reduce((sum, {GrossIncurred})=> sum + Number(GrossIncurred), 0);
-          // console.log(maxClaims);
-          // console.log(maxOpenClaims);
-
+          
           this.totallossesdata = [
             {
               numberofclaims: maxClaims,
               numberofopenclaims: maxOpenClaims,
               highestclaim: '$' + maxIncurred,
             }]
-          // this.businessOperation = {
-          //   SIC: accInfo.SIC,
-          //   Naics: accInfo.Naics,
-          //   Descriptions: accInfo.Descriptions
-          // };
-          // if (this.businessOperation) {
-          //   // Data is available, set isDataAvailable to true
-          //   this.isDataAvailable = true;
-          // } else {
-          //   // No data available, set isDataAvailable to false
-          //   this.isDataAvailable = false;
-          // }
+          
         }
         this.changeDetector.detectChanges();
       })
