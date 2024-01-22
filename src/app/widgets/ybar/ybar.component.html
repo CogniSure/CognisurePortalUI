@@ -18,7 +18,12 @@
     </kendo-chart-category-axis-item>
   </kendo-chart-category-axis>
   <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item [labels]="{ format: '{0:n}' }">
+    <kendo-chart-value-axis-item [labels]="{ format: '{0:n}' }"   
+     [labels]="valueAxisLabels"
+    [min]="0"
+    [max]="valueAxisMax.max"
+    maxDivisions="10"
+    [majorGridLines]="{ visible: false }">
       <kendo-chart-value-axis-item-labels [position]="'end'" [format]="'{0:0}'">
       </kendo-chart-value-axis-item-labels>
     </kendo-chart-value-axis-item>
@@ -43,8 +48,8 @@
       [data]="item.Data"
       [name]="item.Name"
     >
-     <kendo-chart-series-item-labels  [content]="onLabelContent">
-    </kendo-chart-series-item-labels>
+     <!-- <kendo-chart-series-item-labels  [content]="onLabelContent">
+    </kendo-chart-series-item-labels> -->
     </kendo-chart-series-item>
   </kendo-chart-series>
 </kendo-chart>

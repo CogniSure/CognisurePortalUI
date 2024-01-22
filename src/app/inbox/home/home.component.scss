@@ -278,7 +278,7 @@
 }
 
 .view_as{
-width: 44%;
+width: 50%;
 padding-top: 2.5%;
 }
 
@@ -299,3 +299,25 @@ padding: 20%;
   height: 24px;
   display: inline-block;
 }
+
+
+
+
+
+  .subheader-with-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .subheader-icon {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+    margin-right: 5px; /* Adjust the spacing between icon and divider as needed */
+  }
+  
+  .divider {
+    border-left: 1px solid #ccc; /* Adjust the color and style as needed */
+    height: 40px; /* Adjust the height to match the icon */
+    margin: 0 10px; /* Adjust the spacing as needed */
+  }
+

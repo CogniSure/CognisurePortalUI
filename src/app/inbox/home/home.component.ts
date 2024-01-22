@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   public gridData: any[] = [];
   public selectedCheckboxes: number[] = [];
   selectedRowIndices: Set<number> = new Set<number>();
+  subheaderIcon: string = 'Outputs'; 
 // saveChanges: any;
   subscription : Subscription
   constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder, private globalService: GlobalService)
@@ -200,16 +201,16 @@ export class HomeComponent implements OnInit,OnDestroy {
       >
     `,
     },
-    {
-      field: "S360Report",
-      // format: "{0:c}",
-      title: "S360 Report",
-      type: "DownloadXL",
-      width:120,
-      columnmenu:true,
-      sortable:true,
-      filterable : true,
-    },
+    // {
+    //   field: "S360Report",
+    //   // format: "{0:c}",
+    //   title: "S360 Report",
+    //   type: "DownloadXL",
+    //   width:120,
+    //   columnmenu:true,
+    //   sortable:true,
+    //   filterable : true,
+    // },
     {
       field: "AssignedBy",
       format: "{0:c}",
@@ -219,7 +220,19 @@ export class HomeComponent implements OnInit,OnDestroy {
       columnmenu:true,
       sortable:true,
       filterable : true,
-    }
+    },
+    {
+      field: "Outputs",
+      // format: "{0:c}",
+      title: "Outputs",
+      type: "DownloadXL",
+      width:120,
+      columnmenu:true,
+      sortable:true,
+      filterable : true,
+      subheaderIcon: this.subheaderIcon,
+    },
+ 
 ];
  
 //  [

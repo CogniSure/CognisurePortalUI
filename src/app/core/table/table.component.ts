@@ -31,6 +31,7 @@ import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { TextBoxModule } from '@progress/kendo-angular-inputs';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { HomeComponent } from 'src/app/inbox/home/home.component';
 
 interface NavItem {
   title: string;
@@ -55,6 +56,7 @@ export interface SubmissionData {
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit,OnChanges,OnDestroy {
+  subheaderTitle: string = "Outputs";
   public selectedCheckboxes: number[] = [];
   selectedItemId: number | null = null;
   selectedCheckbox: number | null = null;
@@ -63,6 +65,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
    loading = false;
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
+
   // saveChanges: any;
   // dropdownOptions: { label: string; link: string }[] = [];
   dropdownData: { label: string; value: string }[] = [
