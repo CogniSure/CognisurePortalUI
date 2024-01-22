@@ -21,7 +21,7 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
 })
 export class XBarComponent implements OnInit, OnDestroy {
   xbarData: any;
-
+  majorUnit: number;
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -63,10 +63,11 @@ export class XBarComponent implements OnInit, OnDestroy {
           })
          let maxVal = sumArr.reduce((a, b)=>Math.max(a, b));
          if(maxVal>10){
-            this.valueAxisMax.max = maxVal+10
+            this.valueAxisMax.max = maxVal
          }
          else 
-            this.valueAxisMax.max = 10
+            this.valueAxisMax.max = maxVal
+            this.majorUnit = maxVal > 10 ? Math.ceil(maxVal / 10) : 1;
           // this.valueAxisMax = maxVal>10? maxVal+10:10//this.people.reduce((a, b)=>Math.max(a, b));;
           // console.log(inputData[0].Data)
         }

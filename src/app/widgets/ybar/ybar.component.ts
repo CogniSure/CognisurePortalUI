@@ -28,6 +28,7 @@ export class YBarComponent implements OnInit, OnDestroy {
   @ViewChild('chart', { static: true }) 
   public categories: number[] = [];
   public YbarChart: ChartComponent;
+  majorUnit: number;
 
   constructor(
     private dbService: WidgetService,
@@ -81,11 +82,11 @@ export class YBarComponent implements OnInit, OnDestroy {
           })
          let maxVal = sumArr.reduce((a, b)=>Math.max(a, b));
          if(maxVal>10){
-            this.valueAxisMax.max = maxVal+6
+            this.valueAxisMax.max = maxVal
          }
          else 
-            this.valueAxisMax.max = 6
-        
+            this.valueAxisMax.max = maxVal
+            this.majorUnit = maxVal > 10 ? Math.ceil(maxVal / 10) : 1;
         }
         // if(data!=null && data.length>0){
           // const hideRightSideLabels = true; 
@@ -95,6 +96,7 @@ export class YBarComponent implements OnInit, OnDestroy {
       })
     }
 
+    
 
 
     
