@@ -28,6 +28,17 @@ export class TotalLossesComponent implements OnInit {
   totallosses: string = '$75,000';
   selectedYears: number = 1;
   claimDetails: ClaimDetail[] = [];
+  countries = [{
+    id: 1, name: 'France' 
+  },
+  {
+    id: 2, name: 'Germany' 
+  },
+  {
+    id: 3, name: 'Italy' 
+  },
+  ];
+  selectedCountry: any = this.countries[0].id;
   constructor(
     private globalService: GlobalService,
     private cdRef: ChangeDetectorRef
@@ -36,47 +47,56 @@ export class TotalLossesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.getCurrentSubmission().subscribe((sub: any) => {
-      this.claimDetails = [];
-      if (sub != null && sub.value != null && sub.value.claim_Info!=null) {
-        let noOfClaims = 0;
-        let noOfOpenClaims = 0;
-        let totalIncurred = 0;
-        let highestIncurred = 0;
-        sub.value.claim_Info.forEach((claim: any) => {
-          //let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
-          let totalIncurredTemp = 0;
+    // this.globalService.getCurrentSubmission().subscribe((sub: any) => {
+    //   this.claimDetails = [];
+    //   if (sub != null && sub.value != null && sub.value.claim_Info!=null) {
+    //     let noOfClaims = 0;
+    //     let noOfOpenClaims = 0;
+    //     let totalIncurred = 0;
+    //     let highestIncurred = 0;
+    //     sub.value.claim_Info.forEach((claim: any) => {
+    //       //let totalIncurredTemp = parseNumber(claim.total_Incurred.replace('$',''));
+    //       let totalIncurredTemp = 0;
 
-          if (claim.total_Incurred != null) {
-            var str = claim.total_Incurred.replace('$', '');
-            totalIncurredTemp = parseNumber(str);
-          }
-          totalIncurred += totalIncurredTemp;
-          if (totalIncurredTemp > highestIncurred)
-            highestIncurred = totalIncurredTemp;
+    //       if (claim.total_Incurred != null) {
+    //         var str = claim.total_Incurred.replace('$', '');
+    //         totalIncurredTemp = parseNumber(str);
+    //       }
+    //       totalIncurred += totalIncurredTemp;
+    //       if (totalIncurredTemp > highestIncurred)
+    //         highestIncurred = totalIncurredTemp;
 
-          noOfClaims++;
-          if (claim.claim_Status == 'Open') noOfOpenClaims++;
-        });
+    //       noOfClaims++;
+    //       if (claim.claim_Status == 'Open') noOfOpenClaims++;
+    //     });
 
-        this.totallosses = '$' + totalIncurred.toLocaleString('en-GB');
-        this.totallossesdata = [
-          {
-            numberofclaims: noOfClaims,
-            numberofopenclaims: noOfOpenClaims,
-            highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
-          },
-        ];
-      }
-      this.cdRef.detectChanges();
-    });
-  }
+    //     this.totallosses = '$' + totalIncurred.toLocaleString('en-GB');
+    //     this.totallossesdata = [
+    //       {
+    //         numberofclaims: noOfClaims,
+    //         numberofopenclaims: noOfOpenClaims,
+    //         highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
+    //       },
+    //     ];
+    //   }
+    //   this.cdRef.detectChanges();
+    // });
+
+    this.totallossesdata = [
+      {
+        numberofclaims: 110,
+        numberofopenclaims: 10,
+        highestclaim: '$' + 10000,
+      }]
+    }
 
   onYearChange(event: any) {
     this.selectedYear = event.target.value;
   }
 
   onDropdownChange(value: any) {
+    console.log("Year Dropdown")
+    console.log(value)
     this.selectedYears = value;
     if (this.selectedYears === 1) {
       this.totallosses = '$50,000';

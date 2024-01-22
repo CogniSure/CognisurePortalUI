@@ -39,10 +39,15 @@ export class CacheService {
   private dashboard_TopLocationsByCity$ = new BehaviorSubject<any[]>([]);
   private dashboard_TopLocationsByState$ = new BehaviorSubject<any[]>([]);
 
+  private summary_Agencys$ = new BehaviorSubject<any[]>([]);
+  private summary_BusinessOperations$ = new BehaviorSubject<any[]>([]);
+  private summary_TotalLosses$ = new BehaviorSubject<any[]>([]);
+  private summary_Property_Exposure$ = new BehaviorSubject<any[]>([]);
+  private summary_Property_Coverages$ = new BehaviorSubject<any[]>([]);
+  private summary_Property_Losses$ = new BehaviorSubject<any[]>([]);
+
   constructor() {
     let isSummaryCached = sessionStorage.getItem('isSummaryCached');
-    // if (isSummaryCached)
-    //   this.setExposureSummary();
   }
 
   clearSession() {
@@ -50,9 +55,7 @@ export class CacheService {
     sessionStorage.removeItem('noOfLocation');
     sessionStorage.removeItem('noOfBuildings');
   }
-  // setExposureSummary() {
-  //   let tiv = sessionStorage.getItem('tiv');
-  // }
+
   getExposureSummary(widgetName: string): Observable<any[]> {
     let dsData = new BehaviorSubject<any[]>([]);
     if (widgetName === 'TIV') {
@@ -73,7 +76,6 @@ export class CacheService {
     return of([]);
   }
   setExposureSummary(widgetName: string, data: any[]) {
-    //let dsData = new BehaviorSubject<any[]>([]);
     if (widgetName === 'TIV') {
       this.tivSubject$.next(data);
     } else if (widgetName === 'NoOfLocations') {
@@ -201,29 +203,42 @@ export class CacheService {
     return this.accountInformationSubject$   
   }
 
-  // setAccountInformation(accountInformation: AccountInformation | null): void {
-  //   this.accountInformationSubject$.next(accountInformation);
-  // }
-  
-  // getAccountInformation(): Observable<AccountInformation | null> {
-  //   return this.accountInformationSubject$.asObservable();
-  // }
+  getSummaryByLOB(widgetName: string): Observable<any[]> {
+    let dsData = new BehaviorSubject<any[]>([]);
+    if (widgetName === 'Agency') {
+      return this.summary_Agencys$;
+    } else if (widgetName === 'Riskclearance') {
+      return this.summary_BusinessOperations$;
+    } else if (widgetName === 'Totallosses') {
+      return this.summary_TotalLosses$;
+    } else if (widgetName === 'Exposure') {
+      return this.summary_Property_Exposure$;
+    } else if (widgetName === 'Coverages') {
+      return this.summary_Property_Coverages$;
+    } else if (widgetName === 'Losses') {
+      return this.summary_Property_Losses$;
+    }
+    return of([]);
+  }
 
-  // setAccountInformation(accountInformation: AccountInformation | null): void {
-  //   this.accountInformation = accountInformation;
-  // }
 
-  // getAccountInformation(): Observable<AccountInformation | null> {
-  //   return of(this.accountInformation);
-  // }
-
-  // setAccountInformation(accountInformation: AccountInformation | null): void {
-  //   this.accountInformation = accountInformation;
-  // }
-
-  // getAccountInformation(): AccountInformation | null {
-  //   return this.accountInformation;
-  // }
+  setSummaryByLOB(widgetName: string, data: any[]) {
+    //let dsData = new BehaviorSubject<any[]>([]);
+    if (widgetName === 'Agency') {
+      this.summary_Agencys$.next(data);
+    } else if (widgetName === 'Riskclearance') {
+      this.summary_BusinessOperations$.next(data);
+    } else if (widgetName === 'Totallosses') {
+      this.summary_TotalLosses$.next(data);
+    } else if (widgetName === 'Exposure') {
+      this.summary_Property_Exposure$.next(data);
+    } else if (widgetName === 'Coverages') {
+      this.summary_Property_Coverages$.next(data);
+    } else if (widgetName === 'Losses') {
+      this.summary_Property_Losses$.next(data);
+    }
+   
+  }
 
 
 }

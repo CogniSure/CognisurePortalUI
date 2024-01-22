@@ -17,25 +17,29 @@
                   <b>{{ totallosses }}</b>
                 </div>
                 <div class="totallosses_year">
-                  <select
+                  <select name="selectedCountry" class="rounded-inputs20 select-select col-md-3" (change)="onDropdownChange($event)">
+                    <option *ngFor="let country of countries; let i = index" [value]="country.id"> 
+                      {{country.name}}</option>
+                  </select>
+                  <!-- <select
                     name="years"
                     id="years"
                     class="white-color dropdownselector"
                     (ngModelChange)="onDropdownChange($event)"
                   >
-                    <option value="1" id="oneyear" class="dropoptionsize">
+                    <option value="1" class="dropoptionsize">
                       1yrs
                     </option>
-                    <option value="2" id="twoyear" class="dropoptionsize">
+                    <option value="2" class="dropoptionsize">
                       2yrs
                     </option>
-                    <option value="3" id="threeyear" class="dropoptionsize">
+                    <option value="3" class="dropoptionsize">
                       3yrs
                     </option>
-                    <option value="4" id="fouryear" class="dropoptionsize">
+                    <option value="4" class="dropoptionsize">
                       4yrs
                     </option>
-                  </select>
+                  </select> -->
                 </div>
               </div>
             </div>
@@ -53,14 +57,14 @@
       <div class="lossesdetails">
         <table style="width: 100%">
           <tr>
-            <th id="numberofclaims"># of Claims</th>
-            <th id="numberofopenclaims"># of Open Claims</th>
-            <th id="highestclaim">Highest Claim</th>
+            <th ># of Claims</th>
+            <th ># of Open Claims</th>
+            <th >Highest Claim</th>
           </tr>
           <tr *ngFor="let item of totallossesdata">
-            <td id="numberofclaimsvalue">{{ item.numberofclaims }}</td>
-            <td id="numberofopenclaimsvalue">{{ item.numberofopenclaims }}</td>
-            <td id="highestclaimvalue">{{ item.highestclaim }}</td>
+            <td >{{ item.numberofclaims }}</td>
+            <td >{{ item.numberofopenclaims }}</td>
+            <td >{{ item.highestclaim }}</td>
           </tr>
         </table>
       </div>

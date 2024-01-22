@@ -14,7 +14,7 @@ import {
 } from "@progress/kendo-angular-grid";
 import { GlobalService } from 'src/app/services/common/global.service';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
-import { alertsData } from 'src/app/model/sidenav/nav-data';
+import { OutputIcons, alertsData } from 'src/app/model/sidenav/nav-data';
 import { navbarData } from '../../model/sidenav/nav-data';
 import {Alert1ToolTip} from '../../model/constants/tooltipDetails';
 import { DataComponent } from 'src/app/model/samples/data';
@@ -31,7 +31,6 @@ import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { TextBoxModule } from '@progress/kendo-angular-inputs';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
-import { HomeComponent } from 'src/app/inbox/home/home.component';
 
 interface NavItem {
   title: string;
@@ -56,7 +55,6 @@ export interface SubmissionData {
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit,OnChanges,OnDestroy {
-  subheaderTitle: string = "Outputs";
   public selectedCheckboxes: number[] = [];
   selectedItemId: number | null = null;
   selectedCheckbox: number | null = null;
@@ -65,7 +63,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
    loading = false;
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
-
   // saveChanges: any;
   // dropdownOptions: { label: string; link: string }[] = [];
   dropdownData: { label: string; value: string }[] = [
@@ -76,6 +73,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   ];
   isDataAvailble = false;
   navData = alertsData;
+  outputIcons = OutputIcons;
   cellExpansionState: boolean[] = [];
   selectedValue: { label: string; value: string };
   // selectedValues: { [key: string]: { label: string; value: string } } = {};

@@ -15,30 +15,30 @@ export class DataComponent {
       HeaderColor : '#00B6AD',
       FontColor : '#fff'
     },
-    {
-      id: 2,
-      BoxType: 'SmallBox',
-      WidgetName: 'Riskclearance',
-      WidgetType: 'Riskclearance',
-      Header: 'Risk Clearance',
-      ColumnId :  2,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      HeaderColor : '#00B6AD',
-      FontColor : '#fff'
-    },
-    {
-      id: 3,
-      BoxType: 'MediumBox',
-      WidgetName: 'Totallosses',
-      WidgetType: 'Totallosses',
-      Header: 'Total Losses',
-      ColumnId :  3,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      HeaderColor : '#00B6AD',
-      FontColor : '#fff'
-    }
+    // {
+    //   id: 2,
+    //   BoxType: 'SmallBox',
+    //   WidgetName: 'Riskclearance',
+    //   WidgetType: 'Riskclearance',
+    //   Header: 'Risk Clearance',
+    //   ColumnId :  2,
+    //   ColumnSpan :  1,
+    //   RowSpan :  1,
+    //   HeaderColor : '#00B6AD',
+    //   FontColor : '#fff'
+    // },
+    // {
+    //   id: 3,
+    //   BoxType: 'MediumBox',
+    //   WidgetName: 'Totallosses',
+    //   WidgetType: 'Totallosses',
+    //   Header: 'Total Losses',
+    //   ColumnId :  3,
+    //   ColumnSpan :  1,
+    //   RowSpan :  1,
+    //   HeaderColor : '#00B6AD',
+    //   FontColor : '#fff'
+    // }
   ];
   public static Propertyhub = [
     {
@@ -79,42 +79,42 @@ export class DataComponent {
     }
   ];
   public static Dashboardhub = [
-    {
-      id: 1,
-      BoxType: 'SmallBox',
-      WidgetName: 'Submissions',
-      WidgetType: 'SimpleData',
-      Header: 'Submissions',
-      ColumnId :  1,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      HeaderColor : '#009CC1',
-      FontColor : '#fff'
-    },
-    {
-      id: 2,
-      BoxType: 'SmallBox',
-      WidgetName: 'QuoteRatio',
-      WidgetType: 'SimpleData',
-      Header: 'Quote Ratio',
-      ColumnId :  2,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      HeaderColor : '#009CC1',
-      FontColor : '#fff'
-    },
-    {
-      id: 3,
-      BoxType: 'SmallBox',
-      WidgetName: 'StraightThroughRate',
-      WidgetType: 'SimpleData',
-      Header: 'Straight Through Rate',
-      ColumnId :  3,
-      ColumnSpan :  1,
-      RowSpan :  1,
-      HeaderColor : '#009CC1',
-      FontColor : '#fff'
-    },
+    // {
+    //   id: 1,
+    //   BoxType: 'SmallBox',
+    //   WidgetName: 'Submissions',
+    //   WidgetType: 'SimpleData',
+    //   Header: 'Submissions',
+    //   ColumnId :  1,
+    //   ColumnSpan :  1,
+    //   RowSpan :  1,
+    //   HeaderColor : '#009CC1',
+    //   FontColor : '#fff'
+    // },
+    // {
+    //   id: 2,
+    //   BoxType: 'SmallBox',
+    //   WidgetName: 'QuoteRatio',
+    //   WidgetType: 'SimpleData',
+    //   Header: 'Quote Ratio',
+    //   ColumnId :  2,
+    //   ColumnSpan :  1,
+    //   RowSpan :  1,
+    //   HeaderColor : '#009CC1',
+    //   FontColor : '#fff'
+    // },
+    // {
+    //   id: 3,
+    //   BoxType: 'SmallBox',
+    //   WidgetName: 'StraightThroughRate',
+    //   WidgetType: 'SimpleData',
+    //   Header: 'Straight Through Rate',
+    //   ColumnId :  3,
+    //   ColumnSpan :  1,
+    //   RowSpan :  1,
+    //   HeaderColor : '#009CC1',
+    //   FontColor : '#fff'
+    // },
     {
       id: 1,
       BoxType: 'SmallBox',

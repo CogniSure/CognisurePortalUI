@@ -16,11 +16,11 @@
                               <b> {{totallosses}} </b>
                             </div>
                             <div class="totallosses_year">
-                                <select name="years" id="years" class="white-color dropdownselector">
-                                    <option value="1" id="oneyear">1yrs</option>
-                                    <option value="2" id="twoyear">2yrs</option>
-                                    <option value="3" id="threeyear">3yrs</option>
-                                    <option value="4" id="fouryear">4yrs</option>
+                                <select name="years" class="white-color dropdownselector">
+                                    <option value="1" >1yrs</option>
+                                    <option value="2" >2yrs</option>
+                                    <option value="3" >3yrs</option>
+                                    <option value="4" >4yrs</option>
                                 </select>
                             </div>
                         </div>
@@ -36,14 +36,14 @@
         <div class="lossesdetails">
             <table style="width:100%">
                 <tr>
-                    <th id="numberofclaims"># of Claims</th>
-                    <th id="numberofopenclaims"># of Open Claims</th>
-                    <th id="highestclaim">Highest Claim</th>
+                    <th ># of Claims</th>
+                    <th ># of Open Claims</th>
+                    <th>Highest Claim</th>
                 </tr>
                 <tr *ngFor="let item of lossesdata">
-                    <td id="numberofclaimsvalue">{{ item.numberofclaims }}</td>
-                    <td id="numberofopenclaimsvalue">{{ item.numberofopenclaims }}</td>
-                    <td id="highestclaimvalue">{{ item.highestclaim }}</td>
+                    <td >{{ item.numberofclaims }}</td>
+                    <td >{{ item.numberofopenclaims }}</td>
+                    <td >{{ item.highestclaim }}</td>
                 </tr>
             </table>
         </div>

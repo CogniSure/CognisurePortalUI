@@ -1,4 +1,3 @@
-
 <div class="generic-table">
 <kendo-grid #generictable
   [kendoGridBinding]="gridView"
@@ -349,8 +348,9 @@
 
         <div >
           <div style="text-align: center">
-            <!-- {{ column.title }}  -->
+            {{ column.title }} 
           </div>
+          <hr class="solid">
           <div class="image-row">
           <div *ngFor="let data of navData" class="image-container">
             <img
@@ -378,13 +378,97 @@
         let-value="value"
       >
         <div style="display: flex; justify-content: center;">
-          <!-- <span class="k-icon k-i-circle" style="color:#80808059;"></span>
-          <span class="k-icon k-i-circle" style="color:#80808059;"></span> -->
+          <span class="k-icon k-i-circle" style="color:#80808059;"></span>
+          <span class="k-icon k-i-circle" style="color:#80808059;"></span>
           <span class="k-icon k-i-circle" style="color:#80808059;"></span>
         </div>
       </ng-template>
     </kendo-grid-column>
 
+    <kendo-grid-column
+      *ngIf="column.type == 'outputs'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+      [columnMenu]="column.columnmenu"
+    >
+      <ng-template
+        kendoGridHeaderTemplate
+        let-column
+        let-columnIndex="columnIndex"
+        style="padding:0"
+      >
+
+        <div style="width: 100%;">
+          <div style="text-align: center">
+            {{ column.title }} 
+          </div>
+          <hr class="solid">
+          <div class="image-row" style="width: 100%;">
+          <div *ngFor="let data of outputIcons" class="image-container">
+            <img
+            [src]="data.imagePath" 
+              matTooltip={{data.label}}
+            />
+          </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template
+        kendoGridCellTemplate
+        let-dataItem
+        let-rowIndex="rowIndex"
+        let-value="value"
+      >
+      <div style="display: flex; width: 100%; padding: 0 0.25em 0 0.25em;">
+        <div style="width: 33%; text-align: center;">
+      <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
+        
+        <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+        <img src="../../../assets/icons/S360ReportCompleted.svg" alt="Green Image" >
+        </a>
+      
+      </ng-container>
+    </div>
+    <div style="width: 33%; text-align: center;">
+      <ng-container *ngIf="dataItem.Status === 'Completed'; else ConvaiPending">
+        
+        <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+        <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
+        </a>
+      
+      </ng-container>
+    </div>
+    <div style="width: 33%; text-align: center;">
+      <ng-container *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending">
+        <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
+        <img src="../../../assets/icons/InsightsCompleted.svg" alt="Green Image">
+        </a>
+      </ng-container>
+    </div>
+      <ng-template #S360Pending>
+        <img src="../../../assets/icons/S360ReportPending.svg" alt="Gray Image">
+      </ng-template>
+      
+      <ng-template #ConvaiPending>
+        <img src="../../../assets/icons/ConversationAIPending.svg" alt="Gray Image">
+      </ng-template>
+
+      <ng-template #InsgihtsPending>
+        <img src="../../../assets/icons/InsightsPending.svg" alt="Gray Image">
+      </ng-template>
+    </div>
+        <!-- <div style="display: flex; justify-content: center;">
+          <span class="k-icon k-i-circle" style="color:#80808059;"></span>
+          <span class="k-icon k-i-circle" style="color:#80808059;"></span>
+          <span class="k-icon k-i-circle" style="color:#80808059;"></span>
+        </div> -->
+      </ng-template>
+    </kendo-grid-column>
 
     <kendo-grid-column
     *ngIf="column.type == 'SubmissionId'"
@@ -445,33 +529,7 @@
   [columnMenu]="column.columnmenu"
   [editor]="column.editor"
 >
-
-<!-- <ng-template kendoGridHeaderTemplate let-column>
-  <div class="subheader-with-icon">
-    <img class="subheader-icon" src="../../../assets/images/execl_downloadimg.png" alt="Dummy Image">
-    <img class="subheader-icon" [src]="columns[1]?.subheaderIcon" alt="Dummy Image">
-    <span class="subheader-title">{{ subheaderTitle }}</span>
-  </div>
-</ng-template> -->
-
-
-<ng-template kendoGridHeaderTemplate let-column>
-  <div class="subheader-with-icon">
-    <span class="subheader-title">{{ subheaderTitle }}</span>
-    <span class="divider"></span>
-    <div class="subheader-image-container">
-      <img class="subheader-icon" src="../../../assets/images/s360_download.png" alt="Dummy Image">
-      <span class="divider_colum"></span>
-      <img class="subheader-icon" src="../../../assets/images/Loss Analysis.svg" alt="Dummy Image">
-    </div>
-  </div>
-</ng-template>
-
-
-
-
 <ng-template kendoGridCellTemplate let-dataItem>
-
   <!-- <ng-container *ngIf="!dataItem.S360Report"> -->
     <!-- <a [href]="generateDownloadLink(dataItem.S360Report)" download> -->
       <!-- Download -->

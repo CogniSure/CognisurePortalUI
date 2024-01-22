@@ -178,6 +178,15 @@ export class InboxService {
     }
     return of(sampleData);
   }
+  getSummaryByLOB(type:string,clientId:string,submissionId: string,email:string): Observable<any> {
+    var apiUrl = this.configService.settings.baseUrl + 'api/submissionsummarybylobbyid';
+    let hParams = new HttpParams();
+    hParams = hParams.set('type', type);
+    hParams = hParams.set('clientid', clientId);
+    hParams = hParams.set('submissionid', submissionId);
+    hParams = hParams.set('email', email);
+    return this.httpService.getData(apiUrl, hParams);
+  }
 
 
   // setAccountInformation(accountInformation: AccountInformation | null): void {

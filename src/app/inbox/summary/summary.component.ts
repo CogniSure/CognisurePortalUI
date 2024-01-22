@@ -12,6 +12,10 @@ import { GlobalService } from 'src/app/services/common/global.service';
 import { SVGIcon, downloadIcon } from '@progress/kendo-svg-icons';
 import { Subscription, of } from 'rxjs';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
+import { WidgetComponent } from 'src/app/model/widgets/widgetComponents';
+import { CacheService } from 'src/app/services/common/cache.service';
+import { ChartData } from 'src/app/model/charts/chartdata';
+import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 @Component({
   selector: 'app-summary',
@@ -21,9 +25,11 @@ import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 export class SummaryComponent implements OnInit,OnDestroy {
   subscription: Subscription;  
   summaryComponentOrder: any;
+  widgetComponents:WidgetComponent[] = []
+
   public summaryComponents: WidgetComponentInfo[] = [];
   propertyComponentOrder: any;
-  public propertyComponents: WidgetComponentInfo[] = [];
+  //public propertyComponents: WidgetComponentInfo[] = [];
   reloadReq = true;
   public downloadIcon:SVGIcon = downloadIcon;
   @Input() collapsed = false;
@@ -32,7 +38,9 @@ export class SummaryComponent implements OnInit,OnDestroy {
   constructor(
     private injector: Injector,
     private globalService: GlobalService,
-    private dbService: DashboardService
+    private dbService: DashboardService,
+    private inboxService : InboxService,
+    private cacheService: CacheService,
   ) {
     //this.globalService.setDashboardReload(true);
   }
@@ -44,21 +52,40 @@ export class SummaryComponent implements OnInit,OnDestroy {
   }
   animationClass = 'slide-effect-x1';
   ngAfterViewInit() {
-    // this.globalService.dashboardFilter$.subscribe(x=>{
-    //   if(x.ReloadRequired){
-
-    //     this.globalService.setDashboardReload(false);
-    //   }
-    // })
     this.globalService.animationClass$.next('');
   }
 
   ngOnInit(): void {
     console.log("Summary Started")
     this.globalService.animationClass$.next('slide-effect-x1');
-    this.getSummaryWidgets();
-    this.getPropertyWidgets();
+    
+    this.getWidgets();
   }
+  getWidgets(){
+     
+    // this.getPropertyWidgets();
+    
+    this.cacheService.getAccountInformation().subscribe((info:any)=>{
+      console.log("LOB List");
+      let lobs = info.LOB;
+      this.getSummaryWidgets();
+      this.getSummaryWidgetsData();
+      // if(lobs!=null && lobs!="" ){
+      //   let lobArr = lobs.split(",")
+      //   lobArr.forEach((lob:any)=>{
+      //     console.log(lob);
+      //     let widgetData = this.getWidgetData(lob.replace(" ", "") );
+      //     if(widgetData!=null && widgetData.length>0){
+      //       this.widgetComponents.push({Header : lob, Widget : widgetData})
+      //     }
+          
+      //   })
+      // }
+    })
+    // this.widgetComponents.push({Header : "Property", Widget : this.getPropertyWidgets()})
+    // this.widgetComponents.push({Header : "Workers Compensastion", Widget : this.getPropertyWidgets()})
+  }
+
   getSummaryWidgets(){
     this.summaryComponentOrder = DataComponent.Summaryhub;
     this.summaryComponents = [];
@@ -81,12 +108,87 @@ export class SummaryComponent implements OnInit,OnDestroy {
       i++;
     });
   }
-  getPropertyWidgets(){
+  getWidgetData(lob:any){
+    switch(lob.toLowerCase()){
+      case "property":{
+        this.getPropertyWidgetConfigs();
+        return this.getPropertyWidgetData();
+      }
+        
+      case "generalliability":
+        return this.getPropertyWidgetData();
+      default :
+        return null;
+    }
+  }
+  getPropertyWidgetData(){
+
+
+  }
+  getSummaryWidgetsData(){
+    const topNumber = '10';
+    const clientId = '1074';
+    const userEmailId = 'QBEsub@gmail.com';
+    const startDate = '01/01/2023';
+    const endDate = '9/30/2024';
+    const submissionId = "a44413ee-1c8e-446a-843f-e51b6a2c4c51"
+
+    let data = this.getPropertyWidgetConfigs();
+    // this.inboxService.getSummaryByLOB("sub_agencies_all",clientId,submissionId,userEmailId).subscribe(res=>{
+    //   console.log('sampleData ClaimsbyLOBbyYear');
+    //   console.log(res)
+    //   let cdata: ChartData[] =[
+    //     {
+    //       Dimension:[],
+    //       Data:[]
+    //     }
+    //   ]
+    //   if (res != null && res.value != null && res.value.length > 0) {
+    //     cdata = this.getTranformedData(res);
+    //     this.cacheService.setLossSummary('Agency',cdata);
+       
+    //   } else {
+    //     this.cacheService.setLossSummary('Agency', cdata);
+    //   }
+    // })
+    // this.inboxService.getSummaryByLOB("sub_businessoperations_all",clientId,submissionId,userEmailId).subscribe(res=>{
+    //   let cdata: ChartData[] =[
+    //     {
+    //       Dimension:[],
+    //       Data:[]
+    //     }
+    //   ]
+    //   if (res != null && res.value != null && res.value.length > 0) {
+    //     cdata = this.getTranformedData(res);
+    //     this.cacheService.setLossSummary('Riskclearance',cdata);
+       
+    //   } else {
+    //     this.cacheService.setLossSummary('Riskclearance', cdata);
+    //   }
+    // })
+    this.inboxService.getSummaryByLOB("sub_totallosses_all",clientId,submissionId,userEmailId).subscribe(res=>{
+      let cdata: ChartData[] =[
+        {
+          Dimension:[],
+          Data:[]
+        }
+      ]
+      if (res != null && res.value != null && res.value.length > 0) {
+        cdata = this.getTranformedData(res);
+        this.cacheService.setLossSummary('Totallosses',cdata);
+       
+      } else {
+        this.cacheService.setLossSummary('Totallosses', cdata);
+      }
+    })
+    return data;
+  }
+  getPropertyWidgetConfigs(){
     this.propertyComponentOrder = DataComponent.Propertyhub;
-    this.propertyComponents = [];
+    let propertyComponents:any[] = [];
     var i = 1;
     this.propertyComponentOrder.forEach((entry: any) => {
-      this.propertyComponents.push({
+      propertyComponents.push({
         //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
@@ -102,6 +204,9 @@ export class SummaryComponent implements OnInit,OnDestroy {
       });
       i++;
     });
+
+    
+    return propertyComponents;
   }
   getBodyClassBox(bodyClass: string): string {
     return bodyClass;
@@ -142,5 +247,37 @@ export class SummaryComponent implements OnInit,OnDestroy {
       
       
     })
+  }
+  getTranformedData(res:any){
+    let cdata: ChartData[] =[
+      {
+        Dimension:[],
+        Data:[]
+      }
+    ]
+       let distDimension = [...new Set(res.value.map((item:any) => item.dimension))] as []
+        let distCategory = [...new Set(res.value.map((item:any) => item.category))] as []
+        cdata[0].Dimension = distDimension
+        let tempResult = res.value;
+       
+        distCategory.forEach(x=>{
+          
+          let categoryGroup = tempResult.filter((rr:any)=> rr.category==x);
+          let tempCategory = categoryGroup[0].category;
+          let tempData:any[] = [];
+          distDimension.forEach(dmsn=>{
+            
+            let filterdData = categoryGroup.filter((f:any)=>f.dimension==dmsn);
+            if(filterdData!=null && filterdData.length>0){
+              tempData.push(filterdData[0].measure)
+            }
+            else{
+              tempData.push('')
+            }
+          })
+          cdata[0].Data.push({Name:tempCategory,Data:tempData})
+          
+        })
+        return cdata;
   }
 }

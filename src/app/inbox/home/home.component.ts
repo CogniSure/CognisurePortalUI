@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit,OnDestroy {
   public gridData: any[] = [];
   public selectedCheckboxes: number[] = [];
   selectedRowIndices: Set<number> = new Set<number>();
-  subheaderIcon: string = 'Outputs'; 
 // saveChanges: any;
   subscription : Subscription
   constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder, private globalService: GlobalService)
@@ -105,7 +104,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   {
     field: 'alerts',
     title: 'Alerts',
-    width:40,
+    width:90,
     type: 'alerts',
     columnmenu:false,
     sortable: false,
@@ -177,7 +176,7 @@ export class HomeComponent implements OnInit,OnDestroy {
     {
       field: "QualityScore",
       format: "{0:c}",
-      title: "Quality Score%",
+      title: "Winability Score%",
       width:140,
       type: "text",
       columnmenu:true,
@@ -222,17 +221,14 @@ export class HomeComponent implements OnInit,OnDestroy {
       filterable : true,
     },
     {
-      field: "Outputs",
-      // format: "{0:c}",
-      title: "Outputs",
-      type: "DownloadXL",
-      width:120,
-      columnmenu:true,
-      sortable:true,
-      filterable : true,
-      subheaderIcon: this.subheaderIcon,
-    },
- 
+      field: 'outputs',
+      title: 'Outputs',
+      width:150,
+      type: 'outputs',
+      columnmenu:false,
+      sortable: false,
+      groupable: true,
+    }
 ];
  
 //  [
