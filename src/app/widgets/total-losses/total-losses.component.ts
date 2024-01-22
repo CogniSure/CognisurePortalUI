@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Inject } from '@angular/core';
 import { TotalLossesData } from '../../model/summary/totallossesdata';
 import { TotalLossesService } from '../../services/inbox/summary.service';
 import { TotalIncurredValue } from '../../model/summary/totallossesdata';
@@ -7,6 +7,8 @@ import { Data } from '../../model/summary/data';
 import { ClaimDetail } from 'src/app/model/inbox/ClaimDetail';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { parseNumber } from '@progress/kendo-angular-intl';
+import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
+import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 
 @Component({
   selector: 'app-total-losses',
@@ -40,7 +42,7 @@ export class TotalLossesComponent implements OnInit {
   ];
   selectedCountry: any = this.countries[0].id;
   constructor(
-    private globalService: GlobalService,
+    @Inject(InjectToken) private input: WidgetInput,
     private cdRef: ChangeDetectorRef
   ) {
     this.selectedYear = this.years[0];

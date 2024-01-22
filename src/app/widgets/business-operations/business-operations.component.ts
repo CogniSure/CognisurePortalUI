@@ -27,9 +27,6 @@ export class BusinessOperationsComponent {
         if(inputData!=null && inputData.length>0){
 
           let accInfo = inputData[0];
-          console.log('sampleData ClaimsbyLOBbyYear - agency');
-          
-          console.log(accInfo)
           this.businessOperation = {
             SIC: accInfo.SIC,
             Naics: accInfo.Naics,

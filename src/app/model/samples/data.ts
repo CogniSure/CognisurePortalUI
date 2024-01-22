@@ -27,18 +27,18 @@ export class DataComponent {
       HeaderColor : '#00B6AD',
       FontColor : '#fff'
     },
-    // {
-    //   id: 3,
-    //   BoxType: 'MediumBox',
-    //   WidgetName: 'Totallosses',
-    //   WidgetType: 'Totallosses',
-    //   Header: 'Total Losses',
-    //   ColumnId :  3,
-    //   ColumnSpan :  1,
-    //   RowSpan :  1,
-    //   HeaderColor : '#00B6AD',
-    //   FontColor : '#fff'
-    // }
+    {
+      id: 3,
+      BoxType: 'MediumBox',
+      WidgetName: 'Totallosses',
+      WidgetType: 'Totallosses',
+      Header: 'Total Losses',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    }
   ];
   public static Propertyhub = [
     {

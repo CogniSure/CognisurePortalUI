@@ -188,21 +188,35 @@ export class SummaryComponent implements OnInit,OnDestroy {
     //   console.log("Widget Data : "+ "Agency")
     //   console.log(x)
     //  })
-    // this.inboxService.getSummaryByLOB("sub_totallosses_all",clientId,submissionId,userEmailId).subscribe(res=>{
-    //   let cdata: ChartData[] =[
-    //     {
-    //       Dimension:[],
-    //       Data:[]
-    //     }
-    //   ]
-    //   if (res != null && res.value != null && res.value.length > 0) {
-    //     cdata = this.getTranformedData(res);
-    //     this.cacheService.setLossSummary('Totallosses',cdata);
+    this.inboxService.getSummaryByLOB("sub_totallosses_all",clientId,submissionId,userEmailId).subscribe(res=>{
+      let cdata : any[] = []
+      // {
+      //   Year: "NA",
+      //   GrossIncurred: "NA",
+      //   TotalNoOfClaims: "NA",
+      //   TotalNoOfOpenClaims: "NA"
+      // };
+      if (res != null && res.value != null ) {
+        
+        let tempData = res.value.businessOperation;
+        
+          if(tempData!=null && tempData.length>0){
+            tempData.forEach((element:any) => {
+              let cDataTemp : any = {
+                Year: tempData.year != null ? tempData.year:"",
+                GrossIncurred: tempData.grossAmount != null ? tempData.grossAmount:"",
+                TotalNoOfClaims: tempData.totalNoOfClaims != null ? tempData.totalNoOfClaims:"",
+                TotalNoOfOpenClaims: tempData.noOfOpenClaims != null ? tempData.noOfOpenClaims:""
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+        this.cacheService.setLossSummary('Totallosses',cdata);
        
-    //   } else {
-    //     this.cacheService.setLossSummary('Totallosses', cdata);
-    //   }
-    // })
+      } else {
+        this.cacheService.setLossSummary('Totallosses', cdata);
+      }
+    })
     return data;
   }
   getPropertyWidgetConfigs(){
