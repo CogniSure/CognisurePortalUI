@@ -207,7 +207,7 @@ export class CacheService {
     let dsData = new BehaviorSubject<any[]>([]);
     if (widgetName === 'Agency') {
       return this.summary_Agencys$;
-    } else if (widgetName === 'Riskclearance') {
+    } else if (widgetName === 'BusinessOperations') {
       return this.summary_BusinessOperations$;
     } else if (widgetName === 'Totallosses') {
       return this.summary_TotalLosses$;
@@ -226,7 +226,7 @@ export class CacheService {
     //let dsData = new BehaviorSubject<any[]>([]);
     if (widgetName === 'Agency') {
       this.summary_Agencys$.next(data);
-    } else if (widgetName === 'Riskclearance') {
+    } else if (widgetName === 'BusinessOperations') {
       this.summary_BusinessOperations$.next(data);
     } else if (widgetName === 'Totallosses') {
       this.summary_TotalLosses$.next(data);

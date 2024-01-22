@@ -15,18 +15,18 @@ export class DataComponent {
       HeaderColor : '#00B6AD',
       FontColor : '#fff'
     },
-    // {
-    //   id: 2,
-    //   BoxType: 'SmallBox',
-    //   WidgetName: 'Riskclearance',
-    //   WidgetType: 'Riskclearance',
-    //   Header: 'Risk Clearance',
-    //   ColumnId :  2,
-    //   ColumnSpan :  1,
-    //   RowSpan :  1,
-    //   HeaderColor : '#00B6AD',
-    //   FontColor : '#fff'
-    // },
+    {
+      id: 2,
+      BoxType: 'SmallBox',
+      WidgetName: 'BusinessOperations',
+      WidgetType: 'BusinessOperations',
+      Header: 'Business Operations',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
     // {
     //   id: 3,
     //   BoxType: 'MediumBox',

@@ -16,6 +16,8 @@ import { WidgetComponent } from 'src/app/model/widgets/widgetComponents';
 import { CacheService } from 'src/app/services/common/cache.service';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
+import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
 
 @Component({
   selector: 'app-summary',
@@ -132,55 +134,75 @@ export class SummaryComponent implements OnInit,OnDestroy {
     const startDate = '01/01/2023';
     const endDate = '9/30/2024';
     const submissionId = "a44413ee-1c8e-446a-843f-e51b6a2c4c51"
+    let data:any = {}
+    //let data = this.getPropertyWidgetConfigs();
+    this.inboxService.getSummaryByLOB("sub_agencies_all",clientId,submissionId,userEmailId).subscribe(res=>{
+      
+      let cdata : any = {
+        AgencyName: "NA",
+        AgencyCode: "NA",
+        Producer: "NA",
+        ProducerEmail: "NA",
+        ProducerPhoneNo: "NA",
+        ActivityRank: "NA",
+      };
+      if (res != null && res.value != null && res.value.agency != null) {
+        
+        let tempData  = res.value.agency;
+        cdata.AgencyName = tempData.agencyName != null ? tempData.agencyName:"NA"
+        cdata.AgencyCode = tempData.agencyCode != null ? tempData.agencyCode:"NA"
+        cdata.Producer = tempData.producer != null ? tempData.producer:"NA"
+        cdata.ProducerEmail = tempData.producerEmail != null ? tempData.producerEmail:"NA"
+        cdata.ProducerPhoneNo = tempData.producerPhoneNo != null ? tempData.producerPhoneNo:"NA"
+        cdata.ActivityRank = tempData.activityRank != null ? tempData.activityRank:"NA"
 
-    let data = this.getPropertyWidgetConfigs();
-    // this.inboxService.getSummaryByLOB("sub_agencies_all",clientId,submissionId,userEmailId).subscribe(res=>{
-    //   console.log('sampleData ClaimsbyLOBbyYear');
-    //   console.log(res)
-    //   let cdata: ChartData[] =[
-    //     {
-    //       Dimension:[],
-    //       Data:[]
-    //     }
-    //   ]
-    //   if (res != null && res.value != null && res.value.length > 0) {
-    //     cdata = this.getTranformedData(res);
-    //     this.cacheService.setLossSummary('Agency',cdata);
-       
-    //   } else {
-    //     this.cacheService.setLossSummary('Agency', cdata);
-    //   }
-    // })
-    // this.inboxService.getSummaryByLOB("sub_businessoperations_all",clientId,submissionId,userEmailId).subscribe(res=>{
-    //   let cdata: ChartData[] =[
-    //     {
-    //       Dimension:[],
-    //       Data:[]
-    //     }
-    //   ]
-    //   if (res != null && res.value != null && res.value.length > 0) {
-    //     cdata = this.getTranformedData(res);
-    //     this.cacheService.setLossSummary('Riskclearance',cdata);
-       
-    //   } else {
-    //     this.cacheService.setLossSummary('Riskclearance', cdata);
-    //   }
-    // })
-    this.inboxService.getSummaryByLOB("sub_totallosses_all",clientId,submissionId,userEmailId).subscribe(res=>{
-      let cdata: ChartData[] =[
-        {
-          Dimension:[],
-          Data:[]
-        }
-      ]
-      if (res != null && res.value != null && res.value.length > 0) {
-        cdata = this.getTranformedData(res);
-        this.cacheService.setLossSummary('Totallosses',cdata);
+        
+       // console.log(cdata)
+        this.cacheService.setSummaryByLOB('Agency',[cdata]);
        
       } else {
-        this.cacheService.setLossSummary('Totallosses', cdata);
+        this.cacheService.setSummaryByLOB('Agency', []);
       }
     })
+    this.inboxService.getSummaryByLOB("sub_businessoperations_all",clientId,submissionId,userEmailId).subscribe(res=>{
+      let cdata : any = {
+        SIC: "NA",
+        Naics: "NA",
+        Descriptions: "NA"
+      };
+      console.log("Widget Data : "+ "Business Operations Before")
+        console.log(res)
+      if (res != null && res.value != null) {
+        let tempData = res.value.businessOperation;
+        cdata.SIC = tempData.sic != null ? tempData.sic:"NA"
+        cdata.Naics = tempData.naics != null ? tempData.naics:"NA"
+        cdata.Descriptions = tempData.descriptions != null ? tempData.descriptions:"NA"
+        this.cacheService.setSummaryByLOB('BusinessOperations',[cdata]);
+       
+      } else {
+        this.cacheService.setSummaryByLOB('BusinessOperations', []);
+      }
+    })
+
+    // this.cacheService.getSummaryByLOB("Agency").subscribe(x=>{
+    //   console.log("Widget Data : "+ "Agency")
+    //   console.log(x)
+    //  })
+    // this.inboxService.getSummaryByLOB("sub_totallosses_all",clientId,submissionId,userEmailId).subscribe(res=>{
+    //   let cdata: ChartData[] =[
+    //     {
+    //       Dimension:[],
+    //       Data:[]
+    //     }
+    //   ]
+    //   if (res != null && res.value != null && res.value.length > 0) {
+    //     cdata = this.getTranformedData(res);
+    //     this.cacheService.setLossSummary('Totallosses',cdata);
+       
+    //   } else {
+    //     this.cacheService.setLossSummary('Totallosses', cdata);
+    //   }
+    // })
     return data;
   }
   getPropertyWidgetConfigs(){
@@ -215,19 +237,20 @@ export class SummaryComponent implements OnInit,OnDestroy {
     this.isFullScreen = !this.isFullScreen;
     this.globalService.setDashboardReload(false);
   }
-  createInjector(header: string, widgetType: string): any {
+  createInjector(widgetName: string, widgetType: string): any {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
-      WidgetName: header,
+      WidgetName: widgetName,
       WidgetType: widgetType,
       Settings : {}, 
       Data : [],
-      DataSubject : of([])
+      DataSubject : this.cacheService.getSummaryByLOB(widgetName)
     };
+   
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],
       parent: this.injector,
-      name: header,
+      name: widgetName,
     });
     //this.reloadReq = false;
     return myInjector;

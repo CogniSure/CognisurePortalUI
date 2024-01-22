@@ -4,7 +4,7 @@ import { LossesComponent } from './losses/losses.component';
 import { CoveragesComponent } from './coverages/coverages.component';
 import { ExposureComponent } from './exposure/exposure.component';
 import { TotalLossesComponent } from './total-losses/total-losses.component';
-import { RiskClearanceComponent } from './risk-clearance/risk-clearance.component';
+import { BusinessOperationsComponent } from './business-operations/business-operations.component';
 import { AgencyComponent } from './agency/agency.component';
 import { XBarComponent } from './xbar/xbar.component';
 import { YBarComponent } from './ybar/ybar.component';
@@ -26,7 +26,7 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
     CoveragesComponent,
     ExposureComponent,
     TotalLossesComponent,
-    RiskClearanceComponent,
+    BusinessOperationsComponent,
     AgencyComponent,
     XBarComponent,
     YBarComponent,

@@ -32,9 +32,16 @@
     padding-top: 1%;
     padding-bottom: 1%;
   }
-
-  .riskclearance_1 {
-    display: flex;
+  .business_operations_details {
+    padding: 1% 1% 1% 5%;
+  }
+  .business_operations_key {
+    width: 35%;
+    padding: 1%;
+  }
+  .business_operations_value {
+    width: 65%;
+    padding: 1%;
   }
 
   .riskclearance_1 mat-icon {

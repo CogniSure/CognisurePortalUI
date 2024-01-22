@@ -1,15 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManagewidgetsComponent } from './inbox/managewidgets/managewidgets.component';
-import { AgencyComponent } from './widgets/agency/agency.component';
-import { CoveragesComponent } from './widgets/coverages/coverages.component';
-import { ExposureComponent } from './widgets/exposure/exposure.component';
-import { LossesComponent } from './widgets/losses/losses.component';
-import { RiskClearanceComponent } from './widgets/risk-clearance/risk-clearance.component';
-import { TotalLossesComponent } from './widgets/total-losses/total-losses.component';
-import { DashboardwidgetsComponent } from './dashboard/dashboardwidgets/dashboardwidgets.component';
-import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { SummaryComponent } from './inbox/summary/summary.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
 

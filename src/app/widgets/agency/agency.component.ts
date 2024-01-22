@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { subreportIcon } from '@progress/kendo-svg-icons';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { AgencyService } from 'src/app/services/inbox/agency.service';
 import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
+import { CacheService } from 'src/app/services/common/cache.service';
+import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 
 @Component({
   selector: 'app-agency',
@@ -15,25 +17,21 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   isDataAvailble = false;
 
   accountInformation: AccountInfo = {
-    Namedinsured_Fullname: "NA",
-  Namedinsured_Mailingaddress_Lineone: "NA",
-  Namedinsured_Mailingaddress_Cityname: "NA",
-  Namedinsured_Mailingaddress_Stateorprovincecode: "NA",
-  Namedinsured_Mailingaddress_Postalcode: "NA",
-  Namedinsured_Naicscode: "NA",
-  Naics_Description: "NA",
-  Producer_Fullname: "NA",
-  Insurer_Produceridentifier: "NA",
-  Producer_Mailingaddress_Lineone: "NA",
-  Producer_Mailingaddress_Postalcode: "NA",
+    AgencyName: "NA",
+    AgencyCode: "NA",
+    Producer: "NA",
+    ProducerEmail: "NA",
+    ProducerPhoneNo: "NA",
+    ActivityRank: "NA",
   };
 
   summary : any={};
   animationClass = "slide-effect-x1";
-  agencyData: any; 
-  @Input() widgetInput:WidgetInput
+  agencyData: any;
   subscription: any;
-  constructor(private agencyService: AgencyService,private globalService : GlobalService) {}
+  constructor(private cacheService: CacheService,
+    private changeDetector: ChangeDetectorRef,
+    @Inject(InjectToken) private input: WidgetInput) {}
 
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -42,50 +40,34 @@ export class AgencyComponent implements OnInit,AfterViewInit,OnDestroy,OnChanges
   }
 
   ngOnInit() {
-    this.subscription = this.globalService.getCurrentSubmission().subscribe((sub) => {
-      if (sub != null && sub.value != null && sub.value.account_Level_Info!=null) {
-        let accInfo = sub.value.account_Level_Info[0];
-        this.accountInformation = {
-          Namedinsured_Fullname: this.getConcatenateString([
-            accInfo.namedinsured_Fullname,
-          ]),
-          Namedinsured_Mailingaddress_Lineone: this.getConcatenateString([
-            accInfo.namedinsured_Mailingaddress_Lineone
-          ]),
-          Namedinsured_Mailingaddress_Cityname: this.getConcatenateString([
-            accInfo.namedinsured_Mailingaddress_Cityname,
-          ]),
-          Namedinsured_Mailingaddress_Stateorprovincecode: this.getConcatenateString([
-            accInfo.namedinsured_Mailingaddress_Stateorprovincecode
-          ]),
-          Namedinsured_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.Namedinsured_mailingaddress_Postalcode]),
-          Namedinsured_Naicscode: this.getConcatenateString([accInfo.namedinsured_Naicscode]),
-          Naics_Description: this.getConcatenateString([accInfo.naics_Description]),
-          Producer_Fullname: this.getConcatenateString([accInfo.producer_Fullname]),
-          Insurer_Produceridentifier: this.getConcatenateString([accInfo.insurer_Produceridentifier]),
-          Producer_Mailingaddress_Lineone: this.getConcatenateString([accInfo.producer_Mailingaddress_Lineone]),
-          Producer_Mailingaddress_Postalcode: this.getConcatenateString([accInfo.producer_Mailingaddress_Postalcode]),
-        };
-        //this.accountInformation = sub.value.account_Level_Info[0];
-        //this.propertyInformation = sub.value.property_Policy_Info_Premises_Information[0];
-      }
+    if (this.input.DataSubject != null){
+      this.input.DataSubject.subscribe((inputData:any[])=>{
+        
+        if(inputData!=null && inputData.length>0){
 
-
-
-
-      if (this.accountInformation) {
-        // Data is available, set isDataAvailable to true
-        this.isDataAvailable = true;
-      } else {
-        // No data available, set isDataAvailable to false
-        this.isDataAvailable = false;
-      }
-
-
-  
-    });
-
-
+          let accInfo = inputData[0];
+          // console.log('sampleData ClaimsbyLOBbyYear - agency');
+          
+          // console.log(accInfo)
+          this.accountInformation = {
+            AgencyCode: accInfo.AgencyCode,
+            AgencyName: accInfo.AgencyName,
+            Producer: accInfo.Producer,
+            ProducerEmail: accInfo.ProducerEmail,
+            ProducerPhoneNo: accInfo.ProducerPhoneNo,
+            ActivityRank: accInfo.ActivityRank,
+          };
+          if (this.accountInformation) {
+            // Data is available, set isDataAvailable to true
+            this.isDataAvailable = true;
+          } else {
+            // No data available, set isDataAvailable to false
+            this.isDataAvailable = false;
+          }
+        }
+        this.changeDetector.detectChanges();
+      })
+    }
 
   }
   ngAfterViewInit() {

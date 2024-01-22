@@ -11,17 +11,17 @@
         <div class="agency-details">
             <div class="row" style="padding: 0 5% 0 5%;">
                 <div class="agency_key"><b>Agency Name</b></div>
-                <div class="agency_value">{{ accountInformation.Producer_Fullname }}</div>
+                <div class="agency_value">{{ accountInformation.AgencyName }}</div>
                 <div class="agency_key"><b>Agency Code</b></div>
-                <div class="agency_value">{{ accountInformation.Insurer_Produceridentifier }}</div>
+                <div class="agency_value">{{ accountInformation.AgencyCode }}</div>
                 <div class="agency_key"><b>Producer</b></div>
-                <div class="agency_value">{{ accountInformation.Producer_Fullname }}</div>
+                <div class="agency_value">{{ accountInformation.Producer }}</div>
                 <div class="agency_key"></div>
-                <div class="agency_value">{{getConcatenateString([accountInformation.Producer_Mailingaddress_Lineone ,accountInformation.Producer_Mailingaddress_Postalcode])}}</div>
+                <div class="agency_value">{{accountInformation.ProducerEmail }}</div>
                 <div class="agency_key"></div>
-                <div class="agency_value"></div>
+                <div class="agency_value">{{accountInformation.ProducerPhoneNo}}</div>
                 <div class="agency_key"><b>Agency Code</b></div>
-                <div class="agency_value">{{ accountInformation.Insurer_Produceridentifier }}</div>
+                <div class="agency_value">{{ accountInformation.ActivityRank }}</div>
             </div>
             <!-- Add other detail rows here -->
         </div>
