@@ -6,9 +6,9 @@ import { ExposureData } from '../../model/summary/exposuredata';
   providedIn: 'root'
 })
 export class ExposureService {
-  getExposureData(): Observable<ExposureData[]> {
-    return of([
-      { numberoflocations: 6, numberofbuildings: 14, states: 3 },
-    ]);
-  }
+  // getExposureData(): Observable<ExposureData[]> {
+  //   return of([
+  //     { numberoflocations: 6, numberofbuildings: 14, states: 3 },
+  //   ]);
+  // }
 }

@@ -211,11 +211,11 @@ export class CacheService {
       return this.summary_BusinessOperations$;
     } else if (widgetName === 'Totallosses') {
       return this.summary_TotalLosses$;
-    } else if (widgetName === 'Exposure') {
+    } else if (widgetName === 'PropertyExposure') {
       return this.summary_Property_Exposure$;
-    } else if (widgetName === 'Coverages') {
+    } else if (widgetName === 'PropertyCoverages') {
       return this.summary_Property_Coverages$;
-    } else if (widgetName === 'Losses') {
+    } else if (widgetName === 'PropertyLosses') {
       return this.summary_Property_Losses$;
     }
     return of([]);
@@ -230,11 +230,11 @@ export class CacheService {
       this.summary_BusinessOperations$.next(data);
     } else if (widgetName === 'Totallosses') {
       this.summary_TotalLosses$.next(data);
-    } else if (widgetName === 'Exposure') {
+    } else if (widgetName === 'PropertyExposure') {
       this.summary_Property_Exposure$.next(data);
-    } else if (widgetName === 'Coverages') {
+    } else if (widgetName === 'PropertyCoverages') {
       this.summary_Property_Coverages$.next(data);
-    } else if (widgetName === 'Losses') {
+    } else if (widgetName === 'PropertyLosses') {
       this.summary_Property_Losses$.next(data);
     }
    

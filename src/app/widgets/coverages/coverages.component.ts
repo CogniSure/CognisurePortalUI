@@ -42,73 +42,73 @@ export class CoveragesComponent implements OnInit {
   BusinessIncome = 0;
   Other = 0;
   ngOnInit(): void {
-    this.globalService.getCurrentSubmission().subscribe((sub) => {
-      this.Building = 0;
-      this.Content = 0;
-      this.BusinessIncome = 0;
-      this.Other = 0;
-      if (sub != null && sub.value != null && sub.value.property_Policy_Info_Premises_Information!=null) {
+    // this.globalService.getCurrentSubmission().subscribe((sub) => {
+    //   this.Building = 0;
+    //   this.Content = 0;
+    //   this.BusinessIncome = 0;
+    //   this.Other = 0;
+    //   if (sub != null && sub.value != null && sub.value.property_Policy_Info_Premises_Information!=null) {
         
-        sub.value.property_Policy_Info_Premises_Information.forEach(
-          (exposure: any) => {
+    //     sub.value.property_Policy_Info_Premises_Information.forEach(
+    //       (exposure: any) => {
             
-            let propertyType1 =
-              exposure.commercialproperty_Premises_Subjectofinsurancecode;
-            let propertyValue = 0;
-            if (exposure.commercialproperty_Premises_Limitamount != null) {
-              var str =
-                exposure.commercialproperty_Premises_Limitamount.replace(
-                  '$',
-                  ''
-                );
-              propertyValue = parseNumber(str);
-            }
+    //         let propertyType1 =
+    //           exposure.commercialproperty_Premises_Subjectofinsurancecode;
+    //         let propertyValue = 0;
+    //         if (exposure.commercialproperty_Premises_Limitamount != null) {
+    //           var str =
+    //             exposure.commercialproperty_Premises_Limitamount.replace(
+    //               '$',
+    //               ''
+    //             );
+    //           propertyValue = parseNumber(str);
+    //         }
             
-            if ((propertyType1 != null && propertyType1 != '')) {
-              let propertyType = propertyType1.toLowerCase();
-              if (propertyType.indexOf('building') !== -1) {
-                this.Building = this.Building + propertyValue;
-              } else if (propertyType.indexOf('content') !== -1) {
-                this.Content = this.Content + propertyValue;
-              } else if (
-                propertyType.indexOf('business income') !== -1 ||
-                propertyType.indexOf('business') !== -1 ||
-                propertyType.indexOf('income') !== -1
-              ) {
-               this.BusinessIncome = this.BusinessIncome + propertyValue;
-              }
-              else {
-                this.Other = this.Other + propertyValue;
-              }
-            }
+    //         if ((propertyType1 != null && propertyType1 != '')) {
+    //           let propertyType = propertyType1.toLowerCase();
+    //           if (propertyType.indexOf('building') !== -1) {
+    //             this.Building = this.Building + propertyValue;
+    //           } else if (propertyType.indexOf('content') !== -1) {
+    //             this.Content = this.Content + propertyValue;
+    //           } else if (
+    //             propertyType.indexOf('business income') !== -1 ||
+    //             propertyType.indexOf('business') !== -1 ||
+    //             propertyType.indexOf('income') !== -1
+    //           ) {
+    //            this.BusinessIncome = this.BusinessIncome + propertyValue;
+    //           }
+    //           else {
+    //             this.Other = this.Other + propertyValue;
+    //           }
+    //         }
             
-          }
-        );
-        this.coverages.push({
-          CoverageName : "Building",
-          CoverageType : 'Blanket',
-          CoverageValue : "$"+this.Building.toLocaleString('en-GB')
-        },
-        {
-          CoverageName : "Content",
-          CoverageType : 'Blanket',
-          CoverageValue : "$"+this.Content.toLocaleString('en-GB')
-        },
-        {
-          CoverageName : "Business Income",
-          CoverageType : 'Blanket',
-          CoverageValue : "$"+this.BusinessIncome.toLocaleString('en-GB')
-        },
-        {
-          CoverageName : "Other",
-          CoverageType : 'Blanket',
-          CoverageValue : "$"+this.Other.toLocaleString('en-GB')
-        }
-        );
+    //       }
+    //     );
+    //     this.coverages.push({
+    //       CoverageName : "Building",
+    //       CoverageType : 'Blanket',
+    //       CoverageValue : "$"+this.Building.toLocaleString('en-GB')
+    //     },
+    //     {
+    //       CoverageName : "Content",
+    //       CoverageType : 'Blanket',
+    //       CoverageValue : "$"+this.Content.toLocaleString('en-GB')
+    //     },
+    //     {
+    //       CoverageName : "Business Income",
+    //       CoverageType : 'Blanket',
+    //       CoverageValue : "$"+this.BusinessIncome.toLocaleString('en-GB')
+    //     },
+    //     {
+    //       CoverageName : "Other",
+    //       CoverageType : 'Blanket',
+    //       CoverageValue : "$"+this.Other.toLocaleString('en-GB')
+    //     }
+    //     );
         
-        this.cdRef.detectChanges();
-      }
-    });
+    //     this.cdRef.detectChanges();
+    //   }
+    // });
   }
   getConcatenateString(elements: string[]) {
     let concatenatedString = '';

@@ -17,10 +17,16 @@
                   <b>{{ totalincurredvalue }}</b>
                 </div>
                 <div class="totallosses_year">
-                  <select name="selectedCountry" class="rounded-inputs20 select-select col-md-3" (change)="onDropdownChange($event)">
+                  <select name="years" class="white-color dropdownselector">
+                    <option value="1" >1yrs</option>
+                    <option value="2" >2yrs</option>
+                    <option value="3" >3yrs</option>
+                    <option value="4" >4yrs</option>
+                </select>
+                  <!-- <select name="selectedCountry" class="rounded-inputs20 select-select col-md-3" (change)="onDropdownChange($event)">
                     <option *ngFor="let country of countries; let i = index" [value]="country.id"> 
                       {{country.name}}</option>
-                  </select>
+                  </select> -->
                   <!-- <select
                     name="years"
                     id="years"

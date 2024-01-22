@@ -1,5 +1,6 @@
 export interface  ExposureData{
-    numberoflocations: number;
-    numberofbuildings: number;
-    states: number;
+    BuildingsCount: string;
+    LocationsCount: string;
+    StatesCount: string;
+    TIV : string;
   }

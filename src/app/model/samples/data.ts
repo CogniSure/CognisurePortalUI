@@ -44,7 +44,7 @@ export class DataComponent {
     {
       id: 5,
       BoxType: 'MediumBox',
-      WidgetName: 'Exposure',
+      WidgetName: 'PropertyExposure',
       WidgetType: 'Exposure',
       Header: 'Exposure',
       ColumnId :  1,
@@ -56,7 +56,7 @@ export class DataComponent {
     {
       id: 6,
       BoxType: 'LargeBox',
-      WidgetName: 'Coverages',
+      WidgetName: 'PreopertyCoverages',
       WidgetType: 'Coverages',
       Header: 'Coverages',
       ColumnId :  2,
@@ -68,7 +68,7 @@ export class DataComponent {
     {
       id: 7,
       BoxType: 'LargeBox',
-      WidgetName: 'Losses',
+      WidgetName: 'PropertyLosses',
       WidgetType: 'Losses',
       Header: 'Losses',
       ColumnId :  3,

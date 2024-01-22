@@ -31,7 +31,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
   public summaryComponents: WidgetComponentInfo[] = [];
   propertyComponentOrder: any;
-  //public propertyComponents: WidgetComponentInfo[] = [];
+  public lobComponents: any[] = [];
   reloadReq = true;
   public downloadIcon: SVGIcon = downloadIcon;
   @Input() collapsed = false;
@@ -50,7 +50,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    console.log('Summary Destroyed');
   }
   animationClass = 'slide-effect-x1';
   ngAfterViewInit() {
@@ -58,7 +57,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('Summary Started');
     this.globalService.animationClass$.next('slide-effect-x1');
 
     this.getWidgets();
@@ -67,24 +65,30 @@ export class SummaryComponent implements OnInit, OnDestroy {
     // this.getPropertyWidgets();
 
     this.cacheService.getAccountInformation().subscribe((info: any) => {
-      console.log('LOB List');
+      //console.log('LOB List');
       let lobs = info.LOB;
       this.getSummaryWidgets();
       this.getSummaryWidgetsData();
-      // if(lobs!=null && lobs!="" ){
-      //   let lobArr = lobs.split(",")
-      //   lobArr.forEach((lob:any)=>{
-      //     console.log(lob);
-      //     let widgetData = this.getWidgetData(lob.replace(" ", "") );
-      //     if(widgetData!=null && widgetData.length>0){
-      //       this.widgetComponents.push({Header : lob, Widget : widgetData})
-      //     }
+      if(lobs!=null && lobs!="" ){
+        let lobArr = lobs.split(",")
+        lobArr.forEach((lob:any)=>{
+          //console.log(lob);
+          let currLob = lob.replace(" ", "") 
+          let lobConfig = this.getWidgetConfigsForLOB(currLob);
+          if(lobConfig!=null && lobConfig.length>0){
+            lobConfig.forEach((widgetyConfig:any)=>{
+              this.lobComponents.push(widgetyConfig!)
+            })
+          }
+          this.getWidgetDataForLOB(currLob)
+          //this.lobComponents.push(lobConfig!)
+          // if(widgetData!=null && widgetData.length>0){
+          //   this.widgetComponents.push({Header : lob, Widget : widgetData})
+          // }
 
-      //   })
-      // }
+        })
+      }
     });
-    // this.widgetComponents.push({Header : "Property", Widget : this.getPropertyWidgets()})
-    // this.widgetComponents.push({Header : "Workers Compensastion", Widget : this.getPropertyWidgets()})
   }
 
   getSummaryWidgets() {
@@ -93,13 +97,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
     var i = 1;
     this.summaryComponentOrder.forEach((entry: any) => {
       this.summaryComponents.push({
-        //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
         WidgetType: entry.WidgetType,
         Header: entry.Header,
-        //BoxClass: entry.BoxType,
-        //Fullscreen: entry.Fullscreen,
         ColumnId: entry.ColumnId,
         ColumnSpan: entry.ColumnSpan,
         RowSpan: entry.RowSpan,
@@ -109,20 +110,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
       i++;
     });
   }
-  getWidgetData(lob: any) {
-    switch (lob.toLowerCase()) {
-      case 'property': {
-        this.getPropertyWidgetConfigs();
-        return this.getPropertyWidgetData();
-      }
-
-      case 'generalliability':
-        return this.getPropertyWidgetData();
-      default:
-        return null;
-    }
-  }
-  getPropertyWidgetData() {}
   getSummaryWidgetsData() {
     const topNumber = '10';
     const clientId = '1074';
@@ -201,12 +188,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
       )
       .subscribe((res) => {
         let cdata: any[] = [];
-        // {
-        //   Year: "NA",
-        //   GrossIncurred: "NA",
-        //   TotalNoOfClaims: "NA",
-        //   TotalNoOfOpenClaims: "NA"
-        // };
+        
         if (res != null && res.value != null) {
           let tempData = res.value.totalLosses;
 
@@ -227,13 +209,109 @@ export class SummaryComponent implements OnInit, OnDestroy {
               cdata.push(cDataTemp);
             });
           }
-          //console.log(cdata)
           this.cacheService.setSummaryByLOB('Totallosses', cdata);
         } else {
           this.cacheService.setSummaryByLOB('Totallosses', []);
         }
       });
     return data;
+  }
+  getWidgetDataForLOB(lob: any) {
+    switch (lob.toLowerCase()) {
+      case 'property': {
+        //this.getPropertyWidgetConfigs();
+        return this.getPropertyWidgetData();
+      }
+
+      // case 'generalliability':
+      //   return this.getPropertyWidgetData();
+      default:
+        return null;
+    }
+  }
+  getPropertyWidgetData() {
+    const topNumber = '10';
+    const clientId = '1074';
+    const userEmailId = 'submissiontesting@cognisure.ai';
+    const startDate = '01/01/2023';
+    const endDate = '9/30/2024';
+    const submissionId = 'b66623ff-3c5e-887a-423f-f92b8a4c8d98';
+    let data: any = {};
+    
+    this.inboxService
+      .getSummaryByLOB('sub_exposure_property', clientId, submissionId, userEmailId)
+      .subscribe((res) => {
+        let cdata: any = {
+          BuildingsCount: 'NA',
+          LocationsCount: 'NA',
+          StatesCount: 'NA',
+          TIV: 'NA',
+          
+        };
+        
+        
+        if (res != null && res.value != null && res.value.propertyExposure != null) {
+          let tempData = res.value.propertyExposure;
+         
+          cdata.BuildingsCount =
+            tempData.buildingsCount != null ? tempData.buildingsCount : 'NA';
+          cdata.LocationsCount =
+            tempData.locationsCount != null ? tempData.locationsCount : 'NA';
+          cdata.StatesCount = tempData.statesCount != null ? tempData.statesCount : 'NA';
+          cdata.TIV = tempData.tiv != null ? tempData.tiv : 'NA';
+          
+          this.cacheService.setSummaryByLOB('PropertyExposure', [cdata]);
+        } else {
+          this.cacheService.setSummaryByLOB('PropertyExposure', []);
+        }
+      });
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_losses_property',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        console.log("Property Exposure Before")
+        if (res != null && res.value != null && res.value.propertyLosses != null) {
+          let tempData = res.value.propertyLosses;
+
+          console.log(cdata)
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: any = {
+                Year: element.year != null ? element.year : '',
+                GrossIncurred:
+                  element.grossAmount != null ? element.grossAmount : '',
+                TotalNoOfClaims:
+                  element.totalNoOfClaims != null
+                    ? element.totalNoOfClaims
+                    : '',
+                TotalNoOfOpenClaims:
+                  element.noOfOpenClaims != null ? element.noOfOpenClaims : '',
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          this.cacheService.setSummaryByLOB('PropertyLosses', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('PropertyLosses', []);
+        }
+      });
+  }
+  getWidgetConfigsForLOB (lob:string){
+    switch (lob.toLowerCase()) {
+      case 'property': {
+        return this.getPropertyWidgetConfigs();
+      }
+
+      // case 'generalliability':
+      //   return this.getPropertyWidgetData();
+      default:
+        return null;
+    }
   }
   getPropertyWidgetConfigs() {
     this.propertyComponentOrder = DataComponent.Propertyhub;

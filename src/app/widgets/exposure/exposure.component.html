@@ -12,12 +12,12 @@
                       <div class="total_losses1" id="totalincurred"><b> {{totalinsuredvalue}} </b></div>
                       <div class="loss_years">
                         <div class="total-values light-green-color" id="totallosses">
-                         <b> {{ exposurelosses }} </b>
+                         <b> {{ exposuredata[0].TIV }} </b>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <div class="total_losses2 light-green-color" id="totalincurredvalue"> {{totalincurredvalue}} </div>
+                      <div class="total_losses2 light-green-color" id="totalincurredvalue"> </div>
                     </div>
                   </div>
                 </div>
@@ -30,9 +30,9 @@
                     <th >States</th>
                   </tr>
                   <tr *ngFor="let item of exposuredata">
-                    <td >{{ item.numberoflocations }}</td>
-                    <td >{{ item.numberofbuildings }}</td>
-                    <td >{{ item.states }}</td>
+                    <td >{{ item.LocationsCount }}</td>
+                    <td >{{ item.BuildingsCount }}</td>
+                    <td >{{ item.StatesCount }}</td>
                   </tr>
                 </table>
               </div>
