@@ -33,6 +33,7 @@ import { TextBoxModule } from '@progress/kendo-angular-inputs';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CopilotComponent } from '../copilot/copilot.component';
+import { EmailpopupComponent } from '../emailpopup/emailpopup.component';
 
 interface NavItem {
   title: string;
@@ -65,6 +66,8 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
    loading = false;
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
+  isPopupVisible = false;
+  popupAnchor: HTMLElement;
   // saveChanges: any;
   // dropdownOptions: { label: string; link: string }[] = [];
   dropdownData: { label: string; value: string }[] = [
@@ -312,4 +315,13 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       }
     }
   }
+
+  togglePopup() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
+  }
+
 }

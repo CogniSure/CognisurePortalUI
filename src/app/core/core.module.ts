@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaximizeDirective } from './directives/maximize.directive';
 import { MaterialModule } from '../material/material.module';
@@ -25,6 +25,9 @@ import { SelectComponent } from './generic/select/select.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { IconsModule } from '@progress/kendo-angular-icons';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopupModule } from '@progress/kendo-angular-popup';
+import { EmailpopupComponent } from './emailpopup/emailpopup.component';
 
 const routes:Routes = [
 ];
@@ -46,7 +49,8 @@ const routes:Routes = [
     ValidationSummaryComponent,
     TooltipDirective,
     SelectComponent,
-    CopilotComponent
+    CopilotComponent,
+    EmailpopupComponent
   ],
   imports: [
     CommonModule,
@@ -57,6 +61,8 @@ const routes:Routes = [
     ReactiveFormsModule,
     DropDownListModule,
     IconsModule,
+    MatDialogModule,
+    PopupModule,
     RouterModule.forChild(routes)
   ],
   exports:[
@@ -75,7 +81,8 @@ const routes:Routes = [
     TooltipDirective,
     SelectComponent,
     CopilotComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreModule { }
 

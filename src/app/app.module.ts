@@ -46,7 +46,7 @@ import { SessionExpirationAlert } from './session-expiration-alert/session-expir
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { DatePipe } from '@angular/common';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-
+import { PopupModule } from '@progress/kendo-angular-popup';
 
 // export function initializeApp(appConfig: AppConfigService) {
 //   return () => appConfig.load();
@@ -72,6 +72,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     MatCardModule,
     TooltipsModule,
     DropDownsModule,
+    PopupModule,
     SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

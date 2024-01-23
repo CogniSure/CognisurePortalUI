@@ -502,8 +502,15 @@
         <a class ="submissionid" routerLink="{{column.redirectUrl}}" (click)="reDirect(column.redirectUrl,dataItem)" [ngStyle]="{ color: '#009CC1' }">
           {{ dataItem[column.field] }}
         <span class="newtext" *ngIf="dataItem[column.IsNew]">New</span>
-        <span class="submissionicon"><span class="k-icon k-i-email"></span></span>
         </a>
+        <span class="submissionicon"><span class="k-icon k-i-email"(click)="togglePopup()"></span></span>
+      </ng-container>
+      <ng-container class="popup-content">
+      <kendo-popup *ngIf="isPopupVisible" [anchor]="popupAnchor" [popupClass]="'custom-popup'">
+        <button class="popup_closebtn" (click)="closePopup()">x</button>
+       <app-emailpopup></app-emailpopup>
+        <!-- <button (click)="closePopup()">Close Popup</button> -->
+      </kendo-popup>
       </ng-container>
       <!-- <ng-container *ngIf="column.type === 'icon1'">
         <span class="k-icon k-i-email"></span>
