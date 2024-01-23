@@ -54,7 +54,7 @@ interface SideNavToggle {
 export class SidemenubarComponent implements OnInit {
   constructor(private toggleService:GlobalService) {}
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = true;
+  collapsed = false;
   screenWidth = 0;
   navData = navbarData;
 

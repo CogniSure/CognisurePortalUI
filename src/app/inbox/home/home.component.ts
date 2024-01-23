@@ -95,15 +95,15 @@ export class HomeComponent implements OnInit,OnDestroy {
     this.isToggleOn = !this.isToggleOn;
   }
  public columns: any =[
-  {
-    field: "Id",
-    title: "",
-    width:40,
-    type: "checkbox",
-    columnmenu:false,
-    filterable : false,
-    sortable:false
-  },
+  // {
+  //   field: "Id",
+  //   title: "",
+  //   width:40,
+  //   type: "checkbox",
+  //   columnmenu:false,
+  //   filterable : false,
+  //   sortable:false
+  // },
   {
     field: 'alerts',
     title: 'Alerts',
