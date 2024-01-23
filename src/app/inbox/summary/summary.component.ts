@@ -1,4 +1,4 @@
-import { Component, Injector, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, Input, OnDestroy, OnInit } from '@angular/core';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { DataComponent } from 'src/app/model/samples/data';
@@ -24,7 +24,7 @@ import { ExposureData } from 'src/app/model/summary/exposuredata';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.scss'],
+  styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit, OnDestroy {
   subscription: Subscription;

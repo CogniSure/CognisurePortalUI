@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit,Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit,Inject, ChangeDetectionStrategy } from '@angular/core';
 import { ExposureData } from '../../model/summary/exposuredata';
 import { ExposureService } from '../../services/inbox/exposure.service';
 import { GlobalService } from 'src/app/services/common/global.service';
@@ -9,7 +9,7 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 @Component({
   selector: 'app-exposure',
   templateUrl: './exposure.component.html',
-  styleUrls: ['./exposure.component.scss'],
+  styleUrls: ['./exposure.component.scss']
 })
 export class ExposureComponent implements OnInit {
   totalinsuredvalue: string = 'Total Insured Value';
