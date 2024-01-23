@@ -91,7 +91,9 @@ export class XBarComponent implements OnInit, OnDestroy {
     visible: true, // Note that visible defaults to false
     font: "bold 12px Arial, sans-serif",
     background:"transparent",
-    position :"center"
+    position :"center",
+    color:"white"
+
   };
 
   public valueAxisLabels: ValueAxisLabels = {

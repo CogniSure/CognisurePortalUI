@@ -165,6 +165,13 @@ valueAxis: {
     //font: "bold 16px Arial, sans-serif",
     font: "12px Arial, sans-serif",
   };
+  public seriesLabels: SeriesLabels = {
+    visible: true, // Note that visible defaults to false
+    font: "bold 12px Arial, sans-serif",
+    background:"transparent",
+    position :"center",
+    color:"white"
 
+  };
 
 }
