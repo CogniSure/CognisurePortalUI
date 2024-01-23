@@ -33,8 +33,6 @@ export class ExposureComponent implements OnInit {
   getExposureData(): void {
     this.header = this.input.WidgetHeader;
     this.exposureKeys = this.input.Keys;
-    console.log("Exposure Keys")
-    console.log(this.input.Keys)
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
           
@@ -42,10 +40,10 @@ export class ExposureComponent implements OnInit {
           let data = inputData[0];
           this.exposuredata = [
                   {
-                    Item_1: data.BuildingsCount,
-                    Item_2: data.LocationsCount,
-                    Item_3: data.StatesCount,
-                    Item_4 : data.TIV
+                    Item_1: data.Item_1,
+                    Item_2: data.Item_2,
+                    Item_3: data.Item_3,
+                    Item_4 : data.Item_4
                   },
                 ];
           

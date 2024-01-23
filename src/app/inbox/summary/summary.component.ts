@@ -19,6 +19,7 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
 import { CoverageData } from 'src/app/model/summary/CoverageData';
+import { ExposureData } from 'src/app/model/summary/exposuredata';
 
 @Component({
   selector: 'app-summary',
@@ -226,8 +227,8 @@ export class SummaryComponent implements OnInit, OnDestroy {
         return this.getPropertyWidgetData();
       }
 
-      // case 'generalliability':
-      //   return this.getPropertyWidgetData();
+      case 'auto':
+        return this.getAutoWidgetData();
       default:
         return null;
     }
@@ -244,11 +245,11 @@ export class SummaryComponent implements OnInit, OnDestroy {
     this.inboxService
       .getSummaryByLOB('sub_exposure_property', clientId, submissionId, userEmailId)
       .subscribe((res) => {
-        let cdata: any = {
-          BuildingsCount: 'NA',
-          LocationsCount: 'NA',
-          StatesCount: 'NA',
-          TIV: 'NA',
+        let cdata: ExposureData = {
+          Item_1: 'NA',
+          Item_2: 'NA',
+          Item_3: 'NA',
+          Item_4: 'NA',
           
         };
         
@@ -256,12 +257,12 @@ export class SummaryComponent implements OnInit, OnDestroy {
         if (res != null && res.value != null && res.value.propertyExposure != null) {
           let tempData = res.value.propertyExposure;
          
-          cdata.BuildingsCount =
+          cdata.Item_1 =
             tempData.buildingsCount != null ? tempData.buildingsCount : 'NA';
-          cdata.LocationsCount =
+          cdata.Item_2 =
             tempData.locationsCount != null ? tempData.locationsCount : 'NA';
-          cdata.StatesCount = tempData.statesCount != null ? tempData.statesCount : 'NA';
-          cdata.TIV = tempData.tiv != null ? tempData.tiv : 'NA';
+          cdata.Item_3 = tempData.statesCount != null ? tempData.statesCount : 'NA';
+          cdata.Item_4 = tempData.tiv != null ? tempData.tiv : 'NA';
           
           this.cacheService.setSummaryByLOB('PropertyExposure', [cdata]);
         } else {
@@ -397,6 +398,107 @@ export class SummaryComponent implements OnInit, OnDestroy {
     });
 
     return propertyComponents;
+  }
+  getAutoWidgetData() {
+    const topNumber = '10';
+    const clientId = '1074';
+    const userEmailId = 'QBEsub@gmail.com';
+    const startDate = '01/01/2023';
+    const endDate = '9/30/2024';
+    const submissionId = '650bf7b8-c546-788d-a8bd-098a67aef2b7';
+    let data: any = {};
+    
+    this.inboxService
+      .getSummaryByLOB('sub_exposure_auto', clientId, submissionId, userEmailId)
+      .subscribe((res) => {
+        let cdata: ExposureData = {
+          Item_1: 'NA',
+          Item_2: 'NA',
+          Item_3: 'NA',
+          Item_4: 'NA',
+          
+        };
+        
+        
+        if (res != null && res.value != null && res.value.autoExposure != null) {
+          let tempData = res.value.autoExposure[0];
+         
+          
+          cdata.Item_1 = tempData.bodyType != null ? tempData.bodyType : 'NA';
+          cdata.Item_2 = tempData.bodyTypeCount != null ? tempData.bodyTypeCount : 'NA';
+          cdata.Item_3 = tempData.driverCount != null ? tempData.driverCount : 'NA';
+          cdata.Item_4 = tempData.vehicleCount != null ? tempData.vehicleCount : 'NA';
+          
+          this.cacheService.setSummaryByLOB('AutoExposure', [cdata]);
+        } else {
+          this.cacheService.setSummaryByLOB('AutoExposure', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_coverage_auto',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        //console.log("Property Exposure Before")
+        if (res != null && res.value != null && res.value.autoCoverages != null) {
+          let tempData = res.value.autoCoverages;
+
+          
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: CoverageData = {
+                CoverageName: element.coverageName != null ? element.coverageName : '',
+                CoverageValue: element.coverageValue != null ? element.coverageValue : '',
+                CoverageType: element.CoverageType != null ? element.CoverageType : ''
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          //console.log(cdata)
+          this.cacheService.setSummaryByLOB('AutoCoverages', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('AutoCoverages', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_losses_auto',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        if (res != null && res.value != null && res.value.autoLosses != null) {
+          let tempData = res.value.autoLosses;
+
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: any = {
+                Year: element.year != null ? element.year : '',
+                GrossIncurred:
+                  element.grossAmount != null ? element.grossAmount : '',
+                TotalNoOfClaims:
+                  element.totalNoOfClaims != null
+                    ? element.totalNoOfClaims
+                    : '',
+                TotalNoOfOpenClaims:
+                  element.noOfOpenClaims != null ? element.noOfOpenClaims : '',
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          this.cacheService.setSummaryByLOB('AutoLosses', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('AutoLosses', []);
+        }
+      });
   }
   getBodyClassBox(bodyClass: string): string {
     return bodyClass;

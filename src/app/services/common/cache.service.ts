@@ -45,6 +45,9 @@ export class CacheService {
   private summary_Property_Exposure$ = new BehaviorSubject<any[]>([]);
   private summary_Property_Coverages$ = new BehaviorSubject<any[]>([]);
   private summary_Property_Losses$ = new BehaviorSubject<any[]>([]);
+  private summary_Auto_Exposure$ = new BehaviorSubject<any[]>([]);
+  private summary_Auto_Coverages$ = new BehaviorSubject<any[]>([]);
+  private summary_Auto_Losses$ = new BehaviorSubject<any[]>([]);
 
   constructor() {
     let isSummaryCached = sessionStorage.getItem('isSummaryCached');
@@ -217,6 +220,12 @@ export class CacheService {
       return this.summary_Property_Coverages$;
     } else if (widgetName === 'PropertyLosses') {
       return this.summary_Property_Losses$;
+    }else if (widgetName === 'AutoExposure') {
+      return this.summary_Auto_Exposure$;
+    } else if (widgetName === 'AutoCoverages') {
+      return this.summary_Auto_Coverages$;
+    } else if (widgetName === 'AutoLosses') {
+      return this.summary_Auto_Losses$;
     }
     return of([]);
   }
@@ -236,6 +245,12 @@ export class CacheService {
       this.summary_Property_Coverages$.next(data);
     } else if (widgetName === 'PropertyLosses') {
       this.summary_Property_Losses$.next(data);
+    } else if (widgetName === 'AutoExposure') {
+      this.summary_Auto_Exposure$.next(data);
+    } else if (widgetName === 'AutoCoverages') {
+      this.summary_Auto_Coverages$.next(data);
+    } else if (widgetName === 'AutoLosses') {
+      this.summary_Auto_Losses$.next(data);
     }
    
   }
