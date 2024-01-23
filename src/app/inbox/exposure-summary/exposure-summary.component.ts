@@ -72,7 +72,7 @@ export class ExposureSummaryComponent
           "LegendPosition" : "Right",
           "DataType" : "Number"
         },
-        Data : [],//this.cacheService.getExposureSummary(widgetName),
+        Keys : [],//this.cacheService.getExposureSummary(widgetName),
         DataSubject : this.cacheService.getExposureSummary(widgetName)
         // Data: [
         //   { category: 'Frame', value: '25' },

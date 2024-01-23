@@ -362,13 +362,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
     var i = 1;
     this.propertyComponentOrder.forEach((entry: any) => {
       propertyComponents.push({
-        //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
         WidgetType: entry.WidgetType,
         Header: entry.Header,
-        //BoxClass: entry.BoxType,
-        //Fullscreen: entry.Fullscreen,
         ColumnId: entry.ColumnId,
         ColumnSpan: entry.ColumnSpan,
         RowSpan: entry.RowSpan,
@@ -386,13 +383,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
     var i = 1;
     this.propertyComponentOrder.forEach((entry: any) => {
       propertyComponents.push({
-        //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
         WidgetType: entry.WidgetType,
         Header: entry.Header,
-        //BoxClass: entry.BoxType,
-        //Fullscreen: entry.Fullscreen,
         ColumnId: entry.ColumnId,
         ColumnSpan: entry.ColumnSpan,
         RowSpan: entry.RowSpan,
@@ -411,6 +405,22 @@ export class SummaryComponent implements OnInit, OnDestroy {
     this.isFullScreen = !this.isFullScreen;
     this.globalService.setDashboardReload(false);
   }
+  getWidgetItemKeys(widgetName:string){
+    let widgetKeys = [];
+    if(widgetName == "PropertyExposure"){
+      widgetKeys.push("Total Insured Value");
+      widgetKeys.push("# of Locations");
+      widgetKeys.push("# of Buildings");
+      widgetKeys.push("States");
+    }
+    else if(widgetName == "AutoExposure"){
+      widgetKeys.push("Total # of Vehicles");
+      widgetKeys.push("Total # of Drivers");
+      widgetKeys.push("Type of Body Type");
+      widgetKeys.push("# of Body Type");
+    }
+    return widgetKeys;
+  }
   createInjector(widgetName: string, widgetType: string,widgetHeader:string=""): any {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
@@ -418,11 +428,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
       WidgetType: widgetType,
       WidgetHeader :widgetHeader,
       Settings: {},
-      Data: [],
+      Keys: this.getWidgetItemKeys(widgetName),
       DataSubject: this.cacheService.getSummaryByLOB(widgetName),
     };
-    console.log("Header")
-    console.log(widgetHeader)
+    
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],
       parent: this.injector,

@@ -9,10 +9,10 @@
                 <div class="row">
                   <div class="totalloss">
                     <div class="col-md-12">
-                      <div class="total_losses1" id="totalincurred"><b> {{totalinsuredvalue}} </b></div>
+                      <div class="total_losses1" id="totalincurred"><b> {{exposureKeys[0]}} </b></div>
                       <div class="loss_years">
                         <div class="total-values light-green-color" id="totallosses">
-                         <b> {{ exposuredata[0].TIV }} </b>
+                         <b> {{ exposuredata[0].Item_4 }} </b>
                         </div>
                       </div>
                     </div>
@@ -25,14 +25,14 @@
               <div class="lossesdetails">
                 <table style="width:100%">
                   <tr>
-                    <th ># of Locations</th>
-                    <th ># of Buildings</th>
-                    <th >States</th>
+                    <th >{{exposureKeys[1]}}</th>
+                    <th >{{exposureKeys[2]}}</th>
+                    <th >{{exposureKeys[3]}}</th>
                   </tr>
                   <tr *ngFor="let item of exposuredata">
-                    <td >{{ item.LocationsCount }}</td>
-                    <td >{{ item.BuildingsCount }}</td>
-                    <td >{{ item.StatesCount }}</td>
+                    <td >{{ item.Item_2 }}</td>
+                    <td >{{ item.Item_1 }}</td>
+                    <td >{{ item.Item_3 }}</td>
                   </tr>
                 </table>
               </div>

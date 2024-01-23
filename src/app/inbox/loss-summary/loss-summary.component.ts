@@ -67,7 +67,7 @@ implements OnInit, AfterViewInit, OnDestroy
         Settings : {
          
         },
-        Data : [],//this.cacheService.getExposureSummary(widgetName),
+        Keys : [],//this.cacheService.getExposureSummary(widgetName),
         DataSubject : this.cacheService.getLossSummary(widgetName)
       };
       

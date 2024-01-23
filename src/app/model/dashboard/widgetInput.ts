@@ -5,6 +5,6 @@ export interface WidgetInput{
     WidgetType:string,
     WidgetHeader:string,
     Settings:any,//ChartSettings,
-    Data:any[],
+    Keys:any[],
     DataSubject : any
 }

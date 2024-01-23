@@ -413,6 +413,7 @@ export class DashboardwidgetsComponent
     this.isFullScreen = !this.isFullScreen;
     this.globalService.setDashboardReload(false);
   }
+
   createInjector(widgetName: string, widgetType: string, widgetHeader:string=""): any {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
@@ -420,7 +421,7 @@ export class DashboardwidgetsComponent
       WidgetType: widgetType,
       WidgetHeader : widgetHeader,
       Settings: {},
-      Data: [],
+      Keys: [],
       DataSubject: of([]),
     };
     if(widgetName == 'CoverageDistribution' || widgetName =='SubmissionTurnaroundTime'
