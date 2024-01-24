@@ -9,14 +9,19 @@ import { LoaderService } from 'src/app/services/common/loader.service';
 export class LoaderComponent implements OnInit {
   isLoading: Subject<boolean> = this.loaderService.isLoading;
   //showSpinner= false
-  showSpinner: boolean=false;
+  @Input() showSpinner: boolean=false;
   constructor(private loaderService: LoaderService, private cdRef:ChangeDetectorRef) {
     
   }
 ngOnInit(): void {
-    this.init();
+    //this.init();
 }
-
+ngOnChanges(changes: any) {
+  if (changes.showSpinner != null) {
+    this.showSpinner = changes.showSpinner.currentValue
+  }
+  
+}
   init(){
     this.loaderService.getSpinnerObservable().subscribe((status)=>{
       if(status === 'start'){

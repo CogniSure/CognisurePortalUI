@@ -1,4 +1,7 @@
 <div class="generic-table">
+  <div class="loader" *ngIf="showSpinner">
+    <app-loader [showSpinner]="showSpinner"></app-loader>
+  </div>
 <kendo-grid #generictable
   [kendoGridBinding]="gridView"
   kendoGridSelectBy="id"

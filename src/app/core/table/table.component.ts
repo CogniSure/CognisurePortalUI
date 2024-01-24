@@ -82,7 +82,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   cellExpansionState: boolean[] = [];
   selectedValue: { label: string; value: string };
   // selectedValues: { [key: string]: { label: string; value: string } } = {};
-
+  showSpinner = false;
   public dialog: MatDialog;
   public gridData: any[];
   public gridView!: any[];
@@ -137,6 +137,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 
   
   public ngOnInit(): void {
+    this.showSpinner = true;
     this.loading=true;
     this.selectableSettings = {
       checkboxOnly: true,
@@ -157,6 +158,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes!=null && changes['data']!=null ) {
+      this.showSpinner = false;
       this.data = changes['data'].currentValue;
       this.gridData = this.data;
       this.gridView = this.data;

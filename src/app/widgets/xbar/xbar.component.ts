@@ -22,6 +22,7 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
 export class XBarComponent implements OnInit, OnDestroy {
   xbarData: any;
   majorUnit: number;
+  showSpinner = false;
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -48,6 +49,7 @@ export class XBarComponent implements OnInit, OnDestroy {
   filter: DashboardFilter;
   ngOnDestroy(): void {}
   ngOnInit(): void {
+    this.showSpinner = true;
     if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
       this.input.DataSubject.subscribe((inputData:any[])=>{
         
@@ -71,6 +73,7 @@ export class XBarComponent implements OnInit, OnDestroy {
           // this.valueAxisMax = maxVal>10? maxVal+10:10//this.people.reduce((a, b)=>Math.max(a, b));;
           // console.log(inputData[0].Data)
         }
+        this.showSpinner = false;
         this.changeDetector.detectChanges();
       })
     }
