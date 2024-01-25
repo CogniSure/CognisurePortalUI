@@ -244,6 +244,10 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     { label: 'Medium', value: 'Medium' },
     { label: 'Low', value: 'Low' },
   ];
+
+  s360PendingimgPath = '../../../assets/icons/S360Report.svg';
+  convaiPendingimgPath = '../../../assets/icons/ConversationAI.svg';
+  insgihtsPending = '../../../assets/icons/Insights.svg';
   
   isCellEditable(dataItem: any, column: any): boolean {
     return true;

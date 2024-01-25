@@ -11,7 +11,7 @@
   >
   <kendo-tilelayout-item class="divider" [col]="1" [colSpan]="8" [row]="1" [rowSpan]="1">
     <kendo-tilelayout-item-body class="centered" style="height:1rem;text-align: center;background-color: #19465F!important;color: #fff!important;">
-        <div><h3 style="margin: 0;font-size:15px;">{{ accountInformation?.SubmissionId}}</h3></div>
+        <div><h3 style="margin: 0;font-size:15px;">Submission ID: {{ accountInformation?.SubmissionId}}</h3></div>
        <!-- <span class="adress_size">{{ accountInformation?.FullAddress}}</span> -->
       <!-- <ng-template #noHeaderImage> </ng-template> -->
     </kendo-tilelayout-item-body>
@@ -21,7 +21,7 @@
   <span class="vertical-line"></span>
   </kendo-tilelayout-item-body>
   </kendo-tilelayout-item>
-    <kendo-tilelayout-item class="divider" [col]="10" [colSpan]="9" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item class="divider" [col]="10" [colSpan]="10" [row]="1" [rowSpan]="1">
       <kendo-tilelayout-item-body style="height:1rem;text-align: center;background-color: #19465F!important;color: #fff!important;">
           <div><h3 style="margin: 0;font-size:15px;"><b>{{ accountInformation?.NamedinsuredFullname}}</b></h3></div>
           <div style="justify-content: center;display: flex;"><span class="adress_size">{{ accountInformation?.FullAddress}}</span></div>
@@ -29,7 +29,7 @@
         <!-- <ng-template #noHeaderImage> </ng-template> -->
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
-    <kendo-tilelayout-item class="divider" [col]="19" [colSpan]="1" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item class="divider" [col]="20" [colSpan]="1" [row]="1" [rowSpan]="1">
       <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
     <span class="vertical-line pipeline"></span>
     </kendo-tilelayout-item-body>
@@ -55,7 +55,7 @@
     <span class="pipeline">|</span>
     </kendo-tilelayout-item-body>
     </kendo-tilelayout-item> -->
-     <kendo-tilelayout-item class="divider" [col]="20" [colSpan]="4" [row]="1" [rowSpan]="1">
+     <kendo-tilelayout-item class="divider" [col]="21" [colSpan]="5" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
             <div>
                 <span class="notification_icon">
@@ -69,12 +69,12 @@
               </div>
         </kendo-tilelayout-item-body>
     </kendo-tilelayout-item> 
-    <kendo-tilelayout-item class="divider" [col]="24" [colSpan]="1" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item class="divider" [col]="26" [colSpan]="1" [row]="1" [rowSpan]="1">
       <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
     <span class="vertical-line"></span>
     </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
-    <kendo-tilelayout-item class="divider" [col]="25" [colSpan]="6" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item class="divider" [col]="27" [colSpan]="6" [row]="1" [rowSpan]="1">
         <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
             <div>
             <mat-icon>
@@ -88,7 +88,7 @@
               </div>
         </kendo-tilelayout-item-body>
     </kendo-tilelayout-item> 
-    <kendo-tilelayout-item class="divider" [col]="31" [colSpan]="1" [row]="1" [rowSpan]="1">
+    <kendo-tilelayout-item class="divider" [col]="33" [colSpan]="1" [row]="1" [rowSpan]="1">
       <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
     <span class="vertical-line"></span>
     </kendo-tilelayout-item-body>
@@ -112,26 +112,29 @@
         <span class="pipeline">|</span>
         </kendo-tilelayout-item-body>
         </kendo-tilelayout-item> -->
-      <kendo-tilelayout-item class="divider" [col]="32" [colSpan]="4" [row]="1" [rowSpan]="1">
-          <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
-        <div style="padding:8%">
-
-         <span class="risk1">{{navItems[5].pending1}}</span>&nbsp;
-         <span class="risk1">{{navItems[5].pending2}}</span>&nbsp;
-         <span class="risk1">{{navItems[5].pending3}}</span>&nbsp;
-          <br/>
-          <span>{{submissionInfo.Status}}</span>
-
-        </div>
-        </kendo-tilelayout-item-body>
-    </kendo-tilelayout-item> 
-    <kendo-tilelayout-item class="divider" [col]="36" [colSpan]="4" [row]="1" [rowSpan]="1">
+      
+    <kendo-tilelayout-item class="divider" [col]="34" [colSpan]="1" [row]="1" [rowSpan]="1">
       <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
     <!-- <span class="pipeline">|</span> -->
     </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
 
-  <kendo-tilelayout-item class="divider" [col]="40" [colSpan]="5" [row]="1" [rowSpan]="1">
+
+    <kendo-tilelayout-item class="divider" [col]="35" [colSpan]="4" [row]="1" [rowSpan]="1">
+      <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
+    <div style="padding:8%">
+
+     <span class="risk1">{{navItems[5].pending1}}</span>&nbsp;
+     <span class="risk1">{{navItems[5].pending2}}</span>&nbsp;
+     <span class="risk1">{{navItems[5].pending3}}</span>&nbsp;
+      <br/>
+      <span>{{submissionInfo.Status}}</span>
+
+    </div>
+    </kendo-tilelayout-item-body>
+</kendo-tilelayout-item> 
+
+  <kendo-tilelayout-item class="divider" [col]="39" [colSpan]="5" [row]="1" [rowSpan]="1">
       <kendo-tilelayout-item-body style="text-align: left;background-color: #19465F!important;color: #fff!important;">
           <div class="side_icons">
               <span class="profile_icon" style="padding-top: 5%;">
