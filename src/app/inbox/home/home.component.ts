@@ -8,6 +8,9 @@ import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CopilotComponent } from 'src/app/core/copilot/copilot.component';
+import { UserProfile } from 'src/app/model/profile/userprofile';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-home',
@@ -16,6 +19,7 @@ import { CopilotComponent } from 'src/app/core/copilot/copilot.component';
 })
 export class HomeComponent implements OnInit,OnDestroy {
   public formGroup: FormGroup;
+  userProfile: UserProfile;
   mySelection: string[] = [];
   public gridData: any[] = [];
   public selectedCheckboxes: number[] = [];
@@ -23,7 +27,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   selectedRowIndices: Set<number> = new Set<number>();
 // saveChanges: any;
   subscription : Subscription
-  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder, private globalService: GlobalService, private dialog: MatDialog)
+  constructor(private inboxservice:InboxService,private dashboardservice:DashboardService, private fb: FormBuilder, private globalService: GlobalService, private dialog: MatDialog, private sanitizer: DomSanitizer)
   {
     this.formGroup = this.fb.group({
       agencyname: [''],
@@ -35,6 +39,25 @@ export class HomeComponent implements OnInit,OnDestroy {
   dropdownOptions: { label: string; link: string }[] = [];
   isDataAvailble = false;
   tableData: any[]
+  defaultProfile = false;
+  clientName: any;
+  public userDetail: UserProfile = {
+    UserID: 0,
+    FirstName: '',
+    MiddleName: '',
+    LastName: '',
+    Password: '',
+    PhoneNumber: '',
+    Email: '',
+    ClientID: 0,
+    ClientName: '',
+    UserTypeName: '',
+    UserTypeID: 0,
+    ClientCode: '',
+    IsAdmin: false,
+    UserImage: '',
+  };
+  
   ngOnDestroy(): void {
       this.subscription.unsubscribe();
   }
@@ -49,6 +72,36 @@ export class HomeComponent implements OnInit,OnDestroy {
       this.newRecordCCount = this.tableData.filter(item => item.NewStatus).length;
        //this.changeDetectorRef.detectChanges();
     })
+
+    // this.globalService.getUserProfile().subscribe(
+    //   (userProfile: UserProfile) => {
+    //     this.userProfile = userProfile;
+    //   },
+    // );
+
+    // this.getUserDetail();
+
+
+    // console.log("Inbox Loaded");
+    // this.subscription = this.inboxservice.getAllSubmissionData().subscribe(result => {
+    //   this.tableData = result;
+    //   console.log("Inbox Loaded from service");
+    //   console.log(result)
+    //   this.totalRecordCCount = this.tableData.length;
+    //   this.newRecordCCount = this.tableData.filter(item => item.NewStatus).length;
+    // });
+  
+    this.globalService.getUserProfile().subscribe(
+      (userProfile: UserProfile) => {
+        this.userProfile = userProfile;
+        this.getUserDetail(); 
+      },
+    
+    );
+
+
+
+
   }
   getNewRecordCount(){
 
@@ -112,6 +165,7 @@ export class HomeComponent implements OnInit,OnDestroy {
     columnmenu:false,
     sortable: false,
     groupable: true,
+    filterable : false,
   },
   {
     field: "SubmissionID",
@@ -129,7 +183,7 @@ export class HomeComponent implements OnInit,OnDestroy {
       field: "AccountName",
       title: "Account Name",
       type: "text",
-      width:160,
+      width:120,
       columnmenu:true,
       sortable:true,
       filterable : true,
@@ -192,16 +246,16 @@ export class HomeComponent implements OnInit,OnDestroy {
       >
     `,
     },
-    {
-      field: "AssignedBy",
-      format: "{0:c}",
-      title: "Assigned To",
-      type: "text",
-      width:150,
-      columnmenu:true,
-      sortable:true,
-      filterable : true,
-    },
+    // {
+    //   field: "AssignedBy",
+    //   format: "{0:c}",
+    //   title: "Assigned To",
+    //   type: "text",
+    //   width:150,
+    //   columnmenu:true,
+    //   sortable:true,
+    //   filterable : true,
+    // },
     {
       field: 'outputs',
       title: 'Outputs',
@@ -277,6 +331,19 @@ getStatusImage(status: string): string {
 refreshPage() {
   window.location.reload();
 }
+
+
+getUserDetail() {
+  this.userDetail = this.globalService.getUserProfile();
+  if (this.userDetail.ClientName != null && this.userDetail.ClientName != '') {
+    this.defaultProfile = false;
+    console.log("User Detail:", this.userDetail);
+    this.clientName = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `data:image/png;base64, ${this.userDetail.UserImage}`
+    );
+  } else this.defaultProfile = true;
+}
+
 
 
 }

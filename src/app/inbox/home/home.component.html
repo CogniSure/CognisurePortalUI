@@ -187,12 +187,14 @@
                 <kendo-tilelayout-item-body style="text-align: left; padding: 0">
                   <div class="side_icons">
                    <span class="view_as">View as:</span>
-                      <kendo-dropdownlist [data]="dropdownOption"
+                      <!-- <kendo-dropdownlist [data]="dropdownOption"
                       [(ngModel)]="selectedValue"
                       fillmode="solid"
                       textField="label" valueField="link" style="background: white; border-radius: 8px;margin-left: 2%;
                       "
-                      > Export </kendo-dropdownlist>
+                      > Export </kendo-dropdownlist> -->
+                      <!-- {{ userDetail.ClientName }} -->
+                      {{ userDetail.ClientName }}!
                   </div>
                 </kendo-tilelayout-item-body>
               </kendo-tilelayout-item>

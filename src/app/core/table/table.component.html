@@ -140,7 +140,9 @@
       <kendo-splitbutton [data]="export">
       <img src="../../../assets/images/download-icon.jpg"  style="width: 30px;height: 30px;"   alt="Custom Icon">
         <span class="export_psdxl"></span>
+       
         <ng-template kendoSplitButtonItemTemplate let-dataItem style="width:300px;height:30%">
+          <!-- <div style="width:148%!important"> -->
           <button *ngIf="dataItem.text == 'excel'" kendoGridExcelCommand type="button" style="background-image: none;">
             <span class="export_xl"></span>
             <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:30px;height:30px;padding-left: 10%;">
@@ -149,7 +151,9 @@
             <span class="export_pdf"></span>
             <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:30px;height:30px;padding-left: 10%;">
           </button>
+          <!-- </div> -->
         </ng-template>
+    
       </kendo-splitbutton>
   
   
@@ -333,16 +337,21 @@
         </ng-template>
       </kendo-grid-column>
   
+      <kendo-grid-column-group 
+      *ngIf="column.type == 'alerts'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+      [columnMenu]="column.columnmenu"
+      [ngClass]="{'outputicon-class': true}"
+ 
+    >
       <kendo-grid-column
-        *ngIf="column.type == 'alerts'"
-        field="{{ column.field }}"
-        title="{{ column.title }}"
-        format="{{ column.format }}"
-        [filterable]="column.filterable"
-        [sortable]="column.sortable"
-        [filter]="column.type"
-        [width]="column.width"
-        [columnMenu]="column.columnmenu"
+      [width]="180"
       >
         <ng-template
           kendoGridHeaderTemplate
@@ -354,7 +363,7 @@
             <div style="text-align: center">
               {{ column.title }} 
             </div>
-            <hr class="solid">
+            <!-- <hr class="solid"> -->
             <div class="image-row">
             <div *ngFor="let data of navData" class="image-container">
               <img
@@ -391,7 +400,7 @@
           </div>
         </ng-template>
       </kendo-grid-column>
-  
+  </kendo-grid-column-group>
       <!-- <kendo-grid-column
         *ngIf="column.type == 'outputs'"
         field="{{ column.field }}"
@@ -808,7 +817,7 @@
   <!-- <kendo-grid-column-group  -->
   
   >
-    <kendo-grid-column>
+    <kendo-grid-column     [width]="80">
       <ng-template
           kendoGridHeaderTemplate
           let-column
@@ -837,7 +846,7 @@
           let-rowIndex="rowIndex"
           let-value="value"
         >
-        <div style="display: flex; width: 100%; padding: 0 0.25em 0 0.25em;">
+        <div style="display: flex; width: 100%; justify-content: center;">
           <div style="justify-content: center;">
         <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
           
@@ -886,7 +895,7 @@
   
    
     <!-- <kendo-grid-column-group > -->
-      <kendo-grid-column title="" field="subColumn1" [ngClass]="{'outputicon_clum': true}" [style]="{'border-radius':'0'}">
+      <kendo-grid-column     [width]="80" title="" field="subColumn1" [ngClass]="{'outputicon_clum': true}" [style]="{'border-radius':'0'}">
         <ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex" style="padding: 0" class="outputicon-class">
           <!-- <div style="width: 100%;">
             <div style="text-align: center">{{ column.title }}</div>
@@ -903,7 +912,7 @@
   
         </ng-template>
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
-          <div style="display: flex; width: 100%; padding: 0 0.25em 0 0.25em;">
+          <div style="display: flex; width: 100%; justify-content: center;">
             <!-- <div style="width: 28%; justify-content: center;">
           <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
             
@@ -954,7 +963,7 @@
   
   
     <!-- <kendo-grid-column-group > -->
-      <kendo-grid-column title="" field="" [ngClass]="{'outputicon_clum': true}" [style]="{'border-radius':'0'}">
+      <kendo-grid-column     [width]="80" title="" field="" [ngClass]="{'outputicon_clum': true}" [style]="{'border-radius':'0'}">
         <ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex" style="padding: 0" class="outputicon-class">
           <!-- <div style="width: 100%;">
             <div style="text-align: center">{{ column.title }}</div>
@@ -969,7 +978,7 @@
           <img class="insgihtsPending" [src]="insgihtsPending">
         </ng-template>
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
-          <div style="display: flex; width: 100%; padding: 0 0.25em 0 0.25em;">
+          <div style="display: flex; width: 100%; justify-content: center;">
             <!-- <div style="width: 28%; justify-content: center;">
           <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
             
@@ -1089,20 +1098,7 @@
     </kendo-grid-column>
   </kendo-grid-column-group> -->
    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-   
-  
+
   
   </ng-template>
     <ng-template kendoGridLoadingTemplate>

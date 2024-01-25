@@ -71,6 +71,7 @@
     background-color: #009CC1 !important;
     color: white;
     padding: 1%;
+    padding-left: 2%;
   }
   // ::ng-deep .k-grid .k-grid-header .k-table-th:last-child {
   //   border-top-right-radius: 10px;
@@ -98,7 +99,7 @@
   }
   ::ng-deep .k-icon{
     font-size: 30px;
-    width:38%;
+    width:25%;
   }
   ::ng-deep .k-checkbox{
     border-color: gray;
@@ -161,6 +162,7 @@ fill:red;
   padding: 0 0.25em;
   text-align: center;
   width: 100%;
+  padding-left: 10%;
 }
 
 ::ng-deep .generic-table .k-grid-toolbar {
@@ -343,12 +345,9 @@ fill:red;
   color: #009cc1;
 }
 
-// .outputicon-class {
-//   border: none; 
-//   border-right: 1px solid #000; 
-//   height: 25px;
-// }
-
+::ng-deep .kendo-grid-column-group {
+  width: 200px!important; 
+}
 // .outputicon-class .kendo-grid-column
 
 ::ng-deep .k-grid-header .k-header-group {
@@ -366,4 +365,8 @@ fill:red;
 
 ::ng-deep .k-column-title{
   margin-right: 16%;
+}
+
+::ng-deep .k-menu-popup{
+  width:148%;
 }
