@@ -163,9 +163,11 @@ export class HomeComponent implements OnInit,OnDestroy {
     width:120,
     type: 'alerts',
     columnmenu:false,
-    sortable: false,
-    groupable: true,
+    sortable:true,
     filterable : false,
+    groupable: false,
+
+
   },
   {
     field: "SubmissionID",

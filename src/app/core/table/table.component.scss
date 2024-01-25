@@ -71,7 +71,6 @@
     background-color: #009CC1 !important;
     color: white;
     padding: 1%;
-    padding-left: 2%;
   }
   // ::ng-deep .k-grid .k-grid-header .k-table-th:last-child {
   //   border-top-right-radius: 10px;
@@ -162,7 +161,7 @@ fill:red;
   padding: 0 0.25em;
   text-align: center;
   width: 100%;
-  padding-left: 10%;
+
 }
 
 ::ng-deep .generic-table .k-grid-toolbar {
@@ -363,10 +362,18 @@ fill:red;
   border-radius: 0!important;
 }
 
-::ng-deep .k-column-title{
-  margin-right: 16%;
-}
+// ::ng-deep .k-column-title{
+//   margin-right: 16%;
+// }
 
 ::ng-deep .k-menu-popup{
   width:148%;
+}
+
+::ng-deep .outputicon-class .k-svg-i-more-vertical{
+  display: none!important;
+}
+
+::ng-deep th[data-field='alerts'] a.k-grid-filter{
+  display: none!important;
 }
