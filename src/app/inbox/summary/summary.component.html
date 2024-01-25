@@ -47,7 +47,7 @@
           <ng-template
             *ngComponentOutlet="
               item.Widget;
-              injector: createInjector(item.WidgetName, item.WidgetType)
+              injector: item.CustomInjector
             "
           ></ng-template>
         </kendo-tilelayout-item-body>
@@ -88,52 +88,12 @@
         <ng-template
           *ngComponentOutlet="
             item.Widget;
-            injector: createInjector(item.WidgetName, item.WidgetType, item.Header)
+            injector: item.CustomInjector
           "
         ></ng-template>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
   </kendo-tilelayout>
   </div>
-  <!-- <div style="margin-top: 1%;">
-    <div style="width: 99%;
-    height: 2rem;
-    margin: 0.5%;
-    border-radius: 5px;background: #97EAE6;text-align: start;">
-    <span><h3 style="margin: 0; padding: 0.1% 0 0 1%;">Property</h3></span>
-    </div>
-    <kendo-tilelayout
-      [columns]="3"
-      [resizable]="true"
-      [reorderable]="true"
-      class="home-body"
-      [rowHeight]="255"
-      [style]="
-        'padding: 0 0.5% 0 0.5% !important; height: 100%; overflow:auto;'
-      "
-    >
-      <kendo-tilelayout-item
-        *ngFor="let item of lobComponents"
-        [col]="item.ColumnId"
-        [colSpan]="item.ColumnSpan"
-        [rowSpan]="item.RowSpan"
-        style="
-          border: 2px !important;
-          border-radius: 10 !important;
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
-            0 4px 12px 0 rgba(0, 0, 0, 0.1);
-            border-radius: 6px!important;
-        "
-      >
-        <kendo-tilelayout-item-body style="padding: 0;border-radius: 6px!important;">
-          <ng-template
-            *ngComponentOutlet="
-              item.Widget;
-              injector: createInjector(item.WidgetName, item.WidgetType)
-            "
-          ></ng-template>
-        </kendo-tilelayout-item-body>
-      </kendo-tilelayout-item>
-    </kendo-tilelayout>
-  </div> -->
+  
 </div>

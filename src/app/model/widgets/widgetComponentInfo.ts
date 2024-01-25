@@ -10,5 +10,6 @@ export interface WidgetComponentInfo {
     ColumnSpan : number,
     RowSpan : number,
     HeaderColor: any,
-    FontColor: any
+    FontColor: any,
+    CustomInjector:any
 }

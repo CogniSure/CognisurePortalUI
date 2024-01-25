@@ -110,6 +110,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
+        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
       });
       i++;
     });
@@ -372,6 +373,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
+        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
       });
       i++;
     });
@@ -393,6 +395,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
+        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
       });
       i++;
     });

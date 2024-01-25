@@ -40,6 +40,7 @@ export class TotalLossesComponent implements OnInit {
     id: 3, name: 'Italy' 
   },
   ];
+  widgetData : any[] = [];
   selectedCountry: any = this.countries[0].id;
   constructor(
     @Inject(InjectToken) private input: WidgetInput,
@@ -53,7 +54,9 @@ export class TotalLossesComponent implements OnInit {
       this.input.DataSubject.subscribe((inputData:any[])=>{
           
         if(inputData!=null && inputData.length>0){
-
+          this.widgetData = inputData;
+          this.years = [];
+          this.years = this.widgetData.map(x=>x.Year);
           let maxIncurred = inputData.reduce((a, {GrossIncurred})=>Number(GrossIncurred) > a ? Number(GrossIncurred) : a , -1);
           let maxClaims = inputData.reduce((a, {TotalNoOfClaims})=>Number(TotalNoOfClaims) > a ? Number(TotalNoOfClaims) : a , -1);
           let maxOpenClaims = inputData.reduce((a, {TotalNoOfOpenClaims})=>Number(TotalNoOfOpenClaims) > a ? Number(TotalNoOfOpenClaims) : a , -1);
@@ -82,15 +85,15 @@ export class TotalLossesComponent implements OnInit {
   onDropdownChange(value: any) {
     console.log("Year Dropdown")
     console.log(value)
-    this.selectedYears = value;
-    if (this.selectedYears === 1) {
-      this.totallosses = '$50,000';
-    } else if (this.selectedYears === 2) {
-      this.totallosses = '$60,000';
-    } else if (this.selectedYears === 3) {
-      this.totallosses = '$70,000';
-    } else if (this.selectedYears === 4) {
-      this.totallosses = '$80,000';
-    }
+    // this.selectedYears = value;
+    // if (this.selectedYears === 1) {
+    //   this.totallosses = '$50,000';
+    // } else if (this.selectedYears === 2) {
+    //   this.totallosses = '$60,000';
+    // } else if (this.selectedYears === 3) {
+    //   this.totallosses = '$70,000';
+    // } else if (this.selectedYears === 4) {
+    //   this.totallosses = '$80,000';
+    // }
   }
 }

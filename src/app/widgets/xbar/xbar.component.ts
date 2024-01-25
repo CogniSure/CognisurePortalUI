@@ -42,6 +42,20 @@ export class XBarComponent implements OnInit, OnDestroy {
     max : 1000,
     min : 0
   }
+  public seriesLabels: SeriesLabels = {
+    visible: true, // Note that visible defaults to false
+    font: "bold 12px Arial, sans-serif",
+    background:"transparent",
+    position :"center",
+    color:"white"
+
+  };
+
+  public valueAxisLabels: ValueAxisLabels = {
+    font: "12px Arial, sans-serif",
+  };
+  public seriesBorder:Border={
+  }
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
@@ -53,6 +67,10 @@ export class XBarComponent implements OnInit, OnDestroy {
     if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
       this.input.DataSubject.subscribe((inputData:any[])=>{
         
+        if(this.input.Settings!=null && this.input.Settings.ShowLabels!=null)
+        {
+          this.seriesLabels.visible = this.input.Settings.ShowLabels;
+        }
         if(inputData!=null && inputData.length>0){
           
           this.chartData = inputData[0];
@@ -89,21 +107,5 @@ export class XBarComponent implements OnInit, OnDestroy {
       .then((dataURI) => {
         saveAs(dataURI, 'chart-large.png');
       });
-  }
-  public seriesLabels: SeriesLabels = {
-    visible: true, // Note that visible defaults to false
-    font: "bold 12px Arial, sans-serif",
-    background:"transparent",
-    position :"center",
-    color:"white"
-
-  };
-
-  public valueAxisLabels: ValueAxisLabels = {
-    //font: "bold 16px Arial, sans-serif",
-    font: "12px Arial, sans-serif",
-  };
-  public seriesBorder:Border={
-    //color:'red'
   }
 }

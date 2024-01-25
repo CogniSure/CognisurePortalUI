@@ -53,6 +53,7 @@ implements OnInit, AfterViewInit, OnDestroy
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
+        CustomInjector :  this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
       });
       i++;
     });
@@ -65,7 +66,7 @@ implements OnInit, AfterViewInit, OnDestroy
         WidgetType: widgetType,
         WidgetHeader : widgetHeader,
         Settings : {
-         
+          "ShowLabels" : false,
         },
         Keys : [],//this.cacheService.getExposureSummary(widgetName),
         DataSubject : this.cacheService.getLossSummary(widgetName)
