@@ -83,7 +83,10 @@ export class InboxService {
             ExtractionComplete: res['extractionComplete']!=""?res['extractionComplete']:0,
             Completeness: res['completeness']!=""?res['completeness']:false,
             RiskClearance: res['riskClearance']!=""?res['riskClearance']:false,
-            Outputs : "NA"
+            Outputs : "NA",
+            AddedOnDate: this.getFormattedDate(res['addedOn']),
+            TotalNoOfAttachment: res['totalNoOfAttachment']!=""?res['totalNoOfAttachment']:"NA",
+            TotalNoOfValidAttachment: res['totalNoOfValidAttachment']!=""?res['totalNoOfValidAttachment']:"NA",
           };
           submissions.push(sub);
         });
