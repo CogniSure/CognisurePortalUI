@@ -23,6 +23,8 @@ import { SessionExpirationAlert } from '../session-expiration-alert/session-expi
 import { ExposureSummaryComponent } from './exposure-summary/exposure-summary.component';
 import { LossSummaryComponent } from './loss-summary/loss-summary.component';
 import { CopilotComponent } from '../core/copilot/copilot.component';
+import { RiskClearanceComponent } from './risk-clearance/risk-clearance.component';
+import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
 
 
 
@@ -43,7 +45,9 @@ import { CopilotComponent } from '../core/copilot/copilot.component';
     CoverageRequestedComponent,
     PriorCarrierInformationComponent,
     ExposureSummaryComponent,
-    LossSummaryComponent
+    LossSummaryComponent,
+    RiskClearanceComponent,
+    RiskInsightsComponent
   ],
   imports: [
     CommonModule,

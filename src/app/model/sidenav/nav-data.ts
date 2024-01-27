@@ -9,16 +9,16 @@ export const navbarData = [
         icon: 'fal fa-envelope',
         label: 'Inbox'
     },
-    {
-        routeLink: '/admin',
-        icon: 'fal fa-gears',
-        label: 'Admin'
-    },
-    {
-        routeLink: '/volumetrics',
-        icon: 'fal fa-chart-line',
-        label: 'Volumetrics'
-    }
+    // {
+    //     routeLink: '/admin',
+    //     icon: 'fal fa-gears',
+    //     label: 'Admin'
+    // },
+    // {
+    //     routeLink: '/volumetrics',
+    //     icon: 'fal fa-chart-line',
+    //     label: 'Volumetrics'
+    // }
 ];
 
 

@@ -11,6 +11,8 @@ import { AccountAssesmentComponent } from './account-assesment/account-assesment
 import { ExposerAnalysisComponent } from './exposer-analysis/exposer-analysis.component';
 import { LossAnalysisComponent } from './loss-analysis/loss-analysis.component';
 import { DocumentVaultComponent } from './document-vault/document-vault.component';
+import { RiskClearanceComponent } from './risk-clearance/risk-clearance.component';
+import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
 
 const routes:Routes = [
   {
@@ -44,6 +46,14 @@ const routes:Routes = [
           {
             path: 'documentvault',  
             component: DocumentVaultComponent,
+          },
+          {
+            path: 'riskclearance',  
+            component: RiskClearanceComponent,
+          },
+          {
+            path: 'riskinsights',  
+            component: RiskInsightsComponent,
           },
         ]
     },
