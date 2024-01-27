@@ -797,4 +797,125 @@ export class ColumnSample {
             filterable : true,
           }
       ];
+    public static InboxColumns: any =[
+        // {
+        //   field: "Id",
+        //   title: "",
+        //   width:40,
+        //   type: "checkbox",
+        //   columnmenu:false,
+        //   filterable : false,
+        //   sortable:false
+        // },
+        {
+          field: 'alerts',
+          title: 'Alerts',
+          width:120,
+          type: 'alerts',
+          columnmenu:false,
+          sortable:true,
+          filterable : false,
+          groupable: false,
+      
+      
+        },
+        {
+          field: "SubmissionID",
+          format: "{0:c}",
+          title: "Submission ID",
+          width:150,
+          type: "SubmissionId",
+          redirectUrl:"/inbox/detail/summary",
+          sortable:true,
+          columnmenu:false,
+          filterable : false,
+          IsNew:"NewStatus"
+        },
+        {
+            field: "AccountName",
+            title: "Account Name",
+            type: "text",
+            width:120,
+            columnmenu:true,
+            sortable:true,
+            filterable : true,
+          },
+          {
+            field: "EffectiveDate",
+            // format: "{yyyy-MM-dd}",
+            title: "Effective Date",
+            width:150,
+            type: "text",
+            columnmenu:true,
+            sortable:true,
+            filterable : true,
+          },
+          {
+            field: "LOB",
+            format: "{0:c}",
+            title: "LOB",
+            type: "LOB",
+            width:120,
+            columnmenu:true,
+            sortable:true,
+            filterable : true,
+          },
+          {
+            field: "Priority",
+            format: "{0:c}",
+            title: "Priority",
+            width:130,
+            type: "priority",
+            columnmenu:true,
+            sortable:true,
+            filterable : true,
+            dropdownValue: 'High',
+          },
+          {
+            field: "QualityScore",
+            format: "{0:c}",
+            title: "Winability Score%",
+            width:140,
+            type: "text",
+            columnmenu:true,
+            sortable:true,
+            filterable : true,
+          },
+          {
+            field: "Status",
+            format: "{0:c}",
+            title: "Status",
+            type: "text",
+            width:110,
+            columnmenu:true,
+            sortable:true,
+            filterable : true,
+            template: `
+            <img 
+              class="status-image" 
+              [src]="getStatusImage(dataItem.Status)" 
+              alt="Status Image"
+            >
+          `,
+          },
+          // {
+          //   field: "AssignedBy",
+          //   format: "{0:c}",
+          //   title: "Assigned To",
+          //   type: "text",
+          //   width:150,
+          //   columnmenu:true,
+          //   sortable:true,
+          //   filterable : true,
+          // },
+          {
+            field: 'outputs',
+            title: 'Outputs',
+            width:120,
+            type: 'outputs',
+            columnmenu:false,
+            sortable: false,
+            groupable: true,
+          }
+      ];
 }
