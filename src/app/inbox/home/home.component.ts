@@ -58,12 +58,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       .getAllSubmissionData()
       .subscribe((result) => {
         this.tableData = result;
-        
-        this.totalRecordCCount = this.tableData.length;
-        this.newRecordCCount = this.tableData.filter(
-          (item) => item.NewStatus
-        ).length;
-        //this.changeDetectorRef.detectChanges();
+
+        this.getRecordCount();
       });
      
       this.userProfile = this.globalService.getUserProfile();
@@ -74,11 +70,41 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.defaultProfile = userDDL;
       this.userList.push(userDDL)
   }
-  getNewRecordCount() {}
-  getTotalRecordCount() {}
+
   newRecordCCount = 0;
   totalRecordCCount = 0;
-  // {name:'plusIcon', content:"",viewBox:""}
+  getRecordCount(){
+
+    console.log("TableData")
+    console.log(this.tableData)
+    this.actionItems.forEach((action:any) => {
+      
+      if(action.type == 'allstatus'){
+        action.content = this.tableData.length
+      }
+      else if(action.type == 'newstatus'){
+        action.content = this.tableData.filter(
+          (item) => item.Status.toLowerCase()=="new" 
+        ).length;
+      }
+      else if(action.type == 'inqueuestatus'){
+        action.content = this.tableData.filter(
+          (item) => item.Status.toLowerCase()=="in queue" 
+        ).length;
+      }
+      else if(action.type == 'inprogressstatus'){
+        action.content = this.tableData.filter(
+          (item) => item.Status.toLowerCase()=="in progress" 
+        ).length;
+      }
+      else if(action.type == 'completedstatus'){
+        action.content = this.tableData.filter(
+          (item) => item.Status.toLowerCase()=="completed" 
+        ).length;
+      }
+    });
+    
+  }
   actionItems = [
     { title: 'Create Submisson', type:"createsubmission", content: '', icon : 'add_box', buttonClass : "buttonClassBlue" },
     { title: '', type:"createsubmission", content: '', icon: 'refresh', buttonClass : "buttonClassWhite"},
