@@ -32,7 +32,10 @@
         <span class="search-icon">&#128269;</span>
       </kendo-textbox>
       <kendo-grid-spacer></kendo-grid-spacer>
-      <kendo-dropdownbutton [data]="exportButtons" style="width: 10em">
+      <kendo-dropdownbutton 
+      [data]="exportButtons" 
+      (itemClick)="exportItemClick($event, generictable)"
+      style="width: 10em">
         <img
           src="../../../assets/images/download-icon.jpg"
           style="width: 30px; height: 30px"
@@ -43,7 +46,7 @@
             <div>
               <span>{{ dataItem.actionName }}</span>
             </div>
-            <div style="padding-left: 5%;">
+            <div style="padding-left: 5%">
               <img
                 [src]="dataItem.icon"
                 style="width: 1em; height: 1em"

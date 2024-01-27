@@ -331,6 +331,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   }
   public exportButtons = [
     {
+      id: 1,
       actionName: "Export as Excel",
       icon : "../../../assets/images/XL.svg",
       click : (dataItem: any): void => {
@@ -338,6 +339,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       },
     },
     {
+      id: 2,
       actionName : "Export as PDF",
       icon : "../../../assets/images/PDF.svg",
       click : (dataItem: any): void => {
@@ -345,4 +347,12 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       },
     }
   ];
+
+  public exportItemClick(e:any, grid: any) {
+    if(e.id === 1) {
+      grid.saveAsExcel();
+    } else if(e.id === 2) {
+      grid.saveAsPDF();
+    }
+  }
 }
