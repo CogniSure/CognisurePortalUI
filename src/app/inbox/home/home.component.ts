@@ -48,7 +48,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   isDataAvailble = false;
   tableData: any[];
   clientName: any;
-  
+  submissionData : any[] = [];
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .getAllSubmissionData()
       .subscribe((result) => {
         this.tableData = result;
-
+        this.submissionData = result;
         this.getRecordCount();
       });
      
@@ -77,25 +78,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.actionItems.forEach((action:any) => {
       
       if(action.type == 'allstatus'){
-        action.content = this.tableData.length
+        action.content = this.submissionData.length
       }
       else if(action.type == 'newstatus'){
-        action.content = this.tableData.filter(
+        action.content = this.submissionData.filter(
           (item) => item.Status.toLowerCase()=="new" 
         ).length;
       }
       else if(action.type == 'inqueuestatus'){
-        action.content = this.tableData.filter(
+        action.content = this.submissionData.filter(
           (item) => item.Status.toLowerCase()=="in queue" 
         ).length;
       }
       else if(action.type == 'inprogressstatus'){
-        action.content = this.tableData.filter(
+        action.content = this.submissionData.filter(
           (item) => item.Status.toLowerCase()=="in progress" 
         ).length;
       }
       else if(action.type == 'completedstatus'){
-        action.content = this.tableData.filter(
+        action.content = this.submissionData.filter(
           (item) => item.Status.toLowerCase()=="completed" 
         ).length;
       }
@@ -200,5 +201,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     let tableData = this.tableData;
     console.log(type);
     console.log(this.tableData)
+
+    if(type == 'allstatus'){
+      this.tableData = this.submissionData
+    }
+    else if(type == 'newstatus'){
+      this.tableData = this.submissionData.filter(
+        (item) => item.Status.toLowerCase()=="new" 
+      );
+    }
+    else if(type == 'inqueuestatus'){
+      this.tableData = this.submissionData.filter(
+        (item) => item.Status.toLowerCase()=="in queue" 
+      );
+    }
+    else if(type == 'inprogressstatus'){
+      this.tableData = this.submissionData.filter(
+        (item) => item.Status.toLowerCase()=="in progress" 
+      );
+    }
+    else if(type == 'completedstatus'){
+      this.tableData = this.submissionData.filter(
+        (item) => item.Status.toLowerCase()=="completed" 
+      );
+    }
   }
 }
