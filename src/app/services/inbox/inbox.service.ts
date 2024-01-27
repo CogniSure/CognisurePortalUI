@@ -95,6 +95,7 @@ export class InboxService {
             ExtractionComplete: res['extractionComplete']!=""?res['extractionComplete']:false,
             Completeness: res['completeness']!=""?res['completeness']:false,
             RiskClearance: res['riskClearance']!=""?res['riskClearance']:false,
+            Outputs : "NA"
           };
           submissions.push(sub);
         });

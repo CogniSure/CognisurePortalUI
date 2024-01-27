@@ -909,10 +909,10 @@ export class ColumnSample {
           //   filterable : true,
           // },
           {
-            field: 'outputs',
+            field: 'Outputs',
             title: 'Outputs',
-            width:120,
-            type: 'outputs',
+            width:60,
+            type: 'Outputs',
             columnmenu:false,
             sortable: false,
             groupable: true,

@@ -33,12 +33,6 @@
         <div class="header-icons" style="display: flex">
           <div style="width: 40%"></div>
           <div class="kendoimg" style="width: 20%">
-            <!-- <span class="copied_icontop">
-              <img
-                [src]="genericService.topbarIconURL"
-                class="imgHeight copied_icon1"
-              />
-            </span> -->
             <kendo-button class="copied_icontop" style="background: transparent;
             border: none;
             height: 100%;
@@ -61,18 +55,6 @@
               <span class="badge">{{ genericService.notificationCount }}</span>
             </span>
           </div>
-          <!-- <div class="profileimg" style="width: 17%">
-            <span class="profile_icon">
-              <img
-                [src]="genericService.profileImageURL"
-                class="imgHeight rounded-circle"
-              />
-            </span>
-          </div>
-          <div class="imgcontent" style="width: 25%; padding-top: 2%; text-align: left;">
-            <span class="profile_content">Evelyn Salt </span>
-            <span class="position">Underwriter</span>
-          </div> -->
           <div style="width: 20%; justify-content: center; display: inline-flex;">
             <span class="profile_dropdown" style="    height: 100%;
             display: flex;">
@@ -86,12 +68,7 @@
                 <mat-icon class="custom-icon"
                   >
                     <span class="profile_img icon-span">
-                     <!-- <img *ngIf="defaultProfile"
-                    [src]="genericService.profileImageURL"
-                    class="imgHeight rounded-circle"
-                    style="width:74%;height: auto;right:10%;margin-right: 6%;"
-                  />  -->
-
+                    
                   <img *ngIf="!defaultProfile" [src]="imageSource" [width]="size" [height]="size"
                   class="hy-profile-image" />
             
@@ -130,9 +107,6 @@
             </div>
             </span>
           </div>
-          <!-- <div style="width: 10%">
-            
-          </div> -->
         </div>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>

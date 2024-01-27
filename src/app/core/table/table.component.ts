@@ -97,13 +97,13 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 
   @ViewChild("generictable") dataBinding: DataBindingDirective;
   @Input() data: any[];
-  @Input() columns: any;
+  @Input() columns: any[] = [];
   @Input() height: number = 42;
   dataLoaded: any;
   newValue: string;
   tableData: any;
 
-  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder, private inboxService:InboxService) {
+  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder) {
     this.loading=true
 
     this.formGroup = this.fb.group({

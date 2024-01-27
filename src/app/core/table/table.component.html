@@ -2,7 +2,8 @@
   <div class="loader" *ngIf="showSpinner">
     <app-loader [showSpinner]="showSpinner"></app-loader>
   </div>
-  <kendo-grid #generictable
+  <kendo-grid
+    #generictable
     [kendoGridBinding]="gridView"
     kendoGridSelectBy="id"
     [(selectedKeys)]="mySelection"
@@ -12,7 +13,7 @@
     [groupable]="true"
     [reorderable]="true"
     [resizable]="true"
-    allowScrolling = "true"
+    allowScrolling="true"
     scrollable="scrollable"
     [columnMenu]="{ filter: true }"
     [style.maxHeight.em]="height"
@@ -27,200 +28,55 @@
         [style.border.px]="2"
         placeholder="Search in all columns..."
         (valueChange)="onFilter($event)"
-      >  <span class="search-icon">&#128269;</span> </kendo-textbox>
+      >
+        <span class="search-icon">&#128269;</span>
+      </kendo-textbox>
       <kendo-grid-spacer></kendo-grid-spacer>
-      <!-- <span class="export_dropdown">Export</span> -->
-      <!-- <kendo-dropdownlist [data]="dropdownOption"
-      [(ngModel)]="selectedValue"
-      fillmode="solid"
-      textField="label" 
-      valueField="link" 
-     style="background: white; border-radius: 8px;margin-left: 2%;
-      "
-      >
-      <ng-template kendoDropDownListItemTemplate #selectedItemTemplate let-dataItem>
-        <kendo-icon [name]="dataItem.icon" style="margin-right: 5px;"></kendo-icon>
-        {{ dataItem.label }}
-      </ng-template>
-    </kendo-dropdownlist> -->
-  
-  
-    <!-- <kendo-dropdowntree
-                kendoDropDownTreeExpandable
-                [kendoDropDownTreeHierarchyBinding]="treeItems"
-                textField="text"
-                valueField="id"
-                childrenField="items"
-                [value]="complexValue"
-                [popupSettings]="{
-                  width: 'fit-content'
-                }"
-                [expandedKeys]="['0']"
-              ></kendo-dropdowntree> -->
-  
-  
-          
-              <!-- <select>
-                <option value="" selected disabled hidden> <img src="../../../assets/images/download-icon.jpg"></option>
-                <option value="1">
-   <button kendoGridExcelCommand type="button" style="background-image: none;">
-        <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;">
-      </button>
-                </option>
-                <option value="2"> 
-                <button kendoGridPDFCommand style="background-image: none;">
-                  <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
-                </button></option>
-              </select> -->
-  <!-- 
-              <span><img src="../../../assets/images/download-icon.jpg"></span> -->
-  
-              <!-- <div class="dropdown">
-                
-                <button class="dropdown-button"></button>
-                <div class="dropdown-content">
-                    <div>
-                      <button kendoGridExcelCommand type="button" style="background-image: none;">
-                        <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;">
-                      </button>
-                    </div>
-                    <div>
-                      <button kendoGridPDFCommand style="background-image: none;">
-                        <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
-                      </button>
-                    </div>
-                </div>
-            </div> -->
-  
-  
-  
-          <!-- <div class="">
-            <kendo-dropdownlist
-            [data]="dropdownOption"
-            [(ngModel)]="selectedValue"
-            textField="label"
-            valueField="value"
-            style="background: white; border-radius: 8px; margin-left: 0.5%;"
-          >
-            Export
-          </kendo-dropdownlist>
-          
-          <ng-template #itemTemplate let-dataItem>
-            <div style="display: flex; align-items: center;">
-              <img [src]="dataItem.imageUrl" alt="Image" style="width: 20px; height: 20px; margin-right: 8px;">
-              <span>{{ dataItem.label }}</span>
-              <span style="margin-left: 8px;">({{ dataItem.value }})</span>
-            </div>
-          </ng-template>
-  </div> -->
-  
-            
-  
-  <!-- <button kendoGridExcelCommand type="button" style="background-image: none;">
-    <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;">
-  </button>
-            <button kendoGridPDFCommand style="background-image: none;">
-              <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;">
-            </button> -->
-  
-  
-  
-  <!-- 
-            <kendo-splitbutton
-        [data]="shareData"
-        [arrowButtonSvgIcon]="svgArrow"
-       
-      >
-      Export
-  
-      </kendo-splitbutton> -->
-  
-  
-  
+
       <kendo-splitbutton [data]="export">
-      <img src="../../../assets/images/download-icon.jpg"  style="width: 30px;height: 30px;"   alt="Custom Icon">
+        <img
+          src="../../../assets/images/download-icon.jpg"
+          style="width: 30px; height: 30px"
+          alt="Custom Icon"
+        />
         <span class="export_psdxl"></span>
-       
-        <ng-template kendoSplitButtonItemTemplate let-dataItem style="width:300px;height:30%">
+
+        <ng-template
+          kendoSplitButtonItemTemplate
+          let-dataItem
+          style="width: 300px; height: 30%"
+        >
           <!-- <div style="width:148%!important"> -->
-          <button *ngIf="dataItem.text == 'excel'" kendoGridExcelCommand type="button" style="background-image: none;">
+          <button
+            *ngIf="dataItem.text == 'excel'"
+            kendoGridExcelCommand
+            type="button"
+            style="background-image: none"
+          >
             <span class="export_xl"></span>
-            <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:30px;height:30px;padding-left: 10%;">
+            <img
+              class="excel_icon"
+              src="../../../assets/images/XL.svg"
+              style="width: 30px; height: 30px; padding-left: 10%"
+            />
           </button>
-          <button *ngIf="dataItem.text == 'pdf'" kendoGridPDFCommand style="background-image: none;">
+          <button
+            *ngIf="dataItem.text == 'pdf'"
+            kendoGridPDFCommand
+            style="background-image: none"
+          >
             <span class="export_pdf"></span>
-            <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:30px;height:30px;padding-left: 10%;">
+            <img
+              class="pdf_icon"
+              src="../../../assets/images/PDF.svg"
+              style="width: 30px; height: 30px; padding-left: 10%"
+            />
           </button>
           <!-- </div> -->
         </ng-template>
-    
       </kendo-splitbutton>
-  
-  
-  
-      <!-- <kendo-splitbutton [data]="exdata">
-        Save
-        <ng-template kendoSplitButtonItemTemplate let-dataItem>
-          <em>{{ dataItem.text }}</em>
-        </ng-template>
-        <ng-template kendoSplitButtonItemTemplate let-dataItem>
-          <em>{{dataItem.imageUrl }}</em>
-        </ng-template>
-  
-      </kendo-splitbutton> -->
-  
-  
-      <!-- <kendo-splitbutton>
-        <ng-container *ngFor="let item of shareData1">
-          <kendo-button 
-            *ngIf="!item.isDisabled"
-            (click)="onButtonClick(item.text)"
-          >
-            <span [class]="item.iconClass"></span>
-            {{ item.text }}
-          </kendo-button>
-          <kendo-button
-            *ngIf="item.isDisabled"
-            [disabled]="true"
-          >
-            <span [class]="item.iconClass"></span>
-            {{ item.text }}
-          </kendo-button>
-        </ng-container>
-      </kendo-splitbutton> -->
-  
-  
-      <!-- <kendo-splitbutton [arrowButtonSvgIcon]="svgArrow" [data]="shareData">
-          <button *ngIf="!item.isDisabled" (click)="onButtonClick(item.text)">
-            <img [src]="item.imageUrl" alt="{{ item.text }}" />
-            {{ item.text }}
-          </button>
-          <button *ngIf="item.isDisabled" disabled>
-            <img [src]="item.imageUrl" alt="{{ item.text }}" />
-            {{ item.text }}
-          </button>
-      </kendo-splitbutton> -->
-  
-  
-  
-  
-  
-  
-  
-  
-            
-      <!-- <button kendoGridExcelCommand type="button" style="background-image: none;">
-        <img class="excel_icon" src="../../../assets/images/XL.svg" style="width:2rem;height:2rem;"> -->
-      
-  
-        <!-- <kendo-svg-icon [icon]="excelSVG" size="xxlarge"><img src="../../../assets/images/XL.svg"></kendo-svg-icon> -->
-      <!-- </button> -->
-      <!-- <button kendoGridPDFCommand style="background-image: none;">
-        <img class="pdf_icon" src="../../../assets/images/PDF.svg" style="width:2rem;height:2rem;"> -->
-        <!-- <kendo-svg-icon [icon]="pdfSVG" size="xxlarge" style="color: red;"><img src="../../../assets/images/PDF.svg"></kendo-svg-icon> -->
-      <!-- </button> -->
     </ng-template>
-  
+
     <ng-template ngFor [ngForOf]="columns" let-column>
       <kendo-grid-column
         *ngIf="column.type == 'text'"
@@ -240,21 +96,13 @@
           let-rowIndex="rowIndex"
           let-value="value"
         >
-  
-        <!-- <div
-        [class.fixed-height-cell]="!dataItem.isExpanded"
-        [class.expanded-cell]="dataItem.isExpanded"
-        (click)="toggleCellExpansion(dataItem)"
-      >
-        {{ dataItem[column.field] }}
-      </div> -->
-      <div
-        [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
-        [class.expanded-cell]="cellExpansionState[rowIndex]"
-        (click)="toggleCellExpansion(dataItem)"
-      >
-        {{ dataItem[column.field] }}
-      </div>
+          <div
+            [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
+            [class.expanded-cell]="cellExpansionState[rowIndex]"
+            (click)="toggleCellExpansion(dataItem)"
+          >
+            {{ dataItem[column.field] }}
+          </div>
         </ng-template>
       </kendo-grid-column>
       <kendo-grid-column
@@ -295,12 +143,12 @@
           let-column
           let-columnIndex="columnIndex"
         >
-          <input type="checkbox" 
-          kendoCheckBox 
-          [checked]="selectedCheckbox === columnIndex"
-          (change)="onCheckboxChange(columnIndex)"
-           />
-        
+          <input
+            type="checkbox"
+            kendoCheckBox
+            [checked]="selectedCheckbox === columnIndex"
+            (change)="onCheckboxChange(columnIndex)"
+          />
         </ng-template>
         <ng-template
           kendoGridCellTemplate
@@ -308,11 +156,11 @@
           let-rowIndex="rowIndex"
           let-value="value"
         >
-        
-          <input type="checkbox" 
-          kendoCheckBox 
-          [checked]="isSelected(dataItem)" 
-          (change)="onCheckBoxChange($event, dataItem)"
+          <input
+            type="checkbox"
+            kendoCheckBox
+            [checked]="isSelected(dataItem)"
+            (change)="onCheckBoxChange($event, dataItem)"
           />
         </ng-template>
       </kendo-grid-column>
@@ -336,79 +184,9 @@
           <span class="k-icon k-i-import"></span>
         </ng-template>
       </kendo-grid-column>
-  
-      <kendo-grid-column-group 
-      *ngIf="column.type == 'alerts'"
-      field="{{ column.field }}"
-      title="{{ column.title }}"
-      format="{{ column.format }}"
-      [filterable]="column.filterable"
-      [sortable]="column.sortable"
-      [filter]="column.type"
-      [width]="column.width"
-      [columnMenu]="column.columnmenu"
-      [ngClass]="{'outputicon-class': true}"
- 
-    >
-      <kendo-grid-column
-      format="{{ column.format }}"
-      [filterable]="column.filterable"
-      [sortable]="column.sortable"
-      [filter]="column.type"
-      [width]="column.width"
-      [columnMenu]="column.columnmenu"
-      [width]="160"
-      >
-        <ng-template
-          kendoGridHeaderTemplate
-          let-column
-          let-columnIndex="columnIndex"
-        >
-  
-          <div >
-            <div style="text-align: center">
-              {{ column.title }} 
-            </div>
-            <!-- <hr class="solid"> -->
-            <div class="image-row">
-            <div *ngFor="let data of navData" class="image-container">
-              <img
-              [src]="data.imagePath" 
-                style="padding: 0 0.25em 0 0.25em;"
-                matTooltip={{data.label}}
-              />
-  
-              <!-- <img
-                src="../../../assets/images/Completeness Check.svg"
-                style="padding: 0 0.25em 0 0.25em;"
-              />
-              <img
-                src="../../../assets/images/Risk Clearance.svg"
-                style="padding: 0 0.25em 0 0.25em;"
-              /> -->
-            </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template
-          kendoGridCellTemplate
-          let-dataItem
-          let-rowIndex="rowIndex"
-          let-value="value"
-        >
-          <div style="display: flex; justify-content: center;">
-            
-            <span *ngIf="dataItem.ExtractionComplete" class="k-icon k-i-circle" style="color:#6DC942;"></span>
-            <span *ngIf="!dataItem.ExtractionComplete" class="k-icon k-i-circle" style="color:#80808059;"></span>
-            
-            <span class="k-icon k-i-circle" style="color:#80808059;"></span>
-            <span class="k-icon k-i-circle" style="color:#80808059;"></span>
-          </div>
-        </ng-template>
-      </kendo-grid-column>
-  </kendo-grid-column-group>
-      <!-- <kendo-grid-column
-        *ngIf="column.type == 'outputs'"
+
+      <kendo-grid-column-group
+        *ngIf="column.type == 'alerts'"
         field="{{ column.field }}"
         title="{{ column.title }}"
         format="{{ column.format }}"
@@ -417,184 +195,147 @@
         [filter]="column.type"
         [width]="column.width"
         [columnMenu]="column.columnmenu"
-        [ngClass]="{'outputicon-class': true}"
+        [ngClass]="{ 'outputicon-class': true }"
       >
-        <ng-template
-          kendoGridHeaderTemplate
-          let-column
-          let-columnIndex="columnIndex"
-          style="padding:0"
-          class="outputicon-class"
+        <kendo-grid-column
+          format="{{ column.format }}"
+          [filterable]="column.filterable"
+          [sortable]="column.sortable"
+          [filter]="column.type"
+          [width]="column.width"
+          [columnMenu]="column.columnmenu"
+          [width]="160"
         >
-            <div style="width: 100%;">
+          <ng-template
+            kendoGridHeaderTemplate
+            let-column
+            let-columnIndex="columnIndex"
+          >
+            <div>
               <div style="text-align: center">
-                {{ column.title }} 
+                {{ column.title }}
               </div>
-              <hr class="solid">
-              <div class="image-row" style="width: 100%;">
-              <div *ngFor="let data of outputIcons" class="image-container outputicon-class">
-                <img
-                [src]="data.imagePath" 
-                  matTooltip={{data.label}}
-                />
+              <!-- <hr class="solid"> -->
+              <div class="image-row">
+                <div *ngFor="let data of navData" class="image-container">
+                  <img
+                    [src]="data.imagePath"
+                    style="padding: 0 0.25em 0 0.25em"
+                    matTooltip="{{ data.label }}"
+                  />
+                </div>
               </div>
-              </div>
-            </div>   
-        </ng-template>
+            </div>
+          </ng-template>
+          <ng-template
+            kendoGridCellTemplate
+            let-dataItem
+            let-rowIndex="rowIndex"
+            let-value="value"
+          >
+            <div style="display: flex; justify-content: center">
+              <span
+                *ngIf="dataItem.ExtractionComplete"
+                class="k-icon k-i-circle"
+                style="color: #6dc942"
+              ></span>
+              <span
+                *ngIf="!dataItem.ExtractionComplete"
+                class="k-icon k-i-circle"
+                style="color: #80808059"
+              ></span>
+
+              <span class="k-icon k-i-circle" style="color: #80808059"></span>
+              <span class="k-icon k-i-circle" style="color: #80808059"></span>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+      </kendo-grid-column-group>
+
+      <kendo-grid-column
+        *ngIf="column.type == 'SubmissionId'"
+        field="{{ column.field }}"
+        title="{{ column.title }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+        [ngClass]="{ 'outputicon-class': true }"
+      >
         <ng-template
           kendoGridCellTemplate
           let-dataItem
           let-rowIndex="rowIndex"
           let-value="value"
+          style="width: 100%"
         >
-        <div style="display: flex; width: 100%; padding: 0 0.25em 0 0.25em;">
-          <div style="width: 33%; text-align: center;">
-        <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
-          
-          <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-          <img src="../../../assets/icons/S360ReportCompleted.svg" alt="Green Image" >
-          </a>
-        
-        </ng-container>
-      </div>
-      <div style="width: 33%; text-align: center;">
-        <ng-container *ngIf="dataItem.Status === 'Completed'; else ConvaiPending">
-          <kendo-button class="copied_icontop" style="background: transparent;
-          border: none;
-          height: 100%;
-          width: 100%;
-          padding: 0;
-          margin: 0;" (click)="Copilot_Click(dataItem)">
-            <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
-          </kendo-button>
-        
-        </ng-container>
-      </div>
-      <div style="width: 33%; text-align: center;">
-        <ng-container *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending">
-          <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-          <img src="../../../assets/icons/InsightsCompleted.svg" alt="Green Image">
-          </a>
-        </ng-container>
-      </div>
-        <ng-template #S360Pending>
-          <img src="../../../assets/icons/S360ReportPending.svg" alt="Gray Image">
+          <ng-container>
+            <a
+              class="submissionid"
+              routerLink="{{ column.redirectUrl }}"
+              (click)="reDirect(column.redirectUrl, dataItem)"
+              [ngStyle]="{ color: '#009CC1' }"
+            >
+              {{ dataItem[column.field] }}
+              <span class="newtext" *ngIf="dataItem[column.IsNew]">New</span>
+            </a>
+            <span class="submissionicon"
+              ><span class="k-icon k-i-email" (click)="togglePopup()"></span
+            ></span>
+          </ng-container>
+          <ng-container class="popup-content">
+            <kendo-popup
+              *ngIf="isPopupVisible"
+              [anchor]="popupAnchor"
+              [popupClass]="'custom-popup'"
+            >
+              <button class="popup_closebtn" (click)="closePopup()">x</button>
+              <app-emailpopup></app-emailpopup>
+              <!-- <button (click)="closePopup()">Close Popup</button> -->
+            </kendo-popup>
+          </ng-container>
         </ng-template>
-        
-        <ng-template #ConvaiPending>
-          <img src="../../../assets/icons/ConversationAIPending.svg" alt="Gray Image">
-        </ng-template>
-  
-        <ng-template #InsgihtsPending>
-          <img src="../../../assets/icons/InsightsPending.svg" alt="Gray Image">
-        </ng-template>
-      </div>
-        </ng-template>
-      </kendo-grid-column> -->
-  
-      <!-- <kendo-grid-column>
-      
-        <ng-template kendoGridCellTemplate>
-          <div style="width: 100%; text-align: center; border-left: 1px solid #000;">
-          </div>
-        </ng-template>
-      </kendo-grid-column> -->
-  
-  
+      </kendo-grid-column>
+
       <kendo-grid-column
-      *ngIf="column.type == 'SubmissionId'"
-      field="{{ column.field }}"
-      title="{{ column.title }}"
-      format="{{ column.format }}"
-      [filterable]="column.filterable"
-      [sortable]="column.sortable"
-      [filter]="column.type"
-      [width]="column.width"
-      [columnMenu]="column.columnmenu"
-            [ngClass]="{'outputicon-class': true}"
-    >
-      <ng-template
-        kendoGridCellTemplate
-        let-dataItem
-        let-rowIndex="rowIndex"
-        let-value="value"
-        style="width:100%"
+        *ngIf="column.type == 'DownloadXL'"
+        field="{{ column.field }}"
+        title="{{ column.title }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+        [editor]="column.editor"
       >
-        <ng-container>
-          <a class ="submissionid" routerLink="{{column.redirectUrl}}" (click)="reDirect(column.redirectUrl,dataItem)" [ngStyle]="{ color: '#009CC1' }">
-            {{ dataItem[column.field] }}
-          <span class="newtext" *ngIf="dataItem[column.IsNew]">New</span>
-          </a>
-          <span class="submissionicon"><span class="k-icon k-i-email"(click)="togglePopup()"></span></span>
-        </ng-container>
-        <ng-container class="popup-content">
-        <kendo-popup *ngIf="isPopupVisible" [anchor]="popupAnchor" [popupClass]="'custom-popup'">
-          <button class="popup_closebtn" (click)="closePopup()">x</button>
-         <app-emailpopup></app-emailpopup>
-          <!-- <button (click)="closePopup()">Close Popup</button> -->
-        </kendo-popup>
-        </ng-container>
-        <!-- <ng-container *ngIf="column.type === 'icon1'">
-          <span class="k-icon k-i-email"></span>
-        </ng-container> -->
-        <!-- <ng-container *ngIf="column.type === 'text1'">
-          <span>New</span>
-        </ng-container> -->
-      </ng-template>
-    </kendo-grid-column>
-  
-    <!-- <kendo-grid-column>
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <ng-container *ngIf="dataItem.S360Report">
-        <a [href]="generateDownloadLink(dataItem.S360Report)" download>
-          Download
-        </a>
-      </ng-container>
-      <ng-container *ngIf="!dataItem.S360Report">
-        N/A
-      </ng-container>
-    </ng-template>
-  </kendo-grid-column> -->
-  
-    <kendo-grid-column
-    *ngIf="column.type == 'DownloadXL'"
-    field="{{ column.field }}"
-    title="{{ column.title }}"
-    format="{{ column.format }}"
-    [filterable]="column.filterable"
-    [sortable]="column.sortable"
-    [filter]="column.type"
-    [width]="column.width"
-    [columnMenu]="column.columnmenu"
-    [editor]="column.editor"
-  >
-  <ng-template kendoGridCellTemplate let-dataItem>
-    <!-- <ng-container *ngIf="!dataItem.S360Report"> -->
-      <!-- <a [href]="generateDownloadLink(dataItem.S360Report)" download> -->
-        <!-- Download -->
-        <!-- <a color="primary" class="excel_download" (click) = "DownloadEvent(dataItem)">
-        <span class="excel_icon">
-          <img src="../../../assets/images/execl_downloadimg.png">
-        </span>
-        </a> -->
-      <!-- </a> -->
-    <!-- </ng-container> -->
-    <!-- <ng-container *ngIf="dataItem.S360Report">
-      N/A
-      <img src="../../../assets/images/disabled_excel.png">
-    </ng-container> -->
-    <ng-container *ngIf="dataItem.Status === 'Completed'; else inProgressTemplate">
-      <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-      <img src="../../../assets/images/execl_downloadimg.png" alt="Green Image">
-      </a>
-    </ng-container>
-    <ng-template #inProgressTemplate>
-      <img src="../../../assets//images/disabled_excel.png" alt="Gray Image">
-    </ng-template>
-  </ng-template>
-  </kendo-grid-column>
-  
-  <kendo-grid-column
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <ng-container
+            *ngIf="dataItem.Status === 'Completed'; else inProgressTemplate"
+          >
+            <a
+              color="primary"
+              class="excel_download"
+              (click)="Download_Click(dataItem)"
+            >
+              <img
+                src="../../../assets/images/execl_downloadimg.png"
+                alt="Green Image"
+              />
+            </a>
+          </ng-container>
+          <ng-template #inProgressTemplate>
+            <img
+              src="../../../assets//images/disabled_excel.png"
+              alt="Gray Image"
+            />
+          </ng-template>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column
         *ngIf="column.type == 'dropdown'"
         field="{{ column.field }}"
         title="{{ column.title }}"
@@ -606,209 +347,16 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
       >
-  
-      <ng-template kendoGridEditTemplate let-dataItem="dataItem" let-formGroup="formGroup">
-        <!-- <kendo-dropdownlist
-          [data]="Priorities"
-          textField="PriorityName"
-          valueField="PriorityID"
-          [valuePrimitive]="true"
-          [formControl]="formGroup.get('Priority')"
-        ></kendo-dropdownlist> -->
-      </ng-template>
+        <ng-template
+          kendoGridEditTemplate
+          let-dataItem="dataItem"
+          let-formGroup="formGroup"
+        >
+        </ng-template>
       </kendo-grid-column>
-  
+
       <kendo-grid-column
-      *ngIf="column.type == 'priority'"
-      field="{{ column.field }}"
-      title="{{ column.title }}"
-      format="{{ column.format }}"
-      [filterable]="column.filterable"
-      [sortable]="column.sortable"
-      [filter]="column.type"
-      [width]="column.width"
-      [columnMenu]="column.columnmenu"
-      [editor]="column.editor"
-    >
-  
-    <ng-template
-      kendoGridEditTemplate
-      let-dataItem="dataItem"
-      let-formGroup="formGroup"
-    >
-      <kendo-dropdownlist
-      *ngIf="dataLoaded"
-        [formControl]="formGroup.get(column.field)"
-        [data]="dropdownData"
-        [(ngModel)]="selectedValue"
-        textField="label"
-        valueField="value"
-      ></kendo-dropdownlist>
-    </ng-template>
-    <!-- <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
-    >
-      <ng-container *ngIf="isCellEditable(dataItem, column)">
-        <kendo-dropdownlist
-          [data]="dropdownData"
-          [(ngModel)]="selectedValues[dataItem.id]"
-          textField="label"
-          valueField="value"
-        ></kendo-dropdownlist>
-      </ng-container>
-      <ng-container *ngIf="!isCellEditable(dataItem, column)">
-        {{ dataItem[column.field] }}
-      </ng-container>
-    </ng-template> -->
-  
-  
-    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
-      <ng-container *ngIf="isCellEditable(dataItem, column)">
-        <kendo-dropdownlist
-          [data]="dropdownData"
-          [ngModel]="selectedValue"
-          (ngModelChange)="onDropdownChange(dataItem, $event)"
-          textField="label"
-          valueField="value"
-        ></kendo-dropdownlist>
-      </ng-container>
-      <ng-container *ngIf="!isCellEditable(dataItem, column)">
-        {{ dataItem[column.field] }}
-      </ng-container>
-    </ng-template>
-  
-  
-    </kendo-grid-column>
-  
-    <kendo-grid-column
-    *ngIf="column.type == 'agencyname'"
-    field="{{ column.field }}"
-    title="{{ column.title }}"
-    format="{{ column.format }}"
-    [filterable]="column.filterable"
-    [sortable]="column.sortable"
-    [filter]="column.type"
-    [width]="column.width"
-    [columnMenu]="column.columnmenu"
-    [editor]="column.editor"
-  
-  >
-  
-  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
-    <ng-container *ngIf="isCellEditable(dataItem, column)">
-      <kendo-textbox [value]="dataItem[column.field]">{{ dataItem[column.field] }}</kendo-textbox>
-    </ng-container>
-    <!-- <ng-container *ngIf="!isCellEditable(dataItem, column)">
-      {{ dataItem[column.field] }}
-    </ng-container> -->
-  </ng-template>
-  
-  <!-- <ng-template
-  kendoGridEditTemplate
-  let-dataItem="dataItem"
-  let-formGroup="formGroup"
-  >
-  <kendo-textboxrowIndex
-    [formControl]="formGroup.get(column.field)"
-    [value]="dataItem[column.field]"
-  ></kendo-textbox> -->
-  <!-- <kendo-textbox [formControl]="formGroup.get('agencyname')" [(ngModel)]="dataItem.agencyname"></kendo-textbox> -->
-  <!-- </ng-template> -->
-  
-  <!-- <ng-template kendoGridEditTemplate let-dataItem="dataItem" let-formGroup="formGroup">
-    <input [formControl]="formGroup.get(column.field)" [(ngModel)]="dataItem[column.field]" />
-  </ng-template> -->
-  
-  <ng-template
-  kendoGridCellTemplate
-  let-dataItem
-  let-rowIndex="rowIndex"
-  let-value="value"
-  >
-  <div
-    [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
-    [class.expanded-cell]="cellExpansionState[rowIndex]"
-    (click)="toggleCellExpansion(dataItem)"
-  >
-    {{ dataItem[column.field] }}
-  </div>
-  </ng-template>
-  </kendo-grid-column>
-  
-  <kendo-grid-column
-    *ngIf="column.type == 'LOB'"
-    field="{{ column.field }}"
-    title="{{ column.title }}"
-    format="{{ column.format }}"
-    [filterable]="column.filterable"
-    [sortable]="column.sortable"
-    [filter]="column.type"
-    [width]="column.width"
-    [columnMenu]="column.columnmenu"
-  >
-    <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
-    >
-      <div
-        [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
-        [class.expanded-cell]="cellExpansionState[rowIndex]"
-        (click)="toggleCellExpansion(dataItem)"
-      >
-        <!-- {{ dataItem[column.field] }}
-        <span *ngIf="dataItem[column.field].extraData">{{ dataItem[column.field].extraData }}</span> -->
-  
-        <!-- <span *ngIf="!isInEditMode(dataItem)">
-          {{ dataItem[column.field] }}
-        </span>
-        <div *ngIf="isInEditMode(dataItem)">
-          <input
-            kendoTextBox
-            [value]="dataItem[column.field]"
-            (valueChange)="onEditValueChange(newValue, $event, dataItem, column)"
-          />
-          <input
-            kendoTextBox
-            [value]="dataItem[column.field].extraData"
-            (valueChange)="onEditValueChange(newValue, $event, dataItem, column)"
-          />
-        </div> -->
-  
-  
-  
-        {{ dataItem[column.field] }}
-        <span *ngIf="dataItem[column.field].extraData">{{ dataItem[column.field].extraData }}</span>
-  
-  
-      </div>
-    </ng-template>
-    <!-- <ng-template kendoGridCellTemplate let-dataItem let-column="column">
-      <div *ngIf="column.type == 'agencyname'" [ngSwitch]="column.type">
-        <div *ngSwitchDefault>
-          <span *ngIf="!isInEditMode(dataItem)">
-            {{ dataItem[column.field] }}
-          </span>
-          <input
-            *ngIf="isInEditMode(dataItem)"
-            kendoTextBox
-            [value]="dataItem[column.field]"
-            (valueChange)="onEditValueChange(newValue, $event, dataItem, column)"
-          />
-        </div>
-      </div>
-    </ng-template> -->
-  </kendo-grid-column>
-  
-  
-  
-  
-    <kendo-grid-column-group 
-        *ngIf="column.type == 'outputs'"
+        *ngIf="column.type == 'priority'"
         field="{{ column.field }}"
         title="{{ column.title }}"
         format="{{ column.format }}"
@@ -817,318 +365,340 @@
         [filter]="column.type"
         [width]="column.width"
         [columnMenu]="column.columnmenu"
-        [ngClass]="{'outputicon-class': true}"
+        [editor]="column.editor"
       >
-  
-  
-  <!-- <kendo-grid-column-group  -->
-  
-  >
-    <kendo-grid-column     
-    format="{{ column.format }}"
-    [filterable]="column.filterable"
-    [sortable]="column.sortable"
-    [filter]="column.type"
-    [width]="column.width"
-    [columnMenu]="column.columnmenu"
-    [width]="80">
-      <ng-template
-          kendoGridHeaderTemplate
-          let-column
-          let-columnIndex="columnIndex"
-          style="padding:0;"
-          class="outputicon-class"
+        <ng-template
+          kendoGridEditTemplate
+          let-dataItem="dataItem"
+          let-formGroup="formGroup"
         >
-            <!-- <div style="width: 100%;">
-              <div style="text-align: center">
-                {{ column.title }} 
-              </div>
-              <div class="image-row" style="width: 100%;" >
-              <div *ngFor="let data of outputIcons" class="image-container outputicon-class" >
-                <img
-                [src]="data.imagePath" 
-                  matTooltip={{data.label}}
-                />
-              </div>
-              </div>
-            </div> -->
-            <img class="s360PendingimgPath" [src]="s360PendingimgPath">
+          <kendo-dropdownlist
+            *ngIf="dataLoaded"
+            [formControl]="formGroup.get(column.field)"
+            [data]="dropdownData"
+            [(ngModel)]="selectedValue"
+            textField="label"
+            valueField="value"
+          ></kendo-dropdownlist>
         </ng-template>
+
         <ng-template
           kendoGridCellTemplate
           let-dataItem
           let-rowIndex="rowIndex"
           let-value="value"
         >
-        <div style="display: flex; width: 100%; justify-content: center;">
-          <div style="justify-content: center;">
-        <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
-          
-          <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-          <img src="../../../assets/icons/S360ReportCompleted.svg" alt="Green Image" >
-          </a>
-        
-        </ng-container>
-      </div>
-      <!-- <div style="width: 30%; justify-content: center;">
-        <ng-container *ngIf="dataItem.Status === 'Completed'; else ConvaiPending">
-          <kendo-button class="copied_icontop" style="background: transparent;
-          border: none;
-          height: 100%;
-          width: 100%;
-          padding: 0;
-          margin: 0;" (click)="Copilot_Click(dataItem)">
-            <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
-          </kendo-button>
-        </ng-container>
-      </div> -->
-      <!-- <div style="width: 25%; justify-content: center;">
-        <ng-container *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending">
-          <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-          <img src="../../../assets/icons/InsightsCompleted.svg" alt="Green Image">
-          </a>
-        </ng-container>
-      </div> -->
-        <ng-template #S360Pending>
-          <img src="../../../assets/icons/S360ReportPending.svg" alt="Gray Image">
-        </ng-template>
-        
-        <ng-template #ConvaiPending>
-          <img src="../../../assets/icons/ConversationAIPending.svg" alt="Gray Image">
-        </ng-template>
-  
-        <ng-template #InsgihtsPending>
-          <img src="../../../assets/icons/InsightsPending.svg" alt="Gray Image">
-        </ng-template>
-      </div>
-        </ng-template>
-    </kendo-grid-column>
-   <!-- </kendo-grid-column-group> -->
-  
-   
-  
-   
-    <!-- <kendo-grid-column-group > -->
-      <kendo-grid-column   
-      format="{{ column.format }}"
-      [filterable]="column.filterable"
-      [sortable]="column.sortable"
-      [filter]="column.type"
-      [width]="column.width"
-      [columnMenu]="column.columnmenu"  
-      [width]="80" title="" field="subColumn1" [ngClass]="{'outputicon_clum': true}" [style]="{'border-radius':'0'}">
-        <ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex" style="padding: 0" class="outputicon-class">
-          <!-- <div style="width: 100%;">
-            <div style="text-align: center">{{ column.title }}</div>
-            <div class="image-row" style="display: flex; justify-content: center;">
-              <ng-container *ngFor="let data of outputIcons; let last = last">
-                <div class="image-container outputicon-class" [ngStyle]="{'border-right': last ? 'none' : '1px solid #ccc'}">
-                  <img [src]="data.imagePath" matTooltip={{data.label}} />
-                </div>
-              </ng-container>
-            </div>
-          </div> -->
-  
-          <img class="convaiPendingimgPath" [src]="convaiPendingimgPath">
-  
-        </ng-template>
-        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
-          <div style="display: flex; width: 100%; justify-content: center;">
-            <!-- <div style="width: 28%; justify-content: center;">
-          <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
-            
-            <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-            <img src="../../../assets/icons/S360ReportCompleted.svg" alt="Green Image" >
-            </a>
-          
+          <ng-container *ngIf="isCellEditable(dataItem, column)">
+            <kendo-dropdownlist
+              [data]="dropdownData"
+              [ngModel]="selectedValue"
+              (ngModelChange)="onDropdownChange(dataItem, $event)"
+              textField="label"
+              valueField="value"
+            ></kendo-dropdownlist>
           </ng-container>
-        </div> -->
-        <div style="justify-content: center;">
-          <ng-container *ngIf="dataItem.Status === 'Completed'; else ConvaiPending">
-            <kendo-button class="copied_icontop" style="background: transparent;
-            border: none;
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            margin: 0;" (click)="Copilot_Click(dataItem)">
-              <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
-            </kendo-button>
+          <ng-container *ngIf="!isCellEditable(dataItem, column)">
+            {{ dataItem[column.field] }}
           </ng-container>
-        </div>
-        <!-- <div style="width: 25%; justify-content: center;">
-          <ng-container *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending">
-            <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-            <img src="../../../assets/icons/InsightsCompleted.svg" alt="Green Image">
-            </a>
-          </ng-container>
-        </div> -->
-          <ng-template #S360Pending>
-            <img src="../../../assets/icons/S360ReportPending.svg" alt="Gray Image">
-          </ng-template>
-          
-          <ng-template #ConvaiPending>
-            <img src="../../../assets/icons/ConversationAIPending.svg" alt="Gray Image">
-          </ng-template>
-    
-          <ng-template #InsgihtsPending>
-            <img src="../../../assets/icons/InsightsPending.svg" alt="Gray Image">
-          </ng-template>
-        </div>
         </ng-template>
       </kendo-grid-column>
-  
-      <!-- Add more subcolumns as needed -->
-  
-    <!-- </kendo-grid-column-group> -->
-  
-  
-  
-    <!-- <kendo-grid-column-group > -->
-      <kendo-grid-column  
-      format="{{ column.format }}"
-      [filterable]="column.filterable"
-      [sortable]="column.sortable"
-      [filter]="column.type"
-      [width]="column.width"
-      [columnMenu]="column.columnmenu"  
-       [width]="80" title="" field="" [ngClass]="{'outputicon_clum': true}" [style]="{'border-radius':'0'}">
-        <ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex" style="padding: 0" class="outputicon-class">
-          <!-- <div style="width: 100%;">
-            <div style="text-align: center">{{ column.title }}</div>
-            <div class="image-row" style="display: flex; justify-content: center;">
-              <ng-container *ngFor="let data of outputIcons; let last = last">
-                <div class="image-container outputicon-class" [ngStyle]="{'border-right': last ? 'none' : '1px solid #ccc'}">
-                  <img [src]="data.imagePath" matTooltip={{data.label}} />
-                </div>
-              </ng-container>
-            </div>
-          </div> -->
-          <img class="insgihtsPending" [src]="insgihtsPending">
-        </ng-template>
-        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-value="value">
-          <div style="display: flex; width: 100%; justify-content: center;">
-            <!-- <div style="width: 28%; justify-content: center;">
-          <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
-            
-            <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-            <img src="../../../assets/icons/S360ReportCompleted.svg" alt="Green Image" >
-            </a>
-          
-          </ng-container>
-        </div> -->
-        <!-- <div style="width: 30%; justify-content: center;">
-          <ng-container *ngIf="dataItem.Status === 'Completed'; else ConvaiPending">
-            <kendo-button class="copied_icontop" style="background: transparent;
-            border: none;
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            margin: 0;" (click)="Copilot_Click(dataItem)">
-              <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
-            </kendo-button>
-          </ng-container>
-        </div> -->
-        <div style="width: 25%; justify-content: center;">
-          <ng-container *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending">
-            <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-            <img src="../../../assets/icons/InsightsCompleted.svg" alt="Green Image">
-            </a>
-          </ng-container>
-        </div>
-          <ng-template #S360Pending>
-            <img src="../../../assets/icons/S360ReportPending.svg" alt="Gray Image">
-          </ng-template>
-          
-          <ng-template #ConvaiPending>
-            <img src="../../../assets/icons/ConversationAIPending.svg" alt="Gray Image">
-          </ng-template>
-    
-          <ng-template #InsgihtsPending>
-            <img src="../../../assets/icons/InsightsPending.svg" alt="Gray Image">
-          </ng-template>
-        </div>
-        </ng-template>
-      </kendo-grid-column>
-  
-      <!-- Add more subcolumns as needed -->
-  
-    <!-- </kendo-grid-column-group> -->
-  
-    
-  
-  </kendo-grid-column-group >
-  
-  
-   
-  
-   <!-- <kendo-grid-column-group title="Main Column" *ngIf="column.type == 'outputs'" field="{{ column.field }}" title="{{ column.title }}" format="{{ column.format}}" [filterable]="column.filterable" [sortable]="column.sortable" [filter]="column.type" [width]="column.width" [columnMenu]="column.columnmenu" [ngClass]="{'outputicon-class': true}">
-    <kendo-grid-column title="" field="subColumn1" [ngClass]="{'outputicon_clum': true}" [style]="{'border-radius':'0'}">
-      <ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex" style="padding: 0" class="outputicon-class">
-        <div style="width: 100%;">
-          <div style="text-align: center">{{ column.title }}</div>
-          <div class="image-row" style="display: flex; justify-content: center;">
-            <ng-container *ngFor="let data of outputIcons; let last = last">
-              <div class="image-container outputicon-class" [ngStyle]="{'border-right': last ? 'none' : '1px solid #ccc'}">
-                <img [src]="data.imagePath" matTooltip={{data.label}} />
-              </div>
-            </ng-container>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template
-      kendoGridCellTemplate
-      let-dataItem
-      let-rowIndex="rowIndex"
-      let-value="value"
-    >
-    <div style="display: flex; width: 100%; padding: 0 0.25em 0 0.25em;">
-      <div style="width: 28%; justify-content: center;">
-    <ng-container *ngIf="dataItem.Status === 'Completed'; else S360Pending">
-      
-      <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-      <img src="../../../assets/icons/S360ReportCompleted.svg" alt="Green Image" >
-      </a>
-    
-    </ng-container>
-  </div>
-  <div style="width: 30%; justify-content: center;">
-    <ng-container *ngIf="dataItem.Status === 'Completed'; else ConvaiPending">
-      <kendo-button class="copied_icontop" style="background: transparent;
-      border: none;
-      height: 100%;
-      width: 100%;
-      padding: 0;
-      margin: 0;" (click)="Copilot_Click(dataItem)">
-        <img src="../../../assets/icons/ConversationAICompleted.svg" alt="Green Image">
-      </kendo-button>
-    </ng-container>
-  </div>
-  <div style="width: 25%; justify-content: center;">
-    <ng-container *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending">
-      <a color="primary" class="excel_download" (click) = "Download_Click(dataItem)">
-      <img src="../../../assets/icons/InsightsCompleted.svg" alt="Green Image">
-      </a>
-    </ng-container>
-  </div>
-    <ng-template #S360Pending>
-      <img src="../../../assets/icons/S360ReportPending.svg" alt="Gray Image">
-    </ng-template>
-    
-    <ng-template #ConvaiPending>
-      <img src="../../../assets/icons/ConversationAIPending.svg" alt="Gray Image">
-    </ng-template>
-  
-    <ng-template #InsgihtsPending>
-      <img src="../../../assets/icons/InsightsPending.svg" alt="Gray Image">
-    </ng-template>
-  </div>
-    </ng-template>
-    </kendo-grid-column>
-  </kendo-grid-column-group> -->
-   
 
-  
-  </ng-template>
+      <kendo-grid-column
+        *ngIf="column.type == 'agencyname'"
+        field="{{ column.field }}"
+        title="{{ column.title }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+        [editor]="column.editor"
+      >
+        <ng-template
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+          let-value="value"
+        >
+          <ng-container *ngIf="isCellEditable(dataItem, column)">
+            <kendo-textbox [value]="dataItem[column.field]">{{
+              dataItem[column.field]
+            }}</kendo-textbox>
+          </ng-container>
+        </ng-template>
+
+        <ng-template
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+          let-value="value"
+        >
+          <div
+            [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
+            [class.expanded-cell]="cellExpansionState[rowIndex]"
+            (click)="toggleCellExpansion(dataItem)"
+          >
+            {{ dataItem[column.field] }}
+          </div>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column
+        *ngIf="column.type == 'LOB'"
+        field="{{ column.field }}"
+        title="{{ column.title }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+      >
+        <ng-template
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+          let-value="value"
+        >
+          <div
+            [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
+            [class.expanded-cell]="cellExpansionState[rowIndex]"
+            (click)="toggleCellExpansion(dataItem)"
+          >
+            {{ dataItem[column.field] }}
+            <span *ngIf="dataItem[column.field].extraData">{{
+              dataItem[column.field].extraData
+            }}</span>
+          </div>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column-group
+        *ngIf="column.type == 'Outputs'"
+        title="{{ column.title }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+        [ngClass]="{ 'outputicon-class': true }"
+      >
+        >
+        <kendo-grid-column
+          field="{{ column.field }}"
+          format="{{ column.format }}"
+          [filterable]="column.filterable"
+          [sortable]="column.sortable"
+          [filter]="column.type"
+          [width]="column.width"
+          [columnMenu]="column.columnmenu"
+          [width]="column.width"
+        >
+          <ng-template
+            kendoGridHeaderTemplate
+            let-column
+            let-columnIndex="columnIndex"
+            style="padding: 0"
+            class="outputicon-class"
+          >
+            <img class="s360PendingimgPath" [src]="s360PendingimgPath" />
+          </ng-template>
+          <ng-template
+            kendoGridCellTemplate
+            let-dataItem
+            let-rowIndex="rowIndex"
+            let-value="value"
+          >
+            <div style="display: flex; width: 100%; justify-content: center">
+              <div style="justify-content: center">
+                <ng-container
+                  *ngIf="dataItem.Status === 'Completed'; else S360Pending"
+                >
+                  <a
+                    color="primary"
+                    class="excel_download"
+                    (click)="Download_Click(dataItem)"
+                  >
+                    <img
+                      src="../../../assets/icons/S360ReportCompleted.svg"
+                      alt="Green Image"
+                    />
+                  </a>
+                </ng-container>
+              </div>
+              <ng-template #S360Pending>
+                <img
+                  src="../../../assets/icons/S360ReportPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+
+              <ng-template #ConvaiPending>
+                <img
+                  src="../../../assets/icons/ConversationAIPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+
+              <ng-template #InsgihtsPending>
+                <img
+                  src="../../../assets/icons/InsightsPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column
+          field="{{ column.field }}"
+          format="{{ column.format }}"
+          [filterable]="column.filterable"
+          [sortable]="column.sortable"
+          [filter]="column.type"
+          [width]="column.width"
+          [columnMenu]="column.columnmenu"
+          [width]="column.width"
+          title=""
+          field="subColumn1"
+          [ngClass]="{ outputicon_clum: true }"
+          [style]="{ 'border-radius': '0' }"
+        >
+          <ng-template
+            kendoGridHeaderTemplate
+            let-column
+            let-columnIndex="columnIndex"
+            style="padding: 0"
+            class="outputicon-class"
+          >
+            <img class="convaiPendingimgPath" [src]="convaiPendingimgPath" />
+          </ng-template>
+          <ng-template
+            kendoGridCellTemplate
+            let-dataItem
+            let-rowIndex="rowIndex"
+            let-value="value"
+          >
+            <div style="display: flex; width: 100%; justify-content: center">
+              <div style="justify-content: center">
+                <ng-container
+                  *ngIf="dataItem.Status === 'Completed'; else ConvaiPending"
+                >
+                  <kendo-button
+                    class="copied_icontop"
+                    style="
+                      background: transparent;
+                      border: none;
+                      height: 100%;
+                      width: 100%;
+                      padding: 0;
+                      margin: 0;
+                    "
+                    (click)="Copilot_Click(dataItem)"
+                  >
+                    <img
+                      src="../../../assets/icons/ConversationAICompleted.svg"
+                      alt="Green Image"
+                    />
+                  </kendo-button>
+                </ng-container>
+              </div>
+
+              <ng-template #S360Pending>
+                <img
+                  src="../../../assets/icons/S360ReportPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+
+              <ng-template #ConvaiPending>
+                <img
+                  src="../../../assets/icons/ConversationAIPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+
+              <ng-template #InsgihtsPending>
+                <img
+                  src="../../../assets/icons/InsightsPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column
+          field="{{ column.field }}"
+          format="{{ column.format }}"
+          [filterable]="column.filterable"
+          [sortable]="column.sortable"
+          [filter]="column.type"
+          [width]="column.width"
+          [columnMenu]="column.columnmenu"
+          [width]="column.width"
+          title=""
+          field=""
+          [ngClass]="{ outputicon_clum: true }"
+          [style]="{ 'border-radius': '0' }"
+        >
+          <ng-template
+            kendoGridHeaderTemplate
+            let-column
+            let-columnIndex="columnIndex"
+            style="padding: 0"
+            class="outputicon-class"
+          >
+            <img class="insgihtsPending" [src]="insgihtsPending" />
+          </ng-template>
+          <ng-template
+            kendoGridCellTemplate
+            let-dataItem
+            let-rowIndex="rowIndex"
+            let-value="value"
+          >
+            <div style="display: flex; width: 100%; justify-content: center">
+              <div style="width: 25%; justify-content: center">
+                <ng-container
+                  *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending"
+                >
+                  <a
+                    color="primary"
+                    class="excel_download"
+                    (click)="Download_Click(dataItem)"
+                  >
+                    <img
+                      src="../../../assets/icons/InsightsCompleted.svg"
+                      alt="Green Image"
+                    />
+                  </a>
+                </ng-container>
+              </div>
+              <ng-template #S360Pending>
+                <img
+                  src="../../../assets/icons/S360ReportPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+
+              <ng-template #ConvaiPending>
+                <img
+                  src="../../../assets/icons/ConversationAIPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+
+              <ng-template #InsgihtsPending>
+                <img
+                  src="../../../assets/icons/InsightsPending.svg"
+                  alt="Gray Image"
+                />
+              </ng-template>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+      </kendo-grid-column-group>
+    </ng-template>
     <ng-template kendoGridLoadingTemplate>
       <div class="k-loading-color"></div>
       <div class="loading-container">
@@ -1141,6 +711,4 @@
     ></kendo-grid-pdf>
     <kendo-grid-excel fileName="Employees.xlsx"></kendo-grid-excel>
   </kendo-grid>
-  </div>
-  
-  
+</div>

@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public selectedCheckboxes: number[] = [];
   selectedRowIndices: Set<number> = new Set<number>();
   subscription: Subscription;
+  public columns: any[] = ColumnSample.InboxColumns;
   constructor(
     private inboxservice: InboxService,
     private dashboardservice: DashboardService,
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.formGroup = this.fb.group({
       agencyname: [''],
     });
+    this.columns = ColumnSample.InboxColumns;
   }
   dropdownValues: string[] = [];
   // isToggleOn: boolean = false;
@@ -51,21 +53,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
   ngOnInit(): void {
-    console.log('Inbox Loaded');
+
     this.subscription = this.inboxservice
       .getAllSubmissionData()
       .subscribe((result) => {
         this.tableData = result;
-        console.log('Inbox Loaded from service');
-        // this.changedetector.detectChanges();
-        console.log(result);
+        
         this.totalRecordCCount = this.tableData.length;
         this.newRecordCCount = this.tableData.filter(
           (item) => item.NewStatus
         ).length;
         //this.changeDetectorRef.detectChanges();
       });
-      console.log("Ueser Profile");
+     
       this.userProfile = this.globalService.getUserProfile();
       let userDDL = {
         Email : this.userProfile.Email,
@@ -73,29 +73,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       this.defaultProfile = userDDL;
       this.userList.push(userDDL)
-      console.log(this.userProfile)
   }
   getNewRecordCount() {}
   getTotalRecordCount() {}
   newRecordCCount = 0;
   totalRecordCCount = 0;
-  navItems = [
-    { title: 'Create Submisson', content: '', icon: 'add_box' },
-    { title: '', content: '', icon: 'refresh' },
-    { title: '', routeLink: '', icon: 'description' },
-    { title: '', routeLink: '/contact', icon: 'filter_alt' },
-    { title: '', routeLink: '', icon: 'settings' },
-    { title: 'All', title1: '24', routeLink: '/contact', icon: '' },
-    { title: 'New', title1: '4', routeLink: '/contact', icon: '' },
-    {
-      title: 'Pending Review',
-      title1: '5',
-      routeLink: '',
-      icon: '',
-      icon1: '',
-    },
-    { title: 'Rush', title1: '1', routeLink: '', icon: '', icon1: '' },
-    { title: 'Evelyn Salt', routeLink: '', icon: 'arrow_drop_down', icon1: '' },
+  // {name:'plusIcon', content:"",viewBox:""}
+  actionItems = [
+    { title: 'Create Submisson', type:"createsubmission", content: '', icon : 'add_box', buttonClass : "buttonClassBlue" },
+    { title: '', type:"createsubmission", content: '', icon: 'refresh', buttonClass : "buttonClassWhite"},
+    { title: '', type:"createsubmission", content: '', icon: 'settings', buttonClass : "buttonClassWhite"},
+    { title: 'All', type:"allstatus", content: '100', icon: '', buttonClass : "buttonClassWhite" },
+    { title: 'New', type:"newstatus", content: '100', icon: '', buttonClass : "buttonClassWhite" },
+    { title: 'In-Queue', type:"inqueuestatus", content: '100', icon: '', buttonClass : "buttonClassWhite" },
+    { title: 'In-Progress', type:"inprogressstatus", content: '100', icon: '', buttonClass : "buttonClassWhite" },
+    { title: 'Completed', type:"completedstatus", content: '100', icon: '', buttonClass : "buttonClassWhite" },
   ];
   fetchDropdownOptions(): void {
     this.dropdownOptions = [
@@ -111,7 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   toggleDropdown(): void {
     this.isToggleOn = !this.isToggleOn;
   }
-  public columns: any[] = ColumnSample.InboxColumns;
+  
 
   DownloadSumission360(newItem: any) {
     this.dashboardservice
@@ -178,5 +170,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   refreshPage() {
     window.location.reload();
+  }
+
+  actionClicked(type:string){
+    console.log("actionClicked")
+    let tableData = this.tableData;
+    console.log(type);
+    console.log(this.tableData)
   }
 }
