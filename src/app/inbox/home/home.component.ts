@@ -74,9 +74,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   newRecordCCount = 0;
   totalRecordCCount = 0;
   getRecordCount(){
-
-    console.log("TableData")
-    console.log(this.tableData)
     this.actionItems.forEach((action:any) => {
       
       if(action.type == 'allstatus'){

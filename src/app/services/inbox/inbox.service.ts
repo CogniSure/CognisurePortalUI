@@ -17,17 +17,6 @@ export class InboxService {
   env = this.configService.settings;
   private accountInformationSubject = new BehaviorSubject<AccountInformation| null>(null);
   accountInformation$ = this.accountInformationSubject.asObservable();
-  // //baseurl = 'https://csbbenqa.cognisure.ai:1089';
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   }),
-  // };
-  // httpOption1 = {
-  //   headers: new HttpHeaders({
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //   }),
-  // };
   notificationCount = 20;
 
   headerImageURL = '../../../assets/images/logo.png';
@@ -40,7 +29,6 @@ export class InboxService {
   idToDisplay = 1;
   private apiUrl = 'api/AllSubmission';
   constructor(private httpService: HttpService, private configService:AppConfigService, private datePipe: DatePipe, private http: HttpClient, private cacheService: CacheService) {}
-  // constructor(private http: HttpClient, private globalService:GlobalService) {}
 
   private getFormattedDate(dateString: string): string {
     const date = new Date(dateString);
@@ -92,7 +80,7 @@ export class InboxService {
             AssignedBy: res['addedByName']!=""?res['addedByName']:"NA",
             NewStatus: true,
             MessageId: res['messageId']!=""?res['messageId']:"NA",
-            ExtractionComplete: res['extractionComplete']!=""?res['extractionComplete']:false,
+            ExtractionComplete: res['extractionComplete']!=""?res['extractionComplete']:0,
             Completeness: res['completeness']!=""?res['completeness']:false,
             RiskClearance: res['riskClearance']!=""?res['riskClearance']:false,
             Outputs : "NA"
@@ -137,8 +125,6 @@ export class InboxService {
   }
 
   saveChanges(data: any[]): Observable<any> {
-    // return this.http.post(`${this.apiUrl}/saveChanges`, data);
-    // return this.httpService.postData("saveChanges", '', data)
     console.log(data);
     return of('')
 
@@ -191,17 +177,6 @@ export class InboxService {
     hParams = hParams.set('email', email);
     return this.httpService.getData(apiUrl, hParams);
   }
-
-
-  // setAccountInformation(accountInformation: AccountInformation | null): void {
-  //   this.accountInformationSubject.next(accountInformation);
-  // }
-
-  // getAccountInformation(): AccountInformation | null {
-  //   return this.accountInformationSubject.value;
-  // }
-
-
   getAccountInformationfromDB(type: string, clientId: string, submissionId: string, email: string): Observable<any> {
     var apiUrl = this.configService.settings.baseUrl + 'api/submissionheadersbyid';
     let hParams = new HttpParams();
@@ -231,4 +206,12 @@ export class InboxService {
     // return of(accountInformation);
   }
   
+  getSubmissionFilesFromDB(clientId: string, submissionId: string, email: string): Observable<any> {
+    var apiUrl = this.configService.settings.baseUrl + 'api/submissionfiles';
+    let hParams = new HttpParams();
+    hParams = hParams.set('clientid', clientId);
+    hParams = hParams.set('submissionid', submissionId);
+    hParams = hParams.set('email', email);
+    return this.httpService.getData(apiUrl, hParams);
+  }
 }

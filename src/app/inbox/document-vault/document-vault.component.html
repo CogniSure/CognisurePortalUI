@@ -1,4 +1,19 @@
-<div style="    justify-content: center;
-display: flex;
-background: white;
-padding: 20%;"> No Data found</div>
+<div class="document-container">
+  <div *ngIf="noDataAvailble"
+    style="
+      justify-content: center;
+      display: flex;
+      background: white;
+      padding: 20%;
+    "
+  >
+    No Data found
+  </div>
+  <div *ngIf="!noDataAvailble" class="table-container" style="height: 100%">
+    <generic-table
+      [columns]="columns"
+      [height]="43"
+      [data]="submissionFiles"
+    ></generic-table>
+  </div>
+</div>

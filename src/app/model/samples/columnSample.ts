@@ -918,4 +918,51 @@ export class ColumnSample {
             groupable: true,
           }
       ];
+      public static SubmissionFileColumns = [
+        {
+          field: 'SlNo',
+          title: 'Sl No',
+          width: ColumnSize.Small,
+          type: 'text',
+          columnmenu: true,
+          filterable: true,
+          sortable: true,
+        },
+        {
+          field: 'FileName',
+          title: 'File Name',
+          width: ColumnSize.Medium,
+          type: 'text',
+          sortable: true,
+          columnmenu: true,
+          filterable: true,
+        },
+        {
+          field: 'Type',
+          title: 'Doc Type',
+          width: ColumnSize.Large,
+          type: 'text',
+          sortable: false,
+          columnmenu: true,
+          filterable: true,
+        },
+        {
+          field: 'LineOfBusiness',
+          title: 'LOB',
+          width: ColumnSize.Medium,
+          type: 'text',
+          sortable: true,
+          columnmenu: true,
+          filterable: true,
+        },
+        {
+          field: 'Carrier',
+          title: 'Carrier / Form',
+          width: ColumnSize.Medium,
+          type: 'text',
+          sortable: true,
+          columnmenu: true,
+          filterable: true,
+        }
+      ];
 }

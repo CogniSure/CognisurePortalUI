@@ -6,6 +6,7 @@ import { CacheService } from 'src/app/services/common/cache.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
+import { SubmissionFile } from 'src/app/model/inbox/SubmissionFile';
 
 @Component({
   selector: 'app-inbox-detail',
@@ -44,9 +45,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
           });
       });
 
-    this.setExposureSummary();
-    this.setLossSummary();
-    this.getHeader();
+    // this.setExposureSummary();
+    // this.setLossSummary();
+    // this.setHeader();
+    this.setSubmissionFiles();
   }
 
   setExposureSummary() {
@@ -190,7 +192,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       }
     })
   }
-  getHeader(){
+  setHeader(){
     const type = 'account_information';
     const clientId = '1074';
     const submissionId = 'b66623ff-3c5e-887a-423f-f92b8a4c8d98';
@@ -491,5 +493,51 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         })
         return cdata;
   }
+  setSubmissionFiles(){
+    const type = 'account_information';
+    const clientId = '1074';
+    const submissionId = '6A2A02C3-BEA8-4EE9-957F-F4396EF0153A';
+    const email = 'submissiontesting@cognisure.ai';
+    let subFiles : SubmissionFile [] = [];
+    
+    // {
+    //   SlNo : 0,
+    //   FileName: 'NA',
+    //   Type: 'NA',
+    //   LineOfBusiness: 'NA',
+    //   Status: 'NA'
+    // }
+    //this.inboxService.getAccountInformationfromDB
+    
+    this.inboxService.getSubmissionFilesFromDB(clientId,submissionId,email)
+    .subscribe(res=>{
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
 
+        console.log("Document Vault")
+        
+
+        res.value.forEach((data:any) => {
+          if(data!=null){
+            let subFile : SubmissionFile = {
+              SlNo : data.slNo,
+              FileName: data.fileName,
+              Type: data.type,
+              LineOfBusiness: data.lineOfBusiness,
+              Status: data.status,
+              Carrier : ""
+            }
+            subFiles.push(subFile)
+          }
+        });
+        console.log(subFiles)
+        this.cacheService.setSubmissionFiles(subFiles);
+      
+       }
+       else
+        this.cacheService.setSubmissionFiles([]);
+    })
+    
+
+  }
 }

@@ -216,12 +216,17 @@
           >
             <div style="display: flex; justify-content: center">
               <span
-                *ngIf="dataItem.ExtractionComplete"
+                *ngIf="dataItem.ExtractionComplete == 2"
                 class="k-icon k-i-circle"
                 style="color: #6dc942"
               ></span>
               <span
-                *ngIf="!dataItem.ExtractionComplete"
+                *ngIf="dataItem.ExtractionComplete == 1"
+                class="k-icon k-i-circle"
+                style="color: #FFBF00"
+              ></span>
+              <span
+                *ngIf="dataItem.ExtractionComplete == 0"
                 class="k-icon k-i-circle"
                 style="color: #80808059"
               ></span>
@@ -687,9 +692,9 @@
       </div>
     </ng-template>
     <kendo-grid-pdf
-      fileName="Employees.pdf"
+      fileName="Submissions.pdf"
       [repeatHeaders]="true"
     ></kendo-grid-pdf>
-    <kendo-grid-excel fileName="Employees.xlsx"></kendo-grid-excel>
+    <kendo-grid-excel fileName="Submissions.xlsx"></kendo-grid-excel>
   </kendo-grid>
 </div>

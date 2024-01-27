@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
+import { SubmissionFile } from 'src/app/model/inbox/SubmissionFile';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ export class CacheService {
   private accountInformation: AccountInformation | null = null;
   private accountInformationSubject$ = new BehaviorSubject<any>({});
 
+  private submissionFilesSubject$ = new BehaviorSubject<any[]>([]);
 
   private tivSubject$ = new BehaviorSubject<any[]>([]);
   private noOfLocationsSubject$ = new BehaviorSubject<any[]>([]);
@@ -212,6 +214,13 @@ export class CacheService {
     return this.accountInformationSubject$   
   }
 
+  setSubmissionFiles(files: SubmissionFile[]): void {
+    this.submissionFilesSubject$.next(files);
+  }
+
+  getSubmissionFiles(): Observable<any[]>{
+    return this.submissionFilesSubject$   
+  }
   getSummaryByLOB(widgetName: string): Observable<any[]> {
     let dsData = new BehaviorSubject<any[]>([]);
     if (widgetName === 'Agency') {

@@ -72,9 +72,8 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   // dropdownOptions: { label: string; link: string }[] = [];
   dropdownData: { label: string; value: string }[] = [
     { label: 'High', value: 'value1' },
-    { label: 'Low', value: 'value2' },
     { label: 'Medium', value: 'value3' },
-    // ...
+    { label: 'Low', value: 'value2' },
   ];
   isDataAvailble = false;
   navData = alertsData;
@@ -104,9 +103,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   tableData: any;
 
   constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder) {
-    this.loading=true
-
-    this.formGroup = this.fb.group({
+   this.formGroup = this.fb.group({
       agencyname: [''],
     });
 
@@ -150,6 +147,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.gridView = this.data;
     this.loading=false;
     this.dataLoaded = true;
+    this.showSpinner = false;
     this.selectedValue = { label: 'High', value: 'option1' };
 
   }
