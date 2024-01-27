@@ -1,62 +1,75 @@
+<div class="ybar-container">
+  <div class="overlay NoData" *ngIf="noDataAvailble"><div>No data available</div></div>
+  <div class="chartArea" *ngIf="!noDataAvailble">
+    <kendo-chart
+    #chart1
+    [seriesColors]="seriesColors"
+    [pannable]="{ lock: 'y' }"
+    [zoomable]="{ mousewheel: { lock: 'y' } }"
+    [style]="'height: 100%;'"
+  >
+    <kendo-chart-legend
+      position="bottom"
+      orientation="horizontal"
+      class="custom-legend"
+      [markers]="{ type: 'square', height: 18, width: 18 }"
+      [offsetX]="0"
+      [offsetY]="00"
+      [align]="'center'"
+    ></kendo-chart-legend>
+    <kendo-chart-category-axis>
+      <kendo-chart-category-axis-item
+        [categories]="chartData.Dimension"
+        [majorGridLines]="{ visible: false }"
+      >
+        <kendo-chart-category-axis-item-labels [position]="'start'">
+        </kendo-chart-category-axis-item-labels>
+      </kendo-chart-category-axis-item>
+    </kendo-chart-category-axis>
+    <kendo-chart-value-axis>
+      <kendo-chart-value-axis-item
+        [labels]="{ format: '{0:n}' }"
+        [majorUnit]="majorUnit"
+        [labels]="valueAxisLabels"
+        [min]="0"
+        [max]="valueAxisMax.max"
+        maxDivisions="1"
+        [majorGridLines]="{ visible: false }"
+      >
+        <kendo-chart-value-axis-item-labels
+          [position]="'end'"
+          [format]="'{0:0}'"
+        >
+        </kendo-chart-value-axis-item-labels>
+      </kendo-chart-value-axis-item>
+    </kendo-chart-value-axis>
 
-
-<kendo-chart #chart1
-  [seriesColors]="seriesColors"
-  [pannable]="{ lock: 'y' }"
-  [zoomable]="{ mousewheel: { lock: 'y' } }"
-  [style]="'height: 100%;'"
-
->
-  <kendo-chart-legend
-    position="bottom"
-    orientation="horizontal"
-    class="custom-legend"
-    [markers]="{type : 'square', height:18, width : 18}"
-    [offsetX]="0" [offsetY]="00"
-    [align]="'center'"
-  ></kendo-chart-legend>
-  <kendo-chart-category-axis>
-    <kendo-chart-category-axis-item [categories]="chartData.Dimension"   [majorGridLines]="{ visible: false }">
-      <kendo-chart-category-axis-item-labels [position]="'start'">
-      </kendo-chart-category-axis-item-labels>
-    </kendo-chart-category-axis-item>
-  </kendo-chart-category-axis>
-  <kendo-chart-value-axis>
-    <kendo-chart-value-axis-item [labels]="{ format: '{0:n}' }"  [majorUnit]="majorUnit" 
-     [labels]="valueAxisLabels"
-    [min]="0"
-    [max]="valueAxisMax.max"
-    maxDivisions="1"
-    [majorGridLines]="{ visible: false }">
-      <kendo-chart-value-axis-item-labels [position]="'end'" [format]="'{0:0}'">
-      </kendo-chart-value-axis-item-labels>
-    </kendo-chart-value-axis-item>
-  </kendo-chart-value-axis>
-
-  <!-- <kendo-chart-value-axis>
+    <!-- <kendo-chart-value-axis>
     <kendo-chart-value-axis-item>
       <kendo-chart-value-axis-item-labels [content]="onYAxisLabelContent">
       </kendo-chart-value-axis-item-labels>
     </kendo-chart-value-axis-item>
   </kendo-chart-value-axis> -->
-  
-  
-  <kendo-chart-series-defaults type="bar">
-    <kendo-chart-series-defaults-labels format="p">
-    </kendo-chart-series-defaults-labels>
-  </kendo-chart-series-defaults>
-  <kendo-chart-series>
-    <kendo-chart-series-item
-      *ngFor="let item of chartData.Data; let i = index"
-      type="bar"
-      [data]="item.Data"
-      [name]="item.Name"
-      [gap] = "1"
-      [autoFit]="true"
-      [labels]="seriesLabels"
-    >
-     <!-- <kendo-chart-series-item-labels  [content]="onLabelContent">
+
+    <kendo-chart-series-defaults type="bar">
+      <kendo-chart-series-defaults-labels format="p">
+      </kendo-chart-series-defaults-labels>
+    </kendo-chart-series-defaults>
+    <kendo-chart-series>
+      <kendo-chart-series-item
+        *ngFor="let item of chartData.Data; let i = index"
+        type="bar"
+        [data]="item.Data"
+        [name]="item.Name"
+        [gap]="1"
+        [autoFit]="true"
+        [labels]="seriesLabels"
+      >
+        <!-- <kendo-chart-series-item-labels  [content]="onLabelContent">
     </kendo-chart-series-item-labels> -->
-    </kendo-chart-series-item>
-  </kendo-chart-series>
-</kendo-chart>
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+  </kendo-chart>
+  </div>
+ 
+</div>

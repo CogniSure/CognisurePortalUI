@@ -18,7 +18,7 @@
    
   
 <ng-template kendoChartDonutCenterTemplate>
-  <h3>{{CenterValue}}</h3>
+  <h3 *ngIf="CenterValue!=0">{{CenterValue}}</h3>
 </ng-template>
   <kendo-chart-plot-area [background]="'green'" 
   [margin]="{left:0, top:0, right:0, bottom:0}"

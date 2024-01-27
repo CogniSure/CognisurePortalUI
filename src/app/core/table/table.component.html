@@ -32,49 +32,27 @@
         <span class="search-icon">&#128269;</span>
       </kendo-textbox>
       <kendo-grid-spacer></kendo-grid-spacer>
-
-      <kendo-splitbutton [data]="export">
+      <kendo-dropdownbutton [data]="exportButtons" style="width: 10em">
         <img
           src="../../../assets/images/download-icon.jpg"
           style="width: 30px; height: 30px"
           alt="Custom Icon"
         />
-        <span class="export_psdxl"></span>
-
-        <ng-template
-          kendoSplitButtonItemTemplate
-          let-dataItem
-          style="width: 300px; height: 30%"
-        >
-          <!-- <div style="width:148%!important"> -->
-          <button
-            *ngIf="dataItem.text == 'excel'"
-            kendoGridExcelCommand
-            type="button"
-            style="background-image: none"
-          >
-            <span class="export_xl"></span>
-            <img
-              class="excel_icon"
-              src="../../../assets/images/XL.svg"
-              style="width: 30px; height: 30px; padding-left: 10%"
-            />
-          </button>
-          <button
-            *ngIf="dataItem.text == 'pdf'"
-            kendoGridPDFCommand
-            style="background-image: none"
-          >
-            <span class="export_pdf"></span>
-            <img
-              class="pdf_icon"
-              src="../../../assets/images/PDF.svg"
-              style="width: 30px; height: 30px; padding-left: 10%"
-            />
-          </button>
-          <!-- </div> -->
+        <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+          <div style="padding: 5%; width: 10em !important; display: flex">
+            <div>
+              <span>{{ dataItem.actionName }}</span>
+            </div>
+            <div style="padding-left: 5%;">
+              <img
+                [src]="dataItem.icon"
+                style="width: 1em; height: 1em"
+                alt="Custom Icon"
+              />
+            </div>
+          </div>
         </ng-template>
-      </kendo-splitbutton>
+      </kendo-dropdownbutton>
     </ng-template>
 
     <ng-template ngFor [ngForOf]="columns" let-column>

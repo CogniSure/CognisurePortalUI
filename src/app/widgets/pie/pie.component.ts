@@ -38,7 +38,7 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
   @ViewChild('chart')
   private chart: ChartComponent;
   seriesColors: string[] = SeriesColorConst;
-  CenterValue = 10;
+  CenterValue = 0;
   filter: DashboardFilter;
   legendPos :any = "bottom"
   legendOrientation : any = "horizontal"
@@ -52,7 +52,8 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
         //console.log(data)
         if(data!=null && data.length > 0){
           this.chartData = data[0];
-          this.CenterValue = data[0].Dimension[0].value;
+          if(data[0].Dimension[0]!=null)
+            this.CenterValue = data[0].Dimension[0].value;
         }
         this.changeDetector.detectChanges();
       })

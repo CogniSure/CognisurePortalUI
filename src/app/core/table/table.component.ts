@@ -329,5 +329,20 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   closePopup() {
     this.isPopupVisible = false;
   }
-
+  public exportButtons = [
+    {
+      actionName: "Export as Excel",
+      icon : "../../../assets/images/XL.svg",
+      click : (dataItem: any): void => {
+        console.log(`${dataItem.actionName}ing last action.`);
+      },
+    },
+    {
+      actionName : "Export as PDF",
+      icon : "../../../assets/images/PDF.svg",
+      click : (dataItem: any): void => {
+        console.log(`${dataItem.actionName}ing last action.`);
+      },
+    }
+  ];
 }

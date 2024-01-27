@@ -1,0 +1,12 @@
+.ybar-container{
+    height: 100%;
+    .NoData{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 25%;
+    }
+    .chartArea{
+        height: 100%;
+    }
+}

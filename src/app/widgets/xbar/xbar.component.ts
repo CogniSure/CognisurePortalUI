@@ -23,6 +23,7 @@ export class XBarComponent implements OnInit, OnDestroy {
   xbarData: any;
   majorUnit: number;
   showSpinner = false;
+  noDataAvailble = false;
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -66,7 +67,8 @@ export class XBarComponent implements OnInit, OnDestroy {
     this.showSpinner = true;
     if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
       this.input.DataSubject.subscribe((inputData:any[])=>{
-        
+        console.log("XBAR Chart " + this.input.WidgetName)
+            console.log(inputData)
         if(this.input.Settings!=null && this.input.Settings.ShowLabels!=null)
         {
           this.seriesLabels.visible = this.input.Settings.ShowLabels;
@@ -88,8 +90,17 @@ export class XBarComponent implements OnInit, OnDestroy {
          else 
             this.valueAxisMax.max = maxVal
             this.majorUnit = maxVal > 10 ? Math.ceil(maxVal / 10) : 1;
-          // this.valueAxisMax = maxVal>10? maxVal+10:10//this.people.reduce((a, b)=>Math.max(a, b));;
-          // console.log(inputData[0].Data)
+         
+            
+            
+            if (this.chartData.Data != null && this.chartData.Data.length > 0)
+              this.noDataAvailble = false;
+            else this.noDataAvailble = true;
+  
+            this.changeDetector.detectChanges();
+        }
+        else {
+          this.noDataAvailble = true;
         }
         this.showSpinner = false;
         this.changeDetector.detectChanges();
