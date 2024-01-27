@@ -15,9 +15,6 @@ import {
 import { GlobalService } from 'src/app/services/common/global.service';
 import { inboxNavbarData } from '../../model/sidenav/inbox-nav-data';
 
-
-
-
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -76,14 +73,7 @@ export class InboxMenuComponent implements OnInit {
     this.sideNavData = {
       collapsed : false,
       screenWidth : this.screenWidth
-    }
-    // this.toggleService.sideNavToggle$.subscribe(x=> {
-    //  if(x!=null){
-    //   this.collapsed = x.collapsed
-    //  }
-    // })
-    //this.toggleService.sideNavToggle$.next(this.sideNavData);
-    
+    }    
   }
   sideNavData : SideNavToggle = {
     collapsed : false,
@@ -96,12 +86,5 @@ export class InboxMenuComponent implements OnInit {
       screenWidth: this.screenWidth,
     }
     this.onToggleSideNav.emit(this.sideNavData);
-
-    // this.toggleService.sideNavToggle$.subscribe(x=> x)
-    // this.toggleService.sideNavToggle$.next(this.sideNavData);
-
   }
-
-
-
 }
