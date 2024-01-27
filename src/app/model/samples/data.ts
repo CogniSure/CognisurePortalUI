@@ -156,9 +156,9 @@ export class DataComponent {
     {
       id: 1,
       BoxType: 'SmallBox',
-      WidgetName: 'SubmissionConversion',
-      WidgetType: 'funnel',
-      Header: 'Submission Conversion',
+      WidgetName: 'SubmissionProfile',
+      WidgetType: 'donut',
+      Header: 'Submission Profile and Volume',
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  3

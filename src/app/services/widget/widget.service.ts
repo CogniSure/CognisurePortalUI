@@ -90,6 +90,17 @@ export class WidgetService {
     return this.http.get<any[]>(apiUrl, { params });
   }
   
+  getSubmissionProfileFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
+    const apiUrl = this.env.baseUrl+'api/DashboardGraph';
+    const params = new HttpParams()
+      .set('TOPNUMBER', topNumber)
+      .set('CLIENTID', clientId)
+      .set('UserEmailId', userEmailId)
+      .set('StartDate', startDate)
+      .set('EndDate', endDate)
+      .set('Type', type);
+    return this.http.get<any[]>(apiUrl, { params });
+  }
   getTopLocationsFromDB(topNumber: string,clientId: string, userEmailId: string, startDate: string, endDate: string, type: string): Observable<any> {
     const apiUrl = this.env.baseUrl+'api/DashboardGraph';
     const params = new HttpParams()

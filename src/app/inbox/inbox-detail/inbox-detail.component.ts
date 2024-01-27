@@ -37,7 +37,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         this.inboxService
           .getSubmissionData(
             subId.MessageId
-            // "AAMkADU1NjU3NzEyLWMxZTItNDA5Yy04N2E0LTkzYWNjNTc3ZWVlMQBGAAAAAABFiQ8wy3CORZrMw-rLQJlFBwCM8fwoQTOCSY_HjadmsuvGAAAAAAEMAACM8fwoQTOCSY_HjadmsuvGAAKVXoPlAAA="
           )
           .subscribe((res) => {
             this.submissionData = res.value;
@@ -48,25 +47,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     this.setExposureSummary();
     this.setLossSummary();
     this.getHeader();
-
-    // this.accountInformation = {
-    //   NamedinsuredFullname: 'Dante Mason',
-    //   FullAddress: '885 Street, Warrnville, Illinois 60555',
-    //   BusinessDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    //   BusinessType: 'Property',
-    //   EffectiveDate: '03/01/2023',
-    //   OrganizationType: '',
-    //   YearStarted: '',
-    //   NumberOfEmployees: '',
-    //   ProducerFullname: '',
-    //   SICCode: '',
-    //   Taxidentifier: '',
-    //   ContactName: '',
-    //   PhoneNumber: '8143-03312302301',
-    //   Email: ''
-    // };
-    // this.inboxService.setAccountInformation(this.accountInformation);
-
   }
 
   setExposureSummary() {

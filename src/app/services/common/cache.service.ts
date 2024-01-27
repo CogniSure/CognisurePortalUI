@@ -32,6 +32,8 @@ export class CacheService {
   private totalIncurred$ = new BehaviorSubject<any[]>([]);
   private topLocations$ = new BehaviorSubject<any[]>([]);
   
+  
+  private dashboard_SubmissionProfile$ = new BehaviorSubject<any[]>([]);
   private dashboard_TurnAroundTime$ = new BehaviorSubject<any[]>([]);
   private dashboard_TopBrokers$ = new BehaviorSubject<any[]>([]);
   private dashboard_CoverageDistribution$ = new BehaviorSubject<any[]>([]);
@@ -165,7 +167,9 @@ export class CacheService {
         }
       ]
     }]
-    if (widgetName === 'SubmissionTurnaroundTime') {
+    if (widgetName === 'SubmissionProfile') {
+      return this.dashboard_SubmissionProfile$;
+    } else if (widgetName === 'SubmissionTurnaroundTime') {
       return this.dashboard_TurnAroundTime$;
     } else if (widgetName === 'TopBrokers') {
       return this.dashboard_TopBrokers$;
@@ -183,7 +187,9 @@ export class CacheService {
   }
   setDashboard(widgetName: string, data: any[]) {
     //let dsData = new BehaviorSubject<any[]>([]);
-    if (widgetName === 'SubmissionTurnaroundTime') {
+    if (widgetName === 'SubmissionProfile') {
+      this.dashboard_SubmissionProfile$.next(data);
+    } else if (widgetName === 'SubmissionTurnaroundTime') {
       this.dashboard_TurnAroundTime$.next(data);
     } else if (widgetName === 'TopBrokers') {
       this.dashboard_TopBrokers$.next(data);

@@ -17,10 +17,9 @@
 </kendo-chart-legend>
    
   
-  <!-- <kendo-chart-series-defaults type="bar" >
-    <kendo-chart-series-defaults-labels format="p">
-    </kendo-chart-series-defaults-labels>
-  </kendo-chart-series-defaults> -->
+<ng-template kendoChartDonutCenterTemplate>
+  <h3>{{CenterValue}}</h3>
+</ng-template>
   <kendo-chart-plot-area [background]="'green'" 
   [margin]="{left:0, top:0, right:0, bottom:0}"
   [border]="{width:8}"
@@ -30,7 +29,7 @@
     <kendo-chart-series-item
     [autoFit]="false"
     [type]="ChartType"
-    [data]="chartData"
+    [data]="chartData.Data"
     field="value"
     categoryField="category"
     [padding]="15"

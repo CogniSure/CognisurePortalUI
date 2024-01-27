@@ -31,10 +31,14 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
     private changeDetector: ChangeDetectorRef,
     @Inject(InjectToken) private input: WidgetInput
   ) {}
+  chartData: ChartData = {
+    Dimension: [],
+    Data: [],
+  };
   @ViewChild('chart')
   private chart: ChartComponent;
   seriesColors: string[] = SeriesColorConst;
-  public chartData: any[];
+  CenterValue = 10;
   filter: DashboardFilter;
   legendPos :any = "bottom"
   legendOrientation : any = "horizontal"
@@ -42,20 +46,14 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy(): void {}
   ngOnInit(): void {
     this.ApplySettings();
-    // if (this.input.Data != null && this.input.Data.length > 0) {
-    //   this.chartData = this.input.Data;
-    // } 
     if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
       this.input.DataSubject.subscribe((data:any[])=>{
+        //console.log("Submission Profile")
+        //console.log(data)
         if(data!=null && data.length > 0){
-          this.chartData = data;
+          this.chartData = data[0];
+          this.CenterValue = data[0].Dimension[0].value;
         }
-        // else {
-        //   this.dbService.getDashboard(this.input, this.filter).subscribe((res) => {
-        //     this.chartData = res;
-        //     this.changeDetector.detectChanges();
-        //   });
-        // }
         this.changeDetector.detectChanges();
       })
     }
@@ -91,17 +89,6 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
         saveAs(dataURI, 'chart-large.png');
       });
   }
-  pieLabelContent(e: any): string {
-    console.log("Pie Label")
-    console.log(this.dataType)
-    // if(this.dataType == "number")
-    //   return e.value;
-    // else if(this.dataType == "percentage")
-    //   return e.value + '%';
-    // else if(this.dataType == "dollar")
-    //   return "$" + e.value;
-    return e.value + '%';
-  }
   public labelContent = (e: SeriesLabelsContentArgs): string => {
     if(this.dataType == "Number")
       return e.value;
@@ -109,12 +96,7 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
       return e.value + '%';
     else if(this.dataType == "Dollar")
       return "$" + e.value;
-    return e.value + "%";
+    return e.value;
   };
-  processDataForXbarChart(data: any[]): void {
-    // this.chartData = data.map(item => ({
-    //   category: item['category'],
-    //   value: item['value'],
-    // }));
-  }
+  
 }

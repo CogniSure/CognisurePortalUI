@@ -45,89 +45,93 @@ export class DashboardwidgetsComponent
     private globalService: GlobalService,
     private dbService: DashboardService,
     private cacheService: CacheService
-  ) {
-
-    
-    this.getDataFromDB();
-
-
-    
-  }
+  ) {}
   ngOnDestroy(): void {
     this.globalService.clearDashboardSession();
   }
   ngAfterViewInit() {}
 
   ngOnInit(): void {
-    const user = this.globalService.getUserProfile();
-
-    //    const topNumber = '10';
-    //    const clientId = user.ClientID;
-    // const userEmailId = user.Email;
-    // const startDate = '';
-    // const endDate = '';
-
     this.componentOrder = DataComponent.Dashboardhub;
     this.custComponents = [];
     var i = 1;
     this.componentOrder.forEach((entry: any) => {
       this.custComponents.push({
-        //ColWidth: BoxDetails.get(entry.BoxType)!,
         Widget: ComponentDetails.get(entry.WidgetType)![0],
         WidgetName: entry.WidgetName,
         WidgetType: entry.WidgetType,
         Header: entry.Header,
-        //BoxClass: entry.BoxType,
-        //Fullscreen : entry.Fullscreen,
         ColumnId: entry.ColumnId,
         ColumnSpan: entry.ColumnSpan,
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector :  this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+        CustomInjector :  this.createInjector(entry)
       });
       i++;
     });
+    this.getDataFromDB();
   }
 
   getDataFromDB() {
+    const user = this.globalService.getUserProfile();
+
+    console.log("User Details")
+    console.log(user)
     const topNumber = '10';
-    const clientId = '1074';
-    const userEmailId = 'submissiontesting@cognisure.ai';
     const startDate = '01/01/2023';
     const endDate = '9/30/2024';
+    const clientId = user.ClientCode;
+    const userEmailId = user.Email;//'submissiontesting@cognisure.ai';
 
-    this.getTopLocations(topNumber, clientId, userEmailId, startDate, endDate);
-    this.getTopLocationsbyState(
-      topNumber,
-      clientId,
-      userEmailId,
-      startDate,
-      endDate
-    );
-    this.getTopIndustries(topNumber, clientId, userEmailId, startDate, endDate);
-    this.getCoverageDistribution(
-      topNumber,
-      clientId,
-      userEmailId,
-      startDate,
-      endDate
-    );
-    this.getSubmissionConversions(
-      topNumber,
-      clientId,
-      userEmailId,
-      startDate,
-      endDate
-    );
-    this.getSubmissionTurnAroundTime(
-      topNumber,
-      clientId,
-      userEmailId,
-      startDate,
-      endDate
-    );
+    this.getSubmissionProfile(topNumber, clientId, userEmailId, startDate, endDate);
+    this.getSubmissionTurnAroundTime(topNumber,clientId,userEmailId,startDate,endDate);
+    this.getCoverageDistribution(topNumber,clientId,userEmailId,startDate,endDate);
     this.getTopBrokers(topNumber, clientId, userEmailId, startDate, endDate);
+    this.getTopIndustries(topNumber, clientId, userEmailId, startDate, endDate);
+    this.getTopLocations(topNumber, clientId, userEmailId, startDate, endDate);
+    this.getTopLocationsbyState(topNumber,clientId,userEmailId,startDate,endDate);
+    
+    // this.getSubmissionConversions(topNumber,clientId,userEmailId,startDate,endDate);
+    
+  }
+  getSubmissionProfile(
+    topNumber: any,
+    clientId: any,
+    userEmailId: any,
+    startDate: any,
+    endDate: any
+  ){
+    this.widgetService.getSubmissionProfileFromDB( topNumber,
+      clientId,
+      userEmailId,
+      startDate,
+      endDate,
+      'countofsubmissionprofileandvolume').subscribe(res=>{
+        let cdata: ChartData = {
+          Dimension: [],
+          Data: [],
+        };
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        let dataArr = res.value;
+        const mappedArr = dataArr.map((x:any)=>{
+          return {
+            category:x.dimension,
+            value:x.measure
+          }
+        })
+        cdata.Dimension = mappedArr.filter((f:any)=>f.category == 'SubmissionIdCount');
+        cdata.Data = mappedArr.filter((f:any)=>f.category != 'SubmissionIdCount');
+        
+        //cdata.Dimension = mappedArr.filter(f=>f.category == 'SubmissionIdCount')
+        this.cacheService.setDashboard('SubmissionProfile',[cdata])
+      }
+      else 
+      {
+        this.cacheService.setDashboard('SubmissionProfile', []);
+      }
+    })
   }
   getTopLocations(
     topNumber: any,
@@ -260,11 +264,10 @@ export class DashboardwidgetsComponent
     startDate: any,
     endDate: any
   ) {
-    let cdata=
-        [
-          {category: '', value: ''},
-        ]
-    
+    let cdata: ChartData = {
+      Dimension: [],
+      Data: [],
+    };
     this.widgetService
       .getCoverageDistributionFromDB(
         topNumber,
@@ -279,21 +282,18 @@ export class DashboardwidgetsComponent
           res != null &&
           res.success
         ) {
+         
           if(res.value!=null){
+            const mappedArr : any[] = [];
             res.value.forEach((data: any)=>{
               let piechartdata={category: data.dimension, value: data.measure}
-              cdata.push(piechartdata)
+              mappedArr.push(piechartdata)
             })
+            cdata.Data = mappedArr;
           }
-          
-          this.cacheService.setDashboard('CoverageDistribution',cdata);
-
-          // this.globalService.setCoverageDistributions(
-          //   res.value
-          // );
+          this.cacheService.setDashboard('CoverageDistribution',[cdata]);
         } else {
-          this.cacheService.setDashboard('CoverageDistribution',cdata);
-          this.globalService.setCoverageDistributions([]);
+          this.cacheService.setDashboard('CoverageDistribution',[]);
         }
       });
   }
@@ -348,14 +348,6 @@ export class DashboardwidgetsComponent
           res.success
         ) {
           if(res.value!=null){
-            // let tempRes = res.value;
-            // cdata[0].Dimension=
-            // res.value.forEach((data: any) => {
-            //   if (data.dimension && data.measure) {
-            //     cdata[0].Dimension.push(data.dimension);
-            //     cdata[0].Data[0].Data.push(data.measure);
-            //   }
-            // });
             cdata = this.getTranformedData(res);
           }
           this.cacheService.setDashboard('SubmissionTurnaroundTime',cdata);
@@ -415,54 +407,25 @@ export class DashboardwidgetsComponent
     this.globalService.setDashboardReload(false);
   }
 
-  createInjector(widgetName: string, widgetType: string, widgetHeader:string=""): any {
+  createInjector(config:any): any {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
-      WidgetName: widgetName,
-      WidgetType: widgetType,
-      WidgetHeader : widgetHeader,
-      Settings: {},
+      WidgetName: config.WidgetName,
+      WidgetType: config.WidgetType,
+      WidgetHeader : config.Header,
+      Settings: {
+        "DataType" : config.DataType!=null?config.DataType : ""
+      },
       Keys: [],
       DataSubject: of([]),
     };
-    if(widgetName == 'CoverageDistribution' || widgetName =='SubmissionTurnaroundTime'
-    || widgetName =='TopBrokers' || widgetName =='TopIndustries'
-    || widgetName =='TopLocationsByCity' || widgetName =='TopLocationsByState'
-    ){
-      widgetInput.DataSubject = this.cacheService.getDashboard(widgetName);
-      // console.log("Data Comparison - " + widgetName)
-      // let filter: DashboardFilter = {
-      //   AccountName:"",
-      //   Date:
-      //     {
-      //       ReloadRequired:false,
-      //       FromDate: "string",
-      //       ToDate: "string",
-      //       PriorFromDate: "string",
-      //       PriorToDate: "string",
-      //       Account : 
-      //         {
-      //           AccountID: 0,
-      //           AccountName: "string",
-      //           BenPortalLinks:[]
-      //       }
-            
-      //     }
-        
-      // }
-      // // this.widgetService.getSubmissionTurnaroundTime(filter).subscribe(x=>{
-      // //   console.log("Dashboard Old")
-      // //   console.log(x)
-      // // })
-      // this.cacheService.getDashboard(widgetName).subscribe(x=>{
-      //   console.log("Dashboard Latest - "  + widgetName)
-      //   console.log(x)
-      // })
-    }
+
+    widgetInput.DataSubject = this.cacheService.getDashboard(config.WidgetName);
+    
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],
       parent: this.injector,
-      name: widgetName,
+      name: config.WidgetName,
     });
 
     return myInjector;
