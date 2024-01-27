@@ -953,6 +953,7 @@ export class ColumnSample {
     {
       field: 'SlNo',
       title: 'Sl No',
+      default : true,
       width: ColumnSize.Small,
       type: 'text',
       columnmenu: true,
@@ -962,6 +963,7 @@ export class ColumnSample {
     {
       field: 'FileName',
       title: 'File Name',
+      default : true,
       width: ColumnSize.Medium,
       type: 'text',
       sortable: true,
@@ -971,6 +973,7 @@ export class ColumnSample {
     {
       field: 'Type',
       title: 'Doc Type',
+      default : true,
       width: ColumnSize.Large,
       type: 'text',
       sortable: false,
@@ -980,6 +983,7 @@ export class ColumnSample {
     {
       field: 'LineOfBusiness',
       title: 'LOB',
+      default : true,
       width: ColumnSize.Medium,
       type: 'text',
       sortable: true,
@@ -989,6 +993,7 @@ export class ColumnSample {
     {
       field: 'Carrier',
       title: 'Carrier / Form',
+      default : true,
       width: ColumnSize.Medium,
       type: 'text',
       sortable: true,
