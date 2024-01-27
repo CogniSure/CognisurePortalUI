@@ -1,4 +1,4 @@
-.sidenav {
+.sidenav-inbox {
     transition: all 0.5s ease;
     position: relative;
     z-index: 1;
@@ -8,6 +8,20 @@
     height: 100%;
     //   height: 645px;
     box-shadow: 0;
+    .close-container{
+      display: flex;
+      align-items: center;
+      // padding: 0.938rem 0 0.8rem 0.2rem;
+      width: 150%;
+      color:white;
+      background-color: transparent;
+      padding: 22%;
+      button{
+        color: transparent;
+        background: transparent;
+        border: none;
+      }
+    }
     .logo-container {
       display: flex;
       align-items: center;
