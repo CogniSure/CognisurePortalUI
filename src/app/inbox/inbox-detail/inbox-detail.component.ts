@@ -7,6 +7,7 @@ import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 import { SubmissionFile } from 'src/app/model/inbox/SubmissionFile';
+import { UserProfile } from 'src/app/model/profile/userprofile';
 
 @Component({
   selector: 'app-inbox-detail',
@@ -14,48 +15,81 @@ import { SubmissionFile } from 'src/app/model/inbox/SubmissionFile';
   styleUrls: ['./inbox-detail.component.scss'],
 })
 export class InboxDetailComponent implements OnInit, OnDestroy {
+
   subscription: Subscription;
+  accountInformation: AccountInformation | null = null;
+  submissionData: any;
+  userProfile:UserProfile={
+    UserID: 0,
+    FirstName: "",
+    MiddleName: "",
+    LastName: "",
+    Password: "",
+    PhoneNumber: "",
+    Email: "",
+    ClientID: 0,
+    ClientName: "",
+    UserTypeName: "",
+    UserTypeID: 0,
+    ClientCode: "",
+    IsAdmin:false,
+    UserImage : "",
+  };
+
   constructor(
     private inboxService: InboxService,
     private globalService: GlobalService,
     private cacheService: CacheService
   ) {}
+
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
     this.cacheService.clearSession();
-    console.log('Inbox Detail Destroyed');
   }
 
-  accountInformation: AccountInformation | null = null; 
-  submissionData: any;
   ngOnInit(): void {
     console.log('Inbox Started');
+    this.userProfile = this.globalService.getUserProfile();
+
     this.subscription = this.globalService
       .getCurrentSubmissionId()
       .subscribe((subId: any) => {
-        this.inboxService
-          .getSubmissionData(
-            subId.MessageId
-          )
-          .subscribe((res) => {
-            this.submissionData = res.value;
-            this.globalService.setCurrentSubmission(res);
-          });
+
+        this.setSubmissionDetails(subId);
+
+        // this.inboxService
+        //   .getSubmissionData(
+        //     subId.MessageId
+        //   )
+        //   .subscribe((res) => {
+        //     this.submissionData = res.value;
+        //     this.globalService.setCurrentSubmission(res);
+        //   });
       });
 
-    // this.setExposureSummary();
-    // this.setLossSummary();
-    // this.setHeader();
-    this.setSubmissionFiles();
+
   }
 
-  setExposureSummary() {
-    let type:string ="exposure_tiv"
-    let clientId:string = "1074"
-    let submissionId: string = "b66623ff-3c5e-887a-423f-f92b8a4c8d98"
-    let email:string = "submissiontesting@cognisure.ai"
+  setSubmissionDetails(submission:any){
+    console.log('Current Submission');
+    console.log(submission);
+
+    // const clientId = '1074';
+    // const submissionId = '6A2A02C3-BEA8-4EE9-957F-F4396EF0153A';
+    // const email = 'submissiontesting@cognisure.ai';
+
+    const clientId = this.userProfile.ClientCode;
+    const email = this.userProfile.Email;
+    const submissionId = submission.SubmissionGUID;
+
+    this.setHeader(email,clientId,submissionId);
+    // this.setExposureSummary(email,clientId,submissionId);
+    // this.setLossSummary(email,clientId,submissionId);
+    this.setSubmissionFiles(email,clientId,submissionId);
+  }
+  setExposureSummary(email:string,clientId:string,submissionId:string) {
 
     this.inboxService.getExposureSummary("exposure_tiv",clientId,submissionId,email).subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
@@ -67,7 +101,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
           },
         ]);
       }
-      else 
+      else
       {
         this.cacheService.setExposureSummary('TIV', [
           {
@@ -77,7 +111,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         ]);
       }
     })
-    
+
     this.inboxService.getExposureSummary("exposure_locationcount",clientId,submissionId,email).subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {
@@ -88,7 +122,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
           },
         ]);
       }
-      else 
+      else
       {
         this.cacheService.setExposureSummary('NoOfLocations', [
           {
@@ -98,7 +132,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         ]);
       }
     })
-    
+
     this.inboxService.getExposureSummary("exposure_locationcount",clientId,submissionId,email).subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {
@@ -109,7 +143,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
           },
         ]);
       }
-      else 
+      else
       {
         this.cacheService.setExposureSummary('NoOfBuildings', [
           {
@@ -119,7 +153,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         ]);
       }
     })
-    
+
     this.inboxService.getExposureSummary("exposure_constructiontype",clientId,submissionId,email).subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {
@@ -132,7 +166,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         })
         this.cacheService.setExposureSummary('ConstructionType',mappedArr)
       }
-      else 
+      else
       {
         this.cacheService.setExposureSummary('ConstructionType', []);
       }
@@ -150,7 +184,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         })
         this.cacheService.setExposureSummary('OccupancyType',mappedArr)
       }
-      else 
+      else
       {
         this.cacheService.setExposureSummary('OccupancyType', []);
       }
@@ -168,7 +202,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         })
         this.cacheService.setExposureSummary('YearBuild',mappedArr)
       }
-      else 
+      else
       {
         this.cacheService.setExposureSummary('YearBuild', []);
       }
@@ -186,17 +220,14 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         })
         this.cacheService.setExposureSummary('ProtectionClass',mappedArr)
       }
-      else 
+      else
       {
         this.cacheService.setExposureSummary('ProtectionClass', []);
       }
     })
   }
-  setHeader(){
-    const type = 'account_information';
-    const clientId = '1074';
-    const submissionId = 'b66623ff-3c5e-887a-423f-f92b8a4c8d98';
-    const email = 'submissiontesting@cognisure.ai';
+  setHeader(email:string,clientId:string,submissionId:string){
+
     let accInfo : AccountInformation = {
       SubmissionId : "",
       NamedinsuredFullname: 'NA',
@@ -216,7 +247,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       LOB: "NA"
     }
     //this.inboxService.getAccountInformationfromDB
-    
+
     this.inboxService.getAccountInformationfromDB("exposure_tiv",clientId,submissionId,email)
     .subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
@@ -224,7 +255,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
 
         console.log("Headers")
         //SubmissionID
-        
+
         res.value.forEach((data:any) => {
           if(data.dimension == "SubmissionID")
             accInfo.SubmissionId = data.measure;
@@ -234,7 +265,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             let addr = data.measure
             accInfo.FullAddress = data.measure;
           }
-           
+
           if(data.dimension == "State and Zipcode")
             accInfo.SICCode = data.measure;
           if(data.dimension == "LineOfBusiness")
@@ -251,7 +282,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       //     },
       //   ]);
       // }
-      // else 
+      // else
       // {
       //   this.cacheService.setExposureSummary('TIV', [
       //     {
@@ -261,14 +292,11 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       //   ]);
        }
     })
-    
+
 
   }
-    
-  setLossSummary() {
-    let clientId:string = "1074"
-    let submissionId: string = "b66623ff-3c5e-887a-423f-f92b8a4c8d98"
-    let email:string = "submissiontesting@cognisure.ai"
+
+  setLossSummary(email:string,clientId:string,submissionId:string) {
 
     this.inboxService.getLossSummary("loss_claimsbyLOBbyyear",clientId,submissionId,email).subscribe(res=>{
       console.log('sampleData ClaimsbyLOBbyYear');
@@ -300,12 +328,12 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         // });
         cdata = this.getTranformedData(res);
         this.cacheService.setLossSummary('ClaimsbyLOBbyYear',cdata);
-       
+
       } else {
         this.cacheService.setLossSummary('ClaimsbyLOBbyYear', cdata);
       }
     })
-    
+
     this.inboxService.getLossSummary("loss_incurredbyLOBbyyear",clientId,submissionId,email).subscribe(res=>{
 
       let cdata: ChartData[] =[
@@ -378,7 +406,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         this.cacheService.setLossSummary('IncurredbyClaimTypebyYear', cdata);
       }
     })
- 
+
     this.inboxService.getLossSummary("loss_claimsbyclaimtype",clientId,submissionId,email).subscribe(res=>{
       let cdata: ChartData[] =[
         {
@@ -448,7 +476,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             Data: [],
           },
         ],
-      }];    
+      }];
       if(res!=null && res.value != null && res.value.length > 0)
       {
         cdata = this.getTranformedData(res);
@@ -472,14 +500,14 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         let distCategory = [...new Set(res.value.map((item:any) => item.category))] as []
         cdata[0].Dimension = distDimension
         let tempResult = res.value;
-       
+
         distCategory.forEach(x=>{
-          
+
           let categoryGroup = tempResult.filter((rr:any)=> rr.category==x);
           let tempCategory = categoryGroup[0].category;
           let tempData:any[] = [];
           distDimension.forEach(dmsn=>{
-            
+
             let filterdData = categoryGroup.filter((f:any)=>f.dimension==dmsn);
             if(filterdData!=null && filterdData.length>0){
               tempData.push(filterdData[0].measure)
@@ -489,35 +517,19 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             }
           })
           cdata[0].Data.push({Name:tempCategory,Data:tempData})
-          
+
         })
         return cdata;
   }
-  setSubmissionFiles(){
-    const type = 'account_information';
-    const clientId = '1074';
-    const submissionId = '6A2A02C3-BEA8-4EE9-957F-F4396EF0153A';
-    const email = 'submissiontesting@cognisure.ai';
+  setSubmissionFiles(email:string,clientId:string,submissionId:string){
+
     let subFiles : SubmissionFile [] = [];
-    
-    // {
-    //   SlNo : 0,
-    //   FileName: 'NA',
-    //   Type: 'NA',
-    //   LineOfBusiness: 'NA',
-    //   Status: 'NA'
-    // }
-    //this.inboxService.getAccountInformationfromDB
-    
+
     this.inboxService.getSubmissionFilesFromDB(clientId,submissionId,email)
     .subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {
-
-        console.log("Document Vault")
-        
-
-        res.value.forEach((data:any) => {
+         res.value.forEach((data:any) => {
           if(data!=null){
             let subFile : SubmissionFile = {
               SlNo : data.slNo,
@@ -530,14 +542,13 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             subFiles.push(subFile)
           }
         });
-        console.log(subFiles)
         this.cacheService.setSubmissionFiles(subFiles);
-      
+
        }
        else
         this.cacheService.setSubmissionFiles([]);
     })
-    
+
 
   }
 }

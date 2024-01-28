@@ -1,6 +1,7 @@
 export interface Submission {
     Id: number,
     SubmissionID: string,
+    SubmissionGUID: string,
     AccountName: string,
     EffectiveDate: string,
     Type: string,

@@ -1,7 +1,7 @@
  <div class="risk_clearance slide-effect-x1">
 <kendo-card style="width:100%;margin: 0;">
     <kendo-card-header class="risk">
-        <h3 class="k-card-title risk_header">Busioness Operations</h3>
+        <h3 class="k-card-title risk_header">Business Operations</h3>
     </kendo-card-header>
     <kendo-card-body class="risk_section">
         <div *ngIf="isDataAvailable; else noDataFound">
@@ -11,7 +11,7 @@
                     <div class="business_operations_value">{{ businessOperation.SIC }}</div>
                     <div class="business_operations_key"><b>NAICS</b></div>
                     <div class="business_operations_value">{{ businessOperation.Naics }}</div>
-                    <div class="business_operations_key"><b>Descriptions of Operations</b></div>
+                    <div class="business_operations_key"><b>Description of Operations</b></div>
                     <div class="business_operations_value">{{ businessOperation.Descriptions }}</div>
                 </div>
                 <!-- Add other detail rows here -->

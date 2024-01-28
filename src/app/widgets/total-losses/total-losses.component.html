@@ -17,40 +17,11 @@
                   <b>{{ totalincurredvalue }}</b>
                 </div>
                 <div class="totallosses_year">
-                  <!-- <select name="years" class="white-color dropdownselector">
-                    <option value="1" >1yrs</option>
-                    <option value="2" >2yrs</option>
-                    <option value="3" >3yrs</option>
-                    <option value="4" >4yrs</option>
-                </select> -->
                 <kendo-dropdownlist 
                 [data]="years"
                 defaultItem="All"
-                (selectionChange)="onDropdownChange($event)"
+                (selectionChange)="onYearChange($event)"
                 ></kendo-dropdownlist>
-                  <!-- <select name="selectedCountry" class="rounded-inputs20 select-select col-md-3" (change)="onDropdownChange($event)">
-                    <option *ngFor="let country of countries; let i = index" [value]="country.id"> 
-                      {{country.name}}</option>
-                  </select> -->
-                  <!-- <select
-                    name="years"
-                    id="years"
-                    class="white-color dropdownselector"
-                    (ngModelChange)="onDropdownChange($event)"
-                  >
-                    <option value="1" class="dropoptionsize">
-                      1yrs
-                    </option>
-                    <option value="2" class="dropoptionsize">
-                      2yrs
-                    </option>
-                    <option value="3" class="dropoptionsize">
-                      3yrs
-                    </option>
-                    <option value="4" class="dropoptionsize">
-                      4yrs
-                    </option>
-                  </select> -->
                 </div>
               </div>
             </div>

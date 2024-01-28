@@ -18,6 +18,7 @@ import { ColumnSample } from 'src/app/model/samples/columnSample';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
   public formGroup: FormGroup;
   userProfile: UserProfile;
   userList: any[] = [];
@@ -27,6 +28,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedRowIndices: Set<number> = new Set<number>();
   subscription: Subscription;
   public columns: any[] = ColumnSample.InboxColumns;
+  dropdownValues: string[] = [];
+  isToggleOn = false;
+  dropdownOptions: { label: string; link: string }[] = [];
+  defaultProfile : any;
+  isDataAvailble = false;
+  tableData: any[];
+  clientName: any;
+  submissionData : any[] = [];
+
   constructor(
     private inboxservice: InboxService,
     private dashboardservice: DashboardService,
@@ -40,21 +50,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.columns = ColumnSample.InboxColumns;
   }
-  dropdownValues: string[] = [];
-  // isToggleOn: boolean = false;
-  isToggleOn = false;
-  dropdownOptions: { label: string; link: string }[] = [];
-  defaultProfile : any;
-  isDataAvailble = false;
-  tableData: any[];
-  clientName: any;
-  submissionData : any[] = [];
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     this.subscription = this.inboxservice
       .getAllSubmissionData()
       .subscribe((result) => {
@@ -166,6 +167,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   reDirect(url: string, param: any) {
     let subInfo: SubmissionInfo = {
       SubmissionId: param.SubmissionID,
+      SubmissionGUID: param.SubmissionGUID,
       SubmissionName: '',
       MessageId: param.MessageId,
       Status: param.Status,

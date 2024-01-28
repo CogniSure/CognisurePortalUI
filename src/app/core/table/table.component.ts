@@ -195,6 +195,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   reDirect(url:string, param:any){
     let subInfo : SubmissionInfo = {
       SubmissionId : param.SubmissionID,
+      SubmissionGUID: param.SubmissionGUID,
       SubmissionName : "",
       MessageId : param.MessageId,
       Status : param.Status,

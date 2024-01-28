@@ -85,6 +85,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   }
   submissionInfo : SubmissionInfo={
     Completeness : "",
+    SubmissionGUID: "",
     Extraction : "",
     MessageId : "",
     RiskClearance : "",
@@ -132,6 +133,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
       this.submissionInfo = {
         Completeness : subInfo.Completeness,
+        SubmissionGUID: subInfo.SubmissionGUID,
         Extraction : subInfo.Extraction,
         MessageId : subInfo.MessageId,
         RiskClearance : subInfo.RiskClearance,
