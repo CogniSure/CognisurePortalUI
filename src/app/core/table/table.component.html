@@ -71,6 +71,7 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridCellTemplate
@@ -87,6 +88,7 @@
           </div>
         </ng-template>
       </kendo-grid-column>
+
       <kendo-grid-column
         *ngIf="column.type == 'link'"
         field="{{ column.field }}"
@@ -98,6 +100,7 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridCellTemplate
@@ -110,6 +113,7 @@
           >
         </ng-template>
       </kendo-grid-column>
+
       <kendo-grid-column
         *ngIf="column.type == 'checkbox'"
         field="{{ column.field }}"
@@ -121,6 +125,7 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridHeaderTemplate
@@ -148,6 +153,7 @@
           />
         </ng-template>
       </kendo-grid-column>
+
       <kendo-grid-column
         *ngIf="column.type == 'icon'"
         field="{{ column.field }}"
@@ -159,6 +165,7 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridCellTemplate
@@ -182,6 +189,7 @@
         [columnMenu]="column.columnmenu"
         [ngClass]="{ 'outputicon-class': true }"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <kendo-grid-column
           format="{{ column.format }}"
@@ -255,6 +263,7 @@
         [columnMenu]="column.columnmenu"
         [ngClass]="{ 'outputicon-class': true }"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridCellTemplate
@@ -303,6 +312,7 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template kendoGridCellTemplate let-dataItem>
           <ng-container
@@ -340,6 +350,7 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridEditTemplate
@@ -361,6 +372,7 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridEditTemplate
@@ -410,6 +422,7 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridCellTemplate
@@ -451,6 +464,7 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
           kendoGridCellTemplate
@@ -482,6 +496,7 @@
         [columnMenu]="column.columnmenu"
         [ngClass]="{ 'outputicon-class': true }"
         [hidden]="!column.default"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         >
         <kendo-grid-column
@@ -493,6 +508,7 @@
           [width]="column.width"
           [columnMenu]="column.columnmenu"
           [width]="column.width"
+          [headerStyle]="{'border-color': '#1FD0C7'}"
         >
           <ng-template
             kendoGridHeaderTemplate
@@ -562,6 +578,7 @@
           field="subColumn1"
           [ngClass]="{ outputicon_clum: true }"
           [style]="{ 'border-radius': '0' }"
+          [headerStyle]="{'border-color': '#1FD0C7'}"
         >
           <ng-template
             kendoGridHeaderTemplate
@@ -639,6 +656,7 @@
           field=""
           [ngClass]="{ outputicon_clum: true }"
           [style]="{ 'border-radius': '0' }"
+          [headerStyle]="{'border-color': '#1FD0C7'}"
         >
           <ng-template
             kendoGridHeaderTemplate
