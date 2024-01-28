@@ -284,7 +284,7 @@
               [popupClass]="'custom-popup'"
             >
               <button class="popup_closebtn" (click)="closePopup()">x</button>
-              <app-emailpopup></app-emailpopup>
+              <app-emailpopup [SubmissionId] = dataItem[column.field]></app-emailpopup>
               <!-- <button (click)="closePopup()">Close Popup</button> -->
             </kendo-popup>
           </ng-container>

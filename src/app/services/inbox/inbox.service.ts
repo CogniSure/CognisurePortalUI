@@ -217,4 +217,10 @@ export class InboxService {
     hParams = hParams.set('email', email);
     return this.httpService.getData(apiUrl, hParams);
   }
+  getSubmissionEmailMessage(submissionId: string): Observable<any> {
+    var apiUrl = this.configService.settings.baseUrl + 'api/submissionmessagebyid';
+    let hParams = new HttpParams();
+    hParams = hParams.set('submissionid', submissionId);
+    return this.httpService.getData(apiUrl, hParams);
+  }
 }
