@@ -64,6 +64,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
     private inboxService: InboxService,
     private cacheService: CacheService
   ) {
+    this.widgetComponents = [];
   }
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -81,11 +82,8 @@ export class SummaryComponent implements OnInit, OnDestroy {
     this.getWidgets();
   }
   getWidgets() {
-    
-    this.cacheService.getAccountInformation().subscribe((info: any) => {
 
-      console.log("Summary Details")
-      console.log(info)
+    this.subscription = this.cacheService.getAccountInformation().subscribe((info: any) => {
 
       this.globalService.getCurrentSubmissionId()
       .subscribe((submission: any) => {
@@ -97,6 +95,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         let lobs = info.LOB;
         this.getSummaryWidgets();
         this.getSummaryWidgetsData(email,clientId,submissionId);
+
         if(lobs!=null && lobs!="" ){
           let lobArr = lobs.split(",")
           lobArr.forEach((lob:any)=>{
@@ -133,7 +132,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
   getSummaryWidgetsData(userEmailId:string,clientId:string,submissionId:string) {
     
     let data: any = {};
-    //let data = this.getPropertyWidgetConfigs();
     this.inboxService
       .getSummaryByLOB('sub_agencies_all', clientId, submissionId, userEmailId)
       .subscribe((res) => {
@@ -190,10 +188,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
         }
       });
 
-    // this.cacheService.getSummaryByLOB("Agency").subscribe(x=>{
-    //   console.log("Widget Data : "+ "Agency")
-    //   console.log(x)
-    //  })
     this.inboxService
       .getSummaryByLOB(
         'sub_totallosses_all',
@@ -347,11 +341,18 @@ export class SummaryComponent implements OnInit, OnDestroy {
       });
   }
   getWidgetConfigsForLOB (lob:string){
+    console.log("Widgets " + lob)
+    
     switch (lob.toLowerCase()) {
       case 'property': {
         let lobConfig = this.getPropertyWidgetConfigs();
+        
         if(lobConfig!=null && lobConfig.length>0){
-          this.widgetComponents.push({Header : "Property", Widget : lobConfig})
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "Property");
+          if(!(configData != null && configData.length > 0)){
+            this.widgetComponents.push({Header : "Property", Widget : lobConfig})
+          }
+           
         }
         break;
       }
@@ -359,7 +360,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
       case 'auto':{
         let lobConfig =  this.getAutoWidgetConfigs();
         if(lobConfig!=null && lobConfig.length>0){
-          this.widgetComponents.push({Header : "AutoMobiles", Widget : lobConfig})
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "AutoMobiles");
+          if(!(configData != null && configData.length > 0)){
+            this.widgetComponents.push({Header : "AutoMobiles", Widget : lobConfig})
+          }
         }
         break;
       }
