@@ -7,15 +7,51 @@
     </kendo-card-header>
     <kendo-card-body style="padding: 0;">
     <div class="lossesdetails">
-        <table style="width:100%;">
+        <!-- <table style="width:100%;">
             <tr *ngFor="let item of coverages">
                 <td  style="position: relative; width: 50%; "><b>{{ item.CoverageName }}</b></td>
                 <td  style="position: relative; width: 30%; ">{{ item.CoverageValue }}</td>
                 <td  style="position: relative; width: 20%;">{{ item.CoverageType }}</td>
             </tr>
-           
-        </table>
-    </div>
+
+        </table> -->
+        <kendo-grid 
+        [hideHeader]="true"
+        [data]="coverages"
+        [pageable]="{
+          info: false,
+          pageSizes: false,
+          buttonCount : 0,
+          previousNext: true,
+        }"
+        [pageSize]="5"
+        >
+        
+        <kendo-grid-column field="CoverageName"> 
+          <ng-template
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+          let-value="value"
+        >
+          <b>{{dataItem.CoverageName}}</b>
+        </ng-template>
+        </kendo-grid-column>
+          <!-- <kendo-grid-column field="CoverageName"> </kendo-grid-column> -->
+          <kendo-grid-column field="CoverageValue"> </kendo-grid-column>
+          <kendo-grid-column field="CoverageType"></kendo-grid-column>
+
+          <ng-template kendoPagerTemplate>
+            <!-- <kendo-grid-spacer></kendo-grid-spacer>
+            <kendo-pager-prev-buttons>Prev</kendo-pager-prev-buttons>
+            <kendo-pager-next-buttons></kendo-pager-next-buttons>
+            <kendo-grid-spacer></kendo-grid-spacer> -->
+            <kendo-grid-spacer></kendo-grid-spacer>
+              <span class="prev-next-buttons" (click)="goToPreviousPage()">Prev</span>
+              <span class="prev-next-buttons" (click)="goToNextPage()">Next</span>
+          </ng-template>
+        </kendo-grid>
+    </div> 
     </kendo-card-body>
     </kendo-card>
 </div>

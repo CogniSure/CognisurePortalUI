@@ -1,4 +1,12 @@
 .agency_container {
+  .k-grid-content, .k-grid-content-locked, .k-pager-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .prev-next-buttons{
+    color: #009cc1;
+  }
   .coverages_header {
     padding: 1%;
     color: rgba(255, 255, 255, 1);
