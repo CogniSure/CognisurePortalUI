@@ -63,9 +63,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
   }
 
   setSubmissionDetails(submission:any){
-    console.log('Current Submission');
-    console.log(submission);
-
+   
     // const clientId = '1074';
     // const submissionId = '6A2A02C3-BEA8-4EE9-957F-F4396EF0153A';
     // const email = 'submissiontesting@cognisure.ai';
@@ -75,8 +73,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     const submissionId = submission.SubmissionGUID;
 
     this.setHeader(email,clientId,submissionId);
-    // this.setExposureSummary(email,clientId,submissionId);
-    // this.setLossSummary(email,clientId,submissionId);
+    this.setExposureSummary(email,clientId,submissionId);
+    this.setLossSummary(email,clientId,submissionId);
     this.setSubmissionFiles(email,clientId,submissionId);
   }
   setExposureSummary(email:string,clientId:string,submissionId:string) {
@@ -236,15 +234,11 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       ProducerFullname : 'NA',
       LOB: "NA"
     }
-    //this.inboxService.getAccountInformationfromDB
 
     this.inboxService.getAccountInformationfromDB("exposure_tiv",clientId,submissionId,email)
     .subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {
-
-        console.log("Headers")
-        //SubmissionID
 
         res.value.forEach((data:any) => {
           if(data.dimension == "SubmissionID")
@@ -263,23 +257,9 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
           if(data.dimension == "Min-PolicyEffDate")
             accInfo.EffectiveDate = data.measure;
         });
-        console.log(accInfo)
+        
         this.cacheService.setAccountInformation(accInfo);
-      //   this.cacheService.setExposureSummary('TIV', [
-      //     {
-      //       ItemData: 'TIV',
-      //       ItemValue: res.value[0].measure,
-      //     },
-      //   ]);
-      // }
-      // else
-      // {
-      //   this.cacheService.setExposureSummary('TIV', [
-      //     {
-      //       ItemData: 'TIV',
-      //       ItemValue: '$0',
-      //     },
-      //   ]);
+      
        }
     })
 
@@ -296,26 +276,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
           Data:[]
         }
       ]
-      // let cdata1: ChartData[] =[{
-      //   Dimension: ['2018','2019','2020'],
-      //   Data: [
-      //     {
-      //       Name: 'Wc',
-      //       Data: [100,200,300],
-      //     },
-      //     {
-      //       Name: 'Property',
-      //       Data: [0,100,200],
-      //     },
-      //   ],
-      // }];
+
       if (res != null && res.value != null && res.value.length > 0) {
-        // res.value.forEach((data: any) => {
-        //   if (data.dimension && data.measure) {
-        //     cdata[0].Dimension.push(data.dimension);
-        //     cdata[0].Data[0].Data.push(data.measure);
-        //   }
-        // });
         cdata = this.getTranformedData(res);
         this.cacheService.setLossSummary('ClaimsbyLOBbyYear',cdata);
 

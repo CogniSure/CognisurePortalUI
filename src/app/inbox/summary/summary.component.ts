@@ -101,7 +101,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
           lobArr.forEach((lob:any)=>{
             let currLob = lob.replace(" ", "") 
             this.getWidgetConfigsForLOB(currLob);
-            this.getWidgetDataForLOB(currLob)
+            this.getWidgetDataForLOB(currLob,email,clientId,submissionId)
           })
         }
       })
@@ -225,27 +225,20 @@ export class SummaryComponent implements OnInit, OnDestroy {
       });
     return data;
   }
-  getWidgetDataForLOB(lob: any) {
+  getWidgetDataForLOB(lob: any,email:string,clientId:string,submissionId:string) {
     switch (lob.toLowerCase()) {
       case 'property': {
         //this.getPropertyWidgetConfigs();
-        return this.getPropertyWidgetData();
+        return this.getPropertyWidgetData(email,clientId,submissionId);
       }
 
       case 'auto':
-        return this.getAutoWidgetData();
+        return this.getAutoWidgetData(email,clientId,submissionId);
       default:
         return null;
     }
   }
-  getPropertyWidgetData() {
-    const topNumber = '10';
-    const clientId = '1074';
-    const userEmailId = 'submissiontesting@cognisure.ai';
-    const startDate = '01/01/2023';
-    const endDate = '9/30/2024';
-    const submissionId = 'b66623ff-3c5e-887a-423f-f92b8a4c8d98';
-    let data: any = {};
+  getPropertyWidgetData(userEmailId:string,clientId:string,submissionId:string) {
     
     this.inboxService
       .getSummaryByLOB('sub_exposure_property', clientId, submissionId, userEmailId)
@@ -416,14 +409,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
     return propertyComponents;
   }
-  getAutoWidgetData() {
-    const topNumber = '10';
-    const clientId = '1074';
-    const userEmailId = 'QBEsub@gmail.com';
-    const startDate = '01/01/2023';
-    const endDate = '9/30/2024';
-    const submissionId = '650bf7b8-c546-788d-a8bd-098a67aef2b7';
-    let data: any = {};
+  getAutoWidgetData(userEmailId:string,clientId:string,submissionId:string) {
     
     this.inboxService
       .getSummaryByLOB('sub_exposure_auto', clientId, submissionId, userEmailId)

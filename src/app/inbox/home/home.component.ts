@@ -59,8 +59,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription = this.inboxservice
       .getAllSubmissionData()
       .subscribe((result) => {
-        this.tableData = result;
-        this.submissionData = result;
+        this.tableData = result.sort((a:any, b:any) => (a.SubmissionID > b.SubmissionID ? -1 : 1));
+        this.submissionData = result.sort((a:any, b:any) => (a.SubmissionID > b.SubmissionID ? -1 : 1));
         this.getRecordCount();
       });
      
@@ -199,11 +199,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   actionClicked(type:string){
-    console.log("actionClicked")
+    
     let tableData = this.tableData;
-    console.log(type);
-    console.log(this.tableData)
-
+    
     if(type == 'allstatus'){
       this.tableData = this.submissionData
     }

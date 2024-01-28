@@ -15,30 +15,7 @@ export class CoveragesComponent implements OnInit {
   exposureDetails: PropertyBlanketSummary[] = [];
   coverages: CoverageData[] = [];
   header : any = "";
-  // {
-  //   LocationNumber: 'NA',
-  //   BuildingNumber: 'NA',
-  //   BuildingName: 'NA',
-  //   FullAddress: 'NA',
-  //   YearBuilt: 'NA',
-  //   TotalArea: 'NA',
-  //   RoofType: 'NA',
-  //   NumberOfStories: 'NA',
-  //   TIV: 'NA',
-  //   Geolocation: 'NA',
-  //   Flood: 'NA',
-  //   Earthquake: 'NA',
-  //   NamedStorm: 'NA',
-  //   Hail: 'NA',
-  //   RoofAge: 'NA',
-  //   Construction: 'NA',
-  //   Occupancy: 'NA',
-  //   Protection: 'NA',
-  //   Wiring: 'NA',
-  //   Sprinkler: 'NA',
-  //   FireAlarm: 'NA',
-  // };
-
+  
   constructor(private changeDetector: ChangeDetectorRef,
     @Inject(InjectToken) private input: WidgetInput) {}
   Building = 0;
@@ -54,31 +31,6 @@ export class CoveragesComponent implements OnInit {
         }
         this.changeDetector.detectChanges();
       })
-    }
-    
-  }
-  getConcatenateString(elements: string[]) {
-    let concatenatedString = '';
-    if (elements != null && elements != undefined && elements.length > 0) {
-      for (let i = 0; i <= elements.length; i++) {
-        let element = elements[i];
-        if (element != undefined && element != '') {
-          let separator: string = '';
-          if (element != '' && i <= elements.length) separator = ',';
-          concatenatedString += element + separator;
-        }
-      }
-    }
-    if (
-      concatenatedString == null ||
-      concatenatedString == '' ||
-      concatenatedString.trim() === '' ||
-      concatenatedString == 'undefined'
-    )
-      concatenatedString = 'NA';
-    else if (concatenatedString.endsWith(','))
-      concatenatedString = concatenatedString.slice(0, -1);
-
-    return concatenatedString;
+    } 
   }
 }
