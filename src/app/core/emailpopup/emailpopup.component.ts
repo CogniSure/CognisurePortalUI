@@ -14,11 +14,7 @@ constructor(private inboxService : InboxService, private changedetector: ChangeD
   
 }
   ngOnInit(): void {
-    console.log("Submission Merssgae Body");
-    console.log(this.SubmissionId)
     this.inboxService.getSubmissionEmailMessage(this.SubmissionId).subscribe(msg=>{
-      console.log("Submission Merssgae Body");
-      console.log(msg.value);
       this.htmlData = msg.value;
       this.changedetector.detectChanges();
     })
