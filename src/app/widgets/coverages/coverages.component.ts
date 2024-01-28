@@ -22,7 +22,7 @@ export class CoveragesComponent implements OnInit {
   coverages: CoverageData[] = [];
   header: any = '';
   
-  displayedColumns = ['CoverageName', 'CoverageValue', 'CoverageType',];
+  displayedColumns = ['CoverageName', 'CoverageValue', 'CoverageType'];
 
   constructor(
     private changeDetector: ChangeDetectorRef,

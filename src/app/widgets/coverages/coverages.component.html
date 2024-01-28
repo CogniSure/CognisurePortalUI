@@ -16,6 +16,8 @@
 
         </table> -->
         <kendo-grid 
+        [height]="200"
+        id="my-grid" 
         [hideHeader]="true"
         [data]="coverages"
         [pageable]="{
@@ -25,6 +27,7 @@
           previousNext: true,
         }"
         [pageSize]="5"
+        [style]="'width:100%'"
         >
         
         <kendo-grid-column field="CoverageName"> 
@@ -34,18 +37,16 @@
           let-rowIndex="rowIndex"
           let-value="value"
         >
-          <b>{{dataItem.CoverageName}}</b>
+          <span class="whole-cell">
+            <b>{{dataItem.CoverageName}}</b>
+          </span>
+          
         </ng-template>
         </kendo-grid-column>
-          <!-- <kendo-grid-column field="CoverageName"> </kendo-grid-column> -->
           <kendo-grid-column field="CoverageValue"> </kendo-grid-column>
           <kendo-grid-column field="CoverageType"></kendo-grid-column>
 
           <ng-template kendoPagerTemplate>
-            <!-- <kendo-grid-spacer></kendo-grid-spacer>
-            <kendo-pager-prev-buttons>Prev</kendo-pager-prev-buttons>
-            <kendo-pager-next-buttons></kendo-pager-next-buttons>
-            <kendo-grid-spacer></kendo-grid-spacer> -->
             <kendo-grid-spacer></kendo-grid-spacer>
               <span class="prev-next-buttons" (click)="goToPreviousPage()">Prev</span>
               <span class="prev-next-buttons" (click)="goToNextPage()">Next</span>

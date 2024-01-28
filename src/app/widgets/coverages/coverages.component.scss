@@ -1,11 +1,25 @@
+
 .agency_container {
   .k-grid-content, .k-grid-content-locked, .k-pager-wrap{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    
   }
+  ::ng-deep .k-grid-content{
+    overflow-y: auto !important;
+  }  
   .prev-next-buttons{
     color: #009cc1;
+  }
+  .whole-cell {
+    display: block;
+    padding: 8px 12px; /* depends on theme */
+    border-color: #1FD0C7
+  }
+  #my-grid tr {
+    //background-color: #ffba80;
+    border-color: #1FD0C7
   }
   .coverages_header {
     padding: 1%;
