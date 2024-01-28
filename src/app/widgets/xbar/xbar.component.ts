@@ -67,8 +67,7 @@ export class XBarComponent implements OnInit, OnDestroy {
     this.showSpinner = true;
     if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
       this.input.DataSubject.subscribe((inputData:any[])=>{
-        console.log("XBAR Chart " + this.input.WidgetName)
-            console.log(inputData)
+
         if(this.input.Settings!=null && this.input.Settings.ShowLabels!=null)
         {
           this.seriesLabels.visible = this.input.Settings.ShowLabels;
@@ -83,7 +82,9 @@ export class XBarComponent implements OnInit, OnDestroy {
             data.Data.forEach(a => sum += Number(a));
             sumArr.push(sum)
           })
-         let maxVal = sumArr.reduce((a, b)=>Math.max(a, b));
+         let maxVal = 0
+         if(sumArr !=null && sumArr.length>0)
+            sumArr.reduce((a, b)=>Math.max(a, b));
          if(maxVal>10){
             this.valueAxisMax.max = maxVal
          }
@@ -106,8 +107,8 @@ export class XBarComponent implements OnInit, OnDestroy {
         this.changeDetector.detectChanges();
       })
     }
-    
-    
+    else
+    this.showSpinner = false;
   }
   public exportChart(): void {
     this.chart

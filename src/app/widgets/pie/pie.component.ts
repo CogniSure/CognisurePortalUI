@@ -26,11 +26,8 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
   ChartType: SeriesType = 'donut';
   marker : any = 'square'
   public data: any[];
-  constructor(
-    private dbService: WidgetService,
-    private changeDetector: ChangeDetectorRef,
-    @Inject(InjectToken) private input: WidgetInput
-  ) {}
+  showSpinner = false;
+  noDataAvailble = false;
   chartData: ChartData = {
     Dimension: [],
     Data: [],
@@ -43,22 +40,40 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
   legendPos :any = "bottom"
   legendOrientation : any = "horizontal"
   dataType :string = "percentage";
+
+  constructor(
+    private dbService: WidgetService,
+    private changeDetector: ChangeDetectorRef,
+    @Inject(InjectToken) private input: WidgetInput
+  ) {}
+
+  
   ngOnDestroy(): void {}
+
   ngOnInit(): void {
+    this.showSpinner = true;
     this.ApplySettings();
-    if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
+    if (this.input.DataSubject != null){ 
       this.input.DataSubject.subscribe((data:any[])=>{
-        //console.log("Submission Profile")
-        //console.log(data)
         if(data!=null && data.length > 0){
           this.chartData = data[0];
-          if(data[0].Dimension[0]!=null)
+          if(data[0] !=null && data[0].Dimension!=null && data[0].Dimension[0]!=null)
+          {
             this.CenterValue = data[0].Dimension[0].value;
+            this.noDataAvailble = false;
+          }
+          else 
+            this.noDataAvailble = true;
+        } 
+        else {
+          this.noDataAvailble = true;
         }
+        this.showSpinner = false;
         this.changeDetector.detectChanges();
       })
     }
-    
+    else
+      this.showSpinner=false;
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log("Changed Data")
