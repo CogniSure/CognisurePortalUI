@@ -56,17 +56,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     this.subscription = this.globalService
       .getCurrentSubmissionId()
       .subscribe((subId: any) => {
-
         this.setSubmissionDetails(subId);
-
-        // this.inboxService
-        //   .getSubmissionData(
-        //     subId.MessageId
-        //   )
-        //   .subscribe((res) => {
-        //     this.submissionData = res.value;
-        //     this.globalService.setCurrentSubmission(res);
-        //   });
       });
 
 

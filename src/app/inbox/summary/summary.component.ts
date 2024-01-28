@@ -20,6 +20,7 @@ import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
 import { AccountInfo } from 'src/app/model/inbox/AccountInfo';
 import { CoverageData } from 'src/app/model/summary/CoverageData';
 import { ExposureData } from 'src/app/model/summary/exposuredata';
+import { UserProfile } from 'src/app/model/profile/userprofile';
 
 @Component({
   selector: 'app-summary',
@@ -39,6 +40,23 @@ export class SummaryComponent implements OnInit, OnDestroy {
   @Input() collapsed = false;
   isFullScreen = false;
   widgetTemp: any;
+  userProfile:UserProfile={
+    UserID: 0,
+    FirstName: "",
+    MiddleName: "",
+    LastName: "",
+    Password: "",
+    PhoneNumber: "",
+    Email: "",
+    ClientID: 0,
+    ClientName: "",
+    UserTypeName: "",
+    UserTypeID: 0,
+    ClientCode: "",
+    IsAdmin:false,
+    UserImage : "",
+  };
+  
   constructor(
     private injector: Injector,
     private globalService: GlobalService,
@@ -46,7 +64,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
     private inboxService: InboxService,
     private cacheService: CacheService
   ) {
-    //this.globalService.setDashboardReload(true);
   }
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -60,38 +77,36 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.globalService.animationClass$.next('slide-effect-x1');
-
+    this.userProfile = this.globalService.getUserProfile();
     this.getWidgets();
   }
   getWidgets() {
-    // this.getPropertyWidgets();
-
+    
     this.cacheService.getAccountInformation().subscribe((info: any) => {
-      //console.log('LOB List');
-      let lobs = info.LOB;
-      this.getSummaryWidgets();
-      this.getSummaryWidgetsData();
-      if(lobs!=null && lobs!="" ){
-        let lobArr = lobs.split(",")
-        lobArr.forEach((lob:any)=>{
-          //console.log(lob);
-          let currLob = lob.replace(" ", "") 
-          let lobConfig = this.getWidgetConfigsForLOB(currLob);
-          // let lobWidgets = [];
-          // if(lobConfig!=null && lobConfig.length>0){
-          //   lobConfig.forEach((widgetyConfig:any)=>{
-          //     lobWidgets.push(widgetyConfig!)
-          //   })
 
-          // }
-          this.getWidgetDataForLOB(currLob)
-          //this.lobComponents.push(lobConfig!)
-          // if(widgetData!=null && widgetData.length>0){
-          //   this.widgetComponents.push({Header : lob, Widget : widgetData})
-          // }
+      console.log("Summary Details")
+      console.log(info)
 
-        })
-      }
+      this.globalService.getCurrentSubmissionId()
+      .subscribe((submission: any) => {
+
+        const clientId = this.userProfile.ClientCode;
+        const email = this.userProfile.Email;
+        const submissionId = submission.SubmissionGUID;
+
+        let lobs = info.LOB;
+        this.getSummaryWidgets();
+        this.getSummaryWidgetsData(email,clientId,submissionId);
+        if(lobs!=null && lobs!="" ){
+          let lobArr = lobs.split(",")
+          lobArr.forEach((lob:any)=>{
+            let currLob = lob.replace(" ", "") 
+            this.getWidgetConfigsForLOB(currLob);
+            this.getWidgetDataForLOB(currLob)
+          })
+        }
+      })
+      
     });
   }
 
@@ -115,13 +130,8 @@ export class SummaryComponent implements OnInit, OnDestroy {
       i++;
     });
   }
-  getSummaryWidgetsData() {
-    const topNumber = '10';
-    const clientId = '1074';
-    const userEmailId = 'QBEsub@gmail.com';
-    const startDate = '01/01/2023';
-    const endDate = '9/30/2024';
-    const submissionId = 'a44413ee-1c8e-446a-843f-e51b6a2c4c51';
+  getSummaryWidgetsData(userEmailId:string,clientId:string,submissionId:string) {
+    
     let data: any = {};
     //let data = this.getPropertyWidgetConfigs();
     this.inboxService
@@ -349,7 +359,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
       case 'auto':{
         let lobConfig =  this.getAutoWidgetConfigs();
         if(lobConfig!=null && lobConfig.length>0){
-          this.widgetComponents.push({Header : "Auto Mobiles", Widget : lobConfig})
+          this.widgetComponents.push({Header : "AutoMobiles", Widget : lobConfig})
         }
         break;
       }
