@@ -23,10 +23,10 @@
       }
     }
     .logo-container {
-      display: flex;
-      align-items: center;
+      // display: flex;
+      // align-items: center;
       // padding: 0.938rem 0 0.8rem 0.2rem;
-      width: 150%;
+      // width: 150%;
       color:#000;
     background-color: #FFBB0E;
     padding: 5%;
@@ -36,7 +36,7 @@
         width: 1rem;
         min-width: 1rem;
         border-radius: 0.313rem;
-        padding-left: 0.1rem;
+        padding-left: 0.8rem;
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
@@ -80,6 +80,7 @@
   
   .sidenav-collapsed {
     width: 5.5rem;
+    text-align: center;
   }
   
   .sidenav-nav {
@@ -175,10 +176,12 @@
   color:#F5F5F5!important;
   // padding-left: 5%;
   }
-  .sidenav-nav .sidenav-nav-item{
+  .summary_menu .icon_alignment{
     color:#F5F5F5!important;
-    text-align: center;
+    text-align: center!important;
   }
+
+  
 
   .logo{
     text-align: left;
