@@ -4,11 +4,7 @@ export const inboxNavbarData = [
         imagePath:'/assets/icons/Inbox-Menu/Summary.svg',
         label: 'Summary'
     },
-    {
-        routeLink: '/inbox/detail/documentvault',
-        imagePath:'/assets/icons/Inbox-Menu/Document Vault.svg',
-        label: 'Document Vault'
-    },
+    
     // {
     //     routeLink: '/inbox/detail/application',
     //     // icon: 'far fa-file-text',
@@ -40,5 +36,10 @@ export const inboxNavbarData = [
         routeLink: '/inbox/detail/lossanalysis',
         imagePath:'/assets/icons/Inbox-Menu/Loss Analysis.svg',
         label: 'Loss Analysis'
-    }
+    },
+    {
+        routeLink: '/inbox/detail/documentvault',
+        imagePath:'/assets/icons/Inbox-Menu/Document Vault.svg',
+        label: 'Document Vault'
+    },
 ];

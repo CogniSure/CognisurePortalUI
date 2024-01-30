@@ -17,10 +17,10 @@ export class ExposureComponent implements OnInit {
   exposurelosses: any = '';
   exposureKeys:any[] = [];
   exposuredata: ExposureData[] = [{
-      Item_1: "0",
-      Item_2: "0",
-      Item_3: "0",
-      Item_4 : "0"
+    Total: 'NA',
+    ExposureValue_1: 'NA',
+    ExposureValue_2: 'NA',
+    ExposureValue_3: 'NA',
   }];
   header : any = "";
   constructor(@Inject(InjectToken) private input: WidgetInput,
@@ -40,10 +40,10 @@ export class ExposureComponent implements OnInit {
           let data = inputData[0];
           this.exposuredata = [
                   {
-                    Item_1: data.Item_1,
-                    Item_2: data.Item_2,
-                    Item_3: data.Item_3,
-                    Item_4 : data.Item_4
+                    Total: data.Total,
+                    ExposureValue_1: data.ExposureValue_1,
+                    ExposureValue_2: data.ExposureValue_2,
+                    ExposureValue_3 : data.ExposureValue_3
                   },
                 ];
           

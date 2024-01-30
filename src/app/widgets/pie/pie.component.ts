@@ -60,6 +60,9 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
           if(data[0] !=null && data[0].Dimension!=null && data[0].Dimension[0]!=null)
           {
             this.CenterValue = data[0].Dimension[0].value;
+            //this.noDataAvailble = false;
+          }
+          if(data[0] !=null && data[0].Data!=null && data[0].Data.length > 0){
             this.noDataAvailble = false;
           }
           else 

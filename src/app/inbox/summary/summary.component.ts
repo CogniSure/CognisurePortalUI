@@ -225,15 +225,78 @@ export class SummaryComponent implements OnInit, OnDestroy {
       });
     return data;
   }
+  getWidgetConfigsForLOB (lob:string){
+    switch (lob.toLowerCase()) {
+      case 'property': {
+        let lobConfig = this.getPropertyWidgetConfigs();
+        
+        if(lobConfig!=null && lobConfig.length>0){
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "Property");
+          if(!(configData != null && configData.length > 0)){
+            this.widgetComponents.push({Header : "Property", Widget : lobConfig})
+          }
+           
+        }
+        break;
+      }
+
+      case 'auto':{
+        let lobConfig =  this.getAutoWidgetConfigs();
+        if(lobConfig!=null && lobConfig.length>0){
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "AutoMobiles");
+          if(!(configData != null && configData.length > 0)){
+            this.widgetComponents.push({Header : "AutoMobiles", Widget : lobConfig})
+          }
+        }
+        break;
+      }
+      case 'workers compensation':{
+        let lobConfig =  this.getWorkersCompWidgetConfigs();
+        if(lobConfig!=null && lobConfig.length>0){
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "Workers Compensation");
+          if(!(configData != null && configData.length > 0)){
+            this.widgetComponents.push({Header : "Workers Compensation", Widget : lobConfig})
+          }
+        }
+        break;
+      }  
+      case 'general liability':{
+        let lobConfig =  this.getGeneralLiabilityWidgetConfigs();
+        if(lobConfig!=null && lobConfig.length>0){
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "General Liability");
+          if(!(configData != null && configData.length > 0)){
+            this.widgetComponents.push({Header : "General Liability", Widget : lobConfig})
+          }
+        }
+        break;
+      }  
+      case 'umbrella':{
+        let lobConfig =  this.getUmbrellaWidgetConfigs();
+        if(lobConfig!=null && lobConfig.length>0){
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "Umbrella");
+          if(!(configData != null && configData.length > 0)){
+            this.widgetComponents.push({Header : "Umbrella", Widget : lobConfig})
+          }
+        }
+        break;
+      }  
+      default:
+        break;
+    }
+  }
   getWidgetDataForLOB(lob: any,email:string,clientId:string,submissionId:string) {
     switch (lob.toLowerCase()) {
       case 'property': {
-        //this.getPropertyWidgetConfigs();
         return this.getPropertyWidgetData(email,clientId,submissionId);
       }
-
       case 'auto':
         return this.getAutoWidgetData(email,clientId,submissionId);
+      case 'workers compensation':
+        return this.getWorkersCompWidgetData(email,clientId,submissionId);
+      case 'general liability':
+        return this.getGeneralLiabilityWidgetData(email,clientId,submissionId);
+      case 'umbrella':
+        return this.getUmbrellaWidgetData(email,clientId,submissionId);
       default:
         return null;
     }
@@ -244,10 +307,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
       .getSummaryByLOB('sub_exposure_property', clientId, submissionId, userEmailId)
       .subscribe((res) => {
         let cdata: ExposureData = {
-          Item_1: 'NA',
-          Item_2: 'NA',
-          Item_3: 'NA',
-          Item_4: 'NA',
+          Total: 'NA',
+          ExposureValue_1: 'NA',
+          ExposureValue_2: 'NA',
+          ExposureValue_3: 'NA',
           
         };
         
@@ -255,12 +318,12 @@ export class SummaryComponent implements OnInit, OnDestroy {
         if (res != null && res.value != null && res.value.propertyExposure != null) {
           let tempData = res.value.propertyExposure;
          
-          cdata.Item_1 =
-            tempData.buildingsCount != null ? tempData.buildingsCount : 'NA';
-          cdata.Item_2 =
-            tempData.locationsCount != null ? tempData.locationsCount : 'NA';
-          cdata.Item_3 = tempData.statesCount != null ? tempData.statesCount : 'NA';
-          cdata.Item_4 = tempData.tiv != null ? tempData.tiv : 'NA';
+          cdata.ExposureValue_1 =
+            tempData.exposureValue1 != null ? tempData.exposureValue1 : 'NA';
+          cdata.ExposureValue_2 =
+            tempData.exposureValue2 != null ? tempData.exposureValue2 : 'NA';
+          cdata.ExposureValue_3 = tempData.exposureValue3 != null ? tempData.exposureValue3 : 'NA';
+          cdata.Total = tempData.total != null ? tempData.total : 'NA';
           
           this.cacheService.setSummaryByLOB('PropertyExposure', [cdata]);
         } else {
@@ -333,38 +396,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         }
       });
   }
-  getWidgetConfigsForLOB (lob:string){
-    console.log("Widgets " + lob)
-    
-    switch (lob.toLowerCase()) {
-      case 'property': {
-        let lobConfig = this.getPropertyWidgetConfigs();
-        
-        if(lobConfig!=null && lobConfig.length>0){
-          let configData = this.widgetComponents.filter((x:any) => x.Header == "Property");
-          if(!(configData != null && configData.length > 0)){
-            this.widgetComponents.push({Header : "Property", Widget : lobConfig})
-          }
-           
-        }
-        break;
-      }
-
-      case 'auto':{
-        let lobConfig =  this.getAutoWidgetConfigs();
-        if(lobConfig!=null && lobConfig.length>0){
-          let configData = this.widgetComponents.filter((x:any) => x.Header == "AutoMobiles");
-          if(!(configData != null && configData.length > 0)){
-            this.widgetComponents.push({Header : "AutoMobiles", Widget : lobConfig})
-          }
-        }
-        break;
-      }
-        
-      default:
-        break;
-    }
-  }
+  
   getPropertyWidgetConfigs() {
     this.propertyComponentOrder = DataComponent.Propertyhub;
     let propertyComponents: any[] = [];
@@ -415,10 +447,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
       .getSummaryByLOB('sub_exposure_auto', clientId, submissionId, userEmailId)
       .subscribe((res) => {
         let cdata: ExposureData = {
-          Item_1: 'NA',
-          Item_2: 'NA',
-          Item_3: 'NA',
-          Item_4: 'NA',
+          Total: 'NA',
+          ExposureValue_1: 'NA',
+          ExposureValue_2: 'NA',
+          ExposureValue_3: 'NA',
           
         };
         
@@ -426,11 +458,13 @@ export class SummaryComponent implements OnInit, OnDestroy {
         if (res != null && res.value != null && res.value.autoExposure != null) {
           let tempData = res.value.autoExposure[0];
          
+          cdata.ExposureValue_1 =
+            tempData.exposureValue1 != null ? tempData.exposureValue1 : 'NA';
+          cdata.ExposureValue_2 =
+            tempData.exposureValue2 != null ? tempData.exposureValue2 : 'NA';
+          cdata.ExposureValue_3 = tempData.exposureValue3 != null ? tempData.exposureValue3 : 'NA';
+          cdata.Total = tempData.total != null ? tempData.total : 'NA';
           
-          cdata.Item_1 = tempData.bodyType != null ? tempData.bodyType : 'NA';
-          cdata.Item_2 = tempData.bodyTypeCount != null ? tempData.bodyTypeCount : 'NA';
-          cdata.Item_3 = tempData.driverCount != null ? tempData.driverCount : 'NA';
-          cdata.Item_4 = tempData.vehicleCount != null ? tempData.vehicleCount : 'NA';
           
           this.cacheService.setSummaryByLOB('AutoExposure', [cdata]);
         } else {
@@ -503,6 +537,364 @@ export class SummaryComponent implements OnInit, OnDestroy {
         }
       });
   }
+  getWorkersCompWidgetConfigs() {
+    this.propertyComponentOrder = DataComponent.WorkerComphub;
+    let propertyComponents: any[] = [];
+    var i = 1;
+    this.propertyComponentOrder.forEach((entry: any) => {
+      propertyComponents.push({
+        Widget: ComponentDetails.get(entry.WidgetType)![0],
+        WidgetName: entry.WidgetName,
+        WidgetType: entry.WidgetType,
+        Header: entry.Header,
+        ColumnId: entry.ColumnId,
+        ColumnSpan: entry.ColumnSpan,
+        RowSpan: entry.RowSpan,
+        HeaderColor: entry.HeaderColor,
+        FontColor: entry.FontColor,
+        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+      });
+      i++;
+    });
+
+    return propertyComponents;
+  }
+  getWorkersCompWidgetData(userEmailId:string,clientId:string,submissionId:string) {
+    
+    this.inboxService
+      .getSummaryByLOB('sub_exposure_wc', clientId, submissionId, userEmailId)
+      .subscribe((res) => {
+        let cdata: ExposureData = {
+          Total: 'NA',
+          ExposureValue_1: 'NA',
+          ExposureValue_2: 'NA',
+          ExposureValue_3: 'NA',
+          
+        };
+        
+        
+        if (res != null && res.value != null && res.value.workersCompExposure != null) {
+          let tempData = res.value.workersCompExposure[0];
+         
+          if(tempData !=null ){
+            cdata.ExposureValue_1 =
+            tempData.exposureValue1 != null ? tempData.exposureValue1 : 'NA';
+          cdata.ExposureValue_2 =
+            tempData.exposureValue2 != null ? tempData.exposureValue2 : 'NA';
+          cdata.ExposureValue_3 = tempData.exposureValue3 != null ? tempData.exposureValue3 : 'NA';
+          cdata.Total = tempData.total != null ? tempData.total : 'NA';
+          }
+         
+          this.cacheService.setSummaryByLOB('WCExposure', [cdata]);
+        } else {
+          this.cacheService.setSummaryByLOB('WCExposure', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_coverage_wc',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        //console.log("Property Exposure Before")
+        if (res != null && res.value != null && res.value.workersCompCoverages != null) {
+          let tempData = res.value.workersCompCoverages;
+
+          
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: CoverageData = {
+                CoverageName: element.coverageName != null ? element.coverageName : '',
+                CoverageValue: element.coverageValue != null ? element.coverageValue : '',
+                CoverageType: element.CoverageType != null ? element.CoverageType : ''
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          //console.log(cdata)
+          this.cacheService.setSummaryByLOB('WCCoverages', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('WCCoverages', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_losses_wc',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        if (res != null && res.value != null && res.value.workersCompLosses != null) {
+          let tempData = res.value.workersCompLosses;
+
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: any = {
+                Year: element.year != null ? element.year : '',
+                GrossIncurred:
+                  element.grossAmount != null ? element.grossAmount : '',
+                TotalNoOfClaims:
+                  element.totalNoOfClaims != null
+                    ? element.totalNoOfClaims
+                    : '',
+                TotalNoOfOpenClaims:
+                  element.noOfOpenClaims != null ? element.noOfOpenClaims : '',
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          this.cacheService.setSummaryByLOB('WCLosses', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('WCLosses', []);
+        }
+      });
+  }
+  getGeneralLiabilityWidgetConfigs() {
+    this.propertyComponentOrder = DataComponent.GeneralLiabilityhub;
+    let propertyComponents: any[] = [];
+    var i = 1;
+    this.propertyComponentOrder.forEach((entry: any) => {
+      propertyComponents.push({
+        Widget: ComponentDetails.get(entry.WidgetType)![0],
+        WidgetName: entry.WidgetName,
+        WidgetType: entry.WidgetType,
+        Header: entry.Header,
+        ColumnId: entry.ColumnId,
+        ColumnSpan: entry.ColumnSpan,
+        RowSpan: entry.RowSpan,
+        HeaderColor: entry.HeaderColor,
+        FontColor: entry.FontColor,
+        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+      });
+      i++;
+    });
+
+    return propertyComponents;
+  }
+  getGeneralLiabilityWidgetData(userEmailId:string,clientId:string,submissionId:string) {
+    
+    this.inboxService
+      .getSummaryByLOB('sub_exposure_gl', clientId, submissionId, userEmailId)
+      .subscribe((res) => {
+        let cdata: ExposureData = {
+          Total: 'NA',
+          ExposureValue_1: 'NA',
+          ExposureValue_2: 'NA',
+          ExposureValue_3: 'NA',
+          
+        };
+        
+        
+        if (res != null && res.value != null && res.value.generalLiablityExposure != null) {
+          let tempData = res.value.generalLiablityExposure[0];
+         
+          if(tempData !=null ){
+            cdata.ExposureValue_1 =
+            tempData.exposureValue1 != null ? tempData.exposureValue1 : 'NA';
+          cdata.ExposureValue_2 =
+            tempData.exposureValue2 != null ? tempData.exposureValue2 : 'NA';
+          cdata.ExposureValue_3 = tempData.exposureValue3 != null ? tempData.exposureValue3 : 'NA';
+          cdata.Total = tempData.total != null ? tempData.total : 'NA';
+          }
+         
+          this.cacheService.setSummaryByLOB('GLExposure', [cdata]);
+        } else {
+          this.cacheService.setSummaryByLOB('GLExposure', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_coverage_gl',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        //console.log("Property Exposure Before")
+        if (res != null && res.value != null && res.value.generalLiablityCoverages != null) {
+          let tempData = res.value.generalLiablityCoverages;
+
+          
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: CoverageData = {
+                CoverageName: element.coverageName != null ? element.coverageName : '',
+                CoverageValue: element.coverageValue != null ? element.coverageValue : '',
+                CoverageType: element.CoverageType != null ? element.CoverageType : ''
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          //console.log(cdata)
+          this.cacheService.setSummaryByLOB('GLCoverages', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('GLCoverages', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_losses_gl',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        if (res != null && res.value != null && res.value.generalLiablityLosses != null) {
+          let tempData = res.value.generalLiablityLosses;
+
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: any = {
+                Year: element.year != null ? element.year : '',
+                GrossIncurred:
+                  element.grossAmount != null ? element.grossAmount : '',
+                TotalNoOfClaims:
+                  element.totalNoOfClaims != null
+                    ? element.totalNoOfClaims
+                    : '',
+                TotalNoOfOpenClaims:
+                  element.noOfOpenClaims != null ? element.noOfOpenClaims : '',
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          this.cacheService.setSummaryByLOB('GLLosses', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('GLLosses', []);
+        }
+      });
+  }
+
+  getUmbrellaWidgetConfigs() {
+    this.propertyComponentOrder = DataComponent.Umbrellahub;
+    let propertyComponents: any[] = [];
+    var i = 1;
+    this.propertyComponentOrder.forEach((entry: any) => {
+      propertyComponents.push({
+        Widget: ComponentDetails.get(entry.WidgetType)![0],
+        WidgetName: entry.WidgetName,
+        WidgetType: entry.WidgetType,
+        Header: entry.Header,
+        ColumnId: entry.ColumnId,
+        ColumnSpan: entry.ColumnSpan,
+        RowSpan: entry.RowSpan,
+        HeaderColor: entry.HeaderColor,
+        FontColor: entry.FontColor,
+        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+      });
+      i++;
+    });
+
+    return propertyComponents;
+  }
+  getUmbrellaWidgetData(userEmailId:string,clientId:string,submissionId:string) {
+    
+    this.inboxService
+      .getSummaryByLOB('sub_exposure_umbrella', clientId, submissionId, userEmailId)
+      .subscribe((res) => {
+        let cdata: ExposureData = {
+          Total: 'NA',
+          ExposureValue_1: 'NA',
+          ExposureValue_2: 'NA',
+          ExposureValue_3: 'NA',
+          
+        };
+        
+        
+        if (res != null && res.value != null && res.value.umbrellaExposure != null) {
+          let tempData = res.value.umbrellaExposure[0];
+         
+          if(tempData !=null ){
+            cdata.ExposureValue_1 =
+            tempData.exposureValue1 != null ? tempData.exposureValue1 : 'NA';
+          cdata.ExposureValue_2 =
+            tempData.exposureValue2 != null ? tempData.exposureValue2 : 'NA';
+          cdata.ExposureValue_3 = tempData.exposureValue3 != null ? tempData.exposureValue3 : 'NA';
+          cdata.Total = tempData.total != null ? tempData.total : 'NA';
+          }
+         
+          this.cacheService.setSummaryByLOB('UmbrellaExposure', [cdata]);
+        } else {
+          this.cacheService.setSummaryByLOB('UmbrellaExposure', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_coverage_umbrella',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        //console.log("Property Exposure Before")
+        if (res != null && res.value != null && res.value.umbrellaCoverages != null) {
+          let tempData = res.value.umbrellaCoverages;
+
+          
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: CoverageData = {
+                CoverageName: element.coverageName != null ? element.coverageName : '',
+                CoverageValue: element.coverageValue != null ? element.coverageValue : '',
+                CoverageType: element.CoverageType != null ? element.CoverageType : ''
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          //console.log(cdata)
+          this.cacheService.setSummaryByLOB('UmbrellaCoverages', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('UmbrellaCoverages', []);
+        }
+      });
+
+      this.inboxService
+      .getSummaryByLOB(
+        'sub_losses_umbrella',
+        clientId,
+        submissionId,
+        userEmailId
+      )
+      .subscribe((res) => {
+        let cdata: any[] = [];
+        if (res != null && res.value != null && res.value.umbrellaLosses != null) {
+          let tempData = res.value.umbrellaLosses;
+
+          if (tempData != null && tempData.length > 0) {
+            tempData.forEach((element: any) => {
+              let cDataTemp: any = {
+                Year: element.year != null ? element.year : '',
+                GrossIncurred:
+                  element.grossAmount != null ? element.grossAmount : '',
+                TotalNoOfClaims:
+                  element.totalNoOfClaims != null
+                    ? element.totalNoOfClaims
+                    : '',
+                TotalNoOfOpenClaims:
+                  element.noOfOpenClaims != null ? element.noOfOpenClaims : '',
+              };
+              cdata.push(cDataTemp);
+            });
+          }
+          this.cacheService.setSummaryByLOB('UmbrellaLosses', cdata);
+        } else {
+          this.cacheService.setSummaryByLOB('UmbrellaLosses', []);
+        }
+      });
+  }
   getBodyClassBox(bodyClass: string): string {
     return bodyClass;
   }
@@ -523,6 +915,24 @@ export class SummaryComponent implements OnInit, OnDestroy {
       widgetKeys.push("Total # of Drivers");
       widgetKeys.push("Type of Body Type");
       widgetKeys.push("# of Body Type");
+    }
+    else if(widgetName == "WCExposure"){
+      widgetKeys.push("");
+      widgetKeys.push("Class Code");
+      widgetKeys.push("Class Code Description");
+      widgetKeys.push("Payroll");
+    }
+    else if(widgetName == "GLExposure"){
+      widgetKeys.push("");
+      widgetKeys.push("Class Code");
+      widgetKeys.push("Exposure");
+      widgetKeys.push("Exposure Type");
+    }
+    else if(widgetName == "UmbrellaExposure"){
+      widgetKeys.push("Payroll");
+      widgetKeys.push("Annual Gross Sales");
+      widgetKeys.push("Foreign Gross Sales");
+      widgetKeys.push("# Employee");
     }
     return widgetKeys;
   }

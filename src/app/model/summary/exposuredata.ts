@@ -3,8 +3,8 @@ export interface  ExposureData{
     // LocationsCount: string;
     // StatesCount: string;
     // TIV : string;
-    Item_1: string;
-    Item_2: string;
-    Item_3: string;
-    Item_4 : string;
+    Total: string;
+    ExposureValue_1: string;
+    ExposureValue_2: string;
+    ExposureValue_3 : string;
   }

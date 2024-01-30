@@ -52,6 +52,15 @@ export class CacheService {
   private summary_Auto_Exposure$ = new BehaviorSubject<any[]>([]);
   private summary_Auto_Coverages$ = new BehaviorSubject<any[]>([]);
   private summary_Auto_Losses$ = new BehaviorSubject<any[]>([]);
+  private summary_GL_Exposure$ = new BehaviorSubject<any[]>([]);
+  private summary_GL_Coverages$ = new BehaviorSubject<any[]>([]);
+  private summary_GL_Losses$ = new BehaviorSubject<any[]>([]);
+  private summary_WC_Exposure$ = new BehaviorSubject<any[]>([]);
+  private summary_WC_Coverages$ = new BehaviorSubject<any[]>([]);
+  private summary_WC_Losses$ = new BehaviorSubject<any[]>([]);
+  private summary_Umbrella_Exposure$ = new BehaviorSubject<any[]>([]);
+  private summary_Umbrella_Coverages$ = new BehaviorSubject<any[]>([]);
+  private summary_Umbrella_Losses$ = new BehaviorSubject<any[]>([]);
 
   constructor() {
     let isSummaryCached = sessionStorage.getItem('isSummaryCached');
@@ -241,6 +250,24 @@ export class CacheService {
       return this.summary_Auto_Coverages$;
     } else if (widgetName === 'AutoLosses') {
       return this.summary_Auto_Losses$;
+    } else if (widgetName === 'GLExposure') {
+      return this.summary_GL_Exposure$;
+    } else if (widgetName === 'GLCoverages') {
+      return this.summary_GL_Coverages$;
+    } else if (widgetName === 'GLLosses') {
+      return this.summary_GL_Losses$;
+    } else if (widgetName === 'WCExposure') {
+      return this.summary_WC_Exposure$;
+    } else if (widgetName === 'WCCoverages') {
+      return this.summary_WC_Coverages$;
+    } else if (widgetName === 'WCLosses') {
+      return this.summary_WC_Losses$;
+    } else if (widgetName === 'UmbrellaExposure') {
+      return this.summary_Umbrella_Exposure$;
+    } else if (widgetName === 'UmbrellaCoverages') {
+      return this.summary_Umbrella_Coverages$;
+    } else if (widgetName === 'UmbrellaLosses') {
+      return this.summary_Umbrella_Losses$;
     }
     return of([]);
   }
@@ -266,6 +293,24 @@ export class CacheService {
       this.summary_Auto_Coverages$.next(data);
     } else if (widgetName === 'AutoLosses') {
       this.summary_Auto_Losses$.next(data);
+    } else if (widgetName === 'GLExposure') {
+      this.summary_GL_Exposure$.next(data);
+    } else if (widgetName === 'GLCoverages') {
+      this.summary_GL_Coverages$.next(data);
+    } else if (widgetName === 'GLLosses') {
+      this.summary_GL_Losses$.next(data);
+    }else if (widgetName === 'WCExposure') {
+      this.summary_WC_Exposure$.next(data);
+    } else if (widgetName === 'WCCoverages') {
+      this.summary_WC_Coverages$.next(data);
+    } else if (widgetName === 'WCLosses') {
+      this.summary_WC_Losses$.next(data);
+    }else if (widgetName === 'UmbrellaExposure') {
+      this.summary_Umbrella_Exposure$.next(data);
+    } else if (widgetName === 'UmbrellaCoverages') {
+      this.summary_Umbrella_Coverages$.next(data);
+    } else if (widgetName === 'UmbrellaLosses') {
+      this.summary_Umbrella_Losses$.next(data);
     }
    
   }

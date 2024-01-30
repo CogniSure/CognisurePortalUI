@@ -15,7 +15,7 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 export class LossesComponent {
   totalincurred: string = 'Total Incurred';
   totalincurredvalue: string = '';
-  totallosses: any = '$75,000';
+  totallosses: any = '0';
   lossesdata: LossesData[] = [];
   dropdownOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
   selectedOption: string = 'Option 1';
@@ -28,7 +28,7 @@ export class LossesComponent {
     this.header = this.input.WidgetHeader;
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
-        // console.log("Property Exposure Child")
+        //console.log("Property Exposure Child")
         // console.log(inputData)
         if(inputData!=null && inputData.length>0){
 
@@ -44,46 +44,17 @@ export class LossesComponent {
               numberofopenclaims: maxOpenClaims,
               highestclaim: '$' + maxIncurred,
             }]
-          
+            //console.log(this.lossesdata)
         }
+        else 
+        this.lossesdata = [
+          {
+            numberofclaims: 0,
+            numberofopenclaims: 0,
+            highestclaim: '$0',
+          }]
         this.changeDetector.detectChanges();
       })
     }
-
-    // this.globalService.getCurrentSubmission().subscribe((sub: any) => {
-    //   this.claimDetails = [];
-    //   if (sub != null && sub.value != null && sub.value.claim_Info!=null) {
-    //     let noOfClaims = 0;
-    //     let noOfOpenClaims = 0;
-    //     let totalIncurred = 0;
-    //     let highestIncurred = 0;
-    //     sub.value.claim_Info.forEach((claim: any) => {
-    //       let totalIncurredTemp = 0;
-    //       let lob = claim.line_Of_Business;
-
-    //       if (lob.toLowerCase() == 'property') {
-    //         if (claim.total_Incurred != null) {
-    //           var str = claim.total_Incurred.replace('$', '');
-    //           totalIncurredTemp = parseNumber(str);
-    //         }
-    //         totalIncurred += totalIncurredTemp;
-    //         if (totalIncurredTemp > highestIncurred)
-    //           highestIncurred = totalIncurredTemp;
-
-    //         noOfClaims++;
-    //         if (claim.claim_Status == 'Open') noOfOpenClaims++;
-    //       }
-    //     });
-
-    //     this.totallosses = '$' + totalIncurred.toLocaleString('en-GB');
-    //     this.lossesdata = [
-    //       {
-    //         numberofclaims: noOfClaims,
-    //         numberofopenclaims: noOfOpenClaims,
-    //         highestclaim: '$' + highestIncurred.toLocaleString('en-GB'),
-    //       },
-    //     ];
-    //   }
-    // });
   }
 }

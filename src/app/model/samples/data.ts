@@ -292,7 +292,7 @@ export class DataComponent {
       id: 1,
       WidgetName: 'YearBuild',
       WidgetType: 'donut',
-      Header: 'Year Build',
+      Header: 'Building Age',
       ColumnId :  1,
       ColumnSpan :  3,
       RowSpan :  4
@@ -420,7 +420,120 @@ export class DataComponent {
     },
   ];
 
-
+  public static WorkerComphub = [
+    {
+      id: 5,
+      BoxType: 'MediumBox',
+      WidgetName: 'WCExposure',
+      WidgetType: 'Exposure',
+      Header: 'Exposure',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 6,
+      BoxType: 'LargeBox',
+      WidgetName: 'WCCoverages',
+      WidgetType: 'Coverages',
+      Header: 'Payroll and Employee Count',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 7,
+      BoxType: 'LargeBox',
+      WidgetName: 'WCLosses',
+      WidgetType: 'Losses',
+      Header: 'Losses',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    }
+  ];
+  public static GeneralLiabilityhub = [
+    {
+      id: 5,
+      BoxType: 'MediumBox',
+      WidgetName: 'GLExposure',
+      WidgetType: 'Exposure',
+      Header: 'Schedule of Hazards',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 6,
+      BoxType: 'LargeBox',
+      WidgetName: 'GLCoverages',
+      WidgetType: 'Coverages',
+      Header: 'Coverages',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 7,
+      BoxType: 'LargeBox',
+      WidgetName: 'GLLosses',
+      WidgetType: 'Losses',
+      Header: 'Losses',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    }
+  ];
+  public static Umbrellahub = [
+    {
+      id: 5,
+      BoxType: 'MediumBox',
+      WidgetName: 'UmbrellaExposure',
+      WidgetType: 'Exposure',
+      Header: 'Exposure',
+      ColumnId :  1,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 6,
+      BoxType: 'LargeBox',
+      WidgetName: 'UmbrellaCoverages',
+      WidgetType: 'Coverages',
+      Header: 'Underlying Coverages',
+      ColumnId :  2,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    },
+    {
+      id: 7,
+      BoxType: 'LargeBox',
+      WidgetName: 'UmbrellaLosses',
+      WidgetType: 'Losses',
+      Header: 'Losses',
+      ColumnId :  3,
+      ColumnSpan :  1,
+      RowSpan :  1,
+      HeaderColor : '#00B6AD',
+      FontColor : '#fff'
+    }
+  ];
   public static Tooltip = `<div class="size"><b>Password must consists of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>`;
 
 }

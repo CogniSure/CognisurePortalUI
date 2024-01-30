@@ -124,7 +124,6 @@ export class DashboardwidgetsComponent
         cdata.Dimension = mappedArr.filter((f:any)=>f.category == 'SubmissionIdCount');
         cdata.Data = mappedArr.filter((f:any)=>f.category != 'SubmissionIdCount');
         
-        //cdata.Dimension = mappedArr.filter(f=>f.category == 'SubmissionIdCount')
         this.cacheService.setDashboard('SubmissionProfile',[cdata])
       }
       else 
@@ -282,7 +281,6 @@ export class DashboardwidgetsComponent
           res != null &&
           res.success
         ) {
-         
           if(res.value!=null){
             const mappedArr : any[] = [];
             res.value.forEach((data: any)=>{
@@ -290,7 +288,7 @@ export class DashboardwidgetsComponent
               mappedArr.push(piechartdata)
             })
             cdata.Data = mappedArr;
-          }
+        }
           this.cacheService.setDashboard('CoverageDistribution',[cdata]);
         } else {
           this.cacheService.setDashboard('CoverageDistribution',[]);

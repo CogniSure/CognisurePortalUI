@@ -105,7 +105,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         this.cacheService.setExposureSummary('NoOfLocations', [
           {
-            ItemData: '# of Location',
+            ItemData: 'No. of Locations',
             ItemValue: res.value[0].measure,
           },
         ]);
@@ -114,19 +114,19 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         this.cacheService.setExposureSummary('NoOfLocations', [
           {
-            ItemData: '# of Location',
+            ItemData: 'No. of Locations',
             ItemValue: '0',
           },
         ]);
       }
     })
 
-    this.inboxService.getExposureSummary("exposure_locationcount",clientId,submissionId,email).subscribe(res=>{
+    this.inboxService.getExposureSummary("exposure_buildingscount",clientId,submissionId,email).subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {
         this.cacheService.setExposureSummary('NoOfBuildings', [
           {
-            ItemData: '# of Buildings',
+            ItemData: 'No. of Buildings',
             ItemValue: res.value[0].measure,
           },
         ]);
@@ -135,7 +135,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       {
         this.cacheService.setExposureSummary('NoOfBuildings', [
           {
-            ItemData: '# of Buildings',
+            ItemData: 'No. of Buildings',
             ItemValue: '0',
           },
         ]);
@@ -143,6 +143,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
 
     this.inboxService.getExposureSummary("exposure_constructiontype",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData = {
+        Dimension: [],
+        Data: [],
+      };
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -152,7 +156,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             value:x.measure
           }
         })
-        this.cacheService.setExposureSummary('ConstructionType',mappedArr)
+        cdata.Data = mappedArr;
+        this.cacheService.setExposureSummary('ConstructionType',[cdata])
       }
       else
       {
@@ -161,6 +166,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
 
     this.inboxService.getExposureSummary("exposure_occupancytype",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData = {
+        Dimension: [],
+        Data: [],
+      };
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -170,7 +179,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             value:x.measure
           }
         })
-        this.cacheService.setExposureSummary('OccupancyType',mappedArr)
+        cdata.Data = mappedArr;
+        this.cacheService.setExposureSummary('OccupancyType',[cdata])
       }
       else
       {
@@ -179,6 +189,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
 
     this.inboxService.getExposureSummary("exposure_yearbuild",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData = {
+        Dimension: [],
+        Data: [],
+      };
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -188,7 +202,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             value:x.measure
           }
         })
-        this.cacheService.setExposureSummary('YearBuild',mappedArr)
+        cdata.Data = mappedArr;
+        this.cacheService.setExposureSummary('YearBuild',[cdata])
       }
       else
       {
@@ -197,6 +212,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     })
 
     this.inboxService.getExposureSummary("exposure_protectionclass",clientId,submissionId,email).subscribe(res=>{
+      let cdata: ChartData = {
+        Dimension: [],
+        Data: [],
+      };
       if(res!=null && res.value != null && res.value.length > 0)
       {
         let dataArr = res.value;
@@ -206,7 +225,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
             value:x.measure
           }
         })
-        this.cacheService.setExposureSummary('ProtectionClass',mappedArr)
+        cdata.Data = mappedArr;
+        this.cacheService.setExposureSummary('ProtectionClass',[cdata])
       }
       else
       {
