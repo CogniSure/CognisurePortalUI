@@ -717,7 +717,7 @@
     </kendo-grid-column-group>
 
       <kendo-grid-column-group
-        *ngIf="column.type == 'Attachment'"
+        *ngIf="column.type == 'Attachments'"
         title="{{ column.title }}"
         format="{{ column.format }}"
         [filterable]="column.filterable"
@@ -740,6 +740,7 @@
           [columnMenu]="column.columnmenu"
           [width]="column.width"
           [headerStyle]="{'border-color': '#1FD0C7'}"
+          
         >
           <ng-template
             kendoGridHeaderTemplate
@@ -747,8 +748,9 @@
             let-columnIndex="columnIndex"
             style="padding: 0"
             class="outputicon-class"
+           
           >
-            <img class="s360PendingimgPath" [src]="s360PendingimgPath" />
+         Total
           </ng-template>
           <!-- <ng-template
             kendoGridCellTemplate
@@ -818,7 +820,7 @@
             style="padding: 0"
             class="outputicon-class"
           >
-            <img class="convaiPendingimgPath" [src]="convaiPendingimgPath" />
+            Valid
           </ng-template>
           <!-- <ng-template
             kendoGridCellTemplate
