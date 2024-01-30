@@ -487,7 +487,237 @@
       </kendo-grid-column>
 
       <kendo-grid-column-group
-        *ngIf="column.type == 'Outputs'"
+      *ngIf="column.type == 'Outputs'"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+      [columnMenu]="column.columnmenu"
+      [ngClass]="{ 'outputicon-class': true }"
+      [hidden]="!column.default"
+      [headerStyle]="{'border-color': '#1FD0C7'}"
+    >
+      >
+      <kendo-grid-column
+        field="{{ column.field }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+        [width]="column.width"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
+      >
+        <ng-template
+          kendoGridHeaderTemplate
+          let-column
+          let-columnIndex="columnIndex"
+          style="padding: 0"
+          class="outputicon-class"
+        >
+          <img class="s360PendingimgPath" [src]="s360PendingimgPath" />
+        </ng-template>
+        <ng-template
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+          let-value="value"
+        >
+          <div style="display: flex; width: 100%; justify-content: center">
+            <div style="justify-content: center">
+              <ng-container
+                *ngIf="dataItem.Status === 'Completed'; else S360Pending"
+              >
+                <a
+                  color="primary"
+                  class="excel_download"
+                  (click)="Download_Click(dataItem)"
+                >
+                  <img
+                    src="../../../assets/icons/S360ReportCompleted.svg"
+                    alt="Green Image"
+                  />
+                </a>
+              </ng-container>
+            </div>
+            <ng-template #S360Pending>
+              <img
+                src="../../../assets/icons/S360ReportPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+
+            <ng-template #ConvaiPending>
+              <img
+                src="../../../assets/icons/ConversationAIPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+
+            <ng-template #InsgihtsPending>
+              <img
+                src="../../../assets/icons/InsightsPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+          </div>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column
+        field="{{ column.field }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+        [width]="column.width"
+        title=""
+        field="subColumn1"
+        [ngClass]="{ outputicon_clum: true }"
+        [style]="{ 'border-radius': '0' }"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
+      >
+        <ng-template
+          kendoGridHeaderTemplate
+          let-column
+          let-columnIndex="columnIndex"
+          style="padding: 0"
+          class="outputicon-class"
+        >
+          <img class="convaiPendingimgPath" [src]="convaiPendingimgPath" />
+        </ng-template>
+        <ng-template
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+          let-value="value"
+        >
+          <div style="display: flex; width: 100%; justify-content: center">
+            <div style="justify-content: center">
+              <ng-container
+                *ngIf="dataItem.Status === 'Completed'; else ConvaiPending"
+              >
+                <kendo-button
+                  class="copied_icontop"
+                  style="
+                    background: transparent;
+                    border: none;
+                    height: 100%;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                  "
+                  (click)="Copilot_Click(dataItem)"
+                >
+                  <img
+                    src="../../../assets/icons/ConversationAICompleted.svg"
+                    alt="Green Image"
+                  />
+                </kendo-button>
+              </ng-container>
+            </div>
+
+            <ng-template #S360Pending>
+              <img
+                src="../../../assets/icons/S360ReportPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+
+            <ng-template #ConvaiPending>
+              <img
+                src="../../../assets/icons/ConversationAIPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+
+            <ng-template #InsgihtsPending>
+              <img
+                src="../../../assets/icons/InsightsPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+          </div>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column
+        field="{{ column.field }}"
+        format="{{ column.format }}"
+        [filterable]="column.filterable"
+        [sortable]="column.sortable"
+        [filter]="column.type"
+        [width]="column.width"
+        [columnMenu]="column.columnmenu"
+        [width]="column.width"
+        title=""
+        field=""
+        [ngClass]="{ outputicon_clum: true }"
+        [style]="{ 'border-radius': '0' }"
+        [headerStyle]="{'border-color': '#1FD0C7'}"
+      >
+        <ng-template
+          kendoGridHeaderTemplate
+          let-column
+          let-columnIndex="columnIndex"
+          style="padding: 0"
+          class="outputicon-class"
+        >
+          <img class="insgihtsPending" [src]="insgihtsPending" />
+        </ng-template>
+        <ng-template
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+          let-value="value"
+        >
+          <div style="display: flex; width: 57%; justify-content: center">
+            <div style="width: 25%; justify-content: center">
+              <ng-container
+                *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending"
+              >
+                <a
+                  color="primary"
+                  class="excel_download"
+                  (click)="Download_Click(dataItem)"
+                >
+                  <img
+                    src="../../../assets/icons/InsightsCompleted.svg"
+                    alt="Green Image"
+                  />
+                </a>
+              </ng-container>
+            </div>
+            <ng-template #S360Pending>
+              <img
+                src="../../../assets/icons/S360ReportPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+
+            <ng-template #ConvaiPending>
+              <img
+                src="../../../assets/icons/ConversationAIPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+
+            <ng-template #InsgihtsPending>
+              <img
+                src="../../../assets/icons/InsightsPending.svg"
+                alt="Gray Image"
+              />
+            </ng-template>
+          </div>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid-column-group>
+
+      <kendo-grid-column-group
+        *ngIf="column.type == 'Attachment'"
         title="{{ column.title }}"
         format="{{ column.format }}"
         [filterable]="column.filterable"
@@ -520,7 +750,7 @@
           >
             <img class="s360PendingimgPath" [src]="s360PendingimgPath" />
           </ng-template>
-          <ng-template
+          <!-- <ng-template
             kendoGridCellTemplate
             let-dataItem
             let-rowIndex="rowIndex"
@@ -564,7 +794,7 @@
                 />
               </ng-template>
             </div>
-          </ng-template>
+          </ng-template> -->
         </kendo-grid-column>
         <kendo-grid-column
           field="{{ column.field }}"
@@ -590,7 +820,7 @@
           >
             <img class="convaiPendingimgPath" [src]="convaiPendingimgPath" />
           </ng-template>
-          <ng-template
+          <!-- <ng-template
             kendoGridCellTemplate
             let-dataItem
             let-rowIndex="rowIndex"
@@ -642,77 +872,7 @@
                 />
               </ng-template>
             </div>
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column
-          field="{{ column.field }}"
-          format="{{ column.format }}"
-          [filterable]="column.filterable"
-          [sortable]="column.sortable"
-          [filter]="column.type"
-          [width]="column.width"
-          [columnMenu]="column.columnmenu"
-          [width]="column.width"
-          title=""
-          field=""
-          [ngClass]="{ outputicon_clum: true }"
-          [style]="{ 'border-radius': '0' }"
-          [headerStyle]="{'border-color': '#1FD0C7'}"
-        >
-          <ng-template
-            kendoGridHeaderTemplate
-            let-column
-            let-columnIndex="columnIndex"
-            style="padding: 0"
-            class="outputicon-class"
-          >
-            <img class="insgihtsPending" [src]="insgihtsPending" />
-          </ng-template>
-          <ng-template
-            kendoGridCellTemplate
-            let-dataItem
-            let-rowIndex="rowIndex"
-            let-value="value"
-          >
-            <div style="display: flex; width: 57%; justify-content: center">
-              <div style="width: 25%; justify-content: center">
-                <ng-container
-                  *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending"
-                >
-                  <a
-                    color="primary"
-                    class="excel_download"
-                    (click)="Download_Click(dataItem)"
-                  >
-                    <img
-                      src="../../../assets/icons/InsightsCompleted.svg"
-                      alt="Green Image"
-                    />
-                  </a>
-                </ng-container>
-              </div>
-              <ng-template #S360Pending>
-                <img
-                  src="../../../assets/icons/S360ReportPending.svg"
-                  alt="Gray Image"
-                />
-              </ng-template>
-
-              <ng-template #ConvaiPending>
-                <img
-                  src="../../../assets/icons/ConversationAIPending.svg"
-                  alt="Gray Image"
-                />
-              </ng-template>
-
-              <ng-template #InsgihtsPending>
-                <img
-                  src="../../../assets/icons/InsightsPending.svg"
-                  alt="Gray Image"
-                />
-              </ng-template>
-            </div>
-          </ng-template>
+          </ng-template> -->
         </kendo-grid-column>
       </kendo-grid-column-group>
     </ng-template>
