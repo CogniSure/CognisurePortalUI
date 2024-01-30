@@ -198,7 +198,7 @@
           [filter]="column.type"
           [width]="column.width"
           [columnMenu]="column.columnmenu"
-          [width]="160"
+          [width]="100"
         >
           <ng-template
             kendoGridHeaderTemplate
@@ -465,6 +465,7 @@
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [width]="350"
       >
         <ng-template
           kendoGridCellTemplate
@@ -673,7 +674,7 @@
             let-rowIndex="rowIndex"
             let-value="value"
           >
-            <div style="display: flex; width: 100%; justify-content: center">
+            <div style="display: flex; width: 57%; justify-content: center">
               <div style="width: 25%; justify-content: center">
                 <ng-container
                   *ngIf="dataItem.Status === 'Completed'; else InsgihtsPending"
