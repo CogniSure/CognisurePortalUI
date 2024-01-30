@@ -78,7 +78,7 @@ export class DashboardwidgetsComponent
 
     console.log("User Details")
     console.log(user)
-    const topNumber = '10';
+    const topNumber = '5';
     const startDate = '01/01/2023';
     const endDate = '9/30/2024';
     const clientId = user.ClientCode;

@@ -8,7 +8,7 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { ChartComponent } from '@progress/kendo-angular-charts';
+import { ChartComponent, SeriesLabelsContentArgs } from '@progress/kendo-angular-charts';
 import {
   Border,
   SeriesLabels,
@@ -33,7 +33,8 @@ export class YBarComponent implements OnInit, OnDestroy {
   public categories: number[] = [];
   public YbarChart: ChartComponent;
   majorUnit: number;
-
+  dataType :string = "percentage";
+  
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -63,8 +64,9 @@ export class YBarComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
   ngOnInit(): void {
     this.noDataAvailble = false;
+    this.ApplySettings();
+
     if (this.input.DataSubject != null) {
-      //&& this.input.Data.length > 0) {
       this.input.DataSubject.subscribe((inputData: any[]) => {
         if (inputData != null && inputData.length > 0) {
           this.chartData = inputData[0];
@@ -110,34 +112,6 @@ export class YBarComponent implements OnInit, OnDestroy {
       });
   }
 
-  // private transformChartData(seriesData: any): ChartData {
-  //   const transformedData = seriesData.Data.map((item: { Data: any[]; Labels?: any[] }, index: number) => {
-  //     const series = Array.from({ length: item.Data.length }, (_, i) => i + 5);
-  //     const labels = series.map(value => value.toString());
-
-  //     if (index === seriesData.Data.length - 1) {
-
-  //       return {
-  //         ...item,
-  //         Data: series,
-  //         Labels: labels,
-  //         isBottomSeries: true,
-  //       };
-  //     }
-
-  //     return {
-  //       ...item,
-  //       Data: series,
-  //       Labels: labels,
-  //       isBottomSeries: false,
-  //     };
-  //   });
-
-  //   return {
-  //     ...seriesData,
-  //     Data: transformedData,
-  //   };
-  // }
 
   valueAxis: {
     labels: {
@@ -145,13 +119,15 @@ export class YBarComponent implements OnInit, OnDestroy {
     };
   };
 
-  // onLabelContent(e: any): string {
-  //   if (e.dataItem.isBottomSeries && e.axis.options.position !== "right") {
-  //     return `Bottom-${e.value}`;
-  //   } else {
-  //     return e.value.toString();
-  //   }
-  // }
+  public labelContent = (e: SeriesLabelsContentArgs): string => {
+    if(this.dataType == "Number")
+      return e.value;
+    else if(this.dataType == "Percentage")
+      return e.value + '%';
+    else if(this.dataType == "Dollar")
+      return "$" + e.value;
+    return e.value;
+  };
 
   public valueAxisLabels: ValueAxisLabels = {
     //font: "bold 16px Arial, sans-serif",
@@ -164,4 +140,12 @@ export class YBarComponent implements OnInit, OnDestroy {
     position: 'center',
     color: 'white',
   };
+  ApplySettings(){
+    
+    if(this.input.Settings !=null){
+      if(this.input.Settings.DataType!=null){
+        this.dataType = this.input.Settings.DataType
+      }
+    }
+  }
 }

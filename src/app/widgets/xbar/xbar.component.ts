@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Border, ChartComponent, SeriesLabels, ValueAxisLabels } from '@progress/kendo-angular-charts';
+import { Border, ChartComponent, SeriesLabels, SeriesLabelsContentArgs, ValueAxisLabels } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
@@ -24,6 +24,7 @@ export class XBarComponent implements OnInit, OnDestroy {
   majorUnit: number;
   showSpinner = false;
   noDataAvailble = false;
+  dataType :string = "percentage";
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -51,7 +52,7 @@ export class XBarComponent implements OnInit, OnDestroy {
     color:"white"
 
   };
-
+ 
   public valueAxisLabels: ValueAxisLabels = {
     font: "12px Arial, sans-serif",
   };
@@ -65,7 +66,9 @@ export class XBarComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
   ngOnInit(): void {
     this.showSpinner = true;
-    if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
+    this.ApplySettings();
+
+    if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
 
         if(this.input.Settings!=null && this.input.Settings.ShowLabels!=null)
@@ -110,6 +113,23 @@ export class XBarComponent implements OnInit, OnDestroy {
     else
     this.showSpinner = false;
   }
+  ApplySettings(){
+    
+    if(this.input.Settings !=null){
+      if(this.input.Settings.DataType!=null){
+        this.dataType = this.input.Settings.DataType
+      }
+    }
+  }
+  public labelContent = (e: SeriesLabelsContentArgs): string => {
+    if(this.dataType == "Number")
+      return e.value;
+    else if(this.dataType == "Percentage")
+      return e.value + '%';
+    else if(this.dataType == "Dollar")
+      return "$" + e.value;
+    return e.value;
+  };
   public exportChart(): void {
     this.chart
       .exportImage({

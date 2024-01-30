@@ -24,7 +24,11 @@
       </kendo-chart-legend>
 
       <ng-template kendoChartDonutCenterTemplate>
-        <h3 *ngIf="CenterValue != 0">{{ CenterValue }}</h3>
+        <div>
+          <h3 *ngIf="CenterValue != 0" style="margin: 0; color: #009cc1">
+            <b>{{ CenterValue }}</b>
+          </h3>
+        </div>
       </ng-template>
       <kendo-chart-plot-area
         [background]="'green'"
@@ -34,18 +38,22 @@
       </kendo-chart-plot-area>
       <kendo-chart-series style="font-size: 22px !important">
         <kendo-chart-series-item
-          [autoFit]="false"
+          [autoFit]="true"
           [type]="ChartType"
           [data]="chartData.Data"
           field="value"
           categoryField="category"
-          [padding]="15"
+          [padding]="20"
+          [holeSize]="60"
         >
           <kendo-chart-series-item-labels
+            position="above"
+            [distance]="15"
             [content]="labelContent"
             [visible]="true"
             [background]="'transparent'"
-            [color]="'#ffffff'"
+            [color]="'#009CC1'"
+            [align]="'column'"
           >
           </kendo-chart-series-item-labels>
         </kendo-chart-series-item>

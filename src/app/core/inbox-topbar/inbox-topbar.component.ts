@@ -115,6 +115,8 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         SubmissionName : subInfo.SubmissionName,
         LOB : subInfo.LOB//this.getDistinctLOB(subInfo.LOB)
       }
+
+      
       this.cdRef.detectChanges();
     })
     // this.globalService.getCurrentSubmission().subscribe((sub) => {

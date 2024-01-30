@@ -31,20 +31,30 @@
 
       <kendo-chart-value-axis>
         <kendo-chart-value-axis-item
-          [majorUnit]="majorUnit"
           [labels]="valueAxisLabels"
           [min]="0"
-          [max]="valueAxisMax.max"
-          maxDivisions="10"
           [majorGridLines]="{ visible: false }"
         >
         </kendo-chart-value-axis-item>
       </kendo-chart-value-axis>
 
       <kendo-chart-tooltip> </kendo-chart-tooltip>
+
       <kendo-chart-series-defaults>
-        <kendo-chart-series-defaults-labels format="c0">
+        <kendo-chart-series-defaults-labels
+          format="c0"
+          position="outsideEnd"
+          [content]="labelContent"
+          color="#009CC1"
+        >
         </kendo-chart-series-defaults-labels>
+        <kendo-chart-series-item-labels
+          [distance]="15"
+          [visible]="true"
+          [background]="'transparent'"
+          [align]="'column'"
+        >
+        </kendo-chart-series-item-labels>
       </kendo-chart-series-defaults>
 
       <kendo-chart-series>
@@ -54,13 +64,10 @@
           [stack]="{ type: 'normal' }"
           [data]="item.Data"
           [name]="item.Name"
-          [labels]="seriesLabels"
           [gap]="2"
           [autoFit]="true"
           [border]="seriesBorder"
         >
-          <!-- <kendo-chart-series-item-tooltip format="Series 1 value: {0}">
-    </kendo-chart-series-item-tooltip> -->
         </kendo-chart-series-item>
       </kendo-chart-series>
     </kendo-chart>

@@ -204,7 +204,10 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       RiskClearance : "",
       LOB : param.lineOfBusiness
     }
-    this.globalService.setCurrentSubmissionId(param)
+    // console.log("Current Submission")
+    //   console.log(subInfo)
+    //   console.log(param)
+    this.globalService.setCurrentSubmissionId(subInfo)
   }
 
 

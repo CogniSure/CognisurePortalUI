@@ -161,7 +161,8 @@ export class DataComponent {
       Header: 'Submission Profile and Volume',
       ColumnId :  1,
       ColumnSpan :  1,
-      RowSpan :  3
+      RowSpan :  3,
+      DataType: "Percentage"
     },
     {
       id: 1,
@@ -181,7 +182,8 @@ export class DataComponent {
       Header: 'Coverage Distribution',
       ColumnId :  3,
       ColumnSpan :  1,
-      RowSpan :  3
+      RowSpan :  3,
+      DataType: "Percentage"
     },
     {
       id: 2,
@@ -201,7 +203,8 @@ export class DataComponent {
       Header: 'Top Industries',
       ColumnId :  2,
       ColumnSpan :  1,
-      RowSpan :  3
+      RowSpan :  3,
+      DataType: "Percentage"
     }
     ,
     {
@@ -212,7 +215,8 @@ export class DataComponent {
       Header: 'Top Locations by City',
       ColumnId :  3,
       ColumnSpan :  1,
-      RowSpan :  3
+      RowSpan :  3,
+      DataType: "Percentage"
     },
     {
       id: 1,
@@ -222,7 +226,8 @@ export class DataComponent {
       Header: 'Top Locations by State',
       ColumnId :  1,
       ColumnSpan :  1,
-      RowSpan :  3
+      RowSpan :  3,
+      DataType: "Percentage"
     }
   ];
   public static ExposureSummaryHub = [
