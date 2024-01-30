@@ -2,12 +2,6 @@
   <div class="logo-container">
     <div style="width: inherit;">
       <button class="logo-back" *ngIf="collapsed">
-        <div style="width: fit-content; color: #000;" *ngIf="!collapsed" [routerLink]="['/inbox/home']">
-          <span>
-            <mat-icon >arrow_back</mat-icon>
-          </span>
-          Back
-        </div>
         <div style="width: 100%;display: flex; justify-content: center;" *ngIf="collapsed" [routerLink]="['/inbox/home']">
             <img style="width: 7em; font-size: 10px;"
               src="../../../assets/images/back_to_inbox.PNG"
@@ -16,9 +10,9 @@
       </button>
     </div>
     <div *ngIf="!collapsed">
-      <button class="logo" (click)="toggleCollapse()">
+      <button class="logo" [routerLink]="['/inbox/home']">
         <div style="width: fit-content" >
-          <mat-icon style="color: #000;text-align: left;">skip_next</mat-icon>
+          <mat-icon style="color: #000;text-align: left;">arrow_back</mat-icon>
         </div>
         <div style="width: fit-content" *ngIf="collapsed">
         </div>
