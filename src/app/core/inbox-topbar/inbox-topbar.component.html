@@ -116,9 +116,23 @@
       <kendo-tilelayout-item-body style="text-align: center;background-color: #19465F!important;color: #fff!important;">
     <div style="padding:8%">
 
-     <span class="risk1">{{navItems[5].pending1}}</span>&nbsp;
+     <!-- <span class="risk1">{{navItems[5].pending1}}</span>&nbsp;
      <span class="risk1">{{navItems[5].pending2}}</span>&nbsp;
-     <span class="risk1">{{navItems[5].pending3}}</span>&nbsp;
+     <span class="risk1">{{navItems[5].pending3}}</span>&nbsp; -->
+
+     <span style="padding: 3%;">
+      <span *ngIf="extractionComplete === 2" class="risk1" style="color: #fff;background-color: #6dc942">{{navItems[5].pending1}}</span>
+       <span *ngIf="extractionComplete === 1" class="risk1" style="color: #fff;background-color: #FFBF00">{{navItems[5].pending1}}</span>
+       <span *ngIf="extractionComplete === 0" class="risk1" style="color: #fff;background-color: #80808059">{{navItems[5].pending1}}</span>
+       </span>
+       <span style="padding: 3%;">
+       <span class="risk1" style="color: #fff;background-color: #80808059">{{navItems[5].pending2}}</span>
+       </span>
+       <span style="padding: 3%;">
+       <span class="risk1" style="color: #fff;background-color: #80808059">{{navItems[5].pending3}}</span>
+  </span>
+
+
       <br/>
       <span>{{submissionInfo.Status}}</span>
 
