@@ -21,6 +21,10 @@ export class LossesComponent {
   selectedOption: string = 'Option 1';
   claimDetails: ClaimDetail[] = [];
   header : any = "";
+  widgetData: any[] = [];
+  widgetDataDB: any[] = [];
+  years : any[] = ['0 Yrs']
+
   constructor(@Inject(InjectToken) private input: WidgetInput,
   private changeDetector: ChangeDetectorRef) {}
 
@@ -28,23 +32,35 @@ export class LossesComponent {
     this.header = this.input.WidgetHeader;
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
-        //console.log("Property Exposure Child")
-        // console.log(inputData)
         if(inputData!=null && inputData.length>0){
 
-          let maxIncurred = inputData.reduce((a, {GrossIncurred})=>Number(GrossIncurred) > a ? Number(GrossIncurred) : a , -1);
-          let maxClaims = inputData.reduce((a, {TotalNoOfClaims})=>Number(TotalNoOfClaims) > a ? Number(TotalNoOfClaims) : a , -1);
-          let maxOpenClaims = inputData.reduce((a, {TotalNoOfOpenClaims})=>Number(TotalNoOfOpenClaims) > a ? Number(TotalNoOfOpenClaims) : a , -1);
+          this.widgetData = inputData;
+          this.widgetDataDB = inputData;
+          this.years = [];
+          this.years = this.widgetData.map((x) => x.Year);
+          let maxIncurred = inputData.reduce(
+            (a, { GrossIncurred }) =>
+              Number(GrossIncurred) > a ? Number(GrossIncurred) : a,
+            -1
+          );
+          let maxClaims = inputData.reduce(
+            (a, { TotalNoOfClaims }) => a + Number(TotalNoOfClaims), 0
+          );
+          let maxOpenClaims = inputData.reduce(
+            (a, { TotalNoOfOpenClaims }) => a + Number(TotalNoOfOpenClaims), 0
+          );
 
-          this.totallosses = inputData.reduce((sum, {GrossIncurred})=> sum + Number(GrossIncurred), 0);
-          
+          this.totallosses = inputData.reduce(
+            (sum, { GrossIncurred }) => sum + Number(GrossIncurred), 0
+          );
+
           this.lossesdata = [
             {
               numberofclaims: maxClaims,
               numberofopenclaims: maxOpenClaims,
-              highestclaim: '$' + maxIncurred,
-            }]
-            //console.log(this.lossesdata)
+              highestclaim: maxIncurred,
+            },
+          ];
         }
         else 
         this.lossesdata = [
@@ -56,5 +72,56 @@ export class LossesComponent {
         this.changeDetector.detectChanges();
       })
     }
+  }
+
+  onYearChange(value: any) {
+    let inputData = this.widgetDataDB;
+    if(inputData != null && inputData.length > 0){
+      let filteredData  = [];
+      
+      if(value=="All"){
+        filteredData = inputData
+      }
+      else {
+        filteredData = inputData.filter((data:any)=>
+          Number(data.Year) <= Number(value) )
+      }
+      
+      this.totalincurredvalue = filteredData.reduce(
+        (sum, { GrossIncurred }) => sum + Number(GrossIncurred),
+        0
+      );
+
+      let maxIncurred = filteredData.reduce(
+        (a, { GrossIncurred }) =>
+          Number(GrossIncurred) > a ? Number(GrossIncurred) : a,
+        -1
+      );
+      let maxClaims = filteredData.reduce(
+        (a, { TotalNoOfClaims }) => a + Number(TotalNoOfClaims), 0
+      );
+      let maxOpenClaims = filteredData.reduce(
+        (a, { TotalNoOfOpenClaims }) => a + Number(TotalNoOfOpenClaims), 0
+      );
+      this.lossesdata = [
+        {
+          numberofclaims: maxClaims,
+          numberofopenclaims: maxOpenClaims,
+          highestclaim: '$' + maxIncurred,
+        },
+      ];
+    }
+    else {
+      this.totalincurredvalue = "0";
+      this.lossesdata = [
+        {
+          numberofclaims: 0,
+          numberofopenclaims: 0,
+          highestclaim: '$' + 0,
+        },
+      ];
+    }
+
+    
   }
 }

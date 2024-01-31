@@ -21,37 +21,22 @@ export class TotalLossesComponent implements OnInit {
   totallossesdata: TotalLossesData[] = [];
   selected = 'option2';
   selectedOption: string = '1';
-
+  years : any[] = ["0 Yrs"]
   totalloss: any;
   // public selectedYears: string = '';
   selectedValue = '0';
-  public years: string[] = ['1yrs', '2yrs', '3yrs', '4yrs'];
-  public selectedYear: string;
-  totallosses: string = '$75,000';
+  public selectedYear: string = "All";
+  totallosses: string = '$0';
   selectedYears: number = 1;
   claimDetails: ClaimDetail[] = [];
-  countries = [
-    {
-      id: 1,
-      name: 'France',
-    },
-    {
-      id: 2,
-      name: 'Germany',
-    },
-    {
-      id: 3,
-      name: 'Italy',
-    },
-  ];
   widgetData: any[] = [];
   widgetDataDB: any[] = [];
-  selectedCountry: any = this.countries[0].id;
+
   constructor(
     @Inject(InjectToken) private input: WidgetInput,
     private changeDetector: ChangeDetectorRef
   ) {
-    this.selectedYear = this.years[0];
+    //this.selectedYear = this.years[0];
   }
 
   ngOnInit(): void {
@@ -68,26 +53,21 @@ export class TotalLossesComponent implements OnInit {
             -1
           );
           let maxClaims = inputData.reduce(
-            (a, { TotalNoOfClaims }) =>
-              Number(TotalNoOfClaims) > a ? Number(TotalNoOfClaims) : a,
-            -1
+            (a, { TotalNoOfClaims }) => a + Number(TotalNoOfClaims), 0
           );
           let maxOpenClaims = inputData.reduce(
-            (a, { TotalNoOfOpenClaims }) =>
-              Number(TotalNoOfOpenClaims) > a ? Number(TotalNoOfOpenClaims) : a,
-            -1
+            (a, { TotalNoOfOpenClaims }) => a + Number(TotalNoOfOpenClaims), 0
           );
 
           this.totalincurredvalue = inputData.reduce(
-            (sum, { GrossIncurred }) => sum + Number(GrossIncurred),
-            0
+            (sum, { GrossIncurred }) => sum + Number(GrossIncurred), 0
           );
 
           this.totallossesdata = [
             {
               numberofclaims: maxClaims,
               numberofopenclaims: maxOpenClaims,
-              highestclaim: '$' + maxIncurred,
+              highestclaim: maxIncurred,
             },
           ];
         }
@@ -96,37 +76,53 @@ export class TotalLossesComponent implements OnInit {
     }
   }
   onYearChange(value: any) {
-    console.log('Year Dropdown');
-    console.log(value);
-    console.log(this.years)
     let inputData = this.widgetDataDB;
-    let maxIncurred = inputData.reduce(
-      (a, { GrossIncurred }) =>
-        Number(GrossIncurred) > a ? Number(GrossIncurred) : a,
-      -1
-    );
-    let maxClaims = inputData.reduce(
-      (a, { TotalNoOfClaims }) =>
-        Number(TotalNoOfClaims) > a ? Number(TotalNoOfClaims) : a,
-      -1
-    );
-    let maxOpenClaims = inputData.reduce(
-      (a, { TotalNoOfOpenClaims }) =>
-        Number(TotalNoOfOpenClaims) > a ? Number(TotalNoOfOpenClaims) : a,
-      -1
-    );
+    if(inputData != null && inputData.length > 0){
+      let filteredData  = [];
+      
+      if(value=="All"){
+        filteredData = inputData
+      }
+      else {
+        filteredData = inputData.filter((data:any)=>
+          Number(data.Year) <= Number(value) )
+      }
 
-    this.totalincurredvalue = inputData.reduce(
-      (sum, { GrossIncurred }) => sum + Number(GrossIncurred),
-      0
-    );
+      this.totalincurredvalue = filteredData.reduce(
+        (sum, { GrossIncurred }) => sum + Number(GrossIncurred),
+        0
+      );
 
-    this.totallossesdata = [
-      {
-        numberofclaims: maxClaims,
-        numberofopenclaims: maxOpenClaims,
-        highestclaim: '$' + maxIncurred,
-      },
-    ];
+      let maxIncurred = filteredData.reduce(
+        (a, { GrossIncurred }) =>
+          Number(GrossIncurred) > a ? Number(GrossIncurred) : a,
+        -1
+      );
+      let maxClaims = filteredData.reduce(
+        (a, { TotalNoOfClaims }) => a + Number(TotalNoOfClaims), 0
+      );
+      let maxOpenClaims = filteredData.reduce(
+        (a, { TotalNoOfOpenClaims }) => a + Number(TotalNoOfOpenClaims), 0
+      );
+      this.totallossesdata = [
+        {
+          numberofclaims: maxClaims,
+          numberofopenclaims: maxOpenClaims,
+          highestclaim: '$' + maxIncurred,
+        },
+      ];
+    }
+    else {
+      this.totalincurredvalue = "0";
+      this.totallossesdata = [
+        {
+          numberofclaims: 0,
+          numberofopenclaims: 0,
+          highestclaim: '$' + 0,
+        },
+      ];
+    }
+
+    
   }
 }

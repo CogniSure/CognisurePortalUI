@@ -243,7 +243,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
       case 'auto':{
         let lobConfig =  this.getAutoWidgetConfigs();
         if(lobConfig!=null && lobConfig.length>0){
-          let configData = this.widgetComponents.filter((x:any) => x.Header == "AutoMobiles");
+          let configData = this.widgetComponents.filter((x:any) => x.Header == "Automobiles");
           if(!(configData != null && configData.length > 0)){
             this.widgetComponents.push({Header : "AutoMobiles", Widget : lobConfig})
           }

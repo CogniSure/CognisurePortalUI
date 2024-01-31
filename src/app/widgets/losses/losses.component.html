@@ -10,25 +10,22 @@
             <div class="row">
                 <div class="totalloss">
                     <div class="col-md-12">
-                        <div class="total_losses1" id="totalincurred"><b> {{totalincurred}} </b></div>
+                        <div class="total_losses1" id="totalincurred"><b> </b></div>
                         <div class="loss_years">
                             <div class="total-values light-green-color" id="totallosses">
-                              <b> ${{totallosses}} </b>
+                              <b> ${{totallosses | number}} </b>
                             </div>
                             <div class="totallosses_year">
-                                <select name="years" class="white-color dropdownselector">
-                                    <option value="1" >1yrs</option>
-                                    <option value="2" >2yrs</option>
-                                    <option value="3" >3yrs</option>
-                                    <option value="4" >4yrs</option>
-                                </select>
+                                <kendo-dropdownlist 
+                                [data]="years"
+                                defaultItem="All"
+                                (selectionChange)="onYearChange($event)"
+                            >
+                            </kendo-dropdownlist>
                             </div>
                         </div>
                     </div>
                     <div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="total_losses2 light-green-color" id="totalincurredvalue"> {{totalincurredvalue}} </div>
                     </div>
                 </div>
             </div>
@@ -41,9 +38,9 @@
                     <th>Highest Claim</th>
                 </tr>
                 <tr *ngFor="let item of lossesdata">
-                    <td >{{ item.numberofclaims }}</td>
-                    <td >{{ item.numberofopenclaims }}</td>
-                    <td >{{ item.highestclaim }}</td>
+                    <td >{{ item.numberofclaims | number}}</td>
+                    <td >{{ item.numberofopenclaims | number}}</td>
+                    <td >${{ item.highestclaim | number}}</td>
                 </tr>
             </table>
         </div>
