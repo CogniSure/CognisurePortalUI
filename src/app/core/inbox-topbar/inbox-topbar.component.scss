@@ -1,7 +1,21 @@
+::ng-deep .popupClass{
+  border-radius: 10px;
+  margin-top: 0.5em;
+}
+
 .bluetopbar {
   height: 100%;
   background-color: #19465f !important;
   color: #fff !important;
+  ::ng-deep .k-button-text{
+    color: white;
+  }
+  ::ng-deep .custom-border{
+    border: solid 2px white;
+    width: 100%;
+    background: transparent;
+  }
+
 
   .div-wraper {
     display: flex; 
@@ -9,6 +23,7 @@
     padding: 1.2em 0;
   }
 
+  
   .profile_icon {
     img {
       width: 25%;

@@ -193,7 +193,8 @@ export class DataComponent {
       Header: 'Top Brokers',
       ColumnId :  1,
       ColumnSpan :  1,
-      RowSpan :  3
+      RowSpan :  3,
+      DataType: "Percentage"
     },
     {
       id: 1,

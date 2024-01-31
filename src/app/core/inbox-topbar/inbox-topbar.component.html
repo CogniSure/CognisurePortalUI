@@ -6,7 +6,12 @@
     [reorderable]="false"
     class="top-bar-header"
     [gap]="05"
-    style="background-color: #19465f !important; color: #fff !important; height: 100%;padding: 0 !important;"
+    style="
+      background-color: #19465f !important;
+      color: #fff !important;
+      height: 100%;
+      padding: 0 !important;
+    "
   >
     <kendo-tilelayout-item
       class="divider"
@@ -26,20 +31,19 @@
       >
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
-        <div kendoTooltip>
-          <h3 style="margin: 0; font-size: 15px">Submission ID</h3>
-          <div
-            kendoTooltip
-            style="text-wrap: nowrap"
-            [title]="submissionInfo.SubmissionId"
-          >
-            {{ submissionInfo.SubmissionId }}
+          <div kendoTooltip>
+            <h3 style="margin: 0; font-size: 15px">Submission ID</h3>
+            <div
+              kendoTooltip
+              style="text-wrap: nowrap"
+              [title]="submissionInfo.SubmissionId"
+            >
+              {{ submissionInfo.SubmissionId }}
+            </div>
           </div>
         </div>
-      </div>
         <kendo-grid-spacer></kendo-grid-spacer>
         <span class="vertical-line"></span>
-      
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
     <kendo-tilelayout-item
@@ -59,7 +63,7 @@
       >
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
-        <div style="width:98%">
+          <div style="width: 98%">
             <div
               kendoTooltip
               style="text-wrap: nowrap"
@@ -67,18 +71,18 @@
             >
               {{ accountInformation.NamedinsuredFullname }}
             </div>
-          <div style="justify-content: center; display: flex">
-            <div
-              kendoTooltip
-              style="text-wrap: nowrap"
-              [title]="accountInformation.FullAddress"
-            >
-              {{ accountInformation.FullAddress }}
+            <div style="justify-content: center; display: flex">
+              <div
+                kendoTooltip
+                style="text-wrap: nowrap"
+                [title]="accountInformation.FullAddress"
+              >
+                {{ accountInformation.FullAddress }}
+              </div>
             </div>
           </div>
-        </div>
-        <kendo-grid-spacer></kendo-grid-spacer>
-        <div><span class="vertical-line"></span></div>
+          <kendo-grid-spacer></kendo-grid-spacer>
+          <div><span class="vertical-line"></span></div>
         </div>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
@@ -98,68 +102,68 @@
       >
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
-        <div style="width: 98%;">
-          <span class="notification_icon">
-            <mat-icon
-              ><span class="material-icons-outlined">
-                {{ navItems[2].icon }}
-              </span></mat-icon
-            >
-            <br />
-            <span
-              class="calender_date"
-              *ngIf="accountInformation?.EffectiveDate == null"
-              style="font-size: 14px"
-              >NA</span
-            >
-            <span class="calender_date">{{
-              accountInformation.EffectiveDate
-            }}</span>
-          </span>
+          <div style="width: 98%">
+            <span class="notification_icon">
+              <mat-icon
+                ><span class="material-icons-outlined">
+                  {{ navItems[2].icon }}
+                </span></mat-icon
+              >
+              <br />
+              <span
+                class="calender_date"
+                *ngIf="accountInformation?.EffectiveDate == null"
+                style="font-size: 14px"
+                >NA</span
+              >
+              <span class="calender_date">{{
+                accountInformation.EffectiveDate
+              }}</span>
+            </span>
+          </div>
+          <kendo-grid-spacer></kendo-grid-spacer>
+          <span class="vertical-line"></span>
         </div>
-        <kendo-grid-spacer></kendo-grid-spacer>
-        <span class="vertical-line"></span>
-      </div>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
     <kendo-tilelayout-item
-    class="divider"
-    [col]="23"
-    [colSpan]="8"
-    [row]="1"
-    [rowSpan]="1"
-  >
-    <kendo-tilelayout-item-body
-      style="
-        text-align: center;
-        background-color: #19465f !important;
-        color: #fff !important;
-      "
+      class="divider"
+      [col]="23"
+      [colSpan]="8"
+      [row]="1"
+      [rowSpan]="1"
     >
-      <kendo-grid-spacer></kendo-grid-spacer>
-      <div class="div-wraper">
-      <div kendoTooltip style="width:98%">
-        <mat-icon>
-          <span class="material-icons-outlined">
-            {{ navItems[3].icon }}
-          </span>
-        </mat-icon>
-        <br />
-        <div
-          kendoTooltip
-          style="text-wrap: nowrap"
-          [title]="submissionInfo.LOB"
-        >
-          {{ submissionInfo.LOB }}
+      <kendo-tilelayout-item-body
+        style="
+          text-align: center;
+          background-color: #19465f !important;
+          color: #fff !important;
+        "
+      >
+        <kendo-grid-spacer></kendo-grid-spacer>
+        <div class="div-wraper">
+          <div kendoTooltip style="width: 98%">
+            <mat-icon>
+              <span class="material-icons-outlined">
+                {{ navItems[3].icon }}
+              </span>
+            </mat-icon>
+            <br />
+            <div
+              kendoTooltip
+              style="text-wrap: nowrap"
+              [title]="submissionInfo.LOB"
+            >
+              {{ submissionInfo.LOB }}
+            </div>
+          </div>
+          <kendo-grid-spacer></kendo-grid-spacer>
+          <span class="vertical-line"></span>
         </div>
-      </div>
-      <kendo-grid-spacer></kendo-grid-spacer>
-      <span class="vertical-line"></span>
-    </div>
-    </kendo-tilelayout-item-body>
-  </kendo-tilelayout-item>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
 
-  <kendo-tilelayout-item
+    <kendo-tilelayout-item
       class="divider"
       [col]="37"
       [colSpan]="4"
@@ -173,32 +177,58 @@
           color: #fff !important;
         "
       >
-      <kendo-grid-spacer></kendo-grid-spacer>
-      <div class="div-wraper">
-        <div style="width: 98%;" >
-          <span style="padding: 3%;">
-            <span *ngIf="extractionComplete === 2" class="risk1" style="color: #fff;background-color: #6dc942">{{navItems[5].pending1}}</span>
-             <span *ngIf="extractionComplete === 1" class="risk1" style="color: #fff;background-color: #FFBF00">{{navItems[5].pending1}}</span>
-             <span *ngIf="extractionComplete === 0" class="risk1" style="color: #fff;background-color: #80808059">{{navItems[5].pending1}}</span>
-             </span>
-             <span style="padding: 3%;">
-             <span class="risk1" style="color: #fff;background-color: #80808059">{{navItems[5].pending2}}</span>
-             </span>
-             <span style="padding: 3%;">
-             <span class="risk1" style="color: #fff;background-color: #80808059">{{navItems[5].pending3}}</span>
-        </span>
-          <br />
-          <span>{{ submissionInfo.Status }}</span>
-        </div>
         <kendo-grid-spacer></kendo-grid-spacer>
-      
-    </div>
+        <div class="div-wraper">
+          <div style="width: 98%">
+            <div style="display: flex; padding: 0 1em;">
+              <div style="width: 33%; padding: 0 3%;">
+              <div
+                *ngIf="submissionInfo.Status === 'Completed'"
+                class="risk1"
+                style="color: #fff; background-color: #6dc942"
+                >{{ navItems[5].pending1 }}</div
+              >
+              <div
+                *ngIf="submissionInfo.Status === 'In Queue' || submissionInfo.Status === 'In Progress'"
+                class="risk1"
+                style="color: #fff; background-color: #ffbf00"
+                >{{ navItems[5].pending1 }}</div
+              >
+              <div
+                *ngIf="submissionInfo.Status === 'New'"
+                class="risk1"
+                style="color: #fff; background-color: #80808059"
+                >{{ navItems[5].pending1 }}</div
+              >
+            </div>
+              <div style="width: 33%; padding: 0 3%;">
+                <div
+                  class="risk1"
+                  style="color: #fff; background-color: #80808059"
+                  >{{ navItems[5].pending2 }}
+                  </div
+                >
+              </div>
+              
+              <div style="width: 33%; padding: 0 3%;">
+                <div
+                  class="risk1"
+                  style="color: #fff; background-color: #80808059"
+                  >{{ navItems[5].pending3 }}</div
+                >
+              </div>
+            </div>
+            <div style="padding-top: 6%;"><span>{{ submissionInfo.Status }}</span></div>
+            
+          </div>
+          <kendo-grid-spacer></kendo-grid-spacer>
+        </div>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
     <kendo-tilelayout-item
       class="divider"
-      [col]="42"
-      [colSpan]="7"
+      [col]="41"
+      [colSpan]="3"
       [row]="1"
       [rowSpan]="1"
     >
@@ -209,84 +239,60 @@
           color: #fff !important;
         "
       >
-      <kendo-grid-spacer></kendo-grid-spacer>
-      <div class="div-wraper">
-        <div>
-          <span class="profile_icon" style="padding-top: 5%">
-            <img
-              [src]="inboxService.topbarIconURL"
-              class="imgHeight rounded-circle"
-            /> </span
-          >&nbsp;&nbsp;&nbsp;
-          <span class="profile_icon">
-            <img
-              [src]="inboxService.notificationIconURL"
-              class="imgHeight rounded-circle"
-            /> </span
-          >&nbsp;&nbsp;&nbsp;
-
-          <span
-            class="copied_icon"
-            [matMenuTriggerFor]="menu"
-            #menuTrigger="matMenuTrigger"
-            (mouseover)="openMyMenu(menuTrigger)"
-          >
-            <span
-              *ngIf="!isToggleOn"
-              (click)="toggleDropdown()"
-              class="imgHeight input-with-icon action_btn"
-            >
-              {{ navItems[6].title }}
-            </span>
-
-            <mat-menu
-              #menu="matMenu"
-              class="profiledropdown"
-              style="color: #f5f5f5 !important"
-            >
-              <span (mouseleave)="closeMyMenu(menuTrigger)">
-                <button
-                  mat-menu-item
-                  routerLink="/my-profile"
-                  queryParamsHandling="preserve"
-                >
-                  Approve
-                </button>
-                <button
-                  mat-menu-item
-                  routerLink="/change-password"
-                  queryParamsHandling="preserve"
-                >
-                  Approve & Submit
-                </button>
-                <button
-                  mat-menu-item
-                  routerLink="/notifications-settings"
-                  queryParamsHandling="preserve"
-                >
-                  Reject
-                </button>
-                <button
-                  mat-menu-item
-                  routerLink="/notifications-settings"
-                  queryParamsHandling="preserve"
-                >
-                  Refer
-                </button>
-                <button
-                  mat-menu-item
-                  routerLink="/notifications-settings"
-                  queryParamsHandling="preserve"
-                >
-                  Reprocess
-                </button>
-              </span>
-            </mat-menu>
-          </span>
-          <div class="dropdown" *ngIf="isToggleOn"></div>
+        <kendo-grid-spacer></kendo-grid-spacer>
+        <div class="div-wraper">
+          <div>
+            <span class="profile_icon" style="padding-top: 5%">
+              <img
+                [src]="inboxService.topbarIconURL"
+                class="imgHeight rounded-circle"
+              /> </span
+            >&nbsp;&nbsp;&nbsp;
+            <span class="profile_icon">
+              <img
+                [src]="inboxService.notificationIconURL"
+                class="imgHeight rounded-circle"
+              /> </span
+            >&nbsp;&nbsp;&nbsp;
+          </div>
         </div>
-      </div>
-      <kendo-grid-spacer></kendo-grid-spacer>
+        <kendo-grid-spacer></kendo-grid-spacer>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item
+      class="divider"
+      [col]="44"
+      [colSpan]="4"
+      [row]="1"
+      [rowSpan]="1"
+    >
+      <kendo-tilelayout-item-body
+        style="
+          text-align: left;
+          background-color: #19465f !important;
+          color: #fff !important;
+        "
+      >
+        <kendo-grid-spacer></kendo-grid-spacer>
+        <div class="div-wraper" style="padding: 1.5em 0 !important">
+          <div style="width: 98%">
+            <kendo-dropdownbutton
+              [data]="ActionButtons"
+              style="height: 100%; width: 100%"
+              [rounded]="'full'"
+              [fillMode]="'outline'"
+              [buttonClass]="'custom-border'"
+              [popupSettings]="{
+                animate: true,
+                popupClass: 'popupClass',
+                appendTo: 'root',
+                align: 'center'
+              }"
+            >
+              Action
+            </kendo-dropdownbutton>
+          </div>
+        </div>
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
   </kendo-tilelayout>

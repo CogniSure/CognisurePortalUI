@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { ChartComponent, SeriesLabelsContentArgs, SeriesType } from '@progress/kendo-angular-charts';
+import { ChartComponent, Margin, SeriesLabelsContentArgs, SeriesType } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
@@ -47,7 +47,13 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
     @Inject(InjectToken) private input: WidgetInput
   ) {}
 
-  
+  labelMargin : Margin={
+    top:0,
+    right:15,
+    bottom:0,
+    left:0,
+
+  }
   ngOnDestroy(): void {}
 
   ngOnInit(): void {

@@ -132,7 +132,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.newIDclickEvent.emit(value);
   }
 
-  
   public ngOnInit(): void {
     this.showSpinner = true;
     this.loading=true;

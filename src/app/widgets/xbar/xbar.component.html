@@ -33,6 +33,8 @@
         <kendo-chart-value-axis-item
           [labels]="valueAxisLabels"
           [min]="0"
+          [majorUnit]="majorUnit"
+          maxDivisions="1"
           [majorGridLines]="{ visible: false }"
         >
         </kendo-chart-value-axis-item>
@@ -46,12 +48,13 @@
           position="outsideEnd"
           [content]="labelContent"
           color="#009CC1"
+          [background]="'transparent'"
         >
         </kendo-chart-series-defaults-labels>
         <kendo-chart-series-item-labels
           [distance]="15"
           [visible]="true"
-          [background]="'transparent'"
+          
           [align]="'column'"
         >
         </kendo-chart-series-item-labels>

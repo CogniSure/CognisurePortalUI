@@ -41,8 +41,8 @@ export class CoveragesComponent implements OnInit {
     }
   }
 
-  public pageSize = 10;
-    public skip = 0;
+  public pageSize = 3;
+  public skip = 0;
 
     public goToPreviousPage(){
       if(this.skip !== 0){

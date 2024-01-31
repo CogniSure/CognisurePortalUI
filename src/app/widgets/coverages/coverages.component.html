@@ -1,58 +1,59 @@
 <div class="agency_container slide-effect-x1">
-    <kendo-card style="width:100%;margin: 0;">
-        <kendo-card-header class="coverages">
-        <h3 class="coverages_header">
-            {{header}}
-        </h3>
+  <kendo-card style="width: 100%; margin: 0">
+    <kendo-card-header class="coverages">
+      <h3 class="coverages_header">
+        {{ header }}
+      </h3>
     </kendo-card-header>
-    <kendo-card-body style="padding: 0;">
-    <div class="lossesdetails">
-        <!-- <table style="width:100%;">
-            <tr *ngFor="let item of coverages">
-                <td  style="position: relative; width: 50%; "><b>{{ item.CoverageName }}</b></td>
-                <td  style="position: relative; width: 30%; ">{{ item.CoverageValue }}</td>
-                <td  style="position: relative; width: 20%;">{{ item.CoverageType }}</td>
-            </tr>
-
-        </table> -->
-        <kendo-grid 
-        [height]="200"
-        id="my-grid" 
-        [hideHeader]="true"
-        [data]="coverages"
-        [pageable]="{
-          info: false,
-          pageSizes: false,
-          buttonCount : 0,
-          previousNext: true,
-        }"
-        [pageSize]="5"
-        [style]="'width:100%'"
+    <kendo-card-body style="padding: 0">
+      <div class="lossesdetails">
+        <kendo-grid
+          [height]="200"
+          id="my-grid"
+          [hideHeader]="true"
+          [kendoGridBinding]="coverages"
+          [pageable]="true"
+          [pageSize]="pageSize"
+          [skip]="skip"
+          [style]="'width:100%'"
         >
-        
-        <kendo-grid-column field="CoverageName"> 
-          <ng-template
-          kendoGridCellTemplate
-          let-dataItem
-          let-rowIndex="rowIndex"
-          let-value="value"
-        >
-          <span class="whole-cell">
-            <b>{{dataItem.CoverageName}}</b>
-          </span>
-          
-        </ng-template>
-        </kendo-grid-column>
-          <kendo-grid-column field="CoverageValue"> </kendo-grid-column>
-          <kendo-grid-column field="CoverageType"></kendo-grid-column>
+          <kendo-grid-column field="CoverageName">
+            <ng-template
+              kendoGridCellTemplate
+              let-dataItem
+              let-rowIndex="rowIndex"
+              let-value="value"
+            >
+              <div class="whole-cell">
+                <b>{{ dataItem.CoverageName }}</b>
+              </div>
+            </ng-template>
+          </kendo-grid-column>
+          <kendo-grid-column field="CoverageValue">
+            <ng-template
+              kendoGridCellTemplate
+              let-dataItem
+              let-rowIndex="rowIndex"
+              let-value="value"
+            >
+              <div class="cov-val">
+                {{ dataItem.CoverageValue }}
+              </div>
+            </ng-template>
+          </kendo-grid-column>
 
-          <ng-template kendoPagerTemplate>
+          <ng-template kendoPagerTemplate
+          let-totalPages="totalPages"
+          let-currentPage="currentPage"
+          >
             <kendo-grid-spacer></kendo-grid-spacer>
-              <span class="prev-next-buttons" (click)="goToPreviousPage()">Prev</span>
-              <span class="prev-next-buttons" (click)="goToNextPage()">Next</span>
+            <span class="prev-next-buttons" (click)="goToPreviousPage()"
+              >Prev</span
+            >
+            <span class="prev-next-buttons" (click)="goToNextPage()">Next</span>
           </ng-template>
         </kendo-grid>
-    </div> 
+      </div>
     </kendo-card-body>
-    </kendo-card>
+  </kendo-card>
 </div>

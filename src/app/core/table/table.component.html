@@ -83,6 +83,7 @@
             [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
             [class.expanded-cell]="cellExpansionState[rowIndex]"
             (click)="toggleCellExpansion(dataItem)"
+            [style]="column.allign == 'left' ? 'text-align : left' : ''"
           >
             {{ dataItem[column.field] }}
           </div>
@@ -453,39 +454,6 @@
         </ng-template>
       </kendo-grid-column>
 
-      <kendo-grid-column
-        *ngIf="column.type == 'LOB'"
-        field="{{ column.field }}"
-        title="{{ column.title }}"
-        format="{{ column.format }}"
-        [filterable]="column.filterable"
-        [sortable]="column.sortable"
-        [filter]="column.type"
-        [width]="column.width"
-        [columnMenu]="column.columnmenu"
-        [hidden]="!column.default"
-        [headerStyle]="{'border-color': '#1FD0C7'}"
-        [width]="350"
-      >
-        <ng-template
-          kendoGridCellTemplate
-          let-dataItem
-          let-rowIndex="rowIndex"
-          let-value="value"
-        >
-          <div
-            [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
-            [class.expanded-cell]="cellExpansionState[rowIndex]"
-            (click)="toggleCellExpansion(dataItem)"
-          >
-            {{ dataItem[column.field] }}
-            <span *ngIf="dataItem[column.field].extraData">{{
-              dataItem[column.field].extraData
-            }}</span>
-          </div>
-        </ng-template>
-      </kendo-grid-column>
-
       <kendo-grid-column-group
       *ngIf="column.type == 'Outputs'"
       title="{{ column.title }}"
@@ -682,7 +650,8 @@
                 <a
                   color="primary"
                   class="excel_download"
-                  (click)="Download_Click(dataItem)"
+                  routerLink="{{ column.redirectUrl }}"
+                  (click)="reDirect(column.redirectUrl, dataItem)"
                 >
                   <img
                     src="../../../assets/icons/InsightsCompleted.svg"

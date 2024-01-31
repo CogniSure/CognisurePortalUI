@@ -119,6 +119,8 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         LOB : subInfo.LOB//this.getDistinctLOB(subInfo.LOB)
       }
 
+      console.log("SubmissionInfo")
+      console.log(this.submissionInfo)
       
       this.cdRef.detectChanges();
     })
@@ -186,4 +188,11 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
 
     return concatenatedString;
   }
+
+  ActionButtons = [
+    { text: "Approve & Submit" },
+    { text: "Reject" },
+    { text: "Refer" },
+    { text: "Reprocess" }
+  ];
 }

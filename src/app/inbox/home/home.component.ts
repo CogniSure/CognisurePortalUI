@@ -197,7 +197,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   refreshPage() {
     window.location.reload();
   }
-
+  
   actionClicked(type:string){
     
     let tableData = this.tableData;

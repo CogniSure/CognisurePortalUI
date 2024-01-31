@@ -33,7 +33,6 @@
       <kendo-chart-plot-area
         [background]="'green'"
         [margin]="{ left: 0, top: 0, right: 0, bottom: 0 }"
-        [border]="{ width: 8 }"
       >
       </kendo-chart-plot-area>
       <kendo-chart-series style="font-size: 22px !important">
@@ -43,19 +42,26 @@
           [data]="chartData.Data"
           field="value"
           categoryField="category"
-          [padding]="20"
-          [holeSize]="60"
+          [padding]="5"
+          [holeSize]="70"
         >
           <kendo-chart-series-item-labels
             position="above"
-            [distance]="15"
+            [distance]="20"
             [content]="labelContent"
             [visible]="true"
             [background]="'transparent'"
             [color]="'#009CC1'"
-            [align]="'column'"
+            [align]="'circle'"
+            [margin]="labelMargin"
           >
           </kendo-chart-series-item-labels>
+          <kendo-chart-series-item-labels-from
+          position="outsideEnd"
+          [padding]="10"
+          >
+
+          </kendo-chart-series-item-labels-from>
         </kendo-chart-series-item>
       </kendo-chart-series>
     </kendo-chart>

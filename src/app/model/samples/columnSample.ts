@@ -831,6 +831,7 @@ export class ColumnSample {
       columnmenu: true,
       sortable: true,
       filterable: true,
+      allign : "left"
     },
     {
       field: 'EffectiveDate',
@@ -847,11 +848,12 @@ export class ColumnSample {
       format: '{0:c}',
       title: 'LOB',
       default : true,
-      type: 'LOB',
+      type: 'text',
       width: 200,
       columnmenu: true,
       sortable: true,
       filterable: true,
+      allign : "left"
     },
     {
       field: 'Priority',
@@ -959,6 +961,7 @@ export class ColumnSample {
       columnmenu: false,
       sortable: false,
       groupable: true,
+      redirectUrl: '/inbox/detail/lossanalysis',
     },
   ];
   public static SubmissionFileColumns = [
