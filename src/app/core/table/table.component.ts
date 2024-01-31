@@ -58,6 +58,7 @@ export interface SubmissionData {
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit,OnChanges,OnDestroy {
+  showSpinner = false;
   public selectedCheckboxes: number[] = [];
   selectedItemId: number | null = null;
   selectedCheckbox: number | null = null;
@@ -81,7 +82,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   cellExpansionState: boolean[] = [];
   selectedValue: { label: string; value: string };
   // selectedValues: { [key: string]: { label: string; value: string } } = {};
-  showSpinner = false;
+ 
   public dialog: MatDialog;
   public gridData: any[];
   public gridView!: any[];
@@ -146,7 +147,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.gridView = this.data;
     this.loading=false;
     this.dataLoaded = true;
-    this.showSpinner = false;
+    this.showSpinner = true;
     this.selectedValue = { label: 'High', value: 'option1' };
 
   }
