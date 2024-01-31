@@ -228,3 +228,13 @@
   color: white;
   background-color: #009CC1!important;
 }
+
+::ng-deep .k-menu-popup{
+  width:10rem;
+  padding: 2%;
+padding-right: 0!important;
+}
+
+::ng-deep .k-menu-group-md .k-menu-link{
+  padding-inline-end:0px!important; 
+}
