@@ -223,3 +223,8 @@
 ::ng-deep .k-menu-group .k-item.k-focus > .k-link{
   box-shadow:inset 0 0 0 0px rgba(0, 0, 0, 0.12)!important;
 }
+
+::ng-deep .k-list-item.k-selected {
+  color: white;
+  background-color: #009CC1!important;
+}
