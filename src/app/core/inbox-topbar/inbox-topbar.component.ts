@@ -21,7 +21,7 @@ interface NavItem {
 
 export class InboxTopbarComponent implements OnInit, OnDestroy {
 
-  extractionComplete: number = 2;
+  // extractionComplete: number = 2;
 
   accountInformation: AccountInformation = {
       SubmissionId : "",
