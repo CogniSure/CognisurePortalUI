@@ -51,7 +51,8 @@ export class DataComponent {
       ColumnSpan :  1,
       RowSpan :  1,
       HeaderColor : '#00B6AD',
-      FontColor : '#fff'
+      FontColor : '#fff',
+      HeaderNumberType : "$",
     },
     {
       id: 6,
@@ -63,7 +64,8 @@ export class DataComponent {
       ColumnSpan :  1,
       RowSpan :  1,
       HeaderColor : '#00B6AD',
-      FontColor : '#fff'
+      FontColor : '#fff',
+      NumberType : "$"
     },
     {
       id: 7,
@@ -241,7 +243,8 @@ export class DataComponent {
       ColumnSpan :  2,
       RowSpan :  1,
       HeaderColor : '#ffffff',
-      FontColor : '#fff'
+      FontColor : '#fff',
+      NumberType : "$"
     },
     {
       id: 2,
@@ -437,7 +440,8 @@ export class DataComponent {
       ColumnSpan :  1,
       RowSpan :  1,
       HeaderColor : '#00B6AD',
-      FontColor : '#fff'
+      FontColor : '#fff',
+      NumberType : "$"
     },
     {
       id: 6,

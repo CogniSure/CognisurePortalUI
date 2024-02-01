@@ -21,7 +21,7 @@ export class CoveragesComponent implements OnInit {
   exposureDetails: PropertyBlanketSummary[] = [];
   coverages: CoverageData[] = [];
   header: any = '';
-  
+  numberType = "";
   displayedColumns = ['CoverageName', 'CoverageValue', 'CoverageType'];
 
   constructor(
@@ -31,6 +31,7 @@ export class CoveragesComponent implements OnInit {
 
   ngOnInit(): void {
     this.header = this.input.WidgetHeader;
+    this.numberType = this.input.Settings.NumberType !=null? this.input.Settings.NumberType: "";
     if (this.input.DataSubject != null) {
       this.input.DataSubject.subscribe((inputData: any[]) => {
         if (inputData != null && inputData.length > 0) {

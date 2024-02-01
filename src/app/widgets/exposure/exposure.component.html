@@ -12,7 +12,7 @@
                       <div class="total_losses1" id="totalincurred"><b> {{exposureKeys[0]}} </b></div>
                       <div class="loss_years">
                         <div class="total-values light-green-color" id="totallosses">
-                         <b> {{ exposuredata[0].Total }} </b>
+                         <b> {{ exposuredata[0].Total | formatAmount : headerNumberType }} </b>
                         </div>
                       </div>
                     </div>
@@ -32,7 +32,7 @@
                   <tr *ngFor="let item of exposuredata">
                     <td >{{ item.ExposureValue_1 }}</td>
                     <td >{{ item.ExposureValue_2 }}</td>
-                    <td >{{ item.ExposureValue_3 }}</td>
+                    <td >{{ item.ExposureValue_3 | formatAmount : numberType }}</td>
                   </tr>
                 </table>
               </div>

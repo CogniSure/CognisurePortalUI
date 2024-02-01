@@ -15,7 +15,7 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 export class LossesComponent {
   totalincurred: string = 'Total Incurred';
   totalincurredvalue: string = '';
-  totallosses: any = '0';
+  totallosses: any = 0;
   lossesdata: LossesData[] = [];
   dropdownOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
   selectedOption: string = 'Option 1';
@@ -67,7 +67,7 @@ export class LossesComponent {
           {
             numberofclaims: 0,
             numberofopenclaims: 0,
-            highestclaim: '0',
+            highestclaim: 0,
           }]
         this.changeDetector.detectChanges();
       })
@@ -112,7 +112,7 @@ export class LossesComponent {
       ];
     }
     else {
-      this.totalincurredvalue = "0";
+      this.totalincurredvalue = '0';
       this.lossesdata = [
         {
           numberofclaims: 0,

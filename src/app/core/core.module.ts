@@ -28,6 +28,7 @@ import { IconsModule } from '@progress/kendo-angular-icons';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import { EmailpopupComponent } from './emailpopup/emailpopup.component';
+import { FormatAmountPipe } from './pipes/format-amount.pipe';
 
 const routes:Routes = [
 ];
@@ -50,7 +51,8 @@ const routes:Routes = [
     TooltipDirective,
     SelectComponent,
     CopilotComponent,
-    EmailpopupComponent
+    EmailpopupComponent,
+    FormatAmountPipe
   ],
   imports: [
     CommonModule,
@@ -80,7 +82,8 @@ const routes:Routes = [
     ValidationSummaryComponent,
     TooltipDirective,
     SelectComponent,
-    CopilotComponent
+    CopilotComponent,
+    FormatAmountPipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

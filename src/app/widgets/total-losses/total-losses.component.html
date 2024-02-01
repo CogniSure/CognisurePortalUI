@@ -14,7 +14,7 @@
               </div>
               <div class="loss_years">
                 <div class="total-values light-green-color" id="totallosses">
-                  <b>${{ totalincurredvalue | number}}</b>
+                  <b>{{ totalincurredvalue | formatAmount:'$'}}</b>
                 </div>
                 <div class="totallosses_year">
                 <kendo-dropdownlist 
@@ -39,9 +39,9 @@
             <th >Highest Claim</th>
           </tr>
           <tr *ngFor="let item of totallossesdata">
-            <td >{{ item.numberofclaims | number}}</td>
-            <td >{{ item.numberofopenclaims | number }}</td>
-            <td >${{ item.highestclaim | number}}</td>
+            <td >{{ item.numberofclaims | formatAmount}}</td>
+            <td >{{ item.numberofopenclaims | formatAmount }}</td>
+            <td >{{ item.highestclaim | formatAmount:'$'}}</td>
           </tr>
         </table>
       </div>

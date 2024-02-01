@@ -23,6 +23,8 @@ export class ExposureComponent implements OnInit {
     ExposureValue_3: 'NA',
   }];
   header : any = "";
+  numberType : "";
+  headerNumberType : "";
   constructor(@Inject(InjectToken) private input: WidgetInput,
   private changeDetector: ChangeDetectorRef) {}
 
@@ -32,6 +34,8 @@ export class ExposureComponent implements OnInit {
 
   getExposureData(): void {
     this.header = this.input.WidgetHeader;
+    this.numberType = this.input.Settings.NumberType !=null? this.input.Settings.NumberType: "";
+    this.headerNumberType = this.input.Settings.HeaderNumberType !=null? this.input.Settings.HeaderNumberType: "";
     this.exposureKeys = this.input.Keys;
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{

@@ -53,12 +53,12 @@ export class ExposureSummaryComponent
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector :  this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+        CustomInjector :  this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header,entry.NumberType)
       });
       i++;
     });
   }
-  createInjector(widgetName: string, widgetType: string,widgetHeader:string=""): any {
+  createInjector(widgetName: string, widgetType: string,widgetHeader:string="", numberType = ""): any {
     var myInjector: Injector;
     //this.cacheService.getExposureSummary(widgetName).subscribe(data=>{
 
@@ -71,7 +71,8 @@ export class ExposureSummaryComponent
         WidgetHeader:widgetHeader,
         Settings : {
           "LegendPosition" : "Right",
-          "DataType" : "Number"
+          "DataType" : "Number",
+           NumberType : numberType
         },
         Keys : [],//this.cacheService.getExposureSummary(widgetName),
         DataSubject : this.cacheService.getExposureSummary(widgetName)

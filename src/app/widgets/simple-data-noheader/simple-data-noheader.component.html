@@ -20,7 +20,7 @@
     <kendo-tilelayout-item-body>
       <div style="display: flex; justify-content: center;">
         <h3 style="font-size: 19px; padding-top: 0%;">{{simpleData.ItemData}}</h3>
-        <h3 style="font-size: 19px; padding-top: 0%;"><b>: {{ simpleData.ItemValue}}</b></h3>
+        <h3 style="font-size: 19px; padding-top: 0%;"><b>: {{ simpleData.ItemValue | formatAmount : numberType}}</b></h3>
       </div>
     </kendo-tilelayout-item-body>
   </kendo-tilelayout-item>

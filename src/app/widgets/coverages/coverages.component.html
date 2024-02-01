@@ -37,7 +37,7 @@
               let-value="value"
             >
               <div class="cov-val">
-                {{ dataItem.CoverageValue }}
+                {{ dataItem.CoverageValue | formatAmount:numberType}}
               </div>
             </ng-template>
           </kendo-grid-column>
