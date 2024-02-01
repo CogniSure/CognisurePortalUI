@@ -82,8 +82,6 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     LOB : ""
   }
   getDistinctLOB(lob: string ){
-    console.log('Inbox Header LOBs');
-    console.log(lob)
     let lobToDisplay  = ""
       if(lob!=null && lob !=""){
         var lobArr = lob.split(",")
@@ -113,7 +111,6 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         
         
       }
-      console.log(lobToDisplay)
       return lobToDisplay;
   }
   ngOnInit(): void {

@@ -245,7 +245,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         if(lobConfig!=null && lobConfig.length>0){
           let configData = this.widgetComponents.filter((x:any) => x.Header == "Automobiles");
           if(!(configData != null && configData.length > 0)){
-            this.widgetComponents.push({Header : "AutoMobiles", Widget : lobConfig})
+            this.widgetComponents.push({Header : "Automobiles", Widget : lobConfig})
           }
         }
         break;
