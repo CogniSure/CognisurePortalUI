@@ -78,6 +78,8 @@ export class InboxService {
             AccountName: res['accountName'] != '' ? res['accountName'] : 'NA',
             SubmissionGUID:
               res['submissionGUID'] != '' ? res['submissionGUID'] : 'NA',
+            ClientSubmissionGUID:
+              res['clientSubmissionGUID'] != '' ? res['clientSubmissionGUID'] : 'NA',
             EffectiveDate: this.getFormattedDate(res['effectiveDate']),
             Type: 'New Submission',
             AgencyName:

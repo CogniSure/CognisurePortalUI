@@ -67,10 +67,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     // const clientId = '1074';
     // const submissionId = '6A2A02C3-BEA8-4EE9-957F-F4396EF0153A';
     // const email = 'submissiontesting@cognisure.ai';
-
+   
     const clientId = this.userProfile.ClientCode;
     const email = this.userProfile.Email;
-    const submissionId = submission.SubmissionGUID;
+    const submissionId = submission.ClientSubmissionGUID;
 
     this.setHeader(email,clientId,submissionId);
     this.setExposureSummary(email,clientId,submissionId);

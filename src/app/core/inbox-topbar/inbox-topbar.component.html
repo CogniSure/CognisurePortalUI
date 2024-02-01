@@ -145,16 +145,16 @@
           <div kendoTooltip style="width: 98%">
             <mat-icon>
               <span class="material-icons-outlined">
-                {{ navItems[3].icon }}
+                home
               </span>
             </mat-icon>
             <br />
             <div
               kendoTooltip
               style="text-wrap: nowrap"
-              [title]="submissionInfo.LOB"
+              [title]="accountInformation.LOB"
             >
-              {{ submissionInfo.LOB }}
+              {{ getDistinctLOB(accountInformation.LOB) }}
             </div>
           </div>
           <kendo-grid-spacer></kendo-grid-spacer>

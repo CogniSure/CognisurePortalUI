@@ -17,7 +17,7 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 })
 export class TotalLossesComponent implements OnInit {
   totalincurred: string = 'Total Losses';
-  totalincurredvalue: string = '';
+  totalincurredvalue: string = '0';
   totallossesdata: TotalLossesData[] = [];
   selected = 'option2';
   selectedOption: string = '1';
@@ -26,7 +26,7 @@ export class TotalLossesComponent implements OnInit {
   // public selectedYears: string = '';
   selectedValue = '0';
   public selectedYear: string = "All";
-  totallosses: string = '$0';
+  totallosses: string = '0';
   selectedYears: number = 1;
   claimDetails: ClaimDetail[] = [];
   widgetData: any[] = [];
@@ -71,6 +71,13 @@ export class TotalLossesComponent implements OnInit {
             },
           ];
         }
+        else 
+        this.totallossesdata = [
+          {
+            numberofclaims: 0,
+            numberofopenclaims: 0,
+            highestclaim: '0',
+          }]
         this.changeDetector.detectChanges();
       });
     }
@@ -108,7 +115,7 @@ export class TotalLossesComponent implements OnInit {
         {
           numberofclaims: maxClaims,
           numberofopenclaims: maxOpenClaims,
-          highestclaim: '$' + maxIncurred,
+          highestclaim: maxIncurred,
         },
       ];
     }
@@ -118,7 +125,7 @@ export class TotalLossesComponent implements OnInit {
         {
           numberofclaims: 0,
           numberofopenclaims: 0,
-          highestclaim: '$' + 0,
+          highestclaim:  0,
         },
       ];
     }

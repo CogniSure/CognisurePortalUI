@@ -196,6 +196,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     let subInfo : SubmissionInfo = {
       SubmissionId : param.SubmissionID,
       SubmissionGUID: param.SubmissionGUID,
+      ClientSubmissionGUID: param.ClientSubmissionGUID,
       SubmissionName : "",
       MessageId : param.MessageId,
       Status : param.Status,

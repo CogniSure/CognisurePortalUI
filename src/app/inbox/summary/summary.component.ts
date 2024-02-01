@@ -90,7 +90,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
         const clientId = this.userProfile.ClientCode;
         const email = this.userProfile.Email;
-        const submissionId = submission.SubmissionGUID;
+        const submissionId = submission.ClientSubmissionGUID;
 
         let lobs = info.LOB;
         this.getSummaryWidgets();

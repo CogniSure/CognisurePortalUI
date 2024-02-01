@@ -21,7 +21,7 @@ interface NavItem {
 
 export class InboxTopbarComponent implements OnInit, OnDestroy {
 
-  // extractionComplete: number = 2;
+  extractionComplete: number = 2;
 
   accountInformation: AccountInformation = {
       SubmissionId : "",
@@ -72,6 +72,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   submissionInfo : SubmissionInfo={
     Completeness : "",
     SubmissionGUID: "",
+    ClientSubmissionGUID : "",
     Extraction : "",
     MessageId : "",
     RiskClearance : "",
@@ -81,19 +82,39 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     LOB : ""
   }
   getDistinctLOB(lob: string ){
+    console.log('Inbox Header LOBs');
+    console.log(lob)
+    let lobToDisplay  = ""
       if(lob!=null && lob !=""){
         var lobArr = lob.split(",")
         if(lobArr != null && lobArr.length>0)
         {
           let apendStr=""
           const distinctArray = lobArr.filter((n, i) => lobArr.indexOf(n) === i && n!="");
-          apendStr = distinctArray[0].toString();
-          lob = apendStr
+          let count = 0;
+          distinctArray.forEach(distLob=>{
+            count++;
+            if(count <= 2){
+              apendStr += distLob 
+            }
+            // if(count == 2){
+            //   apendStr += apendStr +","
+            // }
+            if(count < 2){
+              apendStr += ","
+            } 
+          })
+          if(count>2){
+            apendStr += "+" + (count-2).toLocaleString()
+          } 
+          //apendStr = distinctArray[0].toString();
+          lobToDisplay = apendStr
         }
         
         
       }
-      return lob;
+      console.log(lobToDisplay)
+      return lobToDisplay;
   }
   ngOnInit(): void {
    
@@ -110,6 +131,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
       this.submissionInfo = {
         Completeness : subInfo.Completeness,
         SubmissionGUID: subInfo.SubmissionGUID,
+        ClientSubmissionGUID: subInfo.ClientSubmissionGUID,
         Extraction : subInfo.Extraction,
         MessageId : subInfo.MessageId,
         RiskClearance : subInfo.RiskClearance,

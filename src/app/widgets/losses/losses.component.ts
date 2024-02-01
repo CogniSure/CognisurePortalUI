@@ -67,7 +67,7 @@ export class LossesComponent {
           {
             numberofclaims: 0,
             numberofopenclaims: 0,
-            highestclaim: '$0',
+            highestclaim: '0',
           }]
         this.changeDetector.detectChanges();
       })
@@ -107,7 +107,7 @@ export class LossesComponent {
         {
           numberofclaims: maxClaims,
           numberofopenclaims: maxOpenClaims,
-          highestclaim: '$' + maxIncurred,
+          highestclaim: maxIncurred,
         },
       ];
     }
@@ -117,7 +117,7 @@ export class LossesComponent {
         {
           numberofclaims: 0,
           numberofopenclaims: 0,
-          highestclaim: '$' + 0,
+          highestclaim: 0,
         },
       ];
     }

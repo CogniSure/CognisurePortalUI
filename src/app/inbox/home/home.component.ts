@@ -168,6 +168,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     let subInfo: SubmissionInfo = {
       SubmissionId: param.SubmissionID,
       SubmissionGUID: param.SubmissionGUID,
+      ClientSubmissionGUID: param.ClientSubmissionGUID,
       SubmissionName: '',
       MessageId: param.MessageId,
       Status: param.Status,
