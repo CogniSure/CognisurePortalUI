@@ -1,20 +1,19 @@
-import { Pipe, PipeTransform } from '@angular/core';
-
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
+@Injectable({
+  providedIn: 'root',
+})
 @Pipe({
   name: 'formatAmount'
 })
 export class FormatAmountPipe implements PipeTransform {
 
-  transform(value: any, numberType : any = ""): any {
-    // let numberTypeVal = "";
-    // if(numberType != "")
-    //   numberTypeVal = numberType + " "
+  transform(value: any, prefix : any = "", suffix : any = ""): any {
     if(value != null && value!=""){
       let amount = Number(value);
       
       let amountVal = ""
       if(amount !=null && !isNaN(amount)){
-        amountVal = numberType + Math.round(amount).toLocaleString("en-US")
+        amountVal = prefix + Math.round(amount).toLocaleString("en-US") + suffix
         return amountVal
       }
       return value;

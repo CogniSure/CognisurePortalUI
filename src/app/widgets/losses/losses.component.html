@@ -10,10 +10,12 @@
             <div class="row">
                 <div class="totalloss">
                     <div class="col-md-12">
-                        <div class="total_losses1" id="totalincurred"><b> </b></div>
+                        <div class="total_losses1" id="totalincurred"><b> 
+                            Total Incurred 
+                        </b></div>
                         <div class="loss_years">
                             <div class="total-values light-green-color" id="totallosses">
-                              <b> {{totallosses | formatAmount}} </b>
+                              <b> {{totallosses | formatAmount :"$"}} </b>
                             </div>
                             <div class="totallosses_year">
                                 <kendo-dropdownlist 

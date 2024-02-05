@@ -36,6 +36,7 @@ import { CoreModule } from '../core/core.module';
     FunnelComponent,
     SimpleDataNoheaderComponent
   ],
+  
   imports: [
     CommonModule,
     KendoModule,

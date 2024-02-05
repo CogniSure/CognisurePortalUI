@@ -53,21 +53,19 @@ implements OnInit, AfterViewInit, OnDestroy
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector :  this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+        CustomInjector :  this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header, entry.Settings)
       });
       i++;
     });
   }
 
-  createInjector(widgetName: string, widgetType: string,widgetHeader:string=""): any {
+  createInjector(widgetName: string, widgetType: string,widgetHeader:string="",settings : any): any {
     var myInjector: Injector;
       let widgetInput: WidgetInput = {
         WidgetName: widgetName,
         WidgetType: widgetType,
         WidgetHeader : widgetHeader,
-        Settings : {
-          "ShowLabels" : false,
-        },
+        Settings : settings,
         Keys : [],//this.cacheService.getExposureSummary(widgetName),
         DataSubject : this.cacheService.getLossSummary(widgetName)
       };

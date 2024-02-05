@@ -1006,7 +1006,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
           tempData.push('');
         }
       });
-      cdata[0].Data.push({ Name: tempCategory, Data: tempData });
+      cdata[0].Data.push({ Name: tempCategory, Data: tempData});
     });
     return cdata;
   }

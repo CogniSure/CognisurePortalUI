@@ -473,22 +473,25 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
         cdata[0].Dimension = distDimension
         let tempResult = res.value;
 
-        distCategory.forEach(x=>{
+        distCategory.forEach(category=>{
 
-          let categoryGroup = tempResult.filter((rr:any)=> rr.category==x);
-          let tempCategory = categoryGroup[0].category;
+          let categoryGroup = tempResult.filter((rr:any)=> rr.category==category);
+          // console.log("Temp Data")
+          // console.log(categoryGroup[0])
+          let tempCategory = categoryGroup[0];
           let tempData:any[] = [];
+          //let index = 0
           distDimension.forEach(dmsn=>{
 
             let filterdData = categoryGroup.filter((f:any)=>f.dimension==dmsn);
             if(filterdData!=null && filterdData.length>0){
-              tempData.push(filterdData[0].measure)
+              tempData.push(Number(filterdData[0].measure))
             }
             else{
-              tempData.push('')
+              tempData.push(0)
             }
           })
-          cdata[0].Data.push({Name:tempCategory,Data:tempData})
+          cdata[0].Data.push({Name:tempCategory.category, Data:tempData})
 
         })
         return cdata;

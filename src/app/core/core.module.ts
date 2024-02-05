@@ -85,6 +85,7 @@ const routes:Routes = [
     CopilotComponent,
     FormatAmountPipe
   ],
+  providers: [FormatAmountPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreModule { }

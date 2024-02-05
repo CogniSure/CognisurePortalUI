@@ -8,28 +8,37 @@ import {
 } from '@angular/core';
 import { Border, ChartComponent, SeriesLabels, SeriesLabelsContentArgs, ValueAxisLabels } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
+import { FormatAmountPipe } from 'src/app/core/pipes/format-amount.pipe';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { WidgetService } from 'src/app/services/widget/widget.service';
+
 @Component({
   selector: 'app-xbar',
   templateUrl: './xbar.component.html',
-  styleUrls: ['./xbar.component.scss'],
+  styleUrls: ['./xbar.component.scss']
 })
 export class XBarComponent implements OnInit, OnDestroy {
   xbarData: any;
   majorUnit: number;
   showSpinner = false;
   noDataAvailble = false;
-  dataType :string = "percentage";
+  private dataType :string = "percentage";
+  private dataType1 :string = "percentage";
+  that : any;
+  isStacked = false;
+  showLabels = true;
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
+    private formatPipe : FormatAmountPipe,
     @Inject(InjectToken) private input: WidgetInput
-  ) {}
+  ) {
+    this.that = this;
+  }
 
   chartData: ChartData = {
     Dimension: [],
@@ -48,7 +57,7 @@ export class XBarComponent implements OnInit, OnDestroy {
     visible: true, // Note that visible defaults to false
     font: "bold 12px Arial, sans-serif",
     background:"transparent",
-    position :"center",
+    position :"outsideEnd",
     color:"white"
 
   };
@@ -69,12 +78,8 @@ export class XBarComponent implements OnInit, OnDestroy {
     this.ApplySettings();
 
     if (this.input.DataSubject != null){
+      
       this.input.DataSubject.subscribe((inputData:any[])=>{
-
-        if(this.input.Settings!=null && this.input.Settings.ShowLabels!=null)
-        {
-          this.seriesLabels.visible = this.input.Settings.ShowLabels;
-        }
         if(inputData!=null && inputData.length>0){
           
           this.chartData = inputData[0];
@@ -116,18 +121,31 @@ export class XBarComponent implements OnInit, OnDestroy {
   ApplySettings(){
     
     if(this.input.Settings !=null){
-      if(this.input.Settings.DataType!=null){
-        this.dataType = this.input.Settings.DataType
+      if(this.input.Settings.NumberType!=null){
+        this.dataType = this.input.Settings.NumberType
+      }
+      if(this.input.Settings.ShowLabels!=null){
+        this.showLabels = this.input.Settings.ShowLabels
+      }
+      if(this.input.Settings.Stack!=null){
+        this.isStacked = this.input.Settings.Stack
       }
     }
   }
   public labelContent = (e: SeriesLabelsContentArgs): string => {
+    let val = 0;
+    if(e.value !="")
+      val = e.value
+    else 
+      val = e.stackValue!
+
+    let transformedVal = this.formatPipe.transform(val);
     if(this.dataType == "Number")
-      return e.value;
+      return  transformedVal;
     else if(this.dataType == "Percentage")
-      return e.value + '%';
+      return transformedVal + '%';
     else if(this.dataType == "Dollar")
-      return "$" + e.value;
+      return "$" + transformedVal;
     return e.value;
   };
   public exportChart(): void {

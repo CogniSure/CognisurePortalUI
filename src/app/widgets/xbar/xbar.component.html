@@ -40,35 +40,36 @@
 
       <kendo-chart-tooltip> </kendo-chart-tooltip>
 
-      <kendo-chart-series-defaults>
-        <kendo-chart-series-defaults-labels
-          format="c0"
-          position="outsideEnd"
-          [content]="labelContent"
-          color="#009CC1"
-          [background]="'transparent'"
-        >
-        </kendo-chart-series-defaults-labels>
-        <kendo-chart-series-item-labels
-          [distance]="15"
-          [visible]="true"
-          
-          [align]="'column'"
-        >
-        </kendo-chart-series-item-labels>
-      </kendo-chart-series-defaults>
+      
 
       <kendo-chart-series>
         <kendo-chart-series-item
           *ngFor="let item of this.chartData.Data"
           type="column"
-          [stack]="{ type: 'normal' }"
+          [stack]="isStacked"
           [data]="item.Data"
           [name]="item.Name"
           [gap]="2"
           [autoFit]="true"
           [border]="seriesBorder"
         >
+        <kendo-chart-series-defaults>
+          <kendo-chart-series-defaults-labels
+            format="c0"
+            position="outsideEnd"
+            [visible]="showLabels"
+            color="#009CC1"
+            [background]="'transparent'"
+          >
+          </kendo-chart-series-defaults-labels>
+          
+        </kendo-chart-series-defaults>
+        <kendo-chart-series-item-labels
+          [visible]="showLabels"
+          [content]="labelContent"
+          [align]="'column'"
+        >
+        </kendo-chart-series-item-labels>
         </kendo-chart-series-item>
       </kendo-chart-series>
     </kendo-chart>

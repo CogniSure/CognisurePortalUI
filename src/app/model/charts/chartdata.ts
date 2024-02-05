@@ -10,7 +10,7 @@ import { ChartSeries } from "./series";
     Dimension: string[];
     Data: {
       Name: string;
-      Data: (string | number)[]; // Allow for both strings and numbers
+      Data: (string | number)[];
     }[];
   }
 

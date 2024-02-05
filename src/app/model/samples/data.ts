@@ -320,112 +320,131 @@ export class DataComponent {
   public static LossSummaryHub = [
     {
       id: 1,
-      BoxType: 'SmallBox',
       WidgetName: 'ClaimsbyLOBbyYear',
       WidgetType: 'Xbar',
       Header: 'Claims by LOB by Year',
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      DataType : "Number",
+      Settings :{
+        ShowLabels : false,
+        Stack : true,
+        NumberType : "Dollar"
+      }
     },
     {
       id: 2,
-      BoxType: 'SmallBox',
       WidgetName: 'IncurredbyLOBbyYear',
       WidgetType: 'Xbar',
       Header: 'Incurred by LOB by Year',
       ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : true,
+        NumberType : "Dollar"
+      }
     },
     {
       id: 3,
-      BoxType: 'SmallBox',
       WidgetName: 'IncurredRangeCount',
       WidgetType: 'Xbar',
       Header: 'Incurred Range Count',
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : true,
+        NumberType : "Dollar"
+      }
     },
     {
       id: 1,
-      BoxType: 'SmallBox',
       WidgetName: 'ClaimbyClaimTypebyYear',
       WidgetType: 'Xbar',
       Header: 'Claim by Claim Type by Year',
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : true,
+        NumberType : "Dollar"
+      }
     },
     {
       id: 1,
-      BoxType: 'SmallBox',
       WidgetName: 'IncurredbyClaimTypebyYear',
       WidgetType: 'Xbar',
       Header: 'Incurred by Claim Type by Year',
       ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : true,
+        NumberType : "Dollar"
+      }
     },
     {
       id: 3,
-      BoxType: 'SmallBox',
       WidgetName: 'ClaimsbyClaimType',
       WidgetType: 'Xbar',
       Header: 'Claims by Claim Type',
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : true,
+        NumberType : "Dollar"
+      }
     },
     {
       id: 2,
-      BoxType: 'SmallBox',
       WidgetName: 'ClaimStatus',
       WidgetType: 'donut',
       Header: 'Claim Status',
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : false,
+        NumberType : "Dollar"
+      }
     },
     {
       id: 1,
-      BoxType: 'SmallBox',
       WidgetName: 'TotalIncurred',
       WidgetType: 'donut',
       Header: 'Total Incurred',
       ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : false,
+        NumberType : "Dollar"
+      }
     }
     ,
     {
       id: 1,
-      BoxType: 'SmallBox',
       WidgetName: 'TopLocations',
       WidgetType: 'Xbar',
       Header: 'Top Locations',
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  4,
-      // HeaderColor : '#009CC1',
-      // FontColor : '#fff'
+      Settings :{
+        ShowLabels : false,
+        Stack : false,
+        NumberType : "Dollar"
+      }
     },
   ];
 
