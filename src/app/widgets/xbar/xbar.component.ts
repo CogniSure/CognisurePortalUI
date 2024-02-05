@@ -6,7 +6,13 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Border, ChartComponent, SeriesLabels, SeriesLabelsContentArgs, ValueAxisLabels } from '@progress/kendo-angular-charts';
+import {
+  Border,
+  ChartComponent,
+  SeriesLabels,
+  SeriesLabelsContentArgs,
+  ValueAxisLabels,
+} from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
 import { FormatAmountPipe } from 'src/app/core/pipes/format-amount.pipe';
 import { ChartData } from 'src/app/model/charts/chartdata';
@@ -19,26 +25,23 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
 @Component({
   selector: 'app-xbar',
   templateUrl: './xbar.component.html',
-  styleUrls: ['./xbar.component.scss']
+  styleUrls: ['./xbar.component.scss'],
 })
 export class XBarComponent implements OnInit, OnDestroy {
-  xbarData: any;
+  prefix = '';
+  suffix = '';
   majorUnit: number;
   showSpinner = false;
   noDataAvailble = false;
-  private dataType :string = "percentage";
-  private dataType1 :string = "percentage";
-  that : any;
+  private dataType: string = 'percentage';
   isStacked = false;
   showLabels = true;
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
-    private formatPipe : FormatAmountPipe,
+    private formatPipe: FormatAmountPipe,
     @Inject(InjectToken) private input: WidgetInput
-  ) {
-    this.that = this;
-  }
+  ) {}
 
   chartData: ChartData = {
     Dimension: [],
@@ -49,24 +52,22 @@ export class XBarComponent implements OnInit, OnDestroy {
       },
     ],
   };
-  valueAxisMax:any = {
-    max : 1000,
-    min : 0
-  }
+  valueAxisMax: any = {
+    max: 1000,
+    min: 0,
+  };
   public seriesLabels: SeriesLabels = {
     visible: true, // Note that visible defaults to false
-    font: "bold 12px Arial, sans-serif",
-    background:"transparent",
-    position :"outsideEnd",
-    color:"white"
+    font: 'bold 12px Arial, sans-serif',
+    background: 'transparent',
+    position: 'outsideEnd',
+    color: 'white',
+  };
 
-  };
- 
   public valueAxisLabels: ValueAxisLabels = {
-    font: "12px Arial, sans-serif",
+    font: '12px Arial, sans-serif',
   };
-  public seriesBorder:Border={
-  }
+  public seriesBorder: Border = {};
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
@@ -77,75 +78,78 @@ export class XBarComponent implements OnInit, OnDestroy {
     this.showSpinner = true;
     this.ApplySettings();
 
-    if (this.input.DataSubject != null){
-      
-      this.input.DataSubject.subscribe((inputData:any[])=>{
-        if(inputData!=null && inputData.length>0){
-          
+    if (this.input.DataSubject != null) {
+      this.input.DataSubject.subscribe((inputData: any[]) => {
+        if (inputData != null && inputData.length > 0) {
           this.chartData = inputData[0];
-          
+
           let sumArr: number[] = [];
-          this.chartData.Data.forEach(data=>{
+          this.chartData.Data.forEach((data) => {
             let sum: number = 0;
-            data.Data.forEach(a => sum += Number(a));
-            sumArr.push(sum)
-          })
-         let maxVal = 0
-         if(sumArr !=null && sumArr.length>0)
-            sumArr.reduce((a, b)=>Math.max(a, b));
-         if(maxVal>10){
-            this.valueAxisMax.max = maxVal
-         }
-         else 
-            this.valueAxisMax.max = maxVal
-            this.majorUnit = maxVal > 10 ? Math.ceil(maxVal / 10) : 1;
-         
-            
-            
-            if (this.chartData.Data != null && this.chartData.Data.length > 0)
-              this.noDataAvailble = false;
-            else this.noDataAvailble = true;
-  
-            this.changeDetector.detectChanges();
-        }
-        else {
+            data.Data.forEach((a) => (sum += Number(a)));
+            sumArr.push(sum);
+          });
+          let maxVal = 0;
+          if (sumArr != null && sumArr.length > 0)
+            sumArr.reduce((a, b) => Math.max(a, b));
+          if (maxVal > 10) {
+            this.valueAxisMax.max = maxVal;
+          } else this.valueAxisMax.max = maxVal;
+          this.majorUnit = maxVal > 10 ? Math.ceil(maxVal / 10) : 1;
+
+          if (this.chartData.Data != null && this.chartData.Data.length > 0)
+            this.noDataAvailble = false;
+          else this.noDataAvailble = true;
+
+          this.changeDetector.detectChanges();
+        } else {
           this.noDataAvailble = true;
         }
         this.showSpinner = false;
         this.changeDetector.detectChanges();
-      })
-    }
-    else
-    this.showSpinner = false;
+      });
+    } else this.showSpinner = false;
   }
-  ApplySettings(){
-    
-    if(this.input.Settings !=null){
-      if(this.input.Settings.NumberType!=null){
-        this.dataType = this.input.Settings.NumberType
+  ApplySettings() {
+    if (this.input.Settings != null) {
+      if (this.input.Settings.NumberType != null) {
+        this.dataType = this.input.Settings.NumberType;
       }
-      if(this.input.Settings.ShowLabels!=null){
-        this.showLabels = this.input.Settings.ShowLabels
+      if (this.input.Settings.ShowLabels != null) {
+        this.showLabels = this.input.Settings.ShowLabels;
       }
-      if(this.input.Settings.Stack!=null){
-        this.isStacked = this.input.Settings.Stack
+      if (this.input.Settings.Stack != null) {
+        this.isStacked = this.input.Settings.Stack;
+      }
+
+      if (this.dataType == 'Number') {
+        this.prefix = '';
+        this.suffix = '';
+      } else if (this.dataType == 'Percentage') {
+        this.prefix = '';
+        this.suffix = '%';
+      } else if (this.dataType == 'Dollar') {
+        this.prefix = '$';
+        this.suffix = '';
       }
     }
   }
   public labelContent = (e: SeriesLabelsContentArgs): string => {
     let val = 0;
-    if(e.value !="")
-      val = e.value
-    else 
-      val = e.stackValue!
+    if (e.value != '') val = e.value;
+    else val = e.stackValue!;
 
-    let transformedVal = this.formatPipe.transform(val);
-    if(this.dataType == "Number")
-      return  transformedVal;
-    else if(this.dataType == "Percentage")
-      return transformedVal + '%';
-    else if(this.dataType == "Dollar")
-      return "$" + transformedVal;
+    if (this.dataType == 'Number') return this.formatPipe.transform(val);
+    else if (this.dataType == 'Percentage') {
+      this.prefix = '';
+      this.suffix = '%';
+      return this.formatPipe.transform(val, '', this.suffix);
+    } else if (this.dataType == 'Dollar') {
+      this.prefix = '$';
+      this.suffix = '';
+      return this.formatPipe.transform(val, this.prefix, '');
+    }
+
     return e.value;
   };
   public exportChart(): void {

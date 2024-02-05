@@ -38,7 +38,6 @@
         </kendo-chart-value-axis-item>
       </kendo-chart-value-axis>
 
-      <kendo-chart-tooltip> </kendo-chart-tooltip>
 
       
 
@@ -70,6 +69,12 @@
           [align]="'column'"
         >
         </kendo-chart-series-item-labels>
+        
+        <kendo-chart-series-item-tooltip>
+          <ng-template let-value="value">
+            {{ value | formatAmount : prefix:suffix }}
+          </ng-template>
+        </kendo-chart-series-item-tooltip>
         </kendo-chart-series-item>
       </kendo-chart-series>
     </kendo-chart>

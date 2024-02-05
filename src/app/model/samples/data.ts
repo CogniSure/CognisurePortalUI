@@ -330,7 +330,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Dollar"
+        NumberType : "Number"
       }
     },
     {
@@ -358,7 +358,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Dollar"
+        NumberType : "Number"
       }
     },
     {
@@ -372,7 +372,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Dollar"
+        NumberType : "Number"
       }
     },
     {
@@ -400,7 +400,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Dollar"
+        NumberType : "Number"
       }
     },
     {
