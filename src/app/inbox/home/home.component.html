@@ -1,4 +1,4 @@
-  <div style="height: 10%; position: relative;background: #19465F;">
+  <div class = "submission-home" style="height: 10%; position: relative;background: #19465F;">
   <kendo-tilelayout
     [columns]="1"
     [rowHeight]="'100%'"
@@ -127,8 +127,27 @@
             </kendo-tilelayout>
 
           </div>
-          <generic-table [columns]="columns" (DownloadEvent)="DownloadSumission360($event)" (CopilotEvent)="OpenCopilot($event)" 
+          
+          <generic-table  [columns]="columns" 
+          (IDclickEvent)="reDirect($event)" 
+          (DownloadEvent)="DownloadSumission360($event)" 
+          (CopilotEvent)="OpenCopilot($event)" 
+          (MessageEvent)="OpenMessageEvent($event)" 
           [data]="tableData"></generic-table>
+          <div #popupAnchor>
+          <ng-container class="popup-content">
+            <kendo-popup
+              *ngIf="isPopupVisible"
+              [anchor]="popupAnchor"
+              [popupClass]="'custom-popup'"
+            >
+              <button class="popup_closebtn" (click)="closePopup()">x</button>
+              <!-- <kendo-button icon="k-i-close-outline k-i-x-outline k-i-error" title="Events" class="popup_closebtn" (click)="closePopup()"></kendo-button> -->
+              <app-emailpopup [SubmissionId] = selectedSubmission.SubmissionID></app-emailpopup>
+              <!-- <button (click)="closePopup()">Close Popup</button> -->
+            </kendo-popup>
+          </ng-container>
+        </div>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
     </kendo-tilelayout>

@@ -277,27 +277,17 @@
             <a
               class="submissionid"
               routerLink="{{ column.redirectUrl }}"
-              (click)="reDirect(column.redirectUrl, dataItem)"
+              (click)="ID_Clicked(dataItem)"
               [ngStyle]="{ color: '#009CC1' }"
             >
               {{ dataItem[column.field] }}
               <span class="newtext" *ngIf="dataItem[column.IsNew]">New</span>
             </a>
             <span class="submissionicon"
-              ><span class="k-icon k-i-email" (click)="togglePopup()"></span
+              ><span class="k-icon k-i-email" (click)="Message_Clicked(dataItem)"></span
             ></span>
           </ng-container>
-          <ng-container class="popup-content">
-            <kendo-popup
-              *ngIf="isPopupVisible"
-              [anchor]="popupAnchor"
-              [popupClass]="'custom-popup'"
-            >
-              <button class="popup_closebtn" (click)="closePopup()">x</button>
-              <app-emailpopup [SubmissionId] = dataItem[column.field]></app-emailpopup>
-              <!-- <button (click)="closePopup()">Close Popup</button> -->
-            </kendo-popup>
-          </ng-container>
+          
         </ng-template>
       </kendo-grid-column>
 
@@ -651,7 +641,7 @@
                   color="primary"
                   class="excel_download"
                   routerLink="{{ column.redirectUrl }}"
-                  (click)="reDirect(column.redirectUrl, dataItem)"
+                  (click)="ID_Clicked(dataItem)"
                 >
                   <img
                     src="../../../assets/icons/InsightsCompleted.svg"

@@ -64,7 +64,6 @@ const routes:Routes = [
     DropDownListModule,
     IconsModule,
     MatDialogModule,
-    PopupModule,
     RouterModule.forChild(routes)
   ],
   exports:[
@@ -83,6 +82,7 @@ const routes:Routes = [
     TooltipDirective,
     SelectComponent,
     CopilotComponent,
+    EmailpopupComponent,
     FormatAmountPipe
   ],
   providers: [FormatAmountPipe],

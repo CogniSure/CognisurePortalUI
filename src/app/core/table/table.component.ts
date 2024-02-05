@@ -2,38 +2,21 @@ import { ChangeDetectorRef, Component, HostListener, Input, OnChanges, OnDestroy
 import { DataBindingDirective } from '@progress/kendo-angular-grid';
 import { SVGIcon, filePdfIcon, fileExcelIcon } from '@progress/kendo-svg-icons';
 import { process } from '@progress/kendo-data-query';
-import { employees } from './employees';
-import { images } from './images';
-import { InboxIconsService } from 'src/app/services/inboxicons.service';
-import { State } from "@progress/kendo-data-query";
-import { LoaderType, LoaderThemeColor, LoaderSize } from '@progress/kendo-angular-indicators';
 import { Output, EventEmitter } from '@angular/core';
 import {
   SelectableSettings,
-  SelectableMode,
 } from "@progress/kendo-angular-grid";
 import { GlobalService } from 'src/app/services/common/global.service';
 import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { OutputIcons, alertsData } from 'src/app/model/sidenav/nav-data';
-import { navbarData } from '../../model/sidenav/nav-data';
 import {Alert1ToolTip} from '../../model/constants/tooltipDetails';
 import { DataComponent } from 'src/app/model/samples/data';
 import {
   shareIcon,
   arrowDownIcon,
-  facebookIcon,
-  twitterIcon,
-  linkedinIcon,
-  redditIcon,
 } from "@progress/kendo-svg-icons";
-import { NgModel } from '@angular/forms';
-import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { TextBoxModule } from '@progress/kendo-angular-inputs';
-import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CopilotComponent } from '../copilot/copilot.component';
-import { EmailpopupComponent } from '../emailpopup/emailpopup.component';
 
 interface NavItem {
   title: string;
@@ -81,7 +64,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   outputIcons = OutputIcons;
   cellExpansionState: boolean[] = [];
   selectedValue: { label: string; value: string };
-  // selectedValues: { [key: string]: { label: string; value: string } } = {};
  
   public dialog: MatDialog;
   public gridData: any[];
@@ -93,7 +75,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   public selectableSettings: SelectableSettings;
   public svgShare: SVGIcon = shareIcon;
   public svgArrow: SVGIcon = arrowDownIcon;
-
 
   @ViewChild("generictable") dataBinding: DataBindingDirective;
   @Input() data: any[];
@@ -127,12 +108,16 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   Copilot_Click(value: any) {
     this.CopilotEvent.emit(value);
   }
-  @Output() newIDclickEvent = new EventEmitter<string>();
+  @Output() IDclickEvent = new EventEmitter<string>();
 
-  IDclickEvent(value: any) {
-    this.newIDclickEvent.emit(value);
+  ID_Clicked(value: any) {
+    this.IDclickEvent.emit(value);
   }
+  @Output() MessageEvent = new EventEmitter<string>();
 
+  Message_Clicked(value: any) {
+    this.MessageEvent.emit(value);
+  }
   public ngOnInit(): void {
     this.showSpinner = true;
     this.loading=true;
@@ -190,25 +175,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 
   toggleDropdown(): void {
     this.isToggleOn = !this.isToggleOn;
-  }
-
-  reDirect(url:string, param:any){
-    let subInfo : SubmissionInfo = {
-      SubmissionId : param.SubmissionID,
-      SubmissionGUID: param.SubmissionGUID,
-      ClientSubmissionGUID: param.ClientSubmissionGUID,
-      SubmissionName : "",
-      MessageId : param.MessageId,
-      Status : param.Status,
-      Extraction : "",
-      Completeness : "",
-      RiskClearance : "",
-      LOB : param.lineOfBusiness
-    }
-    // console.log("Current Submission")
-    //   console.log(subInfo)
-    //   console.log(param)
-    this.globalService.setCurrentSubmissionId(subInfo)
   }
 
 
@@ -325,7 +291,9 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     }
   }
 
-  togglePopup() {
+  togglePopup(dataItem:any) {
+    console.log("Selected Items")
+    console.log(dataItem)
     this.isPopupVisible = !this.isPopupVisible;
   }
 

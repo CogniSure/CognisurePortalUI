@@ -11,6 +11,7 @@ import { CopilotComponent } from 'src/app/core/copilot/copilot.component';
 import { UserProfile } from 'src/app/model/profile/userprofile';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
+import { EmailpopupComponent } from 'src/app/core/emailpopup/emailpopup.component';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +37,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   tableData: any[];
   clientName: any;
   submissionData : any[] = [];
+  
+  selectedSubmission : any;
 
   constructor(
     private inboxservice: InboxService,
@@ -163,21 +166,34 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     return selectedRows;
   }
+  isPopupVisible = false;
+  OpenMessageEvent(item: any) {
+    this.selectedSubmission = item;
+    this.isPopupVisible = true;
+  }
 
-  reDirect(url: string, param: any) {
-    let subInfo: SubmissionInfo = {
-      SubmissionId: param.SubmissionID,
+  togglePopup(dataItem:any) {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
+  }
+  reDirect(param:any){
+    let subInfo : SubmissionInfo = {
+      SubmissionId : param.SubmissionID,
       SubmissionGUID: param.SubmissionGUID,
       ClientSubmissionGUID: param.ClientSubmissionGUID,
-      SubmissionName: '',
-      MessageId: param.MessageId,
-      Status: param.Status,
-      Extraction: '',
-      Completeness: '',
-      RiskClearance: '',
-      LOB: param.lineOfBusiness,
-    };
-    this.globalService.setCurrentSubmissionId(param);
+      SubmissionName : "",
+      MessageId : param.MessageId,
+      Status : param.Status,
+      Extraction : "",
+      Completeness : "",
+      RiskClearance : "",
+      LOB : param.lineOfBusiness
+    }
+
+    this.globalService.setCurrentSubmissionId(subInfo)
   }
   OpenCopilot(item: any) {
     let dialog1: MatDialog;

@@ -22,6 +22,7 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 import { UploadsModule,FileSelectModule } from '@progress/kendo-angular-upload';
 import { ChatModule } from '@progress/kendo-angular-conversational-ui';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
+import { PopupModule } from '@progress/kendo-angular-popup';
 
 const routes:Routes = [
 ];
@@ -56,7 +57,8 @@ const KendoComponents = [];
     FileSelectModule ,
     ChatModule,
     TooltipsModule ,
-    ButtonModule
+    ButtonModule,
+    PopupModule
   ],
   exports:[
     GridModule,
@@ -83,7 +85,8 @@ const KendoComponents = [];
     FileSelectModule, 
     ChatModule ,
     TooltipsModule,
-    ButtonModule
+    ButtonModule,
+    PopupModule
   ]
 })
 export class KendoModule { }
