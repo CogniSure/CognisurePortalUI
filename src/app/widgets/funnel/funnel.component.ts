@@ -13,7 +13,7 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
 import { WidgetService } from 'src/app/services/widget/widget.service';
 import { FunnelData } from 'src/app/model/charts/funneldata';
-import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
+import { SeriesColorPrimary } from 'src/app/model/constants/seriescolor';
 
 @Component({
   selector: 'app-funnel',
@@ -38,7 +38,7 @@ export class FunnelComponent implements OnInit, OnDestroy {
     this.ChartType = input.WidgetType as SeriesType;
   }
 
-  seriesColors: string[] = SeriesColorConst;
+  seriesColors: string[] = SeriesColorPrimary;
 
   ngOnDestroy(): void {}
   ngOnInit(): void {

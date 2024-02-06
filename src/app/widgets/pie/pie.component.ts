@@ -11,7 +11,8 @@ import {
 import { ChartComponent, Margin, SeriesLabelsContentArgs, SeriesType } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
 import { ChartData } from 'src/app/model/charts/chartdata';
-import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
+import { SeriesColorPrimary } from 'src/app/model/constants/seriescolor';
+import { SeriesColorSecondary } from 'src/app/model/constants/seriescolor';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
@@ -22,6 +23,10 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
   styleUrls: ['./pie.component.scss'],
 })
 export class PieComponent implements OnInit, OnDestroy, OnChanges {
+  prefix = '';
+  suffix = '';
+  isStacked = false;
+  showLabels = true;
   piechartData: any;
   ChartType: SeriesType = 'donut';
   marker : any = 'square'
@@ -34,7 +39,7 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
   };
   @ViewChild('chart')
   private chart: ChartComponent;
-  seriesColors: string[] = SeriesColorConst;
+  seriesColors: string[] = [];
   CenterValue = 0;
   filter: DashboardFilter;
   legendPos :any = "bottom"
@@ -101,6 +106,33 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
       }
       if(this.input.Settings.DataType!=null){
         this.dataType = this.input.Settings.DataType
+      }
+      if (this.input.Settings.NumberType != null) {
+        this.dataType = this.input.Settings.NumberType;
+      }
+      if (this.input.Settings.ShowLabels != null) {
+        this.showLabels = this.input.Settings.ShowLabels;
+      }
+      if (this.input.Settings.SeriesColor != null) {
+        if(this.input.Settings.SeriesColor == "Primary")
+          this.seriesColors = SeriesColorPrimary
+        else if(this.input.Settings.SeriesColor == "Secondary") 
+          this.seriesColors = SeriesColorSecondary
+        else
+          this.seriesColors = SeriesColorPrimary
+      }
+      else
+        this.seriesColors = SeriesColorPrimary
+
+      if (this.dataType == 'Number') {
+        this.prefix = '';
+        this.suffix = '';
+      } else if (this.dataType == 'Percentage') {
+        this.prefix = '';
+        this.suffix = '%';
+      } else if (this.dataType == 'Dollar') {
+        this.prefix = '$';
+        this.suffix = '';
       }
     }
   }

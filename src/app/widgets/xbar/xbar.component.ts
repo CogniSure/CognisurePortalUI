@@ -16,7 +16,8 @@ import {
 import { saveAs } from '@progress/kendo-file-saver';
 import { FormatAmountPipe } from 'src/app/core/pipes/format-amount.pipe';
 import { ChartData } from 'src/app/model/charts/chartdata';
-import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
+import { SeriesColorPrimary } from 'src/app/model/constants/seriescolor';
+import { SeriesColorSecondary } from 'src/app/model/constants/seriescolor';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
@@ -30,12 +31,13 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
 export class XBarComponent implements OnInit, OnDestroy {
   prefix = '';
   suffix = '';
+  isStacked = false;
+  showLabels = true;
   majorUnit: number;
   showSpinner = false;
   noDataAvailble = false;
   private dataType: string = 'percentage';
-  isStacked = false;
-  showLabels = true;
+  
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -71,7 +73,7 @@ export class XBarComponent implements OnInit, OnDestroy {
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
-  seriesColors: string[] = SeriesColorConst;
+  seriesColors: string[] = [];//SeriesColorConst;
   filter: DashboardFilter;
   ngOnDestroy(): void {}
   ngOnInit(): void {
@@ -121,6 +123,16 @@ export class XBarComponent implements OnInit, OnDestroy {
       if (this.input.Settings.Stack != null) {
         this.isStacked = this.input.Settings.Stack;
       }
+      if (this.input.Settings.SeriesColor != null) {
+        if(this.input.Settings.SeriesColor == "Primary")
+          this.seriesColors = SeriesColorPrimary
+        else if(this.input.Settings.SeriesColor == "Secondary") 
+          this.seriesColors = SeriesColorSecondary
+        else
+          this.seriesColors = SeriesColorPrimary
+      }
+      else
+        this.seriesColors = SeriesColorPrimary
 
       if (this.dataType == 'Number') {
         this.prefix = '';

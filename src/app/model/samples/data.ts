@@ -164,7 +164,11 @@ export class DataComponent {
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  3,
-      DataType: "Percentage"
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary"
+      }
+      
     },
     {
       id: 1,
@@ -174,7 +178,11 @@ export class DataComponent {
       Header: 'Submission Turnaround Time',
       ColumnId :  2,
       ColumnSpan :  1,
-      RowSpan :  3
+      RowSpan :  3,
+      Settings:{
+        DataType: "Number",
+        SeriesColor : "Secondary"
+      }
     },
     {
       id: 3,
@@ -185,7 +193,10 @@ export class DataComponent {
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3,
-      DataType: "Percentage"
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary"
+      }
     },
     {
       id: 2,
@@ -195,8 +206,10 @@ export class DataComponent {
       Header: 'Top Brokers',
       ColumnId :  1,
       ColumnSpan :  1,
-      RowSpan :  3,
-      DataType: "Percentage"
+      RowSpan :  3,Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary"
+      }
     },
     {
       id: 1,
@@ -207,7 +220,10 @@ export class DataComponent {
       ColumnId :  2,
       ColumnSpan :  1,
       RowSpan :  3,
-      DataType: "Percentage"
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Secondary"
+      }
     }
     ,
     {
@@ -219,7 +235,10 @@ export class DataComponent {
       ColumnId :  3,
       ColumnSpan :  1,
       RowSpan :  3,
-      DataType: "Percentage"
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary"
+      }
     },
     {
       id: 1,
@@ -230,7 +249,10 @@ export class DataComponent {
       ColumnId :  1,
       ColumnSpan :  1,
       RowSpan :  3,
-      DataType: "Percentage"
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary"
+      }
     }
   ];
   public static ExposureSummaryHub = [

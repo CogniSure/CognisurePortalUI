@@ -11,9 +11,7 @@ export class CacheService {
   getAccountInformationfromDB(type: string, clientId: string, submissionId: string, email: string) {
     throw new Error('Method not implemented.');
   }
-  private accountInformation: AccountInformation | null = null;
   private accountInformationSubject$ = new BehaviorSubject<any>({});
-
   private submissionFilesSubject$ = new BehaviorSubject<any[]>([]);
 
   private tivSubject$ = new BehaviorSubject<any[]>([]);
@@ -67,9 +65,7 @@ export class CacheService {
   }
 
   clearSession() {
-    sessionStorage.removeItem('tiv');
-    sessionStorage.removeItem('noOfLocation');
-    sessionStorage.removeItem('noOfBuildings');
+    this.accountInformationSubject$.complete();
   }
 
   getExposureSummary(widgetName: string): Observable<any[]> {
