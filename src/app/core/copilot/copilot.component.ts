@@ -23,8 +23,11 @@ import { ChatService } from 'src/app/services/common/chat.service';
 // }
 export class CopilotComponent {
   isMaximized: boolean = false;
-  originalWidth: string = '70rem';
-  originalHeight: string = '80%';
+  // originalWidth: string = '70rem';
+  // originalHeight: string = '80%';
+
+  originalWidth: string; 
+originalHeight: string; 
 
   private inMemoryFile: string | null = null;
   public uploadedFiles: File[];
@@ -78,6 +81,12 @@ export class CopilotComponent {
       // ... and emit an array of all messages
       scan((acc: Message[], x: Message) => [...acc, x], [])
     );
+  }
+
+  ngOnInit(): void {
+    // Store the original dimensions when the component is initialized
+    this.originalWidth = '400px'; // Set the initial width as per your requirement
+    this.originalHeight = '300px'; // Set the initial height as per your requirement
   }
 
   public sendMessage(e: SendMessageEvent): void {
@@ -137,7 +146,8 @@ export class CopilotComponent {
 
     reader.readAsDataURL(file);
   }
- 
+  
+
   toggleMaximize(): void {
     if (this.isMaximized) {
       this.dialog.open(CopilotComponent, {
@@ -152,6 +162,9 @@ export class CopilotComponent {
     }
     this.isMaximized = !this.isMaximized; 
   }
+
+
+  
 //   // Save to local storage
 // localStorage.setItem('fileData', base64String);
 

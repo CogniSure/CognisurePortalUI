@@ -16,7 +16,8 @@
     padding: 20px;
   }
   .bottom_border{
-    border-bottom: 1px solid rgb(230 230 230);; 
+    border-bottom: 1px solid rgb(230 230 230);
+    margin: 0!important;
   }
 
   ::ng-deep .k-upload .k-upload-files .k-file{
