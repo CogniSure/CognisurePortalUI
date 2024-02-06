@@ -47,6 +47,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { DatePipe } from '@angular/common';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { PopupModule } from '@progress/kendo-angular-popup';
+import { FileService } from './services/common/filelist.service';
 
 // export function initializeApp(appConfig: AppConfigService) {
 //   return () => appConfig.load();
@@ -104,7 +105,7 @@ import { PopupModule } from '@progress/kendo-angular-popup';
     AuthService,
     DatePipe,
     {
-      provide: SessionInterruptService,
+      provide: [SessionInterruptService, FileService],
       useClass: AppSessionInterruptService,
     },
   ],
