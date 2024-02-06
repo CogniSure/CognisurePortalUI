@@ -166,7 +166,10 @@ export class DataComponent {
       RowSpan :  3,
       Settings:{
         DataType: "Percentage",
-        SeriesColor : "Primary"
+        SeriesColor : "Primary",
+        DonutHoleSize : 50,
+        LabelPosition : "outsideEnd",
+        LabelColor : "#009CC1"
       }
       
     },
@@ -195,7 +198,10 @@ export class DataComponent {
       RowSpan :  3,
       Settings:{
         DataType: "Percentage",
-        SeriesColor : "Primary"
+        SeriesColor : "Primary",
+        DonutHoleSize : 20,
+        LabelPosition : "center",
+        LabelColor : "White"
       }
     },
     {
@@ -264,9 +270,13 @@ export class DataComponent {
       ColumnId :  1,
       ColumnSpan :  2,
       RowSpan :  1,
-      HeaderColor : '#ffffff',
-      FontColor : '#fff',
-      NumberType : "$"
+      Settings : {
+        HeaderColor : '#ffffff',
+        FontColor : '#fff',
+        LegendPosition : "Right",
+        DataType : "Dollar",
+      }
+      
     },
     {
       id: 2,
@@ -276,8 +286,12 @@ export class DataComponent {
       ColumnId :  3,
       ColumnSpan :  2,
       RowSpan :  1,
-      HeaderColor : '#ffffff',
-      FontColor : '#fff'
+      Settings : {
+        HeaderColor : '#ffffff',
+        FontColor : '#fff',
+        LegendPosition : "Right",
+        DataType : "Number",
+      }
     },
     {
       id: 3,
@@ -287,8 +301,12 @@ export class DataComponent {
       ColumnId :  5,
       ColumnSpan :  2,
       RowSpan :  1,
-      HeaderColor : '#ffffff',
-      FontColor : '#fff'
+      Settings : {
+        HeaderColor : '#ffffff',
+        FontColor : '#fff',
+        LegendPosition : "Right",
+        DataType : "Number",
+      }
     },
     // {
     //   id: 3,
@@ -308,7 +326,15 @@ export class DataComponent {
       Header: 'Construction Type',
       ColumnId :  1,
       ColumnSpan :  3,
-      RowSpan :  4
+      RowSpan :  4,
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary",
+        DonutHoleSize : 20,
+        LabelPosition : "center",
+        LabelColor : "white",
+        LegendPosition : "Right",
+      }
     },
     {
       id: 1,
@@ -317,7 +343,15 @@ export class DataComponent {
       Header: 'Occupancy Type',
       ColumnId :  4,
       ColumnSpan :  3,
-      RowSpan :  4
+      RowSpan :  4,
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary",
+        DonutHoleSize : 20,
+        LabelPosition : "center",
+        LabelColor : "white",
+        LegendPosition : "Right",
+      }
     },
     {
       id: 1,
@@ -326,7 +360,15 @@ export class DataComponent {
       Header: 'Building Age',
       ColumnId :  1,
       ColumnSpan :  3,
-      RowSpan :  4
+      RowSpan :  4,
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary",
+        DonutHoleSize : 20,
+        LabelPosition : "center",
+        LabelColor : "white",
+        LegendPosition : "Right",
+      }
     },
     {
       id: 1,
@@ -335,7 +377,15 @@ export class DataComponent {
       Header: 'Protection Class',
       ColumnId :  4,
       ColumnSpan :  3,
-      RowSpan :  4
+      RowSpan :  4,
+      Settings:{
+        DataType: "Percentage",
+        SeriesColor : "Primary",
+        DonutHoleSize : 20,
+        LabelPosition : "center",
+        LabelColor : "white",
+        LegendPosition : "Right",
+      }
     },
   ];
 

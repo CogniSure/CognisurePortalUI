@@ -12,6 +12,9 @@ import { InjectToken } from 'src/app/model/dashboard/injecttoken';
   styleUrls: ['./exposure.component.scss']
 })
 export class ExposureComponent implements OnInit {
+  dataType = "";
+  prefix = '';
+  suffix = '';
   totalinsuredvalue: string = 'Total Insured Value';
   totalincurredvalue: string = '';
   exposurelosses: any = '';
@@ -34,8 +37,9 @@ export class ExposureComponent implements OnInit {
 
   getExposureData(): void {
     this.header = this.input.WidgetHeader;
-    this.numberType = this.input.Settings.NumberType !=null? this.input.Settings.NumberType: "";
-    this.headerNumberType = this.input.Settings.HeaderNumberType !=null? this.input.Settings.HeaderNumberType: "";
+    // this.numberType = this.input.Settings.NumberType !=null? this.input.Settings.NumberType: "";
+    // this.headerNumberType = this.input.Settings.HeaderNumberType !=null? this.input.Settings.HeaderNumberType: "";
+    this.ApplySettings();
     this.exposureKeys = this.input.Keys;
     if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((inputData:any[])=>{
@@ -54,6 +58,27 @@ export class ExposureComponent implements OnInit {
         }
         this.changeDetector.detectChanges();
       })
+    }
+  }
+
+  ApplySettings(){
+    if(this.input.Settings !=null){
+      if(this.input.Settings.DataType!=null){
+        this.dataType = this.input.Settings.DataType
+      }
+      if(this.input.Settings.HeaderNumberType!=null){
+        this.headerNumberType = this.input.Settings.HeaderNumberType
+      }
+      if (this.dataType == 'Number') {
+        this.prefix = '';
+        this.suffix = '';
+      } else if (this.dataType == 'Percentage') {
+        this.prefix = '';
+        this.suffix = '%';
+      } else if (this.dataType == 'Dollar') {
+        this.prefix = '$';
+        this.suffix = '';
+      }
     }
   }
 }

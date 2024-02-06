@@ -124,7 +124,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+        CustomInjector : this.createInjector(entry)
       });
       i++;
     });
@@ -412,7 +412,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header,entry.NumberType,entry.HeaderNumberType)
+        CustomInjector : this.createInjector(entry)
       });
       i++;
     });
@@ -434,7 +434,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+        CustomInjector : this.createInjector(entry)
       });
       i++;
     });
@@ -552,8 +552,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header,
-          entry.NumberType)
+        CustomInjector : this.createInjector(entry)
       });
       i++;
     });
@@ -672,7 +671,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+        CustomInjector : this.createInjector(entry)
       });
       i++;
     });
@@ -792,7 +791,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector : this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header)
+        CustomInjector : this.createInjector(entry)
       });
       i++;
     });
@@ -937,25 +936,29 @@ export class SummaryComponent implements OnInit, OnDestroy {
     }
     return widgetKeys;
   }
-  createInjector(widgetName: string, widgetType: string,widgetHeader:string="", 
-  numberType = "", headerNumberType = ""): any {
+  createInjector(config: any): any {
     var myInjector: Injector;
     let widgetInput: WidgetInput = {
-      WidgetName: widgetName,
-      WidgetType: widgetType,
-      WidgetHeader :widgetHeader,
-      Settings: {
-        NumberType : numberType,
-        HeaderNumberType : headerNumberType
-      },
-      Keys: this.getWidgetItemKeys(widgetName),
-      DataSubject: this.cacheService.getSummaryByLOB(widgetName),
+      WidgetName: config.WidgetName,
+      WidgetType: config.WidgetType,
+      WidgetHeader :config.WidgetHeader,
+      Settings: config.settings,
+      // {
+      //   NumberType : config.numberType,
+      //   HeaderNumberType : headerNumberType
+      //}
+      // {
+      //   NumberType : numberType,
+      //   HeaderNumberType : headerNumberType
+      // },
+      Keys: this.getWidgetItemKeys(config.WidgetName),
+      DataSubject: this.cacheService.getSummaryByLOB(config.WidgetName),
     };
     
     myInjector = Injector.create({
       providers: [{ provide: InjectToken, useValue: widgetInput }],
       parent: this.injector,
-      name: widgetName,
+      name: config.WidgetName,
     });
     //this.reloadReq = false;
     return myInjector;

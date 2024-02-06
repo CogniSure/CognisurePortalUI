@@ -23,7 +23,9 @@ export class CoveragesComponent implements OnInit {
   header: any = '';
   numberType = "";
   displayedColumns = ['CoverageName', 'CoverageValue', 'CoverageType'];
-
+  dataType = "";
+  prefix = '';
+  suffix = '';
   constructor(
     private changeDetector: ChangeDetectorRef,
     @Inject(InjectToken) private input: WidgetInput
@@ -31,7 +33,8 @@ export class CoveragesComponent implements OnInit {
 
   ngOnInit(): void {
     this.header = this.input.WidgetHeader;
-    this.numberType = this.input.Settings.NumberType !=null? this.input.Settings.NumberType: "";
+    //this.numberType = this.input.Settings.NumberType !=null? this.input.Settings.NumberType: "";
+    this.ApplySettings();
     if (this.input.DataSubject != null) {
       this.input.DataSubject.subscribe((inputData: any[]) => {
         if (inputData != null && inputData.length > 0) {
@@ -53,5 +56,22 @@ export class CoveragesComponent implements OnInit {
 
     public goToNextPage(){
       this.skip += this.pageSize;
+    }
+    ApplySettings(){
+      if(this.input.Settings !=null){
+        if(this.input.Settings.DataType!=null){
+          this.dataType = this.input.Settings.DataType
+        }
+        if (this.dataType == 'Number') {
+          this.prefix = '';
+          this.suffix = '';
+        } else if (this.dataType == 'Percentage') {
+          this.prefix = '';
+          this.suffix = '%';
+        } else if (this.dataType == 'Dollar') {
+          this.prefix = '$';
+          this.suffix = '';
+        }
+      }
     }
 }

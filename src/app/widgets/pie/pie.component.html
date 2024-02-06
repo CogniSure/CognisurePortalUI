@@ -42,26 +42,23 @@
           [data]="chartData.Data"
           field="value"
           categoryField="category"
-          [padding]="5"
-          [holeSize]="70"
+          [holeSize]="holeSize"
         >
           <kendo-chart-series-item-labels
-            position="above"
-            [distance]="20"
+            [position]="labelPosition"
             [content]="labelContent"
             [visible]="true"
             [background]="'transparent'"
-            [color]="'#009CC1'"
-            [align]="'circle'"
+            [color]="labelColor"
+            [align]="'column'"
             [margin]="labelMargin"
           >
           </kendo-chart-series-item-labels>
-          <kendo-chart-series-item-labels-from
-          position="outsideEnd"
-          [padding]="10"
-          >
-
-          </kendo-chart-series-item-labels-from>
+          <kendo-chart-series-item-tooltip>
+            <ng-template let-value="value">
+              {{ value | formatAmount : prefix:suffix }}
+            </ng-template>
+          </kendo-chart-series-item-tooltip>
         </kendo-chart-series-item>
       </kendo-chart-series>
     </kendo-chart>

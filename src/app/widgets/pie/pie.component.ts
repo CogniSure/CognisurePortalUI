@@ -27,6 +27,9 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
   suffix = '';
   isStacked = false;
   showLabels = true;
+  holeSize = 0;
+  labelColor : "  "
+  labelPosition : "center"  
   piechartData: any;
   ChartType: SeriesType = 'donut';
   marker : any = 'square'
@@ -103,6 +106,15 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
       else{
         this.legendPos = "bottom";
         this.legendOrientation = "horizontal"
+      }
+      if(this.input.Settings.DonutHoleSize!=null){
+        this.holeSize = this.input.Settings.DonutHoleSize
+      }
+      if(this.input.Settings.LabelPosition!=null){
+        this.labelPosition = this.input.Settings.LabelPosition
+      }
+      if(this.input.Settings.LabelColor!=null){
+        this.labelColor = this.input.Settings.LabelColor
       }
       if(this.input.Settings.DataType!=null){
         this.dataType = this.input.Settings.DataType

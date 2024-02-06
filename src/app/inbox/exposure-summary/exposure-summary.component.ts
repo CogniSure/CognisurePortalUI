@@ -53,40 +53,30 @@ export class ExposureSummaryComponent
         RowSpan: entry.RowSpan,
         HeaderColor: entry.HeaderColor,
         FontColor: entry.FontColor,
-        CustomInjector :  this.createInjector(entry.WidgetName,entry.WidgetType,entry.Header,entry.NumberType)
+        CustomInjector :  this.createInjector(entry)
       });
       i++;
     });
   }
-  createInjector(widgetName: string, widgetType: string,widgetHeader:string="", numberType = ""): any {
+  createInjector(config: any): any {
     var myInjector: Injector;
-    //this.cacheService.getExposureSummary(widgetName).subscribe(data=>{
-
-      // console.log("Data subject: " + widgetName)
-      // console.log(data)
-
       let widgetInput: WidgetInput = {
-        WidgetName: widgetName,
-        WidgetType: widgetType,
-        WidgetHeader:widgetHeader,
-        Settings : {
-          "LegendPosition" : "Right",
-          "DataType" : "Number",
-           NumberType : numberType
-        },
-        Keys : [],//this.cacheService.getExposureSummary(widgetName),
-        DataSubject : this.cacheService.getExposureSummary(widgetName)
-        // Data: [
-        //   { category: 'Frame', value: '25' },
-        //   { category: 'Joisted Masonary', value: '25' },
-        //   { category: 'Non Combustible', value: '25' },
-        //   { category: 'Modified Non Combustable', value: '25' },
-        // ],
+        WidgetName: config.WidgetName,
+        WidgetType: config.WidgetType,
+        WidgetHeader:config.WidgetHeader,
+        Settings : config.Settings,
+        // {
+        //   "LegendPosition" : "Right",
+        //   "DataType" : "Number",
+        //    NumberType : numberType
+        // },
+        Keys : [],
+        DataSubject : this.cacheService.getExposureSummary(config.WidgetName)
       };
       myInjector = Injector.create({
         providers: [{ provide: InjectToken, useValue: widgetInput }],
         parent: this.injector,
-        name: widgetName,
+        name: config.WidgetName,
       });
   
       return myInjector;

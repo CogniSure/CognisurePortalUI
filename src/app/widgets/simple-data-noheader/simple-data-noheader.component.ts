@@ -11,9 +11,10 @@ import { WidgetService } from 'src/app/services/widget/widget.service';
 })
 export class SimpleDataNoheaderComponent implements OnInit, AfterViewInit {
 
-  numberType : "";
+  dataType = "";
+  prefix = '';
+  suffix = '';
   constructor(
-    // private sanitizer: DomSanitizer,
     private dbService: WidgetService,
     @Inject(InjectToken) 
     private input: WidgetInput,
@@ -27,8 +28,8 @@ export class SimpleDataNoheaderComponent implements OnInit, AfterViewInit {
     Type : "",
   };
   ngOnInit(): void {
-    this.numberType = this.input.Settings.NumberType !=null? this.input.Settings.NumberType: "";
-    if (this.input.DataSubject != null){ //&& this.input.Data.length > 0) {
+    this.ApplySettings();
+    if (this.input.DataSubject != null){
       this.input.DataSubject.subscribe((data:any[])=>{
         if(data!=null && data.length > 0){
           this.simpleData = {
@@ -44,5 +45,23 @@ export class SimpleDataNoheaderComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     
+  }
+
+  ApplySettings(){
+    if(this.input.Settings !=null){
+      if(this.input.Settings.DataType!=null){
+        this.dataType = this.input.Settings.DataType
+      }
+      if (this.dataType == 'Number') {
+        this.prefix = '';
+        this.suffix = '';
+      } else if (this.dataType == 'Percentage') {
+        this.prefix = '';
+        this.suffix = '%';
+      } else if (this.dataType == 'Dollar') {
+        this.prefix = '$';
+        this.suffix = '';
+      }
+    }
   }
 }
