@@ -3,6 +3,7 @@ import { Component, Input, OnInit, SecurityContext } from '@angular/core';
 // import { FileService } from 'src/app/services/common/filelist.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FileService } from 'src/app/services/common/filelist.service';
+import { FileRestrictions  } from '@progress/kendo-angular-upload';
 
 @Component({
   selector: 'app-fileviewer',
@@ -27,6 +28,9 @@ export class FileviewerComponent {
   ];
 
   selectedPdf: SafeResourceUrl | undefined;
+  public restrictions: FileRestrictions = {
+    allowedExtensions: [],
+  };
 
   constructor(private sanitizer:DomSanitizer, private fileService: FileService) { 
   }
@@ -41,6 +45,15 @@ export class FileviewerComponent {
     const pdfUrl = this.createPdfUrl(selectedPdfData);
     this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(pdfUrl);
   }
+
+  previewSelectedFile(file: File): void {
+    if (file.type === 'application/pdf') {
+      this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+    } else {
+      console.log('File preview not supported for this file type.');
+    }
+  }
+
 
   private createPdfUrl(base64Data: string): string {
     // Assuming the base64Data is prefixed with 'data:application/pdf;base64,'
