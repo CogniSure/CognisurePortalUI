@@ -22,6 +22,7 @@ import { ChatService } from 'src/app/services/common/chat.service';
   
 // }
 export class CopilotComponent {
+  private inMemoryFile: string | null = null;
   public uploadedFiles: File[];
   uploadSaveUrl = "saveUrl"; // should represent an actual API endpoint
   uploadRemoveUrl = "removeUrl"; // should represent an actual API endpoint
@@ -111,4 +112,34 @@ export class CopilotComponent {
 
     
   }
+
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.readFileAsBase64(file);
+    }
+  }
+
+  private readFileAsBase64(file: File): void {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64String = reader.result as string;
+      // Now you can use the base64String as needed (e.g., send it to the server)
+      console.log(base64String);
+    };
+
+    reader.readAsDataURL(file);
+  }
+ 
+  
+
+//   // Save to local storage
+// localStorage.setItem('fileData', base64String);
+
+// // Retrieve from local storage
+// const storedData = localStorage.getItem('fileData');
+
 }
