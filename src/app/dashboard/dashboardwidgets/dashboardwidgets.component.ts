@@ -411,9 +411,7 @@ export class DashboardwidgetsComponent
       WidgetName: config.WidgetName,
       WidgetType: config.WidgetType,
       WidgetHeader : config.Header,
-      Settings: {
-        "DataType" : config.DataType!=null?config.DataType : ""
-      },
+      Settings: config.Settings,
       Keys: [],
       DataSubject: of([]),
     };

@@ -17,7 +17,8 @@ import {
 import { saveAs } from '@progress/kendo-file-saver';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { ChartSeries } from 'src/app/model/charts/series';
-import { SeriesColorConst } from 'src/app/model/constants/seriescolor';
+import { SeriesColorPrimary } from 'src/app/model/constants/seriescolor';
+import { SeriesColorSecondary } from 'src/app/model/constants/seriescolor';
 import { DashboardFilter } from 'src/app/model/dashboard/dashboardfilter';
 import { InjectToken } from 'src/app/model/dashboard/injecttoken';
 import { WidgetInput } from 'src/app/model/dashboard/widgetInput';
@@ -34,7 +35,10 @@ export class YBarComponent implements OnInit, OnDestroy {
   public YbarChart: ChartComponent;
   majorUnit: number;
   dataType :string = "percentage";
-  
+  prefix = '';
+  suffix = '';
+  isStacked = false;
+  showLabels = true;
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
@@ -58,7 +62,7 @@ export class YBarComponent implements OnInit, OnDestroy {
   @ViewChild('chart')
   downloadMode = true;
   private chart: ChartComponent;
-  seriesColors: string[] = SeriesColorConst;
+  seriesColors: string[] = [];//SeriesColorConst;
 
   filter: DashboardFilter;
   ngOnDestroy(): void {}
@@ -140,11 +144,37 @@ export class YBarComponent implements OnInit, OnDestroy {
     position: 'center',
     color: 'white',
   };
-  ApplySettings(){
-    
-    if(this.input.Settings !=null){
-      if(this.input.Settings.DataType!=null){
-        this.dataType = this.input.Settings.DataType
+  ApplySettings() {
+    if (this.input.Settings != null) {
+      if (this.input.Settings.NumberType != null) {
+        this.dataType = this.input.Settings.NumberType;
+      }
+      if (this.input.Settings.ShowLabels != null) {
+        this.showLabels = this.input.Settings.ShowLabels;
+      }
+      if (this.input.Settings.Stack != null) {
+        this.isStacked = this.input.Settings.Stack;
+      }
+      if (this.input.Settings.SeriesColor != null) {
+        if(this.input.Settings.SeriesColor == "Primary")
+          this.seriesColors = SeriesColorPrimary
+        else if(this.input.Settings.SeriesColor == "Secondary") 
+          this.seriesColors = SeriesColorSecondary
+        else
+          this.seriesColors = SeriesColorPrimary
+      }
+      else
+        this.seriesColors = SeriesColorPrimary
+
+      if (this.dataType == 'Number') {
+        this.prefix = '';
+        this.suffix = '';
+      } else if (this.dataType == 'Percentage') {
+        this.prefix = '';
+        this.suffix = '%';
+      } else if (this.dataType == 'Dollar') {
+        this.prefix = '$';
+        this.suffix = '';
       }
     }
   }
