@@ -23,3 +23,8 @@
   ::ng-deep .k-upload .k-upload-files .k-file{
     display: none!important;
   }
+
+ ::ng-deep .kendo-tilelayout-item-body::-webkit-scrollbar {
+   height: 900px!important;
+  }
+
