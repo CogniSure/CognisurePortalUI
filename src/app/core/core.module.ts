@@ -29,7 +29,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import { EmailpopupComponent } from './emailpopup/emailpopup.component';
 import { FormatAmountPipe } from './pipes/format-amount.pipe';
-import { FilelistComponent } from './filelist/filelist.component';
 import { FileviewerComponent } from './fileviewer/fileviewer.component';
 
 const routes:Routes = [
@@ -57,7 +56,6 @@ const routes:Routes = [
     FormatAmountPipe,
     FormatAmountPipe,
     EmailpopupComponent,
-    FilelistComponent,
     FileviewerComponent
   ],
   imports: [
