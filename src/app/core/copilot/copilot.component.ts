@@ -160,8 +160,6 @@ originalHeight: string;
 
   minimize() {
     this.dialogRef.updateSize('auto', 'auto');
-    
-    // You might want to position the dialog to its original position
   }
 
   toggleMaximize(): void {
@@ -193,7 +191,6 @@ originalHeight: string;
 onFileSelected(event: any): void {
   const files: FileList = event.target.files;
   if (files && files.length > 0) {
-    // Clear previous files
     this.uploadedFiles = [];
 
     // Iterate through selected files and add them

@@ -88,7 +88,7 @@ export class TopbarComponent {
     // const dialogRef = this.dialog.open(CopilotComponent);
     const dialogRef = this.dialog.open(CopilotComponent, {
       data: {
-        showSubmissionId: false // Pass the parameter to hide the "Submission ID - Account Name" section
+        showSubmissionId: true // Pass the parameter to hide the "Submission ID - Account Name" section
       }
     });
 

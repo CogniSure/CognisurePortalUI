@@ -12,7 +12,7 @@ import { FileRestrictions  } from '@progress/kendo-angular-upload';
 })
 export class FileviewerComponent {
   @ViewChild('fileViewer') fileViewer: ElementRef | undefined;
-
+  @Input() showSubmissionId: boolean = true;
   showToolbar: boolean = true;
   uploadedFiles: File[] = []; 
   previewurl: SafeResourceUrl[] = [];

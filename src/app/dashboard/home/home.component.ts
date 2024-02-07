@@ -8,7 +8,7 @@ import { SignalRService } from 'src/app/services/SignalR/signal-r.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  @Input() showSubmissionId: boolean = true;
+@Input() showSubmissionId: boolean = true;
   constructor(public signalRService: SignalRService, private http: HttpClient) { }
   ngOnInit() {
     // this.signalRService.startConnection();
