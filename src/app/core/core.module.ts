@@ -68,6 +68,7 @@ const routes:Routes = [
     DropDownListModule,
     IconsModule,
     MatDialogModule,
+    MatDialogModule,
     RouterModule.forChild(routes)
   ],
   exports:[

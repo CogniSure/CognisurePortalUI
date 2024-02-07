@@ -14,7 +14,7 @@ import { RemindersComponent } from './reminders/reminders.component';
 import { KendoModule } from '../kendo/kendo.module';
 import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
 import { ChartsModule } from '@progress/kendo-angular-charts';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
     ReactiveFormsModule,
     KendoModule,
     ChartsModule,
+    MatDialogModule,
     SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
   ]
 })

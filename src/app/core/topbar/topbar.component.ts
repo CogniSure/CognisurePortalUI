@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
@@ -10,12 +10,14 @@ import { GlobalService } from '../../services/common/global.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
 })
 export class TopbarComponent {
+  @Input() showSubmissionId: boolean = false;
   dropdownValues: string[] = [];
   isToggleOn: boolean = false;
   dropdownOptions: { label: string; link: string }[] = [];
@@ -28,8 +30,11 @@ export class TopbarComponent {
     private cdRef: ChangeDetectorRef,
     private auth: AuthService,
     private globalService: GlobalService,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    
+  ) {
+    this.showSubmissionId = this.showSubmissionId;
+  }
 
   defaultProfile = false;
   imageSource: any;
@@ -80,7 +85,12 @@ export class TopbarComponent {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CopilotComponent);
+    // const dialogRef = this.dialog.open(CopilotComponent);
+    const dialogRef = this.dialog.open(CopilotComponent, {
+      data: {
+        showSubmissionId: false // Pass the parameter to hide the "Submission ID - Account Name" section
+      }
+    });
 
     dialogRef.afterClosed().subscribe((result) => {});
   }

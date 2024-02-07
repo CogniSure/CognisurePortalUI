@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -10,6 +10,10 @@ import { UploadsModule,FileSelectModule,FileRestrictions  } from '@progress/kend
 import { Observable, Subject, from, map, merge, scan } from 'rxjs';
 import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DOCUMENT } from '@angular/common';
+
+
 @Component({
   selector: 'app-copilot',
   templateUrl: './copilot.component.html',
@@ -49,7 +53,8 @@ originalHeight: string;
     allowedExtensions: [],
   };
 
-  constructor(private svc: ChatService, private dialog: MatDialog) {
+  constructor(private svc: ChatService, private dialog: MatDialog,public dialogRef: MatDialogRef<CopilotComponent>,
+    @Inject(DOCUMENT) private document: Document) {
     const hello: Message = {
       author: this.bot,
       suggestedActions: [
@@ -85,8 +90,8 @@ originalHeight: string;
   }
 
   ngOnInit(): void {
-    // Store the original dimensions when the component is initialized
-    this.originalWidth = '400px'; // Set the initial width as per your requirement
+
+    this.originalWidth = '400px'; 
     this.originalHeight = '300px'; // Set the initial height as per your requirement
   }
 
@@ -148,6 +153,16 @@ originalHeight: string;
     reader.readAsDataURL(file);
   }
   
+  maximize() {
+    this.dialogRef.updateSize('92%', '90%');
+    // this.dialogRef.updatePosition({ top: '0', left: '5%', right: '15%' });
+  }
+
+  minimize() {
+    this.dialogRef.updateSize('auto', 'auto');
+    
+    // You might want to position the dialog to its original position
+  }
 
   toggleMaximize(): void {
     if (this.isMaximized) {
@@ -163,6 +178,9 @@ originalHeight: string;
     }
     this.isMaximized = !this.isMaximized; 
   }
+
+
+  
 
 
   
