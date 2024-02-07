@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SecurityContext } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, SecurityContext, ViewChild } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 // import { FileService } from 'src/app/services/common/filelist.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -11,6 +11,9 @@ import { FileRestrictions  } from '@progress/kendo-angular-upload';
   styleUrls: ['./fileviewer.component.scss']
 })
 export class FileviewerComponent {
+  @ViewChild('fileViewer') fileViewer: ElementRef | undefined;
+
+  showToolbar: boolean = true;
   uploadedFiles: File[] = []; 
   previewurl: SafeResourceUrl[] = [];
   // documents: any[];
@@ -37,13 +40,14 @@ export class FileviewerComponent {
 
   ngOnInit(): void {
     // Display preview of the first file by default
-    this.changePreview(0);
+    // this.changePreview(0);
   }
 
   changePreview(index: number): void {
     const selectedPdfData = this.pdfList[index].base64Data;
     const pdfUrl = this.createPdfUrl(selectedPdfData);
     this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(pdfUrl);
+    this.adjustHeightToFitContent();
   }
 
   previewSelectedFile(file: File): void {
@@ -60,7 +64,17 @@ export class FileviewerComponent {
     return 'data:application/pdf;base64,' + base64Data;
   }
 
-
+  private adjustHeightToFitContent(): void {
+    setTimeout(() => {
+      if (this.fileViewer && this.fileViewer.nativeElement) {
+        const iframe = this.fileViewer.nativeElement as HTMLIFrameElement;
+        iframe.onload = () => {
+          const contentHeight = iframe.contentWindow?.document.body.scrollHeight + 'px';
+          iframe.style.height = contentHeight;
+        };
+      }
+    });
+  }
 
 
 }

@@ -8,6 +8,7 @@ import { SignalRService } from 'src/app/services/SignalR/signal-r.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  
   constructor(public signalRService: SignalRService, private http: HttpClient) { }
   ngOnInit() {
     // this.signalRService.startConnection();

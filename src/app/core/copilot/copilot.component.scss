@@ -53,7 +53,7 @@ color:#fff;
 
 ::ng-deep .k-chat .k-message-group:not(.k-alt) .k-only .k-bubble {
   color: #00B6AD;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 ::ng-deep .k-upload .k-dropzone .k-dropzone-hint{
@@ -66,6 +66,8 @@ color:#fff;
 ::ng-deep .k-upload .k-upload-button {
   font-size: 12px;
   margin-top: 8%;
+  background-color: #009cc1;
+  color: #fff;
 }
 ::ng-deep .k-chat .k-timestamp {
   color: #000;
@@ -77,4 +79,34 @@ color:#fff;
 
 ::ng-deep .cdk-overlay-pane{
     max-width: 100vw!important;
+}
+::ng-deep .k-chat {
+  border-color: rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+}
+.header_data{
+  padding: 1% 2% 0% 2%;
+  background-color: linear-gradient(135deg, #00A7CE 0%, #00CEC3 100%);
+}
+
+.centered-text{
+font-size: 15px;
+color:#fff!important;
+}
+
+.files_header{
+  font-size: 15px;
+  color:#fff!important;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__container {
+ margin-top: 1%!important;
+}
+
+::ng-deep .mat-mdc-button>.mat-icon {
+  margin-top: -8px!important;
+}
+
+::ng-deep .mat-mdc-button .mdc-button__label{
+  margin-top: -8px!important;
 }

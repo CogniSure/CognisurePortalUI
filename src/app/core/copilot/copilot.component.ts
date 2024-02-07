@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -22,6 +22,7 @@ import { ChatService } from 'src/app/services/common/chat.service';
   
 // }
 export class CopilotComponent {
+  @Input() showSubmissionId: boolean = true;
   isMaximized: boolean = false;
   // originalWidth: string = '70rem';
   // originalHeight: string = '80%';
@@ -156,8 +157,8 @@ originalHeight: string;
       });
     } else {
       this.dialog.open(CopilotComponent, {
-        width: '100vw', 
-        height: '100vh', 
+        width: '92vw', 
+        height: '90vh', 
       });
     }
     this.isMaximized = !this.isMaximized; 
