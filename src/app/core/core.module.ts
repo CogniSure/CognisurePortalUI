@@ -30,6 +30,7 @@ import { PopupModule } from '@progress/kendo-angular-popup';
 import { EmailpopupComponent } from './emailpopup/emailpopup.component';
 import { FormatAmountPipe } from './pipes/format-amount.pipe';
 import { FileviewerComponent } from './fileviewer/fileviewer.component';
+import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 
 const routes:Routes = [
 ];
@@ -56,7 +57,8 @@ const routes:Routes = [
     FormatAmountPipe,
     FormatAmountPipe,
     EmailpopupComponent,
-    FileviewerComponent
+    FileviewerComponent,
+    SanitizeUrlPipe
   ],
   imports: [
     CommonModule,
@@ -88,7 +90,8 @@ const routes:Routes = [
     SelectComponent,
     CopilotComponent,
     EmailpopupComponent,
-    FormatAmountPipe
+    FormatAmountPipe,
+    SanitizeUrlPipe
   ],
   providers: [FormatAmountPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

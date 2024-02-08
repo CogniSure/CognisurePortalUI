@@ -35,7 +35,7 @@ export class AuthService {
   private _sessionTime: number = 20;
   expiresAt: number = 5 * 60;
   private timerSubscription!: Subscription;
-
+  public zohotoken = "";
   private timerStartSubscription!: Subscription;
   private timer: Observable<number> = interval(1000);
   private _remainSeconds = new Subject<number>();
@@ -63,6 +63,12 @@ export class AuthService {
     hParams = hParams.set('username', email);
     hParams = hParams.set('password', password);
     return this.http.postData(apiUrl, hParams, '');
+  }
+  public getZOHOToken(): Observable<any>{
+    this.env = this.configService.settings
+      var apiUrl = this.env.baseUrl
+      let hParams = new HttpParams();
+      return this.http.getData(apiUrl+"api/zohotoken",hParams);
   }
   public refreshToken(): Observable<any> {
     this.env = this.configService.settings;
