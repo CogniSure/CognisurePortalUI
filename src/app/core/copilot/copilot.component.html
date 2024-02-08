@@ -27,16 +27,20 @@
       <kendo-tilelayout-item [col]="5" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #00A7CE">
         <kendo-tilelayout-item-body>
           <div>          
-            <button mat-button mat-dialog-close style="float: right;color:#fff!important;margin-top: 5px;">X</button>
-            <!-- <button mat-button mat-dialog-close (click)="toggleMaximize()" style="float: right;color:#fff!important">
-            <mat-icon>{{ isMaximized ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
-          </button> -->
-          <button mat-icon-button (click)="maximize()" style="float: right;color:#fff!important;margin-top: -6px;">
+            <button mat-button mat-dialog-close style="float: right;color:#fff!important;margin-top: 11px;">X</button>
+            
+          <!-- <button mat-icon-button (click)="maximize()" style="float: right;color:#fff!important;margin-top: -6px;">
             <mat-icon>fullscreen</mat-icon>
           </button>
           <button mat-icon-button (click)="minimize()" style="float: right;color:#fff!important;margin-top: -6px;">
             <mat-icon>fullscreen_exit</mat-icon>
+          </button> -->
+
+          <button mat-icon-button (click)="toggleMaximize()" style="float: right;color:#fff!important;">
+            <mat-icon>{{ isMaximized ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
           </button>
+          
+
           <!-- <button mat-button mat-dialog-close style="float:right;position: absolute;top: 1.5%;right:25%" (click)="toggleMinimize()">
             <mat-icon>remove</mat-icon>
           </button> -->

@@ -153,32 +153,50 @@ originalHeight: string;
     reader.readAsDataURL(file);
   }
   
+  // maximize() {
+  //   this.dialogRef.updateSize('92%', '90%');
+  //   // this.dialogRef.updatePosition({ top: '0', left: '5%', right: '15%' });
+  // }
+
+  // minimize() {
+  //   this.dialogRef.updateSize('auto', 'auto');
+  // }
+
+  // toggleMaximize(): void {
+  //   if (this.isMaximized) {
+  //     this.dialog.open(CopilotComponent, {
+  //       width: this.originalWidth,
+  //       maxHeight: this.originalHeight,
+  //     });
+  //   } else {
+  //     this.dialog.open(CopilotComponent, {
+  //       width: '92vw', 
+  //       height: '90vh', 
+  //     });
+  //   }
+  //   this.isMaximized = !this.isMaximized; 
+  // }
+
+
+  toggleMaximize() {
+    if (this.isMaximized) {
+      this.minimize();
+    } else {
+      this.maximize();
+    }
+  }
+
   maximize() {
     this.dialogRef.updateSize('92%', '90%');
-    // this.dialogRef.updatePosition({ top: '0', left: '5%', right: '15%' });
+    // this.dialogRef.updatePosition({ top: '0', left: '0' });
+    this.isMaximized = true;
   }
 
   minimize() {
     this.dialogRef.updateSize('auto', 'auto');
+    // You might want to position the dialog to its original position
+    this.isMaximized = false;
   }
-
-  toggleMaximize(): void {
-    if (this.isMaximized) {
-      this.dialog.open(CopilotComponent, {
-        width: this.originalWidth,
-        maxHeight: this.originalHeight,
-      });
-    } else {
-      this.dialog.open(CopilotComponent, {
-        width: '92vw', 
-        height: '90vh', 
-      });
-    }
-    this.isMaximized = !this.isMaximized; 
-  }
-
-
-  
 
 
   

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, SecurityContext, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, SecurityContext, ViewChild, Renderer2 } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 // import { FileService } from 'src/app/services/common/filelist.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -11,7 +11,8 @@ import { FileRestrictions  } from '@progress/kendo-angular-upload';
   styleUrls: ['./fileviewer.component.scss']
 })
 export class FileviewerComponent {
-  @ViewChild('fileViewer') fileViewer: ElementRef | undefined;
+  selectedpdf: any; 
+  @ViewChild('fileviewer') fileViewer?: ElementRef<HTMLIFrameElement>; 
   @Input() showSubmissionId: boolean = true;
   showToolbar: boolean = true;
   uploadedFiles: File[] = []; 
@@ -35,21 +36,40 @@ export class FileviewerComponent {
     allowedExtensions: [],
   };
 
-  constructor(private sanitizer:DomSanitizer, private fileService: FileService) { 
+  constructor(private sanitizer:DomSanitizer, private fileService: FileService, private renderer: Renderer2) { 
   }
 
   ngOnInit(): void {
     // Display preview of the first file by default
-    // this.changePreview(0);
+    this.changePreview(0);
   }
 
   changePreview(index: number): void {
     const selectedPdfData = this.pdfList[index].base64Data;
     const pdfUrl = this.createPdfUrl(selectedPdfData);
+    const iframe = this.fileViewer?.nativeElement;
     this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(pdfUrl);
     this.adjustHeightToFitContent();
+
+    if (iframe) {
+      // Set the src attribute of the iframe
+      iframe.src = pdfUrl;
+
+      // Wait for iframe content to load
+      iframe.onload = () => {
+        // Inject CSS to hide the toolbar
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDocument) {
+          const toolbarElement = iframeDocument.getElementById('toolbar');
+          if (toolbarElement) {
+            toolbarElement.style.display = 'none';
+          }
+        }
+      };
+    }
   }
 
+  
   previewSelectedFile(file: File): void {
     if (file.type === 'application/pdf') {
       this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));

@@ -41,3 +41,6 @@
 //   border-radius: 15px;
 // }
 
+::ng-deep #iframe-container #toolbar {
+  display: none!important;
+}
