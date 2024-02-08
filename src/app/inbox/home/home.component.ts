@@ -197,7 +197,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   OpenCopilot(item: any) {
     let dialog1: MatDialog;
-    const dialogRef = this.dialog.open(CopilotComponent);
+    const dialogRef = this.dialog.open(CopilotComponent,{
+      data:item
+    });
 
     dialogRef.afterClosed().subscribe((result) => {});
   }

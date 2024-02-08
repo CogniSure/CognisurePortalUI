@@ -35,7 +35,7 @@
       <iframe width="100%" height="300px" src="previewurl"></iframe> -->
 <div style="max-height: 550px;overflow-y: auto;border:1px solid rgba(0, 0, 0, 0.08);border-radius: 15px;">
   <div class="conversion_popup">
-<div *ngFor="let pdf of pdfList; let i = index" >
+<div *ngFor="let pdf of files; let i = index" >
   <div style="padding: 4% 0 4% 0;background-color: #00B6AD!important;color: #fff;">
   <button (click)="changePreview(i)" style="border: none;background-color: #00B6AD!important;color:#fff"><i class="fa fa-file-pdf-o"></i> {{ pdf.name }}</button>
   </div>

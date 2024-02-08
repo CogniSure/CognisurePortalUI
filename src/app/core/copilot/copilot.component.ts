@@ -12,6 +12,7 @@ import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DOCUMENT } from '@angular/common';
+import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ import { DOCUMENT } from '@angular/common';
   
 // }
 export class CopilotComponent {
-  @Input() showSubmissionId: boolean = true;
+  showSubmissionId: boolean = true;
   isMaximized: boolean = false;
   // originalWidth: string = '70rem';
   // originalHeight: string = '80%';
@@ -53,8 +54,8 @@ originalHeight: string;
     allowedExtensions: [],
   };
 
-  constructor(private svc: ChatService, private dialog: MatDialog,public dialogRef: MatDialogRef<CopilotComponent>,
-    @Inject(DOCUMENT) private document: Document) {
+  constructor(private svc: ChatService, private inboxService : InboxService, private dialog: MatDialog,public dialogRef: MatDialogRef<CopilotComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any) {
     const hello: Message = {
       author: this.bot,
       suggestedActions: [
@@ -93,6 +94,24 @@ originalHeight: string;
 
     this.originalWidth = '400px'; 
     this.originalHeight = '300px'; // Set the initial height as per your requirement
+    console.log("Copilot Data")
+    console.log(this.data)
+    if(this.data.SubmissionID != null){
+      this.inboxService.getSubmissionFilesFromDB("0",this.data.SubmissionID,"0")
+    .subscribe(res=>{
+      if(res!=null && res.value != null && res.value.length > 0)
+      {
+        res.value.forEach((file:any) => {
+          this.pdfList.push(
+            {
+              name : file.fileName,
+              base64Data : file.fileData
+            })
+        });
+      }
+    })
+    }
+    
   }
 
   public sendMessage(e: SendMessageEvent): void {
@@ -217,5 +236,5 @@ onFileSelected(event: any): void {
     }
   }
 }
-
+pdfList: { name: string, base64Data: string }[] = []
 }
