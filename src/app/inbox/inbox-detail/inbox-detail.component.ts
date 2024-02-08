@@ -67,14 +67,17 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     // const clientId = '1074';
     // const submissionId = '6A2A02C3-BEA8-4EE9-957F-F4396EF0153A';
     // const email = 'submissiontesting@cognisure.ai';
-   
+    console.log("Current Submission")
+    console.log(submission)
     const clientId = this.userProfile.ClientCode;
     const email = this.userProfile.Email;
-    const submissionId = submission.ClientSubmissionGUID;
+    const submissionGuid = submission.ClientSubmissionGUID;
+    const submissionId = submission.SubmissionId;
 
-    this.setHeader(email,clientId,submissionId);
-    this.setExposureSummary(email,clientId,submissionId);
-    this.setLossSummary(email,clientId,submissionId);
+    console.log(submissionId)
+    this.setHeader(email,clientId,submissionGuid);
+    this.setExposureSummary(email,clientId,submissionGuid);
+    this.setLossSummary(email,clientId,submissionGuid);
     this.setSubmissionFiles(email,clientId,submissionId);
   }
   setExposureSummary(email:string,clientId:string,submissionId:string) {
@@ -507,12 +510,14 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
          res.value.forEach((data:any) => {
           if(data!=null){
             let subFile : SubmissionFile = {
-              SlNo : data.slNo,
+              ID : data.slNo,
+              FileGUID : data.fileGUID,
               FileName: data.fileName,
-              Type: data.type,
+              DocumentType: data.documentType,
               LineOfBusiness: data.lineOfBusiness,
               Status: data.status,
-              Carrier : ""
+              Carrier : data.carrier,
+              FileData : data.fileData
             }
             subFiles.push(subFile)
           }

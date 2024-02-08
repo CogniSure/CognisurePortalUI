@@ -132,7 +132,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.gridView = this.data;
     this.loading=false;
     this.dataLoaded = true;
-    this.showSpinner = true;
+    this.showSpinner = false;
     this.selectedValue = { label: 'High', value: 'option1' };
 
   }

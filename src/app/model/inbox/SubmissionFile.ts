@@ -1,8 +1,10 @@
 export interface SubmissionFile {
-    SlNo: number,
+    ID: number,
+    FileGUID : string,
     FileName: string,
-    Type: string,
+    DocumentType: string,
     Carrier : string
     LineOfBusiness: string,
     Status: string,
+    FileData : string
 }

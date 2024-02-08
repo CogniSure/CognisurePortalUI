@@ -25,4 +25,16 @@ export class DocumentVaultComponent implements OnInit {
         
     })
   }
+  DownloadSumissionFile(rowItem:any){
+    console.log("Files for download")
+    console.log(rowItem)
+
+    const source = `data:application/pdf;base64,${rowItem.FileData}`;
+    const downloadLink = document.createElement('a');
+    const fileName = rowItem.FileName;
+
+    downloadLink.href = source;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
 }

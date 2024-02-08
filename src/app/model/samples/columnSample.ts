@@ -966,10 +966,10 @@ export class ColumnSample {
   ];
   public static SubmissionFileColumns = [
     {
-      field: 'SlNo',
-      title: 'Sl No',
+      field: 'ID',
+      title: 'Submission Id',
       default : true,
-      width: ColumnSize.Small,
+      width: ColumnSize.ExtraSmall,
       type: 'text',
       columnmenu: true,
       filterable: true,
@@ -979,17 +979,17 @@ export class ColumnSample {
       field: 'FileName',
       title: 'File Name',
       default : true,
-      width: ColumnSize.Medium,
+      width: ColumnSize.Large,
       type: 'text',
       sortable: true,
       columnmenu: true,
       filterable: true,
     },
     {
-      field: 'Type',
-      title: 'Doc Type',
+      field: 'DocumentType',
+      title: 'Document Type',
       default : true,
-      width: ColumnSize.Large,
+      width: ColumnSize.Medium,
       type: 'text',
       sortable: false,
       columnmenu: true,
@@ -1014,6 +1014,17 @@ export class ColumnSample {
       sortable: true,
       columnmenu: true,
       filterable: true,
+    },
+    {
+      field: 'Outputs',
+      title: 'Download',
+      default : true,
+      width: 60,
+      type: 'Download',
+      columnmenu: false,
+      sortable: false,
+      groupable: false,
+      redirectUrl: '/inbox/detail/lossanalysis',
     },
   ];
 }

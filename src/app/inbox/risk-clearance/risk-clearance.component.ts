@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UserProfile } from 'src/app/model/profile/userprofile';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 
@@ -9,6 +10,23 @@ import { GlobalService } from 'src/app/services/common/global.service';
   styleUrls: ['./risk-clearance.component.scss'],
 })
 export class RiskClearanceComponent implements OnInit, OnDestroy {
+
+  public userDetail: UserProfile = {
+    UserID: 0,
+    FirstName: '',
+    MiddleName: '',
+    LastName: '',
+    Password: '',
+    PhoneNumber: '',
+    Email: '',
+    ClientID: 0,
+    ClientName: '',
+    UserTypeName: '',
+    UserTypeID: 0,
+    ClientCode: '',
+    IsAdmin: false,
+    UserImage: '',
+  };
   constructor(
     private authService: AuthService,
     private http: HttpClient,
@@ -20,7 +38,9 @@ export class RiskClearanceComponent implements OnInit, OnDestroy {
     //this.http.post("https://analytics.cognisure.ai")
   }
   ngOnInit(): void {
-    this.authService.getZOHOToken().subscribe((token) => {
+    this.userDetail = this.globalService.getUserProfile();
+    //this.authService.getZOHOToken("arabindam@cognisure.ai").subscribe((token) => {
+      this.authService.getZOHOToken(this.userDetail.Email).subscribe((token) => {
       console.log('token');
       this.authService.zohotoken = token.value;
 

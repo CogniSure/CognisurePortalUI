@@ -292,7 +292,7 @@
       </kendo-grid-column>
 
       <kendo-grid-column
-        *ngIf="column.type == 'DownloadXL'"
+        *ngIf="column.type == 'Download'"
         field="{{ column.field }}"
         title="{{ column.title }}"
         format="{{ column.format }}"
@@ -306,9 +306,7 @@
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template kendoGridCellTemplate let-dataItem>
-          <ng-container
-            *ngIf="dataItem.Status === 'Completed'; else inProgressTemplate"
-          >
+          <ng-container>
             <a
               color="primary"
               class="excel_download"
@@ -320,12 +318,6 @@
               />
             </a>
           </ng-container>
-          <ng-template #inProgressTemplate>
-            <img
-              src="../../../assets//images/disabled_excel.png"
-              alt="Gray Image"
-            />
-          </ng-template>
         </ng-template>
       </kendo-grid-column>
 

@@ -61,11 +61,46 @@ export class CacheService {
   private summary_Umbrella_Losses$ = new BehaviorSubject<any[]>([]);
 
   constructor() {
-    let isSummaryCached = sessionStorage.getItem('isSummaryCached');
   }
 
   clearSession() {
-    this.accountInformationSubject$.complete();
+    //this.accountInformationSubject$.complete();
+    this.accountInformationSubject$.next([]);
+    this.submissionFilesSubject$.next([]);
+    this.tivSubject$.next([]);
+    this.noOfLocationsSubject$.next([]);
+    this.noOfBuildingsSubject$.next([]);
+    this.constructionTypeSubject$.next([]);
+    this.occupancyTypeSubject$.next([]);
+    this.yearBuildSubject$.next([]);
+    this.protectionClassSubject$.next([]);
+    this.claimsbyLOBbyYear$.next([]);
+    this.incurredbyLOBbyYear$.next([]);
+    this.incurredRangeCount$.next([]);
+    this.claimbyClaimTypebyYear$.next([]);
+    this.incurredbyClaimTypebyYear$.next([]);
+    this.claimsbyClaimType$.next([]);
+    this.claimStatus$.next([]);
+    this.totalIncurred$.next([]);
+    this.topLocations$.next([]);
+    this.summary_Agencys$.next([]);
+    this.summary_BusinessOperations$.next([]);
+    this.summary_TotalLosses$.next([]);
+    this.summary_Property_Exposure$.next([]);
+    this.summary_Property_Coverages$.next([]);
+    this.summary_Property_Losses$.next([]);
+    this.summary_Auto_Exposure$.next([]);
+    this.summary_Auto_Coverages$.next([]);
+    this.summary_Auto_Losses$.next([]);
+    this.summary_GL_Exposure$.next([]);
+    this.summary_GL_Coverages$.next([]);
+    this.summary_GL_Losses$.next([]);
+    this.summary_WC_Exposure$.next([]);
+    this.summary_WC_Coverages$.next([]);
+    this.summary_WC_Losses$.next([]);
+    this.summary_Umbrella_Exposure$.next([]);
+    this.summary_Umbrella_Coverages$.next([]);
+    this.summary_Umbrella_Losses$.next([]);
   }
 
   getExposureSummary(widgetName: string): Observable<any[]> {
