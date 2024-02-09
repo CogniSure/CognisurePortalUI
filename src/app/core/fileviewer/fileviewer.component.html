@@ -37,13 +37,13 @@
   <div class="conversion_popup">
 <div *ngFor="let pdf of files; let i = index" >
   <div style="padding: 4% 0 4% 0;background-color: #00B6AD!important;color: #fff;">
-  <button (click)="changePreview(i)" style="border: none;background-color: #00B6AD!important;color:#fff"><i class="fa fa-file-pdf-o"></i> {{ pdf.name }}</button>
+  <button (click)="changePreview(i)" style="border: none;background-color: #00B6AD!important;color:#fff;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ pdf.name }}</button>
   </div>
   <p class="bottom_border"></p>
 </div>
 </div>
 <div *ngFor="let file of uploadedFiles" style="background-color: #8080804d;">
-  <button (click)="previewSelectedFile(file)" style="border: none;background-color: #80808000;padding: 4% 0 4% 4%;"><i class="fa fa-file-pdf-o"></i> {{ file.name }}</button>
+  <button (click)="previewSelectedFile(file)" style="border: none;background-color: #80808000;padding: 4% 0 4% 2%;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ file.name }}</button>
   <p class="bottom_border"></p>
 </div>
 </div>

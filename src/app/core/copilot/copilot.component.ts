@@ -206,8 +206,8 @@ originalHeight: string;
   }
 
   maximize() {
-    this.dialogRef.updateSize('92%', '90%');
-    // this.dialogRef.updatePosition({ top: '0', left: '0' });
+    this.dialogRef.updateSize('90%', '88%');
+    // this.dialogRef.updatePosition({ top: '10%', left: '10%' });
     this.isMaximized = true;
   }
 

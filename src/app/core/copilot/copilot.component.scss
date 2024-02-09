@@ -112,3 +112,7 @@ margin-top: 3%;
 ::ng-deep .mat-mdc-button .mdc-button__label{
   margin-top: -8px!important;
 }
+
+::ng-deep .mdc-dialog__surface{
+  overflow-y: visible!important;
+}
