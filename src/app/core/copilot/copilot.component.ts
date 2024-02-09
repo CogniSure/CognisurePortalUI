@@ -90,10 +90,12 @@ originalHeight: string;
     );
   }
 
+
+  
   ngOnInit(): void {
 
-    this.originalWidth = '400px'; 
-    this.originalHeight = '300px'; // Set the initial height as per your requirement
+    // this.originalWidth = '400px'; 
+    // this.originalHeight = '300px'; // Set the initial height as per your requirement
     console.log("Copilot Data")
     console.log(this.data)
     if(this.data.SubmissionID != null){
