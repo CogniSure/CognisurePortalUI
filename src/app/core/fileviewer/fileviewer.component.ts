@@ -11,6 +11,8 @@ import { FileRestrictions  } from '@progress/kendo-angular-upload';
   styleUrls: ['./fileviewer.component.scss']
 })
 export class FileviewerComponent {
+  selectedFileIndex: number | null = null;
+  activePdfIndex: number | null = null;
   selectedpdf: any; 
   @ViewChild('fileviewer') fileViewer?: ElementRef<HTMLIFrameElement>; 
   @Input() showSubmissionId: boolean = true;
@@ -30,24 +32,36 @@ export class FileviewerComponent {
   }
 
   ngOnInit(): void {
-    // Display preview of the first file by default
     this.changePreview(0);
   }
 
   changePreview(index: number): void {
+    this.activePdfIndex = index;
     const selectedPdfData = this.files[index].base64Data;
     const pdfUrl = this.createPdfUrl(selectedPdfData);
     const iframe = this.fileViewer?.nativeElement;
     this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(pdfUrl);
     this.adjustHeightToFitContent();
 
-    if (iframe) {
-      // Set the src attribute of the iframe
-      iframe.src = pdfUrl;
+    const buttons = document.querySelectorAll('.file-button');
+    const divs = document.querySelectorAll('.file-div');
+    buttons.forEach((button: any) => {
+      button.style.backgroundColor = '#00B6AD';
+    });
+    divs.forEach((div: any) => {
+      div.style.backgroundColor = '#00B6AD';
+    });
+  
+    const selectedButton = document.getElementById('file-button-' + index);
+    const selectedDiv = document.getElementById('file-div-' + index);
+    if (selectedButton && selectedDiv) {
+      selectedButton.style.backgroundColor = '#009cc1';
+      selectedDiv.style.backgroundColor = '#009cc1';
+    }
 
-      // Wait for iframe content to load
+    if (iframe) {
+      iframe.src = pdfUrl;
       iframe.onload = () => {
-        // Inject CSS to hide the toolbar
         const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDocument) {
           const toolbarElement = iframeDocument.getElementById('toolbar');
@@ -60,7 +74,8 @@ export class FileviewerComponent {
   }
 
   
-  previewSelectedFile(file: File): void {
+  previewSelectedFile(file: File, index: number): void {
+    this.selectedFileIndex = index;
     if (file.type === 'application/pdf') {
       this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
     } else {
@@ -85,6 +100,7 @@ export class FileviewerComponent {
       }
     });
   }
+
 
 
 }

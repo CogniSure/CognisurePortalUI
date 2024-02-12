@@ -36,14 +36,14 @@
 <div style="max-height: 550px;overflow-y: auto;border:1px solid rgba(0, 0, 0, 0.08);border-radius: 15px;">
   <div class="conversion_popup">
 <div *ngFor="let pdf of files; let i = index" >
-  <div style="padding: 4% 0 4% 0;background-color: #00B6AD!important;color: #fff;">
-  <button (click)="changePreview(i)" style="border: none;background-color: #00B6AD!important;color:#fff;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ pdf.name }}</button>
+  <div id="file-div-{{ i }}" class="file-div" style="padding: 4% 0 4% 0;background-color: #00B6AD!important;color: #fff;">
+  <button (click)="changePreview(i)" id="file-button-{{ i }}" class="file-button" style="border: none;background-color: #00B6AD!important;color:#fff;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ pdf.name }}</button>
   </div>
   <p class="bottom_border"></p>
 </div>
 </div>
-<div *ngFor="let file of uploadedFiles" style="background-color: #8080804d;">
-  <button (click)="previewSelectedFile(file)" style="border: none;background-color: #80808000;padding: 4% 0 4% 2%;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ file.name }}</button>
+<div *ngFor="let file of uploadedFiles; let i = index" [style.background-color]="selectedFileIndex === i ? '#8080804d' : 'transparent'">
+  <button (click)="previewSelectedFile(file, i)" style="border: none;background-color: #80808000;padding: 4% 0 4% 2%;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ file.name }}</button>
   <p class="bottom_border"></p>
 </div>
 </div>
