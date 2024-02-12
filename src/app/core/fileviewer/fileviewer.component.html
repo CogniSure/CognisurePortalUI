@@ -42,8 +42,8 @@
   <p class="bottom_border"></p>
 </div>
 </div>
-<div *ngFor="let file of uploadedFiles; let i = index" [style.background-color]="selectedFileIndex === i ? '#8080804d' : 'transparent'">
-  <button (click)="previewSelectedFile(file, i)" style="border: none;background-color: #80808000;padding: 4% 0 4% 2%;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ file.name }}</button>
+<div *ngFor="let file of uploadedFiles; let i = index" [style.background-color]="selectedFileIndex === i ? '#009cc1' : '#8080808f'">
+  <button (click)="previewSelectedFile(file, i)" style="border: none;background-color: #80808000;color:#fff;padding: 4% 0 4% 2%;text-align: left!important;"><i class="fa fa-file-pdf-o"></i> {{ file.name }}</button>
   <p class="bottom_border"></p>
 </div>
 </div>

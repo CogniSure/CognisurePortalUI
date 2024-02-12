@@ -29,6 +29,7 @@ export class FileviewerComponent {
   };
 
   constructor(private sanitizer:DomSanitizer, private fileService: FileService, private renderer: Renderer2) { 
+    
   }
 
   ngOnInit(): void {
@@ -76,6 +77,16 @@ export class FileviewerComponent {
   
   previewSelectedFile(file: File, index: number): void {
     this.selectedFileIndex = index;
+    const buttons = document.querySelectorAll('.file-button');
+    const divs = document.querySelectorAll('.file-div');
+    buttons.forEach((button: any) => {
+      button.style.backgroundColor = '#00B6AD';
+    });
+    divs.forEach((div: any) => {
+      div.style.backgroundColor = '#00B6AD';
+    });
+    
+
     if (file.type === 'application/pdf') {
       this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
     } else {
