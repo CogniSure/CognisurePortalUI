@@ -1,22 +1,3 @@
-<!-- <div *ngFor="let document of documentList">
-    <button (click)="loadDocument(document)">{{ document }}</button>
-  </div> -->
-
-  <!-- <div>{{ documentContent }}</div> -->
-
-  <!-- <img src="../../../../../../../filelist/hdhp_1.pdf"> -->
-
-  <!-- <div class="document-content" *ngIf="selectedDocumentContent">
-    <ng-container *ngIf="getFileType(selectedDocumentContent) === 'pdf'; else excelContent">
-      <ngx-extended-pdf-viewer [src]="selectedDocumentContent" style="width: 100%; height: 100%;"></ngx-extended-pdf-viewer>
-    </ng-container>
-    <ng-template #excelContent>
-      <iframe [src]="selectedDocumentContent" style="width: 100%; height: 100%;"></iframe>
-    </ng-template>
-  </div>
-   -->
-
-
    <kendo-tilelayout
         [columns]="7"
         [rowHeight]="'100%'"
@@ -29,10 +10,6 @@
 
         <kendo-tilelayout-item [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="padding:8% 0% 0% 6%;">
-        <!-- <h3><b>New Conversation</b></h3> -->
-      <!-- <button (click)="previewinIframe()">File Name</button>
-
-      <iframe width="100%" height="300px" src="previewurl"></iframe> -->
 <div style="max-height: 550px;overflow-y: auto;border:1px solid rgba(0, 0, 0, 0.08);border-radius: 15px;">
   <div class="conversion_popup">
 <div *ngFor="let pdf of files; let i = index" >

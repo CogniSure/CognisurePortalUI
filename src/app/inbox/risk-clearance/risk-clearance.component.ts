@@ -58,10 +58,12 @@ export class RiskClearanceComponent implements OnInit, OnDestroy {
             tempReturnURL
           );
         console.log(this.embedURL);
+
+        window.open(this.embedURL, "_blank");
       });
     });
   }
-  returnURL = "https://analytics.cognisure.ai/open-view/2701274000004004374?ZOHO_CRITERIA=(SUBMISSIONGUID={GUID})";
+  returnURL = "https://analytics.cognisure.ai/open-view/2701274000004004374?ZOHO_CRITERIA="+'"'+"SUB_SUBMISSIONMETADATA"+'"'+"."+'"'+"SUBMISSIONGUID"+'"'+"='"+"7CDDAB9C-721A-4A5A-AB87-2364CEE133EE"+"'";
   embedURL = '';
   redirectURL =
     'https://accounts.zohoportal.com/accounts/p/10065241642/signin/jwt/auth?jwt=Zohotoken&return_to=returnURL';

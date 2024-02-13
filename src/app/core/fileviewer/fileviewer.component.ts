@@ -42,10 +42,39 @@ export class FileviewerComponent {
     //const pdfUrl = this.createPdfUrl(selectedPdfData);
     console.log("Preview FIle")
     console.log(this.files[index])
-    const blobUrl = this.createBlobUrl(this.files[index])
-    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
-    const iframe = this.fileViewer?.nativeElement;
-    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+    
+    this.CustomizeSelection(index);
+    const fileExt = this.files[index].name.split('.').pop();
+    const contentType = this.getMimeType(fileExt.toLowerCase());
+    
+    
+    console.log(this.files[index])
+    if(contentType == "invalid")
+    {
+      this.selectedPdf = ""
+      const base64UrlData =  'data:application/pdf;base64,' + this.files[index].base64Data;
+      this.download(this.files[index].name,base64UrlData)
+    }
+    else {
+      const blobUrl = this.createBlobUrl(this.files[index],contentType)
+      const iframe = this.fileViewer?.nativeElement;
+      this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+      if (iframe) {
+        iframe.src = blobUrl;
+        iframe.onload = () => {
+          const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
+          if (iframeDocument) {
+            const toolbarElement = iframeDocument.getElementById('toolbar');
+            if (toolbarElement) {
+              toolbarElement.style.display = 'none';
+            }
+          }
+        };
+      }
+    }
+    
+  }
+  CustomizeSelection(index : any){
     this.adjustHeightToFitContent();
 
     const buttons = document.querySelectorAll('.file-button');
@@ -64,21 +93,8 @@ export class FileviewerComponent {
       selectedDiv.style.backgroundColor = '#009cc1';
     }
 
-    if (iframe) {
-      iframe.src = blobUrl;
-      iframe.onload = () => {
-        const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
-        if (iframeDocument) {
-          const toolbarElement = iframeDocument.getElementById('toolbar');
-          if (toolbarElement) {
-            toolbarElement.style.display = 'none';
-          }
-        }
-      };
-    }
   }
-
-  createBlobUrl(file : any){
+  createBlobUrl(file : any,contentType : any){
     const selectedPdfData = file.base64Data;
     const b64toBlob = (b64Data:any, contentType='', sliceSize=512) => {
       const byteCharacters = atob(b64Data);
@@ -99,8 +115,10 @@ export class FileviewerComponent {
       const blob = new Blob(byteArrays, {type: contentType});
       return blob;
     }
-    const fileExt = file.name.split('.').pop();
-    const contentType = this.getMimeType(fileExt.toLowerCase());
+
+    if(contentType == "Invalid"){
+      return 'data:application/pdf;base64,' + selectedPdfData
+    }
     const blob = b64toBlob(selectedPdfData, contentType);
     const blobUrl = URL.createObjectURL(blob);
     return blobUrl;
@@ -117,7 +135,32 @@ export class FileviewerComponent {
     });
     console.log("Preview FIle Upload")
     console.log(file)
-    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+    const fileExt = file.name.split('.').pop();
+    const contentType = this.getMimeType(fileExt!.toLowerCase());
+    
+    
+    console.log(file)
+    if(contentType == "invalid")
+    {
+
+    //   this.selectedPdf = ""
+    //   const blob = new Blob([file], {
+    //     type: 'application/octet-stream'
+    // });
+    // const fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        console.log("Base 64 Data")
+        console.log(reader.result);
+        this.download(file.name,reader.result)
+    };
+      
+    }
+    else{
+      this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+    }
+    
     // if (file.type === 'application/pdf') {
     //   this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
     // } else {
@@ -149,11 +192,11 @@ export class FileviewerComponent {
     else if(mimeType == "xls")
       return "application/vnd.ms-excel"
     else if(mimeType == 'xlsx')
-      return "vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      return "invalid"//"vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     else if(mimeType == "doc")
       return "application/msword"
     else if(mimeType == "docx")
-      return "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      return 'invalid'//"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     else if(mimeType == "ppt")
       return "application/vnd.ms-powerpoint"
     else if(mimeType == "docx")
@@ -169,5 +212,16 @@ export class FileviewerComponent {
     else 
       return ""
   }
-
+  download(fileName : any,fileBase64: any) {
+    console.log("File Download")
+    console.log(fileName)
+    console.log(fileBase64)
+    if (fileBase64 != null) {
+      const source = fileBase64;//`data:application/pdf;base64,${fileBase64}`;
+      const downloadLink = document.createElement('a');
+      downloadLink.href = source;
+      downloadLink.download = fileName;
+      downloadLink.click();
+    }
+  }
 }
