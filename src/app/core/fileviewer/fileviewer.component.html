@@ -17,7 +17,7 @@
         "
       >
         <div class="conversion_popup">
-          <div *ngFor="let pdf of files; let i = index">
+          <div *ngFor="let pdf of files; let i = index" class="conversion_popup" (click)="resetSelectedFileIndex()">
             <div
               id="file-div-{{ i }}"
               class="file-div"
@@ -45,6 +45,7 @@
           </div>
         </div>
         <div
+        id="preview-container"
           *ngFor="let file of uploadedFiles; let i = index"
           [style.background-color]="
             selectedFileIndex === i ? '#009cc1' : '#8080808f'

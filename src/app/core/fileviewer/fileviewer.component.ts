@@ -54,7 +54,8 @@ export class FileviewerComponent {
   changePreview(index: number): void {
     this.jsonView = false;
     this.invalidPreview = false;
-    this.activePdfIndex = index;
+    this.selectedFileIndex = index;
+    // this.activePdfIndex = index;
     this.CustomizeSelection(index);
     const fileExt = this.files[index].name.split('.').pop();
     const contentType = this.getMimeType(fileExt.toLowerCase());
@@ -147,6 +148,7 @@ export class FileviewerComponent {
     const blobUrl = URL.createObjectURL(blob);
     return blobUrl;
   }
+
   previewSelectedFile(file: File, index: number): void {
     this.jsonView = false;
     this.invalidPreview = false;
@@ -201,6 +203,11 @@ export class FileviewerComponent {
       );
     }
   }
+
+  resetSelectedFileIndex(): void {
+    this.selectedFileIndex = null;
+  }
+
   private adjustHeightToFitContent(): void {
     setTimeout(() => {
       if (this.fileViewer && this.fileViewer.nativeElement) {
