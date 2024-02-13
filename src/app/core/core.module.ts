@@ -31,6 +31,7 @@ import { EmailpopupComponent } from './emailpopup/emailpopup.component';
 import { FormatAmountPipe } from './pipes/format-amount.pipe';
 import { FileviewerComponent } from './fileviewer/fileviewer.component';
 import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 const routes:Routes = [
 ];
@@ -71,6 +72,7 @@ const routes:Routes = [
     IconsModule,
     MatDialogModule,
     MatDialogModule,
+    NgxJsonViewerModule,
     RouterModule.forChild(routes)
   ],
   exports:[

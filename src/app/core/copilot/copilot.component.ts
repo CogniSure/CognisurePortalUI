@@ -4,16 +4,24 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
-import { ChatModule, Message, SendMessageEvent, User } from '@progress/kendo-angular-conversational-ui';
+import {
+  ChatModule,
+  Message,
+  SendMessageEvent,
+  User,
+} from '@progress/kendo-angular-conversational-ui';
 import { LayoutModule } from '@progress/kendo-angular-layout';
-import { UploadsModule,FileSelectModule,FileRestrictions  } from '@progress/kendo-angular-upload';
+import {
+  UploadsModule,
+  FileSelectModule,
+  FileRestrictions,
+} from '@progress/kendo-angular-upload';
 import { Observable, Subject, from, map, merge, scan } from 'rxjs';
 import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DOCUMENT } from '@angular/common';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
-
 
 @Component({
   selector: 'app-copilot',
@@ -24,7 +32,7 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
   //   FileSelectModule,LayoutModule,ButtonModule,ChatModule  ],
 })
 // export class DialogContentExample {
-  
+
 // }
 export class CopilotComponent {
   showSubmissionId: boolean = true;
@@ -32,14 +40,14 @@ export class CopilotComponent {
   // originalWidth: string = '70rem';
   // originalHeight: string = '80%';
 
-  originalWidth: string; 
-originalHeight: string; 
+  originalWidth: string;
+  originalHeight: string;
 
   private inMemoryFile: string | null = null;
   public uploadedFiles: File[];
-  uploadSaveUrl = "saveUrl"; // should represent an actual API endpoint
-  uploadRemoveUrl = "removeUrl"; // should represent an actual API endpoint
-  messageGuid : string = "guid";
+  uploadSaveUrl = 'saveUrl'; // should represent an actual API endpoint
+  uploadRemoveUrl = 'removeUrl'; // should represent an actual API endpoint
+  messageGuid: string = 'guid';
 
   public readonly user: User = {
     id: 1,
@@ -54,8 +62,13 @@ originalHeight: string;
     allowedExtensions: [],
   };
 
-  constructor(private svc: ChatService, private inboxService : InboxService, private dialog: MatDialog,public dialogRef: MatDialogRef<CopilotComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any) {
+  constructor(
+    private svc: ChatService,
+    private inboxService: InboxService,
+    private dialog: MatDialog,
+    public dialogRef: MatDialogRef<CopilotComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     const hello: Message = {
       author: this.bot,
       suggestedActions: [
@@ -69,7 +82,7 @@ originalHeight: string;
         // },
       ],
       timestamp: new Date(),
-      text: "CogniSure Copilot",
+      text: 'CogniSure Copilot',
     };
 
     // Merge local and remote messages into a single stream
@@ -84,36 +97,26 @@ originalHeight: string;
           })
         )
       )
-    ).pipe(
-      // ... and emit an array of all messages
-      scan((acc: Message[], x: Message) => [...acc, x], [])
-    );
+    ).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
   }
 
-
-  
   ngOnInit(): void {
-
-    // this.originalWidth = '400px'; 
-    // this.originalHeight = '300px'; // Set the initial height as per your requirement
-    console.log("Copilot Data")
-    console.log(this.data)
-    if(this.data.SubmissionID != null){
-      this.inboxService.getSubmissionFilesFromDB("0",this.data.SubmissionID,"0")
-    .subscribe(res=>{
-      if(res!=null && res.value != null && res.value.length > 0)
-      {
-        res.value.forEach((file:any) => {
-          this.pdfList.push(
-            {
-              name : file.fileName,
-              base64Data : file.fileData
-            })
+    console.log('Copilot Data');
+    console.log(this.data);
+    if (this.data.SubmissionID != null) {
+      this.inboxService
+        .getSubmissionFilesFromDB('0', this.data.SubmissionID, '0')
+        .subscribe((res) => {
+          if (res != null && res.value != null && res.value.length > 0) {
+            res.value.forEach((file: any) => {
+              this.pdfList.push({
+                name: file.fileName,
+                base64Data: file.fileData,
+              });
+            });
+          }
         });
-      }
-    })
     }
-    
   }
 
   public sendMessage(e: SendMessageEvent): void {
@@ -124,35 +127,46 @@ originalHeight: string;
       typing: true,
     });
 
-    this.svc.submit(e.message.text!,this.messageGuid);
+    this.svc.submit(e.message.text!, this.messageGuid);
   }
   public clearModel(): void {
     this.uploadedFiles = [];
   }
-  Upload(){
-    let uplfile : UploadFile;
-    let reader = new FileReader();
-    if(this.uploadedFiles && this.uploadedFiles.length > 0) {
-      let file = this.uploadedFiles[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        uplfile = {
-          FileName : file.name,
-          FileGUID : "",
-          FileSize : file.size,
-          FileType: file.type,
-          FileContent: reader.result as string
-        }
-        this.svc.uploadCopilotFiles(uplfile).subscribe((res:any)=>{
-          this.messageGuid = res.value;
-        })
+  Upload(selectedFile : any) {
+
+    console.log("Copilot Files from File Reader");
+    console.log(selectedFile)
+    let uplfile: UploadFile;
+    if(selectedFile != null){
+      uplfile = {
+        FileName: selectedFile.name,
+        FileGUID: '',
+        FileSize: 0,
+        FileType: selectedFile.mimeType,
+        FileContent: selectedFile.base64Data
       };
-     
+      this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
+        this.messageGuid = res.value;
+      });
     }
-
-    
+    // let reader = new FileReader();
+    // if (this.uploadedFiles && this.uploadedFiles.length > 0) {
+    //   let file = this.uploadedFiles[0];
+    //   reader.readAsDataURL(file);
+    //   reader.onload = () => {
+    //     uplfile = {
+    //       FileName: file.name,
+    //       FileGUID: '',
+    //       FileSize: file.size,
+    //       FileType: file.type,
+    //       FileContent: reader.result as string,
+    //     };
+    //     this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
+    //       this.messageGuid = res.value;
+    //     });
+    //   };
+    // }
   }
-
 
   // onFileSelected(event: any): void {
   //   const file = event.target.files[0];
@@ -167,13 +181,12 @@ originalHeight: string;
 
     reader.onload = () => {
       const base64String = reader.result as string;
-      // Now you can use the base64String as needed (e.g., send it to the server)
       console.log(base64String);
     };
 
     reader.readAsDataURL(file);
   }
-  
+
   // maximize() {
   //   this.dialogRef.updateSize('92%', '90%');
   //   // this.dialogRef.updatePosition({ top: '0', left: '5%', right: '15%' });
@@ -191,13 +204,12 @@ originalHeight: string;
   //     });
   //   } else {
   //     this.dialog.open(CopilotComponent, {
-  //       width: '92vw', 
-  //       height: '90vh', 
+  //       width: '92vw',
+  //       height: '90vh',
   //     });
   //   }
-  //   this.isMaximized = !this.isMaximized; 
+  //   this.isMaximized = !this.isMaximized;
   // }
-
 
   toggleMaximize() {
     if (this.isMaximized) {
@@ -209,34 +221,23 @@ originalHeight: string;
 
   maximize() {
     this.dialogRef.updateSize('90%', '88%');
-    // this.dialogRef.updatePosition({ top: '10%', left: '10%' });
     this.isMaximized = true;
   }
 
   minimize() {
     this.dialogRef.updateSize('auto', 'auto');
-    // You might want to position the dialog to its original position
     this.isMaximized = false;
   }
+  onFileSelected(event: any): void {
+    const files: FileList = event.target.files;
+    if (files && files.length > 0) {
+      this.uploadedFiles = [];
 
-
-  
-//   // Save to local storage
-// localStorage.setItem('fileData', base64String);
-
-// // Retrieve from local storage
-// const storedData = localStorage.getItem('fileData');
-
-onFileSelected(event: any): void {
-  const files: FileList = event.target.files;
-  if (files && files.length > 0) {
-    this.uploadedFiles = [];
-
-    // Iterate through selected files and add them
-    for (let i = 0; i < files.length; i++) {
-      this.uploadedFiles.push(files[i]);
+      // Iterate through selected files and add them
+      for (let i = 0; i < files.length; i++) {
+        this.uploadedFiles.push(files[i]);
+      }
     }
   }
-}
-pdfList: { name: string, base64Data: string }[] = []
+  pdfList: { name: string; base64Data: string }[] = [];
 }
