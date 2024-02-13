@@ -72,14 +72,6 @@ export class CopilotComponent {
     const hello: Message = {
       author: this.bot,
       suggestedActions: [
-        // {
-        //   type: "reply",
-        //   value: "Neat!",
-        // },
-        // {
-        //   type: "reply",
-        //   value: "Thanks, but this is boring.",
-        // },
       ],
       timestamp: new Date(),
       text: 'CogniSure Copilot',
@@ -133,9 +125,6 @@ export class CopilotComponent {
     this.uploadedFiles = [];
   }
   Upload(selectedFile : any) {
-
-    console.log("Copilot Files from File Reader");
-    console.log(selectedFile)
     let uplfile: UploadFile;
     if(selectedFile != null){
       uplfile = {
@@ -149,32 +138,7 @@ export class CopilotComponent {
         this.messageGuid = res.value;
       });
     }
-    // let reader = new FileReader();
-    // if (this.uploadedFiles && this.uploadedFiles.length > 0) {
-    //   let file = this.uploadedFiles[0];
-    //   reader.readAsDataURL(file);
-    //   reader.onload = () => {
-    //     uplfile = {
-    //       FileName: file.name,
-    //       FileGUID: '',
-    //       FileSize: file.size,
-    //       FileType: file.type,
-    //       FileContent: reader.result as string,
-    //     };
-    //     this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
-    //       this.messageGuid = res.value;
-    //     });
-    //   };
-    // }
   }
-
-  // onFileSelected(event: any): void {
-  //   const file = event.target.files[0];
-
-  //   if (file) {
-  //     this.readFileAsBase64(file);
-  //   }
-  // }
 
   private readFileAsBase64(file: File): void {
     const reader = new FileReader();
@@ -187,30 +151,7 @@ export class CopilotComponent {
     reader.readAsDataURL(file);
   }
 
-  // maximize() {
-  //   this.dialogRef.updateSize('92%', '90%');
-  //   // this.dialogRef.updatePosition({ top: '0', left: '5%', right: '15%' });
-  // }
-
-  // minimize() {
-  //   this.dialogRef.updateSize('auto', 'auto');
-  // }
-
-  // toggleMaximize(): void {
-  //   if (this.isMaximized) {
-  //     this.dialog.open(CopilotComponent, {
-  //       width: this.originalWidth,
-  //       maxHeight: this.originalHeight,
-  //     });
-  //   } else {
-  //     this.dialog.open(CopilotComponent, {
-  //       width: '92vw',
-  //       height: '90vh',
-  //     });
-  //   }
-  //   this.isMaximized = !this.isMaximized;
-  // }
-
+  
   toggleMaximize() {
     if (this.isMaximized) {
       this.minimize();

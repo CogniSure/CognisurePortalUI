@@ -17,10 +17,7 @@ export class ChatService {
     this.AskCopilot(messageGuid,question).subscribe((res:any)=>{
       
       var resultVal = JSON.parse(res.value)
-      var result = resultVal[1]
-      //const answer = `"${question}" contains exactly ${length} symbols.`;
-      
-      const answer = result;
+      const answer = resultVal.answer;
       setTimeout(() => this.responses.next(answer), 1000);
     })
     
@@ -29,14 +26,13 @@ export class ChatService {
   AskCopilot(messageGuid:string,question: string){
     var apiUrl = this.env.baseUrl + 'api/AskCopilot';
     let hParams = new HttpParams();
-    hParams = hParams.set('uniqId', JSON.parse(messageGuid));
+    hParams = hParams.set('uniqId', messageGuid);
     hParams = hParams.set('message', question);
     return this.httpService.getData(apiUrl,hParams );
   }
   uploadCopilotFiles(files : any) : Observable<string>{
     var apiUrl = this.env.baseUrl + 'api/UploadCopilotFIles';
     let hParams = new HttpParams();
-    // hParams = hParams.set('submissionid', submissionId);
     return this.httpService.postData(apiUrl,hParams,files );
   }
 }

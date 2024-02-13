@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.dialog.closeAll();
   }
 
   ngOnInit(): void {
@@ -197,11 +198,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   OpenCopilot(item: any) {
     let dialog1: MatDialog;
-    const dialogRef = this.dialog.open(CopilotComponent,{
+    let dialogRef = this.dialog.open(CopilotComponent,{
       data:item
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+     
+    });
   }
   getStatusImage(status: string): string {
     if (status === 'Completed') {
