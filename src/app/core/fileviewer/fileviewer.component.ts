@@ -65,7 +65,7 @@ export class FileviewerComponent {
         'data:' + contentType + ';base64,' + this.files[index].base64Data;
       this.selectedFilesEvent.emit({
         name: this.files[index].name,
-        mimeType : contentType,
+        mimeType: contentType,
         base64Data: base64UrlData,
       });
       this.download(this.files[index].name, base64UrlData);
@@ -74,7 +74,7 @@ export class FileviewerComponent {
         'data:' + contentType + ';base64,' + this.files[index].base64Data;
       this.selectedFilesEvent.emit({
         name: this.files[index].name,
-        mimeType : contentType,
+        mimeType: contentType,
         base64Data: base64UrlData,
       });
       const blobUrl = this.createBlobUrl(this.files[index], contentType);
@@ -168,7 +168,7 @@ export class FileviewerComponent {
       reader.onload = () => {
         this.selectedFilesEvent.emit({
           name: file.name,
-          mimeType : contentType,
+          mimeType: contentType,
           base64Data: reader.result,
         });
         this.download(file.name, reader.result);
@@ -180,7 +180,7 @@ export class FileviewerComponent {
       reader.onload = () => {
         this.selectedFilesEvent.emit({
           name: file.name,
-          mimeType : contentType,
+          mimeType: contentType,
           base64Data: reader.result,
         });
         let data = JSON.parse(reader.result as string);
@@ -192,7 +192,7 @@ export class FileviewerComponent {
       reader.onload = () => {
         this.selectedFilesEvent.emit({
           name: file.name,
-          mimeType : contentType,
+          mimeType: contentType,
           base64Data: reader.result,
         });
       };
@@ -215,31 +215,25 @@ export class FileviewerComponent {
   }
   private getMimeType(mimeType: string): string {
     if (mimeType == 'pdf') return 'application/pdf';
-    else if (mimeType == 'xls'){
+    else if (mimeType == 'xls') {
       this.invalidPreview = true;
-      return "application/vnd.ms-excel"
-    } 
-    else if (mimeType == 'xlsx'){
+      return 'application/vnd.ms-excel';
+    } else if (mimeType == 'xlsx') {
       this.invalidPreview = true;
-      return "vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    }
-    else if (mimeType == 'doc'){
+      return 'vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    } else if (mimeType == 'doc') {
       this.invalidPreview = true;
-      return "application/msword"
-    }
-    else if (mimeType == 'docx'){
+      return 'application/msword';
+    } else if (mimeType == 'docx') {
       this.invalidPreview = true;
-      return "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    }
-    else if (mimeType == 'ppt'){
+      return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    } else if (mimeType == 'ppt') {
       this.invalidPreview = true;
-      return "application/vnd.ms-powerpoint"
-    }
-    else if (mimeType == 'docx'){
+      return 'application/vnd.ms-powerpoint';
+    } else if (mimeType == 'docx') {
       this.invalidPreview = true;
-      return "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-    }
-    else if (mimeType == 'svg') return 'image/svg+xml';
+      return 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+    } else if (mimeType == 'svg') return 'image/svg+xml';
     else if (mimeType == 'png') return 'image/png';
     else if (mimeType == 'jpg' || mimeType == 'jpeg') return 'image/jpeg';
     else if (mimeType == 'json') return 'application/json';
