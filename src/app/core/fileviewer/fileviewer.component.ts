@@ -38,10 +38,14 @@ export class FileviewerComponent {
 
   changePreview(index: number): void {
     this.activePdfIndex = index;
-    const selectedPdfData = this.files[index].base64Data;
-    const pdfUrl = this.createPdfUrl(selectedPdfData);
+    
+    //const pdfUrl = this.createPdfUrl(selectedPdfData);
+    console.log("Preview FIle")
+    console.log(this.files[index])
+    const blobUrl = this.createBlobUrl(this.files[index])
+    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
     const iframe = this.fileViewer?.nativeElement;
-    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(pdfUrl);
+    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
     this.adjustHeightToFitContent();
 
     const buttons = document.querySelectorAll('.file-button');
@@ -61,7 +65,7 @@ export class FileviewerComponent {
     }
 
     if (iframe) {
-      iframe.src = pdfUrl;
+      iframe.src = blobUrl;
       iframe.onload = () => {
         const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDocument) {
@@ -74,7 +78,33 @@ export class FileviewerComponent {
     }
   }
 
-  
+  createBlobUrl(file : any){
+    const selectedPdfData = file.base64Data;
+    const b64toBlob = (b64Data:any, contentType='', sliceSize=512) => {
+      const byteCharacters = atob(b64Data);
+      const byteArrays = [];
+    
+      for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+    
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+    
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+        
+      const blob = new Blob(byteArrays, {type: contentType});
+      return blob;
+    }
+    const fileExt = file.name.split('.').pop();
+    const contentType = this.getMimeType(fileExt.toLowerCase());
+    const blob = b64toBlob(selectedPdfData, contentType);
+    const blobUrl = URL.createObjectURL(blob);
+    return blobUrl;
+  }
   previewSelectedFile(file: File, index: number): void {
     this.selectedFileIndex = index;
     const buttons = document.querySelectorAll('.file-button');
@@ -85,13 +115,14 @@ export class FileviewerComponent {
     divs.forEach((div: any) => {
       div.style.backgroundColor = '#00B6AD';
     });
-    
-
-    if (file.type === 'application/pdf') {
-      this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
-    } else {
-      console.log('File preview not supported for this file type.');
-    }
+    console.log("Preview FIle Upload")
+    console.log(file)
+    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+    // if (file.type === 'application/pdf') {
+    //   this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+    // } else {
+    //   console.log('File preview not supported for this file type.');
+    // }
   }
 
 
@@ -112,6 +143,31 @@ export class FileviewerComponent {
     });
   }
 
-
+  private getMimeType(mimeType: string): string {
+    if(mimeType == 'pdf')
+      return "application/pdf"
+    else if(mimeType == "xls")
+      return "application/vnd.ms-excel"
+    else if(mimeType == 'xlsx')
+      return "vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    else if(mimeType == "doc")
+      return "application/msword"
+    else if(mimeType == "docx")
+      return "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    else if(mimeType == "ppt")
+      return "application/vnd.ms-powerpoint"
+    else if(mimeType == "docx")
+      return "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    else if(mimeType == "svg")
+      return "image/svg+xml"
+    else if(mimeType == "png")
+      return "image/png"
+    else if(mimeType == "jpg" || mimeType == "jpeg")
+      return "image/jpeg"
+    else if(mimeType == 'json')
+      return "application/json"
+    else 
+      return ""
+  }
 
 }
