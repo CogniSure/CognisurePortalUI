@@ -40,14 +40,35 @@
                       formControlName="email"
                     ></app-input>
                   </div>
-                  <div class="password">
+                  <!-- <div class="password"  [ngClass]="{ 'has-error': loginForm.get('password')?.touched && loginForm.get('password')?.hasError('passwordRequirements') }">
                     <app-input
                       [PlaceHolder]="'* Password'"
                       [Type]="'password'"
                       [TooltipContent]="tooltip"
                       formControlName="password"
                     ></app-input>
+                    <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('passwordRequirements')" class="error-message">
+                      Password must contain at least one special character, uppercase letter, lowercase letter, and number.
+                    </div>
+                    
+                  </div> -->
+
+                  <div class="password">
+                    <app-input
+                      [PlaceHolder]="'* Password'"
+                      [Type]="'password'"
+                      [TooltipContent]="tooltip"
+                      formControlName="password"
+                      [(ngModel)]="password" 
+                      required
+                    ></app-input>
+                    <div *ngIf="invalidPassword" class="error-message">Password must meet requirements.</div>
+                    <!-- <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.errors?.['passwordRequirements']" class="error-message">
+                      {{ loginForm.get('password')?.errors?.['message'] }}
+                    </div> -->
+                    
                   </div>
+
                 </form>
                 <div style="display: flex" class="row">
                   <div class="col-md-12 frgt_pswd">

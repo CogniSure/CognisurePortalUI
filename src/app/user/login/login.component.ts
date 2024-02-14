@@ -25,7 +25,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  
+  password: string = '';
+  invalidPassword: boolean = false;
   hide = true;
   showSpinner = false;
   apiUrl = '';
@@ -78,6 +79,15 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
     password: new FormControl(''),
   });
 
+  // loginForm = new FormGroup({
+  //   email: new FormControl('', [Validators.required, Validators.email]),
+  //   password: new FormControl('', [
+  //     Validators.required,
+  //     this.passwordValidator(),
+  //   ]),
+  // });
+
+
   validationErrors: string[] = [];
   ngOnInit(): void {
     this.authService.logout();
@@ -115,7 +125,6 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
         //   queryParamsHandling: 'preserve',
         //});
       });
-
       //})
 
       // this.accService.login(this.apiUrl,this.loginForm.value).subscribe((res:any) => {
@@ -179,6 +188,11 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
       //   this.showErrors();
       // });
     }
+    if (this.password.length < 8 || !/\d/.test(this.password) || !/[a-zA-Z]/.test(this.password)) {
+      this.invalidPassword = true;
+      return; 
+    }
+
   }
 
   formValues = new Map<string, string>();
