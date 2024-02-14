@@ -48,7 +48,7 @@ export class FileviewerComponent {
   ) {}
 
   ngOnInit(): void {
-    this.changePreview(0);
+    // this.changePreview(0);
   }
 
   changePreview(index: number): void {
