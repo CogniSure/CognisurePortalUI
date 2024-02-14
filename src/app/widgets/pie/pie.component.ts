@@ -57,7 +57,7 @@ export class PieComponent implements OnInit, OnDestroy, OnChanges {
 
   labelMargin : Margin={
     top:0,
-    right:15,
+    right:0,
     bottom:0,
     left:0,
 

@@ -199,9 +199,9 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 20,
-        LabelPosition : "center",
-        LabelColor : "White"
+        DonutHoleSize : 50,
+        LabelPosition : "outsideEnd",
+        LabelColor : "#009CC1"
       }
     },
     {
