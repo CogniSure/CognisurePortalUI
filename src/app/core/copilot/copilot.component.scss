@@ -85,7 +85,7 @@ color:#fff;
   border-radius: 15px;
 }
 .header_data{
-  padding: 0% 2% 0% 2%;
+  padding: 0% 0% 0% 2%;
   background-color: linear-gradient(135deg, #00A7CE 0%, #00CEC3 100%);
 }
 
@@ -110,11 +110,16 @@ margin-top: 3%;
 }
 
 ::ng-deep .mat-mdc-button .mdc-button__label{
-  margin-top: -8px!important;
+  margin-top: -7px !important;
+  font-size: 18px;
 }
 
 ::ng-deep .mdc-dialog__surface{
   overflow-y: visible!important;
+}
+
+.close_btn:hover{
+color:transparent;
 }
 
 

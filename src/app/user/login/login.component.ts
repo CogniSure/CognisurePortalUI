@@ -18,6 +18,7 @@ import { matchValidator } from 'src/app/core/generic/utils/match-validator';
 import { PasswordToolTip } from 'src/app/model/constants/tooltipDetails';
 import { Accounts } from '../../model/profile/accounts';
 import { BehaviorSubject } from 'rxjs';
+import { AppConfigService } from 'src/app/app-config-service';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,9 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+ environmentData = this.configService.settings;
+ env = this.configService.settings;
+ 
   password: string = '';
   invalidPassword: boolean = false;
   hide = true;
@@ -39,7 +43,8 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
     private router: Router,
     private globalService: GlobalService,
     private accService: AccountService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private configService:AppConfigService,
   ) {}
   isvalidform = true;
   imageObject: any;
