@@ -114,8 +114,8 @@ export class XBarComponent implements OnInit, OnDestroy {
   }
   ApplySettings() {
     if (this.input.Settings != null) {
-      if (this.input.Settings.NumberType != null) {
-        this.dataType = this.input.Settings.NumberType;
+      if (this.input.Settings.DataType != null) {
+        this.dataType = this.input.Settings.DataType;
       }
       if (this.input.Settings.ShowLabels != null) {
         this.showLabels = this.input.Settings.ShowLabels;

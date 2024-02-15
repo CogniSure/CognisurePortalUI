@@ -52,21 +52,14 @@
           [autoFit]="true"
           [border]="seriesBorder"
         >
-        <kendo-chart-series-defaults>
-          <kendo-chart-series-defaults-labels
-            format="c0"
-            position="outsideEnd"
-            [visible]="showLabels"
-            color="#009CC1"
-            [background]="'transparent'"
-          >
-          </kendo-chart-series-defaults-labels>
-          
-        </kendo-chart-series-defaults>
         <kendo-chart-series-item-labels
           [visible]="showLabels"
           [content]="labelContent"
           [align]="'column'"
+          [background]="'transparent'"
+          position="outsideEnd"
+          color="#009cc1"
+          font = 'bold 12px'
         >
         </kendo-chart-series-item-labels>
         

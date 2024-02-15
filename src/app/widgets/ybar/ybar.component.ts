@@ -15,6 +15,7 @@ import {
   ValueAxisLabels,
 } from '@progress/kendo-angular-charts';
 import { saveAs } from '@progress/kendo-file-saver';
+import { FormatAmountPipe } from 'src/app/core/pipes/format-amount.pipe';
 import { ChartData } from 'src/app/model/charts/chartdata';
 import { ChartSeries } from 'src/app/model/charts/series';
 import { SeriesColorPrimary } from 'src/app/model/constants/seriescolor';
@@ -42,7 +43,8 @@ export class YBarComponent implements OnInit, OnDestroy {
   constructor(
     private dbService: WidgetService,
     private changeDetector: ChangeDetectorRef,
-    @Inject(InjectToken) private input: WidgetInput
+    @Inject(InjectToken) private input: WidgetInput,
+    private formatPipe: FormatAmountPipe,
   ) {}
   chartData: ChartData = {
     Dimension: [],
@@ -124,12 +126,23 @@ export class YBarComponent implements OnInit, OnDestroy {
   };
 
   public labelContent = (e: SeriesLabelsContentArgs): string => {
-    if(this.dataType == "Number")
-      return e.value;
-    else if(this.dataType == "Percentage")
-      return e.value + '%';
-    else if(this.dataType == "Dollar")
-      return "$" + e.value;
+    let val = 0;
+    if (e.value != '') val = e.value;
+    else val = e.stackValue!;
+
+    console.log("Curent Data Type")
+    console.log(this.dataType)
+    if (this.dataType == 'Number') return this.formatPipe.transform(val);
+    else if (this.dataType == 'Percentage') {
+      this.prefix = '';
+      this.suffix = '%';
+      return this.formatPipe.transform(val, '', this.suffix);
+    } else if (this.dataType == 'Dollar') {
+      this.prefix = '$';
+      this.suffix = '';
+      return this.formatPipe.transform(val, this.prefix, '');
+    }
+
     return e.value;
   };
 
@@ -145,9 +158,11 @@ export class YBarComponent implements OnInit, OnDestroy {
     color: 'white',
   };
   ApplySettings() {
+    console.log("Input Data Type")
+    console.log(this.input.Settings)
     if (this.input.Settings != null) {
-      if (this.input.Settings.NumberType != null) {
-        this.dataType = this.input.Settings.NumberType;
+      if (this.input.Settings.DataType != null) {
+        this.dataType = this.input.Settings.DataType;
       }
       if (this.input.Settings.ShowLabels != null) {
         this.showLabels = this.input.Settings.ShowLabels;
@@ -165,7 +180,7 @@ export class YBarComponent implements OnInit, OnDestroy {
       }
       else
         this.seriesColors = SeriesColorPrimary
-
+      console.log(this.dataType)
       if (this.dataType == 'Number') {
         this.prefix = '';
         this.suffix = '';

@@ -27,9 +27,12 @@ export class RiskClearanceComponent implements OnInit, OnDestroy {
     IsAdmin: false,
     UserImage: '',
   };
+  embedURL = '';
+  redirectURL =
+    'https://accounts.zohoportal.com/accounts/p/10065241642/signin/jwt/auth?jwt=Zohotoken&return_to=returnURL';
+  returnURL = `https://analytics.cognisure.ai/open-view/2701274000004285753?ZOHO_CRITERIA=SUB_SUBMISSIONMETADATA.SUBMISSIONGUID='{GUID}'`;
   constructor(
     private authService: AuthService,
-    private http: HttpClient,
     private globalService: GlobalService
   ) {
     localStorage.setItem('zohotoken', '');
@@ -38,33 +41,23 @@ export class RiskClearanceComponent implements OnInit, OnDestroy {
     //this.http.post("https://analytics.cognisure.ai")
   }
   ngOnInit(): void {
-    this.userDetail = this.globalService.getUserProfile();
-    //this.authService.getZOHOToken("arabindam@cognisure.ai").subscribe((token) => {
-      this.authService.getZOHOToken(this.userDetail.Email).subscribe((token) => {
+    this.userDetail = this.globalService.getUserProfile();this.userDetail = this.globalService.getUserProfile();
+    this.authService.getZOHOToken(this.userDetail.Email).subscribe((token) => {
       console.log('token');
-      this.authService.zohotoken = token.value;
 
       this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
         let GUID = subInfo.SubmissionGUID;
-        let tempReturnURL = this.returnURL.replace("{GUID}","'"+GUID+"'");
-        console.log(GUID);
-        
-        console.log(tempReturnURL);
-        console.log(tempReturnURL)
-        this.embedURL = this.redirectURL
+        this.embedURL = this.returnURL.replace("{GUID}",GUID);
+        this.redirectURL = this.redirectURL
           .replace('Zohotoken', token.value)
           .replace(
             'returnURL',
-            tempReturnURL
+            this.embedURL
           );
-        console.log(this.embedURL);
-
-        window.open(this.embedURL, "_blank");
-      });
-    });
+            console.log(this.redirectURL)
+          window.open(this.redirectURL, "_blank");
+      })
+    })
   }
-  returnURL = "https://analytics.cognisure.ai/open-view/2701274000004004374?ZOHO_CRITERIA="+'"'+"SUB_SUBMISSIONMETADATA"+'"'+"."+'"'+"SUBMISSIONGUID"+'"'+"='"+"7CDDAB9C-721A-4A5A-AB87-2364CEE133EE"+"'";
-  embedURL = '';
-  redirectURL =
-    'https://accounts.zohoportal.com/accounts/p/10065241642/signin/jwt/auth?jwt=Zohotoken&return_to=returnURL';
+  
 }

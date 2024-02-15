@@ -8,6 +8,7 @@
   }
   .chartArea {
     height: 100%;
+    padding: 1em;
   }
   .tooltip {
     pointer-events: none;
@@ -18,11 +19,11 @@
   }
 
   ::ng-deep .chart-container kendo-chart .k-label {
-    font-size: 9px !important;
+    font-size: 18px !important;
   }
 
   ::ng-deep .pie-chart-labels {
-    font-size: 11px !important;
+    font-size: 18px !important;
   }
 
   ::ng-deep .k-card {

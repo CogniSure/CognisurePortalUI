@@ -941,7 +941,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
     let widgetInput: WidgetInput = {
       WidgetName: config.WidgetName,
       WidgetType: config.WidgetType,
-      WidgetHeader :config.WidgetHeader,
+      WidgetHeader :config.Header,
       Settings: config.settings,
       // {
       //   NumberType : config.numberType,

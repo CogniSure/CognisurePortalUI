@@ -212,7 +212,8 @@ export class DataComponent {
       Header: 'Top Brokers',
       ColumnId :  1,
       ColumnSpan :  1,
-      RowSpan :  3,Settings:{
+      RowSpan :  3,
+      Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary"
       }
@@ -330,10 +331,10 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 20,
-        LabelPosition : "center",
-        LabelColor : "white",
-        LegendPosition : "Right",
+        DonutHoleSize : 50,
+        LabelPosition : "outsideEnd",
+        LabelColor : "#009CC1",
+        LegendPosition : "Right"
       }
     },
     {
@@ -347,9 +348,9 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 20,
-        LabelPosition : "center",
-        LabelColor : "white",
+        DonutHoleSize : 50,        
+        LabelPosition : "outsideEnd",
+        LabelColor : "#009CC1",
         LegendPosition : "Right",
       }
     },
@@ -364,9 +365,9 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 20,
-        LabelPosition : "center",
-        LabelColor : "white",
+        DonutHoleSize : 50,
+        LabelPosition : "outsideEnd",
+        LabelColor : "#009CC1",
         LegendPosition : "Right",
       }
     },
@@ -381,9 +382,9 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 20,
-        LabelPosition : "center",
-        LabelColor : "white",
+        DonutHoleSize : 50,
+        LabelPosition : "outsideEnd",
+        LabelColor : "#009CC1",
         LegendPosition : "Right",
       }
     },
@@ -402,7 +403,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Number"
+        DataType : "Number"
       }
     },
     {
@@ -416,7 +417,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Dollar"
+        DataType : "Dollar"
       }
     },
     {
@@ -430,7 +431,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Number"
+        DataType : "Number"
       }
     },
     {
@@ -444,7 +445,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Number"
+        DataType : "Number"
       }
     },
     {
@@ -458,7 +459,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Dollar"
+        DataType : "Dollar"
       }
     },
     {
@@ -472,7 +473,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : true,
-        NumberType : "Number"
+        DataType : "Number"
       }
     },
     {
@@ -486,7 +487,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : false,
-        NumberType : "Dollar"
+        DataType : "Dollar"
       }
     },
     {
@@ -500,7 +501,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : false,
-        NumberType : "Dollar"
+        DataType : "Dollar"
       }
     }
     ,
@@ -515,7 +516,7 @@ export class DataComponent {
       Settings :{
         ShowLabels : false,
         Stack : false,
-        NumberType : "Dollar"
+        DataType : "Dollar"
       }
     },
   ];
