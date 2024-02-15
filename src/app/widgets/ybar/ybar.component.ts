@@ -8,7 +8,7 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { ChartComponent, SeriesLabelsContentArgs } from '@progress/kendo-angular-charts';
+import { AxisLabelContentArgs, ChartComponent, SeriesLabelsContentArgs } from '@progress/kendo-angular-charts';
 import {
   Border,
   SeriesLabels,
@@ -125,13 +125,40 @@ export class YBarComponent implements OnInit, OnDestroy {
     };
   };
 
+  public CategoryLabelContent = (e: AxisLabelContentArgs): string => {
+    let str = e.value.split(" ");
+    console.log(this.input.WidgetHeader)
+    console.log(str.length)
+    let newStr = ""
+    let halfLength  = Math.round(str.length/2)
+    console.log(halfLength)
+    if(str.length > 4){
+      //console.log("More length string")
+      let count = 0;
+      str.forEach((element:any) => {
+        count++;
+        // console.log(count/2)
+        // console.log(count%2)
+        // if(count%2 == 0){
+        //   newStr+= element + "\n"
+        // }
+        if(count == halfLength){
+          newStr+= element + "\n"
+        }
+        else {
+          newStr+= element + " "
+        }
+      });
+    }
+    else 
+      newStr = e.value;
+    console.log(newStr)
+    return newStr;
+  }
   public labelContent = (e: SeriesLabelsContentArgs): string => {
     let val = 0;
     if (e.value != '') val = e.value;
     else val = e.stackValue!;
-
-    console.log("Curent Data Type")
-    console.log(this.dataType)
     if (this.dataType == 'Number') return this.formatPipe.transform(val);
     else if (this.dataType == 'Percentage') {
       this.prefix = '';
@@ -158,8 +185,6 @@ export class YBarComponent implements OnInit, OnDestroy {
     color: 'white',
   };
   ApplySettings() {
-    console.log("Input Data Type")
-    console.log(this.input.Settings)
     if (this.input.Settings != null) {
       if (this.input.Settings.DataType != null) {
         this.dataType = this.input.Settings.DataType;

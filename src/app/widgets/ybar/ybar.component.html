@@ -23,8 +23,11 @@
         <kendo-chart-category-axis-item
           [categories]="chartData.Dimension"
           [majorGridLines]="{ visible: false }"
+          [justified]="true"
         >
-          <kendo-chart-category-axis-item-labels [position]="'start'">
+          <kendo-chart-category-axis-item-labels [position]="'start'" 
+          [content]="CategoryLabelContent"
+          >
           </kendo-chart-category-axis-item-labels>
         </kendo-chart-category-axis-item>
       </kendo-chart-category-axis>

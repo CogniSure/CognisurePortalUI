@@ -4,27 +4,27 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    padding: 12%;
+    padding: 25%;
   }
   .chartArea {
     height: 100%;
-    padding: 1em;
+    margin: 0.25em 1em;
   }
   .tooltip {
     pointer-events: none;
   }
 
-  ::ng-deep kendo-chart-legend {
-    font-size: 9px !important;
-  }
+  // ::ng-deep kendo-chart-legend {
+  //   font-size: 9px !important;
+  // }
 
-  ::ng-deep .chart-container kendo-chart .k-label {
-    font-size: 18px !important;
-  }
+  // ::ng-deep .chart-container kendo-chart .k-label {
+  //   font-size: 18px !important;
+  // }
 
-  ::ng-deep .pie-chart-labels {
-    font-size: 18px !important;
-  }
+  // ::ng-deep .pie-chart-labels {
+  //   font-size: 18px !important;
+  // }
 
   ::ng-deep .k-card {
     box-sizing: border-box;
@@ -33,6 +33,6 @@
 
   .custom-legend {
     font-size: 14px !important;
-    padding-top: 10px;
+    padding-top: 0px;
   }
 }

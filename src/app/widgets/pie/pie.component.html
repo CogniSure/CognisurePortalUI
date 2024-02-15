@@ -18,6 +18,8 @@
         class="custom-legend"
         [markers]="{ type: 'square' }"
         [align]="'center'"
+        [offsetX]="0"
+        [offsetY]="00"
       >
       </kendo-chart-legend>
 
@@ -28,21 +30,26 @@
           </h3>
         </div>
       </ng-template>
-      <kendo-chart-series >
+      <!-- <kendo-chart-area background="#eee"></kendo-chart-area> -->
+      <kendo-chart-plot-area background="#eee"> </kendo-chart-plot-area>
+      
+      <kendo-chart-series style="height: 100%;">
         <kendo-chart-series-item
-          [autoFit]="true"
+          [autoFit]="false"
           [type]="ChartType"
           [data]="chartData.Data"
           field="value"
           categoryField="category"
           [holeSize]="holeSize"
         >
+        <kendo-chart-series-defaults height="100%"></kendo-chart-series-defaults>
           <kendo-chart-series-item-labels
             [position]="labelPosition"
             [content]="labelContent"
             [visible]="true"
             [background]="'transparent'"
-            
+            [margin] = "0"
+            [padding]="0"
             [align]="'column'"
             color="#009cc1"
             font = 'bold 12px'

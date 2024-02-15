@@ -167,7 +167,7 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 50,
+        DonutHoleSize :40,
         LabelPosition : "outsideEnd",
         LabelColor : "#009CC1"
       }
@@ -199,7 +199,7 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 50,
+        DonutHoleSize : 40,
         LabelPosition : "outsideEnd",
         LabelColor : "#009CC1"
       }
@@ -331,7 +331,7 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 50,
+        DonutHoleSize : 40,
         LabelPosition : "outsideEnd",
         LabelColor : "#009CC1",
         LegendPosition : "Right"
@@ -348,7 +348,7 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 50,        
+        DonutHoleSize : 40,        
         LabelPosition : "outsideEnd",
         LabelColor : "#009CC1",
         LegendPosition : "Right",
@@ -365,7 +365,7 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 50,
+        DonutHoleSize : 40,
         LabelPosition : "outsideEnd",
         LabelColor : "#009CC1",
         LegendPosition : "Right",
@@ -382,7 +382,7 @@ export class DataComponent {
       Settings:{
         DataType: "Percentage",
         SeriesColor : "Primary",
-        DonutHoleSize : 50,
+        DonutHoleSize : 40,
         LabelPosition : "outsideEnd",
         LabelColor : "#009CC1",
         LegendPosition : "Right",
