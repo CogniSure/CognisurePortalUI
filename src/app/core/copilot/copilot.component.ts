@@ -35,6 +35,7 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 // }
 export class CopilotComponent {
+  submissionId: string = '';
   showSubmissionId: boolean = true;
   isMaximized: boolean = false;
   // originalWidth: string = '70rem';
@@ -96,6 +97,7 @@ export class CopilotComponent {
     console.log('Copilot Data');
     console.log(this.data);
     if (this.data.SubmissionID != null) {
+      this.submissionId = this.data.SubmissionID;
       this.inboxService
         .getSubmissionFilesFromDB('0', this.data.SubmissionID, '0')
         .subscribe((res) => {

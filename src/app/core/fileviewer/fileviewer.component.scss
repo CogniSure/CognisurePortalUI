@@ -52,3 +52,23 @@
 .file-div {
   background-color: #00B6AD!important;
 }
+
+#preview-container {
+  border: 2px solid #000; /* Specify the border style, width, and color */
+  border-radius: 10px; /* Set the border radius to achieve rounded corners */
+}
+
+::ng-deep .mdc-button{
+background: none!important;
+}
+
+.content-data{
+display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.content-data p{
+ margin-top: 30vh;
+ font-size: 20px;
+}

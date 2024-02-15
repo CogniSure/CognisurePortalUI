@@ -8,6 +8,11 @@
 >
   <kendo-tilelayout-item [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1">
     <kendo-tilelayout-item-body style="padding: 8% 0% 0% 6%">
+      <div *ngIf="files.length === 0; else showPreview">
+        <p>No files selected</p>
+      </div>
+      
+      <ng-template #showPreview>
       <div
         style="
           max-height: 550px;
@@ -16,6 +21,9 @@
           border-radius: 15px;
         "
       >
+      <!-- <div *ngIf="files.length === 0; else showPreview">
+        <p>No file selected</p>
+      </div> -->
         <div class="conversion_popup">
           <div *ngFor="let pdf of files; let i = index" class="conversion_popup" (click)="resetSelectedFileIndex()">
             <div
@@ -50,6 +58,8 @@
           [style.background-color]="
             selectedFileIndex === i ? '#009cc1' : '#8080808f'
           "
+         style="border: 2px solid #000;
+         border-radius: 10px;"
         >
           <button
             (click)="previewSelectedFile(file, i)"
@@ -66,6 +76,7 @@
           <p class="bottom_border"></p>
         </div>
       </div>
+     </ng-template>
       <kendo-fileselect
         [(ngModel)]="uploadedFiles"
         [restrictions]="restrictions"
@@ -81,7 +92,14 @@
     [rowSpan]="1"
     style="border-radius: 0"
   >
-    <kendo-tilelayout-item-body style="padding: 1.5% 0% 0% 5%">
+    <kendo-tilelayout-item-body style="padding: 1.5% 0% 0% 5%;">
+      <div class="content-data">
+      <div *ngIf="!selectedPdf">
+        <p>Preview Area</p>
+      </div>
+      </div>
+
+      <div *ngIf="selectedPdf && !invalidPreview && !jsonView">
       <div *ngIf="!jsonView">
         <iframe
           #fileViewer
@@ -91,6 +109,12 @@
           height="560px"
           style="border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 15px"
         ></iframe>
+      </div>
+
+      <div *ngIf="invalidPreview && !jsonView">
+        <p>No preview area</p>
+      </div>
+
       </div>
       <div *ngIf="jsonView">
         <ngx-json-viewer

@@ -57,6 +57,12 @@ export class FileviewerComponent {
     this.selectedFileIndex = index;
     // this.activePdfIndex = index;
     this.CustomizeSelection(index);
+
+    // if (this.files[index].size === 0) {
+    //   console.log("File is empty");
+    //   return; 
+    // }
+
     const fileExt = this.files[index].name.split('.').pop();
     const contentType = this.getMimeType(fileExt.toLowerCase());
 
