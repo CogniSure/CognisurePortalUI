@@ -1,6 +1,6 @@
-<div>
+<div style="border-radius: 25px;">
   <mat-dialog-content class="mat-typography" style="max-height:80%;padding: 0;">
-    <div style="background: #00A7CE">
+    <div style="background: #fff">
       <div class="header_data">
       <kendo-tilelayout
       [columns]="6"
@@ -12,22 +12,22 @@
       [gap]="0"
       [style]="'background: linear-gradient(135deg, #00A7CE 0%, #00CEC3 100%)!important;'"
       >
-        <kendo-tilelayout-item [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #00A7CE!important;">
+        <kendo-tilelayout-item [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
         <kendo-tilelayout-item-body  style="max-height: 82%;">
       <div class="files_header">
         <div>Files</div>      
       </div>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item [col]="3" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #00A7CE;" >
+      <kendo-tilelayout-item [col]="3" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
         <kendo-tilelayout-item-body *ngIf="showSubmissionId"> 
           <div class="centered-text">Submission ID - {{ submissionId }}</div>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item [col]="5" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #00A7CE">
+      <kendo-tilelayout-item [col]="5" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff">
         <kendo-tilelayout-item-body>
           <div>          
-            <button mat-button mat-dialog-close class="close_btn" style="float: right;color:#fff!important;margin-top: 11px;">X</button>
+            <button mat-button mat-dialog-close class="close_btn" style="float: right;color:#B1B1B1!important;margin-top: 11px;">X</button>
             
           <!-- <button mat-icon-button (click)="maximize()" style="float: right;color:#fff!important;margin-top: -6px;">
             <mat-icon>fullscreen</mat-icon>
@@ -36,7 +36,7 @@
             <mat-icon>fullscreen_exit</mat-icon>
           </button> -->
 
-          <button mat-icon-button (click)="toggleMaximize()" style="float: right;color:#fff!important;margin-right:-20px;">
+          <button mat-icon-button (click)="toggleMaximize()" style="float: right;color:#B1B1B1!important;margin-right:-20px;">
             <mat-icon>{{ isMaximized ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
           </button>
           
@@ -61,7 +61,7 @@
         class="top-bar-header"
         [style]="'position: relative;'"
         [gap]="0"
-       
+       style="background-color:#DEDEE2"
       >
         <kendo-tilelayout-item [col]="1" [colSpan]="5" [row]="1" [rowSpan]="1" style="border-radius: 0;">
           <kendo-tilelayout-item-body style="max-height: 82%;">
@@ -88,6 +88,7 @@
             
           </kendo-tilelayout-item-body>
         </kendo-tilelayout-item>
+        
         <kendo-tilelayout-item [col]="6" [colSpan]="7" [row]="1" [rowSpan]="1">
           <kendo-tilelayout-item-body style="max-height: 80%;padding-left: 5%!important;">
             <div>
@@ -95,7 +96,7 @@
                 [messages]="(feed | async)!"
                 [user]="user"
                 (sendMessage)="sendMessage($event)"
-                style="max-width: none !important;margin-top: 3%;margin-right: 5%;margin-bottom: 6%;margin-left: 8%;height: 35rem;">
+                style="max-width: none !important;height: 35rem;">
               </kendo-chat>
             </div>
           </kendo-tilelayout-item-body>

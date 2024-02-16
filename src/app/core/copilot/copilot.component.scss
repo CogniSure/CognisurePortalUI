@@ -91,13 +91,13 @@ color:#fff;
 
 .centered-text{
 font-size: 15px;
-color:#fff!important;
+color:#009CC1!important;
 margin-top: 3%;
 }
 
 .files_header{
   font-size: 15px;
-  color:#fff!important;
+  color:#009CC1!important;
   margin-top: 3%;
 }
 
@@ -129,3 +129,14 @@ color:transparent;
 //   margin: 0 auto !important;
 //   overflow: hidden !important;
 // }
+
+
+::ng-deep .mat-mdc-icon-button {
+--mat-mdc-button-persistent-ripple-color: none!important;
+--mat-mdc-button-ripple-color: none!important;
+}
+
+::ng-deep .mat-mdc-button, .mat-mdc-outlined-button {
+--mat-mdc-button-persistent-ripple-color: none!important;
+--mat-mdc-button-ripple-color: none!important;
+}

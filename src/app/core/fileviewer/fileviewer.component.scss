@@ -15,7 +15,7 @@
     padding: 20px;
   }
   .bottom_border{
-    border-bottom: 1px solid rgb(230 230 230);
+    // border-bottom: 1px solid rgb(230 230 230);
     margin: 0!important;
   }
 
@@ -50,12 +50,12 @@
 }
 
 .file-div {
-  background-color: #00B6AD!important;
+  background-color: #fff!important;
 }
 
 #preview-container {
-  border: 2px solid #000; /* Specify the border style, width, and color */
-  border-radius: 10px; /* Set the border radius to achieve rounded corners */
+  // border: 2px solid #000; 
+  // border-radius: 10px; 
 }
 
 ::ng-deep .mdc-button{
@@ -74,4 +74,8 @@ display: flex;
  position: absolute;
  top:45%;
  left:45%
+}
+
+.preview_border{
+  border: 1px solid #ADADAD;
 }
