@@ -503,7 +503,7 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
 
     let subFiles : SubmissionFile [] = [];
 
-    this.inboxService.getSubmissionFilesFromDB(clientId,submissionId,email)
+    this.inboxService.getSubmissionFilesFromDB(clientId,submissionId,email,false)
     .subscribe(res=>{
       if(res!=null && res.value != null && res.value.length > 0)
       {

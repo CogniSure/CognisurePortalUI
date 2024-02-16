@@ -260,13 +260,15 @@ export class InboxService {
   getSubmissionFilesFromDB(
     clientId: string,
     submissionId: string,
-    email: string
+    email: string,
+    s360Required : boolean = false
   ): Observable<any> {
     var apiUrl = this.configService.settings.baseUrl + 'api/submissionfiles';
     let hParams = new HttpParams();
     hParams = hParams.set('clientid', clientId);
     hParams = hParams.set('submissionid', submissionId);
     hParams = hParams.set('email', email);
+    hParams = hParams.set('s360Required', s360Required);
     return this.httpService.getData(apiUrl, hParams);
   }
   getSubmissionEmailMessage(submissionId: string): Observable<any> {

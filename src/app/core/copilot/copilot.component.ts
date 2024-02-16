@@ -99,7 +99,7 @@ export class CopilotComponent {
     if (this.data.SubmissionID != null) {
       this.submissionId = this.data.SubmissionID;
       this.inboxService
-        .getSubmissionFilesFromDB('0', this.data.SubmissionID, '0')
+        .getSubmissionFilesFromDB('0', this.data.SubmissionID, '0',true)
         .subscribe((res) => {
           if (res != null && res.value != null && res.value.length > 0) {
             res.value.forEach((file: any) => {

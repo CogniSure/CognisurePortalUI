@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.dashboardservice
       .downloadSubmission360(newItem.MessageId)
       .subscribe((downloadRes) => {
-        const source = `data:application/pdf;base64,${downloadRes.value.data}`;
+        const source = `data:application/octet-stream;base64,${downloadRes.value.data}`;
         const downloadLink = document.createElement('a');
         const fileName = downloadRes.value.fileName;
 

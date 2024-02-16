@@ -127,11 +127,8 @@ export class YBarComponent implements OnInit, OnDestroy {
 
   public CategoryLabelContent = (e: AxisLabelContentArgs): string => {
     let str = e.value.split(" ");
-    console.log(this.input.WidgetHeader)
-    console.log(str.length)
     let newStr = ""
     let halfLength  = Math.round(str.length/2)
-    console.log(halfLength)
     if(str.length > 4){
       //console.log("More length string")
       let count = 0;

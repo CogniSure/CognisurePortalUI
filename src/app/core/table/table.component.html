@@ -32,8 +32,10 @@
         <span class="search-icon">&#128269;</span>
       </kendo-textbox>
       <kendo-grid-spacer></kendo-grid-spacer>
+      <div class="kendo-dropdown-div">
       <kendo-dropdownbutton 
       [data]="exportButtons" 
+      [rounded]="'large'"
       (itemClick)="exportItemClick($event, generictable)"
       >
         <img
@@ -42,7 +44,7 @@
           alt="Custom Icon"
         />
         <ng-template kendoDropDownButtonItemTemplate let-dataItem>
-          <div style="padding: 5%; width: 10em !important; display: flex">
+          <div style="padding-right: 5%; width: 10em !important; display: flex">
             <div>
               <span>{{ dataItem.actionName }}</span>
             </div>
@@ -56,6 +58,7 @@
           </div>
         </ng-template>
       </kendo-dropdownbutton>
+      </div>
     </ng-template>
 
     <ng-template ngFor [ngForOf]="columns" let-column>

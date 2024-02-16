@@ -30,17 +30,17 @@ export const alertsData = [
     {
         routeLink: '/dashboard',
         imagePath:'/assets/images/Extraction.svg',
-        label: 'E'
+        label: 'Extraction'
     },
     {
         routeLink: '/inbox',
         imagePath:'/assets/images/Completeness Check.svg',
-        label: 'C'
+        label: 'Completeness Check'
     },
     {
         routeLink: '/volumetrics',
         imagePath:'/assets/images/Risk Clearance.svg',
-        label: 'R'
+        label: 'Risk Clearance'
     }
 ];
 export const OutputIcons = [
