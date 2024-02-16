@@ -122,6 +122,7 @@ export class FileviewerComponent {
     const divs = document.querySelectorAll('.file-div');
     buttons.forEach((button: any) => {
       button.style.backgroundColor = '#fff';
+      button.style.color = '#909090';
     });
     divs.forEach((div: any) => {
       div.style.backgroundColor = '#fff';
