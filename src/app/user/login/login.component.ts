@@ -28,7 +28,7 @@ import { AppConfigService } from 'src/app/app-config-service';
 export class LoginComponent {
  environmentData = this.configService.settings;
  env = this.configService.settings;
- 
+ privacyurl = "";
   password: string = '';
   invalidPassword: boolean = false;
   hide = true;
@@ -45,7 +45,11 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
     private accService: AccountService,
     private formBuilder: FormBuilder,
     private configService:AppConfigService,
-  ) {}
+  ) {
+    this.env = this.configService.settings;
+    console.log(this.configService.settings)
+    //this.privacyurl = this.env.privacyUrl
+  }
   isvalidform = true;
   imageObject: any;
   enableSlideButton = false;

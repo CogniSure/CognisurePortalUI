@@ -76,7 +76,20 @@ export class FileviewerComponent {
         base64Data: base64UrlData,
       });
       this.download(this.files[index].name, base64UrlData);
-    } else {
+    }
+    else if (contentType == 'application/json') {
+      console.log("application/json")
+      this.jsonView = true;
+        this.selectedFilesEvent.emit({
+          name: this.files[index].name,
+          mimeType: contentType,
+          base64Data: this.files[index].base64Data as string,
+        });
+        console.log(this.files[index].base64Data)
+        let data = JSON.parse(this.files[index].base64Data as string);
+        this.jsonPreviewData = data;
+    } 
+    else {
       const base64UrlData =
         'data:' + contentType + ';base64,' + this.files[index].base64Data;
       this.selectedFilesEvent.emit({
