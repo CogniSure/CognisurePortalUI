@@ -121,10 +121,10 @@ export class FileviewerComponent {
     const buttons = document.querySelectorAll('.file-button');
     const divs = document.querySelectorAll('.file-div');
     buttons.forEach((button: any) => {
-      button.style.backgroundColor = '#00B6AD';
+      button.style.backgroundColor = '#fff';
     });
     divs.forEach((div: any) => {
-      div.style.backgroundColor = '#00B6AD';
+      div.style.backgroundColor = '#fff';
     });
 
     const selectedButton = document.getElementById('file-button-' + index);
@@ -132,6 +132,7 @@ export class FileviewerComponent {
     if (selectedButton && selectedDiv) {
       selectedButton.style.backgroundColor = '#009cc1';
       selectedDiv.style.backgroundColor = '#009cc1';
+      selectedButton.style.color = '#fff';
     }
   }
   createBlobUrl(file: any, contentType: any) {
@@ -175,10 +176,10 @@ export class FileviewerComponent {
     const buttons = document.querySelectorAll('.file-button');
     const divs = document.querySelectorAll('.file-div');
     buttons.forEach((button: any) => {
-      button.style.backgroundColor = '#00B6AD';
+      button.style.backgroundColor = '#fff';
     });
     divs.forEach((div: any) => {
-      div.style.backgroundColor = '#00B6AD';
+      div.style.backgroundColor = '#fff';
     });
     const fileExt = file.name.split('.').pop();
     const contentType = this.getMimeType(fileExt!.toLowerCase());

@@ -62,7 +62,8 @@
                       [(ngModel)]="password" 
                       required
                     ></app-input>
-                    <div *ngIf="invalidPassword" class="error-message">Password must meet requirements.</div>
+                    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.dirty && invalidPassword" class="error-message">Password must meet requirements.</div>
+                    <!-- <div *ngIf="invalidPassword" class="error-message">Password must meet requirements.</div> -->
                     <!-- <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.errors?.['passwordRequirements']" class="error-message">
                       {{ loginForm.get('password')?.errors?.['message'] }}
                     </div> -->
