@@ -15,13 +15,13 @@
         <kendo-tilelayout-item [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
         <kendo-tilelayout-item-body  style="max-height: 100%!important;">
       <div class="files_header">
-        <div>Files</div>      
+        <div><b>Files</b></div>      
       </div>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
       <kendo-tilelayout-item [col]="3" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
         <kendo-tilelayout-item-body *ngIf="showSubmissionId"> 
-          <div class="centered-text">Submission ID - {{ submissionId }}</div>
+          <div class="centered-text"><b>Submission ID - {{ submissionId }}</b></div>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
       <kendo-tilelayout-item [col]="5" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff">
@@ -36,7 +36,7 @@
             <mat-icon>fullscreen_exit</mat-icon>
           </button> -->
 
-          <button mat-icon-button (click)="toggleMaximize()" style="float: right;color:#B1B1B1!important;margin-right:-20px;">
+          <button mat-icon-button (click)="toggleMaximize()" style="float: right;color:#909090!important;margin-right:-20px;">
             <mat-icon>{{ isMaximized ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
           </button>
           
