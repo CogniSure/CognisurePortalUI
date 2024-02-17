@@ -66,7 +66,8 @@ color:#fff;
 ::ng-deep .k-upload .k-upload-button {
   font-size: 12px;
   margin-top: 8%;
-  background-color: #009cc1;
+  background: linear-gradient(135deg, #00A7CE 0%, #00CEC3 100%);;
+  // background-color: #009cc1;
   color: #fff;
 }
 ::ng-deep .k-chat .k-timestamp {
@@ -151,3 +152,18 @@ color:transparent;
   border-radius: 0;
 }
 
+// ::ng-deep .k-message-list-content{
+//   background-color: #EEF2F7;
+// }
+
+// ::ng-deep .k-chat .k-message-group{
+//   background-color: #EEF2F7;
+// }
+
+// ::ng-deep .k-chat .k-chat-bubble {
+//  border-radius: 12px; 
+//   padding-block: 8px;
+//   padding-inline: 12px;
+//   border-width: 100%;
+//   border-style: solid;
+// }

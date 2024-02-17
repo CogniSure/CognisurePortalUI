@@ -178,10 +178,29 @@ export class FileviewerComponent {
     const divs = document.querySelectorAll('.file-div');
     buttons.forEach((button: any) => {
       button.style.backgroundColor = '#fff';
+      button.style.color = '#909090';
     });
+
+    // const clickedButton = document.querySelector(`#file-button-${index}`) as HTMLElement;
+    // if (clickedButton) {
+    //     clickedButton.style.backgroundColor = '#009cc1'; 
+    //     clickedButton.style.color = '#fff'; 
+    // }
+    
+
+    // const selectedButton = document.getElementById('file-button-' + index);
+    // const selectedDiv = document.getElementById('file-div-' + index);
+    // if (selectedButton && selectedDiv) {
+    //   selectedButton.style.backgroundColor = '#009cc1';
+    //   selectedDiv.style.backgroundColor = '#009cc1';
+    //   selectedButton.style.color = '#fff';
+    // }
+
+
     divs.forEach((div: any) => {
       div.style.backgroundColor = '#fff';
     });
+    
     const fileExt = file.name.split('.').pop();
     const contentType = this.getMimeType(fileExt!.toLowerCase());
 

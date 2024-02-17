@@ -10,7 +10,7 @@
   <kendo-tilelayout-item [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;">
     <kendo-tilelayout-item-body>
       <div *ngIf="files.length === 0; else showPreview">
-        <p>No files selected</p>
+        <p style="padding-left: 5%;">No files selected</p>
       </div>
       
       <ng-template #showPreview>
