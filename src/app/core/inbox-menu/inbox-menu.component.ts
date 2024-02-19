@@ -51,7 +51,7 @@ interface SideNavToggle {
 export class InboxMenuComponent implements OnInit {
   constructor(private toggleService:GlobalService) {}
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = false;
+  collapsed = true;
   screenWidth = 0;
   navData = inboxNavbarData;
 
