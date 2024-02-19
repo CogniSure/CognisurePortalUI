@@ -38,11 +38,13 @@
       matTooltip="{{ data.label }}"
       matTooltipPosition="right"
       [src]="data.imagePath" 
+      [class.inverted]="collapsed"
     />
     <img
       class="sidenav-link-icon"
       *ngIf="collapsed"
       [src]="data.imagePath" 
+      [class.inverted]="collapsed"
     />
     <br>
     <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">

@@ -211,3 +211,11 @@ position: absolute;
 top: 2.5%;
     right: 2%;
 }
+
+.inverted {
+  filter: invert(20%);
+}
+
+.sidenav-nav-link.active .sidenav-link-icon {
+  filter: invert(0%);
+}
