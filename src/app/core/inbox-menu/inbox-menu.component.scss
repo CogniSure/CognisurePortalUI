@@ -101,7 +101,7 @@
         // display: flex;
         align-items: center;
         height: 1.5rem;
-        color: #F5F5F5;
+        color: #ffffff91;
         text-decoration: none;
         border-radius: 0.625rem;
         transition: all 0.3s ease;
@@ -117,11 +117,14 @@
           width: 22px;
           height: 22px;
           padding-right: 4%;
+          color:#ffffff91;
+          font-weight: 500;
         }
   
         .sidenav-link-text {
           font-size: 12px;
           margin-left: 0rem;
+          color:#ffffff91;
           // color: #f5f5f5;
         }
         
@@ -141,16 +144,17 @@
     padding: 14% 3% 12% 3%;
     .sidenav-link-icon,
     .sidenav-link-text {
-      color: #fff;
+      color: #F5F5F5!important;
     }
   }
 
   .summary_menu{
     padding: 14% 3% 12% 3%;
+    line-height: 1;
   }
 
  .summary_menu:hover{
-    background-color: #0084A4;
+    // background-color: #0084A4;
     padding: 14% 3% 12% 3%;
   }
 

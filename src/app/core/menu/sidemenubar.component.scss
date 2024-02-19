@@ -77,8 +77,8 @@
         display: inherit;
         align-items: center;    
         padding-top: 12% !important;
-        padding-bottom: 8% !important;
-        color: #F5F5F5;
+        padding-bottom: 14% !important;
+        // color: #F5F5F5;
         text-decoration: none;
         //border-radius: 0.625rem;
         transition: all 0.3s ease;
@@ -90,6 +90,8 @@
           //margin: 0 0.5rem;
           text-align: center;
           // color: #f5f5f5;
+          color:#ffffff91;
+          font-weight: 500;
         }
   
         .sidenav-link-text {
@@ -98,27 +100,29 @@
           // color: #f5f5f5;
           text-align: center;
           width: 100%;
+          color:#ffffff91;
+          line-height: 0.8;
         }
         
       }
     }
   
-    .sidenav-nav-item:hover {
-      .sidenav-nav-link {
-        background-color: #d9d8d6;
-        color: black!important;
-      }
-    }
+    // .sidenav-nav-item:hover {
+    //   .sidenav-nav-link {
+    //     background-color: #d9d8d6;
+    //     color: black!important;
+    //   }
+    // }
   }
-
 
   
   .active {
     background-color: #0084A4;
-    // .sidenav-link-icon,
-    // .sidenav-link-text {
-    //   color: #F5F5F5!important;
-    // }
+    // color:#ffffff!important;
+    .sidenav-link-icon,
+    .sidenav-link-text {
+      color: #F5F5F5!important;
+    }
   }
   
   .mat-card {
@@ -145,7 +149,7 @@
     color:#F5F5F5!important;
   }
 
-  .inactive-link {
-    pointer-events: none; 
-    color: gray; 
-  }
+  // .inactive-link {
+  //   pointer-events: none; 
+  //   color: gray; 
+  // }

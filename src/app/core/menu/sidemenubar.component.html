@@ -34,17 +34,28 @@
       </li>
     </ul>
   </div>
-  <!-- <div class="logo-container"> -->
-    <!-- <button class="logo" (click)="toggleCollapse()"> -->
-        <!-- <div style="width: fit-content" *ngIf="!collapsed">
+    <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+        <div style="width: fit-content" *ngIf="!collapsed">
           <mat-icon style="color: #f5f5f5; font-size: 30px">skip_next</mat-icon>
-        </div> -->
-        <!-- <div style="width: fit-content" *ngIf="collapsed"> -->
-          <!-- <mat-icon
+          <img
+          src="../../../assets/icons/InboxHide.svg"
+          style="width: 30px; height: 30px"
+          alt="Custom Icon"
+        />
+        </div>
+         <div style="width: fit-content" *ngIf="collapsed"> 
+          <mat-icon
             style="color: #f5f5f5; font-size: 30px; "
             >menu</mat-icon
-          > -->
-        <!-- </div> -->
-      <!-- </button> -->
-  <!-- </div> -->
+          > 
+          <img
+          src="../../../assets/icons/InboxHide.svg"
+          style="width: 30px; height: 30px"
+          alt="Custom Icon"
+        />
+       </div>
+   
+       </button> 
+   </div>
 </div>
