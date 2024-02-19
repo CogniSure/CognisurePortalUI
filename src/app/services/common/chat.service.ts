@@ -18,7 +18,7 @@ export class ChatService {
       
       var resultVal = JSON.parse(res.value)
       const answer = resultVal.answer;
-      setTimeout(() => this.responses.next(answer), 1000);
+      setTimeout(() => this.responses.next(answer), 10);
     })
     
   }

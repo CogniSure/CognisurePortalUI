@@ -197,7 +197,8 @@ export class FileviewerComponent {
     if (selectedFile != null && selectedFile.length > 0) {
       console.log('File Availble');
       console.log(selectedFile);
-      this.selectedFilesEvent.emit(selectedFile);
+      this.selectedFilesEvent.emit(selectedFile[0]);
+      //return;
     } else {
       console.log('File not Availble');
       if (this.invalidPreview) {
@@ -213,8 +214,10 @@ export class FileviewerComponent {
           };
           console.log(selFile)
           this.customfiles.push(selFile);
-          this.selectedFilesEvent.emit(selFile);
+          
           this.download(file.name, reader.result);
+          this.selectedFilesEvent.emit(selFile);
+          return;
         };
       } else if (contentType == 'application/json') {
         this.jsonView = true;

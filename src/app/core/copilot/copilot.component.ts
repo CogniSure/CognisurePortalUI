@@ -55,7 +55,10 @@ export class CopilotComponent implements OnInit,OnDestroy {
   public restrictions: FileRestrictions = {
     allowedExtensions: [],
   };
+  
 
+  // Merge local and remote messages into a single stream
+  
   constructor(
     private svc: ChatService,
     private inboxService: InboxService,
@@ -63,27 +66,7 @@ export class CopilotComponent implements OnInit,OnDestroy {
     public dialogRef: MatDialogRef<CopilotComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    const hello: Message = {
-      author: this.bot,
-      suggestedActions: [
-      ],
-      timestamp: new Date(),
-      text: 'CogniSure Copilot',
-    };
-
-    // Merge local and remote messages into a single stream
-    this.feed = merge(
-      from([hello]),
-      this.local,
-      this.svc.responses.pipe(
-        map(
-          (response): Message => ({
-            author: this.bot,
-            text: response,
-          })
-        )
-      )
-    ).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
+    
   }
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -94,6 +77,27 @@ export class CopilotComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     if (this.data.SubmissionID != null) {
       this.submissionId = this.data.SubmissionID;
+      const hello: Message = {
+        author: this.bot,
+        suggestedActions: [
+        ],
+        timestamp: new Date(),
+        text: 'CogniSure Copilot',
+      };
+      this.feed = merge(
+        from([hello]),
+        this.local,
+        this.svc.responses.pipe(
+          map(
+            (response): Message => ({
+              author: this.bot,
+              text: response,
+              typing : false
+            })
+          )
+        )
+        
+      ).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
       this.inboxService
         .getSubmissionFilesFromDB('0', this.data.SubmissionID, '0',true)
         .subscribe((res) => {
@@ -123,8 +127,9 @@ export class CopilotComponent implements OnInit,OnDestroy {
   public clearModel(): void {
     this.uploadedFiles = [];
   }
-  Upload(selectedFile : any) {
+  Upload(selectedFile : any) : any {
     let uplfile: UploadFile;
+    //this.preventDefault
     if(selectedFile != null){
       uplfile = {
         FileName: selectedFile.name,
@@ -135,24 +140,12 @@ export class CopilotComponent implements OnInit,OnDestroy {
       };
       console.log("copilot files")
       console.log(selectedFile)
-      this.subscription = this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
+      console.log(uplfile)
+      return this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
         this.messageGuid = res.value;
-        return;
       });
     }
   }
-
-  private readFileAsBase64(file: File): void {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const base64String = reader.result as string;
-      console.log(base64String);
-    };
-
-    reader.readAsDataURL(file);
-  }
-
   
   toggleMaximize() {
     if (this.isMaximized) {
@@ -171,16 +164,6 @@ export class CopilotComponent implements OnInit,OnDestroy {
     this.dialogRef.updateSize('auto', 'auto');
     this.isMaximized = false;
   }
-  onFileSelected(event: any): void {
-    const files: FileList = event.target.files;
-    if (files && files.length > 0) {
-      this.uploadedFiles = [];
-
-      // Iterate through selected files and add them
-      for (let i = 0; i < files.length; i++) {
-        this.uploadedFiles.push(files[i]);
-      }
-    }
-  }
+ 
   searchableFiles: { name: string;uid: string; base64Data: string }[] = [];
 }
