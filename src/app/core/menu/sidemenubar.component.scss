@@ -59,7 +59,7 @@
   
   .sidenav-nav {
     list-style: none;
-    padding: 0.5rem 0 0 0;
+    padding: 0 0 0 0;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -76,8 +76,8 @@
         height: 100% !important;
         display: inherit;
         align-items: center;    
-        padding-top: 5% !important;
-        padding-bottom: 5% !important;
+        padding-top: 8% !important;
+        padding-bottom: 8% !important;
         color: #F5F5F5;
         text-decoration: none;
         //border-radius: 0.625rem;
@@ -143,4 +143,9 @@
   }
   .sidenav-nav .sidenav-nav-item{
     color:#F5F5F5!important;
+  }
+
+  .inactive-link {
+    pointer-events: none; 
+    color: gray; 
   }
