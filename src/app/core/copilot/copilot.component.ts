@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import {
   FileSelectModule,
   FileRestrictions,
 } from '@progress/kendo-angular-upload';
-import { Observable, Subject, from, map, merge, scan } from 'rxjs';
+import { Observable, Subject, Subscription, from, map, merge, scan } from 'rxjs';
 import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -27,23 +27,14 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
   selector: 'app-copilot',
   templateUrl: './copilot.component.html',
   styleUrls: ['./copilot.component.scss'],
-  // standalone: true,
-  // imports: [CommonModule,FormsModule,MatButtonModule, MatDialogModule, UploadsModule ,
-  //   FileSelectModule,LayoutModule,ButtonModule,ChatModule  ],
 })
-// export class DialogContentExample {
-
-// }
-export class CopilotComponent {
+export class CopilotComponent implements OnInit,OnDestroy {
   submissionId: string = '';
   showSubmissionId: boolean = true;
   isMaximized: boolean = false;
-  // originalWidth: string = '70rem';
-  // originalHeight: string = '80%';
-
   originalWidth: string;
   originalHeight: string;
-
+  subscription: Subscription;
   private inMemoryFile: string | null = null;
   public uploadedFiles: File[];
   uploadSaveUrl = 'saveUrl'; // should represent an actual API endpoint
@@ -52,10 +43,12 @@ export class CopilotComponent {
 
   public readonly user: User = {
     id: 1,
+    avatarUrl : "assets/images/defaultprofilepic.png"
   };
 
   public readonly bot: User = {
     id: 0,
+    avatarUrl : "../../../assets/icons/Copilot.svg"
   };
   public feed: Observable<Message[]>;
   private local: Subject<Message> = new Subject<Message>();
@@ -92,10 +85,13 @@ export class CopilotComponent {
       )
     ).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
   }
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   ngOnInit(): void {
-    console.log('Copilot Data');
-    console.log(this.data);
     if (this.data.SubmissionID != null) {
       this.submissionId = this.data.SubmissionID;
       this.inboxService
@@ -103,8 +99,9 @@ export class CopilotComponent {
         .subscribe((res) => {
           if (res != null && res.value != null && res.value.length > 0) {
             res.value.forEach((file: any) => {
-              this.pdfList.push({
+              this.searchableFiles.push({
                 name: file.fileName,
+                uid : file.fileGUID,
                 base64Data: file.fileData,
               });
             });
@@ -131,13 +128,16 @@ export class CopilotComponent {
     if(selectedFile != null){
       uplfile = {
         FileName: selectedFile.name,
-        FileGUID: '',
+        FileGUID: selectedFile.uid,
         FileSize: 0,
         FileType: selectedFile.mimeType,
         FileContent: selectedFile.base64Data
       };
-      this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
+      console.log("copilot files")
+      console.log(selectedFile)
+      this.subscription = this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
         this.messageGuid = res.value;
+        return;
       });
     }
   }
@@ -182,5 +182,5 @@ export class CopilotComponent {
       }
     }
   }
-  pdfList: { name: string; base64Data: string }[] = [];
+  searchableFiles: { name: string;uid: string; base64Data: string }[] = [];
 }

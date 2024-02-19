@@ -65,27 +65,7 @@
       >
         <kendo-tilelayout-item [col]="1" [colSpan]="5" [row]="1" [rowSpan]="1" style="border-radius: 0;height:100%!important">
           <kendo-tilelayout-item-body style="max-height: 100%!important;">
-            <app-fileviewer [files]="pdfList" (selectedFilesEvent)="Upload($event)" style="height:100%!important"></app-fileviewer>
-            <!-- <p>FileSelect</p>
-            <p class="new_chat">+    New Chat</p> -->
-
-            <!-- <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput multiple>
-            <button mat-button (click)="fileInput.click()" style="border: none;background-color: #fff;">
-              <span class="material-icons">attach_file</span> Add Files
-            </button> -->
-            <!-- <kendo-fileselect [(ngModel)]="uploadedFiles" [restrictions]="restrictions" [multiple]="true"> </kendo-fileselect> 
-          <div style="padding: 0% 0 3% 3%;">
-            <kendo-button
-              class="copied_icontop"
-              (click)="Upload()"
-              style="background-color: #009CC1; color: white;"
-            >
-             <span style="font-size: 11px;"> Upload</span>
-            </kendo-button>
-            </div> -->
-            <!-- <kendo-icon icon="delete" class="delete-icon"></kendo-icon> -->
-            <!-- <p class="delete_conversation">Delete Conversations</p> -->
-            
+            <app-fileviewer [files]="searchableFiles" (selectedFilesEvent)="Upload($event)" style="height:100%!important"></app-fileviewer>
           </kendo-tilelayout-item-body>
         </kendo-tilelayout-item>
         
@@ -97,6 +77,15 @@
                 [user]="user"
                 (sendMessage)="sendMessage($event)"
                 style="max-width: none !important;height: 35rem;">
+                <ng-template kendoChatAttachmentTemplate let-att>
+                  <ng-container >
+                    <!-- <img class="image-class" [src]="att.content" draggable="false" /> -->
+                    imageUrl="../../../assets/images/topbar_icon.svg"
+                  </ng-container>
+                </ng-template>
+                <!-- <ng-template kendoChatMessageTemplate let-message>
+                  <div [innerHTML]="renderMarkdown(message.text)"></div>
+                </ng-template> -->
               </kendo-chat>
             </div>
           </kendo-tilelayout-item-body>

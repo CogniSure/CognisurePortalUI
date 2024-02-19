@@ -31,7 +31,7 @@ export class ChatService {
     return this.httpService.getData(apiUrl,hParams );
   }
   uploadCopilotFiles(files : any) : Observable<string>{
-    var apiUrl = this.env.baseUrl + 'api/UploadCopilotFIles';
+    var apiUrl = this.env.baseUrl + 'api/UploadCopilotFiles';
     let hParams = new HttpParams();
     return this.httpService.postData(apiUrl,hParams,files );
   }

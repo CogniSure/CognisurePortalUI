@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-between;
   }
-  
+  ::ng-deep .ngx-json-viewer {
+    overflow-y: auto !important;
+    }
   .documents-list {
     width: 30%;
     padding: 20px;

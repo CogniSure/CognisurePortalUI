@@ -13,7 +13,20 @@
   // background-color: #00D6CB;
   padding: 10%;
 }
-
+::ng-deep .k-message-group{
+  background: transparent !important;
+  // justify-content: left !important;
+  // width: 100% !important;
+  // align-self: flex-start !important;
+  // align-items: flex-start !important;
+  // text-align: start !important;
+  ::ng-deep .k-avatar{
+    height: 30px !important;
+    width: 30px !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+}
 ::ng-deep .k-tilelayout-item-body {
 padding: 0;
 }
@@ -39,6 +52,7 @@ color:#fff;
   // background-color: #00b6ad;
   background-color: #fff!important;
 }
+
 
 ::ng-deep .k-upload {
   border: none;

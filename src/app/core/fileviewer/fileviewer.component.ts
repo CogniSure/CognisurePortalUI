@@ -14,6 +14,7 @@ import {
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FileService } from 'src/app/services/common/filelist.service';
 import { FileRestrictions } from '@progress/kendo-angular-upload';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-fileviewer',
@@ -28,7 +29,7 @@ export class FileviewerComponent {
   @ViewChild('fileviewer') fileViewer?: ElementRef<HTMLIFrameElement>;
   @Input() showSubmissionId: boolean = true;
   @Input() files: any[] = [];
-
+  customfiles: any[] = [];
   @Output() selectedFilesEvent = new EventEmitter<any>();
 
   showToolbar: boolean = true;
@@ -60,7 +61,7 @@ export class FileviewerComponent {
 
     // if (this.files[index].size === 0) {
     //   console.log("File is empty");
-    //   return; 
+    //   return;
     // }
 
     const fileExt = this.files[index].name.split('.').pop();
@@ -72,28 +73,27 @@ export class FileviewerComponent {
         'data:' + contentType + ';base64,' + this.files[index].base64Data;
       this.selectedFilesEvent.emit({
         name: this.files[index].name,
+        uid: this.files[index].uid,
         mimeType: contentType,
         base64Data: base64UrlData,
       });
       this.download(this.files[index].name, base64UrlData);
-    }
-    else if (contentType == 'application/json') {
-      console.log("application/json")
+    } else if (contentType == 'application/json') {
       this.jsonView = true;
-        this.selectedFilesEvent.emit({
-          name: this.files[index].name,
-          mimeType: contentType,
-          base64Data: this.files[index].base64Data as string,
-        });
-        console.log(this.files[index].base64Data)
-        let data = JSON.parse(this.files[index].base64Data as string);
-        this.jsonPreviewData = data;
-    } 
-    else {
+      this.selectedFilesEvent.emit({
+        name: this.files[index].name,
+        uid: this.files[index].uid,
+        mimeType: contentType,
+        base64Data: this.files[index].base64Data as string,
+      });
+      let data = JSON.parse(this.files[index].base64Data as string);
+      this.jsonPreviewData = data;
+    } else {
       const base64UrlData =
         'data:' + contentType + ';base64,' + this.files[index].base64Data;
       this.selectedFilesEvent.emit({
         name: this.files[index].name,
+        uid: this.files[index].uid,
         mimeType: contentType,
         base64Data: base64UrlData,
       });
@@ -181,66 +181,74 @@ export class FileviewerComponent {
       button.style.color = '#909090';
     });
 
-    // const clickedButton = document.querySelector(`#file-button-${index}`) as HTMLElement;
-    // if (clickedButton) {
-    //     clickedButton.style.backgroundColor = '#009cc1'; 
-    //     clickedButton.style.color = '#fff'; 
-    // }
-    
-
-    // const selectedButton = document.getElementById('file-button-' + index);
-    // const selectedDiv = document.getElementById('file-div-' + index);
-    // if (selectedButton && selectedDiv) {
-    //   selectedButton.style.backgroundColor = '#009cc1';
-    //   selectedDiv.style.backgroundColor = '#009cc1';
-    //   selectedButton.style.color = '#fff';
-    // }
-
-
+    console.log('Uploaded file preview');
+    console.log(file);
     divs.forEach((div: any) => {
       div.style.backgroundColor = '#fff';
     });
-    
+
     const fileExt = file.name.split('.').pop();
     const contentType = this.getMimeType(fileExt!.toLowerCase());
-
-    if (this.invalidPreview) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.selectedFilesEvent.emit({
-          name: file.name,
-          mimeType: contentType,
-          base64Data: reader.result,
-        });
-        this.download(file.name, reader.result);
-      };
-    } else if (contentType == 'application/json') {
-      this.jsonView = true;
-      const reader = new FileReader();
-      reader.readAsText(file, 'UTF-8');
-      reader.onload = () => {
-        this.selectedFilesEvent.emit({
-          name: file.name,
-          mimeType: contentType,
-          base64Data: reader.result,
-        });
-        let data = JSON.parse(reader.result as string);
-        this.jsonPreviewData = data;
-      };
+    let selectedFile = this.customfiles.filter(
+      (x) => x.name.toLowerCase() == file.name.toLowerCase()
+    );
+    console.log('File Selected');
+    console.log(selectedFile);
+    if (selectedFile != null && selectedFile.length > 0) {
+      console.log('File Availble');
+      console.log(selectedFile);
+      this.selectedFilesEvent.emit(selectedFile);
     } else {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.selectedFilesEvent.emit({
-          name: file.name,
-          mimeType: contentType,
-          base64Data: reader.result,
-        });
-      };
-      this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(
-        URL.createObjectURL(file)
-      );
+      console.log('File not Availble');
+      if (this.invalidPreview) {
+        console.log('In valid preview');
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          let selFile = {
+            name: file.name,
+            uid: Guid.create().toString(),
+            mimeType: contentType,
+            base64Data: reader.result,
+          };
+          console.log(selFile)
+          this.customfiles.push(selFile);
+          this.selectedFilesEvent.emit(selFile);
+          this.download(file.name, reader.result);
+        };
+      } else if (contentType == 'application/json') {
+        this.jsonView = true;
+        const reader = new FileReader();
+        reader.readAsText(file, 'UTF-8');
+        reader.onload = () => {
+          let selFile = {
+            name: file.name,
+            uid: Guid.create().toString(),
+            mimeType: contentType,
+            base64Data: reader.result,
+          };
+          this.customfiles.push(selFile);
+          this.selectedFilesEvent.emit(selFile);
+          let data = JSON.parse(reader.result as string);
+          this.jsonPreviewData = data;
+        };
+      } else {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          let selFile = {
+            name: file.name,
+            uid: Guid.create().toString(),
+            mimeType: contentType,
+            base64Data: reader.result,
+          };
+          this.customfiles.push(selFile);
+          this.selectedFilesEvent.emit(selFile);
+        };
+        this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(
+          URL.createObjectURL(file)
+        );
+      }
     }
   }
 
