@@ -31,8 +31,8 @@
     <kendo-tilelayout-item [col]="19" [colSpan]="7" [row]="1" [rowSpan]="1" class="tile-bg">
       <kendo-tilelayout-item-body style="float: left; padding:0 10%">
         <div class="header-icons" style="display: flex">
-          <div style="width: 40%"></div>
-          <div class="kendoimg" style="width: 20%">
+          <div style="width: 50%"></div>
+          <div class="kendoimg" style="width: 15%">
             <kendo-button class="copied_icontop" style="background: transparent;
             border: none;
             height: 100%;
@@ -46,14 +46,18 @@
             </kendo-button>
           </div>
           <!-- <div style="width: 10%;"></div> -->
-          <div class="notificationimg" style="width: 20%; display: flex;">
-            <span class="notification_icon">
-              <img
-                [src]="genericService.notificationIconURL"
-                class="imgHeight"
-              />
-              <!-- <span class="badge">{{ genericService.notificationCount }}</span> -->
-            </span>
+          <div class="notificationimg" style="width: 15%; display: flex;">
+            <kendo-button class="copied_icontop" style="background: transparent;
+            border: none;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;">
+             <img
+             [src]="genericService.notificationIconURL"
+             class="imgHeight"
+           />
+            </kendo-button>
           </div>
           <div style="width: 20%; justify-content: center; display: inline-flex;">
             <span class="profile_dropdown" style="    height: 100%;

@@ -23,7 +23,7 @@ export class GenericService {
   notificationCount = 20;
 
   headerImageURL = '../../../assets/images/Logo.svg';
-  topbarIconURL = '../../../assets/images/topbar_icon.svg';
+  topbarIconURL = '../../../assets/icons/ConversationAIPilot.svg';
   notificationIconURL = '../../../assets/images/Notification.svg';
   profileImageURL = '../../../assets/images/profile.png';
   defaultIconURL = '../../../assets/images/dropup_icon.png';

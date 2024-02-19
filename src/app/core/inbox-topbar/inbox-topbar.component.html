@@ -31,12 +31,14 @@
       >
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
-          <div kendoTooltip>
-            <h3 style="margin: 0; font-size: 15px">Submission ID</h3>
+          <div kendoTooltip [title]="submissionInfo.SubmissionId">
+            <div>
+              <img src="..//../../assets/icons/SubmissionId.svg" class="imgHeight" />
+            </div>
             <div
               kendoTooltip
-              style="text-wrap: nowrap"
-              [title]="submissionInfo.SubmissionId"
+              style="text-wrap: nowrap; padding-top: 5px;"
+              
             >
               {{ submissionInfo.SubmissionId }}
             </div>
@@ -49,7 +51,7 @@
     <kendo-tilelayout-item
       class="divider"
       [col]="7"
-      [colSpan]="10"
+      [colSpan]="8"
       [row]="1"
       [rowSpan]="1"
     >
@@ -64,21 +66,15 @@
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
           <div style="width: 98%">
+            <div>
+              <img src="..//../../assets/icons/Address.svg" class="imgHeight" />
+            </div>
             <div
               kendoTooltip
-              style="text-wrap: nowrap"
+              style="text-wrap: nowrap;padding-top: 5px;"
               [title]="accountInformation.NamedinsuredFullname"
             >
               {{ accountInformation.NamedinsuredFullname }}
-            </div>
-            <div style="justify-content: center; display: flex">
-              <div
-                kendoTooltip
-                style="text-wrap: nowrap"
-                [title]="accountInformation.FullAddress"
-              >
-                {{ accountInformation.FullAddress }}
-              </div>
             </div>
           </div>
           <kendo-grid-spacer></kendo-grid-spacer>
@@ -88,7 +84,7 @@
     </kendo-tilelayout-item>
     <kendo-tilelayout-item
       class="divider"
-      [col]="17"
+      [col]="15"
       [colSpan]="6"
       [row]="1"
       [rowSpan]="1"
@@ -128,7 +124,7 @@
     </kendo-tilelayout-item>
     <kendo-tilelayout-item
       class="divider"
-      [col]="23"
+      [col]="21"
       [colSpan]="8"
       [row]="1"
       [rowSpan]="1"
@@ -142,7 +138,7 @@
       >
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
-          <div kendoTooltip style="width: 98%">
+          <div kendoTooltip style="width: 95%">
             <mat-icon>
               <span class="material-icons-outlined">
                 home
@@ -151,7 +147,7 @@
             <br />
             <div
               kendoTooltip
-              style="text-wrap: nowrap"
+              style="text-wrap: nowrap; overflow: hidden;"
               [title]="accountInformation.LOB"
             >
               {{ getDistinctLOB(accountInformation.LOB) }}
@@ -165,7 +161,7 @@
 
     <kendo-tilelayout-item
       class="divider"
-      [col]="37"
+      [col]="29"
       [colSpan]="4"
       [row]="1"
       [rowSpan]="1"

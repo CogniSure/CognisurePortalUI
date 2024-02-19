@@ -965,16 +965,16 @@ export class ColumnSample {
     },
   ];
   public static SubmissionFileColumns = [
-    {
-      field: 'ID',
-      title: 'Submission Id',
-      default : true,
-      width: ColumnSize.ExtraSmall,
-      type: 'text',
-      columnmenu: true,
-      filterable: true,
-      sortable: true,
-    },
+    // {
+    //   field: 'ID',
+    //   title: 'Submission Id',
+    //   default : true,
+    //   width: ColumnSize.ExtraSmall,
+    //   type: 'text',
+    //   columnmenu: true,
+    //   filterable: true,
+    //   sortable: true,
+    // },
     {
       field: 'FileName',
       title: 'File Name',
@@ -984,6 +984,7 @@ export class ColumnSample {
       sortable: true,
       columnmenu: true,
       filterable: true,
+      allign : "left"
     },
     {
       field: 'DocumentType',
@@ -994,6 +995,7 @@ export class ColumnSample {
       sortable: false,
       columnmenu: true,
       filterable: true,
+      allign : "left"
     },
     {
       field: 'LineOfBusiness',
@@ -1004,6 +1006,7 @@ export class ColumnSample {
       sortable: true,
       columnmenu: true,
       filterable: true,
+      allign : "left"
     },
     {
       field: 'Carrier',
