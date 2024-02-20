@@ -13,6 +13,11 @@
   // background-color: #00D6CB;
   padding: 10%;
 }
+::ng-deep 
+.k-chat .k-alt .k-chat-bubble {
+  background: #00B6AD;
+  border-color: transparent;
+}
 ::ng-deep .k-message-group{
   background: transparent !important;
   // justify-content: left !important;

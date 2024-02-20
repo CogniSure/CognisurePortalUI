@@ -73,7 +73,12 @@ export class CopilotComponent implements OnInit,OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-
+  log(str : string)
+  {
+    console.log("Response")
+    console.log(str)
+    return false;
+  }
   ngOnInit(): void {
     if (this.data.SubmissionID != null) {
       this.submissionId = this.data.SubmissionID;
@@ -91,8 +96,8 @@ export class CopilotComponent implements OnInit,OnDestroy {
           map(
             (response): Message => ({
               author: this.bot,
-              text: response,
-              typing : false
+              text: response.trim(),
+              typing : this.log(response)
             })
           )
         )
