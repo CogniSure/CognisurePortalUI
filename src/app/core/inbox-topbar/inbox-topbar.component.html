@@ -237,22 +237,39 @@
       >
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
-          <div>
-            <span class="profile_icon" style="padding-top: 5%">
+          <div style="width: 100%;">
+            <kendo-button class="copied_icontop" style="background: transparent;
+            border: none;
+            height: 100%;
+            width: 50%;
+            padding: 0;
+            margin: 0;" (click)="OpenCopilot()">
               <img
-                [src]="inboxService.topbarIconURL"
-                class="imgHeight rounded-circle"
-              /> </span
-            >&nbsp;&nbsp;&nbsp;
-            <span class="profile_icon">
+                src="../../../assets/icons/ConversationAIPilot.svg"
+                class="imgHeight copied_icon1"
+              />
+            </kendo-button>
+            <kendo-grid-spacer></kendo-grid-spacer>
+            <kendo-button class="copied_icontop" style="background: transparent;
+            border: none;
+            height: 100%;
+            width: 50%;
+            padding: 0;
+            margin: 0;" (click)="OpenCopilot()">
+              <img
+              [src]="inboxService.notificationIconURL"
+              class="imgHeight rounded-circle"
+            /> 
+            </kendo-button>
+            <!-- <span class="profile_icon">
               <img
                 [src]="inboxService.notificationIconURL"
                 class="imgHeight rounded-circle"
               /> </span
-            >&nbsp;&nbsp;&nbsp;
+            >&nbsp;&nbsp;&nbsp; -->
           </div>
         </div>
-        <kendo-grid-spacer></kendo-grid-spacer>
+        
       </kendo-tilelayout-item-body>
     </kendo-tilelayout-item>
     <kendo-tilelayout-item

@@ -29,6 +29,8 @@ export class RiskInsightsComponent implements OnInit, OnDestroy{
   redirectURL =
     'https://accounts.zohoportal.com/accounts/p/10065241642/signin/jwt/auth?jwt=Zohotoken&return_to=returnURL';
   returnURL = `https://analytics.cognisure.ai/open-view/2701274000004285753?ZOHO_CRITERIA=SUB_SUBMISSIONMETADATA.SUBMISSIONGUID='{GUID}'`;
+
+  params = `?ZOHO_CRITERIA=SUB_SUBMISSIONMETADATA.SUBMISSIONGUID='{GUID}'`
   constructor(
     private authService: AuthService,
     private globalService: GlobalService
@@ -39,20 +41,21 @@ export class RiskInsightsComponent implements OnInit, OnDestroy{
   }
   ngOnInit(): void {
     this.userDetail = this.globalService.getUserProfile();
-    this.authService.getZOHOToken(this.userDetail.Email).subscribe((token) => {
-      console.log('token');
-
+    
+      
       this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
         let GUID = subInfo.SubmissionGUID;
-        this.embedURL = this.returnURL.replace("{GUID}",GUID);
-        this.redirectURL = this.redirectURL
-          .replace('Zohotoken', token.value)
-          .replace(
-            'returnURL',
-            this.embedURL
-          );
-
-          window.open(this.redirectURL, "_blank");
+        this.authService.getZOHOToken(GUID).subscribe((res) => {
+          console.log("Embeded URL")
+          console.log(res);
+          if(res != null){
+            this.embedURL = res.value;
+          }
+        
+        // this.params = this.params.replace("{GUID}",GUID);
+        // this.embedURL = this.embedURL + this.params
+        console.log(this.embedURL);
+          //window.open(this.redirectURL, "_blank");
       })
     })
   }

@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -7,6 +8,7 @@ import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { CacheService } from 'src/app/services/common/cache.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { CopilotComponent } from '../copilot/copilot.component';
 interface NavItem {
   title: string;
   routeLink: string;
@@ -45,7 +47,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   
   constructor(public inboxService: InboxService,private globalService : GlobalService, 
       private router: Router, private cdRef:ChangeDetectorRef,
-      private cacheService : CacheService
+      private cacheService : CacheService, private dialog: MatDialog
       ) {}
   navItems = [
     { title: 'Duke & Duke', content: '885 Street, Warrnville, illinois 60555', icon: '' },
@@ -111,6 +113,7 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         
         
       }
+      lobToDisplay = lobToDisplay.replace(/,$/, "")
       return lobToDisplay;
   }
   ngOnInit(): void {
@@ -214,4 +217,17 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     { text: "Refer" },
     { text: "Reprocess" }
   ];
+  OpenCopilot() {
+    console.log("Copilot on Inbox top bar")
+    console.log(this.submissionInfo)
+    let dialogRef = this.dialog.open(CopilotComponent,{
+      data:{
+        SubmissionID : this.submissionInfo.SubmissionId
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+     
+    });
+  }
 }

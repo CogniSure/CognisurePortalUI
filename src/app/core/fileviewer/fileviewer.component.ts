@@ -171,20 +171,22 @@ export class FileviewerComponent {
   }
 
   previewSelectedFile(file: File, index: number): void {
+    this.selectedFileIndex = index;
+    console.log('Uploaded file preview');
+    console.log(index);
     this.jsonView = false;
     this.invalidPreview = false;
     this.selectedFileIndex = index;
     const buttons = document.querySelectorAll('.file-button');
     const divs = document.querySelectorAll('.file-div');
     buttons.forEach((button: any) => {
-      button.style.backgroundColor = '#fff';
+      button.style.backgroundColor = '#ffff';
       button.style.color = '#909090';
     });
 
-    console.log('Uploaded file preview');
-    console.log(file);
+   
     divs.forEach((div: any) => {
-      div.style.backgroundColor = '#fff';
+      div.style.backgroundColor = '#ffff';
     });
 
     const fileExt = file.name.split('.').pop();

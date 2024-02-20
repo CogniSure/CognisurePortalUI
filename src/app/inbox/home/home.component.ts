@@ -197,6 +197,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.globalService.setCurrentSubmissionId(subInfo)
   }
   OpenCopilot(item: any) {
+    console.log("Copilot on Inbox")
+    console.log(item)
     let dialog1: MatDialog;
     let dialogRef = this.dialog.open(CopilotComponent,{
       data:item

@@ -1,6 +1,9 @@
 <div class="pie-container">
   <div class="overlay NoData" *ngIf="noDataAvailble">
-    <div>No data available</div>
+    <div style="text-align:center;    top: 40%;
+    position: relative;
+    height: fit-content;">
+      No data available</div>
   </div>
   <div class="chartArea" *ngIf="!noDataAvailble">
     <app-loader [showSpinner]="showSpinner"></app-loader>

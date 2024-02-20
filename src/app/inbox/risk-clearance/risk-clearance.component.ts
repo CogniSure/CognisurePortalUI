@@ -42,22 +42,22 @@ export class RiskClearanceComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.userDetail = this.globalService.getUserProfile();this.userDetail = this.globalService.getUserProfile();
-    this.authService.getZOHOToken(this.userDetail.Email).subscribe((token) => {
-      console.log('token');
+    // this.authService.getZOHOToken(this.userDetail.Email).subscribe((token) => {
+    //   console.log('token');
 
-      this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
-        let GUID = subInfo.SubmissionGUID;
-        this.embedURL = this.returnURL.replace("{GUID}",GUID);
-        this.redirectURL = this.redirectURL
-          .replace('Zohotoken', token.value)
-          .replace(
-            'returnURL',
-            this.embedURL
-          );
-            console.log(this.redirectURL)
-          window.open(this.redirectURL, "_blank");
-      })
-    })
+    //   this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
+    //     let GUID = subInfo.SubmissionGUID;
+    //     this.embedURL = this.returnURL.replace("{GUID}",GUID);
+    //     this.redirectURL = this.redirectURL
+    //       .replace('Zohotoken', token.value)
+    //       .replace(
+    //         'returnURL',
+    //         this.embedURL
+    //       );
+    //         console.log(this.redirectURL)
+    //       window.open(this.redirectURL, "_blank");
+    //   })
+    // })
   }
   
 }
