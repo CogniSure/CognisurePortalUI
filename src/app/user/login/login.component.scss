@@ -29,10 +29,10 @@
     border-radius: 8px !important;
     margin: 0;
   }
-  .terms_condition {
+  // .terms_condition {
     //margin: 3% 2% 3% 2%;
-    justify-content: center;
-  }
+  //   justify-content: center;
+  // }
   ::ng-deep .carousel-control-prev {
     left: 72%;
     top: 85%;
@@ -81,9 +81,9 @@
     text-align: start;
     padding-top: 1%;
   }
-  .trms_cond1 {
-    width: 40%;
-  }
+  // .trms_cond1 {
+  //   width: 40%;
+  // }
   .largeButton {
     width: 24em;
   }
@@ -103,6 +103,12 @@
   .signin-button{
     border-radius: 32px !important;
   }
+
+  .terms_condition{
+  padding-left: 5%;
+  padding-right: 15%;
+  }
+
   @media screen and (max-width: 1280px) {
     .benefits_header {
       padding-top: 71% !important;
@@ -114,6 +120,10 @@
       padding-top: 14%;
       padding-bottom: 5%;
     }
+    .terms_condition{
+      padding-left: 5%;
+      padding-right: 8%;
+      }
   }
 
   @media screen and (max-width: 1024px) {
@@ -135,6 +145,13 @@
     .privacy_policy_1 {
       font-size: 13px;
     }
+    .terms_condition{
+      padding-left: 5%;
+      padding-right: 6%;
+      }
+    .footer_img img{
+      height:2.5vh!important;
+    }
   }
 
   @media screen and (max-width: 912px) {
@@ -153,19 +170,19 @@
       display: contents !important;
     }
 
-    .term1 {
-      margin-left: -132px;
-    }
+    // .term1 {
+    //   margin-left: -132px;
+    // }
 
-    .term2 {
-      margin-left: -132px;
-    }
+    // .term2 {
+    //   margin-left: -132px;
+    // }
 
     .label_text {
       position: relative;
       right: 0 !important;
-      margin-top: -50px !important;
-      left: 268px;
+      // margin-top: -50px !important;
+      // left: 268px;
     }
 
     .imgHeight {
@@ -180,8 +197,8 @@
     .frgt_pswd {
       text-align: left;
       padding-top: 0%;
-      width: 40%;
-      position: absolute;
+      width: 100%;
+      // position: absolute;
     }
 
     .remeber_me {
@@ -190,44 +207,53 @@
     .sign-in {
       padding-left: 32% !important;
     }
-    .trms_cond1 .conditions_1 {
-      margin-left: 70px;
-    }
-    .trms_cond1 .privacy_policy_1 {
-      margin-left: 70px;
-    }
+    // .trms_cond1 .conditions_1 {
+    //   margin-left: 70px;
+    // }
+    // .trms_cond1 .privacy_policy_1 {
+    //   margin-left: 70px;
+    // }
     .footer_img img {
       height: 2.3vh !important;
     }
-    .textprimary {
-      padding-left: 12px;
-    }
-    .frgt_pswd {
-      margin-top: -24px;
-    }
+    // .textprimary {
+    //   padding-left: 12px;
+    // }
+    // .frgt_pswd {
+    //   margin-top: -24px;
+    // }
     .footer_img {
       padding-left: 0.5%;
     }
+    .terms_condition{
+      padding-left: 5%;
+      padding-right: 5%;
+      }
   }
 
   @media screen and (max-width: 820px) {
-    .label_text {
-      left: 242px;
-    }
+    // .label_text {
+    //   left: 242px;
+    // }
     .benefits_header {
       margin-top: -3.2%;
       margin-left: 9.5%;
     }
+    .terms_condition{
+      padding-left: 4%;
+      padding-right: 0%;
+      }
   }
 
   @media screen and (max-width: 768px) {
-    .label_text {
-      left: 230px;
-    }
+    // .label_text {
+    //   left: 230px;
+    // }
     .benefits_header {
       margin-top: -3.5%;
       margin-left: 9%;
     }
+   
   }
 
   @media screen and (max-width: 540px) {
@@ -235,13 +261,13 @@
       padding-top: 0.5%;
       width: 53%;
     }
-    .terms_condition {
-      width: 40%;
-      text-align: center;
-    }
-    .term2 {
-      margin-left: -171px;
-    }
+    // .terms_condition {
+    //   width: 40%;
+    //   text-align: center;
+    // }
+    // .term2 {
+    //   margin-left: -171px;
+    // }
     .signin-btn .signin-button {
       padding: 6px 98px 6px 98px;
     }
@@ -252,16 +278,37 @@
       margin-top: -4.6%;
       margin-left: 7.2%;
     }
-    .trms_cond1 .conditions_1 {
-      margin-left: -62px;
-    }
-    .trms_cond1 .privacy_policy_1 {
-      margin-left: -108px;
-    }
-    .label_text {
-      left: 110px;
-    }
+.footer_txtlogo{
+    position: absolute;
+    left: 70%;
+}
+    // .trms_cond1 .conditions_1 {
+    //   margin-left: -62px;
+    // }
+    // .trms_cond1 .privacy_policy_1 {
+    //   margin-left: -108px;
+    // }
+    // .label_text {
+    //   left: 110px;
+    // }
   }
+
+
+
+  @media screen and (max-width: 431px){
+    .signin_section{
+      width: 90% !important;
+      margin-left: 5.5% !important;
+    
+    }
+    .login-form .sign-in {
+      padding-left: 28% !important;
+  }
+  .footer_img img {
+    height: 1.8vh !important;
+  }
+    }
+
   @media screen and (max-width: 415px) {
     .benefits_header {
       margin-top: -6.4%;
@@ -274,9 +321,9 @@
       padding-left: 16% !important;
       width: 29rem;
     }
-    .terms_condition {
-      margin-top: 34%;
-    }
+    // .terms_condition {
+    //   margin-top: 34%;
+    // }
     .trms_cond1 {
       width: 100% !important;
     }
@@ -296,18 +343,26 @@
     .imgHeight {
       width: 16vw !important;
     }
-    .trms_cond1 .conditions_1 {
-      margin-left: -100px;
-    }
-    .trms_cond1 .privacy_policy_1 {
-      margin-left: -145px;
-    }
+    // .trms_cond1 .conditions_1 {
+    //   margin-left: -100px;
+    // }
+    // .trms_cond1 .privacy_policy_1 {
+    //   margin-left: -145px;
+    // }
     .frgt_pswd {
       margin-left: -52px;
     }
     .footer_img {
-      padding-left: 35.5%;
+      padding-left: 35.5%!important;
     }
+    .footer_txtlogo {
+      position: relative!important;
+      left: 0%!important;
+  }
+  .textprimary {
+    margin-left: 37%;
+  }
+
   }
   @media screen and (max-width: 394px) {
     .sign-in {
@@ -317,12 +372,12 @@
     .label_text {
       left: 130px;
     }
-    .trms_cond1 .conditions_1 {
-      margin-left: -115px;
-    }
-    .trms_cond1 .privacy_policy_1 {
-      margin-left: -160px;
-    }
+    // .trms_cond1 .conditions_1 {
+    //   margin-left: -115px;
+    // }
+    // .trms_cond1 .privacy_policy_1 {
+    //   margin-left: -160px;
+    // }
   }
 
   @media screen and (max-width: 391px) {
@@ -341,7 +396,7 @@
       margin-left: 8%;
     }
     .sign-in {
-      padding-left: 11% !important;
+      padding-left: 25% !important;
     }
     .benefits_header {
       margin-top: -6.6%;
@@ -352,45 +407,58 @@
     button {
       padding: 6px 60px 6px 60px !important;
     }
-    .sign-in {
-      padding-left: 7% !important;
-    }
-    .trms_cond1 .conditions_1 {
-      margin-left: -140px;
-    }
-    .trms_cond1 .privacy_policy_1 {
-      margin-left: -186px;
-    }
+    // .sign-in {
+    //   padding-left: 7% !important;
+    // }
+    // .trms_cond1 .conditions_1 {
+    //   margin-left: -140px;
+    // }
+    // .trms_cond1 .privacy_policy_1 {
+    //   margin-left: -186px;
+    // }
+ .textprimary{
+      margin-left: 26%!important;
+  }
     .label_text {
       left: 150px;
     }
     .benefits_header {
       margin-top: -6.6%;
     }
+    .footer_img {
+      padding-left: 25.5% !important;
+      padding-left: 0%;
   }
+  .footer_img img {
+    height: 2.5vh !important;
+}
+
+}
   @media screen and (max-width: 360px) {
-    .sign-in {
-      padding-left: 10% !important;
-    }
+    // .sign-in {
+    //   padding-left: 10% !important;
+    // }
     .sign-in {
       width: 27rem;
     }
     .label_text {
       left: 140px;
     }
-    .trms_cond1 .conditions_1 {
-      margin-left: -125px;
-    }
-    .trms_cond1 .privacy_policy_1 {
-      margin-left: -170px;
-    }
+    // .trms_cond1 .conditions_1 {
+    //   margin-left: -125px;
+    // }
+    // .trms_cond1 .privacy_policy_1 {
+    //   margin-left: -170px;
+    // }
     .benefits_header {
       margin-top: -7%;
     }
+   .footer_img img {
+      height: 2.2vh !important;
+  }
   }
   @media screen and (max-width: 280px) {
     .sign-in {
-      padding-left: 8% !important;
       width: 21rem;
     }
 
@@ -404,12 +472,12 @@
     ::ng-deep .password .mat-form-field-infix {
       width: 214px !important;
     }
-    .term1 {
-      margin-left: -65px !important;
-    }
-    .term2 {
-      margin-left: -140px;
-    }
+    // .term1 {
+    //   margin-left: -65px !important;
+    // }
+    // .term2 {
+    //   margin-left: -140px;
+    // }
     .label_text {
       right: 20px !important;
       left: 102px;
@@ -418,9 +486,9 @@
       width: 90%;
       margin-left: 2px !important;
     }
-    .trms_cond1 .privacy_policy_1 {
-      margin-left: -110px;
-    }
+    // .trms_cond1 .privacy_policy_1 {
+    //   margin-left: -110px;
+    // }
     .textprimary {
       padding-left: 0px;
     }
@@ -440,4 +508,14 @@
 .error-message {
   color: red;
   font-size: 12px;
+}
+
+
+//media query
+
+@media screen and (max-width: 1280px){
+.signin_section{
+  width: 80%!important;
+  margin-left: 12%!important;
+}
 }
