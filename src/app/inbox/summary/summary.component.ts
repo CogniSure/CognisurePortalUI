@@ -95,11 +95,14 @@ export class SummaryComponent implements OnInit, OnDestroy {
         let lobs = info.LOB;
         this.getSummaryWidgets();
         this.getSummaryWidgetsData(email,clientId,submissionId);
-
+        console.log("Summary Widgets")
+        
         if(lobs!=null && lobs!="" ){
           let lobArr = lobs.split(",")
           lobArr.forEach((lob:any)=>{
-            let currLob = lob.replace(" ", "") 
+            let currLob = lob.replace(/ /g, "") 
+            console.log(lob)
+            console.log(currLob)
             this.getWidgetConfigsForLOB(currLob);
             this.getWidgetDataForLOB(currLob,email,clientId,submissionId)
           })
@@ -250,7 +253,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         }
         break;
       }
-      case 'workers compensation':{
+      case 'workerscompensation':{
         let lobConfig =  this.getWorkersCompWidgetConfigs();
         if(lobConfig!=null && lobConfig.length>0){
           let configData = this.widgetComponents.filter((x:any) => x.Header == "Workers Compensation");
@@ -260,7 +263,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
         }
         break;
       }  
-      case 'general liability':{
+      case 'generalliability':{
         let lobConfig =  this.getGeneralLiabilityWidgetConfigs();
         if(lobConfig!=null && lobConfig.length>0){
           let configData = this.widgetComponents.filter((x:any) => x.Header == "General Liability");
@@ -291,9 +294,9 @@ export class SummaryComponent implements OnInit, OnDestroy {
       }
       case 'auto':
         return this.getAutoWidgetData(email,clientId,submissionId);
-      case 'workers compensation':
+      case 'workerscompensation':
         return this.getWorkersCompWidgetData(email,clientId,submissionId);
-      case 'general liability':
+      case 'generalliability':
         return this.getGeneralLiabilityWidgetData(email,clientId,submissionId);
       case 'umbrella':
         return this.getUmbrellaWidgetData(email,clientId,submissionId);
