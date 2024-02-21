@@ -13,7 +13,9 @@
         <ng-container
           *ngIf="genericService.idToDisplay === 1; else noHeaderImage"
         >
-          <div class="header_img">
+          <div class="header_img" style="height: 100%;
+          justify-content: left;
+          display: flex;">
             <img [src]="genericService.headerImageURL" class="imgHeight" />
           </div>
         </ng-container>

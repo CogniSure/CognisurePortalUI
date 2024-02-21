@@ -13,6 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
 import { EmailpopupComponent } from 'src/app/core/emailpopup/emailpopup.component';
 import { PopupAnimation } from '@progress/kendo-angular-popup';
+import { DataComponent } from 'src/app/model/samples/data';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +49,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private globalService: GlobalService,
     private dialog: MatDialog,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private authService : AuthService
   ) {
     this.formGroup = this.fb.group({
       agencyname: [''],
@@ -181,7 +184,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   closePopup() {
     this.isPopupVisible = false;
   }
-  reDirect(param:any){
+  reDirect(data:any){
+    let param = data.value;
+    
     let subInfo : SubmissionInfo = {
       SubmissionId : param.SubmissionID,
       SubmissionGUID: param.SubmissionGUID,
@@ -194,8 +199,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       RiskClearance : "",
       LOB : param.lineOfBusiness
     }
-
-    this.globalService.setCurrentSubmissionId(subInfo)
+    if(data.type == '')
+      this.globalService.setCurrentSubmissionId(subInfo)
+    else 
+      this.RedirectToZoho(param.SubmissionGUID);
   }
   OpenCopilot(item: any) {
     console.log("Copilot on Inbox")
@@ -262,4 +269,22 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     return false;
   }
+
+  RedirectToZoho(SubmissionGUID : string){
+    let userDetail = this.globalService.getUserProfile();
+      this.authService.getZOHOToken(userDetail.Email).subscribe((token) => {
+        // console.log('token');
+  
+        // this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
+           let GUID = SubmissionGUID;
+          let returndURL = DataComponent.RiskInsightsReturnURL.replace('{GUID}', GUID);
+          let redirectURL = DataComponent.RiskInsightsRedirectURL
+          redirectURL = redirectURL
+            .replace('Zohotoken', token.value)
+            .replace('returnURL', returndURL);
+          //console.log(this.redirectURL);
+          window.open(redirectURL, '_blank');
+        });
+      //});
+    }
 }

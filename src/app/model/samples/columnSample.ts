@@ -1019,6 +1019,16 @@ export class ColumnSample {
       filterable: true,
     },
     {
+      field: 'Status',
+      title: 'Status',
+      default : true,
+      width: ColumnSize.Small,
+      type: 'text',
+      sortable: true,
+      columnmenu: true,
+      filterable: true,
+    },
+    {
       field: 'Outputs',
       title: 'Download',
       default : true,

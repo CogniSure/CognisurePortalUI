@@ -108,10 +108,14 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   Copilot_Click(value: any) {
     this.CopilotEvent.emit(value);
   }
-  @Output() IDclickEvent = new EventEmitter<string>();
+  @Output() IDclickEvent = new EventEmitter<any>();
 
-  ID_Clicked(value: any) {
-    this.IDclickEvent.emit(value);
+  ID_Clicked(value: any,type = "") {
+    let emitValue = {
+      value : value,
+      type : type
+    }
+    this.IDclickEvent.emit(emitValue);
   }
   @Output() MessageEvent = new EventEmitter<string>();
 
