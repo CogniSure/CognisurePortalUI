@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -26,11 +26,14 @@ import { AppConfigService } from 'src/app/app-config-service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  invalidPasswordAttempts = 0;
+  passwordBlocked = false;
  environmentData = this.configService.settings;
  env = this.configService.settings;
  privacyurl = "";
   password: string = '';
   invalidPassword: boolean = false;
+  showPassword = false;
   hide = true;
   showSpinner = false;
   apiUrl = '';
@@ -127,8 +130,19 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
               });
             });
          
-        } else {
+        } 
+        // else{
+        //   this.invalidPasswordAttempts++;
+        //   if (this.invalidPasswordAttempts >= 3) {
+        //     this.passwordBlocked = true;
+        //   }
+        // }
+        else {
           this.validationErrors.push('Invalid Username and password');
+          this.invalidPasswordAttempts++;
+          if (this.invalidPasswordAttempts >= 3) {
+            this.passwordBlocked = true;
+          }
         }
         //  this.router.navigate(['/dashboard/home'], {
         //   queryParamsHandling: 'preserve',
@@ -201,6 +215,9 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
       this.invalidPassword = true;
       return; 
     }
+    // else{
+    //       this.validationErrors.push('Invalid Username and password');
+    // }
 
   }
 
@@ -236,5 +253,26 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
   //   });
   // }
 
+
+  // togglePasswordVisibility() {
+  //   this.hide = !this.hide;
+
+  //   if (this.hide) {
+  //     setTimeout(() => {
+  //       this.hide = true; 
+  //     }, 3000);
+  //   }
+  // }
+  
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    const passwordInput = document.getElementById('password-input') as HTMLInputElement;
+    passwordInput.type = this.showPassword ? 'text' : 'password';
+    setTimeout(() => {
+      passwordInput.type = 'password';
+      this.showPassword = false;
+    }, 3000);
+  }
 
 }

@@ -45,9 +45,18 @@ export class InputComponent<T> extends ControlValueAccessDirective<T> implements
 
     if (inputEl.type === "password") {
       inputEl.type = "text";
+      setTimeout(() => {
+        inputEl.type = "password"; 
+      }, 3000);
     } else {
       inputEl.type = "password";
     }
+
+    // if (inputEl.type === "password") {
+    //   inputEl.type = "text";
+    // } else {
+    //   inputEl.type = "password";
+    // }
   }
 
 }

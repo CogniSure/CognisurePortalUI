@@ -56,12 +56,19 @@
                   <div class="password">
                     <app-input
                       [PlaceHolder]="'* Password'"
-                      [Type]="'password'"
+                      [Type]="showPassword ? 'text' : 'password'"
                       [TooltipContent]="tooltip"
                       formControlName="password"
                       [(ngModel)]="password" 
                       required
                     ></app-input>
+                    <div *ngIf="passwordBlocked" class="error-message">Password blocked. Please try after sometime.</div>
+
+                
+                    <!-- <span class="eye-icon" (click)="togglePasswordVisibility()">
+                      <i class="fa" [ngClass]="hide ? 'fa-eye' : 'fa-eye-slash'"></i>
+                    </span> -->
+
                     <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.dirty && invalidPassword" class="error-message">Password must meet requirements.</div>
                     <!-- <div *ngIf="invalidPassword" class="error-message">Password must meet requirements.</div> -->
                     <!-- <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.errors?.['passwordRequirements']" class="error-message">
@@ -143,7 +150,7 @@
                   <img
                     style="
                       background: transparent;
-                      height: 2vh;
+                      height: 2.8vh;
                       width: auto;
                     "
                     src="assets/images/login_logo.png"
