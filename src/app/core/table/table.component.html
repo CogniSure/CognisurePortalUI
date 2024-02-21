@@ -35,7 +35,8 @@
       <div class="kendo-dropdown-div">
       <kendo-dropdownbutton 
       [data]="exportButtons" 
-      [rounded]="'large'"
+      rounded="large"
+      [buttonClass]="'custom-border-download'"
       (itemClick)="exportItemClick($event, generictable)"
       >
         <img
@@ -632,8 +633,7 @@
                 <a
                   color="primary"
                   class="excel_download"
-                  routerLink="{{ column.redirectUrl }}"
-                  (click)="ID_Clicked(dataItem)"
+                  (click)="ID_Clicked(dataItem,'zoho')"
                 >
                   <img
                     src="../../../assets/icons/InsightsCompleted.svg"

@@ -223,8 +223,8 @@
     </kendo-tilelayout-item>
     <kendo-tilelayout-item
       class="divider"
-      [col]="41"
-      [colSpan]="3"
+      [col]="38"
+      [colSpan]="6"
       [row]="1"
       [rowSpan]="1"
     >
@@ -241,7 +241,33 @@
             <kendo-button class="copied_icontop" style="background: transparent;
             border: none;
             height: 100%;
-            width: 50%;
+            width: 25%;
+            padding: 0;
+            margin: 0;" (click)="DownloadS360()">
+              <img
+                src="../../../assets/icons/S360Report.svg"
+                class="imgHeight copied_icon1"
+                style="height: 27px;"
+              />
+            </kendo-button>
+            <kendo-grid-spacer></kendo-grid-spacer>
+            <kendo-button class="copied_icontop" style="background: transparent;
+            border: none;
+            height: 100%;
+            width: 25%;
+            padding: 0;
+            margin: 0;" (click)="RedirectToZoho()">
+              <img
+                src="../../../assets/icons/Insights.svg"
+                class="imgHeight copied_icon1"
+                style="height: 27px;"
+              />
+            </kendo-button>
+            <kendo-grid-spacer></kendo-grid-spacer>
+            <kendo-button class="copied_icontop" style="background: transparent;
+            border: none;
+            height: 100%;
+            width: 25%;
             padding: 0;
             margin: 0;" (click)="OpenCopilot()">
               <img
@@ -253,7 +279,7 @@
             <kendo-button class="copied_icontop" style="background: transparent;
             border: none;
             height: 100%;
-            width: 50%;
+            width: 25%;
             padding: 0;
             margin: 0;" (click)="OpenCopilot()">
               <img

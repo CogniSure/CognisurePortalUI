@@ -84,7 +84,7 @@
                         <div style="justify-content: center; display: flex;" *ngIf="action.icon !=''">
                           <mat-icon> {{ action.icon }} </mat-icon>
                         </div>
-                        <div style="padding: 0.25em ; display: flex;">
+                        <div style="padding: 0.25em ; display: flex;" *ngIf="action.title !=''">
                           <div> {{ action.title }} </div>
                           <div *ngIf="action.content !=''"> 
                            <span style="padding: 0.25em;"> : </span>

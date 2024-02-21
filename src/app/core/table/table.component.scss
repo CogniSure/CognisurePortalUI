@@ -1,4 +1,7 @@
 .generic-table {
+  ::ng-deep .custom-border-download{
+    border-radius: 8px;
+  }
   ::ng-deep .k-grid-excel {
     background-color: transparent;
     color: #009cc1;
@@ -11,7 +14,9 @@
         padding: 0;
       }
     }
+    
   }
+  
   ::ng-deep .k-grid-pdf {
     background-color: transparent;
     color: #009cc1;

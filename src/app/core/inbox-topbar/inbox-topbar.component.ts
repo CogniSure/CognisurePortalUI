@@ -9,6 +9,9 @@ import { CacheService } from 'src/app/services/common/cache.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { CopilotComponent } from '../copilot/copilot.component';
+import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { DataComponent } from 'src/app/model/samples/data';
 interface NavItem {
   title: string;
   routeLink: string;
@@ -47,7 +50,9 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   
   constructor(public inboxService: InboxService,private globalService : GlobalService, 
       private router: Router, private cdRef:ChangeDetectorRef,
-      private cacheService : CacheService, private dialog: MatDialog
+      private cacheService : CacheService, private dialog: MatDialog,
+      private dbService: DashboardService,
+      private authService: AuthService,
       ) {}
   navItems = [
     { title: 'Duke & Duke', content: '885 Street, Warrnville, illinois 60555', icon: '' },
@@ -230,4 +235,38 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
      
     });
   }
+  DownloadS360(){
+    this.subscription = this.globalService
+      .getCurrentSubmissionId()
+      .subscribe((submissionId: SubmissionInfo) => {
+        this.dbService
+          .downloadSubmission360(submissionId.MessageId)
+          .subscribe((downloadRes) => {
+            const source = `data:application/pdf;base64,${downloadRes.value.data}`;
+            const downloadLink = document.createElement('a');
+            const fileName = downloadRes.value.fileName;
+
+            downloadLink.href = source;
+            downloadLink.download = fileName;
+            downloadLink.click();
+          });
+      });
+  }
+  RedirectToZoho(){
+    let userDetail = this.globalService.getUserProfile();
+      this.authService.getZOHOToken(userDetail.Email).subscribe((token) => {
+        console.log('token');
+  
+        this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
+          let GUID = subInfo.SubmissionGUID;
+          let returndURL = DataComponent.RiskInsightsReturnURL.replace('{GUID}', GUID);
+          let redirectURL = DataComponent.RiskInsightsRedirectURL
+          redirectURL = redirectURL
+            .replace('Zohotoken', token.value)
+            .replace('returnURL', returndURL);
+          //console.log(this.redirectURL);
+          window.open(redirectURL, '_blank');
+        });
+      });
+    }
 }

@@ -22,21 +22,21 @@ export const inboxNavbarData = [
         imagePath:'/assets/icons/Inbox-Menu/RiskClearance.svg',
         label: 'Risk Clearance'
     },
-    {
-        routeLink: '/inbox/detail/riskinsights',
-        imagePath:'/assets/icons/Inbox-Menu/RiskInsights.svg',
-        label: 'Risk Insights'
-    },
-    {
-        routeLink: '/inbox/detail/exposeranalysis',
-        imagePath:'/assets/icons/Inbox-Menu/Exposure analysis.svg',
-        label: 'Exposure Analysis'
-    },
-    {
-        routeLink: '/inbox/detail/lossanalysis',
-        imagePath:'/assets/icons/Inbox-Menu/Loss Analysis.svg',
-        label: 'Loss Analysis'
-    },
+    // {
+    //     routeLink: '/inbox/detail/riskinsights',
+    //     imagePath:'/assets/icons/Inbox-Menu/RiskInsights.svg',
+    //     label: 'Risk Insights'
+    // },
+    // {
+    //     routeLink: '/inbox/detail/exposeranalysis',
+    //     imagePath:'/assets/icons/Inbox-Menu/Exposure analysis.svg',
+    //     label: 'Exposure Analysis'
+    // },
+    // {
+    //     routeLink: '/inbox/detail/lossanalysis',
+    //     imagePath:'/assets/icons/Inbox-Menu/Loss Analysis.svg',
+    //     label: 'Loss Analysis'
+    // },
     {
         routeLink: '/inbox/detail/documentvault',
         imagePath:'/assets/icons/Inbox-Menu/Document Vault.svg',
