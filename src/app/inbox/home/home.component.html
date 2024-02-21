@@ -140,8 +140,11 @@
               *ngIf="isPopupVisible"
               [anchor]="popupAnchor"
               [popupClass]="'custom-popup'"
+              [animate]="animate"
             >
-              <button class="popup_closebtn" (click)="closePopup()">x</button>
+              <button class="popup_closebtn" (click)="closePopup()">
+                <mat-icon>close</mat-icon>
+              </button>
               <!-- <kendo-button icon="k-i-close-outline k-i-x-outline k-i-error" title="Events" class="popup_closebtn" (click)="closePopup()"></kendo-button> -->
               <app-emailpopup [SubmissionId] = selectedSubmission.SubmissionID></app-emailpopup>
               <!-- <button (click)="closePopup()">Close Popup</button> -->

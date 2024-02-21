@@ -15,12 +15,18 @@ constructor(private inboxService : InboxService, private changedetector: ChangeD
 }
   ngOnInit(): void {
     this.inboxService.getSubmissionEmailMessage(this.SubmissionId).subscribe(msg=>{
-      this.htmlData = msg.value;
-      this.changedetector.detectChanges();
+      if(msg!=null && msg.value !=null){
+        this.htmlData = msg.value.messageBody;
+        this.senderEmail = msg.value.messageReceivedFromEmail
+        this.messgageSubject = msg.value.messageSubject
+        this.changedetector.detectChanges();
+      }
+      
     })
   }
   
   htmlData = ''
- 
+  senderEmail = ""
+  messgageSubject = ""
 
 }

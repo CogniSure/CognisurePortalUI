@@ -1,15 +1,19 @@
-<!-- <div>
+<div>
   <mat-dialog-content
     class="mat-typography"
     style="max-height: 80%; padding: 0"
-  > -->
-    <div style="height: 3em;
+  >
+    <div style="height: 5em;
     border-radius: 8px 8px 0 0;
     margin: 0;
     overflow: hidden;
     padding-top: 2%;
     padding-left: 5%;
-    background: #eef2f7;">Submission Email</div>
-    <div [innerHTML]="htmlData" style="height: 95%; text-align: left; overflow:auto !important; padding-left: 2em; " ></div>
-  <!-- </mat-dialog-content>
-</div> -->
+    background: #eef2f7;">
+    <div> <b style="width:20%; float: left;display: flex;">Senders Email</b> : {{senderEmail}}</div>
+    <div> <b style="width:20%; float: left;display: flex;">Subject</b> : {{messgageSubject}}</div>
+    <!-- Submission Email -->
+  </div>
+    <div [innerHTML]="htmlData" style="height: 95%; text-align: left; overflow:auto !important; padding-left: 2em; padding-top: 1em" ></div>
+  </mat-dialog-content>
+</div> 

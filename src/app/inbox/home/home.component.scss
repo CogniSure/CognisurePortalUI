@@ -273,17 +273,20 @@
     border-radius: 10px;
     //padding-left: 2em;
     //overflow: auto !important;
-    transition: width 10s linear 10s;
+    // transition: all 0.5s ease-in;
+    // -webkit-transform: scale(0.1);
+    // transform:scale(1); // implicit, but good to specify explicitly
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .popup_closebtn {
     //width: 3%;
     background: transparent;
-    color: #009cc1;
+    color: gray;
     border: none;
-    font-size: 22px;
+    font-size: 16px;
     position: absolute;
     right: 0;
+    padding-top: 1em;
   }
 

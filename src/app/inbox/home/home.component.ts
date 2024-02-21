@@ -12,6 +12,7 @@ import { UserProfile } from 'src/app/model/profile/userprofile';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
 import { EmailpopupComponent } from 'src/app/core/emailpopup/emailpopup.component';
+import { PopupAnimation } from '@progress/kendo-angular-popup';
 
 @Component({
   selector: 'app-home',
@@ -249,5 +250,16 @@ export class HomeComponent implements OnInit, OnDestroy {
         (item) => item.Status.toLowerCase()=="completed" 
       );
     }
+  }
+  public get animate(): boolean | PopupAnimation {
+    if (this.isPopupVisible) {
+      return {
+        type: "expand",
+        direction: "right",
+        duration: 200,
+      };
+    }
+
+    return false;
   }
 }
