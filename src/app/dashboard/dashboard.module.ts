@@ -12,7 +12,6 @@ import { InfoPanelComponent } from './info-panel/info-panel.component';
 import { NewsComponent } from './news/news.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { KendoModule } from '../kendo/kendo.module';
-import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -36,8 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     KendoModule,
     ChartsModule,
-    MatDialogModule,
-    SessionExpirationAlert.forRoot({ totalMinutes: 0.5 }),
+    MatDialogModule
   ]
 })
 export class DashboardModule { }
