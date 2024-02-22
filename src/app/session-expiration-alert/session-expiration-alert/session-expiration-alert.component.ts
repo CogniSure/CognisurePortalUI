@@ -12,6 +12,7 @@ import {
 import { Subscription } from 'rxjs';
 import { SessionInterruptService } from '../../services/auth/session-interrupt.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'session-expiration-alert',
@@ -33,7 +34,8 @@ export class SessionExpirationAlertComponent
   constructor(
     private el: ElementRef,
     private sessionInterrupter: SessionInterruptService,
-    public sessionTimer: AuthService
+    public sessionTimer: AuthService,
+    private router: Router,
   ) {
     this.alertAt = this.sessionTimer.expiresAt;
   }
@@ -70,6 +72,7 @@ export class SessionExpirationAlertComponent
           this.expired = true;
           this.cleanUp();
           this.sessionInterrupter.onExpire();
+          this.redirectToLogin();
         }
       }
     );
@@ -111,7 +114,11 @@ export class SessionExpirationAlertComponent
   }
   reload() {
     this.close();
+    // this.router.navigateByUrl('/login');
     location.reload();
+  }
+  redirectToLogin() {
+    this.router.navigateByUrl('/login'); // Navigate to the login page
   }
 
   ngOnDestroy(): void {

@@ -32,8 +32,8 @@ export class AuthService {
   }
   private readonly _timeoutSeconds: number;
   private _count: number = 0;
-  private _sessionTime: number = 20;
-  expiresAt: number = 5 * 60;
+  private _sessionTime: number = 2;
+  expiresAt: number = 1 * 60;
   private timerSubscription!: Subscription;
   public zohotoken = "";
   private timerStartSubscription!: Subscription;
