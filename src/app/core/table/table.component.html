@@ -22,45 +22,7 @@
     [selectable]="selectableSettings"
     [style]="'border-radius: 14px;overflow: hidden'"
   >
-    <ng-template kendoGridToolbarTemplate>
-      <kendo-textbox
-        [style.width]="'25%'"
-        [style.border.px]="2"
-        placeholder="Search in all columns..."
-        (valueChange)="onFilter($event)"
-      >
-        <span class="search-icon">&#128269;</span>
-      </kendo-textbox>
-      <kendo-grid-spacer></kendo-grid-spacer>
-      <div class="kendo-dropdown-div">
-      <kendo-dropdownbutton 
-      [data]="exportButtons" 
-      rounded="large"
-      [buttonClass]="'custom-border-download'"
-      (itemClick)="exportItemClick($event, generictable)"
-      >
-        <img
-          src="../../../assets/icons/DownloadIcon.svg"
-         
-          alt="Custom Icon"
-        />
-        <ng-template kendoDropDownButtonItemTemplate let-dataItem>
-          <div style="padding-right: 5%; width: 10em !important; display: flex">
-            <div>
-              <span>{{ dataItem.actionName }}</span>
-            </div>
-            <div style="padding-left: 5%">
-              <img
-                [src]="dataItem.icon"
-                style="width: 1em; height: 1em"
-                alt="Custom Icon"
-              />
-            </div>
-          </div>
-        </ng-template>
-      </kendo-dropdownbutton>
-      </div>
-    </ng-template>
+
 
     <ng-template ngFor [ngForOf]="columns" let-column>
       <kendo-grid-column
@@ -93,7 +55,6 @@
           </div>
         </ng-template>
       </kendo-grid-column>
-
       <kendo-grid-column
         *ngIf="column.type == 'link'"
         field="{{ column.field }}"
@@ -118,7 +79,6 @@
           >
         </ng-template>
       </kendo-grid-column>
-
       <kendo-grid-column
         *ngIf="column.type == 'checkbox'"
         field="{{ column.field }}"
@@ -158,7 +118,6 @@
           />
         </ng-template>
       </kendo-grid-column>
-
       <kendo-grid-column
         *ngIf="column.type == 'icon'"
         field="{{ column.field }}"
@@ -181,7 +140,6 @@
           <span class="k-icon k-i-import"></span>
         </ng-template>
       </kendo-grid-column>
-
       <kendo-grid-column-group
         *ngIf="column.type == 'alerts'"
         field="{{ column.field }}"
@@ -255,7 +213,6 @@
           </ng-template>
         </kendo-grid-column>
       </kendo-grid-column-group>
-
       <kendo-grid-column
         *ngIf="column.type == 'SubmissionId'"
         field="{{ column.field }}"
@@ -294,7 +251,6 @@
           
         </ng-template>
       </kendo-grid-column>
-
       <kendo-grid-column
         *ngIf="column.type == 'Download'"
         field="{{ column.field }}"
@@ -370,7 +326,6 @@
           </ng-container>
         </ng-template>
       </kendo-grid-column>
-
       <kendo-grid-column-group
       *ngIf="column.type == 'Outputs'"
       title="{{ column.title }}"
@@ -599,8 +554,7 @@
           </div>
         </ng-template>
       </kendo-grid-column>
-    </kendo-grid-column-group>
-
+      </kendo-grid-column-group>
       <kendo-grid-column-group
         *ngIf="column.type == 'Attachments'"
         title="{{ column.title }}"
@@ -637,51 +591,6 @@
           >
          Total
           </ng-template>
-          <!-- <ng-template
-            kendoGridCellTemplate
-            let-dataItem
-            let-rowIndex="rowIndex"
-            let-value="value"
-          >
-            <div style="display: flex; width: 100%; justify-content: center">
-              <div style="justify-content: center">
-                <ng-container
-                  *ngIf="dataItem.Status === 'Completed'; else S360Pending"
-                >
-                  <a
-                    color="primary"
-                    class="excel_download"
-                    (click)="Download_Click(dataItem)"
-                  >
-                    <img
-                      src="../../../assets/icons/S360ReportCompleted.svg"
-                      alt="Green Image"
-                    />
-                  </a>
-                </ng-container>
-              </div>
-              <ng-template #S360Pending>
-                <img
-                  src="../../../assets/icons/S360ReportPending.svg"
-                  alt="Gray Image"
-                />
-              </ng-template>
-
-              <ng-template #ConvaiPending>
-                <img
-                  src="../../../assets/icons/ConversationAIPending.svg"
-                  alt="Gray Image"
-                />
-              </ng-template>
-
-              <ng-template #InsgihtsPending>
-                <img
-                  src="../../../assets/icons/InsightsPending.svg"
-                  alt="Gray Image"
-                />
-              </ng-template>
-            </div>
-          </ng-template> -->
         </kendo-grid-column>
         <kendo-grid-column
           field="{{ column.field }}"
@@ -769,6 +678,45 @@
       <div class="k-loading-color"></div>
       <div class="loading-container">
         <kendo-loader type="converging-spinner" size="large"></kendo-loader>
+      </div>
+    </ng-template>
+    <ng-template kendoGridToolbarTemplate>
+      <kendo-textbox
+        [style.width]="'25%'"
+        [style.border.px]="2"
+        placeholder="Search in all columns..."
+        (valueChange)="onFilter($event)"
+      >
+        <span class="search-icon">&#128269;</span>
+      </kendo-textbox>
+      <kendo-grid-spacer></kendo-grid-spacer>
+      <div class="kendo-dropdown-div">
+      <kendo-dropdownbutton 
+      [data]="exportButtons" 
+      rounded="large"
+      [buttonClass]="'custom-border-download'"
+      (itemClick)="exportItemClick($event, generictable)"
+      >
+        <img
+          src="../../../assets/icons/DownloadIcon.svg"
+         
+          alt="Custom Icon"
+        />
+        <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+          <div style="padding-right: 5%; width: 10em !important; display: flex">
+            <div>
+              <span>{{ dataItem.actionName }}</span>
+            </div>
+            <div style="padding-left: 5%">
+              <img
+                [src]="dataItem.icon"
+                style="width: 1em; height: 1em"
+                alt="Custom Icon"
+              />
+            </div>
+          </div>
+        </ng-template>
+      </kendo-dropdownbutton>
       </div>
     </ng-template>
     <kendo-grid-pdf
