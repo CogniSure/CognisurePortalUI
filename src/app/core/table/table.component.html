@@ -321,31 +321,8 @@
           </ng-container>
         </ng-template>
       </kendo-grid-column>
-
       <kendo-grid-column
         *ngIf="column.type == 'dropdown'"
-        field="{{ column.field }}"
-        title="{{ column.title }}"
-        format="{{ column.format }}"
-        [filterable]="column.filterable"
-        [sortable]="column.sortable"
-        [filter]="column.type"
-        [width]="column.width"
-        [columnMenu]="column.columnmenu"
-        [editor]="column.editor"
-        [hidden]="!column.default"
-        [headerStyle]="{'border-color': '#1FD0C7'}"
-      >
-        <ng-template
-          kendoGridEditTemplate
-          let-dataItem="dataItem"
-          let-formGroup="formGroup"
-        >
-        </ng-template>
-      </kendo-grid-column>
-
-      <kendo-grid-column
-        *ngIf="column.type == 'priority'"
         field="{{ column.field }}"
         title="{{ column.title }}"
         format="{{ column.format }}"
@@ -391,49 +368,6 @@
           <ng-container *ngIf="!isCellEditable(dataItem, column)">
             {{ dataItem[column.field] }}
           </ng-container>
-        </ng-template>
-      </kendo-grid-column>
-
-      <kendo-grid-column
-        *ngIf="column.type == 'agencyname'"
-        field="{{ column.field }}"
-        title="{{ column.title }}"
-        format="{{ column.format }}"
-        [filterable]="column.filterable"
-        [sortable]="column.sortable"
-        [filter]="column.type"
-        [width]="column.width"
-        [columnMenu]="column.columnmenu"
-        [editor]="column.editor"
-        [hidden]="!column.default"
-        [headerStyle]="{'border-color': '#1FD0C7'}"
-      >
-        <ng-template
-          kendoGridCellTemplate
-          let-dataItem
-          let-rowIndex="rowIndex"
-          let-value="value"
-        >
-          <ng-container *ngIf="isCellEditable(dataItem, column)">
-            <kendo-textbox [value]="dataItem[column.field]">{{
-              dataItem[column.field]
-            }}</kendo-textbox>
-          </ng-container>
-        </ng-template>
-
-        <ng-template
-          kendoGridCellTemplate
-          let-dataItem
-          let-rowIndex="rowIndex"
-          let-value="value"
-        >
-          <div
-            [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
-            [class.expanded-cell]="cellExpansionState[rowIndex]"
-            (click)="toggleCellExpansion(dataItem)"
-          >
-            {{ dataItem[column.field] }}
-          </div>
         </ng-template>
       </kendo-grid-column>
 
@@ -828,6 +762,8 @@
           </ng-template> -->
         </kendo-grid-column>
       </kendo-grid-column-group>
+
+      
     </ng-template>
     <ng-template kendoGridLoadingTemplate>
       <div class="k-loading-color"></div>

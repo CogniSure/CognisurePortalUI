@@ -861,7 +861,7 @@ export class ColumnSample {
       title: 'Priority',
       default : true,
       width: 100,
-      type: 'priority',
+      type: 'dropdown',
       columnmenu: true,
       sortable: true,
       filterable: true,

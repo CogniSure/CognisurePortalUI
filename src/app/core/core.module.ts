@@ -8,7 +8,6 @@ import { RatingComponent } from './table/rating.component';
 import { SidemenubarComponent } from './menu/sidemenubar.component';
 import { InboxTopbarComponent } from './inbox-topbar/inbox-topbar.component';
 import { TopbarComponent } from './topbar/topbar.component';
-import { RecentlyViewedComponent } from './recently-viewed/recently-viewed.component';
 import { RouterModule, Routes } from '@angular/router';
 import { InboxMenuComponent } from './inbox-menu/inbox-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,7 +42,6 @@ const routes:Routes = [
     SidemenubarComponent,
     InboxTopbarComponent,
     TopbarComponent,
-    RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
     LoaderComponent,
@@ -81,7 +79,6 @@ const routes:Routes = [
     SidemenubarComponent,
     InboxTopbarComponent,
     TopbarComponent,
-    RecentlyViewedComponent,
     InboxMenuComponent,
     FooterComponent,
     LoaderComponent,

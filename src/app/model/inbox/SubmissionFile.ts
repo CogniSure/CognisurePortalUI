@@ -35,7 +35,7 @@ export interface SubmissionFile {
   IsAcord130Flag: string;
   ModifiedOn: string;
   FileData: string;
-  Options : any;
+  Options : any[];
 }
 export interface DownloadOption{
   DownloadCode : string ;
