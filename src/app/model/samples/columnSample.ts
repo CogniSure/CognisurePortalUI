@@ -976,7 +976,7 @@ export class ColumnSample {
     //   sortable: true,
     // },
     {
-      field: 'FileName',
+      field: 'FileOriginalName',
       title: 'File Name',
       default : true,
       width: ColumnSize.Large,
@@ -998,7 +998,7 @@ export class ColumnSample {
       allign : "left"
     },
     {
-      field: 'LineOfBusiness',
+      field: 'LineOfBusinesses',
       title: 'LOB',
       default : true,
       width: ColumnSize.Medium,
@@ -1009,7 +1009,7 @@ export class ColumnSample {
       allign : "left"
     },
     {
-      field: 'Carrier',
+      field: 'Carriers',
       title: 'Carrier / Form',
       default : true,
       width: ColumnSize.Medium,
@@ -1019,7 +1019,7 @@ export class ColumnSample {
       filterable: true,
     },
     {
-      field: 'Status',
+      field: 'FileStatus',
       title: 'Status',
       default : true,
       width: ColumnSize.Small,

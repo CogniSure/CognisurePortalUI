@@ -16,6 +16,7 @@ export class DocumentVaultComponent implements OnInit {
   noDataAvailble = false;
   ngOnInit(): void {
     this.cacheService.getSubmissionFiles().subscribe((docs: any) => {
+      
       if(docs!=null && docs.length>0){
         this.submissionFiles = docs;
         this.noDataAvailble = false
