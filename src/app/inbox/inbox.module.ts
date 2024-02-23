@@ -19,13 +19,11 @@ import { AccountInformationDataComponent } from './helper/account-information-da
 import { CoverageRequestedComponent } from './helper/coverage-requested/coverage-requested.component';
 import { PriorCarrierInformationComponent } from './helper/prior-carrier-information/prior-carrier-information.component';
 import { FormsModule } from '@angular/forms';
-import { SessionExpirationAlert } from '../session-expiration-alert/session-expiration-alert.module';
 import { ExposureSummaryComponent } from './exposure-summary/exposure-summary.component';
 import { LossSummaryComponent } from './loss-summary/loss-summary.component';
 import { CopilotComponent } from '../core/copilot/copilot.component';
 import { RiskClearanceComponent } from './risk-clearance/risk-clearance.component';
 import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
-
 
 
 @NgModule({
@@ -55,8 +53,7 @@ import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
     FormsModule,
     KendoModule,
     MaterialModule,
-    InboxRoutingModule,
-    SessionExpirationAlert.forRoot({ totalMinutes: 0.5 })
+    InboxRoutingModule
   ]
 })
 export class InboxModule { }

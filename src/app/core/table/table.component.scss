@@ -337,3 +337,11 @@
 ::ng-deep th[data-field="alerts"] a.k-grid-filter {
   display: none !important;
 }
+
+::ng-deep .submissionicon:hover .k-icon {
+  cursor: pointer; 
+}
+
+::ng-deep .submissionicon{
+cursor: default;
+}
