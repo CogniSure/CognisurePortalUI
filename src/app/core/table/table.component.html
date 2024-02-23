@@ -671,7 +671,41 @@
           </ng-template> -->
         </kendo-grid-column>
       </kendo-grid-column-group>
-
+      <kendo-grid-column
+      *ngIf="column.type == 'downloadlist'"
+      field="{{ column.field }}"
+      title="{{ column.title }}"
+      format="{{ column.format }}"
+      [filterable]="column.filterable"
+      [sortable]="column.sortable"
+      [filter]="column.type"
+      [width]="column.width"
+      [columnMenu]="column.columnmenu"
+      [editor]="column.editor"
+      [hidden]="!column.default"
+      [headerStyle]="{'border-color': '#1FD0C7'}"
+    >
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <ng-container>
+          <div class="kendo-dropdown-div">
+            <kendo-dropdownbutton 
+            [data]="exportButtons" 
+            rounded="large"
+            [buttonClass]="'custom-border-download'"
+            (itemClick)="Download_Click(dataItem)"
+            >
+              <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+                <div style="padding-right: 5%; width: 10em !important; display: flex">
+                  <div>
+                    <span>{{ dataItem.Options.DownloadText }}</span>
+                  </div>
+                </div>
+              </ng-template>
+            </kendo-dropdownbutton>
+            </div>
+        </ng-container>
+      </ng-template>
+    </kendo-grid-column>
       
     </ng-template>
     <ng-template kendoGridLoadingTemplate>

@@ -49,7 +49,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('Inbox Started');
     this.userProfile = this.globalService.getUserProfile();
 
     this.subscription = this.globalService
@@ -63,14 +62,10 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     // const clientId = '1074';
     // const submissionId = '6A2A02C3-BEA8-4EE9-957F-F4396EF0153A';
     // const email = 'submissiontesting@cognisure.ai';
-    console.log('Current Submission');
-    console.log(submission);
     const clientId = this.userProfile.ClientCode;
     const email = this.userProfile.Email;
     const submissionGuid = submission.ClientSubmissionGUID;
     const submissionId = submission.SubmissionId;
-
-    console.log(submissionId);
     this.setHeader(email, clientId, submissionGuid);
     this.setExposureSummary(email, clientId, submissionGuid);
     this.setLossSummary(email, clientId, submissionGuid);
@@ -305,7 +300,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     this.inboxService
       .getLossSummary('loss_claimsbyLOBbyyear', clientId, submissionId, email)
       .subscribe((res) => {
-        console.log('sampleData ClaimsbyLOBbyYear');
         let cdata: ChartData[] = [
           {
             Dimension: [],
@@ -499,8 +493,6 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
       let categoryGroup = tempResult.filter(
         (rr: any) => rr.category == category
       );
-      // console.log("Temp Data")
-      // console.log(categoryGroup[0])
       let tempCategory = categoryGroup[0];
       let tempData: any[] = [];
       //let index = 0

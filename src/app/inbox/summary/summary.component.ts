@@ -95,14 +95,11 @@ export class SummaryComponent implements OnInit, OnDestroy {
         let lobs = info.LOB;
         this.getSummaryWidgets();
         this.getSummaryWidgetsData(email,clientId,submissionId);
-        console.log("Summary Widgets")
-        
+
         if(lobs!=null && lobs!="" ){
           let lobArr = lobs.split(",")
           lobArr.forEach((lob:any)=>{
             let currLob = lob.replace(/ /g, "") 
-            console.log(lob)
-            console.log(currLob)
             this.getWidgetConfigsForLOB(currLob);
             this.getWidgetDataForLOB(currLob,email,clientId,submissionId)
           })
@@ -159,8 +156,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
             tempData.producerPhoneNo != null ? tempData.producerPhoneNo : 'NA';
           cdata.ActivityRank =
             tempData.activityRank != null ? tempData.activityRank : 'NA';
-
-          // console.log(cdata)
           this.cacheService.setSummaryByLOB('Agency', [cdata]);
         } else {
           this.cacheService.setSummaryByLOB('Agency', []);
@@ -343,7 +338,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
       )
       .subscribe((res) => {
         let cdata: any[] = [];
-        //console.log("Property Exposure Before")
         if (res != null && res.value != null && res.value.propertyCoverages != null) {
           let tempData = res.value.propertyCoverages;
 
@@ -358,7 +352,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
               cdata.push(cDataTemp);
             });
           }
-          //console.log(cdata)
           this.cacheService.setSummaryByLOB('PropertyCoverages', cdata);
         } else {
           this.cacheService.setSummaryByLOB('PropertyCoverages', []);
@@ -484,7 +477,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
       )
       .subscribe((res) => {
         let cdata: any[] = [];
-        //console.log("Property Exposure Before")
         if (res != null && res.value != null && res.value.autoCoverages != null) {
           let tempData = res.value.autoCoverages;
 
@@ -499,7 +491,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
               cdata.push(cDataTemp);
             });
           }
-          //console.log(cdata)
           this.cacheService.setSummaryByLOB('AutoCoverages', cdata);
         } else {
           this.cacheService.setSummaryByLOB('AutoCoverages', []);
@@ -603,7 +594,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
       )
       .subscribe((res) => {
         let cdata: any[] = [];
-        //console.log("Property Exposure Before")
         if (res != null && res.value != null && res.value.workersCompCoverages != null) {
           let tempData = res.value.workersCompCoverages;
 
@@ -618,7 +608,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
               cdata.push(cDataTemp);
             });
           }
-          //console.log(cdata)
           this.cacheService.setSummaryByLOB('WCCoverages', cdata);
         } else {
           this.cacheService.setSummaryByLOB('WCCoverages', []);
@@ -722,7 +711,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
       )
       .subscribe((res) => {
         let cdata: any[] = [];
-        //console.log("Property Exposure Before")
         if (res != null && res.value != null && res.value.generalLiablityCoverages != null) {
           let tempData = res.value.generalLiablityCoverages;
 
@@ -737,7 +725,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
               cdata.push(cDataTemp);
             });
           }
-          //console.log(cdata)
           this.cacheService.setSummaryByLOB('GLCoverages', cdata);
         } else {
           this.cacheService.setSummaryByLOB('GLCoverages', []);
@@ -842,7 +829,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
       )
       .subscribe((res) => {
         let cdata: any[] = [];
-        //console.log("Property Exposure Before")
         if (res != null && res.value != null && res.value.umbrellaCoverages != null) {
           let tempData = res.value.umbrellaCoverages;
 
@@ -857,7 +843,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
               cdata.push(cDataTemp);
             });
           }
-          //console.log(cdata)
           this.cacheService.setSummaryByLOB('UmbrellaCoverages', cdata);
         } else {
           this.cacheService.setSummaryByLOB('UmbrellaCoverages', []);

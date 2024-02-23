@@ -144,21 +144,9 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
         SubmissionId : subInfo.SubmissionId,
         SubmissionName : subInfo.SubmissionName,
         LOB : subInfo.LOB//this.getDistinctLOB(subInfo.LOB)
-      }
-
-      console.log("SubmissionInfo")
-      console.log(this.submissionInfo)
-      
+      }    
       this.cdRef.detectChanges();
     })
-    // this.globalService.getCurrentSubmission().subscribe((sub) => {
-    //   if (sub != null && sub.value != null && sub.value.account_Level_Info!=null && sub.value.property_Policy_Info_Premises_Information!=null) {
-    //     let accInfo = sub.value.account_Level_Info[0];
-    //     let propertyInfo = sub.value.property_Policy_Info_Premises_Information[0];
-    //   }
-    //   this.cdRef.detectChanges();
-    // }
-    // );
   }
 
   fetchDropdownOptions(): void {
@@ -223,8 +211,6 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     { text: "Reprocess" }
   ];
   OpenCopilot() {
-    console.log("Copilot on Inbox top bar")
-    console.log(this.submissionInfo)
     let dialogRef = this.dialog.open(CopilotComponent,{
       data:{
         SubmissionID : this.submissionInfo.SubmissionId
@@ -255,7 +241,6 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
   RedirectToZoho(){
     let userDetail = this.globalService.getUserProfile();
       this.authService.getZOHOToken(userDetail.Email).subscribe((token) => {
-        console.log('token');
   
         this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
           let GUID = subInfo.SubmissionGUID;
@@ -264,7 +249,6 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
           redirectURL = redirectURL
             .replace('Zohotoken', token.value)
             .replace('returnURL', returndURL);
-          //console.log(this.redirectURL);
           window.open(redirectURL, '_blank');
         });
       });
