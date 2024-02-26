@@ -18,6 +18,7 @@ import {
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Console } from 'console';
+import { Router } from '@angular/router';
 
 interface NavItem {
   title: string;
@@ -85,7 +86,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   newValue: string;
   tableData: any;
 
-  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder) {
+  constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder,private router : Router) {
    this.formGroup = this.fb.group({
       agencyname: [''],
     });
@@ -106,6 +107,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   }
   Download_Click1(value: any, event:any) {
 
+    this.console.log("Download Clicked")
     let data = {value : value , options : event};
     this.DownloadEvent.emit(data);
   }
@@ -113,6 +115,13 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
 
   Copilot_Click(value: any) {
     this.CopilotEvent.emit(value);
+  }
+  @Output() IconEvent = new EventEmitter<any>();
+  Icon_Click(value:any,type : any){
+    
+    this.console.log("ICON Clicked")
+    let data = {value : value , options : type};
+    this.IconEvent.emit(data);
   }
   @Output() IDclickEvent = new EventEmitter<any>();
 
@@ -136,9 +145,6 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       mode: "multiple",
       drag: true,
     };
-
-console.log("Table Data")
-console.log(this.data)
     this.gridData = this.data;
     this.gridView = this.data;
     this.loading=false;
@@ -216,7 +222,6 @@ console.log(this.data)
 
   
   onButtonClick(action: string) {
-    console.log(`Button clicked: ${action}`);
   }
 
   priorityDropdownOptions = [
@@ -231,7 +236,6 @@ console.log(this.data)
   
   isCellEditable(dataItem: any, column: any): boolean {
     return true;
-    return column.type === 'agencyname';
   }
 
   toggleEditMode(dataItem: any): void {

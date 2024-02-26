@@ -6,7 +6,11 @@ import { CacheService } from 'src/app/services/common/cache.service';
 import { GlobalService } from 'src/app/services/common/global.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { AccountInformation } from 'src/app/model/inbox/AccountInformation';
-import { DownloadOption, SubmissionFile } from 'src/app/model/inbox/SubmissionFile';
+import {
+  DownloadOption,
+  SubmissionFile,
+  SubmissionFlags,
+} from 'src/app/model/inbox/SubmissionFile';
 import { UserProfile } from 'src/app/model/profile/userprofile';
 
 @Component({
@@ -546,33 +550,46 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
                   data.isInsightsReportDownloadAttempted,
                 IsAcord130Flag: data.isAcord130Flag,
                 ModifiedOn: data.modifiedOn,
-                Options : this.getDownloadOptions(data.options)
+                Options: this.getDownloadOptions(data.options),
+                Flags: this.getFlags(data.flags),
               };
               subFiles.push(subFile);
-              
             }
           });
           this.cacheService.setSubmissionFiles(subFiles);
         } else this.cacheService.setSubmissionFiles([]);
       });
   }
+  getFlags(flags: any[]) {
+    let flagElement: SubmissionFlags[] = [];
+    if (flags != null && flags.length > 0) {
+      flags.forEach((element) => {
+        flagElement.push({
+          FlagName: element.flagName,
+          CSSProperty: element.cssProperty,
+          CSSType: element.cssType,
+          Tooltip: element.tooltip,
+        });
+      });
+    }
+    return flagElement;
+  }
+  getDownloadOptions(options: any[]): DownloadOption[] {
+    let downloadElements: DownloadOption[] = [];
 
-  getDownloadOptions(options : any[]) : DownloadOption[]{
-    let downloadElements : DownloadOption[] = [];
-    
-    console.log("Table Data 1 ")
-console.log(options)
-    if(options != null && options.length>0){
-      options.forEach(element=>{
+    console.log('Table Data 1 ');
+    console.log(options);
+    if (options != null && options.length > 0) {
+      options.forEach((element) => {
         downloadElements.push({
-          DownloadCode : element.downloadCode,
-          Format : element.format,
-          Extension : element.extension,
-          DownloadText : element.downloadText,
-          Tooltip : element.tooltip,
-          DownloadPath : element.downloadPath
-        })
-      })
+          DownloadCode: element.downloadCode,
+          Format: element.format,
+          Extension: element.extension,
+          DownloadText: element.downloadText,
+          Tooltip: element.tooltip,
+          DownloadPath: element.downloadPath,
+        });
+      });
     }
     return downloadElements;
   }

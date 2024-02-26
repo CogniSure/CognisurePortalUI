@@ -987,7 +987,7 @@ export class ColumnSample {
       allign : "left"
     },
     {
-      field: 'DocumentType',
+      field: 'DocumentCategory',
       title: 'Document Type',
       default : true,
       width: ColumnSize.Medium,
@@ -996,6 +996,16 @@ export class ColumnSample {
       columnmenu: true,
       filterable: true,
       allign : "left"
+    },
+    {
+      field: 'Carriers',
+      title: 'Carrier / Form',
+      default : true,
+      width: ColumnSize.Medium,
+      type: 'text',
+      sortable: true,
+      columnmenu: true,
+      filterable: true,
     },
     {
       field: 'LineOfBusinesses',
@@ -1009,10 +1019,30 @@ export class ColumnSample {
       allign : "left"
     },
     {
-      field: 'Carriers',
-      title: 'Carrier / Form',
+      field: 'FileStatus',
+      title: 'Status',
       default : true,
-      width: ColumnSize.Medium,
+      width: ColumnSize.Small,
+      type: 'text',
+      sortable: true,
+      columnmenu: true,
+      filterable: true,
+    },
+    {
+      field: 'Flags',
+      title: 'Flags',
+      default : true,
+      width: ColumnSize.Small,
+      type: 'icon',
+      sortable: true,
+      columnmenu: true,
+      filterable: true,
+    },
+    {
+      field: 'ExtractionTime',
+      title: 'Duration',
+      default : true,
+      width: ColumnSize.Small,
       type: 'text',
       sortable: true,
       columnmenu: true,

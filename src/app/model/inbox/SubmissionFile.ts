@@ -35,7 +35,8 @@ export interface SubmissionFile {
   IsAcord130Flag: string;
   ModifiedOn: string;
   FileData: string;
-  Options : any[];
+  Options : DownloadOption[];
+  Flags : SubmissionFlags[];
 }
 export interface DownloadOption{
   DownloadCode : string ;
@@ -44,4 +45,10 @@ export interface DownloadOption{
   DownloadText : string;
   Tooltip : string;
   DownloadPath : string;
+}
+export interface SubmissionFlags{
+  FlagName : string
+  Tooltip : string
+  CSSProperty : string
+  CSSType : string
 }

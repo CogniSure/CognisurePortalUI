@@ -137,7 +137,16 @@
           let-rowIndex="rowIndex"
           let-value="value"
         >
-          <span class="k-icon k-i-import"></span>
+        
+        <!-- <span class="material-symbols-outlined">
+          visibility
+          </span> -->
+
+          <span matTooltip="{{ flag.Tooltip }}" *ngFor="let flag of dataItem[column.field]">
+            <span [class]="flag.CSSProperty">
+              <span>{{flag.FlagName}}</span>
+            </span> 
+          </span >
         </ng-template>
       </kendo-grid-column>
       <kendo-grid-column-group
@@ -687,33 +696,44 @@
     >
       <ng-template kendoGridCellTemplate let-dataItem>
         <ng-container>
-          <div class="kendo-dropdown-div">
+          <div class="kendo-dropdown-div" style="float: left; width: 100%;">
+            <div style="width:50%; float: left;">
             <kendo-dropdownbutton 
             [data]="dataItem.Options" 
             textField="DownloadText"
-            style="height: 2em;"
+            style="height: 2em;width: 100%;"
             (itemClick)="Download_Click1(dataItem, $event)"
             > 
             <img
-            src="../../../assets/icons/DownloadIcon.svg"
-           
+            src="../../../assets/icons/dnld.png"
             alt="Custom Icon"
           />
             </kendo-dropdownbutton>
-            <!-- <kendo-dropdownbutton 
-            [data]="dropdownData" 
-            [textField]="'label'"
-            rounded="large"
-            [buttonClass]="'custom-border-download'"
-            >
-            <ng-template kendoDropDownButtonItemTemplate let-dataItem>
-              {{console.log("Line Data")}}
-            {{ console.log(dataItem)}}
-              
-              {{dataItem.labels}}
-            </ng-template>
-            </kendo-dropdownbutton> -->
+            
             </div>
+            <kendo-grid-spacer></kendo-grid-spacer>
+            <div style="width:50%; float: left;padding-top: 3px;">
+              <a 
+              (click)="Icon_Click(dataItem,'preview')"
+              target="_blank" [ngStyle]="{ color: '#009cc1' }">
+                <mat-icon>visibility</mat-icon></a
+              >
+              <!-- <kendo-button
+              class="copied_icontop"
+              style="
+                background: transparent;
+                border: none;
+                height: 100%;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+              "
+              (click)="Icon_Click(dataItem,'preview')"
+            >
+            <mat-icon color="#009cc1">visibility</mat-icon>
+            </kendo-button> -->
+              </div>
+          </div>
         </ng-container>
       </ng-template>
     </kendo-grid-column>

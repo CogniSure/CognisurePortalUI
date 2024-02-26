@@ -24,6 +24,8 @@ import { LossSummaryComponent } from './loss-summary/loss-summary.component';
 import { CopilotComponent } from '../core/copilot/copilot.component';
 import { RiskClearanceComponent } from './risk-clearance/risk-clearance.component';
 import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
+import { FileComparerComponent } from './file-comparer/file-comparer.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
     ExposureSummaryComponent,
     LossSummaryComponent,
     RiskClearanceComponent,
-    RiskInsightsComponent
+    RiskInsightsComponent,
+    FileComparerComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +56,7 @@ import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
     FormsModule,
     KendoModule,
     MaterialModule,
+    NgxJsonViewerModule,
     InboxRoutingModule
   ]
 })

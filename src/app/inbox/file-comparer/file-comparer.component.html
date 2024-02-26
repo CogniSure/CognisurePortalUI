@@ -1,0 +1,52 @@
+<kendo-tilelayout
+  [columns]="2"
+  [rowHeight]="'100%'"
+  [resizable]="false"
+  [reorderable]="false"
+  [style]="'position: relative;'"
+  [gap]="0"
+  style="height: 100%"
+>
+  <kendo-tilelayout-item
+    [col]="1"
+    [colSpan]="1"
+    [row]="1"
+    [rowSpan]="1"
+    style="border-radius: 0"
+  >
+    <kendo-tilelayout-item-body>
+      <div>
+        <div>
+          <iframe
+            #fileViewer
+            [src]="LHS"
+            width="100%"
+            height="560px"
+            style="border: 1px solid rgba(0, 0, 0, 0.08)"
+          ></iframe>
+        </div>
+
+        <!-- <div *ngIf="invalidPreview && !jsonView">
+                      <p>No preview availble</p>
+                    </div> -->
+      </div>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+  <kendo-tilelayout-item
+    [col]="2"
+    [colSpan]="1"
+    [row]="1"
+    [rowSpan]="1"
+    style="border-radius: 0"
+  >
+    <kendo-tilelayout-item-body>
+      <div style="height: 100%; padding: 2% 2% 2% 5%">
+                    <ngx-json-viewer
+                      [json]="jsonPreviewData"
+                      [expanded]="true"
+                      [depth]="1"
+                    ></ngx-json-viewer>
+                  </div>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+</kendo-tilelayout>

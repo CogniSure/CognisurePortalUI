@@ -13,6 +13,7 @@ import { LossAnalysisComponent } from './loss-analysis/loss-analysis.component';
 import { DocumentVaultComponent } from './document-vault/document-vault.component';
 import { RiskClearanceComponent } from './risk-clearance/risk-clearance.component';
 import { RiskInsightsComponent } from './risk-insights/risk-insights.component';
+import { FileComparerComponent } from './file-comparer/file-comparer.component';
 
 const routes:Routes = [
   {
@@ -54,6 +55,10 @@ const routes:Routes = [
           {
             path: 'riskinsights',  
             component: RiskInsightsComponent,
+          },
+          {
+            path: 'compare',  
+            component: FileComparerComponent,
           },
         ]
     },

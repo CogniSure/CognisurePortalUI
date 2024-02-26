@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SubmissionFile } from 'src/app/model/inbox/SubmissionFile';
 import { ColumnSample } from 'src/app/model/samples/columnSample';
 import { CacheService } from 'src/app/services/common/cache.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { FileComparerComponent } from '../file-comparer/file-comparer.component';
 
 @Component({
   selector: 'app-document-vault',
@@ -15,6 +17,7 @@ export class DocumentVaultComponent implements OnInit {
     private cacheService: CacheService,
     private inboxService : InboxService,
     private sanitizer: DomSanitizer,
+    private dialog: MatDialog,
     ) {
 
     }
@@ -23,7 +26,8 @@ export class DocumentVaultComponent implements OnInit {
   noDataAvailble = false;
   ngOnInit(): void {
     this.cacheService.getSubmissionFiles().subscribe((docs: any) => {
-      
+      console.log("Download Result")
+        console.log(docs)
       if(docs!=null && docs.length>0){
         this.submissionFiles = docs;
         this.noDataAvailble = false
@@ -42,9 +46,7 @@ export class DocumentVaultComponent implements OnInit {
     this.inboxService.downloadFiles(submissionId,rowItem.value.FileOriginalName,format,downloadCode,extension).subscribe(res=>{
       
     let contentType = this.getMimeType(extension)
-    console.log("Download Result")
-    console.log(res)
-    console.log(contentType)
+    
 
     const byteCharacters = atob(res.value.base64Result);
     const byteArrays = [];
@@ -120,4 +122,34 @@ export class DocumentVaultComponent implements OnInit {
     const blobUrl = URL.createObjectURL(blob);
     return blobUrl;
   }
+  Icon_Clicked(rowItem : any){
+   
+    
+    if(rowItem.options == "preview"){
+      let dataVal:any = null
+      
+
+      let submissionId = rowItem.value.FileGUID;
+    let format = "json";
+    let downloadCode = "carrierjson"
+    let extension = "json"
+
+    this.inboxService.downloadFiles(submissionId,rowItem.value.FileOriginalName,format,downloadCode,extension,"json").subscribe(res=>{
+      dataVal = {
+        LHS : rowItem.value.FileData,
+        RHS : res.value.base64Result
+      }
+      let dialogRef = this.dialog.open(FileComparerComponent,{
+        data:dataVal
+      });
+  
+      dialogRef.afterClosed().subscribe((result) => {
+       
+      });
+    })
+    }
+    
+    
+  }
+ 
 }
