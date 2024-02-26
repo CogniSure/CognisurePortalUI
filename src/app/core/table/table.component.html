@@ -703,6 +703,8 @@
             textField="DownloadText"
             style="height: 2em;width: 100%;"
             (itemClick)="Download_Click1(dataItem, $event)"
+            [popupSettings]="{ align : 'center', appendTo : 'component'}"
+            [popupClass] = "'custompopupforbutton'"
             > 
             <img
             src="../../../assets/icons/dnld.png"
@@ -718,20 +720,6 @@
               target="_blank" [ngStyle]="{ color: '#009cc1' }">
                 <mat-icon>visibility</mat-icon></a
               >
-              <!-- <kendo-button
-              class="copied_icontop"
-              style="
-                background: transparent;
-                border: none;
-                height: 100%;
-                width: 100%;
-                padding: 0;
-                margin: 0;
-              "
-              (click)="Icon_Click(dataItem,'preview')"
-            >
-            <mat-icon color="#009cc1">visibility</mat-icon>
-            </kendo-button> -->
               </div>
           </div>
         </ng-container>
