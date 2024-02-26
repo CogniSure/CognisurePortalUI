@@ -29,6 +29,7 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
   styleUrls: ['./copilot.component.scss'],
 })
 export class CopilotComponent implements OnInit,OnDestroy {
+  accountName: string = '';
   submissionId: string = '';
   showSubmissionId: boolean = true;
   isMaximized: boolean = false;
@@ -118,6 +119,13 @@ export class CopilotComponent implements OnInit,OnDestroy {
           }
         });
     }
+
+    this.inboxService.getAllSubmissionData().subscribe((submissions: any[]) => {
+      if (submissions.length > 0) {
+        this.accountName = submissions[0].AccountName;
+      }
+    });
+
   }
 
   public sendMessage(e: SendMessageEvent): void {
