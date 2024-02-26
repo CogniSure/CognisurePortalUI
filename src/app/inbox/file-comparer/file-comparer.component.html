@@ -1,52 +1,114 @@
-<kendo-tilelayout
-  [columns]="2"
-  [rowHeight]="'100%'"
-  [resizable]="false"
-  [reorderable]="false"
-  [style]="'position: relative;'"
-  [gap]="0"
-  style="height: 100%"
->
-  <kendo-tilelayout-item
-    [col]="1"
-    [colSpan]="1"
-    [row]="1"
-    [rowSpan]="1"
-    style="border-radius: 0"
+<div class="file-comparer" style="border-radius: 25px">
+  <mat-dialog-content
+    class="mat-typography"
+    style="max-height: 80%; padding: 0"
   >
-    <kendo-tilelayout-item-body>
-      <div>
-        <div>
-          <iframe
-            #fileViewer
-            [src]="LHS"
-            width="100%"
-            height="560px"
-            style="border: 1px solid rgba(0, 0, 0, 0.08)"
-          ></iframe>
-        </div>
+  <div class="header_data">
+    <kendo-tilelayout
+    [columns]="6"
+    [rowHeight]="'100%'"
+    [resizable]="false"
+    [reorderable]="false"
+    class="top-bar-header"
+    [style]="'position: relative;'"
+    [gap]="0"
+    [style]="'background: linear-gradient(135deg, #00A7CE 0%, #00CEC3 100%)!important;'"
+    >
+      <kendo-tilelayout-item [col]="1" [colSpan]="1" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
+      <kendo-tilelayout-item-body  style="max-height: 100%!important;">
+    <div class="files_header">
+      <div><b>Files</b></div>     
+    </div>
+    </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item [col]="2" [colSpan]="4" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
+      <kendo-tilelayout-item-body> 
+        <!-- <div class="centered-text"><b>Insured Name - {{ namedinsuredFullname }}</b></div> -->
+        <div class="centered-text"><b style="width:100%">Account Name - </b></div>
+        <div class="centered-text"><b style="width:100%">Submission ID - </b></div>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+    <kendo-tilelayout-item [col]="5" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff">
+      <kendo-tilelayout-item-body>
+        <div>          
+          <button mat-button mat-dialog-close class="close_btn" style="float: right;color:#B1B1B1!important;margin-top: 11px;">X</button>
+          
+        <!-- <button mat-icon-button (click)="maximize()" style="float: right;color:#fff!important;margin-top: -6px;">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+        <button mat-icon-button (click)="minimize()" style="float: right;color:#fff!important;margin-top: -6px;">
+          <mat-icon>fullscreen_exit</mat-icon>
+        </button> -->
 
-        <!-- <div *ngIf="invalidPreview && !jsonView">
+        <button mat-icon-button (click)="toggleMaximize()" style="float: right;color:#909090!important;margin-right:-20px;">
+          <mat-icon>{{ isMaximized ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+        </button>
+        
+
+        <!-- <button mat-button mat-dialog-close style="float:right;position: absolute;top: 1.5%;right:25%" (click)="toggleMinimize()">
+          <mat-icon>remove</mat-icon>
+        </button> -->
+        
+     </div>
+      </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+
+    
+    </kendo-tilelayout>
+    </div>
+    <div style="background: #fff; height: 38em">
+      <kendo-tilelayout
+        [columns]="2"
+        [rowHeight]="'100%'"
+        [resizable]="false"
+        [reorderable]="false"
+        [style]="'position: relative;'"
+        [gap]="15"
+        style="height: 100%"
+      >
+        <kendo-tilelayout-item
+          [col]="1"
+          [colSpan]="1"
+          [row]="1"
+          [rowSpan]="1"
+          style="border-radius: 0"
+        >
+          <kendo-tilelayout-item-body>
+            <div>
+              <div>
+                <iframe
+                  #fileViewer
+                  [src]="LHS"
+                  width="100%"
+                  height="560px"
+                  style="border: 1px solid rgba(0, 0, 0, 0.08)"
+                ></iframe>
+              </div>
+
+              <!-- <div *ngIf="invalidPreview && !jsonView">
                       <p>No preview availble</p>
                     </div> -->
-      </div>
-    </kendo-tilelayout-item-body>
-  </kendo-tilelayout-item>
-  <kendo-tilelayout-item
-    [col]="2"
-    [colSpan]="1"
-    [row]="1"
-    [rowSpan]="1"
-    style="border-radius: 0"
-  >
-    <kendo-tilelayout-item-body>
-      <div style="height: 100%; padding: 2% 2% 2% 5%">
-                    <ngx-json-viewer
-                      [json]="jsonPreviewData"
-                      [expanded]="true"
-                      [depth]="1"
-                    ></ngx-json-viewer>
-                  </div>
-    </kendo-tilelayout-item-body>
-  </kendo-tilelayout-item>
-</kendo-tilelayout>
+            </div>
+          </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+        <kendo-tilelayout-item
+          [col]="2"
+          [colSpan]="1"
+          [row]="1"
+          [rowSpan]="1"
+          style="border-radius: 0"
+        >
+          <kendo-tilelayout-item-body>
+            <div style="height: 100%; padding: 2% 2% 2% 5%; overflow: scroll;">
+              <ngx-json-viewer
+                [json]="jsonPreviewData"
+                [expanded]="true"
+                [depth]="1"
+              ></ngx-json-viewer>
+            </div>
+          </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+      </kendo-tilelayout>
+    </div>
+  </mat-dialog-content>
+</div>

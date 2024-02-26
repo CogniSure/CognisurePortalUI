@@ -12,18 +12,18 @@
       [gap]="0"
       [style]="'background: linear-gradient(135deg, #00A7CE 0%, #00CEC3 100%)!important;'"
       >
-        <kendo-tilelayout-item [col]="1" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
+        <kendo-tilelayout-item [col]="1" [colSpan]="1" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
         <kendo-tilelayout-item-body  style="max-height: 100%!important;">
       <div class="files_header">
         <div><b>Files</b></div>     
       </div>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item [col]="3" [colSpan]="2" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
+      <kendo-tilelayout-item [col]="2" [colSpan]="4" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
         <kendo-tilelayout-item-body *ngIf="showSubmissionId"> 
           <!-- <div class="centered-text"><b>Insured Name - {{ namedinsuredFullname }}</b></div> -->
-          <div class="centered-text"><b>Account Name - {{ accountName }}</b></div>
-          <div class="centered-text"><b>Submission ID - {{ submissionId }}</b></div>
+          <div class="centered-text"><b style="width:100%">Account Name - {{ accountName }}</b></div>
+          <div class="centered-text"><b style="width:100%">Submission ID - {{ submissionId }}</b></div>
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
       <kendo-tilelayout-item [col]="5" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff">

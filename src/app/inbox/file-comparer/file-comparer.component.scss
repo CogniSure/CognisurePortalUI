@@ -1,0 +1,62 @@
+.file-comparer {
+  ::ng-deep .k-tilelayout-item-body {
+    padding: 0;
+  }
+  .header_data {
+    padding: 0% 0% 0% 0%;
+    background-color: linear-gradient(135deg, #00a7ce 0%, #00cec3 100%);
+  }
+  .centered-text {
+    font-size: 15px;
+    color: #009cc1 !important;
+    padding: 2% 0 2% 0;
+    justify-content: center;
+    display: flex;
+    width: 50%;
+    float: left;
+  }
+
+  .files_header {
+    font-size: 15px;
+    color: #009cc1 !important;
+    padding: 5%;
+    height: 100%;
+  }
+
+  ::ng-deep .mat-mdc-dialog-container .mdc-dialog__container {
+    margin-top: 1% !important;
+  }
+
+  ::ng-deep .mat-mdc-button > .mat-icon {
+    margin-top: -8px !important;
+  }
+
+  ::ng-deep .mat-mdc-button .mdc-button__label {
+    margin-top: -7px !important;
+    font-size: 10px;
+    border-radius: 27px;
+    padding: 8% 15% 8% 15%;
+    color: #fff;
+    // border: 1px solid #000;
+    background-color: #909090;
+  }
+
+  ::ng-deep .mdc-dialog__surface {
+    overflow-y: visible !important;
+  }
+
+  .close_btn:hover {
+    color: transparent;
+  }
+
+  ::ng-deep .mat-mdc-icon-button {
+    --mat-mdc-button-persistent-ripple-color: none !important;
+    --mat-mdc-button-ripple-color: none !important;
+  }
+
+  ::ng-deep .mat-mdc-button,
+  .mat-mdc-outlined-button {
+    --mat-mdc-button-persistent-ripple-color: none !important;
+    --mat-mdc-button-ripple-color: none !important;
+  }
+}

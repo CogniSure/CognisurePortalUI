@@ -104,4 +104,23 @@ export class FileComparerComponent implements OnInit {
     const blobUrl = URL.createObjectURL(blob);
     return blobUrl;
   }
+  
+  isMaximized: boolean = false;
+  toggleMaximize() {
+    if (this.isMaximized) {
+      this.minimize();
+    } else {
+      this.maximize();
+    }
+  }
+
+  maximize() {
+    this.dialogRef.updateSize('90%', '88%');
+    this.isMaximized = true;
+  }
+
+  minimize() {
+    this.dialogRef.updateSize('auto', 'auto');
+    this.isMaximized = false;
+  }
 }
