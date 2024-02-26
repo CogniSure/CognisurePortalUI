@@ -9,18 +9,19 @@
   .centered-text {
     font-size: 15px;
     color: #009cc1 !important;
-    padding: 2% 0 2% 0;
+    padding: 2%;
     justify-content: center;
     display: flex;
-    width: 50%;
-    float: left;
+    width: 100%;
   }
 
   .files_header {
     font-size: 15px;
     color: #009cc1 !important;
-    padding: 5%;
+    padding: 2%;
     height: 100%;
+    justify-content: center;
+    display: flex;
   }
 
   ::ng-deep .mat-mdc-dialog-container .mdc-dialog__container {
