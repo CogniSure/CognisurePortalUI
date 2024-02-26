@@ -40,6 +40,7 @@ export interface SubmissionFile {
 export interface DownloadOption{
   DownloadCode : string ;
   Format : string;
+  Extension : string;
   DownloadText : string;
   Tooltip : string;
   DownloadPath : string;

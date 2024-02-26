@@ -102,6 +102,7 @@ export class CopilotComponent implements OnInit,OnDestroy {
           )
         )
         
+
       ).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
       this.inboxService
         .getSubmissionFilesFromDB('0', this.data.SubmissionID, '0',true)
@@ -109,7 +110,7 @@ export class CopilotComponent implements OnInit,OnDestroy {
           if (res != null && res.value != null && res.value.length > 0) {
             res.value.forEach((file: any) => {
               this.searchableFiles.push({
-                name: file.fileName,
+                name: file.fileOriginalName,
                 uid : file.fileGUID,
                 base64Data: file.fileData,
               });

@@ -1,3 +1,6 @@
+::ng-deep kendo-button-list{
+  padding: 5px;
+}
 .generic-table {
   ::ng-deep .custom-border-download{
     border-radius: 8px;
@@ -7,17 +10,25 @@
     color: #009cc1;
     border: none;
   }
+ 
   .kendo-dropdown-div{
     //padding-right: 2%;
     ::ng-deep .k-dropdown-button{
       button{
-        padding: 0;
+        padding: 5px;
         background: transparent;
       }
     }
+
+    ::ng-deep .dropdown-button{
+      border: 2px;
+    }
     
   }
-  
+  ::ng-deep .k-button-solid-base.k-focus{
+    border: none !important;
+    box-shadow: none;
+  }
   ::ng-deep .k-grid-pdf {
     background-color: transparent;
     color: #009cc1;

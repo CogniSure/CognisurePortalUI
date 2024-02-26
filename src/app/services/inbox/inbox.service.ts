@@ -278,4 +278,15 @@ export class InboxService {
     hParams = hParams.set('submissionid', submissionId);
     return this.httpService.getData(apiUrl, hParams);
   }
+  downloadFiles(submissionId: string, filename:string, format:string, downloadCode:string, extension : string): Observable<any> {
+    var apiUrl =
+      this.configService.settings.baseUrl + 'api/downloadfiles';
+    let hParams = new HttpParams();
+    hParams = hParams.set('submissionid', submissionId);
+    hParams = hParams.set('filename', filename);
+    hParams = hParams.set('downloadcode', downloadCode);
+    hParams = hParams.set('format', format);
+    hParams = hParams.set('extension', extension);
+    return this.httpService.getData(apiUrl, hParams);
+  }
 }

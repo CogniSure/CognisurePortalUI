@@ -689,19 +689,30 @@
         <ng-container>
           <div class="kendo-dropdown-div">
             <kendo-dropdownbutton 
-            [data]="exportButtons" 
+            [data]="dataItem.Options" 
+            textField="DownloadText"
+            style="height: 2em;"
+            (itemClick)="Download_Click1(dataItem, $event)"
+            > 
+            <img
+            src="../../../assets/icons/DownloadIcon.svg"
+           
+            alt="Custom Icon"
+          />
+            </kendo-dropdownbutton>
+            <!-- <kendo-dropdownbutton 
+            [data]="dropdownData" 
+            [textField]="'label'"
             rounded="large"
             [buttonClass]="'custom-border-download'"
-            (itemClick)="Download_Click(dataItem)"
             >
-              <ng-template kendoDropDownButtonItemTemplate let-dataItem>
-                <div style="padding-right: 5%; width: 10em !important; display: flex">
-                  <div>
-                    <span>{{ dataItem.Options.DownloadText }}</span>
-                  </div>
-                </div>
-              </ng-template>
-            </kendo-dropdownbutton>
+            <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+              {{console.log("Line Data")}}
+            {{ console.log(dataItem)}}
+              
+              {{dataItem.labels}}
+            </ng-template>
+            </kendo-dropdownbutton> -->
             </div>
         </ng-container>
       </ng-template>
@@ -728,6 +739,7 @@
       <kendo-dropdownbutton 
       [data]="exportButtons" 
       rounded="large"
+      style="height: 2em;"
       [buttonClass]="'custom-border-download'"
       (itemClick)="exportItemClick($event, generictable)"
       >

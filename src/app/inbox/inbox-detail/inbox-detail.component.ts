@@ -559,11 +559,15 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
 
   getDownloadOptions(options : any[]) : DownloadOption[]{
     let downloadElements : DownloadOption[] = [];
+    
+    console.log("Table Data 1 ")
+console.log(options)
     if(options != null && options.length>0){
       options.forEach(element=>{
         downloadElements.push({
           DownloadCode : element.downloadCode,
           Format : element.format,
+          Extension : element.extension,
           DownloadText : element.downloadText,
           Tooltip : element.tooltip,
           DownloadPath : element.downloadPath

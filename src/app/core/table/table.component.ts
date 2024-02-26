@@ -17,6 +17,7 @@ import {
 } from "@progress/kendo-svg-icons";
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Console } from 'console';
 
 interface NavItem {
   title: string;
@@ -90,7 +91,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     });
 
   }
-
+  console :any = console
   tooltip = Alert1ToolTip;
 
   @HostListener('unloaded')
@@ -98,10 +99,15 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     
   }
 
-  @Output() DownloadEvent = new EventEmitter<string>();
+  @Output() DownloadEvent = new EventEmitter<any>();
 
   Download_Click(value: any) {
     this.DownloadEvent.emit(value);
+  }
+  Download_Click1(value: any, event:any) {
+
+    let data = {value : value , options : event};
+    this.DownloadEvent.emit(data);
   }
   @Output() CopilotEvent = new EventEmitter<string>();
 
@@ -131,7 +137,8 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       drag: true,
     };
 
-
+console.log("Table Data")
+console.log(this.data)
     this.gridData = this.data;
     this.gridView = this.data;
     this.loading=false;
