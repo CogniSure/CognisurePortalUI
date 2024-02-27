@@ -1,7 +1,9 @@
-<div>
+<div class="email-header">
+  <div class="email-subheader" style="background-color: #fff;">
+<div style="background-color: #fff;">
   <mat-dialog-content
     class="mat-typography"
-    style="max-height: 80%; padding: 0"
+    style="max-height: 80%; padding: 0;background-color: #fff;"
   >
     <div style="height: 5em;
     border-radius: 8px 8px 0 0;
@@ -9,11 +11,13 @@
     overflow: hidden;
     padding-top: 2%;
     padding-left: 5%;
-    background: #eef2f7;">
+    background-color: #fff;">
     <div> <b style="width:20%; float: left;display: flex;">Senders Email</b> : {{senderEmail}}</div>
     <div> <b style="width:20%; float: left;display: flex;">Subject</b> : {{messgageSubject}}</div>
     <!-- Submission Email -->
   </div>
-    <div [innerHTML]="htmlData" style="height: 95%; text-align: left; overflow:auto !important; padding-left: 2em; padding-top: 1em" ></div>
+    <div [innerHTML]="htmlData" style="background-color: #fff;height: 95%; text-align: left; overflow:auto !important; padding-left: 2em; padding-top: 1em" ></div>
   </mat-dialog-content>
 </div> 
+</div>
+</div>
