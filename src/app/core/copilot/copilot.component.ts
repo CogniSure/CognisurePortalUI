@@ -83,6 +83,7 @@ export class CopilotComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     if (this.data.SubmissionID != null) {
       this.submissionId = this.data.SubmissionID;
+      this.accountName = this.data.AccountName;
       const hello: Message = {
         author: this.bot,
         suggestedActions: [
@@ -114,17 +115,12 @@ export class CopilotComponent implements OnInit,OnDestroy {
                 name: file.fileOriginalName,
                 uid : file.fileGUID,
                 base64Data: file.fileData,
+                isSelected : false
               });
             });
           }
         });
     }
-
-    this.inboxService.getAllSubmissionData().subscribe((submissions: any[]) => {
-      if (submissions.length > 0) {
-        this.accountName = submissions[0].AccountName;
-      }
-    });
 
   }
 
@@ -179,5 +175,5 @@ export class CopilotComponent implements OnInit,OnDestroy {
     this.isMaximized = false;
   }
  
-  searchableFiles: { name: string;uid: string; base64Data: string }[] = [];
+  searchableFiles: { name: string;uid: string; base64Data: string, isSelected : boolean }[] = [];
 }
