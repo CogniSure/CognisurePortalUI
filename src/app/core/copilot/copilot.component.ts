@@ -1,26 +1,17 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ButtonModule } from '@progress/kendo-angular-buttons';
 import {
-  ChatModule,
   Message,
   SendMessageEvent,
   User,
 } from '@progress/kendo-angular-conversational-ui';
-import { LayoutModule } from '@progress/kendo-angular-layout';
 import {
-  UploadsModule,
-  FileSelectModule,
   FileRestrictions,
 } from '@progress/kendo-angular-upload';
 import { Observable, Subject, Subscription, from, map, merge, scan } from 'rxjs';
 import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DOCUMENT } from '@angular/common';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 @Component({
@@ -31,7 +22,7 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
 export class CopilotComponent implements OnInit,OnDestroy {
   accountName: string = '';
   submissionId: string = '';
-  showSubmissionId: boolean = true;
+  showSubmissionId: boolean = false;
   isMaximized: boolean = false;
   originalWidth: string;
   originalHeight: string;
@@ -81,7 +72,9 @@ export class CopilotComponent implements OnInit,OnDestroy {
     return false;
   }
   ngOnInit(): void {
+    this.toggleMaximize();
     if (this.data.SubmissionID != null) {
+      this.showSubmissionId = true;
       this.submissionId = this.data.SubmissionID;
       this.accountName = this.data.AccountName;
       const hello: Message = {

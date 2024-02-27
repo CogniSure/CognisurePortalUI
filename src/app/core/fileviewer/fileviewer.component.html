@@ -14,9 +14,11 @@
     [rowSpan]="1"
     style="border-radius: 0"
   >
-    <kendo-tilelayout-item-body>
-      <div *ngIf="files.length === 0; else showPreview">
-        <p style="padding-left: 5%">No files selected</p>
+    <kendo-tilelayout-item-body
+    style="border: 1px solid rgba(0, 0, 0, 0.08); background-color: #fff"
+    >
+      <div *ngIf="files.length === 0; else showPreview" style="height: 88%;">
+        <p style="padding: 25%; display: flex; justify-content: center; height: 100%;">No files selected</p>
       </div>
 
       <ng-template #showPreview>
@@ -119,7 +121,7 @@
         </div>
       </div>
 
-      <div *ngIf="selectedPdf && !invalidPreview && !jsonView">
+      <div *ngIf="selectedPdf && !invalidPreview && !jsonView" >
         <div *ngIf="!jsonView">
           <iframe
             #fileViewer

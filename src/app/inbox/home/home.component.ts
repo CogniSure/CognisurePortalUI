@@ -81,14 +81,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       this.defaultProfile = userDDL;
       this.userList.push(userDDL)
-
-      this.inboxService.getAllSubmissionData().subscribe((submissions: any[]) => {
-        if (submissions.length > 0) {
-          this.submissionId = submissions[0].SubmissionId;
-        }
-      });
-
-
   }
 
   newRecordCCount = 0;

@@ -71,17 +71,18 @@ background: none!important;
 }
 
 .content-data{
-display: flex;
+  display: flex;
   justify-content: center; 
   align-items: center; 
+  height: 100%;
 }
 
 .content-data p{
 //  margin-top: 15vh;
  font-size: 20px;
- position: absolute;
- top:45%;
- left:40%
+ //position: absolute;
+ //top:45%;
+ //left:40%
 }
 
 .preview_border{

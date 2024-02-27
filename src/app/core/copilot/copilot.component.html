@@ -14,9 +14,6 @@
       >
         <kendo-tilelayout-item [col]="1" [colSpan]="1" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
         <kendo-tilelayout-item-body  style="max-height: 100%!important;">
-      <div class="files_header">
-        <div><b>Files</b></div>     
-      </div>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
       <kendo-tilelayout-item [col]="2" [colSpan]="4" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
@@ -29,23 +26,14 @@
       <kendo-tilelayout-item [col]="5" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff">
         <kendo-tilelayout-item-body>
           <div>          
-            <button mat-button mat-dialog-close class="close_btn" style="float: right;color:#B1B1B1!important;margin-top: 11px;">X</button>
+            <button mat-icon-button mat-dialog-close class="close_btn" style="float: right;color:#B1B1B1!important;">
+              <mat-icon class="close-icon">close</mat-icon>
+            </button>
             
-          <!-- <button mat-icon-button (click)="maximize()" style="float: right;color:#fff!important;margin-top: -6px;">
-            <mat-icon>fullscreen</mat-icon>
-          </button>
-          <button mat-icon-button (click)="minimize()" style="float: right;color:#fff!important;margin-top: -6px;">
-            <mat-icon>fullscreen_exit</mat-icon>
-          </button> -->
-
           <button mat-icon-button (click)="toggleMaximize()" style="float: right;color:#909090!important;margin-right:-20px;">
             <mat-icon>{{ isMaximized ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
           </button>
-          
 
-          <!-- <button mat-button mat-dialog-close style="float:right;position: absolute;top: 1.5%;right:25%" (click)="toggleMinimize()">
-            <mat-icon>remove</mat-icon>
-          </button> -->
           
        </div>
         </kendo-tilelayout-item-body>

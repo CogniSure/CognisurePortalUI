@@ -142,24 +142,10 @@
               [popupClass]="'custom-popup'"
               [animate]="animate"
             >
-            <span style="padding-top: 2%;padding-right: 2%;padding-left: 2%;"><b>Submission ID - {{ submissionId }}</b></span>
-            <div class="email_popup"> 
-          
-            <div class="email_body"> 
-              <button class="popup_closebtn" (click)="closePopup()">
-                <!-- <mat-icon class="close-icon">close</mat-icon> -->
-                <span class="close_text">Close</span>
-              </button>
               <button class="popup_closebtn1" (click)="closePopup()">
-              <!-- <button  (click)="closePopup()"> -->
                 <mat-icon class="close-icon">close</mat-icon>
                 </button>
-              <!-- </button> -->
-              <!-- <kendo-button icon="k-i-close-outline k-i-x-outline k-i-error" title="Events" class="popup_closebtn" (click)="closePopup()"></kendo-button> -->
-              <app-emailpopup [SubmissionId] = selectedSubmission.SubmissionID></app-emailpopup>
-              </div>
-              </div>
-              <!-- <button (click)="closePopup()">Close Popup</button> -->
+              <app-emailpopup style="height: 100%;" [SubmissionId] = selectedSubmission.SubmissionID></app-emailpopup>
             </kendo-popup>
           </ng-container>
         </div>

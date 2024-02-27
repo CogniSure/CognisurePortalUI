@@ -3,13 +3,47 @@
 //     color:#eef2f7;
 // }
 
+.email-popup {
+  height: 100%;
+  .email-subheader {
+    background-color: transparent;
+    height: 10%;
+  }
+  .email-body {
+    height: 86%;
+    background-color: #fff;
+    margin: 0 2%;
+    border-radius: 10px;
+    overflow: auto;
+
+    .email-heading {
+      height: 32%;
+      border-radius: 8px 8px 0 0;
+      margin: 0;
+      overflow: hidden;
+      padding-top: 2%;
+      padding-left: 2%;
+      background-color: #fff;
+      .h4-custom{
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+    .emai-content {
+      background-color: #fff;
+      height: 68%;
+      text-align: left;
+      padding-left: 2em;
+      padding-top: 2%;
+    }
+  }
+}
 
 ::ng-deep .k-popup .k-popup-content {
-    background-color: #f0f0f0!important; 
-    color: #333; 
-  }
-  
+  background-color: #f0f0f0 !important;
+  color: #333;
+}
+
 ::ng-deep .k-popup-overlay {
-    background-color: rgba(0, 0, 0, 0.5); 
-  }
-  
+  background-color: rgba(0, 0, 0, 0.5);
+}

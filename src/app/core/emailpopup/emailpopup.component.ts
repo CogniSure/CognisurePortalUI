@@ -19,6 +19,7 @@ constructor(private inboxService : InboxService, private changedetector: ChangeD
         this.htmlData = msg.value.messageBody;
         this.senderEmail = msg.value.messageReceivedFromEmail
         this.messgageSubject = msg.value.messageSubject
+        this.receivedOn = msg.value.messageReceivedOn
         this.changedetector.detectChanges();
       }
       
@@ -28,5 +29,5 @@ constructor(private inboxService : InboxService, private changedetector: ChangeD
   htmlData = ''
   senderEmail = ""
   messgageSubject = ""
-
+  receivedOn = ""
 }
