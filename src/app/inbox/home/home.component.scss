@@ -277,7 +277,7 @@
     // transition: all 0.5s ease-in;
     // -webkit-transform: scale(0.1);
     // transform:scale(1); // implicit, but good to specify explicitly
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   }
 
   .popup_closebtn {
@@ -294,24 +294,44 @@
 ::ng-deep .email_body{
 background-color: #fff!important;
 padding: 2%!important;
+max-height: 480px; 
+// width: 1100px; 
+overflow: hidden; 
 }
 
 ::ng-deep .email_popup{
-  padding: 5%!important;
+  padding: 2% 5% 5% 5%!important;
 }
 
 .popup-content {
   position: relative;
 }
 
-.popup_closebtn .close_text{
+.popup_closebtn{
 color:#fff;
 background-color: #00B6AD;
 font-size: 14px;
 border-radius: 8px;
 position: absolute;
-bottom: 10px; /* Adjust this value according to your design */
-right: 10px; /* Adjust this value according to your design */
+bottom: 10px; 
+right: 10px; 
+}
+
+.popup_closebtn1{
+  position: absolute;
+top: 10px; 
+right: 10px; 
+font-size: 0;
+border:none;
+background-color: #B1B1B1;
+padding: 0.1% 0.2% 0% 0.2%;
+border-radius: 14px;
+}
+
+.close-icon{
+  font-size: 16px;
+  color:#fff;
+  margin-top: 18%;
 }
 
 .popup-content{
@@ -323,3 +343,5 @@ height: 100%;
 background-color: rgba(0, 0, 0, 0.5); 
 z-index: 1000; 
 }
+
+

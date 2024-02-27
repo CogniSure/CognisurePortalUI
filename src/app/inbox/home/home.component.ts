@@ -16,13 +16,14 @@ import { PopupAnimation } from '@progress/kendo-angular-popup';
 import { DataComponent } from 'src/app/model/samples/data';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
+  submissionId: string = '';
   public formGroup: FormGroup;
   userProfile: UserProfile;
   userList: any[] = [];
@@ -50,7 +51,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private globalService: GlobalService,
     private dialog: MatDialog,
     private sanitizer: DomSanitizer,
-    private authService : AuthService
+    private authService : AuthService,
+    private inboxService: InboxService,
   ) {
     this.formGroup = this.fb.group({
       agencyname: [''],
@@ -79,6 +81,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       this.defaultProfile = userDDL;
       this.userList.push(userDDL)
+
+      this.inboxService.getAllSubmissionData().subscribe((submissions: any[]) => {
+        if (submissions.length > 0) {
+          this.submissionId = submissions[0].SubmissionId;
+        }
+      });
+
+
   }
 
   newRecordCCount = 0;
