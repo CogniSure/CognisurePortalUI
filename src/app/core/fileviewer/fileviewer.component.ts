@@ -22,6 +22,8 @@ import { Guid } from 'guid-typescript';
   styleUrls: ['./fileviewer.component.scss'],
 })
 export class FileviewerComponent {
+  selectedFilesIndices: number[] = [];
+  selectedPdf: SafeResourceUrl | null = null;
   selectedFileIndex: number | null = null;
   activePdfIndex: number | null = null;
   selectedpdf: any;
@@ -37,7 +39,7 @@ export class FileviewerComponent {
   previewurl: SafeResourceUrl[] = [];
   jsonView = false;
   jsonPreviewData: any;
-  selectedPdf: SafeResourceUrl | undefined;
+  // selectedPdf: SafeResourceUrl | undefined;
   public restrictions: FileRestrictions = {
     allowedExtensions: [],
   };
@@ -52,69 +54,141 @@ export class FileviewerComponent {
     // this.changePreview(0);
   }
 
-  changePreview(index: number): void {
-    this.jsonView = false;
-    this.invalidPreview = false;
-    this.selectedFileIndex = index;
-    // this.activePdfIndex = index;
-    this.CustomizeSelection(index);
+  
+changePreview(index: number): void {
+  const selectedIndex = this.selectedFilesIndices.indexOf(index);
+  if (selectedIndex !== -1) {
+    this.selectedFilesIndices.splice(selectedIndex, 1);
+    this.removeSelectionStyles();
+    this.selectedFilesEvent.emit(null);
+    this.selectedPdf = null;
+  } else {
+  this.selectedFilesIndices.push(index);
+  // this.applySelectionStyles(index);
+  this.selectedFileIndex = index;
+  this.CustomizeSelection(index);
 
-    // if (this.files[index].size === 0) {
-    //   console.log("File is empty");
-    //   return;
-    // }
+  this.jsonView = false;
+  this.invalidPreview = false;
+  this.selectedFileIndex = index;
+  this.activePdfIndex = index;
+  this.CustomizeSelection(index);
 
-    const fileExt = this.files[index].name.split('.').pop();
-    const contentType = this.getMimeType(fileExt.toLowerCase());
+  // if (this.files[index].size === 0) {
+  //   console.log("File is empty");
+  //   return;
+  // }
 
-    if (this.invalidPreview) {
-      this.selectedPdf = '';
-      const base64UrlData =
-        'data:' + contentType + ';base64,' + this.files[index].base64Data;
-      this.selectedFilesEvent.emit({
-        name: this.files[index].name,
-        uid: this.files[index].uid,
-        mimeType: contentType,
-        base64Data: base64UrlData,
-      });
-      this.download(this.files[index].name, base64UrlData);
-    } else if (contentType == 'application/json') {
-      this.jsonView = true;
-      this.selectedFilesEvent.emit({
-        name: this.files[index].name,
-        uid: this.files[index].uid,
-        mimeType: contentType,
-        base64Data: this.files[index].base64Data as string,
-      });
-      let data = JSON.parse(this.files[index].base64Data as string);
-      this.jsonPreviewData = data;
-    } else {
-      const base64UrlData =
-        'data:' + contentType + ';base64,' + this.files[index].base64Data;
-      this.selectedFilesEvent.emit({
-        name: this.files[index].name,
-        uid: this.files[index].uid,
-        mimeType: contentType,
-        base64Data: base64UrlData,
-      });
-      const blobUrl = this.createBlobUrl(this.files[index], contentType);
-      const iframe = this.fileViewer?.nativeElement;
-      this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
-      if (iframe) {
-        iframe.src = blobUrl;
-        iframe.onload = () => {
-          const iframeDocument =
-            iframe.contentDocument || iframe.contentWindow?.document;
-          if (iframeDocument) {
-            const toolbarElement = iframeDocument.getElementById('toolbar');
-            if (toolbarElement) {
-              toolbarElement.style.display = 'none';
-            }
+  const fileExt = this.files[index].name.split('.').pop();
+  const contentType = this.getMimeType(fileExt.toLowerCase());
+
+  if (this.invalidPreview) {
+    this.selectedPdf = '';
+    const base64UrlData =
+      'data:' + contentType + ';base64,' + this.files[index].base64Data;
+    this.selectedFilesEvent.emit({
+      name: this.files[index].name,
+      uid: this.files[index].uid,
+      mimeType: contentType,
+      base64Data: base64UrlData,
+    });
+    this.download(this.files[index].name, base64UrlData);
+  } else if (contentType == 'application/json') {
+    this.jsonView = true;
+    this.selectedFilesEvent.emit({
+      name: this.files[index].name,
+      uid: this.files[index].uid,
+      mimeType: contentType,
+      base64Data: this.files[index].base64Data as string,
+    });
+    let data = JSON.parse(this.files[index].base64Data as string);
+    this.jsonPreviewData = data;
+  } else {
+    const base64UrlData =
+      'data:' + contentType + ';base64,' + this.files[index].base64Data;
+    this.selectedFilesEvent.emit({
+      name: this.files[index].name,
+      uid: this.files[index].uid,
+      mimeType: contentType,
+      base64Data: base64UrlData,
+    });
+    const blobUrl = this.createBlobUrl(this.files[index], contentType);
+    const iframe = this.fileViewer?.nativeElement;
+    this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+    if (iframe) {
+      iframe.src = blobUrl;
+      iframe.onload = () => {
+        const iframeDocument =
+          iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDocument) {
+          const toolbarElement = iframeDocument.getElementById('toolbar');
+          if (toolbarElement) {
+            toolbarElement.style.display = 'none';
           }
-        };
-      }
+        }
+      };
     }
   }
+}
+
+}
+
+
+  isSelected(index: number): boolean {
+    return this.selectedFileIndex === index;
+}
+
+
+removeSelectionStyles(): void {
+  const buttons = document.querySelectorAll('.file-button');
+  const divs = document.querySelectorAll('.file-div');
+  buttons.forEach((button: any) => {
+      button.style.backgroundColor = '#fff';
+      button.style.color = '#909090';
+  });
+  divs.forEach((div: any) => {
+      div.style.backgroundColor = '#fff';
+  });
+}
+
+//   removeSelectionStyles(): void {
+//     const buttons = document.querySelectorAll('.file-button');
+//     const divs = document.querySelectorAll('.file-div');
+//     buttons.forEach((button: any) => {
+//         button.style.backgroundColor = '#fff';
+//         button.style.color = '#909090';
+//     });
+//     divs.forEach((div: any) => {
+//         div.style.backgroundColor = '#fff';
+//     });
+// }
+
+applySelectionStyles(index: number): void {
+  const selectedButton = document.getElementById('file-button-' + index);
+  const selectedDiv = document.getElementById('file-div-' + index);
+  if (selectedButton && selectedDiv) {
+      selectedButton.style.backgroundColor = '#009cc1';
+      selectedButton.style.color = '#fff';
+      selectedDiv.style.backgroundColor = '#009cc1';
+  }
+
+  // Change the background color for the previously selected file preview
+  if (this.selectedFileIndex !== null && this.selectedFileIndex !== index) {
+      const prevSelectedButton = document.getElementById('file-button-' + this.selectedFileIndex);
+      const prevSelectedDiv = document.getElementById('file-div-' + this.selectedFileIndex);
+      if (prevSelectedButton && prevSelectedDiv) {
+          prevSelectedButton.style.backgroundColor = '#fff';
+          prevSelectedButton.style.color = '#909090';
+          prevSelectedDiv.style.backgroundColor = '#fff';
+      }
+  }
+}
+
+
+
+
+
+
   CustomizeSelection(index: any) {
     this.adjustHeightToFitContent();
 
@@ -171,91 +245,178 @@ export class FileviewerComponent {
   }
 
   previewSelectedFile(file: File, index: number): void {
-    this.selectedFileIndex = index;
-    console.log('Uploaded file preview');
-    console.log(index);
-    this.jsonView = false;
-    this.invalidPreview = false;
-    this.selectedFileIndex = index;
-    const buttons = document.querySelectorAll('.file-button');
-    const divs = document.querySelectorAll('.file-div');
-    buttons.forEach((button: any) => {
-      button.style.backgroundColor = '#ffff';
-      button.style.color = '#909090';
-    });
+    // this.selectedFileIndex = index;
+    // console.log('Uploaded file preview');
+    // console.log(index);
+
+    if (this.selectedFileIndex === index) {
+      this.selectedFileIndex = null;
+      // this.CustomizeSelection(null); 
+      this.selectedFilesEvent.emit(null);
+      this.selectedPdf = null; 
+      this.removeSelectionStyles();
+      return;
+    }
+
+    // this.jsonView = false;
+    // this.invalidPreview = false;
+    // this.selectedFileIndex = index;
+    // const buttons = document.querySelectorAll('.file-button');
+    // const divs = document.querySelectorAll('.file-div');
+    // buttons.forEach((button: any) => {
+    //   button.style.backgroundColor = '#ffff';
+    //   button.style.color = '#909090';
+    // });
 
    
-    divs.forEach((div: any) => {
-      div.style.backgroundColor = '#ffff';
-    });
+    // divs.forEach((div: any) => {
+    //   div.style.backgroundColor = '#ffff';
+    // });
 
+    // const fileExt = file.name.split('.').pop();
+    // const contentType = this.getMimeType(fileExt!.toLowerCase());
+    // let selectedFile = this.customfiles.filter(
+    //   (x) => x.name.toLowerCase() == file.name.toLowerCase()
+    // );
+    // console.log('File Selected');
+    // console.log(selectedFile);
+    // if (selectedFile != null && selectedFile.length > 0) {
+    //   console.log('File Availble');
+    //   console.log(selectedFile);
+    //   this.selectedFilesEvent.emit(selectedFile[0]);
+    //   //return;
+    // } else {
+    //   console.log('File not Availble');
+    //   if (this.invalidPreview) {
+    //     console.log('In valid preview');
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(file);
+    //     reader.onload = () => {
+    //       let selFile = {
+    //         name: file.name,
+    //         uid: Guid.create().toString(),
+    //         mimeType: contentType,
+    //         base64Data: reader.result,
+    //       };
+    //       console.log(selFile)
+    //       this.customfiles.push(selFile);
+          
+    //       this.download(file.name, reader.result);
+    //       this.selectedFilesEvent.emit(selFile);
+    //       return;
+    //     };
+    //   } else if (contentType == 'application/json') {
+    //     this.jsonView = true;
+    //     const reader = new FileReader();
+    //     reader.readAsText(file, 'UTF-8');
+    //     reader.onload = () => {
+    //       let selFile = {
+    //         name: file.name,
+    //         uid: Guid.create().toString(),
+    //         mimeType: contentType,
+    //         base64Data: reader.result,
+    //       };
+    //       this.customfiles.push(selFile);
+    //       this.selectedFilesEvent.emit(selFile);
+    //       let data = JSON.parse(reader.result as string);
+    //       this.jsonPreviewData = data;
+    //     };
+    //   } else {
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(file);
+    //     reader.onload = () => {
+    //       let selFile = {
+    //         name: file.name,
+    //         uid: Guid.create().toString(),
+    //         mimeType: contentType,
+    //         base64Data: reader.result,
+    //       };
+    //       this.customfiles.push(selFile);
+    //       this.selectedFilesEvent.emit(selFile);
+    //     };
+    //     this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(
+    //       URL.createObjectURL(file)
+    //     );
+    //   }
+    // }
+    
+
+    this.applySelectionStyles(index);
+
+    this.jsonView = false;
+    this.invalidPreview = false;
+
+    this.selectedFileIndex = index;
+    this.activePdfIndex = index;
+    // this.CustomizeSelection(index); 
+  
     const fileExt = file.name.split('.').pop();
     const contentType = this.getMimeType(fileExt!.toLowerCase());
-    let selectedFile = this.customfiles.filter(
-      (x) => x.name.toLowerCase() == file.name.toLowerCase()
-    );
-    console.log('File Selected');
-    console.log(selectedFile);
-    if (selectedFile != null && selectedFile.length > 0) {
-      console.log('File Availble');
-      console.log(selectedFile);
-      this.selectedFilesEvent.emit(selectedFile[0]);
-      //return;
-    } else {
-      console.log('File not Availble');
-      if (this.invalidPreview) {
-        console.log('In valid preview');
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
+  
+    if (this.invalidPreview) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const result = reader.result;
+        if (result) {
           let selFile = {
             name: file.name,
             uid: Guid.create().toString(),
             mimeType: contentType,
-            base64Data: reader.result,
+            base64Data: result,
           };
-          console.log(selFile)
           this.customfiles.push(selFile);
-          
-          this.download(file.name, reader.result);
+          this.download(file.name, result);
           this.selectedFilesEvent.emit(selFile);
-          return;
-        };
-      } else if (contentType == 'application/json') {
-        this.jsonView = true;
-        const reader = new FileReader();
-        reader.readAsText(file, 'UTF-8');
-        reader.onload = () => {
+          this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(
+            URL.createObjectURL(new Blob([result], { type: contentType }))
+          );
+        }
+      };
+    } else if (contentType == 'application/json') {
+      this.jsonView = true;
+      const reader = new FileReader();
+      reader.readAsText(file, 'UTF-8');
+      reader.onload = () => {
+        const result = reader.result;
+        if (result) {
           let selFile = {
             name: file.name,
             uid: Guid.create().toString(),
             mimeType: contentType,
-            base64Data: reader.result,
+            base64Data: result,
           };
           this.customfiles.push(selFile);
           this.selectedFilesEvent.emit(selFile);
-          let data = JSON.parse(reader.result as string);
+          let data = JSON.parse(result as string);
           this.jsonPreviewData = data;
-        };
-      } else {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
+        }
+      };
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const result = reader.result;
+        if (result) {
           let selFile = {
             name: file.name,
             uid: Guid.create().toString(),
             mimeType: contentType,
-            base64Data: reader.result,
+            base64Data: result,
           };
           this.customfiles.push(selFile);
           this.selectedFilesEvent.emit(selFile);
-        };
-        this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(
-          URL.createObjectURL(file)
-        );
-      }
+          this.selectedPdf = this.sanitizer.bypassSecurityTrustResourceUrl(
+            URL.createObjectURL(file)
+          );
+        }
+      };
     }
+
   }
+
+
+
 
   resetSelectedFileIndex(): void {
     this.selectedFileIndex = null;

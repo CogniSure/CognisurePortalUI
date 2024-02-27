@@ -80,3 +80,29 @@ display: flex;
 .preview_border{
   border: 1px solid #ADADAD;
 }
+
+::ng-deep .file-item.selected {
+  background-color: #009cc1;
+  color: #fff;
+}
+
+/* fileviewer.component.scss */
+::ng-deep  .file-div {
+  padding: 4% 0;
+  background-color: #fff;
+}
+
+::ng-deep  .file-button {
+  border: none;
+  background-color: #fff;
+  color: #909090;
+  text-align: left !important;
+  padding-left: 10%;
+  width: 100%;
+}
+
+::ng-deep  .selected .file-div,
+.selected .file-button {
+  background-color: #009cc1;
+  color: #fff;
+}
