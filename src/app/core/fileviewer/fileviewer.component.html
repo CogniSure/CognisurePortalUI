@@ -33,7 +33,7 @@
           <div class="conversion_popup">
             <div
               *ngFor="let file of preloadFiles; let i = index"
-              style="height: 3em; justify-items: start; display: flex"
+              style="height: 4em; justify-items: start; display: flex"
             >
               <div
                 [ngClass]="file.isSelected ? 'selected-bg' : 'default-bg'"
@@ -63,7 +63,7 @@
             <div
               id="preview-container"
               *ngFor="let file of uploadFiles; let i = index"
-              style="height: 3em; justify-items: start; display: flex"
+              style="height: 4em; justify-items: start; display: flex"
             >
             <div
                 [ngClass]="file.isSelected ? 'selected-bg' : 'default-bg'"
