@@ -12,6 +12,7 @@ import { CopilotComponent } from '../copilot/copilot.component';
 import { DashboardService } from 'src/app/services/dashboard/dashboardservice';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataComponent } from 'src/app/model/samples/data';
+import { EmailpopupComponent } from '../emailpopup/emailpopup.component';
 interface NavItem {
   title: string;
   routeLink: string;
@@ -220,6 +221,21 @@ export class InboxTopbarComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe((result) => {
      
     });
+  }
+  isPopupVisible = false;
+  OpenEmail() {
+    let dialogRef = this.dialog.open(EmailpopupComponent,{
+      data:{
+        SubmissionID : this.submissionInfo.SubmissionId
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+     
+    });
+  }
+  closePopup() {
+    this.isPopupVisible = false;
   }
   DownloadS360(){
     this.subscription = this.globalService

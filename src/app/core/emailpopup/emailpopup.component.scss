@@ -4,13 +4,27 @@
 // }
 
 .email-popup {
-  height: 100%;
+  background-color: #eef2f7;
+    position: fixed;
+    top: 14% !important;
+    left: 10% !important;
+    width: 80% !important;
+    height: 80% !important;
+    max-height: 600px !important;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   .email-subheader {
     background-color: transparent;
     height: 10%;
+    .close_btn{
+      padding: 0;
+      background: transparent;
+      color: #b1b1b1 !important;
+      height: 0;
+    }
   }
   .email-body {
-    height: 86%;
+    height: 85%;
     background-color: #fff;
     margin: 0 2%;
     border-radius: 10px;

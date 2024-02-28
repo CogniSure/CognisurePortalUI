@@ -1,34 +1,106 @@
-<div class="email-popup">
-  <div class="email-subheader">
-    <h3 style="height: 100%; margin: 0; padding: 1% 1% 1% 2%">
-      Submission ID - {{ SubmissionId }}
-    </h3>
-  </div>
-  <div class="email-body">
-    <mat-dialog-content
-      class="mat-typography"
-      style="max-height: 80%; padding: 0; background-color: #fff"
-    >
-      <div class="email-heading">
-        <div>
-          <h4 class="h4-custom" style="float: left; display: flex">From: &nbsp;</h4>
-          <h4 class="h4-custom" style="color: #009cc1;">{{ senderEmail }}</h4>
-        </div>
-        <div>
-          <h4 class="h4-custom" style="float: left; display: flex">Sent: &nbsp;</h4>
-          <h4 class="h4-custom" >{{ receivedOn }}</h4>
-        </div>
-        <!-- <div>
-          <h4 class="h4-custom" style="float: left; display: flex">To: &nbsp;</h4>
-          <h4 class="h4-custom" style="color: #009cc1;">{{ senderEmail }}</h4>
-        </div> -->
-        <div>
-          <h4 class="h4-custom" style="float: left; display: flex">Subject: &nbsp;</h4>
-          <h4 class="h4-custom" >{{ messgageSubject }}</h4>
-        </div>
-        <!-- Submission Email -->
+
+  <mat-dialog-content
+    class="mat-typography"
+    style="height: 100%; padding: 0; border-radius: 10px; overflow: hidden;"
+  >
+  <div class="email-popup">
+    <div style="height: 100%;">
+      <div class="email-subheader">
+        <kendo-tilelayout
+          [columns]="15"
+          [rowHeight]="'100%'"
+          [resizable]="false"
+          [reorderable]="false"
+          class="top-bar-header"
+          [style]="'position: relative;'"
+          [gap]="0"
+          [style]="'background: transparent !important;height:100%;'"
+        >
+          <kendo-tilelayout-item
+            [col]="1"
+            [colSpan]="3"
+            [row]="1"
+            [rowSpan]="1"
+            style="border-radius: 0; background: transparent !important"
+          >
+            <kendo-tilelayout-item-body style="max-height: 100% !important">
+              <h3 style="height: 100%; margin: 0; padding: 1% 1% 1% 2%">
+                Submission ID - {{ SubmissionId }}
+              </h3>
+            </kendo-tilelayout-item-body>
+          </kendo-tilelayout-item>
+          <kendo-tilelayout-item
+            [col]="15"
+            [colSpan]="1"
+            [row]="1"
+            [rowSpan]="1"
+            style="border-radius: 0; background: transparent"
+          >
+            <kendo-tilelayout-item-body>
+              <div>
+                <button
+                  mat-icon-button
+                  mat-dialog-close
+                  class="close_btn"
+                >
+                  <mat-icon class="close-icon">close</mat-icon>
+                </button>
+              </div>
+            </kendo-tilelayout-item-body>
+          </kendo-tilelayout-item>
+        </kendo-tilelayout>
       </div>
-      <div class="emai-content" [innerHTML]="htmlData"></div>
-    </mat-dialog-content>
+      <div class="email-body">
+        <kendo-tilelayout
+          [columns]="1"
+          [rowHeight]="'100%'"
+          [resizable]="false"
+          [reorderable]="false"
+          class="top-bar-header"
+          [style]="'position: relative;'"
+          [gap]="0"
+          [style]="'background: transparent !important;height : 100%'"
+        >
+          <kendo-tilelayout-item
+            [col]="1"
+            [colSpan]="1"
+            [row]="1"
+            [rowSpan]="1"
+            style="border-radius: 0; background: transparent !important"
+          >
+            <kendo-tilelayout-item-body style="max-height: 100% !important">
+              <div class="email-heading">
+                <div>
+                  <h4 class="h4-custom" style="float: left; display: flex">
+                    From: &nbsp;
+                  </h4>
+                  <h4 class="h4-custom" style="color: #009cc1">{{ senderEmail }}</h4>
+                </div>
+                <div>
+                  <h4 class="h4-custom" style="float: left; display: flex">
+                    Sent: &nbsp;
+                  </h4>
+                  <h4 class="h4-custom">{{ receivedOn }}</h4>
+                </div>
+                <!-- <div>
+                <h4 class="h4-custom" style="float: left; display: flex">To: &nbsp;</h4>
+                <h4 class="h4-custom" style="color: #009cc1;">{{ senderEmail }}</h4>
+              </div> -->
+                <div>
+                  <h4 class="h4-custom" style="float: left; display: flex">
+                    Subject: &nbsp;
+                  </h4>
+                  <h4 class="h4-custom">{{ messgageSubject }}</h4>
+                </div>
+                <!-- Submission Email -->
+              </div>
+              <div class="emai-content" [innerHTML]="htmlData"></div>
+            </kendo-tilelayout-item-body>
+          </kendo-tilelayout-item>
+        </kendo-tilelayout>
+        
+      </div>
+    </div>
   </div>
-</div>
+  </mat-dialog-content>
+

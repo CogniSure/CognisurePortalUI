@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Inject, Input, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 
 
@@ -10,8 +11,12 @@ import { InboxService } from 'src/app/services/inbox/inbox.service';
 export class EmailpopupComponent implements OnInit{
   
   @Input() SubmissionId : any =  "0"
-constructor(private inboxService : InboxService, private changedetector: ChangeDetectorRef){
-  
+constructor(private inboxService : InboxService, private changedetector: ChangeDetectorRef,
+  private dialog: MatDialog,
+    public dialogRef: MatDialogRef<EmailpopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ){
+  this.SubmissionId = data.SubmissionID
 }
   ngOnInit(): void {
     this.inboxService.getSubmissionEmailMessage(this.SubmissionId).subscribe(msg=>{

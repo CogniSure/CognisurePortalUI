@@ -175,8 +175,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   isPopupVisible = false;
   OpenMessageEvent(item: any) {
-    this.selectedSubmission = item;
-    this.isPopupVisible = true;
+    let dialogRef = this.dialog.open(EmailpopupComponent,{
+      data:{
+        SubmissionID :  item.SubmissionID
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+     
+    });
   }
 
   togglePopup(dataItem:any) {
