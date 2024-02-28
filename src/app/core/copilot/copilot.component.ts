@@ -133,6 +133,8 @@ export class CopilotComponent implements OnInit,OnDestroy {
   Upload(selectedFile : any) : any {
     let uplfile: UploadFile;
     //this.preventDefault
+    console.log("Selected File for copilot")
+    console.log(selectedFile)
     if(selectedFile != null){
       uplfile = {
         FileName: selectedFile.name,
@@ -147,6 +149,9 @@ export class CopilotComponent implements OnInit,OnDestroy {
       return this.svc.uploadCopilotFiles(uplfile).subscribe((res: any) => {
         this.messageGuid = res.value;
       });
+    }
+    else {
+      this.messageGuid = "guid"
     }
   }
   

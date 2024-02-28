@@ -71,8 +71,8 @@ export class InboxDetailComponent implements OnInit, OnDestroy {
     const submissionGuid = submission.ClientSubmissionGUID;
     const submissionId = submission.SubmissionId;
     this.setHeader(email, clientId, submissionGuid);
-    this.setExposureSummary(email, clientId, submissionGuid);
-    this.setLossSummary(email, clientId, submissionGuid);
+    // this.setExposureSummary(email, clientId, submissionGuid);
+    // this.setLossSummary(email, clientId, submissionGuid);
     this.setSubmissionFiles(email, clientId, submissionId);
   }
   setExposureSummary(email: string, clientId: string, submissionId: string) {

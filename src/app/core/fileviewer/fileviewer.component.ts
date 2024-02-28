@@ -126,7 +126,8 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
     }
     }
     else{
-      this.selectedPdf = null
+      this.selectedPdf = null;
+      this.selectedFilesEvent.emit(null);
     }
     this.changeDetactor.detectChanges() 
   }
@@ -241,7 +242,8 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
     }
     }
     else{
-      this.selectedPdf = null
+      this.selectedPdf = null;
+      this.selectedFilesEvent.emit(null);
     }
     this.changeDetactor.detectChanges() 
   }

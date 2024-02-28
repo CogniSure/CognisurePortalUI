@@ -12,15 +12,19 @@
       [gap]="0"
       [style]="'background: linear-gradient(135deg, #00A7CE 0%, #00CEC3 100%)!important;'"
       >
-        <kendo-tilelayout-item [col]="1" [colSpan]="3" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
+        <kendo-tilelayout-item [col]="1" [colSpan]="5" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff!important;">
         <kendo-tilelayout-item-body  style="max-height: 100%!important;">
+          <!-- <div class="centered-text"><b style="width:100%; text-align: center;">Account Name - {{ accountName }}</b></div> -->
+          <div class="left-text">
+            <b style="width:100%; text-align: start;">Submission ID - {{ submissionId }} - {{accountName}}</b>
+          </div>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
-      <kendo-tilelayout-item [col]="4" [colSpan]="8" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
+      <kendo-tilelayout-item [col]="6" [colSpan]="6" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff;" >
         <kendo-tilelayout-item-body *ngIf="showSubmissionId"> 
           <!-- <div class="centered-text"><b>Insured Name - {{ namedinsuredFullname }}</b></div> -->
-          <div class="centered-text"><b style="width:100%; text-align: center;">Account Name - {{ accountName }}</b></div>
-          <div class="centered-text"><b style="width:100%; text-align: center;">Submission ID - {{ submissionId }}</b></div>
+          <!-- <div class="centered-text"><b style="width:100%; text-align: center;">Account Name - {{ accountName }}</b></div>
+          <div class="centered-text"><b style="width:100%; text-align: center;">Submission ID - {{ submissionId }}</b></div> -->
         </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
       <kendo-tilelayout-item [col]="12" [colSpan]="4" [row]="1" [rowSpan]="1" style="border-radius: 0;background: #fff">
