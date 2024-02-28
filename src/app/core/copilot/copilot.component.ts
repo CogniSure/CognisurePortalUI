@@ -151,11 +151,13 @@ export class CopilotComponent implements OnInit,OnDestroy {
   }
   
   toggleMaximize() {
+    console.log("Toggle SIze Before : " + this.isMaximized)
     if (this.isMaximized) {
       this.minimize();
     } else {
       this.maximize();
     }
+    console.log("Toggle SIze After : " + this.isMaximized)
   }
 
   maximize() {
@@ -164,7 +166,7 @@ export class CopilotComponent implements OnInit,OnDestroy {
   }
 
   minimize() {
-    this.dialogRef.updateSize('auto', 'auto');
+    this.dialogRef.updateSize('75%', 'auto');
     this.isMaximized = false;
   }
  
