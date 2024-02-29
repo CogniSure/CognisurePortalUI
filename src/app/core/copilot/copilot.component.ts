@@ -1,13 +1,10 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import {
   Message,
   SendMessageEvent,
   User,
 } from '@progress/kendo-angular-conversational-ui';
-import {
-  FileRestrictions,
-} from '@progress/kendo-angular-upload';
 import { Observable, Subject, Subscription, from, map, merge, scan } from 'rxjs';
 import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
@@ -27,12 +24,9 @@ export class CopilotComponent implements OnInit,OnDestroy {
   originalWidth: string;
   originalHeight: string;
   subscription: Subscription;
-  private inMemoryFile: string | null = null;
-  public uploadedFiles: File[];
-  uploadSaveUrl = 'saveUrl'; // should represent an actual API endpoint
-  uploadRemoveUrl = 'removeUrl'; // should represent an actual API endpoint
   messageGuid: string = 'guid';
-
+  
+  searchableFiles: { name: string;uid: string; base64Data: string, isSelected : boolean }[] = [];
   public readonly user: User = {
     id: 1,
     avatarUrl : "assets/images/defaultprofilepic.png"
@@ -44,11 +38,7 @@ export class CopilotComponent implements OnInit,OnDestroy {
   };
   public feed: Observable<Message[]>;
   private local: Subject<Message> = new Subject<Message>();
-  public restrictions: FileRestrictions = {
-    allowedExtensions: [],
-  };
   
-
   // Merge local and remote messages into a single stream
   
   constructor(
@@ -127,9 +117,7 @@ export class CopilotComponent implements OnInit,OnDestroy {
 
     this.svc.submit(e.message.text!, this.messageGuid);
   }
-  public clearModel(): void {
-    this.uploadedFiles = [];
-  }
+
   Upload(selectedFile : any) : any {
     let uplfile: UploadFile;
     //this.preventDefault
@@ -175,5 +163,5 @@ export class CopilotComponent implements OnInit,OnDestroy {
     this.isMaximized = false;
   }
  
-  searchableFiles: { name: string;uid: string; base64Data: string, isSelected : boolean }[] = [];
+  
 }
