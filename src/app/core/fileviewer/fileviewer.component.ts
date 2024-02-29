@@ -55,6 +55,7 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnInit(): void {
     this.preloadFiles = this.files;
+    this.genericSelected = true;
   }
 
   HidePreview(){

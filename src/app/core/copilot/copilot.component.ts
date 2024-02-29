@@ -10,6 +10,7 @@ import { UploadFile } from 'src/app/model/common/uploadfile';
 import { ChatService } from 'src/app/services/common/chat.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
+import { ChatMessage } from 'src/app/model/common/chatmessage';
 
 @Component({
   selector: 'app-copilot',
@@ -25,7 +26,8 @@ export class CopilotComponent implements OnInit,OnDestroy {
   originalHeight: string;
   subscription: Subscription;
   messageGuid: string = 'guid';
-  
+
+  messageArr : any[]= [];
   searchableFiles: { name: string;uid: string; base64Data: string, isSelected : boolean }[] = [];
   public readonly user: User = {
     id: 1,
@@ -58,6 +60,10 @@ export class CopilotComponent implements OnInit,OnDestroy {
   log(str : string)
   {
     console.log("Response")
+    this.local.subscribe(x=>{
+
+      console.log(x)
+    })
     console.log(str)
     return false;
   }
@@ -86,9 +92,8 @@ export class CopilotComponent implements OnInit,OnDestroy {
             })
           )
         )
-        
-
       ).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
+      
       this.inboxService
         .getSubmissionFilesFromDB('0', this.data.SubmissionID, '0',true)
         .subscribe((res) => {
@@ -107,6 +112,37 @@ export class CopilotComponent implements OnInit,OnDestroy {
 
   }
 
+  ResetChatHistory(){
+    const hello: Message = {
+      author: this.bot,
+      suggestedActions: [
+      ],
+      timestamp: new Date(),
+      text: 'CogniSure Copilot',
+    };
+   this.svc.responses = new Subject<string>()
+
+    //  this.feed = merge(from([hello]),this.local,[]).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
+    // this.feed.subscribe(x=>{
+    //   console.log("Message Array")
+    //   console.log(this.messageArr)
+    //   this.messageArr.push(x);
+    // })
+    // this.svc.responses = new Subject<string>()
+    this.feed = merge(
+      from([hello]),
+      this.local,
+      this.svc.responses.pipe(
+        map(
+          (response): Message => ({
+            author: this.bot,
+            text: response.trim(),
+            typing : this.log(response)
+          })
+        )
+      )
+    ).pipe(scan((acc: Message[], x: Message) => [...acc, x], []));
+  }
   public sendMessage(e: SendMessageEvent): void {
     this.local.next(e.message);
 
@@ -114,13 +150,20 @@ export class CopilotComponent implements OnInit,OnDestroy {
       author: this.bot,
       typing: true,
     });
-
+    // console.log("Ask Questions")
+    // this.local.subscribe(x=>
+      
+    //   {
+    //     console.log(x)
+    //   })
     this.svc.submit(e.message.text!, this.messageGuid);
   }
 
   Upload(selectedFile : any) : any {
     let uplfile: UploadFile;
     //this.preventDefault
+    
+    this.ResetChatHistory();
     console.log("Selected File for copilot")
     console.log(selectedFile)
     if(selectedFile != null){
