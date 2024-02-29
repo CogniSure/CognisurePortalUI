@@ -15,10 +15,19 @@
     style="border-radius: 0"
   >
     <kendo-tilelayout-item-body
-    style="border: 1px solid rgba(0, 0, 0, 0.08); background-color: #fff"
+      style="border: 1px solid rgba(0, 0, 0, 0.08); background-color: #fff"
     >
-      <div *ngIf="files.length === 0; else showPreview" style="height: 88%;">
-        <p style="padding: 25%; display: flex; justify-content: center; height: 100%;">No files selected</p>
+      <div *ngIf="files.length === 0; else showPreview" style="height: 88%">
+        <p
+          style="
+            padding: 25%;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+          "
+        >
+          No files selected
+        </p>
       </div>
 
       <ng-template #showPreview>
@@ -30,6 +39,29 @@
             border-radius: 0px;
           "
         >
+          <div class="generic-chat">
+            <div style="height: 4em; justify-items: start; display: flex">
+              <div
+                [ngClass]="genericSelected ? 'selected-bg' : 'default-bg'"
+                style="width: 100%; height: 100%"
+              >
+                <button
+                  (click)="HidePreview()"
+                  class="file-button"
+                  [ngClass]="genericSelected ? 'selected-bg' : 'default-bg'"
+                  style="
+                    border: none;
+                    text-align: left !important;
+                    padding-left: 10%;
+                    width: 100%;
+                    height: 100%;
+                  "
+                >
+                  Generic Chat
+                </button>
+              </div>
+            </div>
+          </div>
           <div class="conversion_popup">
             <div
               *ngFor="let file of preloadFiles; let i = index"
@@ -59,19 +91,19 @@
 
           <div class="preview_border"></div>
 
-          <div style="padding: 0.5em 0 0 0;">
+          <div style="padding: 0.5em 0 0 0">
             <div
               id="preview-container"
               *ngFor="let file of uploadFiles; let i = index"
               style="height: 4em; justify-items: start; display: flex"
             >
-            <div
+              <div
                 [ngClass]="file.isSelected ? 'selected-bg' : 'default-bg'"
                 style="width: 100%; height: 100%"
               >
-              <button
-                (click)="previewUploadedFile(file, i)"
-                [ngClass]="file.isSelected ? 'selected-bg' : 'default-bg'"
+                <button
+                  (click)="previewUploadedFile(file, i)"
+                  [ngClass]="file.isSelected ? 'selected-bg' : 'default-bg'"
                   style="
                     border: none;
                     text-align: left !important;
@@ -79,11 +111,11 @@
                     width: 100%;
                     height: 100%;
                   "
-              >
-                <i class="fa fa-file-pdf-o"></i> {{ file.name }}
-              </button>
-              <p class="bottom_border"></p>
-            </div>
+                >
+                  <i class="fa fa-file-pdf-o"></i> {{ file.name }}
+                </button>
+                <p class="bottom_border"></p>
+              </div>
             </div>
           </div>
         </div>
@@ -94,7 +126,6 @@
         [multiple]="true"
         (select)="fileSelected($event)"
       >
-      
         <kendo-fileselect-messages select="Add Files">
         </kendo-fileselect-messages>
       </kendo-fileselect>
@@ -121,7 +152,7 @@
         </div>
       </div>
 
-      <div *ngIf="selectedPdf && !invalidPreview && !jsonView" >
+      <div *ngIf="selectedPdf && !invalidPreview && !jsonView">
         <div *ngIf="!jsonView">
           <iframe
             #fileViewer

@@ -33,6 +33,8 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
   preloadFiles: any[] = [];
   uploadFiles: any[] = [];
 
+  genericSelected = false;
+
   public restrictions: FileRestrictions = {
     allowedExtensions: [],
   };
@@ -55,7 +57,22 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
     this.preloadFiles = this.files;
   }
 
+  HidePreview(){
+    this.uploadFiles.forEach(x=>{
+      x.isSelected = false
+    })
+    this.preloadFiles.forEach((x, i)=>{
+      x.isSelected = false;
+    })
+    this.genericSelected = true;
+    this.jsonView = false;
+    this.invalidPreview = true;
+    this.selectedPdf = null;
+    this.selectedFilesEvent.emit(null);
+  }
+
   PreviewSubmissionFiles(selectedFile:any,index: number): void {
+    this.genericSelected = false;
     let isSelected = !selectedFile.isSelected;
     this.uploadFiles.forEach(x=>{
       x.isSelected = false
@@ -127,6 +144,7 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
     }
     else{
       this.selectedPdf = null;
+      this.genericSelected = true;
       this.selectedFilesEvent.emit(null);
     }
     this.changeDetactor.detectChanges() 
@@ -170,7 +188,7 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   previewUploadedFile(selectedFile: any, index: number): void {
-    
+    this.genericSelected = false;
     let isSelected = !selectedFile.isSelected;
     this.preloadFiles.forEach(x=>{
       x.isSelected = false
@@ -243,6 +261,7 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
     }
     else{
       this.selectedPdf = null;
+      this.genericSelected = true;
       this.selectedFilesEvent.emit(null);
     }
     this.changeDetactor.detectChanges() 

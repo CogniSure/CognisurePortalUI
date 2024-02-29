@@ -16,7 +16,7 @@
         <kendo-tilelayout-item-body  style="max-height: 100%!important;">
           <!-- <div class="centered-text"><b style="width:100%; text-align: center;">Account Name - {{ accountName }}</b></div> -->
           <div class="left-text">
-            <b style="width:100%; text-align: start;">Submission ID - {{ submissionId }} - {{accountName}}</b>
+            <b style="width:100%; text-align: start;">{{ submissionId }} - {{accountName}}</b>
           </div>
       </kendo-tilelayout-item-body>
       </kendo-tilelayout-item>
@@ -64,15 +64,17 @@
                 [user]="user"
                 (sendMessage)="sendMessage($event)"
                 style="max-width: none !important;">
-                <ng-template kendoChatAttachmentTemplate let-att>
+                <!-- <ng-template kendoChatAttachmentTemplate let-att>
                   <ng-container >
-                    <!-- <img class="image-class" [src]="att.content" draggable="false" /> -->
                     imageUrl="../../../assets/images/topbar_icon.svg"
                   </ng-container>
-                </ng-template>
-                <!-- <ng-template kendoChatMessageTemplate let-message>
-                  <div [innerHTML]="renderMarkdown(message.text)"></div>
                 </ng-template> -->
+                <ng-template kendoChatMessageTemplate let-message>
+                  <div>
+                    {{ message.text }}
+                    {{message.avatar}}
+                    </div>
+                </ng-template>
               </kendo-chat>
             </div>
           </kendo-tilelayout-item-body>
