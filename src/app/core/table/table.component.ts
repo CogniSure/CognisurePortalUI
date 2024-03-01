@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { DataBindingDirective } from '@progress/kendo-angular-grid';
 import { SVGIcon, filePdfIcon, fileExcelIcon } from '@progress/kendo-svg-icons';
 import { process } from '@progress/kendo-data-query';
@@ -19,6 +19,8 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Console } from 'console';
 import { Router } from '@angular/router';
+import { GridComponent, ColumnComponent } from '@progress/kendo-angular-grid';
+
 
 interface NavItem {
   title: string;
@@ -43,6 +45,10 @@ export interface SubmissionData {
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit,OnChanges,OnDestroy {
+  resizedColumnIndex: number | null = null;
+  initialColumnWidths: Map<string, number> = new Map<string, number>();
+  @ViewChild('generictable', { static: true }) generictable: GridComponent;
+  @ViewChild('gridContainer', { static: true }) gridContainer: ElementRef;
   showSpinner = false;
   public selectedCheckboxes: number[] = [];
   selectedItemId: number | null = null;
@@ -87,7 +93,7 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   tableData: any;
 
   constructor(public globalService: GlobalService,private changedetector: ChangeDetectorRef,private fb: FormBuilder,private router : Router) {
-   this.formGroup = this.fb.group({
+    this.formGroup = this.fb.group({
       agencyname: [''],
     });
 
@@ -152,6 +158,9 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     this.showSpinner = false;
     this.selectedValue = { label: 'High', value: 'option1' };
 
+  }
+
+  ngAfterViewInit() {
   }
 
   alertsInfo = DataComponent.Tooltip;
@@ -341,4 +350,68 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
       grid.saveAsPDF();
     }
   }
+
+
+  // private storeInitialColumnWidths(): void {
+  //   this.grid.columns.forEach(column => {
+  //     this.initialColumnWidths.set(column.field, column.width);
+  //   });
+  // }
+  
+  
+  onColumnResize(event: any, columnIndex: number) {
+    // Get the width of the resized column
+    const newWidth = event.newWidth;
+  
+    // Calculate the change in width
+    const deltaWidth = newWidth - this.columns[columnIndex].width;
+  
+    // Calculate the total width of the other columns
+    let totalWidth = 0;
+    for (let i = 0; i < this.columns.length; i++) {
+      if (i !== columnIndex) {
+        totalWidth += this.columns[i].width;
+      }
+    }
+  
+    // Calculate the width change per column
+    const widthChangePerColumn = deltaWidth / (this.columns.length - 1);
+  
+    // Update the widths of the other columns
+    for (let i = 0; i < this.columns.length; i++) {
+      if (i !== columnIndex) {
+        this.columns[i].width += widthChangePerColumn;
+      }
+    }
+  }
+  
+  
+  
+  
+  getMenuItems(column: any): any[] {
+    return [
+      { text: 'Hide Column', icon: 'eye-slash', click: () => this.hideColumn(column.field) },
+      { separator: true },
+      // Other menu items as needed
+    ];
+  }
+
+  // Method to hide/show column based on its field name
+  hideColumn(fieldName: string): void {
+    const column = this.generictable.columns.find(c => this.isColumnComponent(c) && c.field === fieldName);
+    if (column) {
+      column.hidden = !column.hidden;
+    }
+  }
+
+  // Helper method to check if the column is of type ColumnComponent
+  private isColumnComponent(column: any): column is ColumnComponent {
+    return column instanceof ColumnComponent;
+  }
+  
+
+  
+  
+  
+  
 }

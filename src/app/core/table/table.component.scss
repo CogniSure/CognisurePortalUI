@@ -386,3 +386,15 @@
 ::ng-deep .submissionicon{
 cursor: default;
 }
+
+::ng-deep .k-popup .k-popup-content {
+  padding-left: 10px!important;
+  padding-right: 10px!important; 
+  padding-top: 10px!important; 
+  padding-bottom: 10px!important; 
+}
+
+
+::ng-deep .k-menu-popup {
+  padding:2%!important;
+}

@@ -1,4 +1,4 @@
-<div class="generic-table">
+<div class="generic-table" #gridContainer>
   <div class="loader" *ngIf="showSpinner">
     <app-loader [showSpinner]="showSpinner"></app-loader>
   </div>
@@ -19,8 +19,10 @@
     [style.height]="'inherit'"
     [style.maxWidth]="'auto'"
     [loading]="loading"
+    [resizable]="true"
     [selectable]="selectableSettings"
     [style]="'border-radius: 14px;overflow: hidden;'"
+    
   >
 
 
@@ -37,6 +39,9 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [menuItems]="getMenuItems(column)"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
@@ -66,6 +71,8 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
@@ -90,6 +97,8 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
@@ -129,6 +138,8 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [hidden]="!column.default"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
@@ -161,6 +172,8 @@
         [columnMenu]="column.columnmenu"
         [ngClass]="{ 'outputicon-class': true }"
         [hidden]="!column.default"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <kendo-grid-column
@@ -171,6 +184,8 @@
           [width]="column.width"
           [columnMenu]="column.columnmenu"
           [width]="100"
+          [resizable]="true"
+          kendo-grid-column-resizable
         >
           <ng-template
             kendoGridHeaderTemplate
@@ -234,6 +249,8 @@
         [columnMenu]="column.columnmenu"
         [ngClass]="{ 'outputicon-class': true }"
         [hidden]="!column.default"
+        kendo-grid-column-resizable
+        [resizable]="true"
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
@@ -272,6 +289,8 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template kendoGridCellTemplate let-dataItem>
@@ -298,6 +317,8 @@
         [columnMenu]="column.columnmenu"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
@@ -346,6 +367,8 @@
       [columnMenu]="column.columnmenu"
       [ngClass]="{ 'outputicon-class': true }"
       [hidden]="!column.default"
+      [resizable]="true"
+      kendo-grid-column-resizable
       [headerStyle]="{'border-color': '#1FD0C7'}"
     >
       >
@@ -358,6 +381,8 @@
         [width]="column.width"
         [columnMenu]="column.columnmenu"
         [width]="column.width"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         <ng-template
@@ -426,6 +451,8 @@
         [width]="column.width"
         title=""
         field="subColumn1"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [ngClass]="{ outputicon_clum: true }"
         [style]="{ 'border-radius': '0' }"
         [headerStyle]="{'border-color': '#1FD0C7'}"
@@ -505,6 +532,8 @@
         title=""
         field=""
         [ngClass]="{ outputicon_clum: true }"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [style]="{ 'border-radius': '0' }"
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
@@ -575,6 +604,8 @@
         [columnMenu]="column.columnmenu"
         [ngClass]="{ 'outputicon-class': true }"
         [hidden]="!column.default"
+        [resizable]="true"
+        kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
       >
         >
@@ -587,6 +618,8 @@
           [width]="column.width"
           [columnMenu]="column.columnmenu"
           [width]="column.width"
+          [resizable]="true"
+          kendo-grid-column-resizable
           [headerStyle]="{'border-color': '#1FD0C7'}"
           
         >
@@ -612,6 +645,8 @@
           [width]="column.width"
           title=""
           field="subColumn1"
+          [resizable]="true"
+          kendo-grid-column-resizable
           [ngClass]="{ outputicon_clum: true }"
           [style]="{ 'border-radius': '0' }"
           [headerStyle]="{'border-color': '#1FD0C7'}"
@@ -692,6 +727,8 @@
       [columnMenu]="column.columnmenu"
       [editor]="column.editor"
       [hidden]="!column.default"
+      [resizable]="true"
+      kendo-grid-column-resizable
       [headerStyle]="{'border-color': '#1FD0C7'}"
     >
       <ng-template kendoGridCellTemplate let-dataItem>
@@ -757,11 +794,11 @@
           alt="Custom Icon"
         />
         <ng-template kendoDropDownButtonItemTemplate let-dataItem>
-          <div style="padding-right: 5%; width: 10em !important; display: flex">
-            <div>
+          <div style="padding-right: 5%; width: 10em !important; display: flex;padding: 5% 5% 5% 2%;padding-top: 2%;">
+            <div style="padding-top: 6%;">
               <span>{{ dataItem.actionName }}</span>
             </div>
-            <div style="padding-left: 5%">
+            <div style="padding-left: 5%;font-size: 20px;">
               <img
                 [src]="dataItem.icon"
                 style="width: 1em; height: 1em"
