@@ -637,8 +637,6 @@ export class DataComponent {
     }
   ];
   public static Tooltip = `<div class="size"><b>Password must consists of</b><ul><li>Min 1 Special Character</li><li>Min 1 Upper Character</li><li >Min 1 Lower Character</li><li>Min 1 Numeric Character</li><li>Length of password should be between 8 and 24 Characters</li></ul></div>`;
-
-  public static RiskInsightsRedirectURL = 'https://accounts.zohoportal.com/accounts/p/10065241642/signin/jwt/auth?jwt=Zohotoken&return_to=returnURL'
-  public static RiskInsightsReturnURL = `https://analytics.cognisure.ai/workspace/2701274000003945507/view/2701274000004285753?ZOHO_CRITERIA=SUB_SUBMISSIONMETADATA.SUBMISSIONGUID='{GUID}'`
+  
 }
 

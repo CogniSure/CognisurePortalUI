@@ -286,12 +286,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   
         // this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
            let GUID = SubmissionGUID;
-          let returndURL = DataComponent.RiskInsightsReturnURL.replace('{GUID}', GUID);
-          let redirectURL = DataComponent.RiskInsightsRedirectURL
+          // let returndURL = DataComponent.RiskInsightsReturnURL.replace('{GUID}', GUID);
+          // let redirectURL = DataComponent.RiskInsightsRedirectURL
+          // redirectURL = redirectURL
+          //   .replace('Zohotoken', token.value)
+          //   .replace('returnURL', returndURL);
+          let redirectURL = token.value;
           redirectURL = redirectURL
-            .replace('Zohotoken', token.value)
-            .replace('returnURL', returndURL);
-          //console.log(this.redirectURL);
+            .replace('{GUID}', "'"+GUID+"'");
           window.open(redirectURL, '_blank');
         });
       //});

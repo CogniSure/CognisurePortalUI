@@ -28,9 +28,8 @@ export class RiskClearanceComponent implements OnInit, OnDestroy {
     UserImage: '',
   };
   embedURL = '';
-  redirectURL =
-    'https://accounts.zohoportal.com/accounts/p/10065241642/signin/jwt/auth?jwt=Zohotoken&return_to=returnURL';
-  returnURL = `https://analytics.cognisure.ai/open-view/2701274000004285753?ZOHO_CRITERIA=SUB_SUBMISSIONMETADATA.SUBMISSIONGUID='{GUID}'`;
+  redirectURL = '';
+  returnURL = ``;
   constructor(
     private authService: AuthService,
     private globalService: GlobalService

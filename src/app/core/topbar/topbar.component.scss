@@ -1,15 +1,22 @@
-// ::ng-deep .k-card-body {
-//   padding-block: 0;
-// }
+.vertical-line {
+  content: "";
+  border-left: 1px solid #758591;
+  height: 40px;
+  display: inline-block;
+  background: #758591;
+  width: 2px;
+  //margin-top: 20% !important;
+}
 .header_img img {
-  width: 60%;
-  margin-top: 1%;
-  margin-left: 4%;
+  width: 32%;
+  // margin-top: 1%;
+  // margin-left: 4%;
   // margin-top: 5%;
 }
 .top_bar {
   padding: 1%;
 }
+
 .copilot-wrapper{
  
     // z-index: 10002;
