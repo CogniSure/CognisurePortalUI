@@ -398,3 +398,56 @@ cursor: default;
 ::ng-deep .k-menu-popup {
   padding:2%!important;
 }
+
+::ng-deep .k-popup li:hover{
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff;
+}
+::ng-deep .k-menu-popup li:hover {
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff;
+}
+
+::ng-deep .k-menu-popup > .k-item {
+  font-weight: bold;
+}
+
+::ng-deep.k-menu-popup{
+  margin-left: -4%!important;
+  background-color: #fff !important;
+}
+
+
+::ng-deep .k-menu-link-text:hover{
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff;
+}
+
+::ng-deep .k-menu-group-md .k-menu-item:hover{
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff;
+}
+
+::ng-deep .k-menu-link:hover{
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff!important;
+}
+
+.k-menu-group-md .k-menu-item img:hover{
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff!important;
+}
+
+.k-popup li img:hover{
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff!important;
+}
+
+.k-popup .k-item img:hover{
+  background-color: rgb(0, 156, 193) !important;
+  color:#fff!important;
+}
+
+.k-item img:hover{
+  color:#fff!important;
+}
