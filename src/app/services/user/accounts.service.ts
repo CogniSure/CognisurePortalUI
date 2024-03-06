@@ -1,7 +1,8 @@
 import { DatePipe } from "@angular/common";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, map, Observable, retry, throwError } from "rxjs";
+import { map, Observable, throwError } from "rxjs";
+import { catchError, retry } from 'rxjs/operators';
 import { UserProfile } from 'src/app/model/profile/userprofile';
 // import { Accounts } from 'src/app/model/profile/accounts';
 import { GlobalService } from '../common/global.service';
@@ -21,6 +22,11 @@ import { defer } from "rxjs";
 })
 export class AccountService {
   // contactUs: any;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
   httpOption1 = {
     headers: new HttpHeaders({
@@ -28,7 +34,7 @@ export class AccountService {
     }),
   };
   
-  constructor(private http: HttpService, private globalService:GlobalService ,private configService : AppConfigService) {
+  constructor(private httpClient: HttpClient, private http: HttpService, private globalService:GlobalService ,private configService : AppConfigService) {
     
   }
   env = this.configService.settings;
@@ -310,17 +316,29 @@ export class AccountService {
     
   }
 
-  forgotPassword({ email}: any): Observable<any>{
-    var result;
-
-    var apiUrl = this.env.apiUrl+"forgotpassword/"+email
-    return this.http
-    .postData(
-      apiUrl,
-      "",
-      ""
-    )
+  forgotPassword(email: string): Observable<any> {
+    console.log('Forgot Password Http Call');
+    const apiUrl = this.configService.settings.baseUrl + 'api/ForgotPassword?email='+email; 
+    const requestBody = { email: email };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+  
+    return this.httpClient.post(apiUrl, '' , httpOptions).pipe(
+      map((response: any) => {
+        return response;
+      }),
+      catchError((error: any) => {
+        console.error('Forgot Password Error:', error);
+        return throwError(error); 
+      })
+    );
   }
+  
+
+  
 
   changePassword(userId: number, oldPassword:string, newPassword:string ): Observable<any>{
     var apiUrl = this.env.apiUrl+"changepassword/"+userId+"/"+encodeURIComponent(oldPassword)+"/"+encodeURIComponent(newPassword)

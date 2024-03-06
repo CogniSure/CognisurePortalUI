@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppConfigService } from 'src/app/app-config-service';
 import { Errors } from 'src/app/model/common/errors';
 import { ForgotPassword } from 'src/app/model/common/forgotpassword';
 import { LoginData } from 'src/app/model/common/logindata';
@@ -22,7 +23,8 @@ export class ForgotpasswordComponent implements OnInit {
     private accServ: AccountService,
     private router: Router,
     private globalService: GlobalService,
-    private validationService: ValidationService
+    private validationService: ValidationService,
+    private configService:AppConfigService
   ) {}
 
   validationErrors: Errors[] = [];
@@ -48,35 +50,71 @@ export class ForgotpasswordComponent implements OnInit {
   imageClickHandler(val: any) {
     this.enableSlideButton = val;
   }
-  forgotpassword(event: any) {
-    this.showSpinner=true;
-    event.preventDefault();
+  // forgotpassword(event: any) {
+  //   this.showSpinner=true;
+  //   event.preventDefault();
+  //   this.validationErrors = [];
+  //   this.validationErrors = this.validateInput();
+  //   this.showErrors();
+  //   if (this.validationErrors.length == 0) {
+  //   this.accServ
+  //     .forgotPassword(this.forgotPasswordForm.value)
+  //     .subscribe((res) => {
+  //       this.forgotPasswordInput = {
+  //         Email: this.forgotPasswordForm.value.email!,
+  //         OldPassword: '',
+  //         NewPassword: '',
+  //       };
+  //       if (res.success) {
+  //         this.globalService.password$.subscribe((x:any) => x);
+  //         this.globalService.password$.next(this.forgotPasswordInput);
+  //         this.router.navigate(['/emailsent'], {
+  //           queryParamsHandling: 'preserve',
+  //         });
+  //       } else {
+  //         this.isSuccess = false;
+  //       }
+  //     });
+  //   }
+  //   else
+  //   this.showSpinner=false;
+  // }
+  forgotpassword() {
+    this.showSpinner = true;
     this.validationErrors = [];
     this.validationErrors = this.validateInput();
     this.showErrors();
     if (this.validationErrors.length == 0) {
-    this.accServ
-      .forgotPassword(this.forgotPasswordForm.value)
-      .subscribe((res) => {
-        this.forgotPasswordInput = {
-          Email: this.forgotPasswordForm.value.email!,
-          OldPassword: '',
-          NewPassword: '',
-        };
-        if (res.success) {
-          this.globalService.password$.subscribe((x:any) => x);
-          this.globalService.password$.next(this.forgotPasswordInput);
-          this.router.navigate(['/emailsent'], {
-            queryParamsHandling: 'preserve',
-          });
-        } else {
-          this.isSuccess = false;
-        }
-      });
+      const email = this.forgotPasswordForm.get('email')?.value;
+      if (email) { // Check if email is not null or undefined
+        this.accServ.forgotPassword(email).subscribe((res) => {
+          this.forgotPasswordInput = {
+            Email: email,
+            OldPassword: '',
+            NewPassword: '',
+          };
+          if (res.success) {
+            this.globalService.password$.subscribe((x: any) => x);
+            this.globalService.password$.next(this.forgotPasswordInput);
+            this.router.navigate(['/emailsent'], {
+              queryParamsHandling: 'preserve',
+            });
+          } else {
+            this.isSuccess = false;
+          }
+        });
+      } else {
+        // Handle the case when email is null or undefined (optional)
+        console.error('Email is null or undefined');
+        this.showSpinner = false;
+      }
+    } else {
+      this.showSpinner = false;
     }
-    else
-    this.showSpinner=false;
   }
+  
+  
+  
   formValues = new Map<string, string>()
   resetError(key: string, $event:any) {
     let removeError = false

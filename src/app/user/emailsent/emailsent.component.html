@@ -26,7 +26,8 @@
                           <h2 class="header-black"><b>Check your Email</b></h2>
                           <div class="emailsent1">
                             <h4 class="inputtext-large" style="margin: 0">
-                              We sent a password reset link to
+                              A password has been sent by email to 
+                              {{ forgotPasswordInput.Email }}
                             </h4>
                             <!-- <h4 class="textprimary-black">{{ forgotPasswordInput.Email }}</h4> -->
                             </div>
@@ -40,6 +41,7 @@
                                   <a
                                     style="padding: 0; cursor: pointer"
                                     class="inputtext-large emailsnt"
+                                    (click)="resetPassword()"
                                     >Click to resend</a
                                   >
                                   <span>
