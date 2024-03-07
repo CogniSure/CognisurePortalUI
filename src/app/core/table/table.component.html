@@ -54,7 +54,7 @@
             [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
             [class.expanded-cell]="cellExpansionState[rowIndex]"
             (click)="toggleCellExpansion(dataItem)"
-            [style]="column.allign == 'left' ? 'text-align : left' : ''"
+            [style]="column.allign == 'center' ? 'text-align : center' : ''"
           >
             {{ dataItem[column.field] }}
           </div>
@@ -417,21 +417,21 @@
                 </a>
               </ng-container>
             </div>
-            <ng-template #S360Pending>
+            <ng-template #S360Pending class="hover_icon">
               <img
                 src="../../../assets/icons/S360ReportPending.svg"
                 alt="Gray Image"
               />
             </ng-template>
 
-            <ng-template #ConvaiPending>
+            <ng-template #ConvaiPending class="hover_icon">
               <img
                 src="../../../assets/icons/ConversationAIPending.svg"
                 alt="Gray Image"
               />
             </ng-template>
 
-            <ng-template #InsgihtsPending>
+            <ng-template #InsgihtsPending class="hover_icon">
               <img
                 src="../../../assets/icons/InsightsPending.svg"
                 alt="Gray Image"
@@ -497,21 +497,21 @@
               </ng-container>
             </div>
 
-            <ng-template #S360Pending>
+            <ng-template #S360Pending class="hover_icon">
               <img
                 src="../../../assets/icons/S360ReportPending.svg"
                 alt="Gray Image"
               />
             </ng-template>
 
-            <ng-template #ConvaiPending>
+            <ng-template #ConvaiPending class="hover_icon">
               <img
                 src="../../../assets/icons/ConversationAIPending.svg"
                 alt="Gray Image"
               />
             </ng-template>
 
-            <ng-template #InsgihtsPending>
+            <ng-template #InsgihtsPending class="hover_icon">
               <img
                 src="../../../assets/icons/InsightsPending.svg"
                 alt="Gray Image"
@@ -569,21 +569,21 @@
                 </a>
               </ng-container>
             </div>
-            <ng-template #S360Pending>
+            <ng-template #S360Pending class="hover_icon">
               <img
                 src="../../../assets/icons/S360ReportPending.svg"
                 alt="Gray Image"
               />
             </ng-template>
 
-            <ng-template #ConvaiPending>
+            <ng-template #ConvaiPending class="hover_icon">
               <img
                 src="../../../assets/icons/ConversationAIPending.svg"
                 alt="Gray Image"
               />
             </ng-template>
 
-            <ng-template #InsgihtsPending>
+            <ng-template #InsgihtsPending class="hover_icon">
               <img
                 src="../../../assets/icons/InsightsPending.svg"
                 alt="Gray Image"

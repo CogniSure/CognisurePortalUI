@@ -7,7 +7,7 @@ export interface SubmissionFile {
   // LineOfBusiness: string,
   // Status: string,
   // FileData : string
-
+  SlNo?: number;
   ID: number;
   FileGUID: string;
   FileOriginalName: string;

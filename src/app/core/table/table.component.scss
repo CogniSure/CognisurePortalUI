@@ -212,6 +212,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+  text-align: center;
 }
 
 .expanded-cell {
@@ -450,4 +451,32 @@ cursor: default;
 
 .k-item img:hover{
   color:#fff!important;
+}
+
+::ng-deep .excel_download{
+  cursor: default;
+}
+
+::ng-deep .excel_download:hover img{
+  cursor: pointer; 
+}
+
+::ng-deep .copied_icontop{
+  cursor: default;
+}
+
+::ng-deep .copied_icontop:hover img{
+  cursor: pointer; 
+}
+
+::ng-deep .hover_icon{
+  cursor: default;
+}
+
+::ng-deep .hover_icon:hover img{
+  cursor: pointer; 
+}
+
+::ng-deep .k-columnmenu-item.k-selected{
+  background-color:#009cc1;
 }

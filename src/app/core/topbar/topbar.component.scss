@@ -258,7 +258,13 @@ margin-top: 1%;
 
 .profile_img{
   position: absolute;
+  cursor: default;
 }
+
+.profile_img:hover img{
+  cursor: pointer; 
+}
+
 .icon-span{
   background: white;
   border-radius: 78%;

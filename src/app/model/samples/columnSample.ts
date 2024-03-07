@@ -976,6 +976,17 @@ export class ColumnSample {
     //   sortable: true,
     // },
     {
+      field: 'SlNo',
+      title: 'SL No',
+      default : true,
+      width: ColumnSize.ExtraSmall,
+      type: 'text',
+      sortable: false,
+      columnmenu: true,
+      filterable: true,
+      allign : "left"
+    },
+    {
       field: 'FileOriginalName',
       title: 'File Name',
       default : true,

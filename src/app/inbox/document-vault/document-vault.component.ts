@@ -21,6 +21,7 @@ export class DocumentVaultComponent implements OnInit {
     ) {
 
     }
+    
   submissionFiles: SubmissionFile[] = [];
   public columns: any = ColumnSample.SubmissionFileColumns;
   noDataAvailble = false;
@@ -28,12 +29,22 @@ export class DocumentVaultComponent implements OnInit {
     this.cacheService.getSubmissionFiles().subscribe((docs: any) => {
       console.log("Download Result")
         console.log(docs)
-      if(docs!=null && docs.length>0){
-        this.submissionFiles = docs;
-        this.noDataAvailble = false
-      }
-      else 
+      // if(docs!=null && docs.length>0){
+      //   this.submissionFiles = docs;
+      //   this.noDataAvailble = false
+      // }
+      // else 
+      //   this.noDataAvailble = true;
+
+      if (docs != null && docs.length > 0) {
+        this.submissionFiles = docs.map((doc: SubmissionFile, index: number) => {
+          doc.SlNo = index + 1;
+          return doc;
+        });
+        this.noDataAvailble = false;
+      } else {
         this.noDataAvailble = true;
+      }
         
     })
   }

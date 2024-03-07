@@ -275,4 +275,10 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
     }, 3000);
   }
 
+
+  sliderimages = [
+    { url: 'assets/images/Image_SIP_LoginPage_1.jpg', caption: 'Real Time Data Insights' },
+    { url: 'assets/images/Image_SIP_LoginPage_2.jpg', caption: 'Unified Experience' }
+  ];
+
 }
