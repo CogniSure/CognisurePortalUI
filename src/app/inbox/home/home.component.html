@@ -44,7 +44,7 @@
       </kendo-tilelayout-item>
     </kendo-tilelayout>
   </div>
-  <div style="height: 100%;">
+  <div style="height: 100%">
     <kendo-tilelayout
       [columns]="7"
       [rowHeight]="'100%'"
@@ -73,7 +73,7 @@
                 [rowSpan]="1"
                 style="background: #eef2f7"
               >
-                <kendo-tilelayout-item-body style="padding: 0">
+                <kendo-tilelayout-item-body style="padding: 0;margin-top: 0.2%;">
                   <div style="display: flex;">
                   <div *ngFor="let action of actionItems" style="margin-right: 1em;">
                     <kendo-button 
@@ -116,7 +116,7 @@
                       fillmode="solid"
                       textField="Name" 
                       valueField="Email" 
-                      style="background: white; border-radius: 8px;margin-left: 2%;
+                      style="background: white; border-radius: 8px;margin-left: 2%;margin-top: 0.6%;margin-right: 2%;
                       "
                       ></kendo-dropdownlist>
                       <!-- {{ userDetail.ClientName }} -->

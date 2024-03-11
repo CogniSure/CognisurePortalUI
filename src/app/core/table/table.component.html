@@ -788,10 +788,12 @@
       [buttonClass]="'custom-border-download'"
       (itemClick)="exportItemClick($event, generictable)"
       >
+      <span style="margin-left: 24%;">Export</span>
         <img
           src="../../../assets/icons/DownloadIcon.svg"
          
           alt="Custom Icon"
+          style="margin-right: 5%;"
         />
         <ng-template kendoDropDownButtonItemTemplate let-dataItem>
           <div style="padding-right: 5%; width: 10em !important; display: flex;padding: 5% 5% 5% 2%;padding-top: 2%;">
