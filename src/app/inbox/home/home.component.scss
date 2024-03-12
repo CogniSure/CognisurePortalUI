@@ -350,3 +350,7 @@ z-index: 1000;
   overflow-y: auto;
 }
 
+::ng-deep .cdk-overlay-connected-position-bounding-box {
+  margin-right: -4%;
+  margin-top: -1%;
+}

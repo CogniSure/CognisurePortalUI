@@ -125,7 +125,7 @@
   }
   ::ng-deep .k-icon {
     font-size: 30px;
-    width: 37%;
+    width: 1.2em;
   }
   ::ng-deep .k-checkbox {
     border-color: gray;
@@ -479,4 +479,30 @@ cursor: default;
 
 ::ng-deep .k-columnmenu-item.k-selected{
   background-color:#009cc1;
+}
+
+::ng-deep .k-grid-header .k-grid-header-menu:hover{
+  background-color: transparent;
+}
+
+::ng-deep .k-separator{
+  border-color:transparent!important;
+}
+
+// .k-columnmenu-item:hover{
+
+// }
+
+:host ::ng-deep .k-columnmenu-item:first-child {
+  border-color: none !important;
+}
+
+
+::ng-deep .k-pager-info {
+  margin-right: 1%;
+  word-spacing: 10px;
+}
+
+::ng-deep .k-pager-numbers-wrap select.k-dropdown-list, .k-pager-numbers-wrap select.k-dropdown{
+  text-align: center;
 }
