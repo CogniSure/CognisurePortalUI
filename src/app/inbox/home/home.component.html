@@ -81,8 +81,12 @@
                     (click)="actionClicked(action.type)"
                       >
                       <div style="display: flex;">
-                        <div style="justify-content: center; display: flex;" *ngIf="action.icon !=''">
-                          <mat-icon> {{ action.icon }} </mat-icon>
+                        <div style="justify-content: center; display: flex;" class="subheader-icons" *ngIf="action.icon !=''">
+                          <!-- <mat-icon> {{ action.icon }} </mat-icon> -->
+                           <img src="{{ action.icon }}" style="background-color: #fff;
+                           padding: 0em 0.5em 0em 0.5em;
+                           border-radius: 6px;"/>
+                          
                         </div>
                         <div style="padding: 0.25em ; display: flex;" *ngIf="action.title !=''">
                           <div> {{ action.title }} </div>

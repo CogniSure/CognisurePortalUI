@@ -115,9 +115,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     
   }
   actionItems = [
-    { title: 'Create Submisson', type:"createsubmission", content: '', icon : 'add_box', buttonClass : "buttonClassBlue" },
-    { title: '', type:"createsubmission", content: '', icon: 'refresh', buttonClass : "buttonClassWhite"},
-    { title: '', type:"createsubmission", content: '', icon: 'settings', buttonClass : "buttonClassWhite"},
+    { title: 'Create Submisson', type:"createsubmission", content: '', icon : '../../../assets/icons/createsubmission.svg', buttonClass : "buttonClassBlue" },
+    { title: '', type:"createsubmission", content: '', icon: '../../../assets/icons/reload.svg', buttonClass : "buttonClassWhite"},
+    { title: '', type:"createsubmission", content: '', icon: '../../../assets/icons/settings.svg', buttonClass : "buttonClassWhite"},
     { title: 'All', type:"allstatus", content: '0', icon: '', buttonClass : "buttonClassWhite" },
     { title: 'New', type:"newstatus", content: '0', icon: '', buttonClass : "buttonClassWhite" },
     { title: 'In-Queue', type:"inqueuestatus", content: '0', icon: '', buttonClass : "buttonClassWhite" },

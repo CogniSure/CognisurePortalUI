@@ -1,12 +1,13 @@
 export const navbarData = [
     {
         routeLink: '/dashboard',
-        icon: 'fal fa-home',
+        // icon: 'fal fa-home',
+        icon: '../../../assets/icons/home.svg',
         label: 'Home'
     },
     {
         routeLink: '/inbox',
-        icon: 'fal fa-envelope',
+        icon: '../../../assets/icons/inbox.svg',
         label: 'Inbox'
     },
     // {

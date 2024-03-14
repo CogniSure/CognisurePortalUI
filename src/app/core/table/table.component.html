@@ -43,6 +43,9 @@
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         <ng-template
           kendoGridCellTemplate
@@ -54,7 +57,7 @@
             [class.fixed-height-cell]="!cellExpansionState[rowIndex]"
             [class.expanded-cell]="cellExpansionState[rowIndex]"
             (click)="toggleCellExpansion(dataItem)"
-            [style]="column.allign == 'center' ? 'text-align : center' : ''"
+            [class]="column.allign"
           >
             {{ dataItem[column.field] }}
           </div>
@@ -74,6 +77,9 @@
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         <ng-template
           kendoGridCellTemplate
@@ -100,6 +106,9 @@
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         <ng-template
           kendoGridHeaderTemplate
@@ -141,6 +150,9 @@
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         <ng-template
           kendoGridCellTemplate
@@ -175,6 +187,9 @@
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         <kendo-grid-column
           format="{{ column.format }}"
@@ -251,6 +266,9 @@
         kendo-grid-column-resizable
         [resizable]="true"
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         <ng-template
           kendoGridCellTemplate
@@ -270,8 +288,10 @@
               <span class="newtext" *ngIf="dataItem[column.IsNew]">New</span>
             </a>
             <span class="submissionicon"
-              ><span class="k-icon k-i-email" (click)="Message_Clicked(dataItem)"></span
-            ></span>
+              >
+              <img src="../../../assets/icons/email.svg" (click)="Message_Clicked(dataItem)">
+              <!-- <span class="k-icon k-i-email" (click)="Message_Clicked(dataItem)"></span> -->
+            </span>
           </ng-container>
           
         </ng-template>
@@ -291,6 +311,9 @@
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         <ng-template kendoGridCellTemplate let-dataItem>
           <ng-container>
@@ -313,13 +336,27 @@
         [sortable]="column.sortable"
         [filter]="column.type"
         [width]="column.width"
-        [columnMenu]="column.columnmenu"
+        [columnMenu]="true"
         [editor]="column.editor"
         [hidden]="!column.default"
+        [menuItems]="getMenuItems(column)"
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        (close)="toggleColumnMenu()" 
+        [showClose]="true"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
+      <ng-template kendoGridColumnMenuTemplate>
+        <kendo-columnmenu-item text="Hide Column" [icon]="'eye-slash'" (click)="hideColumn(column.field)"></kendo-columnmenu-item>
+        <!-- Add other default menu items as needed -->
+    </ng-template>
+      <!-- <ng-template kendoGridColumnMenuTemplate let-column="column">
+        <kendo-columnmenu [items]="columnMenuOpen ? columnMenuItems(column) : []"></kendo-columnmenu>
+    </ng-template> -->
+
         <ng-template
           kendoGridEditTemplate
           let-dataItem="dataItem"
@@ -369,6 +406,9 @@
       [resizable]="true"
       kendo-grid-column-resizable
       [headerStyle]="{'border-color': '#1FD0C7'}"
+      [class.center]="column.allign === 'center'"
+      [class.left]="column.allign === 'left'"
+      [class.right]="column.allign === 'right'"
     >
       >
       <kendo-grid-column
@@ -606,6 +646,9 @@
         [resizable]="true"
         kendo-grid-column-resizable
         [headerStyle]="{'border-color': '#1FD0C7'}"
+        [class.center]="column.allign === 'center'"
+        [class.left]="column.allign === 'left'"
+        [class.right]="column.allign === 'right'"
       >
         >
         <kendo-grid-column
@@ -729,6 +772,9 @@
       [resizable]="true"
       kendo-grid-column-resizable
       [headerStyle]="{'border-color': '#1FD0C7'}"
+      [class.center]="column.allign === 'center'"
+      [class.left]="column.allign === 'left'"
+      [class.right]="column.allign === 'right'"
     >
       <ng-template kendoGridCellTemplate let-dataItem>
         <ng-container>

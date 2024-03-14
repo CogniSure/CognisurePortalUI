@@ -157,7 +157,7 @@
   font-size: 14px;
 }
 
-.submissionicon span {
+.submissionicon img {
   font-size: 15px !important;
   padding-left: 18%;
 }
@@ -380,7 +380,7 @@
   display: none !important;
 }
 
-::ng-deep .submissionicon:hover .k-icon {
+::ng-deep .submissionicon:hover img {
   cursor: pointer; 
 }
 
@@ -493,9 +493,24 @@ cursor: default;
 
 // }
 
-:host ::ng-deep .k-columnmenu-item:first-child {
-  border-color: none !important;
-}
+// ::ng-deep .k-columnmenu-item:first-child {
+//   border-color: transparent!important;
+// }
+
+// :host ::ng-deep .k-columnmenu-item:first-child {
+//   border-color: transparent !important;
+//   border: 1px solid transparent!important;
+// }
+
+// ::ng-deep .k-columnmenu-item:first-child .k-state-active {
+//   border-color: transparent !important;
+// }
+
+// ::ng-deep .k-columnmenu-item:first-child {
+//   border-top: none!important;
+//   border-color: transparent !important;
+//   border: 1px solid transparent!important;
+// }
 
 
 ::ng-deep .k-pager-info {
@@ -507,6 +522,110 @@ cursor: default;
   text-align: center;
 }
 
+::ng-deep .column-menu-hidden .k-column-menu {
+  display: none;
+}
+
+ng-deep .column-menu-visible .k-column-menu {
+  display: block;
+}
+
+// ::ng-deep .k-columnmenu-item {
+//   border: none !important;
+//   border-color: transparent !important;
+// }
+
+// ::ng-deep .k-columnmenu-item:hover {
+//   background-color: transparent !important;
+//   border: none !important;
+// }
+
+::ng-deep .kendo-grid-columnmenu-item{
+  border-color: transparent !important;
+}
+
+::ng-deep .k-popup .k-columnmenu-item .k-selected{
+  border-color: transparent !important;
+}
+
+::ng-deep .k-popup.k-selected{
+  border-color: transparent !important;
+}
+.center{
+text-align: center;
+}
+.left{
+  text-align: left;
+}
+.right{
+  text-align: right;
+}
+
+::ng-deep .k-columnmenu-item {
+  border: none !important;
+  border-color: transparent !important;
+}
+
+::ng-deep .k-selected{
+  border: none !important;
+  border-color: transparent !important;
+}
+
+::ng-deep .kendo-grid-columnmenu-item {
+  background-color: transparent !important; /* Set background color to transparent */
+  border-color: transparent !important; /* Set border color to transparent */
+}
+
+::ng-deep .k-grid .k-grid-column-menu .k-item.k-state-selected.kendo-grid-columnmenu-sort .k-link,
+.k-grid .k-grid-column-menu .k-item.kendo-grid-columnmenu-sort .k-link {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+::ng-deep .k-grid .k-grid-column-menu .k-item.k-state-selected.kendo-grid-columnmenu-sort {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+::ng-deep .k-grid .k-grid-column-menu .k-item.k-state-selected {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .k-grid .k-grid-column-menu .k-item {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 
 
+::ng-deep .k-grid .k-grid-column-menu .k-item.kendo-grid-columnmenu-sort .k-link {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
 
+::ng-deep .k-grid .k-grid-column-menu .k-item.kendo-grid-columnmenu-sort {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .k-grid .k-grid-column-menu .k-item {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .k-grid .k-grid-column-menu  {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.email_hover{
+
+}

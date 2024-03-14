@@ -16,19 +16,29 @@
           [routerLinkActiveOptions]="{ exact: false }"
           queryParamsHandling="preserve"
         >
-          <i
+          <!-- <i
             class="sidenav-link-icon"
             *ngIf="!collapsed"
             matTooltip="{{ data.label }}"
             matTooltipPosition="right"
             [class]="data.icon"
-          ></i>
-          
-          <div
+          ></i> -->
+    <div class="img-container">
+          <img
+    src="{{ data.icon }}"
+    alt="{{ data.label }} Icon"
+   class="centered-image"
+    matTooltip="{{ data.label }}"
+    matTooltipPosition="right"
+    [ngClass]="{ 'active': isActive }"
+    (click)="toggleActive()" 
+  />
+     </div>     
+          <!-- <div
             class="sidenav-link-icon"
             *ngIf="collapsed"
             [class]="data.icon"
-          ></div>
+          ></div> -->
           <div class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">
             {{ data.label }}
           </div>

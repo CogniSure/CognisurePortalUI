@@ -102,6 +102,11 @@ export class SidemenubarComponent implements OnInit {
 
   }
 
+  isActive: boolean = false;
 
+  // Function to toggle the active state of the image
+  toggleActive() {
+    this.isActive = !this.isActive;
+  }
 
 }

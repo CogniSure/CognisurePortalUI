@@ -1,4 +1,5 @@
 export const ColumnSize = {
+    XXSmall:30,
     ExtraSmall:80,
     Small:100,
     Medium:120,
