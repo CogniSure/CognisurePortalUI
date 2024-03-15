@@ -138,31 +138,13 @@
  
   }
   
-/* Default style for all images */
 .centered-image {
-  opacity: 0.5; /* Adjust the opacity as per your preference */
+  opacity: 0.5; 
 }
 
-/* Style for active images */
 .centered-image.active {
-  opacity: 1; /* Full opacity for active images */
+  opacity: 1; 
 }
-
-  
-  // ::ng-deep .centered-image:not(.active) {
-  //   opacity: 0;
-  // }
-  
-
-
-  // .sidenav-nav-item:not(.active) {
-  //   // filter: grayscale(100%);
-  //   // transition: filter 0.3s ease-in-out;
-  //   opacity: 0;
-  // }
-
-  
-
 
 
   .active {
