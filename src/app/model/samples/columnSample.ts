@@ -798,6 +798,17 @@ export class ColumnSample {
     },
   ];
   public static InboxColumns: any = [
+    // {
+    //   field: 'SlNo',
+    //   title: 'SL No',
+    //   default : true,
+    //   width: ColumnSize.XXSmall,
+    //   type: 'text',
+    //   sortable: false,
+    //   columnmenu: true,
+    //   filterable: true,
+    //   allign : "left"
+    // },
       {
       field: 'alerts',
       title: 'Alerts',
@@ -884,7 +895,7 @@ export class ColumnSample {
       title: 'Status',
       default : true,
       type: 'text',
-      width: 120,
+      width: 100,
       columnmenu: true,
       sortable: true,
       filterable: true,

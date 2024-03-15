@@ -295,3 +295,50 @@
   color:#fff!important;
 }
 
+.submission_hover:hover img{
+  cursor: pointer; 
+}
+
+.submission_hover  {
+  cursor: default;
+}
+
+.submission_hover:hover{
+  cursor: pointer; 
+}
+
+.excel_download:hover img{
+  cursor: pointer; 
+}
+
+.excel_download{
+  cursor: default;
+}
+
+.notification_icon{
+  cursor: default;
+}
+
+.notification_icon:hover img{
+  cursor: pointer; 
+}
+
+.home_hover{
+  cursor: default;
+}
+
+.home_hover:hover img{
+  cursor: pointer; 
+}
+
+.copied_icontop{
+  cursor: default;
+}
+
+.copied_icontop:hover span{
+  cursor: pointer; 
+}
+
+.copied_icontop:hover img{
+  cursor: pointer; 
+}

@@ -22,11 +22,37 @@
     [resizable]="true"
     [selectable]="selectableSettings"
     [style]="'border-radius: 14px;overflow: hidden;'"
-    
-  >
 
+  >
+  <kendo-grid-column field="serialNumber" title="SL No" [width]="40" [headerStyle]="{'border-color': '#1FD0C7'}">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{ dataItem.serialNumber }}
+    </ng-template>
+  </kendo-grid-column>
+    
 
     <ng-template ngFor [ngForOf]="columns" let-column>
+
+
+      <!-- <kendo-grid-column
+      *ngIf="column.type == 'serial'"
+      title="#"
+      [width]="50"
+      [resizable]="false"
+      [headerStyle]="{'border-color': '#1FD0C7'}"
+    >
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+        {{ rowIndex + 1 }}
+      </ng-template>
+    </kendo-grid-column> -->
+
+    <!-- <kendo-grid-column field="serialNumber" title="SL No">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.serialNumber }}
+      </ng-template>
+    </kendo-grid-column>
+     -->
+
       <kendo-grid-column
         *ngIf="column.type == 'text'"
         field="{{ column.field }}"

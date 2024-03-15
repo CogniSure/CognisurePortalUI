@@ -138,21 +138,15 @@
  
   }
   
-  .sidenav-nav-item:not(.active) .centered-image {
-    filter: grayscale(100%);
-    transition: filter 0.3s ease-in-out;
-  }
-
-  
-
-
-
   .active {
     background-color: #0084A4;
     // color:#ffffff!important;
     .sidenav-link-icon,
     .sidenav-link-text {
       color: #F5F5F5!important;
+    }
+    img{
+      opacity: 1;
     }
   }
   

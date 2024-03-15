@@ -37,6 +37,13 @@ export interface DropdownOption {
 export interface SubmissionData {
   Status: string;
   statusImage: string;
+  serialNumber?: number;
+}
+
+export interface GridDataItem {
+  serialNumber: number;
+  Status: string;
+  statusImage: string;
 }
 
 @Component({
@@ -169,8 +176,8 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     if (changes!=null && changes['data']!=null ) {
       this.showSpinner = false;
       this.data = changes['data'].currentValue;
-      this.gridData = this.data;
-      this.gridView = this.data;
+      this.gridData = this.data.map((item, index) => ({ ...item, serialNumber: index + 1 }));
+      this.gridView = this.gridData;
     }
     
   }
@@ -435,9 +442,4 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     }
 }
 
-
-
-
-  
-  
 }

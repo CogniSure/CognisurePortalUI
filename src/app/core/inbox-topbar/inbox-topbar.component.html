@@ -32,13 +32,12 @@
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
           <div kendoTooltip [title]="submissionInfo.SubmissionId">
-            <div>
-              <img src="..//../../assets/icons/SubmissionId.svg" class="imgHeight" />
+            <div class="submission_hover">
+              <img src="../../../assets/icons/SubmissionId.svg" class="imgHeight" />
             </div>
             <div
               kendoTooltip
               style="text-wrap: nowrap; padding-top: 5px;"
-              
             >
               {{ submissionInfo.SubmissionId }}
             </div>
@@ -66,7 +65,7 @@
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
           <div style="width: 98%">
-            <div>
+            <div class="submission_hover">
               <img src="..//../../assets/icons/Address.svg" class="imgHeight" />
             </div>
             <div
@@ -148,7 +147,9 @@
                 home
               </span>
             </mat-icon> -->
+            <div class="home_hover">
             <img src="../../../assets/icons/property.svg">
+            </div>
             <br />
             <div
               kendoTooltip
@@ -182,7 +183,7 @@
         <div class="div-wraper">
           <div style="width: 98%">
             <div style="display: flex; padding: 0 1em;">
-              <div style="width: 20%;margin-left: 11%;">
+              <div style="width: 20%;margin-left: 11%;" class="submission_hover">
               <div
                 *ngIf="submissionInfo.Status === 'Completed'"
                 class="risk1"
@@ -202,7 +203,7 @@
                 >{{ navItems[5].pending1 }}</div
               >
             </div>
-              <div style="width: 20%;margin-left: 10%;">
+              <div style="width: 20%;margin-left: 10%;" class="submission_hover">
                 <div
                   class="risk1"
                   style="color: #fff; background-color: #80808059"
@@ -210,7 +211,7 @@
                   </div
                 >
               </div>
-              <div style="width: 20%;margin-left: 10%;">
+              <div style="width: 20%;margin-left: 10%;" class="submission_hover">
                 <div
                   class="risk1"
                   style="color: #fff; background-color: #80808059"
