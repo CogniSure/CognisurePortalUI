@@ -113,8 +113,6 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
   Login(event: any) {
     this.showSpinner = true;
     this.validationErrors = [];
-    // this.validationErrors = this.validateInput();
-    // this.showErrors();
     if (this.loginForm.valid) {
       event.preventDefault();
       this.email = this.loginForm.value.email!;
@@ -124,6 +122,7 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
           this.accService
             .getUserProfile(this.email)
             .subscribe((user: any) => {
+              //this.showSpinner? this.showSpinner = false : this.showSpinner = true;
               this.globalService.setUserProfile(user);
               this.router.navigate(['/dashboard/home'], {
                 queryParamsHandling: 'preserve',
@@ -131,94 +130,21 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
             });
          
         } 
-        // else{
-        //   this.invalidPasswordAttempts++;
-        //   if (this.invalidPasswordAttempts >= 3) {
-        //     this.passwordBlocked = true;
-        //   }
-        // }
         else {
+          //this.showSpinner? this.showSpinner = false : this.showSpinner = true;
           this.validationErrors.push('Invalid Username and password');
           this.invalidPasswordAttempts++;
           if (this.invalidPasswordAttempts >= 3) {
             this.passwordBlocked = true;
           }
         }
-        //  this.router.navigate(['/dashboard/home'], {
-        //   queryParamsHandling: 'preserve',
-        //});
       });
-      //})
-
-      // this.accService.login(this.apiUrl,this.loginForm.value).subscribe((res:any) => {
-      //   if (res.success) {
-      //     this.auth.setToken(res);
-      //     this.accService.getUserProfile(this.apiUrl,this.email).subscribe((user:any) => {
-      //       this.accService.getAcountDetails(this.apiUrl, user.UserID).subscribe((acc:any) => {
-      //         if (acc == null || acc.length == 0) {
-      //           this.isvalidform = false;
-      //           this.validationErrors.push({
-      //             Key: 'all',
-      //             Error: 'Invalid Business Email/Password',
-      //           });
-      //           this.showSpinner=false;
-      //           return;
-      //         }
-
-      //         // this.accService.Check2FAStatus(this.email).subscribe((fa:any) => {
-      //         //   if (!fa.success) {
-      //         //     this.accService.Send2FAEmail(this.email).subscribe((fae:any) => {
-      //         //       if (fae.success) {
-      //         //         this.showSpinner=false;
-      //         //         this.router.navigate(['/pendingauth'], {
-      //         //           queryParamsHandling: 'preserve',
-      //         //         });
-      //         //       }
-      //         //     });
-      //         //   } else {
-      //         //     if (res.value.accessToken === null) {
-      //         //       this.validationErrors.push({
-      //         //         Key: 'all',
-      //         //         Error: 'Invalid Business Email/Password',
-      //         //       });
-      //         //       this.isvalidform = false;
-      //         //     } else {
-      //         //       let tempUser: TempUser = {
-      //         //         AuthVal: res,
-      //         //         UserInput: this.loginForm.value,
-      //         //       };
-      //         //       this.globalService.tempUser$.next(tempUser);
-      //         //       // this.auth.setSession(res);
-      //         //       // this.getUser(this.loginForm.value);
-      //         //       this.showSpinner=false;
-      //         //       this.router.navigate(['/multifactorauthentication'], {
-      //         //         queryParamsHandling: 'preserve',
-      //         //       });
-      //         //       this.isvalidform = true;
-      //         //     }
-      //         //   }
-      //         // });
-      //       });
-      //     });
-      //   } else {
-      //     this.isvalidform = false;
-      //     this.validationErrors.push({
-      //       Key: 'all',
-      //       Error: 'Invalid Business Email/Password',
-      //     });
-      //     this.showSpinner=false;
-      //   }
-      //   this.showErrors();
-      // });
     }
-    if (this.password.length < 8 || !/\d/.test(this.password) || !/[a-zA-Z]/.test(this.password)) {
+    else if (this.password.length < 8 || !/\d/.test(this.password) || !/[a-zA-Z]/.test(this.password)) {
       this.invalidPassword = true;
+      //this.showSpinner? this.showSpinner = false : this.showSpinner = true;
       return; 
     }
-    // else{
-    //       this.validationErrors.push('Invalid Username and password');
-    // }
-
   }
 
   formValues = new Map<string, string>();
