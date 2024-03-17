@@ -6,11 +6,13 @@
     background-color: #009cc1;
     border-radius: 8px;
     color: white;
+    height: 100%;
   }
   .buttonClassWhite {
     background-color: #ffffff;
     border-radius: 8px;
     color: black;
+    height: 100%;
   }
 
   .add_icon1 {
@@ -229,7 +231,7 @@
   }
 
   .view_as {
-    width: 50%;
+    width: 30%;
     padding-top: 2.5%;
   }
 
@@ -261,7 +263,7 @@
   .divider {
     border-left: 1px solid #ccc; /* Adjust the color and style as needed */
     height: 40px; /* Adjust the height to match the icon */
-    margin: 0 10px; /* Adjust the spacing as needed */
+    // margin: 0 10px; /* Adjust the spacing as needed */
   }
   ::ng-deep .custom-popup {
     background-color: #eef2f7;
@@ -344,4 +346,17 @@ background-color: rgba(0, 0, 0, 0.5);
 z-index: 1000; 
 }
 
+::ng-deep .k-grid-content {
+  overflow-y: auto;
+}
 
+::ng-deep .cdk-overlay-connected-position-bounding-box {
+  margin-right: -4%;
+  margin-top: -1%;
+}
+
+.subheader-icons img{
+background-color: #fff;
+padding: 0em 0.5em 0em 0.5em;
+border-radius: 6px;
+}

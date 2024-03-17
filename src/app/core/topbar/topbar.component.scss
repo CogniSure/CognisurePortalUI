@@ -258,7 +258,13 @@ margin-top: 1%;
 
 .profile_img{
   position: absolute;
+  cursor: default;
 }
+
+.profile_img:hover img{
+  cursor: pointer; 
+}
+
 .icon-span{
   background: white;
   border-radius: 78%;
@@ -292,3 +298,15 @@ margin-top: 1%;
 //   padding-block: 16px!important;
 //   padding-inline: 16px!important;
 // }
+
+::ng-deep .cdk-overlay-connected-position-bounding-box {
+  margin-right: -4%!important;
+  margin-top: -1%!important;
+}
+
+.copied_icontop img:hover{
+// background-color: #009CC1;
+padding: 5%;
+width: 2rem;
+height: 2rem;
+}

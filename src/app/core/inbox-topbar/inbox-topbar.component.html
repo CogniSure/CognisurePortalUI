@@ -32,13 +32,12 @@
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
           <div kendoTooltip [title]="submissionInfo.SubmissionId">
-            <div>
-              <img src="..//../../assets/icons/SubmissionId.svg" class="imgHeight" />
+            <div class="submission_hover">
+              <img src="../../../assets/icons/SubmissionId.svg" class="imgHeight" />
             </div>
             <div
               kendoTooltip
               style="text-wrap: nowrap; padding-top: 5px;"
-              
             >
               {{ submissionInfo.SubmissionId }}
             </div>
@@ -66,7 +65,7 @@
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
           <div style="width: 98%">
-            <div>
+            <div class="submission_hover">
               <img src="..//../../assets/icons/Address.svg" class="imgHeight" />
             </div>
             <div
@@ -100,11 +99,15 @@
         <div class="div-wraper">
           <div style="width: 98%">
             <span class="notification_icon">
-              <mat-icon
-                ><span class="material-icons-outlined">
+              <!-- <mat-icon
+                >
+                <img src="../../../assets/icons/calender.svg">
+                <span class="material-icons-outlined">
                   {{ navItems[2].icon }}
-                </span></mat-icon
-              >
+                </span>
+                </mat-icon
+              > -->
+              <img src="../../../assets/icons/calender.svg" style="margin-bottom: 3%;">
               <br />
               <span
                 class="calender_date"
@@ -139,11 +142,14 @@
         <kendo-grid-spacer></kendo-grid-spacer>
         <div class="div-wraper">
           <div kendoTooltip style="width: 95%">
-            <mat-icon>
+            <!-- <mat-icon>
               <span class="material-icons-outlined">
                 home
               </span>
-            </mat-icon>
+            </mat-icon> -->
+            <div class="home_hover">
+            <img src="../../../assets/icons/property.svg">
+            </div>
             <br />
             <div
               kendoTooltip
@@ -177,7 +183,7 @@
         <div class="div-wraper">
           <div style="width: 98%">
             <div style="display: flex; padding: 0 1em;">
-              <div style="width: 33%; padding: 1% 3%;">
+              <div style="width: 20%;margin-left: 11%;" class="submission_hover">
               <div
                 *ngIf="submissionInfo.Status === 'Completed'"
                 class="risk1"
@@ -197,7 +203,7 @@
                 >{{ navItems[5].pending1 }}</div
               >
             </div>
-              <div style="width: 33%; padding: 1% 3%;">
+              <div style="width: 20%;margin-left: 10%;" class="submission_hover">
                 <div
                   class="risk1"
                   style="color: #fff; background-color: #80808059"
@@ -205,8 +211,7 @@
                   </div
                 >
               </div>
-              
-              <div style="width: 33%; padding: 1% 3%;">
+              <div style="width: 20%;margin-left: 10%;" class="submission_hover">
                 <div
                   class="risk1"
                   style="color: #fff; background-color: #80808059"

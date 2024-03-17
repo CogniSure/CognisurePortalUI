@@ -77,6 +77,7 @@ export class InboxService {
             SubmissionID: res['submissionId'],
             AccountName: res['accountName'] != '' ? res['accountName'] : 'NA',
             SubmissionGUID:
+            
               res['submissionGUID'] != '' ? res['submissionGUID'] : 'NA',
             ClientSubmissionGUID:
               res['clientSubmissionGUID'] != '' ? res['clientSubmissionGUID'] : 'NA',

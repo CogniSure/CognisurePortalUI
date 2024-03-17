@@ -1,7 +1,7 @@
 .login-form {
   background: white;
   height: 100vh;
-  width: 99vw;
+  width: 99.8vw;
   //padding: 0 15% 0 15%;
   overflow: hidden;
 
@@ -105,6 +105,17 @@
   padding-right: 15%;
   }
 
+  .container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+  }
+  
+  .slider-wrapper {
+    width: 100%; 
+  }
+
   @media screen and (max-width: 1280px) {
     .benefits_header {
       padding-top: 71% !important;
@@ -147,6 +158,16 @@
       }
     .footer_img img{
       height:2.2vh!important;
+    }
+    .slider-wrapper {
+      width: 80%; 
+    }
+    .container {
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+      height: 83vh; 
+      width:55vw;
     }
   }
 
@@ -430,3 +451,5 @@
   margin-left: 12%!important;
 }
 }
+
+

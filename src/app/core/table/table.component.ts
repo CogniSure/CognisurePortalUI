@@ -37,6 +37,13 @@ export interface DropdownOption {
 export interface SubmissionData {
   Status: string;
   statusImage: string;
+  serialNumber?: number;
+}
+
+export interface GridDataItem {
+  serialNumber: number;
+  Status: string;
+  statusImage: string;
 }
 
 @Component({
@@ -169,8 +176,8 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     if (changes!=null && changes['data']!=null ) {
       this.showSpinner = false;
       this.data = changes['data'].currentValue;
-      this.gridData = this.data;
-      this.gridView = this.data;
+      this.gridData = this.data.map((item, index) => ({ ...item, serialNumber: index + 1 }));
+      this.gridView = this.gridData;
     }
     
   }
@@ -408,10 +415,31 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   private isColumnComponent(column: any): column is ColumnComponent {
     return column instanceof ColumnComponent;
   }
-  
+
+ 
+
 
   
+  columnMenuOpen: boolean = true;
+  // Method to toggle the column menu state
+  toggleColumnMenu(): void {
+    this.columnMenuOpen = !this.columnMenuOpen;
+  }
   
+  closeColumnMenu(): void {
+    this.columnMenuOpen = false;
+  }
   
-  
+  columnMenuItems(column: any): any[] {
+    if (this.columnMenuOpen) {
+        return [
+            { text: 'Hide Column', icon: 'eye-slash', click: () => this.hideColumn(column.field) },
+            { separator: true },
+            // Add other menu items as needed
+        ];
+    } else {
+        return []; // Empty array when column menu is not open
+    }
+}
+
 }

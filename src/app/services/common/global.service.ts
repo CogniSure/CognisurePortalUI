@@ -4,14 +4,16 @@ import { SubmissionInfo } from 'src/app/model/inbox/SubmissionInfo';
 import { UserProfile } from '../../model/profile/userprofile';
 import { Accounts } from 'src/app/model/profile/accounts';
 import { ChartData } from 'src/app/model/charts/chartdata';
+import { ForgotPassword } from '../../../app/model/common/forgotpassword';
+import { LoginData } from 'src/app/model/common/logindata';
 // import { WidgetService } from '../widget/widget.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalService {
-  password$: any;
-  loginDetails$: any;
+  // password$: any;
+  // loginDetails$: any;
   dashboardFilter$ = new BehaviorSubject<any>(null);
   jsonDataSubject: any;
   jsonData$: Observable<any[]>;
@@ -21,6 +23,23 @@ export class GlobalService {
     throw new Error('Method not implemented.');
   }
   animationClass$ = new BehaviorSubject<string>('');
+
+
+  password$ = new BehaviorSubject<ForgotPassword>({
+    Email: '',
+    OldPassword: '',
+    NewPassword: '',
+  });
+
+  loginDetails$ = new BehaviorSubject<LoginData>({
+    Email: '',
+    Password: '',
+  });
+  forgotPassword$ = new BehaviorSubject<ForgotPassword>({
+    Email: '',
+    NewPassword: '',
+    OldPassword: ''
+  });
 
   private accounts$ = new BehaviorSubject<Accounts>({
     AccountID: 0,

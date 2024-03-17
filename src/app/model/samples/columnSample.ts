@@ -798,6 +798,17 @@ export class ColumnSample {
     },
   ];
   public static InboxColumns: any = [
+    // {
+    //   field: 'SlNo',
+    //   title: 'SL No',
+    //   default : true,
+    //   width: ColumnSize.XXSmall,
+    //   type: 'text',
+    //   sortable: false,
+    //   columnmenu: true,
+    //   filterable: true,
+    //   allign : "left"
+    // },
       {
       field: 'alerts',
       title: 'Alerts',
@@ -884,7 +895,7 @@ export class ColumnSample {
       title: 'Status',
       default : true,
       type: 'text',
-      width: 120,
+      width: 100,
       columnmenu: true,
       sortable: true,
       filterable: true,
@@ -976,10 +987,21 @@ export class ColumnSample {
     //   sortable: true,
     // },
     {
+      field: 'SlNo',
+      title: 'SL No',
+      default : true,
+      width: ColumnSize.XXSmall,
+      type: 'text',
+      sortable: false,
+      columnmenu: true,
+      filterable: true,
+      allign : "left"
+    },
+    {
       field: 'FileOriginalName',
       title: 'File Name',
       default : true,
-      width: ColumnSize.Large,
+      width: ColumnSize.XLarge,
       type: 'text',
       sortable: true,
       columnmenu: true,
@@ -990,7 +1012,7 @@ export class ColumnSample {
       field: 'DocumentCategory',
       title: 'Type',
       default : true,
-      width: ColumnSize.Medium,
+      width: ColumnSize.ExtraSmall,
       type: 'text',
       sortable: false,
       columnmenu: true,
