@@ -25,6 +25,7 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
   @ViewChild('fileviewer') fileViewer?: ElementRef<HTMLIFrameElement>;
   @Input() files: any[] = [];
   @Output() selectedFilesEvent = new EventEmitter<any>();
+  @ViewChild('navbarIcon') navbarIcon!: ElementRef<SVGElement>;
   
   selectedPdf: SafeResourceUrl | null = null;
   invalidPreview = false;
@@ -47,7 +48,7 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
   
   ) {}
   ngAfterViewInit(): void {
-    
+  
   }
   ngOnChanges(changes: SimpleChanges): void {
    
@@ -154,7 +155,7 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
   CustomizeSelection(index: any) {
     this.adjustHeightToFitContent();
   }
-  createBlobUrl(file: any, contentType: any) {
+  createBlobUrl(file: any, contentType: any, hideToolbar: boolean = true) {
     const selectedPdfData = file.base64Data;
     const b64toBlob = (b64Data: any, contentType = '', sliceSize = 512) => {
       const byteCharacters = atob(b64Data);
@@ -185,6 +186,11 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
     }
     const blob = b64toBlob(selectedPdfData, contentType);
     const blobUrl = URL.createObjectURL(blob);
+
+    if (hideToolbar) {
+      return blobUrl + '#toolbar=0';
+  }
+
     return blobUrl;
   }
 
@@ -354,4 +360,11 @@ export class FileviewerComponent implements OnInit, OnChanges, AfterViewInit {
       downloadLink.click();
     }
   }
+
+
+  hasContent(file: any): boolean {
+    return file && (file.base64Data || file.name);
+  }
+  
+
 }

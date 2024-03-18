@@ -17,6 +17,7 @@
     <kendo-tilelayout-item-body
       style="border: 1px solid rgba(0, 0, 0, 0.08); background-color: #fff"
     >
+
       <div *ngIf="files.length === 0; else showPreview" style="height: 88%">
         <p
           style="
@@ -116,6 +117,7 @@
                     height: 100%;
                   "
                 >
+               
                   <i class="fa fa-file-pdf-o"></i> {{ file.name }}
                 </button>
                 <p class="bottom_border"></p>
@@ -154,7 +156,7 @@
         <div>
           <p>Preview Area</p>
         </div>
-      </div>
+      </div> 
 
       <div *ngIf="selectedPdf && !invalidPreview && !jsonView">
         <div *ngIf="!jsonView">
@@ -170,8 +172,30 @@
 
         <div *ngIf="invalidPreview && !jsonView">
           <p>No preview availble</p>
+        </div> 
+      </div>
+
+      
+      <!-- <div *ngIf="!hasContent(selectedPdf) && !invalidPreview && !jsonView">
+        <div>
+          <p>No data found in preview area</p>
         </div>
       </div>
+      <div *ngIf="hasContent(selectedPdf) && !invalidPreview && !jsonView">
+        <div *ngIf="!jsonView">
+          <iframe
+            #fileViewer
+            [src]="selectedPdf"
+            width="100%"
+            height="560px"
+            style="border: 1px solid rgba(0, 0, 0, 0.08)"
+          ></iframe>
+        </div>
+      </div>
+       -->
+      
+
+
       <div *ngIf="jsonView" style="height: 100%; padding: 2% 5%">
         <ngx-json-viewer
           [json]="jsonPreviewData"

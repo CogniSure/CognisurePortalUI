@@ -114,3 +114,8 @@ background: none!important;
   background-color: #009cc1;
   color: #fff;
 }
+
+
+::ng-deep iframe.hide-first-icon .toolbarButton:first-child {
+  display: none!important;
+}
