@@ -37,6 +37,7 @@ export interface SubmissionFile {
   FileData: string;
   Options : DownloadOption[];
   Flags : SubmissionFlags[];
+  serialNumber?: number;
 }
 export interface DownloadOption{
   DownloadCode : string ;

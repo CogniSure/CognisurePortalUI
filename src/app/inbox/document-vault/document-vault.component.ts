@@ -7,6 +7,7 @@ import { CacheService } from 'src/app/services/common/cache.service';
 import { InboxService } from 'src/app/services/inbox/inbox.service';
 import { FileComparerComponent } from '../file-comparer/file-comparer.component';
 
+
 @Component({
   selector: 'app-document-vault',
   templateUrl: './document-vault.component.html',
@@ -22,10 +23,12 @@ export class DocumentVaultComponent implements OnInit {
 
     }
     
+    
   submissionFiles: SubmissionFile[] = [];
   public columns: any = ColumnSample.SubmissionFileColumns;
   noDataAvailble = false;
   ngOnInit(): void {
+    let serialCount = 1;
     this.cacheService.getSubmissionFiles().subscribe((docs: any) => {
       console.log("Download Result")
         console.log(docs)
@@ -38,7 +41,8 @@ export class DocumentVaultComponent implements OnInit {
 
       if (docs != null && docs.length > 0) {
         this.submissionFiles = docs.map((doc: SubmissionFile, index: number) => {
-          doc.SlNo = index + 1;
+          // doc.SlNo = index + 1;
+          doc.serialNumber = serialCount++;
           return doc;
         });
         this.noDataAvailble = false;

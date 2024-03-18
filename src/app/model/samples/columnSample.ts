@@ -986,17 +986,17 @@ export class ColumnSample {
     //   filterable: true,
     //   sortable: true,
     // },
-    {
-      field: 'SlNo',
-      title: 'SL No',
-      default : true,
-      width: ColumnSize.XXSmall,
-      type: 'text',
-      sortable: false,
-      columnmenu: true,
-      filterable: true,
-      allign : "left"
-    },
+    // {
+    //   field: 'SlNo',
+    //   title: 'SL No',
+    //   default : true,
+    //   width: ColumnSize.XXSmall,
+    //   type: 'text',
+    //   sortable: false,
+    //   columnmenu: true,
+    //   filterable: true,
+    //   allign : "left"
+    // },
     {
       field: 'FileOriginalName',
       title: 'File Name',
