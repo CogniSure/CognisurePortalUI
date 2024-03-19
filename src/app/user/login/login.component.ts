@@ -26,6 +26,7 @@ import { AppConfigService } from 'src/app/app-config-service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  rememberMe: boolean = false;
   invalidPasswordAttempts = 0;
   passwordBlocked = false;
  environmentData = this.configService.settings;
@@ -203,8 +204,8 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
 
 
   sliderimages = [
-    { url: 'assets/images/Image_SIP_LoginPage_1.jpg', caption: 'Real Time Data Insights' },
-    { url: 'assets/images/Image_SIP_LoginPage_2.jpg', caption: 'Unified Experience' }
+    { url: 'assets/images/Vector.svg', caption: 'Real Time', caption1:'Data Insights', icon: 'assets/images/login_img1.svg' },
+    { url: 'assets/images/Vector_1.svg', caption: 'Unified', caption1:'Experience', icon:'assets/images/login_img2.svg' }
   ];
 
 }

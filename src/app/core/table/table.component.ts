@@ -367,24 +367,15 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
   
   
   onColumnResize(event: any, columnIndex: number) {
-    // Get the width of the resized column
     const newWidth = event.newWidth;
-  
-    // Calculate the change in width
     const deltaWidth = newWidth - this.columns[columnIndex].width;
-  
-    // Calculate the total width of the other columns
     let totalWidth = 0;
     for (let i = 0; i < this.columns.length; i++) {
       if (i !== columnIndex) {
         totalWidth += this.columns[i].width;
       }
     }
-  
-    // Calculate the width change per column
     const widthChangePerColumn = deltaWidth / (this.columns.length - 1);
-  
-    // Update the widths of the other columns
     for (let i = 0; i < this.columns.length; i++) {
       if (i !== columnIndex) {
         this.columns[i].width += widthChangePerColumn;
@@ -392,18 +383,13 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     }
   }
   
-  
-  
-  
   getMenuItems(column: any): any[] {
     return [
       { text: 'Hide Column', icon: 'eye-slash', click: () => this.hideColumn(column.field) },
       { separator: true },
-      // Other menu items as needed
     ];
   }
 
-  // Method to hide/show column based on its field name
   hideColumn(fieldName: string): void {
     const column = this.generictable.columns.find(c => this.isColumnComponent(c) && c.field === fieldName);
     if (column) {
@@ -411,17 +397,11 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
     }
   }
 
-  // Helper method to check if the column is of type ColumnComponent
   private isColumnComponent(column: any): column is ColumnComponent {
     return column instanceof ColumnComponent;
-  }
-
- 
-
-
-  
+  } 
   columnMenuOpen: boolean = true;
-  // Method to toggle the column menu state
+ 
   toggleColumnMenu(): void {
     this.columnMenuOpen = !this.columnMenuOpen;
   }
@@ -435,10 +415,9 @@ export class TableComponent implements OnInit,OnChanges,OnDestroy {
         return [
             { text: 'Hide Column', icon: 'eye-slash', click: () => this.hideColumn(column.field) },
             { separator: true },
-            // Add other menu items as needed
         ];
     } else {
-        return []; // Empty array when column menu is not open
+        return []; 
     }
 }
 

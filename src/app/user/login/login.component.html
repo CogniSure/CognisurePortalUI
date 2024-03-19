@@ -1,29 +1,43 @@
 <div class="login-form">
   <app-loader [showSpinner]="showSpinner"></app-loader>
   <div class="row" style="height: inherit">
-    <div class="col-md-6">
+    <div class="col-md-6" style=" height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
       <div class="row">
         <div class="col-md-12">
-          <div style="width: 22%;margin-top: 3%; margin-left: 2%; display: flex;">
+          <!-- <div style="width: 22%;margin-top: 3%; margin-left: 2%; display: flex;">
             <img
               src="../../../assets/images/login_logo.png"
               class="signin_img"
             />
             
-          </div>
+          </div> -->
           <div style="padding-left: 2%;width: 24%;">
             <hr class="rounded">
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2" style="width: 22%;">
+        <div class="col-md-1">
         </div>
-        <div class="col-md-8" class="signin_section" style="margin-top: 5%;padding:2%;box-shadow: 0px 0px 50px 0px lightgray; border-radius: 15px;width: 55%">
-          <div style="justify-items: center; justify-content: center; display: flex;">
+        <div class="col-md-9">
+          <div class="headerwithlogo">
+           <div class="row">
+            <div class="col-md-4">
+              <span><img src="../../../assets/images/CS-Logo_v2.svg"></span>
+            </div>
+          <div class="col-md-8">
+        <span class="intake_portal"><b>Submission Intake Portal</b></span>
+          </div>
+        </div>
+          </div>
+          <div style="justify-items: center; justify-content: center;">
             <div class="sign-in">
-              <h2 class="header-black" style="margin: 0"><b>Sign In</b></h2>
-              <h5 class="inputtext-large">Welcome! Please enter your details.</h5>
+              <h2 class="header-signin" style="margin: 0"><b>Sign In</b></h2>
+              <h5 class="subheader-signin">Welcome! Please enter your details.</h5>
               <div class="example-container">
                 <validation-summary
                   [form]="loginForm"
@@ -36,7 +50,7 @@
                 >
                   <div class="email">
                     <app-input
-                      [PlaceHolder]="'* Business Email'"
+                      [PlaceHolder]="'Business Email'"
                       formControlName="email"
                     ></app-input>
                   </div>
@@ -55,7 +69,7 @@
 
                   <div class="password">
                     <app-input
-                      [PlaceHolder]="'* Password'"
+                      [PlaceHolder]="'Password'"
                       [Type]="showPassword ? 'text' : 'password'"
                       [TooltipContent]="tooltip"
                       formControlName="password"
@@ -80,12 +94,21 @@
                 </form>
                 <div style="display: flex" class="row">
                   <div class="col-md-12 frgt_pswd">
-                    <h5 class="inputtext-small">
+                    <h5 class="inputtext-small" style="text-decoration: none;">
+                      <label class="remember-me-checkbox">
+                        <input type="checkbox" [(ngModel)]="rememberMe">
+                        <span class="checkbox-custom"></span>
+                      </label>
                       <a
                         routerLink="/forgotpassword"
                         class="inputtext-small"
                         queryParamsHandling="preserve"
-                        ><span class="logincontact">Forgot Password?</span>
+                        style="text-decoration: none;"
+                        >
+                        <span>
+                          Remember me
+                        </span>
+                        <span class="logincontact" style="text-decoration: none;float:right"><b>Forgot Password?</b></span>
                       </a>
                     </h5>
                   </div>
@@ -109,7 +132,7 @@
                       routerLink="/contactus"
                       queryParamsHandling="preserve"
                       class="logincontact inputtext-small"
-                      >Contact Us</a
+                      ><b>Contact Us</b></a
                     >
                   </h5></mat-label
                 >
@@ -242,23 +265,36 @@
       </div>
     </div> -->
 
-    <div class="col-md-6">
+    <div class="col-md-6" style="padding: 0;">
       <div class="container">
         <div class="slider-wrapper">
-      <div class="slider" style="height: auto; width: 100%;">
+      <div class="slider">
         <ngb-carousel #carousel [showNavigationArrows]="false" [showNavigationIndicators]="false" [interval]="0" [keyboard]="true" [pauseOnHover]="true" [wrap]="true" [activeId]="sliderimages[0].url" [interval]="3000">
           <ng-template ngbSlide *ngFor="let image of sliderimages; let i = index;">
             <div class="picsum-img-wrapper">
-              <img src="{{ image.url }}" alt="Angular Carousel {{ i + 1 }}" style="height: 50em;width: 100%;" />
+              <img src="{{ image.url }}" alt="Angular Carousel {{ i + 1 }}" style="height: auto;width:100%" />
             </div>
             <div class="carousel-caption">
               <div style="display: flex">
-                <div style="background-color: #00a6cf; width: 5px; height: 105px; margin-top: -2px; border-radius: 10px;"></div>
-                <h1 style="padding-left: 12px; font-size: 32px">{{ image.caption }}</h1>
+                <div style="background-color: #09A5CF; width: 5px; height: 75px; border-radius: 10px;"></div>
+                <h1 style="padding-left: 3%; font-size: 36px">{{ image.caption }}</h1>           
+              </div>
+              <div style="margin-top: -7%;">
+                <h1 style="padding-left: 4%; font-size: 36px">{{ image.caption1 }}</h1>
               </div>
             </div>
-            <button class="carousel-control-next" (click)="carousel.prev()"><mat-icon>arrow_circle_right</mat-icon></button>
-            <button class="carousel-control-prev" (click)="carousel.next()"><mat-icon>arrow_circle_left</mat-icon></button>
+            <div class="carousel-icon">
+              <img src="{{ image.icon }}" alt="Angular Carousel {{ i + 1 }}" style="height:80%;width:80%;position: absolute;top:0" />
+            <div></div>
+            </div>
+            <button class="carousel-control-next" (click)="carousel.prev()">
+              <!-- <mat-icon>arrow_circle_right</mat-icon> -->
+              <img src="../../../assets/images/left_scrollicon.svg" style="width:50%">
+            </button>
+            <button class="carousel-control-prev" (click)="carousel.next()">
+              <!-- <mat-icon>arrow_circle_left</mat-icon> -->
+              <img src="../../../assets/images/right_scrollicon.svg" style="width:50%">
+            </button>
           </ng-template>
         </ngb-carousel>
       </div>

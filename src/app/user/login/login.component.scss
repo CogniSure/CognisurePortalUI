@@ -34,9 +34,9 @@
   //   justify-content: center;
   // }
   ::ng-deep .carousel-control-prev {
-    left: 72%;
-    top: 85%;
-    padding-left: 10%;
+    left: 74%;
+    top: 61%;
+    // padding-left: 10%;
   }
 
   .signin-btn {
@@ -46,8 +46,8 @@
     margin-top: 3%;
   }
   ::ng-deep .carousel-control-next {
-    right: 0;
-    top: 85%;
+    right: 24%;
+    top: 60.3%;
   }
 
   ::ng-deep .password .mat-form-field-infix {
@@ -82,7 +82,7 @@
     padding-top: 1%;
   }
   .largeButton {
-    width: 24em;
+    width: 28em;
   }
   
   .signin_icon {
@@ -97,12 +97,21 @@
     height: 2rem;
   }
   .signin-button{
-    border-radius: 32px !important;
+    border-radius: 6px !important;
   }
 
+  .headerwithlogo img{
+    width:90%;
+    margin-top: 5.5%;
+  }
+
+  // .terms_condition{
+  // padding-left: 5%;
+  // padding-right: 15%;
+  // }
+
   .terms_condition{
-  padding-left: 5%;
-  padding-right: 15%;
+    margin-top: 10%;
   }
 
   .container {
@@ -110,11 +119,134 @@
     justify-content: center; 
     align-items: center; 
     height: 100vh; 
+    padding: 0;
   }
   
-  .slider-wrapper {
-    width: 100%; 
-  }
+  .headerwithlogo {
+    position: relative; 
+    padding-bottom: 15%;
+}
+
+.headerwithlogo::after {
+  content: "";
+    position: absolute;
+    top: 7%;
+    bottom: 0;
+    width: 2px;
+    height: 43%;
+    background-color: #BDBDBD;
+    left: 30%;
+}
+
+.intake_portal{
+  // margin-left: 20%;
+  font-size: 28px;
+  line-height: 1.4;
+  color:#0383AC;
+}
+
+::ng-depp input:-internal-autofill-selected {
+background-color: none!important;
+}
+
+.header-signin{
+  color: #000;
+  font-size: 28px;
+}
+
+.subheader-signin{
+padding-top: 5%;
+font-size: 16px;
+color:#555555;
+}
+
+::ng-deep .k-floating-label-container > .k-label{
+  font-size: 16px!important;
+padding-left: 0!important;
+margin-left: 0!important;
+}
+
+::ng-deep .k-input-flat {
+  border-color: #888888;
+}
+
+.logincontact{
+  text-decoration: none;
+}
+
+.frgt_password{
+  text-decoration: none;
+}
+
+.carousel-icon{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+}
+
+::ng-deep .carousel-caption{
+  bottom: 7rem;
+  text-align: left;
+}
+
+.carousel-icon img {
+  max-width: 100%; 
+  max-height: 100%; 
+}
+
+
+.remember-me-checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  // margin-right: 15px;
+  cursor: pointer;
+}
+
+.remember-me-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  // background-color: #eee;
+  border:1px solid #888888;
+  border-radius: 3px;
+}
+
+.checkbox-custom:before {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.remember-me-checkbox input:checked ~ .checkbox-custom:after {
+  display: block;
+}
+
+.remember-me-checkbox .checkbox-custom:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: #0383AC;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
 
   @media screen and (max-width: 1280px) {
     .benefits_header {
@@ -445,11 +577,11 @@
 
 //media query
 
-@media screen and (max-width: 1280px){
-.signin_section{
-  width: 80%!important;
-  margin-left: 12%!important;
-}
-}
+// @media screen and (max-width: 1280px){
+// .signin_section{
+//   width: 80%!important;
+//   margin-left: 12%!important;
+// }
+// }
 
 
