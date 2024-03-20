@@ -1,6 +1,6 @@
 //$primary-color: #005daa;
 $primary-color: #0383AC;
-$secondary-color: #758591;
+$secondary-color: #555555;
 $primary-black-color: black;
 $primary-background-color: #eef2f7;
 $secondary-orange-color: #f99d20;
@@ -95,7 +95,11 @@ $secondary-lightblue-color: #00a6cf;
 }
 ::ng-deep .inputtext-small {
   font-size: 14px !important;
-  color: #758591;
+  color: #888888;
+}
+::ng-deep .input_footertext{
+  font-size: 14px !important;
+  color:#555555;
 }
 ::ng-deep .inputtext-extrasmall {
   font-size: 12px !important;
