@@ -174,6 +174,7 @@ margin-left: 0!important;
 
 .logincontact{
   text-decoration: none;
+  margin-right: 2%;
 }
 
 .frgt_password{
@@ -678,6 +679,7 @@ width: 18em;
 }
 .frgt_pwdtext{
   float: right!important;
+  margin-right: 2%;
 }
 .headerwithlogo::after {
   height: 48%;
@@ -727,6 +729,10 @@ width: 18em;
 @media screen and (max-width: 376px){
   .largeButton {
     width: 19em;
+  }
+ .frgt_pwdtext {
+    float: right !important;
+    margin-right: 0%;
   }
 }
 
