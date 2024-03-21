@@ -2,7 +2,7 @@ import { AfterViewInit, Component,ElementRef,Injectable,Input,OnInit,ViewChild,f
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import { ControlValueAccessDirective } from '../../directives/control-value-access.directive';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
-import { SVGIcon, eyeIcon } from '@progress/kendo-svg-icons';
+import { SVGIcon, eyeIcon, eyeSlashIcon  } from '@progress/kendo-svg-icons';
 
 type InputType = 'text' | 'number' | 'email' | 'password' | 'area'
 @Component({
@@ -34,6 +34,9 @@ export class InputComponent<T> extends ControlValueAccessDirective<T> implements
   @ViewChild("textbox") public textbox: TextBoxComponent;
 
   public eyeIcon: SVGIcon = eyeIcon;
+  public eyeSlashIcon: SVGIcon = eyeSlashIcon;
+  public isPasswordVisible: boolean = false;
+  public currentEyeIcon: SVGIcon = this.eyeIcon;
 
   public ngAfterViewInit(): void {
     if(this.textbox != null)
@@ -42,6 +45,9 @@ export class InputComponent<T> extends ControlValueAccessDirective<T> implements
 
   public toggleVisibility(): void {
     const inputEl = this.textbox.input.nativeElement;
+    this.isPasswordVisible = !this.isPasswordVisible;
+    inputEl.type = this.isPasswordVisible ? "text" : "password";
+    this.currentEyeIcon = this.isPasswordVisible ? this.eyeSlashIcon : this.eyeIcon;
 
     if (inputEl.type === "password") {
       inputEl.type = "text";

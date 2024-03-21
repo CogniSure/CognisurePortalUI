@@ -34,9 +34,9 @@
   //   justify-content: center;
   // }
   ::ng-deep .carousel-control-prev {
-    left: 72%;
-    top: 85%;
-    padding-left: 10%;
+    left: 61%;
+    top: 60.5%;
+    // padding-left: 10%;
   }
 
   .signin-btn {
@@ -46,8 +46,8 @@
     margin-top: 3%;
   }
   ::ng-deep .carousel-control-next {
-    right: 0;
-    top: 85%;
+    right: 12%;
+    top: 60.3%;
   }
 
   ::ng-deep .password .mat-form-field-infix {
@@ -82,7 +82,8 @@
     padding-top: 1%;
   }
   .largeButton {
-    width: 24em;
+    width: 28.8em;
+    margin-left: -2%;
   }
   
   .signin_icon {
@@ -97,12 +98,22 @@
     height: 2rem;
   }
   .signin-button{
-    border-radius: 32px !important;
+    border-radius: 6px !important;
   }
 
+  .headerwithlogo img{
+    width:90%;
+    margin-top: 5.5%;
+    margin-left: -5%;
+  }
+
+  // .terms_condition{
+  // padding-left: 5%;
+  // padding-right: 15%;
+  // }
+
   .terms_condition{
-  padding-left: 5%;
-  padding-right: 15%;
+    margin-top: 10%;
   }
 
   .container {
@@ -110,322 +121,341 @@
     justify-content: center; 
     align-items: center; 
     height: 100vh; 
+    padding: 0;
   }
   
-  .slider-wrapper {
-    width: 100%; 
-  }
+  .headerwithlogo {
+    position: relative; 
+    padding-bottom: 15%;
+}
 
-  @media screen and (max-width: 1280px) {
-    .benefits_header {
-      padding-top: 71% !important;
-      margin-left: 10%;
-    }
-    .sign-in {
-      padding-left: 25%;
-      padding-right: 30%;
-      padding-top: 14%;
-      padding-bottom: 5%;
-    }
-    .terms_condition{
-      padding-left: 5%;
-      padding-right: 8%;
-      }
-  }
-
-  @media screen and (max-width: 1024px) {
-    .benefits_header {
-      padding-top: 0% !important;
-      margin-top: 0%;
-      margin-left: 0%;
-      position: absolute;
-      top: 8.2%;
-      left: 8.7%;
-    }
-
-    .sign-in {
-      padding-top: 6%;
-    }
-    .conditions_1 {
-      font-size: 13px;
-    }
-    .privacy_policy_1 {
-      font-size: 13px;
-    }
-    .terms_condition{
-      padding-left: 5%;
-      padding-right: 6%;
-      }
-    .footer_img img{
-      height:2.2vh!important;
-    }
-    .slider-wrapper {
-      width: 80%; 
-    }
-    .container {
-      display: flex;
-      justify-content: center; 
-      align-items: center; 
-      height: 83vh; 
-      width:55vw;
-    }
-  }
-
-  @media screen and (max-width: 912px) {
-    .slider {
-      visibility: hidden;
-    }
-
-    .col-md-6 {
-      width: 100%;
-    }
-
-    .sign-in {
-      text-align: left;
-    }
-    .example-container {
-      display: contents !important;
-    }
-    .label_text {
-      position: relative;
-      right: 0 !important;
-    }
-
-    .imgHeight {
-      height: 8vh;
-      width: 12vw;
-    }
-    .benefits_header {
-      margin-top: -3%;
-      margin-left: 10%;
-    }
-
-    .frgt_pswd {
-      text-align: left;
-      padding-top: 0%;
-      width: 100%;
-    }
-
-    .remeber_me {
-      width: 56%;
-    }
-    .sign-in {
-      padding-left: 32% !important;
-    }
-    .footer_img img {
-      height: 2.3vh !important;
-    }
-    .footer_img {
-      // padding-left: 0.5%;
-    }
-    .terms_condition{
-      padding-left: 5%;
-      padding-right: 5%;
-      }
-  }
-
-  @media screen and (max-width: 820px) {
-    .benefits_header {
-      margin-top: -3.2%;
-      margin-left: 9.5%;
-    }
-    .terms_condition{
-      padding-left: 4%;
-      padding-right: 0%;
-      }
-  }
-
-  @media screen and (max-width: 768px) {
-    .benefits_header {
-      margin-top: -3.5%;
-      margin-left: 9%;
-    }
-   
-  }
-
-  @media screen and (max-width: 540px) {
-    .frgt_pswd {
-      padding-top: 0.5%;
-      width: 53%;
-    }
-    .signin-btn .signin-button {
-      padding: 6px 98px 6px 98px;
-    }
-    .sign-in {
-      padding-left: 25% !important;
-    }
-    .benefits_header {
-      margin-top: -4.6%;
-      margin-left: 7.2%;
-    }
-.footer_txtlogo{
+.headerwithlogo::after {
+  content: "";
     position: absolute;
-    left: 70%;
-}
-  }
-
-
-
-  @media screen and (max-width: 431px){
-    .signin_section{
-      width: 90% !important;
-      margin-left: 5.5% !important;
-    
-    }
-    .login-form .sign-in {
-      padding-left: 28% !important;
-  }
-  .footer_img img {
-    height: 1.8vh !important;
-  }
-    }
-
-  @media screen and (max-width: 415px) {
-    .benefits_header {
-      margin-top: -6.4%;
-      margin-left: 9%;
-    }
-    .signin-btn .signin-button {
-      padding: 6px 70px 6px 70px !important;
-    }
-    .sign-in {
-      padding-left: 16% !important;
-      width: 29rem;
-    }
-    // .terms_condition {
-    //   margin-top: 34%;
-    // }
-    .trms_cond1 {
-      width: 100% !important;
-    }
-    .button {
-      padding: 6px 86px 6px 86px;
-    }
-    .label_text {
-      right: 60px !important;
-      margin-top: -52px !important;
-      left: 115px;
-    }
-    .frgt_pswd {
-      padding-top: 0.5%;
-      width: 72%;
-      margin-left: 0px !important;
-    }
-    .imgHeight {
-      width: 16vw !important;
-    }
-    .frgt_pswd {
-      margin-left: -52px;
-    }
-    .footer_img {
-      padding-left: 35.5%!important;
-    }
-    .footer_txtlogo {
-      position: relative!important;
-      left: 0%!important;
-  }
-  .textprimary {
-    margin-left: 37%;
-  }
-
-  }
-  @media screen and (max-width: 394px) {
-    .sign-in {
-      padding-left: 12% !important;
-      width: 29rem;
-    }
-    .label_text {
-      left: 130px;
-    }
-  }
-
-  @media screen and (max-width: 391px) {
-    .frgt_pswd {
-      padding-top: 0.5%;
-      width: 80%;
-    }
-    .signin-btn .signin-button {
-      padding: 6px 60px 6px 60px !important;
-    }
-    .imgHeight {
-      width: 16vw !important;
-    }
-    .benefits_header {
-      margin-top: -10%;
-      margin-left: 8%;
-    }
-    .sign-in {
-      padding-left: 25% !important;
-    }
-    .benefits_header {
-      margin-top: -6.6%;
-      margin-left: 9%;
-    }
-  }
-  @media screen and (max-width: 376px) {
-    button {
-      padding: 6px 60px 6px 60px !important;
-    }
- .textprimary{
-      margin-left: 26%!important;
-  }
-    .label_text {
-      left: 150px;
-    }
-    .benefits_header {
-      margin-top: -6.6%;
-    }
-    .footer_img {
-      padding-left: 25.5% !important;
-      padding-left: 0%;
-  }
-  .footer_img img {
-    height: 2.5vh !important;
+    top: 7%;
+    bottom: 0;
+    width: 2px;
+    height: 43%;
+    background-color: #BDBDBD;
+    left: 29.5%;
 }
 
+.intake_portal{
+  // margin-left: 20%;
+  font-size: 28px;
+  line-height: 1.4;
+  color:#0383AC;
 }
-  @media screen and (max-width: 360px) {
-    .sign-in {
-      width: 27rem;
-    }
-    .label_text {
-      left: 140px;
-    }
-    .benefits_header {
-      margin-top: -7%;
-    }
-   .footer_img img {
-      height: 2.2vh !important;
-  }
-  }
-  @media screen and (max-width: 280px) {
-    .sign-in {
-      width: 21rem;
-    }
 
-    .benefits_header {
-      margin-top: -8.5%;
-      margin-left: 5.5%;
-    }
-    ::ng-deep .mat-form-field-infix {
-      width: 235px !important;
-    }
-    ::ng-deep .password .mat-form-field-infix {
-      width: 214px !important;
-    }
-    .label_text {
-      right: 20px !important;
-      left: 102px;
-    }
-    .frgt_pswd {
-      width: 90%;
-      margin-left: 2px !important;
-    }
-    .textprimary {
-      padding-left: 0px;
-    }
-  }
+::ng-depp input:-internal-autofill-selected {
+background-color: none!important;
+}
 
+.header-signin{
+  color: #000;
+  font-size: 28px;
+}
+
+.subheader-signin{
+padding-top: 5%;
+font-size: 16px;
+color:#555555;
+}
+
+::ng-deep .k-floating-label-container > .k-label{
+  font-size: 16px!important;
+padding-left: 0!important;
+margin-left: 0!important;
+}
+
+::ng-deep .k-input-flat {
+  border-color: #888888;
+}
+
+.logincontact{
+  text-decoration: none;
+  margin-right: 2%;
+}
+
+.frgt_password{
+  text-decoration: none;
+}
+
+.carousel-icon{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+}
+
+::ng-deep .carousel-caption{
+  bottom: 7rem;
+  text-align: left;
+}
+
+.carousel-icon img {
+  max-width: 100%; 
+  max-height: 100%; 
+}
+
+
+.remember-me-checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 20px;
+  // margin-right: 15px;
+  cursor: pointer;
+}
+
+
+.remember-me-checkbox input {
+  position: absolute;
+    // opacity: 0;
+  cursor: pointer;
+  left: 0;
+  top: -11.5px;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  // background-color: #eee;
+  // border:1px solid #888888;
+  border-radius: 3px;
+}
+
+.checkbox-custom:before {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.remember-me-checkbox input:checked ~ .checkbox-custom:after {
+  display: block;
+}
+
+.remember-me-checkbox .checkbox-custom:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: #0383AC;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+::ng-deep .dvs-form-control .floatingLabel::placeholder{
+margin-left: -15%!important;
+}
+
+@media screen and (max-width: 1281px){
+.silder_section{
+  margin-left: -4%;
+}
+ .carousel-caption {
+  bottom: 5rem;
+}
+}
+@media screen and (max-width: 1024px){
+  .silder_section{
+    margin-left: -2%;
+  }
+  .login_section{
+    padding: 0% 5%;
+  }
+  .largeButton{
+    width: 21.5em;
+}
+.footer_img img{
+height: 2.4vh!important;
+}
+.headerwithlogo::after {
+  height: 48%;
+}
+.headerwithlogo img {
+  width: 100%;
+  margin-top: 13.5%;
+}
+.carousel-caption {
+  bottom: 3.5rem;
+  left:10%;
+}
+}
+
+@media screen and (max-width: 912px){
+.footer_img img{
+  height: 1.8vh!important;
+}
+.terms_condition .col-md-8{
+  width:60%;
+}
+.terms_condition .col-md-4{
+  width:40%;
+  float: right;
+}
+.headerwithlogo img {
+  width: 100%;
+  margin-top: 47.5%;
+  margin-left: -15%;
+}
+.headerwithlogo::after {
+  height: 62%;
+}
+.carousel-caption {
+bottom: 2.5rem;
+left:6%;
+}
+}
+
+@media screen and (max-width: 854px){
+.largeButton {
+width: 18em;
+}
+.logincontact{
+ float: none!important;
+ padding-left: 1%;
+}
+.carousel-control-next {
+  right: 6%;
+}
+.carousel-control-prev {
+  left: 67%;
+}
+}
+
+@media screen and (max-width: 768px){
+.carousel-caption {
+  bottom: 1.5rem;
+  left: 3%;
+}
+}
+
+@media screen and (max-width: 540px){
+  .headerwithlogo .col-md-4{
+    width:35%;
+  }
+  .headerwithlogo .col-md-8{
+    width:65%;
+  }
+  .headerwithlogo img {
+    width: 52%;
+    margin-top: 3.5%;
+  }
+.headerwithlogo {
+    position: relative;
+    padding-bottom: 10%;
+}
+.headerwithlogo img {
+  width: 62%;
+  margin-left: 10%;
+}
+.sign-in {
+  padding-bottom: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.terms_condition .col-md-8{
+  width:60%;
+}
+.terms_condition .col-md-4{
+  width:40%;
+  float: right;
+}
+.label_text{
+  float: right;
+}
+.terms_condition {
+  margin-top: 10%;
+  padding: 0% 5%;
+}
+.largeButton {
+  width: 31.8em;
+}
+.footer_img img {
+  height: 3.4vh !important;
+}
+.frgt_pwdtext{
+  float: right!important;
+  margin-right: 2%;
+}
+.headerwithlogo::after {
+  height: 48%;
+}
+}
+
+@media screen and (max-width: 431px){
+  .headerwithlogo {
+    padding-right: 1%;
+}
+.login_section .col-md-9{
+  padding: 10%;
+}
+.headerwithlogo img {
+  width: 75%;
+  margin-top: 12.5%;
+}
+.label_text {
+  float: none;
+}
+.footer_img img {
+  height: 2.4vh !important;
+}
+.headerwithlogo::after {
+  height: 54%;
+}
+.largeButton {
+  width: 21.8em;
+}
+}
+@media screen and (max-width: 415px){
+  .largeButton {
+    width: 21em;
+  }
+}
+
+@media screen and (max-width: 391px){
+.headerwithlogo img {
+  width: 75%;
+  margin-top: 18.5%;
+}
+.largeButton {
+  width: 20em;
+}
+}
+
+@media screen and (max-width: 376px){
+  .largeButton {
+    width: 19em;
+  }
+ .frgt_pwdtext {
+    float: right !important;
+    margin-right: 0%;
+  }
+}
+
+@media screen and (max-width: 280px){
+.frgt_pwdtext{
+float: none!important;
+}
+.headerwithlogo img {
+  width: 100%;
+  margin-top: 52.5%;
+}
+.headerwithlogo::after {
+  height: 70%;
+  left: 33.5%;
+}
+
+}
 }
 
 ::ng-deep .k-input:active {
@@ -443,13 +473,6 @@
 }
 
 
-//media query
 
-@media screen and (max-width: 1280px){
-.signin_section{
-  width: 80%!important;
-  margin-left: 12%!important;
-}
-}
 
 

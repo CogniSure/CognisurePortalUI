@@ -1,6 +1,6 @@
 //$primary-color: #005daa;
-$primary-color: #009cc1;
-$secondary-color: #758591;
+$primary-color: #0383AC;
+$secondary-color: #555555;
 $primary-black-color: black;
 $primary-background-color: #eef2f7;
 $secondary-orange-color: #f99d20;
@@ -95,7 +95,11 @@ $secondary-lightblue-color: #00a6cf;
 }
 ::ng-deep .inputtext-small {
   font-size: 14px !important;
-  color: #758591;
+  color: #888888;
+}
+::ng-deep .input_footertext{
+  font-size: 14px !important;
+  color:#555555;
 }
 ::ng-deep .inputtext-extrasmall {
   font-size: 12px !important;
@@ -156,15 +160,15 @@ $secondary-lightblue-color: #00a6cf;
   color: #000000;
 }
 ::ng-deep .largeButton {
-  background: $primary-color !important;
-  background-color: $primary-color !important;
+  background: #0383AC !important;
+  background-color: #0383AC !important;
   color: white;
   font-size: 14px;
   //font-weight: bolder;
-  height: 36px;
+  height: 45px;
   align-items: center;
-  width: 20em;
-  border: 1px solid $primary-color;
+  // width: 40em;
+  border: 1px solid #0383AC;
   border-radius: 10px;
 }
 ::ng-deep .mediumButton {

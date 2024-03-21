@@ -8,11 +8,21 @@
     color : black
 }
 .svgIcon{
-    color: blue;
+    // color: blue;
+    color:#677185;
     // svg{
     //     width: 60px !important;
     // height: 60px !important;
     // }
     
 }
+::ng-deep .k-textbox input::placeholder {
+    margin-left: -15%!important;
+  }
+::ng-deep .k-textbox::placeholder {
+    margin-left: -15%!important;
+  }
+// .k-button-md.k-icon-button .k-button-icon.k-svg-icon > svg{
+
+// }
 }
