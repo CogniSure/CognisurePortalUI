@@ -15,8 +15,12 @@ export class LoaderComponent implements OnInit {
   }
 ngOnInit(): void {
     //this.init();
+    console.log("Spinner Status")
+    console.log(this.showSpinner)
 }
 ngOnChanges(changes: any) {
+  console.log("Spinner Status")
+  console.log(changes)
   if (changes.showSpinner != null) {
     this.showSpinner = changes.showSpinner.currentValue
   }

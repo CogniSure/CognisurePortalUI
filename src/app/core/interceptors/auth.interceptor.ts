@@ -17,9 +17,9 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const accessToken = sessionStorage.getItem('session_token');
+    const accessToken = localStorage.getItem('session_token');
     if (accessToken && accessToken.length > 0) {
-      let expiry = sessionStorage.getItem('expires_at');
+      let expiry = localStorage.getItem('expires_at');
 
       const expiresAt = JSON.parse(expiry!);
       let tokenExpiration: any = new Date(expiry!);

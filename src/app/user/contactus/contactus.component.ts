@@ -74,7 +74,7 @@ export class ContactusComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('pageId');
     if (Number(id) == 2) {
       this.isLoggedIn = true;
-      this.userDetail = JSON.parse(sessionStorage.getItem('UserDetail')!);
+      this.userDetail = JSON.parse(localStorage.getItem('UserDetail')!);
       if (this.userDetail != null) {
         this.contactusForm
           .get('firstName')!

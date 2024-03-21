@@ -74,7 +74,7 @@ export class AuthService {
   public refreshToken(): Observable<any> {
     this.env = this.configService.settings;
     var apiUrl = this.env.baseUrl + 'api/refreshtoken';
-    let tokenObjStr = sessionStorage.getItem('session_token_obj');
+    let tokenObjStr = localStorage.getItem('session_token_obj');
 
     const tokenObj = JSON.parse(tokenObjStr!);
     var result;
@@ -86,15 +86,17 @@ export class AuthService {
     this.logout();
     this.resetTimer();
     var twentyMinutesLater = new Date();
-    sessionStorage.setItem(
+    localStorage.setItem(
       'session_token_obj',
       JSON.stringify(authResult.value)
     );
     twentyMinutesLater.setMinutes(twentyMinutesLater.getMinutes() + 20);
-    sessionStorage.setItem('session_token', authResult.value.accessToken);
-    sessionStorage.setItem('refresh_token', authResult.value.refreshToken);
-    sessionStorage.setItem('expires_at', JSON.stringify(twentyMinutesLater));
-
+    localStorage.setItem('session_token', authResult.value.accessToken);
+    localStorage.setItem('refresh_token', authResult.value.refreshToken);
+    localStorage.setItem('expires_at', JSON.stringify(twentyMinutesLater));
+    localStorage.setItem('session_token', authResult.value.accessToken);
+    localStorage.setItem('refresh_token', authResult.value.refreshToken);
+    localStorage.setItem('expires_at', JSON.stringify(twentyMinutesLater));
     this._sessionstart.next(true);
     this.setSession();
   }
@@ -102,23 +104,27 @@ export class AuthService {
   public setSession() {
     const expiresAt = moment().add(this._sessionTime, 'minutes');
 
-    sessionStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('isLoggedIn', 'true');
     this._sessionstart.next(true);
-    sessionStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     this._sessionstart.next(true);
     this.startTimer();
   }
   logout() {
     this._sessionstart.next(false);
-    sessionStorage.removeItem('Accounts');
-    sessionStorage.removeItem('SelectedAccounts');
-    sessionStorage.removeItem('SelectedDates');
-    sessionStorage.removeItem('UserDetail');
-    sessionStorage.removeItem('id_token');
-
-    sessionStorage.removeItem('session_token');
-    sessionStorage.removeItem('expires_at1');
-    sessionStorage.removeItem('UserAdminDetail');
+    localStorage.removeItem('Accounts');
+    localStorage.removeItem('SelectedAccounts');
+    localStorage.removeItem('SelectedDates');
+    localStorage.removeItem('UserDetail');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('session_token');
+    localStorage.removeItem('expires_at1');
+    localStorage.removeItem('UserAdminDetail');
+    
+    localStorage.removeItem('session_token')
+    
     if (this.timerSubscription) {
       this.timerSubscription.unsubscribe();
     }
@@ -137,7 +143,7 @@ export class AuthService {
   }
 
   getExpiration() {
-    const expiration = sessionStorage.getItem('expires_at');
+    const expiration = localStorage.getItem('expires_at');
     const expiresAt = JSON.parse(expiration!);
     return moment(expiresAt);
   }

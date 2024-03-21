@@ -64,7 +64,7 @@ export class ChangepasswordComponent implements OnInit {
         ]),
       }
     );
-    const value = sessionStorage.getItem('UserDetail');
+    const value = localStorage.getItem('UserDetail');
     if (value != null) {
       this.userProfile = JSON.parse(value);
     }

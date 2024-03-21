@@ -60,12 +60,12 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
   tooltip = PasswordToolTip;
 
   setAccounts(account: Accounts[]) {
-    sessionStorage.setItem('Accounts', JSON.stringify(account));
+    localStorage.setItem('Accounts', JSON.stringify(account));
     this.setSelectedAccount(account[0])
   }
  
   setSelectedAccount(account: Accounts) {
-    sessionStorage.setItem('SelectedAccounts', JSON.stringify(account));
+    localStorage.setItem('SelectedAccounts', JSON.stringify(account));
     this.accounts$.next(account);
     this.dashboardFilter$.next({...this.dashboardFilter$.value,Account : account})
   }
@@ -107,7 +107,7 @@ dashboardFilter$ = new BehaviorSubject<any>(null);
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
-    sessionStorage.setItem('Accounts', '');
+    localStorage.setItem('Accounts', '');
   }
   passwordInfo = DataComponent.Tooltip;
   Login(event: any) {

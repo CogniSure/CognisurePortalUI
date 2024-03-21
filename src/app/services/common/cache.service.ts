@@ -194,7 +194,7 @@ export class CacheService {
   }
 
   setData(key: string, data: any[]) {
-    if (sessionStorage.getItem(key) != null)
+    if (localStorage.getItem(key) != null)
       localStorage.setItem(key, JSON.stringify(data));
     this.tivSubject$.next(data);
   }
