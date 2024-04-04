@@ -71,6 +71,13 @@ export class AuthService {
       hParams = hParams.set('email', email);
       return this.http.getData(apiUrl+"api/zohotoken",hParams);
   }
+  public getZOHOAPIToken(email:string): Observable<any>{
+    this.env = this.configService.settings
+      var apiUrl = this.env.baseUrl
+      let hParams = new HttpParams();
+      hParams = hParams.set('email', email);
+      return this.http.getData(apiUrl+"api/zohotokenapi",hParams);
+  }
   public refreshToken(): Observable<any> {
     this.env = this.configService.settings;
     var apiUrl = this.env.baseUrl + 'api/refreshtoken';

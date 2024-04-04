@@ -37,7 +37,7 @@ export class RiskInsightsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
   ngOnInit(): void {
     this.userDetail = this.globalService.getUserProfile();
-    this.getRedirectURL();
+    this.getEmbededURL();
   }
 
   getRedirectURL() {
@@ -58,7 +58,7 @@ export class RiskInsightsComponent implements OnInit, OnDestroy {
   getEmbededURL() {
     this.globalService.getCurrentSubmissionId().subscribe((subInfo) => {
       let GUID = subInfo.SubmissionGUID;
-      this.authService.getZOHOToken(GUID).subscribe((res) => {
+      this.authService.getZOHOAPIToken(GUID).subscribe((res) => {
         console.log('Embeded URL');
         console.log(res);
         if (res != null) {
